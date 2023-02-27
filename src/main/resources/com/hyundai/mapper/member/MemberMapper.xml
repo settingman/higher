@@ -3,14 +3,12 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 
-<mapper namespace="com.hyundai.mapper.member.MemberMapper">
-
-
+<mapper namespace="com.hyundai.higher.mapper.member.MemberMapper">
 
 
 
 	<select id="findById"
-		resultType="com.hyundai.domain.member.Member">
+		resultType="com.hyundai.higher.domain.member.Member">
 		SELECT MID, MPassword, MName, MPhone, MEmail, MZipCode,
 		MAddress1, MAddress2, MBirth, MGender, MRole
 		FROM MEMBER
@@ -20,7 +18,7 @@
 
 
 	<select id="findByNameBirth"
-		resultType="com.hyundai.domain.member.Member">
+		resultType="com.hyundai.higher.domain.member.Member">
 		SELECT MID, MPassword, MName, MPhone, MEmail, MZipCode,
 		MAddress1, MAddress2, MBirth, MGender, MRole
 		FROM MEMBER
@@ -29,7 +27,7 @@
 	</select>
 
 	<select id="findByNameId"
-		resultType="com.hyundai.domain.member.Member">
+		resultType="com.hyundai.higher.domain.member.Member">
 		SELECT MID, MPassword, MName, MPhone, MEmail, MZipCode,
 		MAddress1, MAddress2, MBirth, MGender, MRole
 		FROM MEMBER
@@ -46,7 +44,7 @@
 
 
 	<insert id="save"
-		parameterType="com.hyundai.domain.member.Member">
+		parameterType="com.hyundai.higher.domain.member.Member">
 
 
 		INSERT INTO MEMBER

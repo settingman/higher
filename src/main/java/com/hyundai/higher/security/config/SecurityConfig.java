@@ -1,4 +1,4 @@
-package com.hyundai.security.config;
+package com.hyundai.higher.security.config;
 
 import java.io.IOException;
 import java.net.URLEncoder;
@@ -27,8 +27,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 
-import com.hyundai.security.handler.CustomAuthSuccessHandler;
-import com.hyundai.service.member.MemberService;
+import com.hyundai.higher.security.handler.CustomAuthSuccessHandler;
+import com.hyundai.higher.service.member.MemberService;
 
 import lombok.extern.slf4j.Slf4j;
 

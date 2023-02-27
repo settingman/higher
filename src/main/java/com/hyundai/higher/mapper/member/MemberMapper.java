@@ -1,9 +1,9 @@
-package com.hyundai.mapper;
+package com.hyundai.higher.mapper.member;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-import com.hyundai.damain.member.Member;
+import com.hyundai.higher.damain.member.Member;
 
 /**
  * @since : 2023. 2. 24.

@@ -1,4 +1,4 @@
-package com.hyundai;
+package com.hyundai.higher;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

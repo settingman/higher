@@ -1,4 +1,4 @@
-package com.hyundai.damain.member;
+package com.hyundai.higher.damain.member;
 
 import java.sql.Date;
 

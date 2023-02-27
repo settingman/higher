@@ -1,4 +1,4 @@
-package com.hyundai.damain.member;
+package com.hyundai.higher.damain.member;
 
 /**
  * @since   : 2023. 2. 24.
@@ -9,7 +9,7 @@ package com.hyundai.damain.member;
  * <pre>
  *   수정일         수정자               수정내용
  * ----------      --------    ---------------------------
- * 2023. 2. 3.     박성환      User Role 정의.
+ * 2023. 2. 24.     박성환      User Role 정의.
  * </pre>
  */
 public enum MemberRole {

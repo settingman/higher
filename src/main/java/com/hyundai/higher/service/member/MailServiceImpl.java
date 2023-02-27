@@ -1,4 +1,4 @@
-package com.hyundai.service.member;
+package com.hyundai.higher.service.member;
 
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -6,9 +6,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.hyundai.damain.mail.MailVo;
-import com.hyundai.damain.member.Member;
-import com.hyundai.mapper.MemberMapper;
+import com.hyundai.higher.damain.mail.MailVo;
+import com.hyundai.higher.damain.member.Member;
+import com.hyundai.higher.mapper.member.MemberMapper;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

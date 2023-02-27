@@ -1,4 +1,4 @@
-package com.hyundai.service.member;
+package com.hyundai.higher.service.member;
 
 import java.sql.Date;
 import java.sql.SQLException;
@@ -15,10 +15,10 @@ import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
-import com.hyundai.damain.member.Member;
-import com.hyundai.damain.member.MemberRole;
-import com.hyundai.mapper.MemberMapper;
-import com.hyundai.security.dto.SecurityMember;
+import com.hyundai.higher.damain.member.Member;
+import com.hyundai.higher.damain.member.MemberRole;
+import com.hyundai.higher.mapper.member.MemberMapper;
+import com.hyundai.higher.security.dto.SecurityMember;
 
 import lombok.extern.slf4j.Slf4j;
 

@@ -1,4 +1,4 @@
-package com.hyundai.service.member;
+package com.hyundai.higher.service.member;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,9 +11,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.hyundai.damain.member.Member;
-import com.hyundai.mapper.MemberMapper;
-import com.hyundai.security.dto.SecurityMember;
+import com.hyundai.higher.damain.member.Member;
+import com.hyundai.higher.mapper.member.MemberMapper;
+import com.hyundai.higher.security.dto.SecurityMember;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

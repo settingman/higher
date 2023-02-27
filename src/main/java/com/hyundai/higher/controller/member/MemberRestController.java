@@ -1,4 +1,4 @@
-package com.hyundai.controller.member;
+package com.hyundai.higher.controller.member;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.ui.Model;
@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.hyundai.damain.mail.MailVo;
-import com.hyundai.damain.member.Member;
-import com.hyundai.mapper.MemberMapper;
-import com.hyundai.service.member.MailServiceImpl;
-import com.hyundai.service.member.MemberService;
+import com.hyundai.higher.damain.mail.MailVo;
+import com.hyundai.higher.damain.member.Member;
+import com.hyundai.higher.mapper.member.MemberMapper;
+import com.hyundai.higher.service.member.MailServiceImpl;
+import com.hyundai.higher.service.member.MemberService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
