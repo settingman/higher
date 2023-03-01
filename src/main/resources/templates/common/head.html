@@ -1,0 +1,23 @@
+<!--
+ @Date : 2023. 3. 1.
+ @작성자 : 박성환
+ @설명 : 중복 head 
+-->
+
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<th:block th:fragment="headFragment">
+	<head>
+
+
+<!-- csrf 가 null 인 케이스에 발생한 문제:
+	로그인하지 않았을 때 csrf가 null이므로 에러가 터졌다.
+	다음과 같이 null 이 아닐 경우에만 csrf.token 등을 참조하도록 수정했다. -->
+<meta charset="UTF-8">
+<meta name="_csrf" th:content="${_csrf?.token}" th:if="${_csrf} ne null">
+<meta name="_csrf_header" th:content="${_csrf?.headerName}" th:if="${_csrf} ne null">
+
+	</head>
+</th:block>
+</html>
+

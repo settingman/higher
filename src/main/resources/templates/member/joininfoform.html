@@ -1,8 +1,7 @@
 <!--
- @Date : 2023. 1. 31.
+ @Date : 2023. 3. 1.
  @작성자 : 박성환
- @설명 : 회원가입 페이지
- 	   : 로그인 속성 validation 적용 / 아이디 중복확인  AJAX
+ @설명 : 회원가입페이지
 -->
 
 
@@ -11,1161 +10,2605 @@
 <title>회원가입 | 더한섬닷컴</title>
 
 <th:block th:replace="common/head :: headFragment"></th:block>
-<body>
-	<script>
-		(function() {
-			if (document.cookie.indexOf("thehyundai=true") > -1) {
-				var d = new Date();
-				d.setTime(d.getTime() + 365 * 24 * 60 * 60 * 1000);
-				document.cookie = "sslvisit=true; expires=" + d.toUTCString()
-						+ "; path=/";
-			} else if (document.cookie.indexOf("rakuten=") > -1) {
-				var d = new Date();
-				d.setTime(d.getTime() + 365 * 24 * 60 * 60 * 1000);
-				document.cookie = "sslvisit1=true; expires=" + d.toUTCString()
-						+ "; path=/";
-			} else if (document.cookie.indexOf("hyundaihmall=true") > -1) {
-				var d = new Date();
-				d.setTime(d.getTime() + 365 * 24 * 60 * 60 * 1000);
-				document.cookie = "sslvisit2=true; expires=" + d.toUTCString()
-						+ "; path=/";
-			} else if (document.cookie.indexOf("fromSite") > -1) {
-				var d = new Date();
-				d.setTime(d.getTime() + 365 * 24 * 60 * 60 * 1000);
-				document.cookie = "sslvisit3=" + "" + "; expires="
-						+ d.toUTCString() + "; path=/";
-			} else if (document.cookie.indexOf("recommender") > -1) {
-				var d = new Date();
-				d.setTime(d.getTime() + 365 * 24 * 60 * 60 * 1000);
-				document.cookie = "sslvisit4=" + "" + "; path=/";
-			}
-		})();
-	</script>
-	<!-- Loading -->
-	<div style="display: none">
-		<div id="loadingBarDiv" style="display: none"></div>
-	</div>
-	<!-- //Loading -->
-
-	<form id="CSRFForm" action="/ko/member/joininfoform" method="post">
-		<div>
-			<input type="hidden" name="CSRFToken" value="cd9050c6-105b-4660-8eff-bcdaba320336" />
-		</div>
-	</form>
-	<div id="mapleMainPopwrap"
-		style="position: fixed; top: 50%; left: 50%; width: 81.333333%; z-index: 805; transform: translate(-50%, -50%); display: none;"
-	></div>
-
-	<div class="layerArea" id="mapleLayer" style="display: none">
-		<div class="layerBg"></div>
-	</div>
-
-	<!-- ################## hsome_allContents_wrapper | ë³¸ë¬¸ ì»¨íì¸  ìì­ ################## -->
-	<div class="hsome_allContents_wrapper">
-		<div class="hsome_allContents">
-			<script type="text/javascript">
-				function goMainpage() {
-					window.sessionStorage.removeItem("moveYn");
-					location.href = "/ko/main";
-				}
-			</script>
-
-			<!-- ################## header ################## -->
-			<header class="hsome_header">
-				<h1 class="h_ttl ellipsis" id="headerTitle">회원정보입력</h1>
-				<a href="/ko/main" class="h_top_home"><span>홈</span></a> <a href="javascript:noLink();" onclick="goBack();" class="h_prev">이전 페이지로 가기</a>
-				<ul class="h_gnbMenu">
-					<li class="search"><a href="/ko/mobilecommon/search" onclick="GA_Event('공통', '헤더', '검색');"><span>search</span></a></li>
-					<li class="cart"><a href="/ko/shoppingbag" onclick="GA_Event('공통', '헤더', '쇼핑백');"><span>cart</span><i>0</i></a></li>
-				</ul>
-			</header>
-			<!-- //################## header ################## -->
-			<script type="text/javascript">
-				//<![CDATA[
-				$(document)
-						.ready(
-								function() {
-									var nowYear = parseInt("2009");
-									var nowMonth = parseInt("01");
-									var nowDay = parseInt("30");
-									var monthArray = [ 0, 31, 28, 31, 30, 31,
-											30, 31, 31, 30, 31, 30, 31, ];
-
-									//if(nowYear < 2000) nowYear += 1900;
-
-									//년도
-									for (var i = nowYear; i >= 1900; i--) {
-										$("#selYear").append(
-												"<option value='" + i + "'>"
-														+ i + "</option>");
-									}
-
-									$("#selYear")
-											.change(
-													function() {
-														var selYear1 = $(
-																"#selYear")
-																.val();
-
-														if ($("#selMonth")
-																.val() == 02) {
-															if ($(
-																	"#selDay option:last")
-																	.val() >= 29) {
-																$(
-																		"#selDay option[value='29']")
-																		.remove();
-																$(
-																		"#selDay option[value='30']")
-																		.remove();
-																$(
-																		"#selDay option[value='31']")
-																		.remove();
-															}
-
-															if ((selYear1 % 4 == 0 && selYear1 % 100 != 0)
-																	|| selYear1 % 400 == 0) {
-																$("#selDay")
-																		.append(
-																				"<option value='29'>29</option>");
-															}
-														}
-
-														//만14세미만 가입X
-														if (nowYear == selYear1) {
-															for (var i = nowMonth + 1; i <= 12; i++) {
-																if (i < 10) {
-																	$(
-																			"#selMonth option[value='0"
-																					+ i
-																					+ "']")
-																			.remove();
-																} else {
-																	$(
-																			"#selMonth option[value='"
-																					+ i
-																					+ "']")
-																			.remove();
-																}
-																if ($(
-																		"#selMonth")
-																		.val() > nowMonth)
-																	$(
-																			"#selMonth")
-																			.val(
-																					"")
-																			.prop(
-																					"selected",
-																					true);
-															}
-
-															if (nowMonth == parseInt($(
-																	"#selMonth")
-																	.val())) {
-																var n_selMonth = parseInt($(
-																		"#selMonth")
-																		.val());
-																var maxDay = monthArray[n_selMonth];
-
-																for (var i = nowDay + 1; i <= maxDay; i++) {
-																	if (i < 10) {
-																		$(
-																				"#selDay option[value='0"
-																						+ i
-																						+ "']")
-																				.remove();
-																	} else {
-																		$(
-																				"#selDay option[value='"
-																						+ i
-																						+ "']")
-																				.remove();
-																	}
-																	if ($(
-																			"#selDay")
-																			.val() > nowDay) {
-																		$(
-																				"#selDay")
-																				.val(
-																						"")
-																				.prop(
-																						"selected",
-																						true);
-																	}
-																}
-															}
-														} else {
-															var n_selMonth = parseInt($(
-																	"#selMonth")
-																	.val());
-															var maxDay = monthArray[n_selMonth];
-
-															if ($(
-																	"#selMonth option:last")
-																	.val() < 12) {
-																for (var i = nowMonth + 1; i <= 12; i++) {
-																	if (i < 10) {
-																		$(
-																				"#selMonth")
-																				.append(
-																						"<option value='0" + i + "'>0"
-																								+ i
-																								+ "</option>");
-																	} else {
-																		$(
-																				"#selMonth")
-																				.append(
-																						"<option value='" + i + "'>"
-																								+ i
-																								+ "</option>");
-																	}
-																}
-															}
-															if ($(
-																	"#selDay option:last")
-																	.val() < maxDay) {
-																if ($(
-																		"#selMonth")
-																		.val() == 02) {
-																	if ((selYear1 % 4 == 0 && selYear1 % 100 != 0)
-																			|| selYear1 % 400 == 0) {
-																		maxDay = 29;
-																	}
-																}
-																for (var i = parseInt($(
-																		"#selDay option:last")
-																		.val()) + 1; i <= maxDay; i++) {
-																	if (i < 10) {
-																		$(
-																				"#selDay")
-																				.append(
-																						"<option value='0" + i + "'>0"
-																								+ i
-																								+ "</option>");
-																	} else {
-																		$(
-																				"#selDay")
-																				.append(
-																						"<option value='" + i + "'>"
-																								+ i
-																								+ "</option>");
-																	}
-																}
-															}
-														}
-													});
-
-									$("#selMonth")
-											.change(
-													function() {
-														var lastDay = $(
-																"#selDay option:last")
-																.val();
-														var selYear1 = $(
-																"#selYear")
-																.val();
-														var n_selMonth = parseInt($(
-																"#selMonth")
-																.val());
-														var maxDay = monthArray[n_selMonth];
-
-														if ($(this).val() == 02) {
-															$(
-																	"#selDay option[value='31']")
-																	.remove();
-															$(
-																	"#selDay option[value='30']")
-																	.remove();
-															$(
-																	"#selDay option[value='29']")
-																	.remove();
-
-															if ((selYear1 % 4 == 0 && selYear1 % 100 != 0)
-																	|| selYear1 % 400 == 0) {
-																$("#selDay")
-																		.append(
-																				"<option value='29'>29</option>");
-															}
-														} else if ($(this)
-																.val() == 04
-																|| $(this)
-																		.val() == 06
-																|| $(this)
-																		.val() == 09
-																|| $(this)
-																		.val() == 11) {
-															if (lastDay == 28) {
-																$("#selDay")
-																		.append(
-																				"<option value='29'>29</option>");
-																$("#selDay")
-																		.append(
-																				"<option value='30'>30</option>");
-															} else if (lastDay == 29) {
-																$("#selDay")
-																		.append(
-																				"<option value='30'>30</option>");
-															} else if (lastDay == 31) {
-																$(
-																		"#selDay option[value='31']")
-																		.remove();
-															}
-														} else {
-															if (lastDay == 28) {
-																$("#selDay")
-																		.append(
-																				"<option value='29'>29</option>");
-																$("#selDay")
-																		.append(
-																				"<option value='30'>30</option>");
-																$("#selDay")
-																		.append(
-																				"<option value='31'>31</option>");
-															} else if (lastDay == 29) {
-																$("#selDay")
-																		.append(
-																				"<option value='30'>30</option>");
-																$("#selDay")
-																		.append(
-																				"<option value='31'>31</option>");
-															} else if (lastDay == 30) {
-																$("#selDay")
-																		.append(
-																				"<option value='31'>31</option>");
-															}
-														}
-
-														//만14세미만 가입X
-														if (nowYear == selYear1
-																&& nowMonth == $(
-																		"#selMonth")
-																		.val()) {
-															for (var i = nowDay + 1; i <= $(
-																	"#selDay option:last")
-																	.val(); i++) {
-																if (i < 10) {
-																	$(
-																			"#selDay option[value='0"
-																					+ i
-																					+ "']")
-																			.remove();
-																} else {
-																	$(
-																			"#selDay option[value='"
-																					+ i
-																					+ "']")
-																			.remove();
-																}
-																if ($(
-																		"#selDay option:last")
-																		.val() < $(
-																		"#selDay")
-																		.val())
-																	$("#selDay")
-																			.val(
-																					"")
-																			.prop(
-																					"selected",
-																					true);
-															}
-														} else {
-															if ($(
-																	"#selDay option:last")
-																	.val() < maxDay) {
-																for (var i = parseInt($(
-																		"#selDay option:last")
-																		.val()) + 1; i <= maxDay; i++) {
-																	if (i < 10) {
-																		$(
-																				"#selDay")
-																				.append(
-																						"<option value='0" + i + "'>0"
-																								+ i
-																								+ "</option>");
-																	} else {
-																		$(
-																				"#selDay")
-																				.append(
-																						"<option value='" + i + "'>"
-																								+ i
-																								+ "</option>");
-																	}
-																}
-															}
-														}
-													});
-
-									//    emailTypeDomainSelectController("#emailDomain","#emailDomainSel");
-
-									$("#pw")
-											.keypress(
-													function(event) {
-														if (capsLock(event)) {
-															$("#pwMsg")
-																	.text(
-																			"<Caps Lock>이 켜져 있습니다.");
-															event
-																	.preventDefault();
-															return false;
-														}
-														$("#pwMsg").text("");
-													});
-
-									$("#pw")
-											.change(
-													function() {
-														if ($(this).val().length > 0) {
-															var pwRegExp = /^(?=.*[a-zA-Z])(?=.*[\?\<\>\;\:\'\"\`\(\)\{\}\[\]\|\\\~\,\.!@#$%^*+=-])(?=.*[0-9]).{8,15}$/;
-															if (!pwRegExp
-																	.test($(
-																			this)
-																			.val())) {
-																$("#pwMsg")
-																		.text(
-																				"비밀번호는 8~15자리 이하로 영문/숫자/특수문자를 혼합해주세요");
-																$("#pwTypeChk")
-																		.val("");
-																return true;
-															}
-															$("#pwTypeChk")
-																	.val("Y");
-															$("#pwMsg")
-																	.text("");
-															$("#pwcMsg").text(
-																	"");
-															$("#pwConfirmChk")
-																	.val("");
-														}
-													});
-
-									$("#pwc")
-											.keypress(
-													function(event) {
-														if (capsLock(event)) {
-															$("#pwcMsg")
-																	.text(
-																			"<Caps Lock>이 켜져 있습니다.");
-															return false;
-														}
-														$("#pwcMsg").text("");
-													});
-
-									$("#pwc").change(
-											function() {
-												if ($("#pw").val() != $("#pwc")
-														.val()) {
-													$("#pwcMsg").text(
-															"비밀번호가 일치하지 않습니다");
-													$("#pwConfirmChk").val("");
-													return true;
-												}
-												$("#pwConfirmChk").val("Y");
-												$("#pwcMsg").text(
-														"비밀번호가 확인되었습니다.");
-											});
-
-									$("#chk_email").click(function() {
-										if ($(this).is(":checked")) {
-											var email = "95parksh@naver.com";
-											$("#emailAddress").val(email);
-											chkEmail();
-										}
-									});
-
-									$("#cancleBtn").click(
-											function() {
-												var lc = new layerConfirm(
-														"회원가입을 취소하시겠습니까?",
-														"확인", "취소");
-												lc.confirmAction = function() {
-													location.href = "/ko/";
-												};
-											});
-
-									$("#joinBtn")
-											.click(
-													function() {
-														var pwTypeChk = $(
-																"#pwTypeChk")
-																.val();
-														var pwConfirmChk = $(
-																"#pwConfirmChk")
-																.val();
-														var emailDuplChk = $(
-																"#emailDuplChk")
-																.val();
-
-														if ($.trim($("#pw")
-																.val()) == "") {
-															$("#pwMsg")
-																	.text(
-																			"비밀번호를 입력하세요.");
-															$("#pw").focus();
-															return;
-														}
-
-														if (pwTypeChk !== "Y") {
-															$("#pwMsg")
-																	.text(
-																			"비밀번호는 8~15자리 이하로 영문/숫자/특수문자를 혼합해주세요 ");
-															$("#pw").focus();
-															return;
-														}
-
-														$("#pwMsg").text("");
-
-														if ($.trim($("#pwc")
-																.val()) == "") {
-															$("#pwcMsg")
-																	.text(
-																			"비밀번호 확인을 입력하세요.");
-															$("#pwc").focus();
-															return;
-														}
-
-														if (pwConfirmChk !== "Y") {
-															$("#pwcMsg")
-																	.text(
-																			"입력한 비밀번호가 일치하지 않습니다.");
-															$("#pwc").focus();
-															return;
-														}
-
-														$("#pwcMsg").text("");
-
-														if ($("#emailAddress")
-																.val() != "") {
-															if (emailDuplChk !== "Y") {
-																$("#emailMsg")
-																		.text(
-																				"E-mail 중복확인이 되지 않았습니다.");
-																$(
-																		"#emailAddress")
-																		.focus();
-																return;
-															}
-
-															var email = $(
-																	"#emailAddress")
-																	.val();
-
-														} else {
-															if ($("#chk_agree")
-																	.is(
-																			":checked")) {
-																$("#emailMsg")
-																		.text(
-																				"이메일(정보수신용) 을 입력해 주세요.");
-																$(
-																		"#emailAddress")
-																		.focus();
-																return;
-															}
-														}
-
-														$("#emailMsg").text("");
-
-														if ($.trim($("#name")
-																.val()) == "") {
-															$("#nameMsg")
-																	.text(
-																			"이름을 입력하세요.");
-															$("#name").focus();
-															return;
-														}
-
-														$("#nameMsg").text("");
-
-														if ($
-																.trim($(
-																		"#selYear")
-																		.val()) == ""
-																|| $
-																		.trim($(
-																				"#selMonth")
-																				.val()) == ""
-																|| $
-																		.trim($(
-																				"#selDay")
-																				.val()) == "") {
-															$("#bdayMsg")
-																	.text(
-																			"생년월일을 입력하세요.");
-															return;
-														}
-
-														$("#bdayMsg").text("");
-
-														$(
-																"#collectionAgreementYN")
-																.val("Y");
-
-														$("#sBirthday")
-																.val(
-																		$(
-																				"#selYear")
-																				.val()
-																				+ $(
-																						"#selMonth")
-																						.val()
-																				+ $(
-																						"#selDay")
-																						.val());
-														$("#memberJoinForm")
-																.attr("action",
-																		"/member/joininfoform");
-
-														$("#memberJoinForm")
-																.submit();
-
-														return;
-													});
-								});
-
-				//]]>
-			</script>
-
-			<!-- contents s -->
-			<div class="hsome_contents mbr_signup_wrap signup_wrap">
-				<div class="mem_ct_wrap_bg">
-					<h5 class="no_margin">더한섬닷컴 가입을 환영합니다!</h5>
-				</div>
-				<div class="mem_ct_wrap">
-					<form id="memberJoinForm" onsubmit="return validate()" action="/member/joininfoform" method="POST" th:object="${memberFormDto}">
-						<input type="hidden" name="emailDuplChk" id="emailDuplChk" value="Y" title="이메일 중복" />
-						<input type="hidden" name="pwTypeChk" id="pwTypeChk" value="" title="비밀번호 형식" />
-						<input type="hidden" name="pwConfirmChk" id="pwConfirmChk" value="" title="비밀번호 일치" />
-						<input type="hidden" id="sBirthday" th:field="*{mBirth}" value="" />
-						<input type="hidden" id="collectionAgreementYN" name="collectionAgreementYN" value="" />
-
-						<div class="chk_agree_wrap">
-
-							<div class="input_group">
-								<div class="req_txt">
-									<i class="txt_point">*</i>표시는 필수항목입니다.
-								</div>
-								<h5>
-									아이디<i class="txt_point">*</i>
-								</h5>
-								<div class="input_user_id" style="display: flex">
-									<input type="text" id="uid" th:field="*{mId}" class="user_id" placeholder="이메일 아이디를 입력하세요." title="아이디를 입력하세요." maxlength="100"
-										style="width: 91%"
-									/>
-									<button type="button" onclick="nameCheck()" class="btnstl3 border_btn_gray btn_cnl" style="padding: 0px 10px; word-break: keep-all;"
-										id="check_dup_btn"
-									>중복확인</button>
-									<!-- word break : keep-all 크기가 줄어들어도 글자크기 그대로 -->
-								</div>
-								<div class="err_wrap">
-									<p id="hpErrMsg" class="err_txt"></p>
-								</div>
-								<h5>
-									비밀번호<i class="txt_point">*</i>
-								</h5>
-								<div class="input_user_pw">
-									<input type="password" id="pw" th:field="*{mPassword}" class="user_pw" placeholder="비밀번호를 입력하세요." title="비밀번호를 입력하세요." maxlength="100" />
-								</div>
-								<!-- [TO DEV] Error msg here. -->
-								<div class="err_wrap">
-									<p class="err_txt" id="pwMsg">
-										<!-- 비밀번호는 8~15자리 이하로 영문/숫자/특수문자를 혼합하세요. -->
-									</p>
-								</div>
-								<div class="input_user_pw">
-									<input type="password" id="pwc" class="user_pw" placeholder="비밀번호를 한번 더 입력하세요." title="비밀번호를 한번 더 입력하세요." maxlength="100" />
-								</div>
-								<!-- [TO DEV] Error msg here. -->
-								<div class="err_wrap">
-									<p class="err_txt" id="pwcMsg">
-										<!-- 입력한 비밀번호가 일치하지 않습니다. -->
-									</p>
-								</div>
-
-
-								<h5 class="w_helper">
-									이메일(정보수신용)
-
-									<!-- tootip s -->
-									<span class="cmt_email"><div class="icon_help btn_tooltip" data-tooltip-target="tooltip_cmt_email_guide"></div></span>
-									<!-- tootip : contents_area s -->
-									<div class="tooltip_contens"></div>
-									<!-- tootip : contents_area e -->
-
-									<!-- 툴팁 : 이메일(정보수신용) s -->
-									<div class="tooltip_html">
-										<div class="tooltip_wrap tooltip_cmt_email_guide">
-											<div class="tltp_close_btn btn_tltp_close">
-												<span>닫기</span>
-											</div>
-											<h1 class="tltp_header">이메일(정보수신용)</h1>
-											<div class="tltp_content">
-												쇼핑에 도움이 되시는 마케팅 정보를 수신하기 위한<br />이메일 입니다.
-											</div>
-										</div>
-									</div>
-									<!-- 툴팁 : 이메일(정보수신용) e -->
-								</h5>
-								<div class="input_user_email">
-									<input type="text" id="emailAddress" th:field="*{mEmail}" class="user_email" placeholder="이메일을 입력하세요." title="이메일을 입력하세요." maxlength="100" />
-								</div>
-								<div class="err_wrap">
-									<p class="err_txt" id="emailMsg"></p>
-								</div>
-								<div class="check_stl chk_area">
-									<input type="checkbox" id="chk_agree" name="emailReceiveYn" value="Y" />
-									<label for="chk_agree"> 이메일을 통한 상품 및 이벤트 정보 수신에 동의 합니다. (선택) </label> <br /> <a href="#email-prev-popup"
-										class="btn_popup_btot email-prev-detail-btn"
-									>자세히보기</a>
-								</div>
-
-								<h5>
-									이름<i class="txt_point">*</i>
-								</h5>
-								<div class="input_user_name">
-									<input type="text" id="name" th:field="*{mName}" class="user_name" placeholder="이름을 입력하세요." title="이름을 입력하세요." maxlength="100" />
-								</div>
-								<!-- [TO DEV] Error msg here. -->
-								<div class="err_wrap">
-									<p class="err_txt" id="nameMsg"></p>
-								</div>
-
-								<h5>
-									핸드폰번호<i class="txt_point">*</i>
-								</h5>
-								<div class="input_user_phone">
-									<input type="text" id="phone" th:field="*{mPhone}" class="user_Phone" placeholder="핸드폰번호를 입력하세요." title="핸드폰번호를 입력하세요." maxlength="100" />
-									<p th:if="${#fields.hasErrors('mPhone')}" th:errors="*{mPhone}" class="fieldError">Incorrect data</p>
-								</div>
-
-								<br>
-								<h5>
-									주소<i class="txt_point">*</i>
-								</h5>
-
-
-								<input type="button" onclick="sample2_execDaumPostcode()" value="우편번호 찾기">
-								<br>
-								<input type="text" id="sample2_postcode" th:field="*{mZipCode}" placeholder="우편번호">
-
-								<input type="text" id="sample2_address" th:field="*{mAddress1}" placeholder="주소">
-								<br>
-								<input type="text" id="sample2_detailAddress" th:field="*{mAddress2}" placeholder="상세주소">
-								<input type="text" id="sample2_extraAddress" placeholder="참고항목">
-								<div id="layer" style="display: none; position: fixed; overflow: hidden; z-index: 1; -webkit-overflow-scrolling: touch;"></div>
-
-
-
-
-
-
-
-								<h5 class="pd_title">
-									생년월일<i class="txt_point">*</i>
-								</h5>
-								<div class="input_user_bday">
-									<div class="bday_year">
-										<div class="select_box">
-											<select id="selYear">
-												<option value="">년</option>
-												<option value="2009">2009</option>
-												<option value="2008">2008</option>
-												<option value="2007">2007</option>
-												<option value="2006">2006</option>
-												<option value="2005">2005</option>
-												<option value="2004">2004</option>
-												<option value="2003">2003</option>
-												<option value="2002">2002</option>
-												<option value="2001">2001</option>
-												<option value="2000">2000</option>
-												<option value="1999">1999</option>
-												<option value="1998">1998</option>
-												<option value="1997">1997</option>
-												<option value="1996">1996</option>
-												<option value="1995">1995</option>
-												<option value="1994">1994</option>
-												<option value="1993">1993</option>
-												<option value="1992">1992</option>
-												<option value="1991">1991</option>
-												<option value="1990">1990</option>
-												<option value="1989">1989</option>
-												<option value="1988">1988</option>
-												<option value="1987">1987</option>
-												<option value="1986">1986</option>
-												<option value="1985">1985</option>
-												<option value="1984">1984</option>
-												<option value="1983">1983</option>
-												<option value="1982">1982</option>
-												<option value="1981">1981</option>
-												<option value="1980">1980</option>
-												<option value="1979">1979</option>
-												<option value="1978">1978</option>
-												<option value="1977">1977</option>
-												<option value="1976">1976</option>
-												<option value="1975">1975</option>
-												<option value="1974">1974</option>
-												<option value="1973">1973</option>
-												<option value="1972">1972</option>
-												<option value="1971">1971</option>
-												<option value="1970">1970</option>
-												<option value="1969">1969</option>
-												<option value="1968">1968</option>
-												<option value="1967">1967</option>
-												<option value="1966">1966</option>
-												<option value="1965">1965</option>
-												<option value="1964">1964</option>
-												<option value="1963">1963</option>
-												<option value="1962">1962</option>
-												<option value="1961">1961</option>
-												<option value="1960">1960</option>
-												<option value="1959">1959</option>
-												<option value="1958">1958</option>
-												<option value="1957">1957</option>
-												<option value="1956">1956</option>
-												<option value="1955">1955</option>
-												<option value="1954">1954</option>
-												<option value="1953">1953</option>
-												<option value="1952">1952</option>
-												<option value="1951">1951</option>
-												<option value="1950">1950</option>
-												<option value="1949">1949</option>
-												<option value="1948">1948</option>
-												<option value="1947">1947</option>
-												<option value="1946">1946</option>
-												<option value="1945">1945</option>
-												<option value="1944">1944</option>
-												<option value="1943">1943</option>
-												<option value="1942">1942</option>
-												<option value="1941">1941</option>
-												<option value="1940">1940</option>
-												<option value="1939">1939</option>
-												<option value="1938">1938</option>
-												<option value="1937">1937</option>
-												<option value="1936">1936</option>
-												<option value="1935">1935</option>
-												<option value="1934">1934</option>
-												<option value="1933">1933</option>
-												<option value="1932">1932</option>
-												<option value="1931">1931</option>
-												<option value="1930">1930</option>
-												<option value="1929">1929</option>
-												<option value="1928">1928</option>
-												<option value="1927">1927</option>
-												<option value="1926">1926</option>
-												<option value="1925">1925</option>
-												<option value="1924">1924</option>
-												<option value="1923">1923</option>
-												<option value="1922">1922</option>
-												<option value="1921">1921</option>
-												<option value="1920">1920</option>
-												<option value="1919">1919</option>
-												<option value="1918">1918</option>
-												<option value="1917">1917</option>
-												<option value="1916">1916</option>
-												<option value="1915">1915</option>
-												<option value="1914">1914</option>
-												<option value="1913">1913</option>
-												<option value="1912">1912</option>
-												<option value="1911">1911</option>
-												<option value="1910">1910</option>
-												<option value="1909">1909</option>
-												<option value="1908">1908</option>
-												<option value="1907">1907</option>
-												<option value="1906">1906</option>
-												<option value="1905">1905</option>
-												<option value="1904">1904</option>
-												<option value="1903">1903</option>
-												<option value="1902">1902</option>
-												<option value="1901">1901</option>
-												<option value="1900">1900</option>
-											</select>
-										</div>
-									</div>
-									<div class="bday_month">
-										<div class="select_box">
-											<select id="selMonth">
-												<option value="">월</option>
-												<option value="01">01</option>
-												<option value="02">02</option>
-												<option value="03">03</option>
-												<option value="04">04</option>
-												<option value="05">05</option>
-												<option value="06">06</option>
-												<option value="07">07</option>
-												<option value="08">08</option>
-												<option value="09">09</option>
-												<option value="10">10</option>
-												<option value="11">11</option>
-												<option value="12">12</option>
-											</select>
-										</div>
-									</div>
-									<div class="bday_day">
-										<div class="select_box">
-											<select id="selDay">
-												<option value="">일</option>
-												<option value="01">01</option>
-												<option value="02">02</option>
-												<option value="03">03</option>
-												<option value="04">04</option>
-												<option value="05">05</option>
-												<option value="06">06</option>
-												<option value="07">07</option>
-												<option value="08">08</option>
-												<option value="09">09</option>
-												<option value="10">10</option>
-												<option value="11">11</option>
-												<option value="12">12</option>
-												<option value="13">13</option>
-												<option value="14">14</option>
-												<option value="15">15</option>
-												<option value="16">16</option>
-												<option value="17">17</option>
-												<option value="18">18</option>
-												<option value="19">19</option>
-												<option value="20">20</option>
-												<option value="21">21</option>
-												<option value="22">22</option>
-												<option value="23">23</option>
-												<option value="24">24</option>
-												<option value="25">25</option>
-												<option value="26">26</option>
-												<option value="27">27</option>
-												<option value="28">28</option>
-												<option value="29">29</option>
-												<option value="30">30</option>
-												<option value="31">31</option>
-											</select>
-										</div>
-									</div>
-								</div>
-								<!-- [TO DEV] Error msg here. -->
-								<div class="err_wrap">
-									<p class="err_txt" id="bdayMsg">
-										<!-- 생년월일을 입력하세요. -->
-									</p>
-								</div>
-							</div>
-						</div>
-
-						<h5 class="pd_title">
-							성별<i class="txt_point">*</i>
-						</h5>
-						<div>
-							<input type="radio" th:field="*{mGender}" value="1" style="opacity: initial; position: relative; appearance: auto">
-							남자
-							<input type="radio" th:field="*{mGender}" value="2" checked="checked" style="opacity: initial; position: relative; appearance: auto">
-							여자
-						</div>
-						<br>
-						<div>
-							<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
-						</div>
-					</form>
-					<!-- [TO DEV] 20180625 버튼 클래스명 수정 s -->
-					<div class="btn_wrap btn_wrap_div2">
-						<button class="btnstl3 border_btn_gray btn_cnl" id="cancleBtn">취소</button>
-						<button class="btnstl3 solid_btn_blk btn_agree" id="joinBtn">동의하고 계속</button>
-					</div>
-					<!-- 20180625 버튼 클래스명 수정 e -->
-				</div>
-			</div>
-
-			<div class="hsome_layer_popup03 email-detail-pop visible" id="email-prev-popup">
-				<div class="ext_policy_wrap">
-					<p>
-						■ 개인정보의 수집항목 및 이용<br /> <br /> 더한섬닷컴은 별도의 회원가입 절차 없이 대부분의 컨텐츠에 자유롭게 접근할 수 있습니다. 더한섬닷컴의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하지
-						않아도 서비스 이용에 제한은 없습니다. <br /> <br /> 회원가입 및 주문 등 필요시점에 수집하는 개인정보의 범위
-					</p>
-
-					<table class="tbl_ltype">
-						<caption>회원가입 및 주문 등 필요시점에 수집하는 개인정보의 범위</caption>
-						<colgroup>
-							<col style="width: 26%" />
-							<col style="width: auto" />
-							<col style="width: auto" />
-							<col style="width: 26%" />
-						</colgroup>
-						<thead>
-							<tr>
-								<th scope="col">수집 방법</th>
-								<th scope="col">이용 목적</th>
-								<th scope="col">수집 정보</th>
-								<th scope="col">수집 항목</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td class="frt txt-center">간편회원가입</td>
-								<td class="txt-center"><strong>신규서비스/<br />상품안내
-								</strong></td>
-								<td class="txt-center">선택</td>
-								<td class="txt-center">이메일</td>
-							</tr>
-						</tbody>
-					</table>
-					<p style="margin-top: 8px">
-						* 보유 기간 : <strong>회원 탈퇴 시 또는 동의 철회 시</strong>
-					</p>
-				</div>
-
-				<a href="#" class="pop-comm-cls">닫기</a>
-			</div>
-			<div class="hs_pro_view_layer" style="z-index: 1000"></div>
-
-			<!-- //################## contents ################## -->
-		</div>
-	</div>
-
-	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-
-	<script>
-		// 우편번호 찾기 화면을 넣을 element
-		var element_layer = document.getElementById('layer');
-
-		function closeDaumPostcode() {
-			// iframe을 넣은 element를 안보이게 한다.
-			element_layer.style.display = 'none';
-		}
-
-		function sample2_execDaumPostcode() {
-			new daum.Postcode(
-					{
-						oncomplete : function(data) {
-							// 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
-							// 각 주소의 노출 규칙에 따라 주소를 조합한다.
-							// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-							var addr = ''; // 주소 변수
-							var extraAddr = ''; // 참고항목 변수
-
-							//사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-							if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-								addr = data.roadAddress;
-							} else { // 사용자가 지번 주소를 선택했을 경우(J)
-								addr = data.jibunAddress;
-							}
-
-							// 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-							if (data.userSelectedType === 'R') {
-								// 법정동명이 있을 경우 추가한다. (법정리는 제외)
-								// 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-								if (data.bname !== ''
-										&& /[동|로|가]$/g.test(data.bname)) {
-									extraAddr += data.bname;
-								}
-								// 건물명이 있고, 공동주택일 경우 추가한다.
-								if (data.buildingName !== ''
-										&& data.apartment === 'Y') {
-									extraAddr += (extraAddr !== '' ? ', '
-											+ data.buildingName
-											: data.buildingName);
-								}
-								// 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-								if (extraAddr !== '') {
-									extraAddr = ' (' + extraAddr + ')';
-								}
-								// 조합된 참고항목을 해당 필드에 넣는다.
-								document.getElementById("sample2_extraAddress").value = extraAddr;
-
-							} else {
-								document.getElementById("sample2_extraAddress").value = '';
-							}
-
-							// 우편번호와 주소 정보를 해당 필드에 넣는다.
-							document.getElementById('sample2_postcode').value = data.zonecode;
-							document.getElementById("sample2_address").value = addr;
-							// 커서를 상세주소 필드로 이동한다.
-							document.getElementById("sample2_detailAddress")
-									.focus();
-
-							// iframe을 넣은 element를 안보이게 한다.
-							// (autoClose:false 기능을 이용한다면, 아래 코드를 제거해야 화면에서 사라지지 않는다.)
-							element_layer.style.display = 'none';
-						},
-						width : '100%',
-						height : '100%',
-						maxSuggestItems : 5
-					}).embed(element_layer);
-
-			// iframe을 넣은 element를 보이게 한다.
-			element_layer.style.display = 'block';
-
-			// iframe을 넣은 element의 위치를 화면의 가운데로 이동시킨다.
-			initLayerPosition();
-		}
-
-		// 브라우저의 크기 변경에 따라 레이어를 가운데로 이동시키고자 하실때에는
-		// resize이벤트나, orientationchange이벤트를 이용하여 값이 변경될때마다 아래 함수를 실행 시켜 주시거나,
-		// 직접 element_layer의 top,left값을 수정해 주시면 됩니다.
-		function initLayerPosition() {
-			var width = 300; //우편번호서비스가 들어갈 element의 width
-			var height = 400; //우편번호서비스가 들어갈 element의 height
-			var borderWidth = 5; //샘플에서 사용하는 border의 두께
-
-			// 위에서 선언한 값들을 실제 element에 넣는다.
-			element_layer.style.width = width + 'px';
-			element_layer.style.height = height + 'px';
-			element_layer.style.border = borderWidth + 'px solid';
-			// 실행되는 순간의 화면 너비와 높이 값을 가져와서 중앙에 뜰 수 있도록 위치를 계산한다.
-			element_layer.style.left = (((window.innerWidth || document.documentElement.clientWidth) - width) / 2 - borderWidth)
-					+ 'px';
-			element_layer.style.top = (((window.innerHeight || document.documentElement.clientHeight) - height) / 2 - borderWidth)
-					+ 'px';
-		}
-
-		var checkedID = false;
-
-		var inputID = document.getElementById("uid");
-
-		function changeID() {
-			checkedID = false;
-
-		}
-
-		inputID.onchange = changeID;
-
-		function validate() {
-			if (!checkedID) {
-				alert("아이디 중복체크를 해주세요");
-			}
-
-			return checkedID;
-		}
-
-		function nameCheck() {
-
-			var tfUsername = $('input#uid').val();
-
-			console.log(tfUsername);
-
-			$.ajax({
-				type : 'get',
-				url : '/member/check?checkid=' + tfUsername,
-
-				success : function(result) {
-					console.log(result);
-					console.log('아이디 중복 체크 실행: success')
-
-					if (result == 1) {
-						alert('아이디가 중복되었습니다.')
-					} else if (result == 0) {
-						alert('사용하실 수 있는 아이디 입니다.')
-						checkedID = true;
-					} else if (result == 2) {
-						alert('아이디를 입력해주세요')
-					} else {
-						console.log('develop: 서버오류');
-					}
-
-				},
-				error : function(error) { // 결과 에러 콜백함수
-					console.log(error)
-				}
-			})
-
-		}
-	</script>
-
-	<th:block th:replace="common/footer :: footFragment"></th:block>
-</body>
-</html>
+
+<head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+        name="viewport"
+        content="width=device-width,initial-scale=1,maximum-scale=1.0"
+        />
+        <title>더현대닷컴</title>
+
+        <link
+        rel="stylesheet"
+        type="text/css"
+        href="https://image.thehyundai.com/pc/cssssl/font.css"
+        />
+
+        <link
+        rel="stylesheet"
+        type="text/css"
+        href="https://image.thehyundai.com/pc/cssssl/co.css?ver=21"
+        />
+        <link
+        rel="stylesheet"
+        type="text/css"
+        href="https://image.thehyundai.com/pc/cssssl/wf.css"
+        />
+
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+
+    
+        
+        <script
+        type="text/javascript"
+        src="https://image.thehyundai.com/pc/js/hdmall/co/common.js?ver=030121"
+        ></script>
+
+
+
+
+        <script src="https://image.thehyundai.com/pc/js/common.js?ver=030121"></script>
+        <script
+        type="text/javascript"
+        src="https://image.thehyundai.com/pc/js/swiper.min.js?ver=030121"
+        ></script>
+
+
+
+        <link
+        rel="stylesheet"
+        type="text/css"
+        href="https://www.thehyundai.com/cssssl/dp.css?ver=21"
+        />
+        <script type="text/javascript">
+        var isValidId = false;
+        var isValidPasswd = false;
+        var isValidRePasswd = false;
+        var isCheckedId = false;
+        var isValidMobilePhone = false;
+        var isValidBirthday = false;
+        var isValidName = true;
+        var isValidWelPointEmno = true;
+        var welPointCustYn = "";
+        var _gaPageTitle = "회원가입>간편회원 정보입력";
+
+        jQuery(function ($) {
+            $(".join-form-wrap input")
+            .on("focus", function () {
+                if ($(this).prop("disabled") || $(this).prop("readonly")) return;
+                if ($(this).siblings(".input-msg").length > 0)
+                $(this).siblings(".input-msg").addClass("show");
+            })
+            .on("blur", function () {
+                if ($(this).siblings(".input-msg").length > 0)
+                $(this).siblings(".input-msg").removeClass("show");
+            });
+
+            $("form[name='registMemberForm'] input").on(
+            "keyup keypress",
+            function (e) {
+                var code = e.keyCode || e.which;
+                if (code == 13) {
+                e.preventDefault();
+                return false;
+                }
+            }
+            );
+
+            $(document).on("keydown keypress", function (e) {
+            var code = e.keyCode || e.which;
+            if (
+                code == 8 &&
+                (!$(e.target).is("input, textarea") || $(e.target).prop("readonly"))
+            ) {
+                e.preventDefault();
+                return false;
+            }
+            });
+
+            $("input[name='mobilePhoneTmp']").on("keyup", function (e) {
+            var code = e.keyCode || e.which;
+            if (
+                (code > 15 && code < 19) ||
+                (code > 32 && code < 41) ||
+                code == 9
+            ) {
+                return;
+            }
+
+            var val = $(this)
+                .val()
+                .replace(/[^0-9]/g, "");
+            // 		if ( val.length == 9 && val.indexOf("02") == 0) {
+            // 			$(this).val(val.substring(0, 2) + "-" + val.substring(2, 5) + "-" + val.substring(5));
+            // 		} else
+            if (val.length == 10) {
+                // 			if ( val.indexOf("02") == 0 ) {
+                // 				$(this).val(val.substring(0, 2) + "-" + val.substring(2, 6) + "-" + val.substring(6));
+                // 			} else {
+                $(this).val(
+                val.substring(0, 3) +
+                    "-" +
+                    val.substring(3, 6) +
+                    "-" +
+                    val.substring(6)
+                );
+                // 			}
+            } else if (val.length == 11) {
+                $(this).val(
+                val.substring(0, 3) +
+                    "-" +
+                    val.substring(3, 7) +
+                    "-" +
+                    val.substring(7)
+                );
+                $(this).trigger("blur").focus();
+            } else {
+                if (/[^0-9]/.test($(this).val())) {
+                $(this).val(val);
+                }
+            }
+            });
+
+            $("input[name='birthdayTmp']").on("keyup", function (e) {
+            var code = e.keyCode || e.which;
+            if (
+                (code > 15 && code < 19) ||
+                (code > 32 && code < 41) ||
+                code == 9
+            ) {
+                return;
+            }
+
+            var val = $(this)
+                .val()
+                .replace(/[^0-9]/g, "");
+            if (val.length == 8) {
+                $(this).val(
+                val.substring(0, 4) +
+                    "-" +
+                    val.substring(4, 6) +
+                    "-" +
+                    val.substring(6)
+                );
+                $(this).trigger("blur").focus();
+            } else {
+                if (/[^0-9]/.test($(this).val())) {
+                $(this).val(val);
+                $(this).trigger("blur").focus();
+                }
+            }
+            });
+
+            $("input[name='id']")
+            .blur(function () {
+                var objParent = $(this).parent();
+                var id = $(this).val();
+
+                if (isEmpty(id)) {
+                displayMsg(objParent, "아이디를 입력해 주세요.");
+                isValidId = false;
+                } else {
+                var patternSpace = /\s/g;
+                var patternId = /^[a-zA-Z0-9]+$/;
+                var patternEmail =
+                    /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
+                if (welPointCustYn == null || welPointCustYn == "") {
+                    if (patternSpace.test(id)) {
+                    displayMsg(objParent, "공백은 입력할 수 없습니다.");
+                    isValidId = false;
+                    } else if (
+                    id.length < 4 ||
+                    (patternId.test(id) && id.length > 20)
+                    ) {
+                    displayMsg(
+                        objParent,
+                        "아이디는 영문, 숫자를 포함한 4~20자로 입력해주세요."
+                    );
+                    isValidId = false;
+                    } else if (!patternId.test(id) && !patternEmail.test(id)) {
+                    displayMsg(
+                        objParent,
+                        "아이디는 영문, 숫자 또는 이메일 형식만 입력할 수 있습니다."
+                    );
+                    isValidId = false;
+                    } else if (/[0-9]{11}/.test(id)) {
+                    displayMsg(
+                        objParent,
+                        "연속된 11자리 이상의 숫자는 사용할수 없습니다."
+                    );
+                    isValidId = false;
+                    } else {
+                    displayMsg(objParent);
+                    isValidId = true;
+                    // 				checkId();
+                    if (!isCheckedId) {
+                        displayMsg(objParent, "아이디 중복체크를 해주세요.");
+                    }
+                    }
+                } else {
+                    if (patternSpace.test(id)) {
+                    displayMsg(objParent, "공백은 입력할 수 없습니다.");
+                    isValidId = false;
+                    } else if (id.length < 4) {
+                    displayMsg(
+                        objParent,
+                        "아이디는 영문, 숫자를 포함한 4~20자로 입력해주세요."
+                    );
+                    isValidId = false;
+                    } else if (!patternId.test(id)) {
+                    displayMsg(
+                        objParent,
+                        "아이디는 영문, 숫자 또는 이메일 형식만 입력할 수 있습니다."
+                    );
+                    isValidId = false;
+                    } else {
+                    displayMsg(objParent);
+                    isValidId = true;
+                    // 				checkId();
+                    if (!isCheckedId) {
+                        displayMsg(objParent, "아이디 중복체크를 해주세요.");
+                    }
+                    }
+                }
+                }
+            })
+            .keyup(function (e) {
+                if (!$(this).prop("readonly")) {
+                isCheckedId = false;
+                }
+            });
+
+            $("input[name='passwd']").blur(function () {
+            var objParent = $(this).parent();
+            var pwd = $(this).val();
+
+            if (isEmpty(pwd)) {
+                displayMsg(objParent, "비밀번호를 입력해 주세요.");
+                isValidPasswd = false;
+            } else {
+                var v_num = 0;
+                var v_engL = 0;
+                var v_engS = 0;
+                var v_spe = 0;
+                var pattern1 = /\s/g;
+
+                isValidPasswd = true;
+
+                //1.비밀번호에 포함된 문자,숫자,특수문자구분,한글
+                for (var i = 0; i < pwd.length; i++) {
+                if (ufn_ASCII(pwd, i) >= 48 && ufn_ASCII(pwd, i) <= 57) {
+                    v_num = 1;
+                } //숫자
+                else if (ufn_ASCII(pwd, i) >= 65 && ufn_ASCII(pwd, i) <= 90) {
+                    v_engL = 1;
+                } //영대
+                else if (ufn_ASCII(pwd, i) >= 97 && ufn_ASCII(pwd, i) <= 122) {
+                    v_engS = 1;
+                } //영소
+                else if (
+                    (ufn_ASCII(pwd, i) >= 33 && ufn_ASCII(pwd, i) <= 47) ||
+                    (ufn_ASCII(pwd, i) >= 58 && ufn_ASCII(pwd, i) <= 64) ||
+                    (ufn_ASCII(pwd, i) >= 91 && ufn_ASCII(pwd, i) <= 96) ||
+                    (ufn_ASCII(pwd, i) >= 123 && ufn_ASCII(pwd, i) <= 126)
+                ) {
+                    v_spe = 1; //특수문자
+                }
+                }
+
+                //2.비밀번호 자리수 체크 및 자리수별 조합된 경우의 수 체크
+                if (pwd.length < 8) {
+                displayMsg(objParent, "비밀번호는 8~30자리 이내로 입력해주세요");
+                isValidPasswd = false;
+                } else if (v_num + v_engL + v_engS + v_spe < 2) {
+                displayMsg(
+                    objParent,
+                    "비밀번호는 영문자, 숫자, 특수문자 2가지 이상으로 구성해야 합니다."
+                );
+                isValidPasswd = false;
+                } else if (pattern1.test(pwd)) {
+                displayMsg(objParent, "공백은 입력할 수 없습니다.");
+                isValidPasswd = false;
+                } else {
+                //3.연속된숫자 및 문자 체크 / 연속 중복된 문자,숫자 체크
+                for (var i = 0; i < pwd.length; i++) {
+                    if (
+                    (ufn_ASCII(pwd, i) - ufn_ASCII(pwd, i - 1) == 1 &&
+                        ufn_ASCII(pwd, i - 1) - ufn_ASCII(pwd, i - 2) == 1) ||
+                    (ufn_ASCII(pwd, i) - ufn_ASCII(pwd, i - 1) == -1 &&
+                        ufn_ASCII(pwd, i - 1) - ufn_ASCII(pwd, i - 2) == -1)
+                    ) {
+                    if (
+                        ufn_ASCII(pwd, i - 1) >= 40 &&
+                        ufn_ASCII(pwd, i - 1) <= 57
+                    ) {
+                        displayMsg(
+                        objParent,
+                        "연속된 숫자는 비밀번호로 사용하실수 없습니다.(예:123 , 321 등)"
+                        );
+                        isValidPasswd = false;
+                        break;
+                    } else if (
+                        ufn_ASCII(pwd, i - 1) >= 65 &&
+                        ufn_ASCII(pwd, i - 1) <= 90
+                    ) {
+                        displayMsg(
+                        objParent,
+                        "연속된 영대문자는 비밀번호로 사용하실수 없습니다.(예: ABC, CBA등)"
+                        );
+                        isValidPasswd = false;
+                        break;
+                    } else if (
+                        ufn_ASCII(pwd, i - 1) >= 97 &&
+                        ufn_ASCII(pwd, i - 1) <= 122
+                    ) {
+                        displayMsg(
+                        objParent,
+                        "연속된 영소문자는 비밀번호로 사용하실수 없습니다.(예: abc, cba등)"
+                        );
+                        isValidPasswd = false;
+                        break;
+                    }
+                    } else if (
+                    ufn_ASCII(pwd, i) - ufn_ASCII(pwd, i - 1) == 0 &&
+                    ufn_ASCII(pwd, i - 1) - ufn_ASCII(pwd, i - 2) == 0
+                    ) {
+                    displayMsg(
+                        objParent,
+                        "동일한 문자,숫자,특수문자는 연속해서 비밀번호로 사용하실수 없습니다."
+                    );
+                    isValidPasswd = false;
+                    break;
+                    }
+                }
+                }
+            }
+            if (isValidPasswd) {
+                displayMsg(objParent);
+            }
+            // 		$("input[name='rePassword']").trigger("blur");
+            });
+
+            $("input[name='rePassword']").blur(function () {
+            var objParent = $(this).parent();
+
+            if (isEmpty($(this).val())) {
+                displayMsg(objParent, "비밀번호를 재입력해 주세요.");
+                isValidRePasswd = false;
+            } else {
+                if ($("input[name='passwd']").val() != $(this).val()) {
+                displayMsg(objParent, "입력하신 정보가 일치하지 않습니다.");
+                isValidRePasswd = false;
+                } else {
+                displayMsg(objParent);
+                isValidRePasswd = true;
+                }
+            }
+            });
+
+            $("input[name='name']").blur(function () {
+            var objParent = $(this).parent();
+            var name = $(this).val();
+
+            if (isEmpty(name)) {
+                displayMsg(objParent, "이름을 입력해 주세요.");
+                isValidName = false;
+            } else {
+                var pattern = /\s/g;
+
+                if (!isValidHangulEng(name)) {
+                displayMsg(objParent, "이름은 한글 또는 영문만 입력가능합니다.");
+                isValidName = false;
+                // 			} else if (name.replace(/ /g, '').length < 3) {
+                // 				isValidName = false;
+                } else if (pattern.test(name)) {
+                displayMsg(objParent, "이름은 공백없이 입력해 주세요.");
+                isValidName = false;
+                } else {
+                displayMsg(objParent);
+                isValidName = true;
+                }
+            }
+            });
+
+            $("input[name='mobilePhoneTmp']").blur(function () {
+            var objParent = $(this).parent();
+            var mobilePhone = $(this).val().replace(/-/g, "");
+
+            if (isEmpty(mobilePhone)) {
+                displayMsg(objParent, "휴대폰번호를 입력해 주세요.");
+                isValidMobilePhone = false;
+            } else {
+                var pattern = /[0-9]{10,11}/;
+
+                if (mobilePhone.length < 10 || mobilePhone.length > 11) {
+                displayMsg(objParent, "휴대폰번호를 정확히 입력하세요.");
+                isValidMobilePhone = false;
+                } else if (!pattern.test(mobilePhone)) {
+                displayMsg(objParent, "휴대폰번호는 숫자만 입력가능합니다.");
+                isValidMobilePhone = false;
+                } else {
+                displayMsg(objParent);
+                isValidMobilePhone = true;
+                var b2eCustNo = "";
+                isCheckedId = false;
+                isValidId = false;
+
+                if (!isEmpty(b2eCustNo)) {
+                    var objParent2 = $("input[name=id]").parent();
+                    displayMsg(objParent2);
+                    isCheckedId = true;
+                    $("input[name='id']").prop("readonly", true);
+                }
+                }
+
+                if (!isEmpty(welPointCustYn)) {
+                var objParent2 = $("input[name=id]").parent();
+                displayMsg(objParent2);
+                isCheckedId = true;
+                $("input[name='id']").prop("readonly", true);
+                $("input[name='welPointBizpNm']").prop("readonly", true);
+                $("input[name='welPointCustNm']").prop("readonly", true);
+                $("input[name='welPointEmno']").prop("readonly", true);
+                }
+            }
+            });
+
+            $("input[name='birthdayTmp']").blur(function () {
+            var objParent = $(this).parent();
+            var birthday = $(this).val().replace(/-/g, "");
+
+            if (isEmpty(birthday)) {
+                displayMsg(objParent, "생년월일 8자리를 입력해주세요(예.20150115)");
+                isValidBirthday = false;
+            } else {
+                if (!isValidDate(birthday)) {
+                displayMsg(objParent, "올바른 날짜형식이 아닙니다.(예:20150115)");
+                isValidBirthday = false;
+                } else if (calcAge(birthday) < 14) {
+                displayMsg(objParent, "회원가입은 만14세 이상만 가능합니다.");
+                isValidBirthday = false;
+                } else if (calcAge(birthday) > 115) {
+                displayMsg(objParent, "올바른 날짜형식이 아닙니다.(예:20150115)");
+                isValidBirthday = false;
+                } else {
+                displayMsg(objParent);
+                isValidBirthday = true;
+                }
+            }
+            });
+
+            $("input[name='welPointEmno']").blur(function () {
+            var objParent = $(this).parent();
+
+            if (isEmpty($(this).val())) {
+                displayMsg(objParent, "고객사번을 입력해주세요.");
+                isValidWelPointEmno = false;
+            } else {
+                displayMsg(objParent);
+                isValidRePasswd = true;
+            }
+            });
+
+        
+
+            $("input[name='useEmail']").click(function () {
+            isValidId = false;
+            isCheckedId = false;
+            if ($(this).prop("checked")) {
+                $("input[name='id']")
+                .val($("input[name='email']").val())
+                .prop("readonly", true);
+                $("input[name='id']").trigger("blur");
+            } else {
+                $("input[name='id']").val("").prop("readonly", false);
+                var objParent = $("input[name='id']").parent();
+                $(objParent)
+                .find("span.input-validation")
+                .removeClass("error")
+                .removeClass("checked");
+                $(objParent).find("label.error").hide();
+            }
+            });
+        });
+
+        function displayMsg(objParent, msg) {
+            if (!!msg) {
+            $(objParent)
+                .find("span.input-validation")
+                .removeClass("checked")
+                .addClass("error");
+            $(objParent).find("label.error").html(msg).show();
+            } else {
+            $(objParent)
+                .find("span.input-validation")
+                .removeClass("error")
+                .addClass("checked");
+            $(objParent).find("label.error").hide();
+            }
+        }
+
+        function isValidHangulEng(str) {
+            var bHangul = true;
+            for (var i = 0; i < str.length; i++) {
+            var c = str.charCodeAt(i);
+            if (
+                (c > 0x3130 && c < 0x318f) ||
+                (c >= 0xac00 && c <= 0xd7a3) ||
+                (c > 64 && c < 91) ||
+                (c > 96 && c < 123)
+            ) {
+                continue;
+            }
+            bHangul = false;
+            }
+            return bHangul;
+        }
+
+        function ufn_ASCII(pwd, i) {
+            return pwd.substr(i, i + 1).charCodeAt(0);
+        }
+        // 20161205 추가 //
+        function agreeReject() {
+            /* 거부하기 */
+            alert(
+            "서비스 제공을 위한 최소한의 개인정보 이므로 동의를 해주셔야 이용하실 수 있습니다."
+            );
+        }
+
+        // 20161205 추가 //
+
+        function checkId() {
+            GA_Event("PC_회원가입", "가입정보입력", "중복확인");
+            if (isValidId) {
+            showBlockLoadingBar();
+            var objParent = $("input[name=id]").parent();
+            $.ajax({
+                type: "POST",
+                url: "https://www.thehyundai.com/front/cua/memberIdCheckPup.thd",
+                data: { id: $("input[name=id]").val() },
+                dataType: "json",
+                success: function (data) {
+                hideBlockLoadingBar();
+                if (!data.isDupe) {
+                    displayMsg(objParent);
+                    isCheckedId = true;
+                } else {
+                    displayMsg(
+                    objParent,
+                    "해당 아이디는 이미 다른 고객님께서 사용 중이십니다."
+                    );
+                    isCheckedId = false;
+                }
+                },
+                error: function (e) {
+                hideBlockLoadingBar();
+                isCheckedId = false;
+                alert(
+                    "일시적인 에러가 발생 하였습니다.\n잠시 후에 다시 시도해주세요."
+                );
+                },
+            });
+            }
+        }
+
+        function setFocus(obj) {
+            $("html,body").animate(
+            { scrollTop: obj.offset().top },
+            200,
+            function () {
+                obj.focus();
+            }
+            );
+        }
+
+        function registMember() {
+            GA_Event("PC_회원가입", "동의하고회원가입", "동의하고회원가입");
+
+            var isValid = true;
+            $("input[name='id']").trigger("blur");
+            if (!isValidId || !isCheckedId) {
+            setFocus($("input[name='id']"));
+            isValid = false;
+            }
+
+            $("input[name='passwd']").trigger("blur");
+            if (!isValidPasswd) {
+            if (isValid) setFocus($("input[name='passwd']"));
+            isValid = false;
+            }
+
+            $("input[name='rePassword']").trigger("blur");
+            if (!isValidRePasswd) {
+            if (isValid) setFocus($("input[name='rePassword']"));
+            isValid = false;
+            }
+
+            if (welPointCustYn == null || welPointCustYn == "") {
+            $("input[name='name']").trigger("blur");
+            if (!isValidName) {
+                if (isValid) setFocus($("input[name='name']"));
+                isValid = false;
+            }
+            }
+
+            $("input[name='birthdayTmp']").trigger("blur");
+            if (!isValidBirthday) {
+            if (isValid) setFocus($("input[name='birthdayTmp']"));
+            isValid = false;
+            }
+
+            $("input[name='mobilePhoneTmp']").trigger("blur");
+            if (!isValidMobilePhone) {
+            if (isValid) setFocus($("input[name='mobilePhoneTmp']"));
+            isValid = false;
+            }
+
+            if (welPointCustYn != null && welPointCustYn != "") {
+            $("input[name='welPointEmno']").trigger("blur");
+            if (!isValidWelPointEmno) {
+                if (isValid) setFocus($("input[name='welPointEmno']"));
+                isValid = false;
+            }
+            }
+
+            if (!$(".type-necessary input").is(":checked")) {
+            alert("기본 서비스 이용을 위해 필수사항에 동의해주세요.");
+            $(".agree-chk-box .error.type-necessary").show();
+            isValid = false;
+            }
+
+            if (
+            $(".agree-chk-box.type-option .type-sub input:checked").length == 0 &&
+            $(".agree-chk-box .not-chk input:checked").length == 0
+            ) {
+            alert("기타 서비스 이용을 위한 선택사항 동의여부를 체크해주세요.");
+            $(".agree-chk-box .error.type-option").show();
+            isValid = false;
+            }
+
+            if (!isValid) {
+            return;
+            }
+
+            if (
+            $("input[name='emailReceiveYn']").prop("checked") ||
+            $("input[name='smsReceiveYn']").prop("checked")
+            ) {
+            $("input[name='marketingAgreementYn']").val("N");
+            } else {
+            $("input[name='marketingAgreementYn']").val("Y");
+            }
+
+            $("input[name='birthday']").val(
+            $("input[name='birthdayTmp']")
+                .val()
+                .replace(/[^0-9]/g, "")
+            );
+            var mobile = $("input[name='mobilePhoneTmp']").val().split("-");
+            if (mobile.length == 1) {
+            mobile = [
+                mobile[0].substring(0, 3),
+                mobile[0].substring(3, mobile[0].length - 4),
+                mobile[0].substring(mobile[0].length - 4),
+            ];
+            }
+            $("input[name='mobilePhone']").val(mobile[0] + mobile[1] + mobile[2]);
+            $("input[name='mobileDdd']").val(mobile[0]);
+            $("input[name='mobilePhone1']").val(mobile[1]);
+            $("input[name='mobilePhone2']").val(mobile[2]);
+            $("input[name='hpTel']").val($("input[name='mobilePhone']").val()); //	휴대폰 인증용
+
+            $("form[name='registMemberForm']").submit();
+        }
+
+        function calcAge(birthday) {
+            var today = new Date(); //현제날짜구하기
+
+            var t_year = today.getFullYear(); //올해
+            var t_mm = today.getMonth() + 1; //이번 달 (0이 1월이라 1더함)
+            var t_dd = today.getDate(); //오늘 날짜
+
+            var b_year = Number(birthday.substring(0, 4)); //태어난 년도 4자리
+            var b_mm = Number(birthday.substring(4, 6)); //태어난 월
+            var b_dd = Number(birthday.substring(6, 8)); //태어난 일
+
+            var diff_year = t_year - b_year; // 나이
+
+            var diff_mm = (t_mm - b_mm) * 100 + (t_dd - b_dd); // 날짜 대소 비교 (숫자 100은 단지 큰 숫자를 곱해준 것)
+
+            return diff_mm >= 0 ? diff_year : diff_year - 1; // 생일이 지나지 않았으면 나이를 1살 더 내린다
+        }
+
+        function isValidDate(param) {
+            // 자리수가 맞지않을때
+            if (isNaN(param) || param.length != 8) {
+            return false;
+            }
+
+            var year = Number(param.substring(0, 4));
+            var month = Number(param.substring(4, 6));
+            var day = Number(param.substring(6, 8));
+
+            if (month < 1 || month > 12) {
+            return false;
+            }
+
+            var maxDaysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+            var maxDay = maxDaysInMonth[month - 1];
+
+            // 윤년 체크
+            if (
+            month == 2 &&
+            ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0)
+            ) {
+            maxDay = 29;
+            }
+
+            if (day <= 0 || day > maxDay) {
+            return false;
+            }
+
+            return true;
+        }
+
+
+
+        function setCert(hpTel, certSeq) {
+            $(".tab-pane .cert-email").hide();
+            $(".tab-pane .cert-complete:eq(1)").show();
+
+            $(".join-block input, button").prop("disabled", false);
+            $(".btn-wrap button").prop("disabled", false);
+
+            $.fancybox.close();
+
+            set_pagetitle_manual("회원가입 | THE HYUNDAI");
+
+            $("input[name='mobilePhoneTmp']")
+            .val(hpTel)
+            .prop("readonly", true)
+            .trigger("keyup");
+            $("input[name='certSeq']").val(certSeq);
+        }
+
+
+
+        function resetCert() {
+            location.reload();
+        }
+
+        
+
+        function validEmail(objParent) {
+            var email = $("input[name='email']").val();
+            var pattern =
+            /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
+
+            if (isEmpty(email)) {
+            displayMsg(objParent, "이메일 주소를 입력해 주세요.");
+            return false;
+            } else if (!pattern.test(email)) {
+            displayMsg(
+                objParent,
+                "이메일 형식이 틀렸습니다. 다시 확인하고 입력해 주세요."
+            );
+            return false;
+            } else {
+            displayMsg(objParent);
+            return true;
+            }
+        }
+
+        function checkEmail(obj) {
+            GA_Event("PC_회원가입", "이메일인증회원가입", "동의하고 인증하기");
+            var objParent = $(obj).parents(".ccs-input-wrap");
+            $("#emailCertFormMsg").hide();
+            // 이메일 유효성 체크
+            $("input[name='email']").val(
+            $("input[name='emailHead']").val() +
+                "@" +
+                $("input[name='emailDomain']").val()
+            );
+            if (!validEmail(objParent)) {
+            $("input[name='emailHead']").focus();
+            return;
+            } else {
+            showBlockLoadingBar();
+            // 이메일 중복 체크
+            var val = $("input[name='email']").val();
+            $.ajax({
+                type: "POST",
+                url: "https://www.thehyundai.com/front/cua/emailDupCheck.thd",
+                data: { emailAdr: val },
+                dataType: "json",
+                success: function (data) {
+                hideBlockLoadingBar();
+                if (data.result) {
+                    // 이메일 발송
+                    sendEmail(objParent);
+                } else {
+                    displayMsg(objParent, "이미 등록된 이메일입니다.");
+                }
+                },
+                error: function (e) {
+                hideBlockLoadingBar();
+                displayMsg(
+                    objParent,
+                    "일시적인 에러가 발생 하였습니다.\n잠시 후에 다시 시도해주세요."
+                );
+                },
+            });
+            }
+        }
+
+        function sendEmail(objParent) {
+            var val = $("input[name='email']").val();
+            var emailCertNo = $("input[name='emailCertNo']").val();
+            showBlockLoadingBar();
+            $.ajax({
+            type: "POST",
+            url: "https://www.thehyundai.com/front/cua/emailVerificationAndCert.thd",
+            data: { emailAdr: val, certNo: emailCertNo },
+            dataType: "json",
+            success: function (data) {
+                hideBlockLoadingBar();
+                if (data.result) {
+                if (data.resultMsg == "alreadyCertSuccess") {
+                    displayMsg(objParent, "이미 활성화된 계정입니다.");
+                    return;
+                }
+                $("#emailCertFormMsg p:eq(0)").html(
+                    "<strong>__USEREMAIL__으로 메일이 발송</strong>되었습니다."
+                );
+                $("#emailCertFormMsg p:eq(0)").html(
+                    $("#emailCertFormMsg p:eq(0)")
+                    .html()
+                    .replace("__USEREMAIL__", val)
+                );
+                $("#emailCertFormMsg").show();
+                $("input[name='emailCertNo']").val(data.emailCertNo);
+                $("#checkEmailFirst").hide();
+                $("#checkEmailSecond").show();
+                } else if (!!data.resultMsg) {
+                displayMsg(objParent, data.resultMsg);
+                } else {
+                displayMsg(
+                    objParent,
+                    "일시적인 에러가 발생 하였습니다.\n잠시 후에 다시 시도해주세요."
+                );
+                }
+            },
+            error: function (e) {
+                hideBlockLoadingBar();
+                displayMsg(
+                objParent,
+                "일시적인 에러가 발생 하였습니다.\n잠시 후에 다시 시도해주세요."
+                );
+            },
+            });
+        }
+
+        function sendEmailInfo(obj) {
+            var objParent = $(obj).parents(".ccs-input-wrap");
+            var emailCertNo = $("input[name='emailCertNo']").val();
+            $("#emailCertFormMsg").hide();
+            showBlockLoadingBar();
+            $.ajax({
+            type: "POST",
+            url: "https://www.thehyundai.com/front/cob/checkEmailCert.thd",
+            data: { emailCertNo: emailCertNo },
+            dataType: "json",
+            success: function (data) {
+                hideBlockLoadingBar();
+                if (data.result) {
+                $(".tab-pane .cert-email").hide();
+                $(".tab-pane .cert-complete:eq(0)").show();
+
+                $(".join-block input, button").prop("disabled", false);
+                $(".btn-wrap button").prop("disabled", false);
+
+                set_pagetitle_manual("회원가입 | THE HYUNDAI");
+                $("input[name='useEmail']").trigger("click");
+
+                var b2eCustNo = "";
+                isCheckedId = false;
+                isValidId = false;
+
+                if (!isEmpty(b2eCustNo)) {
+                    var objParent2 = $("input[name=id]").parent();
+                    displayMsg(objParent2);
+                    isCheckedId = true;
+                    $("input[name='id']").prop("readonly", true);
+                }
+                } else {
+                displayMsg(
+                    objParent,
+                    "발송된 이메일이 인증처리 되지 않았습니다.<br><sp style='padding-left:19px;' />이메일이 도착하지 않았다면 재발송을 시도해주세요."
+                );
+                }
+
+                if (!isEmpty(welPointCustYn)) {
+                var objParent2 = $("input[name=id]").parent();
+                displayMsg(objParent2);
+                isCheckedId = true;
+                $("input[name='id']").prop("readonly", true);
+                $("input[name='welPointBizpNm']").prop("readonly", true);
+                $("input[name='welPointCustNm']").prop("readonly", true);
+                $("input[name='welPointEmno']").prop("readonly", true);
+                } else {
+                displayMsg(
+                    objParent,
+                    "발송된 이메일이 인증처리 되지 않았습니다.<br><sp style='padding-left:19px;' />이메일이 도착하지 않았다면 재발송을 시도해주세요."
+                );
+                }
+            },
+            error: function (e) {
+                hideBlockLoadingBar();
+                displayMsg(
+                objParent,
+                "일시적인 에러가 발생 하였습니다.\n잠시 후에 다시 시도해주세요."
+                );
+            },
+            });
+        }
+
+        function changeEmailDomain(obj) {
+            var trgObj = $("input[name='emailDomain']");
+            $(trgObj).val($(obj).val());
+            $(trgObj).prop("readonly", !isEmpty($(obj).val()));
+        }
+        </script>
+        <style type="text/css">
+        .fancybox-margin {
+            margin-right: 16px;
+        }
+        </style>
+        <meta
+        http-equiv="origin-trial"
+        content="A751Xsk4ZW3DVQ8WZng2Dk5s3YzAyqncTzgv+VaE6wavgTY0QHkDvUTET1o7HanhuJO8lgv1Vvc88Ij78W1FIAAAAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjgwNjUyNzk5LCJpc1RoaXJkUGFydHkiOnRydWV9"
+        />
+        <meta
+        http-equiv="origin-trial"
+        content="A751Xsk4ZW3DVQ8WZng2Dk5s3YzAyqncTzgv+VaE6wavgTY0QHkDvUTET1o7HanhuJO8lgv1Vvc88Ij78W1FIAAAAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjgwNjUyNzk5LCJpc1RoaXJkUGFydHkiOnRydWV9"
+        />
+
+        <link
+        rel="stylesheet"
+        type="text/css"
+        href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css"
+        />
+        <link
+        rel="stylesheet"
+        type="text/css"
+        href="//static.groobee.io/dist/g2/css/grb-recommend-list_v2.css"
+        />
+        <style
+        type="text/css"
+        data-fbcssmodules="css:fb.css.base css:fb.css.dialog css:fb.css.iframewidget css:fb.css.customer_chat_plugin_iframe"
+        >
+        .fb_hidden {
+            position: absolute;
+            top: -10000px;
+            z-index: 10001;
+        }
+        .fb_reposition {
+            overflow: hidden;
+            position: relative;
+        }
+        .fb_invisible {
+            display: none;
+        }
+        .fb_reset {
+            background: none;
+            border: 0;
+            border-spacing: 0;
+            color: #000;
+            cursor: auto;
+            direction: ltr;
+            font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
+            font-size: 11px;
+            font-style: normal;
+            font-variant: normal;
+            font-weight: normal;
+            letter-spacing: normal;
+            line-height: 1;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            text-align: left;
+            text-decoration: none;
+            text-indent: 0;
+            text-shadow: none;
+            text-transform: none;
+            visibility: visible;
+            white-space: normal;
+            word-spacing: normal;
+        }
+        .fb_reset > div {
+            overflow: hidden;
+        }
+        @keyframes fb_transform {
+            from {
+            opacity: 0;
+            transform: scale(0.95);
+            }
+            to {
+            opacity: 1;
+            transform: scale(1);
+            }
+        }
+        .fb_animate {
+            animation: fb_transform 0.3s forwards;
+        }
+        .fb_hidden {
+            position: absolute;
+            top: -10000px;
+            z-index: 10001;
+        }
+        .fb_reposition {
+            overflow: hidden;
+            position: relative;
+        }
+        .fb_invisible {
+            display: none;
+        }
+        .fb_reset {
+            background: none;
+            border: 0;
+            border-spacing: 0;
+            color: #000;
+            cursor: auto;
+            direction: ltr;
+            font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
+            font-size: 11px;
+            font-style: normal;
+            font-variant: normal;
+            font-weight: normal;
+            letter-spacing: normal;
+            line-height: 1;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            text-align: left;
+            text-decoration: none;
+            text-indent: 0;
+            text-shadow: none;
+            text-transform: none;
+            visibility: visible;
+            white-space: normal;
+            word-spacing: normal;
+        }
+        .fb_reset > div {
+            overflow: hidden;
+        }
+        @keyframes fb_transform {
+            from {
+            opacity: 0;
+            transform: scale(0.95);
+            }
+            to {
+            opacity: 1;
+            transform: scale(1);
+            }
+        }
+        .fb_animate {
+            animation: fb_transform 0.3s forwards;
+        }
+        .fb_dialog {
+            background: rgba(82, 82, 82, 0.7);
+            position: absolute;
+            top: -10000px;
+            z-index: 10001;
+        }
+        .fb_dialog_advanced {
+            border-radius: 8px;
+            padding: 10px;
+        }
+        .fb_dialog_content {
+            background: #fff;
+            color: #373737;
+        }
+        .fb_dialog_close_icon {
+            background: url(https://connect.facebook.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png)
+            no-repeat scroll 0 0 transparent;
+            cursor: pointer;
+            display: block;
+            height: 15px;
+            position: absolute;
+            right: 18px;
+            top: 17px;
+            width: 15px;
+        }
+        .fb_dialog_mobile .fb_dialog_close_icon {
+            left: 5px;
+            right: auto;
+            top: 5px;
+        }
+        .fb_dialog_padding {
+            background-color: transparent;
+            position: absolute;
+            width: 1px;
+            z-index: -1;
+        }
+        .fb_dialog_close_icon:hover {
+            background: url(https://connect.facebook.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png)
+            no-repeat scroll 0 -15px transparent;
+        }
+        .fb_dialog_close_icon:active {
+            background: url(https://connect.facebook.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png)
+            no-repeat scroll 0 -30px transparent;
+        }
+        .fb_dialog_iframe {
+            line-height: 0;
+        }
+        .fb_dialog_content .dialog_title {
+            background: #6d84b4;
+            border: 1px solid #365899;
+            color: #fff;
+            font-size: 14px;
+            font-weight: bold;
+            margin: 0;
+        }
+        .fb_dialog_content .dialog_title > span {
+            background: url(https://connect.facebook.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif)
+            no-repeat 5px 50%;
+            float: left;
+            padding: 5px 0 7px 26px;
+        }
+        body.fb_hidden {
+            height: 100%;
+            left: 0;
+            margin: 0;
+            overflow: visible;
+            position: absolute;
+            top: -10000px;
+            transform: none;
+            width: 100%;
+        }
+        .fb_dialog.fb_dialog_mobile.loading {
+            background: url(https://connect.facebook.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif)
+            white no-repeat 50% 50%;
+            min-height: 100%;
+            min-width: 100%;
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            z-index: 10001;
+        }
+        .fb_dialog.fb_dialog_mobile.loading.centered {
+            background: none;
+            height: auto;
+            min-height: initial;
+            min-width: initial;
+            width: auto;
+        }
+        .fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner {
+            width: 100%;
+        }
+        .fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content {
+            background: none;
+        }
+        .loading.centered #fb_dialog_loader_close {
+            clear: both;
+            color: #fff;
+            display: block;
+            font-size: 18px;
+            padding-top: 20px;
+        }
+        #fb-root #fb_dialog_ipad_overlay {
+            background: rgba(0, 0, 0, 0.4);
+            bottom: 0;
+            left: 0;
+            min-height: 100%;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 100%;
+            z-index: 10000;
+        }
+        #fb-root #fb_dialog_ipad_overlay.hidden {
+            display: none;
+        }
+        .fb_dialog.fb_dialog_mobile.loading iframe {
+            visibility: hidden;
+        }
+        .fb_dialog_mobile .fb_dialog_iframe {
+            position: sticky;
+            top: 0;
+        }
+        .fb_dialog_content .dialog_header {
+            background: linear-gradient(from(#738aba), to(#2c4987));
+            border-bottom: 1px solid;
+            border-color: #043b87;
+            box-shadow: white 0 1px 1px -1px inset;
+            color: #fff;
+            font: bold 14px Helvetica, sans-serif;
+            text-overflow: ellipsis;
+            text-shadow: rgba(0, 30, 84, 0.296875) 0 -1px 0;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+        .fb_dialog_content .dialog_header table {
+            height: 43px;
+            width: 100%;
+        }
+        .fb_dialog_content .dialog_header td.header_left {
+            font-size: 12px;
+            padding-left: 5px;
+            vertical-align: middle;
+            width: 60px;
+        }
+        .fb_dialog_content .dialog_header td.header_right {
+            font-size: 12px;
+            padding-right: 5px;
+            vertical-align: middle;
+            width: 60px;
+        }
+        .fb_dialog_content .touchable_button {
+            background: linear-gradient(from(#4267b2), to(#2a4887));
+            background-clip: padding-box;
+            border: 1px solid #29487d;
+            border-radius: 3px;
+            display: inline-block;
+            line-height: 18px;
+            margin-top: 3px;
+            max-width: 85px;
+            padding: 4px 12px;
+            position: relative;
+        }
+        .fb_dialog_content .dialog_header .touchable_button input {
+            background: none;
+            border: none;
+            color: #fff;
+            font: bold 12px Helvetica, sans-serif;
+            margin: 2px -12px;
+            padding: 2px 6px 3px 6px;
+            text-shadow: rgba(0, 30, 84, 0.296875) 0 -1px 0;
+        }
+        .fb_dialog_content .dialog_header .header_center {
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            line-height: 18px;
+            text-align: center;
+            vertical-align: middle;
+        }
+        .fb_dialog_content .dialog_content {
+            background: url(https://connect.facebook.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif)
+            no-repeat 50% 50%;
+            border: 1px solid #4a4a4a;
+            border-bottom: 0;
+            border-top: 0;
+            height: 150px;
+        }
+        .fb_dialog_content .dialog_footer {
+            background: #f5f6f7;
+            border: 1px solid #4a4a4a;
+            border-top-color: #ccc;
+            height: 40px;
+        }
+        #fb_dialog_loader_close {
+            float: left;
+        }
+        .fb_dialog.fb_dialog_mobile .fb_dialog_close_icon {
+            visibility: hidden;
+        }
+        #fb_dialog_loader_spinner {
+            animation: rotateSpinner 1.2s linear infinite;
+            background-color: transparent;
+            background-image: url(https://connect.facebook.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+            height: 24px;
+            width: 24px;
+        }
+        @keyframes rotateSpinner {
+            0% {
+            transform: rotate(0deg);
+            }
+            100% {
+            transform: rotate(360deg);
+            }
+        }
+        .fb_iframe_widget {
+            display: inline-block;
+            position: relative;
+        }
+        .fb_iframe_widget span {
+            display: inline-block;
+            position: relative;
+            text-align: justify;
+        }
+        .fb_iframe_widget iframe {
+            position: absolute;
+        }
+        .fb_iframe_widget_fluid_desktop,
+        .fb_iframe_widget_fluid_desktop span,
+        .fb_iframe_widget_fluid_desktop iframe {
+            max-width: 100%;
+        }
+        .fb_iframe_widget_fluid_desktop iframe {
+            min-width: 220px;
+            position: relative;
+        }
+        .fb_iframe_widget_lift {
+            z-index: 1;
+        }
+        .fb_iframe_widget_fluid {
+            display: inline;
+        }
+        .fb_iframe_widget_fluid span {
+            width: 100%;
+        }
+        .fb_mpn_mobile_landing_page_slide_out {
+            animation-duration: 200ms;
+            animation-name: fb_mpn_landing_page_slide_out;
+            transition-timing-function: ease-in;
+        }
+        .fb_mpn_mobile_landing_page_slide_out_from_left {
+            animation-duration: 200ms;
+            animation-name: fb_mpn_landing_page_slide_out_from_left;
+            transition-timing-function: ease-in;
+        }
+        .fb_mpn_mobile_landing_page_slide_up {
+            animation-duration: 500ms;
+            animation-name: fb_mpn_landing_page_slide_up;
+            transition-timing-function: ease-in;
+        }
+        .fb_mpn_mobile_bounce_in {
+            animation-duration: 300ms;
+            animation-name: fb_mpn_bounce_in;
+            transition-timing-function: ease-in;
+        }
+        .fb_mpn_mobile_bounce_out {
+            animation-duration: 300ms;
+            animation-name: fb_mpn_bounce_out;
+            transition-timing-function: ease-in;
+        }
+        .fb_mpn_mobile_bounce_out_v2 {
+            animation-duration: 300ms;
+            animation-name: fb_mpn_fade_out;
+            transition-timing-function: ease-in;
+        }
+        .fb_customer_chat_bounce_in_v2 {
+            animation-duration: 300ms;
+            animation-name: fb_bounce_in_v2;
+            transition-timing-function: ease-in;
+        }
+        .fb_customer_chat_bounce_in_from_left {
+            animation-duration: 300ms;
+            animation-name: fb_bounce_in_from_left;
+            transition-timing-function: ease-in;
+        }
+        .fb_customer_chat_bounce_out_v2 {
+            animation-duration: 300ms;
+            animation-name: fb_bounce_out_v2;
+            transition-timing-function: ease-in;
+        }
+        .fb_customer_chat_bounce_out_from_left {
+            animation-duration: 300ms;
+            animation-name: fb_bounce_out_from_left;
+            transition-timing-function: ease-in;
+        }
+        .fb_invisible_flow {
+            display: inherit;
+            height: 0;
+            overflow-x: hidden;
+            width: 0;
+        }
+        @keyframes fb_mpn_landing_page_slide_out {
+            0% {
+            margin: 0 12px;
+            width: 100% - 24px;
+            }
+            60% {
+            border-radius: 18px;
+            }
+            100% {
+            border-radius: 50%;
+            margin: 0 24px;
+            width: 60px;
+            }
+        }
+        @keyframes fb_mpn_landing_page_slide_out_from_left {
+            0% {
+            left: 12px;
+            width: 100% - 24px;
+            }
+            60% {
+            border-radius: 18px;
+            }
+            100% {
+            border-radius: 50%;
+            left: 12px;
+            width: 60px;
+            }
+        }
+        @keyframes fb_mpn_landing_page_slide_up {
+            0% {
+            bottom: 0;
+            opacity: 0;
+            }
+            100% {
+            bottom: 24px;
+            opacity: 1;
+            }
+        }
+        @keyframes fb_mpn_bounce_in {
+            0% {
+            opacity: 0.5;
+            top: 100%;
+            }
+            100% {
+            opacity: 1;
+            top: 0;
+            }
+        }
+        @keyframes fb_mpn_fade_out {
+            0% {
+            bottom: 30px;
+            opacity: 1;
+            }
+            100% {
+            bottom: 0;
+            opacity: 0;
+            }
+        }
+        @keyframes fb_mpn_bounce_out {
+            0% {
+            opacity: 1;
+            top: 0;
+            }
+            100% {
+            opacity: 0.5;
+            top: 100%;
+            }
+        }
+        @keyframes fb_bounce_in_v2 {
+            0% {
+            opacity: 0;
+            transform: scale(0, 0);
+            transform-origin: bottom right;
+            }
+            50% {
+            transform: scale(1.03, 1.03);
+            transform-origin: bottom right;
+            }
+            100% {
+            opacity: 1;
+            transform: scale(1, 1);
+            transform-origin: bottom right;
+            }
+        }
+        @keyframes fb_bounce_in_from_left {
+            0% {
+            opacity: 0;
+            transform: scale(0, 0);
+            transform-origin: bottom left;
+            }
+            50% {
+            transform: scale(1.03, 1.03);
+            transform-origin: bottom left;
+            }
+            100% {
+            opacity: 1;
+            transform: scale(1, 1);
+            transform-origin: bottom left;
+            }
+        }
+        @keyframes fb_bounce_out_v2 {
+            0% {
+            opacity: 1;
+            transform: scale(1, 1);
+            transform-origin: bottom right;
+            }
+            100% {
+            opacity: 0;
+            transform: scale(0, 0);
+            transform-origin: bottom right;
+            }
+        }
+        @keyframes fb_bounce_out_from_left {
+            0% {
+            opacity: 1;
+            transform: scale(1, 1);
+            transform-origin: bottom left;
+            }
+            100% {
+            opacity: 0;
+            transform: scale(0, 0);
+            transform-origin: bottom left;
+            }
+        }
+        @keyframes slideInFromBottom {
+            0% {
+            opacity: 0.1;
+            transform: translateY(100%);
+            }
+            100% {
+            opacity: 1;
+            transform: translateY(0);
+            }
+        }
+        @keyframes slideInFromBottomDelay {
+            0% {
+            opacity: 0;
+            transform: translateY(100%);
+            }
+            97% {
+            opacity: 0;
+            transform: translateY(100%);
+            }
+            100% {
+            opacity: 1;
+            transform: translateY(0);
+            }
+        }
+        </style>
+    </head>
+    <body>
+        <!-- wrap -->
+        <div id="wrap" class="sub notgnb">
+        <!-- gnb -->
+
+        <script
+            type="text/javascript"
+            src="https://www.thehyundai.com/js/hdmall/co/referCodes.js"
+        ></script>
+
+        <script
+            type="text/javascript"
+            src="https://www.thehyundai.com/static/gen/js/mainBnnrContents.js?ver=012146"
+        ></script>
+
+        <div id="skip-navigation">
+            <p><a href="#header-wrap">헤더영역 바로가기</a></p>
+            <p><a href="#header-gnb-area">GNB영역 바로가기</a></p>
+            <p><a href="#container">컨텐츠영역 바로가기</a></p>
+            <p><a href="#footer">푸터영역 바로가기</a></p>
+        </div>
+
+        <!-- header -->
+        <!-- 서브메뉴 -->
+
+        <!-- top banner -->
+        <div id="js-tpl-topBanner" style="display: none"></div>
+
+        <div class="top-wrap sub">
+            <div class="top-area-setting">
+            <div class="top-con">
+                <div class="top-con-logo">
+                <h1>
+                    <a
+                    href="http://www.thehyundai.com/Home.html?MainpageGroup=Fix&amp;GroupbannerName=GNB_Logo"
+                    ><span class="blind">The HYUNDAI</span></a
+                    >
+                </h1>
+                </div>
+
+                <div class="top-con-search">
+                <form
+                    name="formTopSearchPopup"
+                    id="formTopSearchPopup"
+                    method="get"
+                >
+                    <input type="hidden" name="searchtype" id="js_searchtype" />
+                    <input type="hidden" name="searchQuery" autocomplete="off" />
+                    <div class="top-con-search-unit">
+                    <input
+                        type="text"
+                        class="top-con-search-input"
+                        maxlength="30"
+                        id="cs-token-input"
+                        value=""
+                        onfocus="return dq_setTextbox(0,event);"
+                        onmousedown="dq_setTextbox(1,event);"
+                        onkeydown="dq_setTextbox(1,event);"
+                        autocomplete="off"
+                    />
+                    <button
+                        type="submit"
+                        class="top-con-search-btn"
+                        onclick="javascript:GA_Event('PC_공통','헤더_검색','검색'); goTopSearch(); return false;"
+                    >
+                        <span class="blind">검색</span>
+                    </button>
+
+                    <!-- 검색 -->
+                    <div
+                        class="search-box"
+                        id="search_info_box"
+                        style="display: none"
+                        onmouseover="dq_info_setMouseon();"
+                        onmouseout="dq_info_setMouseoff();"
+                    >
+                        <!-- 최근검색어 -->
+                        <div class="search-box-list" id="recent_rs_search">
+                        <div class="search-box-tit">최근검색어</div>
+                        <div class="search-box-cont">
+                            <ul class="search-box-text">
+                            <li>최근 검색어가 없습니다.</li>
+                            </ul>
+                        </div>
+                        </div>
+
+                        <!-- 인기검색어 -->
+                        <div class="search-box-list" id="hot_rs_search">
+                        <div class="search-box-tit">인기검색어</div>
+                        <div class="search-box-cont">
+                            <div class="search-box-best">
+                            <ul class="search-box-bestnum left">
+                                <li>
+                                <a
+                                    href="javascript:GA_Event('PC_검색창','인기검색어','명품'); goDirectSearchGnb('명품', 'top', 'search_favoriteKeyword', '명품', '1');"
+                                    class="lank"
+                                    >1. 명품</a
+                                ><span class="status no"
+                                    ><span class="blind">no</span></span
+                                >
+                                </li>
+                                <li>
+                                <a
+                                    href="javascript:GA_Event('PC_검색창','인기검색어','COS퀼티드백'); goDirectSearchGnb('COS퀼티드백', 'top', 'search_favoriteKeyword', 'COS퀼티드백', '2');"
+                                    class="lank"
+                                    >2. COS퀼티드백</a
+                                ><span class="status no"
+                                    ><span class="blind">no</span></span
+                                >
+                                </li>
+                                <li>
+                                <a
+                                    href="javascript:GA_Event('PC_검색창','인기검색어','COS 퀼티드'); goDirectSearchGnb('COS 퀼티드', 'top', 'search_favoriteKeyword', 'COS 퀼티드', '3');"
+                                    class="lank"
+                                    >3. COS 퀼티드</a
+                                ><span class="status new">NEW</span>
+                                </li>
+                                <li>
+                                <a
+                                    href="javascript:GA_Event('PC_검색창','인기검색어','오니츠카타이거'); goDirectSearchGnb('오니츠카타이거', 'top', 'search_favoriteKeyword', '오니츠카타이거', '4');"
+                                    class="lank"
+                                    >4. 오니츠카타이거</a
+                                ><span class="status down"
+                                    ><span class="blind">down</span></span
+                                >
+                                </li>
+                                <li>
+                                <a
+                                    href="javascript:GA_Event('PC_검색창','인기검색어','아크테릭스'); goDirectSearchGnb('아크테릭스', 'top', 'search_favoriteKeyword', '아크테릭스', '5');"
+                                    class="lank"
+                                    >5. 아크테릭스</a
+                                ><span class="status down"
+                                    ><span class="blind">down</span></span
+                                >
+                                </li>
+                            </ul>
+                            <ul class="search-box-bestnum right">
+                                <li>
+                                <a
+                                    href="javascript:GA_Event('PC_검색창','인기검색어','어그 울트라 미니'); goDirectSearchGnb('어그 울트라 미니', 'top', 'search_favoriteKeyword', '어그 울트라 미니', '6');"
+                                    class="lank"
+                                    >6. 어그 울트라 미니</a
+                                ><span class="status down"
+                                    ><span class="blind">down</span></span
+                                >
+                                </li>
+                                <li>
+                                <a
+                                    href="javascript:GA_Event('PC_검색창','인기검색어','니트 가디건'); goDirectSearchGnb('니트 가디건', 'top', 'search_favoriteKeyword', '니트 가디건', '7');"
+                                    class="lank"
+                                    >7. 니트 가디건</a
+                                ><span class="status no"
+                                    ><span class="blind">no</span></span
+                                >
+                                </li>
+                                <li>
+                                <a
+                                    href="javascript:GA_Event('PC_검색창','인기검색어','양말'); goDirectSearchGnb('양말', 'top', 'search_favoriteKeyword', '양말', '8');"
+                                    class="lank"
+                                    >8. 양말</a
+                                ><span class="status no"
+                                    ><span class="blind">no</span></span
+                                >
+                                </li>
+                                <li>
+                                <a
+                                    href="javascript:GA_Event('PC_검색창','인기검색어','현대식품관'); goDirectSearchGnb('현대식품관', 'top', 'search_favoriteKeyword', '현대식품관', '9');"
+                                    class="lank"
+                                    >9. 현대식품관</a
+                                ><span class="status new">NEW</span>
+                                </li>
+                                <li>
+                                <a
+                                    href="javascript:GA_Event('PC_검색창','인기검색어','슬리퍼'); goDirectSearchGnb('슬리퍼', 'top', 'search_favoriteKeyword', '슬리퍼', '10');"
+                                    class="lank"
+                                    >10. 슬리퍼</a
+                                ><span class="status new">NEW</span>
+                                </li>
+                            </ul>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div
+                        class="search-box"
+                        id="search_auto_box"
+                        style="display: none"
+                        onmouseover="dq_setMouseon();"
+                        onmouseout="dq_setMouseoff();"
+                    >
+                        <!-- 연관검색어 -->
+                        <div class="search-box-list" id="relation_rs_search">
+                        <div class="search-box-cont">
+                            <ul class="search-box-text">
+                            <li>연관 검색어가 없습니다.</li>
+                            </ul>
+                        </div>
+                        </div>
+
+                        <!-- 추천브랜드 -->
+                        <div class="search-box-list" id="brand_rs_search">
+                        <div class="search-box-tit">추천브랜드</div>
+                        <div class="search-box-cont">
+                            <ul class="search-box-brand">
+                            <li>추천 브랜드가 없습니다.</li>
+                            </ul>
+                        </div>
+                        </div>
+                    </div>
+                    <!-- //검색 -->
+                    </div>
+                </form>
+                </div>
+
+                <div class="top-con-quick">
+                <ul>
+                    <li class="myshop-info">
+                    <div class="top-con-quick-my">
+                        <a
+                        href="javascript:GA_Event('PC_공통','헤더_메뉴','로그인/회원'); openLoginPopup();"
+                        >로그인/회원</a
+                        >
+                    </div>
+
+                    <!-- 20190118 추가 레이어팝업 -->
+                    <div class="myshop-info-layer logout">
+                        <!-- logout:비 로그인 상태, login:로그인 상태 -->
+                        <div class="myshop-cont">
+                        <ul class="myshop-cont-top">
+                            <li class="myshop-hyundai">
+                            <a
+                                onclick="GA_Event('PC_공통','헤더_메뉴','마이현대');"
+                                href="https://www.thehyundai.com/front/mpf/selectMyPageMain.thd?MainpageGroup=Util&amp;GroupbannerName=GNB_MyHyundai"
+                                >마이현대</a
+                            >
+                            </li>
+                            <li>
+                            <a
+                                onclick="GA_Event('PC_공통','헤더_메뉴','주문배송');"
+                                href="https://www.thehyundai.com/front/mpa/selectOrdDlvCrst.thd?MainpageGroup=Util&amp;GroupbannerName=GNB_Order"
+                                >주문배송</a
+                            >
+                            </li>
+                            <li>
+                            <a
+                                onclick="GA_Event('PC_공통','헤더_메뉴','나의찜');"
+                                href="https://www.thehyundai.com/front/mpc/sltdItemList.thd"
+                                >나의 찜</a
+                            >
+                            </li>
+                            <li class="myshop-join">
+                            <a
+                                onclick="GA_Event('PC_공통','헤더_메뉴','회원가입');"
+                                href="https://www.thehyundai.com/front/cob/COBCertificationSelect.thd?MainpageGroup=util&amp;GroupbannerName=membership"
+                                >회원가입</a
+                            >
+                            </li>
+                            <li class="myshop-logout">
+                            <a href="javascript:logOut();">로그아웃</a>
+                            </li>
+                        </ul>
+                        <ul class="myshop-cont-body">
+                            <li class="logout-only">
+                            <span class="tit">나의 쇼핑 혜택</span>
+                            <a
+                                href="javascript://"
+                                onclick="javascript:GA_Event('PC_공통','헤더_메뉴','나의 쇼핑 혜택'); buyGradePup(event);return false;"
+                                ><span class="blind">자세히보기</span></a
+                            >
+                            </li>
+                            <li class="login-only">
+                            <span class="tit">등급</span>
+
+                            <span class="cont">혜택</span>
+                            <a
+                                href="javascript://"
+                                onclick="javascript:GA_Event('PC_공통','헤더_메뉴','나의 쇼핑 혜택'); buyGradePup(event, 'MainpageGroup=util&amp;GroupbannerName=memberLevel_notice');return false;"
+                                ><span class="blind">자세히보기</span></a
+                            >
+                            </li>
+                            <li>
+                            <span class="tit">쿠폰</span>
+                            <span class="cont login-only">0장</span>
+                            <a
+                                onclick="GA_Event('PC_공통','헤더_메뉴','쿠폰');"
+                                href="https://www.thehyundai.com/front/mpe/selectCopnList.thd?MainpageGroup=util&amp;GroupbannerName=coupon"
+                                ><span class="blind">자세히보기</span></a
+                            >
+                            </li>
+                            <li>
+                            <span class="tit">H.Point</span>
+                            <span class="cont login-only">0P</span>
+                            <a onclick="goHpoint()" href="#"
+                                ><span class="blind">자세히보기</span></a
+                            >
+                            </li>
+                            <li>
+                            <span class="tit">더머니</span>
+                            <span class="cont login-only">0원</span>
+                            <a
+                                onclick="GA_Event('PC_공통','헤더_메뉴','더머니');"
+                                href="https://www.thehyundai.com/front/mpe/selectHPntTabPage.thd?MainpageGroup=util&amp;GroupbannerName=theMoney"
+                                ><span class="blind">자세히보기</span></a
+                            >
+                            </li>
+                        </ul>
+                        </div>
+                    </div>
+                    <!-- // 20190118 추가 레이어팝업 -->
+                    </li>
+                    <li>
+                    <a
+                        onclick="GA_Event('PC_공통','헤더_메뉴', '고객센터');"
+                        href="https://www.thehyundai.com/front/cca/main.thd?MainpageGroup=Util&amp;GroupbannerName=GNB_Center"
+                        >고객센터</a
+                    >
+                    </li>
+                    <li>
+                    <div class="top-con-quick-basket">
+                        <a
+                        onclick="GA_Event('PC_공통','헤더_메뉴', '장바구니');"
+                        href="https://www.thehyundai.com/front/odb/basktList.thd?MainpageGroup=Util&amp;GroupbannerName=GNB_Basket"
+                        >장바구니</a
+                        ><span class="basket-num" id="quick_baskt_num">0</span>
+                    </div>
+                    </li>
+                    <!-- 20210830 바로접속 추가// -->
+                    <li>
+                    <div class="top-con-quick-onoff">
+                        <a href="#">바로접속<span class="ic-onff">OFF</span></a>
+                    </div>
+                    </li>
+                    <!-- //20210830 바로접속 추가 -->
+                </ul>
+                </div>
+            </div>
+            <div class="top-nav" id="header-gnb-area">
+                <!-- 20210518 gnb nav 수정// -->
+            </div>
+            <!-- // top-nav -->
+            <!-- //gnb-area -->
+
+    
+
+            <script
+                type="text/javascript"
+                src="https://www.thehyundai.com/js/hdmall/dp/dpo/dqAutoCompleteNewCommon.js?ver=030121"
+            ></script>
+            <script
+                type="text/javascript"
+                src="https://www.thehyundai.com/js/hdmall/dp/dpo/dqAutoCompleteNew.js?ver=030121"
+            ></script>
+
+            </div>
+        </div>
+
+
+        <script type="text/javascript">
+            $(document).ready(function () {});
+        </script>
+
+        <!-- //gnb -->
+
+        <!-- container -->
+        <div id="container">
+            <h1 class="blind">컨텐츠영역</h1>
+
+            <!-- breadcrumb -->
+            <div class="breadcrumb">
+            <ul class="breadcrumb-list">
+                <li><a href="#">HOME</a></li>
+                <li><a href="#">회원가입</a></li>
+                <li>회원가입 안내</li>
+            </ul>
+            </div>
+            <!-- //breadcrumb -->
+
+            <!-- content-wrap -->
+            <div class="content-wrap">
+            <!-- content -->
+            <div class="content">
+                <div class="join-wrap">
+                <div class="join-header">
+                    <h2>회원가입</h2>
+                </div>
+
+                <div class="join-body">
+                    <form name="registMemberForm" method="post">
+                    <input type="hidden" name="emailCertNo" />
+                    <input type="hidden" name="hmallAgreementYn" value="Y" />
+                    <input type="hidden" name="privacyAgreementYn" value="Y" />
+                    <input type="hidden" name="emaliCertYn" value="Y" />
+                    <input type="hidden" name="marketingAgreementYn" value="Y" />
+                    <input type="hidden" name="b2eCustNo" value="" />
+                    <!-- 전자상거래 규제 개선 -->
+                    <input type="hidden" name="popupYn" value="N" />
+                    <input type="hidden" name="token" />
+                    <input type="hidden" name="snsType" />
+
+                    <div class="join-block">
+                        <h3><strong>1단계</strong> 간편인증 방법 선택</h3>
+
+                        <ul class="join-tab">
+                        <li class="active">
+                            <a href="#" onclick="tabChange2(0); return false;"
+                            >간편 회원가입</a
+                            >
+                        </li>
+                        <li>
+                            <a href="#" onclick="tabChange2(1); return false;"
+                            >이메일인증 회원가입</a
+                            >
+                        </li>
+                        </ul>
+
+                        <div class="tab-pane active">
+                        <!-- 초기-->
+                        <div class="cert-email">
+                            <div class="ccs-input-wrap">
+                            <p class="guide">
+                                이메일 인증을 위해 현재 사용하고 계시는 이메일
+                                주소를 입력해주세요.
+                            </p>
+                            <div class="ccs-input">
+                                <input
+                                type="text"
+                                title="이메일 아이디"
+                                maxlength="30"
+                                placeholder="이메일주소"
+                                name="emailHead"
+                                value=""
+                                class="email-id"
+                                />
+                                <span class="scol">@</span>
+                                <input
+                                type="text"
+                                title="이메일 주소"
+                                maxlength="65"
+                                name="emailDomain"
+                                value=""
+                                class="email-domain"
+                                />
+                                <div class="selectric-wrapper" style="width: 140px">
+                                <div class="selectric-hide-select">
+                                    <select
+                                    name="emailDomainSelect"
+                                    title="메일 주소 선택"
+                                    onchange="changeEmailDomain(this);"
+                                    tabindex="0"
+                                    style="display: none"
+                                    >
+                                    <option value="">직접입력</option>
+
+                                    <option value="naver.com">naver.com</option>
+
+                                    <option value="daum.net">daum.net</option>
+
+                                    <option value="nate.com">nate.com</option>
+
+                                    <option value="gmail.com">gmail.com</option>
+
+                                    <option value="hanmail.net">
+                                        hanmail.net
+                                    </option>
+
+                                    <option value="hotmail.com">
+                                        hotmail.com
+                                    </option>
+                                    </select>
+                                </div>
+                                <div class="selectric">
+                                    <p class="label">직접입력</p>
+                                    <b class="button">▾</b>
+                                </div>
+                                <div class="selectric-items" tabindex="-1">
+                                    <div class="selectric-scroll">
+                                    <ul>
+                                        <li data-index="0" class="selected">
+                                        직접입력
+                                        </li>
+                                        <li data-index="1" class="">naver.com</li>
+                                        <li data-index="2" class="">daum.net</li>
+                                        <li data-index="3" class="">nate.com</li>
+                                        <li data-index="4" class="">gmail.com</li>
+                                        <li data-index="5" class="">hanmail.net</li>
+                                        <li data-index="6" class="last">
+                                        hotmail.com
+                                        </li>
+                                    </ul>
+                                    </div>
+                                </div>
+                                <input class="selectric-input" tabindex="0" />
+                                </div>
+                            </div>
+                            <label class="error" style="display: none"></label>
+                            <div
+                                class="ccs-input-msg"
+                                id="emailCertFormMsg"
+                                style="display: none"
+                            >
+                                <p>
+                                <strong>__USEREMAIL__으로 메일이 발송</strong
+                                >되었습니다.
+                                </p>
+                                <p>
+                                인증이 유효한 1시간 내에 이메일 내용 중 이메일
+                                인증 버튼을 클릭하여 주세요.
+                                </p>
+                            </div>
+                            <div class="ccs-input-ctrl" id="checkEmailFirst">
+                                <button
+                                class="btn"
+                                onclick="checkEmail(this); return false;"
+                                >
+                                동의하고 인증하기
+                                </button>
+                            </div>
+                            <div
+                                class="ccs-input-ctrl"
+                                id="checkEmailSecond"
+                                style="display: none"
+                            >
+                                <button
+                                class="btn resend"
+                                onclick="checkEmail(this); return false;"
+                                >
+                                인증메일 재발송
+                                </button>
+                                <button
+                                class="btn"
+                                onclick="sendEmailInfo(this); return false;"
+                                >
+                                인증완료<i class="icon-arrow btn-ar"></i>
+                                </button>
+                            </div>
+                            </div>
+                        </div>
+                        <!--//초기-->
+                        <!--완료-->
+                        <div class="cert-complete" style="display: none">
+                            <p class="ccs-text">이메일 인증이 완료되었습니다.</p>
+                            <div class="ccs-result">
+                            <input
+                                type="text"
+                                name="email"
+                                value=""
+                                class="readonly"
+                                readonly="readonly"
+                            />
+                            <button
+                                class="btn"
+                                onclick="resetCert(); return false;"
+                            >
+                                다시 인증하기
+                            </button>
+                            </div>
+                            <div class="ccs-option-wrap">
+                            <ul class="ccs-option">
+                                <li>
+                                <label style="white-space: normal"
+                                    ><input
+                                    type="checkbox"
+                                    name="useEmail"
+                                    value="Y"
+                                    checked="checked"
+                                    id="ui-id-1"
+                                    class="gencrinputstyle"
+                                    /><span
+                                    class="cr-checkbox checked"
+                                    id="gencrinputstyle-ui-id-1"
+                                    style="
+                                        cursor: pointer;
+                                        margin-left: -24px;
+                                        margin-top: 0px;
+                                        margin-right: 4px;
+                                    "
+                                    ></span
+                                    >위 이메일 주소를 아이디로 사용</label
+                                >
+                                </li>
+                            </ul>
+                            </div>
+                        </div>
+                        <!--//완료-->
+                        <!--완료(모바일)-->
+                        <div class="cert-complete" style="display: none">
+                            <div class="ccs-result text">
+                            <span><i>인증</i>이 완료되었습니다.</span>
+                            <button
+                                class="btn"
+                                onclick="resetCert(); return false;"
+                            >
+                                다시 인증하기
+                            </button>
+                            </div>
+                        </div>
+                        <!--//완료-->
+                        </div>
+                    </div>
+
+                    <div class="join-block">
+                        <h3><strong>2단계</strong> 가입정보 입력</h3>
+                        <p class="sub-tit mb10">
+                        입력한 개인정보가 정확하지 않을 경우, 사이트 이용에
+                        불이익이 발생할 수 있습니다.
+                        </p>
+                        <div class="join-form-wrap">
+                        <!-- 20170802 복지포인트 // -->
+
+                        <!-- 20170802 복지포인트 // -->
+
+                        <div class="row-group">
+                            <div class="row">
+                            <input
+                                type="text"
+                                title="Input-id"
+                                name="id"
+                                maxlength="100"
+                                placeholder="아이디(아이디 또는 이메일 주소)"
+                            />
+                            <span class="input-validation"></span>
+                            <p class="input-msg">
+                                * ID : 4~20자 영문 or 숫자 / email
+                            </p>
+                            <label class="error" style="display: none"></label>
+                            </div>
+                            <button
+                            class="btn"
+                            type="button"
+                            name="chkDupId"
+                            onclick="checkId(); return false;"
+                            disabled="disabled"
+                            >
+                            중복확인
+                            </button>
+                        </div>
+
+                        <div class="row-group">
+                            <div class="row">
+                            <input
+                                type="password"
+                                title="Input-pw"
+                                name="passwd"
+                                placeholder="비밀번호"
+                                maxlength="30"
+                                disabled="disabled"
+                                autocomplete="off"
+                            />
+                            <span class="input-validation"></span>
+                            <p class="input-msg">
+                                * 8~30자 이내로 영문자, 숫자, 특수문자 중 2가지 이상
+                                포함
+                            </p>
+                            <label class="error" style="display: none"></label>
+                            </div>
+                        </div>
+                        <div class="row-group">
+                            <div class="row">
+                            <input
+                                type="password"
+                                title="Input-pw-c"
+                                name="rePassword"
+                                placeholder="비밀번호 확인"
+                                maxlength="30"
+                                disabled="disabled"
+                                autocomplete="off"
+                            />
+                            <span class="input-validation"></span>
+                            <p class="input-msg">* 비밀번호를 재입력해 주세요.</p>
+                            <label class="error" style="display: none"></label>
+                            </div>
+                        </div>
+
+                        <div class="row-group mt20">
+                            <div class="row">
+                            <input
+                                type="text"
+                                title="Input-name"
+                                name="name"
+                                maxlength="15"
+                                placeholder="이름"
+                                disabled="disabled"
+                            />
+                            <span class="input-validation"></span>
+                            <p class="input-msg">* 이름을 입력해 주세요.</p>
+                            <label class="error" style="display: none"></label>
+                            </div>
+                        </div>
+
+                        <div class="row-group">
+                            <div class="row">
+                            <input type="hidden" name="birthday" />
+                            <input
+                                type="text"
+                                title="Input-birth"
+                                class="onlyNumberInput"
+                                name="birthdayTmp"
+                                maxlength="10"
+                                placeholder="생년월일(예:19820615)"
+                                disabled="disabled"
+                            />
+                            <span class="input-validation"></span>
+                            <p class="input-msg">
+                                * 생년월일 8자리를 입력해주세요(예.20150115)
+                            </p>
+                            <label class="error" style="display: none"></label>
+                            </div>
+                        </div>
+                        <div class="row-group">
+                            <div class="row">
+                            <input type="hidden" name="mobilePhone" />
+                            <input type="hidden" name="hpTel" />
+                            <input type="hidden" name="certSeq" value="0" />
+                            <input type="hidden" name="mobileDdd" />
+                            <input type="hidden" name="mobilePhone1" />
+                            <input type="hidden" name="mobilePhone2" />
+                            <input
+                                type="text"
+                                title="Input-phone"
+                                class="onlyNumberInput"
+                                name="mobilePhoneTmp"
+                                maxlength="13"
+                                placeholder="휴대폰번호"
+                                disabled="disabled"
+                            />
+                            <span class="input-validation"></span>
+                            <p class="input-msg">
+                                * '-' 를 빼고 휴대폰 번호를 입력해주세요.
+                            </p>
+                            <label class="error" style="display: none"></label>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="join-block">
+                        <div class="agreement-con policy-style-wrap small">
+                        <div class="btn-wrap">
+                            <button
+                            class="btn size6 color2"
+                            id="registMemberBtn"
+                            type="button"
+                            onclick="registMember(); return false;"
+                            disabled="disabled"
+                            >
+                            동의하고 회원가입
+                            </button>
+                        </div>
+                        <!-- //btn-wrap -->
+                        </div>
+                    </div>
+                    </form>
+                </div>
+                </div>
+            </div>
+            <!-- //content -->
+            </div>
+            <!-- //content-wrap -->
+        </div>
+        <!-- //container -->
+
+        <!-- footer -->
+
+
+        <!-- footer -->
+        <div id="footer">
+            <h1 class="blind">푸터영역</h1>
+            <div class="top">
+            <div class="row">
+                <div class="hyundai-menu">
+                <span class="tit">
+                    <a
+                    href="javascript:;"
+                    onclick="javascript:GA_Event('PC_공통','푸터_메뉴','현대백화점그룹'); dummyLogCatch('http://www.ehyundai.com/newPortal/ir', 'Footer', 'group', 'blank', 'Y', null)"
+                    >현대백화점그룹</a
+                    >
+                </span>
+                <ul>
+                    <li>
+                    <a
+                        onclick="GA_Event('PC_공통','푸터_메뉴','공지사항');"
+                        href="http://www.thehyundai.com/front/ccb/noticeList.thd?MainpageGroup=Footer&amp;GroupbannerName=notice"
+                        >공지사항</a
+                    >
+                    </li>
+
+                    <li>
+                    <a
+                        href="javascript:;"
+                        onclick="javascript:GA_Event('PC_공통','푸터_메뉴','윤리경영'); dummyLogCatch('http://www.ehyundai.com/newPortal/ir/ETH/ETH000001.do?ir=3', 'Footer', 'legal', 'blank', 'Y', null)"
+                        >윤리경영</a
+                    >
+                    </li>
+                    <li>
+                    <a
+                        href="javascript:;"
+                        onclick="javascript:GA_Event('PC_공통','푸터_메뉴','사회공헌'); dummyLogCatch('http://www.ehyundai.com/newPortal/csr/main.do', 'Footer', 'legal', 'blank', 'Y', null)"
+                        >사회공헌</a
+                    >
+                    </li>
+                    <li>
+                    <a
+                        onclick="GA_Event('PC_공통','푸터_메뉴','이용약관');"
+                        href="http://www.thehyundai.com/front/cua/viewPolicyPup.thd?view=1&amp;MainpageGroup=Footer&amp;GroupbannerName=agree"
+                        data-toggle="winpopup"
+                        data-api="center,900,770,scrollbars"
+                        target="_blank"
+                        >이용약관</a
+                    >
+                    </li>
+                    <li>
+                    <a
+                        onclick="GA_Event('PC_공통','푸터_메뉴','개인정보 처리방침');"
+                        href="http://www.thehyundai.com/front/cua/viewPolicyPup.thd?view=2&amp;MainpageGroup=Footer&amp;GroupbannerName=private"
+                        data-toggle="winpopup"
+                        data-api="center,900,770,scrollbars"
+                        target="_blank"
+                        ><strong>개인정보 처리방침</strong></a
+                    >
+                    </li>
+                </ul>
+                </div>
+
+                <!-- 2016-07-28// -->
+
+                <!-- //2016-07-28 -->
+            </div>
+            </div>
+            <div class="bottom">
+            <div class="row">
+                <div class="logo">
+                <a href="http://www.thehyundai.com/Home.html"
+                    ><img
+                    src="https://image.thehyundai.com/hdmall/images/co/img_bottom_logo.png"
+                    alt="THE HYUNDAI"
+                /></a>
+                </div>
+                <div class="info">
+                <!-- 171130 수정// -->
+                <p>
+                    주식회사 현대백화점 대표이사 : 김형종 외 2인 서울시 강남구
+                    테헤란로98길 12
+                </p>
+                <p>
+                    사업자등록번호 : 211-87-21455
+                    <a
+                    href="https://www.ftc.go.kr/bizCommPop.do?wrkr_no=2118721455"
+                    data-toggle="winpopup"
+                    data-api="center,750,700,scrollbars"
+                    target="_blank"
+                    >[사업자정보 확인]</a
+                    >
+                    통신판매업신고 : 2010-서울강남-01882
+                </p>
+                <p>
+                    홈페이지/앱 문의 :
+                    <a href="mailto:customerservice@thehyundai.com"
+                    >customerservice@thehyundai.com</a
+                    >
+                    고객센터 : <strong>1800-2233</strong>
+                </p>
+                <p>호스팅서비스 : (주)현대백화점</p>
+                <p class="copy">
+                    CopyrightⓒHyundai Department Store. All rights reserved.
+                </p>
+                <!-- //171130 수정 -->
+                </div>
+
+            </div>
+            <div class="certi-wrap row">
+                <p class="certi">
+                <a
+                    href="http://www.kolsa.or.kr/neopress/index.php?mid=regular"
+                    target="_blank"
+                    ><img
+                    src="https://image.thehyundai.com/hdmall/images/co/img_footer_v2_certi_01.png"
+                    alt="사단법인 한국온라인 쇼핑협회 정회원사"
+                /></a>
+                <span class="scol">|</span>
+                <a
+                    href="http://www.kca.go.kr/wpge/m_210/ccm1100.do"
+                    target="_blank"
+                    ><img
+                    src="https://image.thehyundai.com/hdmall/images/co/img_footer_v2_certi_02.png"
+                    alt="공정거래위원회 CCm 인증 [소비자중심 경영우수기업]"
+                /></a>
+                <span class="scol">|</span>
+                <a target="_blank"
+                    ><img
+                    src="https://image.thehyundai.com/hdmall/images/co/img_footer_certi_03.png"
+                    alt="위해상품 차단 시스템 운영매장"
+                /></a>
+                <span class="scol">|</span>
+                <a target="_blank"
+                    ><img
+                    src="https://image.thehyundai.com/hdmall/images/co/img_footer_certi_04.png"
+                    alt="모바일 어워드 코리아 2016"
+                /></a>
+                </p>
+                <p class="checkguarantee">
+                <span>
+                    고객님의 안전거래를 위해 현금결제시 우리은행과
+                    채무지급보증계약을<br />
+                    체결하여 안전거래를 보장하고 있습니다.
+                </span>
+                <!--http://www.thehyundai.com/html/contents/-->
+                <a
+                    href="#"
+                    onclick="javascript:popover_ajax('https://www.thehyundai.com/html/contents/guarantee.html', 750);return false;"
+                    >서비스 가입사실 확인</a
+                >
+                </p>
+            </div>
+            </div>
+        </div>
+        </div>
+        <!-- //wrap -->
+
+        <script type="text/javascript">
+        (function (d, s, id) {
+            var js,
+            fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+            return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        })(document, "script", "facebook-jssdk");
+
+        window.fbAsyncInit = function () {
+            FB.init({
+            appId: "686353978133276",
+            cookie: true,
+            status: true,
+            xfbml: true,
+            version: "v2.10",
+            });
+        };
+
+        function fbLogin() {
+            FB.login(
+            function (response) {
+                if (response.authResponse) {
+                var token = response.authResponse.accessToken;
+                FB.api("/me", { fields: "email" }, function (response) {
+                    if (response.email !== undefined) {
+                    var form = $("form[name='registMemberForm']")[0];
+                    form.setAttribute(
+                        "action",
+                        "https://www.thehyundai.com/front/cob/snsAuth.thd"
+                    );
+                    $("input[name='token']").val(token);
+                    $("input[name='snsType']").val("10");
+                    form.submit();
+                    showLoadingBar("180px", "150px");
+                    } else {
+                    alert("facebook 이메일이 존재하지 않습니다.");
+                    }
+                });
+                }
+            },
+            { scope: "email" }
+            );
+        }
+
+        (function () {
+            var po = document.createElement("script");
+            po.type = "text/javascript";
+            po.async = true;
+            po.src =
+            "https://apis.google.com/js/client:plusone.js?onload=onGoogleLoaded";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(po, s);
+        })();
+
+        function googleLogin() {
+            gapi.auth.authorize(
+            {
+                client_id:
+                "27083101635-9eeusihur52mamtbhsb82ok2kiue6ikh.apps.googleusercontent.com",
+                scope: [
+                "https://www.googleapis.com/auth/userinfo.email",
+                "https://www.googleapis.com/auth/plus.login",
+                ],
+            },
+            function (response) {
+                if (response) {
+                if (response["error"] === undefined) {
+                    gapi.auth.setToken(response); // 반환된 토큰을 저장합니다.
+                    var token = response.access_token;
+                    var form = $("form[name='registMemberForm']")[0];
+                    form.setAttribute(
+                    "action",
+                    "https://www.thehyundai.com/front/cob/snsAuth.thd"
+                    );
+                    $("input[name='token']").val(token);
+                    $("input[name='snsType']").val("20");
+                    form.submit();
+                    showLoadingBar("180px", "150px");
+                }
+                }
+            }
+            );
+        }
+
+        function naverLogin() {
+            showLoadingBar("180px", "150px");
+            var requestUrl;
+            $.ajax({
+            url: "https://www.thehyundai.com/front/cob/snsAuthNaver.thd",
+            dataType: "json",
+            async: false,
+            success: function (data) {
+                hideBlockLoadingBar();
+                requestUrl = data.requestUrl;
+            },
+            error: function (e) {
+                hideBlockLoadingBar();
+                alert(
+                "일시적인 에러가 발생 하였습니다.\n잠시 후에 다시 시도해주세요."
+                );
+            },
+            });
+            if (!isEmpty(requestUrl)) {
+            openPopup(
+                requestUrl,
+                "",
+                600,
+                700,
+                "no",
+                $(window).width(),
+                $(window).height()
+            );
+            }
+        }
+
+        function callbackNaverLogin(token) {
+            if (isEmpty(token)) {
+            return;
+            }
+            var form = $("form[name='registMemberForm']")[0];
+            form.setAttribute(
+            "action",
+            "https://www.thehyundai.com/front/cob/snsAuth.thd"
+            );
+            $("input[name='token']").val(token);
+            $("input[name='snsType']").val("30");
+            form.submit();
+            showLoadingBar("180px", "150px");
+        }
+
+        </script>
+
+    
+        </div>
+    </body>
+    </html>
