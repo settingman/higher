@@ -15,8 +15,8 @@ import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
-import com.hyundai.higher.damain.member.Member;
-import com.hyundai.higher.damain.member.MemberRole;
+import com.hyundai.higher.domain.member.Member;
+import com.hyundai.higher.domain.member.MemberRole;
 import com.hyundai.higher.mapper.member.MemberMapper;
 import com.hyundai.higher.security.dto.SecurityMember;
 

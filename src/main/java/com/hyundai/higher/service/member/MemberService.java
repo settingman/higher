@@ -11,7 +11,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.hyundai.higher.damain.member.Member;
+import com.hyundai.higher.domain.member.Member;
 import com.hyundai.higher.mapper.member.MemberMapper;
 import com.hyundai.higher.security.dto.SecurityMember;
 

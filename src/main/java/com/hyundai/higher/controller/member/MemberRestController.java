@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.hyundai.higher.damain.mail.MailVo;
-import com.hyundai.higher.damain.member.Member;
+import com.hyundai.higher.domain.mail.MailVo;
+import com.hyundai.higher.domain.member.Member;
 import com.hyundai.higher.mapper.member.MemberMapper;
 import com.hyundai.higher.service.member.MailServiceImpl;
 import com.hyundai.higher.service.member.MemberService;
@@ -28,6 +28,9 @@ import lombok.extern.slf4j.Slf4j;
  * 2023. 2. 24.     박성환      최초생성
  *     </pre>
  */
+
+
+
 @Slf4j
 @RequiredArgsConstructor
 @RequestMapping("/member")
@@ -41,6 +44,7 @@ public class MemberRestController {
 
 	// 회원가입 아이디 중복 체크 AJAX
 	@GetMapping("/check")
+	
 	public String checkId(@RequestParam("checkid") String checkId) {
 
 		String result = "1";
@@ -82,4 +86,22 @@ public class MemberRestController {
 
 		return "S";
 	}
+	
+	
+	
+	@GetMapping(value = "/vaildEmail")
+	public String vaildEmail(@RequestParam("emailAdr") String emailAdr) {
+
+		MailVo mail = mailService.createVaildMail(emailAdr);
+		String result = mailService.sendVaildMail(mail);
+
+		return result;
+
+	}
+	
+	
+	
+	
+	
+	
 }

@@ -1,4 +1,4 @@
-package com.hyundai.higher.damain.member;
+package com.hyundai.higher.domain.member;
 
 import java.sql.Date;
 
@@ -48,32 +48,17 @@ public class MemberFormDto {
 	@Email(message = "이메일 형식으로 입력해주세요.")
 	private String mEmail;
 
-	@NotEmpty(message = "주소는 필수 입력 값입니다.")
-	private String mZipCode;
-
-	@NotEmpty(message = "주소는 필수 입력 값입니다.")
-	private String mAddress1;
-
-	@NotEmpty(message = "주소는 필수 입력 값입니다.")
-	private String mAddress2;
-
 	private Integer mBirth;
 
-	private Integer mGender;
 
 	@Builder
-	public MemberFormDto(String mId, String mPassword, String mName, String mPhone, String mEmail, String mZipCode,
-			String mAddress1, String mAddress2, Integer mBirth, Integer mGender) {
+	public MemberFormDto(String mId, String mPassword, String mName, String mPhone, String mEmail,  Integer mBirth) {
 		this.mId = mId;
 		this.mPassword = mPassword;
 		this.mName = mName;
 		this.mPhone = mPhone;
 		this.mEmail = mEmail;
-		this.mZipCode = mZipCode;
-		this.mAddress1 = mAddress1;
-		this.mAddress2 = mAddress2;
 		this.mBirth = mBirth;
-		this.mGender = mGender;
 	}
 
 }

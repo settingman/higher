@@ -1,4 +1,4 @@
-package com.hyundai.higher.damain.mail;
+package com.hyundai.higher.domain.mail;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

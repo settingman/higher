@@ -3,7 +3,7 @@ package com.hyundai.higher.mapper.member;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-import com.hyundai.higher.damain.member.Member;
+import com.hyundai.higher.domain.member.Member;
 
 /**
  * @since : 2023. 2. 24.

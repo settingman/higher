@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.hyundai.higher.damain.member.Member;
-import com.hyundai.higher.damain.member.MemberFormDto;
+import com.hyundai.higher.domain.member.Member;
+import com.hyundai.higher.domain.member.MemberFormDto;
 import com.hyundai.higher.mapper.member.MemberMapper;
 import com.hyundai.higher.service.member.MailServiceImpl;
 import com.hyundai.higher.service.member.MemberService;
@@ -50,16 +50,16 @@ public class MemberController {
 	private final MailServiceImpl mailService;
 
 	// 회원가입페이지 접근
-	@GetMapping(value = "/joininfoform")
+	@GetMapping(value = "/joinform")
 	public String memberForm(Model model) {
 
 		model.addAttribute("memberFormDto", new MemberFormDto());
 
-		return "member/joininfoform";
+		return "member/joinform";
 	}
 
 	// 회원가입 진행
-	@PostMapping(value = "joininfoform")
+	@PostMapping(value = "joinform")
 	public String memberForm(@Valid MemberFormDto memberFormDto, BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {
 
@@ -67,7 +67,7 @@ public class MemberController {
 				System.out.println(allError.toString());
 			}
 			log.info("bindingResult Error");
-			return "member/joininfoform";
+			return "member/joinform";
 		}
 
 		try {

@@ -1,4 +1,4 @@
-package com.hyundai.higher.damain.member;
+package com.hyundai.higher.domain.member;
 
 /**
  * @since   : 2023. 2. 24.

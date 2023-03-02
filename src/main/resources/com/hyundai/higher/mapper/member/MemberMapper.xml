@@ -6,7 +6,6 @@
 <mapper namespace="com.hyundai.higher.mapper.member.MemberMapper">
 
 
-
 	<select id="findById"
 		resultType="com.hyundai.higher.domain.member.Member">
 		SELECT MID, MPassword, MName, MPhone, MEmail, MZipCode,
@@ -54,19 +53,12 @@
 		#{mName},
 		#{mEmail},
 		#{mPhone},
-		1,
-		#{mZipCode},
-		#{mAddress1},
-		#{mAddress2},
 		#{mBirth},
-		#{mGender},
-		1,
-		1,
-		1,
-		1,
 		#{mRole},
-		1,
-		1)
+		0,
+		'백화점',
+		1
+		)
 
 
 
