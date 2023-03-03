@@ -474,8 +474,7 @@
                 displayMsg(objParent);
                 isValidMobilePhone = true;
                 var b2eCustNo = "";
-                isCheckedId = false;
-                isValidId = false;
+               
 
                 if (!isEmpty(b2eCustNo)) {
                     var objParent2 = $("input[name=mId]").parent();
@@ -647,6 +646,7 @@
         function registMember() {
            
             var isValid = true;
+            
             $("input[name='mId']").trigger("blur");
             if (!isValidId || !isCheckedId) {
             console.log(isValidId);

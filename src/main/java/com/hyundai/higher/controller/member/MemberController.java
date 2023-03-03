@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hyundai.higher.domain.member.Member;
 import com.hyundai.higher.domain.member.MemberFormDto;
@@ -60,7 +61,7 @@ public class MemberController {
 
 	// 회원가입 진행
 	@PostMapping(value = "joinform")
-	public String memberForm(@Valid MemberFormDto memberFormDto, BindingResult bindingResult, Model model) {
+	public String memberForm(@Valid MemberFormDto memberFormDto, BindingResult bindingResult, Model model, RedirectAttributes redirectAttributes) {
 		if (bindingResult.hasErrors()) {
 
 			for (ObjectError allError : bindingResult.getAllErrors()) {
@@ -82,7 +83,10 @@ public class MemberController {
 			return "member/joininfoform";
 		}
 
-		return "redirect:/";
+		
+		redirectAttributes.addFlashAttribute("memberID",memberFormDto.getMId());
+		
+		return "redirect:/member/joincomplete";
 	}
 
 	// 로그인
