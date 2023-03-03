@@ -20,5 +20,13 @@ public class HomeController {
 
 		return "main";
 	}
+	
+	@GetMapping(value = "/test")
+	public String test(Model model) {
+
+		log.info("main");
+
+		return "test";
+	}
 
 }

@@ -1,0 +1,1046 @@
+<!--
+ @Date : 2023. 3. 3.
+ @작성자 : 박성환
+ @설명 : 아이디 찾기 페이지
+-->
+
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<title>회원가입 | 더한섬닷컴</title>
+
+<th:block th:replace="common/head :: headFragment"></th:block>
+
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0" />
+<title>더현대닷컴</title>
+
+<link rel="stylesheet" type="text/css" href="https://image.thehyundai.com/pc/cssssl/font.css" />
+
+<link rel="stylesheet" type="text/css" href="https://image.thehyundai.com/pc/cssssl/co.css?ver=21" />
+<link rel="stylesheet" type="text/css" href="https://image.thehyundai.com/pc/cssssl/wf.css" />
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://image.thehyundai.com/pc/js/jquery-1.11.3.min.js"></script>
+<script src="https://image.thehyundai.com/pc/js/jquery-ui.min.js"></script>
+<script src="https://image.thehyundai.com/pc/js/jquery-migrate.min.js"></script>
+
+<script src="https://image.thehyundai.com/pc/js/plugin.js?ver=030316"></script>
+<script type="text/javascript" src="https://image.thehyundai.com/pc/js/hdmall/co/jquery.form.js"></script>
+<script type="text/javascript" src="https://image.thehyundai.com/pc/js/hdmall/co/default.js?ver=030316"></script>
+<script type="text/javascript" src="https://image.thehyundai.com/pc/js/hdmall/co/common.js?ver=030316"></script>
+<script src="https://image.thehyundai.com/pc/js/common.js?ver=030316"></script>
+<script type="text/javascript" src="https://image.thehyundai.com/pc/js/swiper.min.js?ver=030316"></script>
+
+
+
+
+
+
+<script type="text/javascript" src="https://image.thehyundai.com/pc/js/hdmall/co/common.js?ver=030121"></script>
+
+
+
+
+<script src="https://image.thehyundai.com/pc/js/common.js?ver=030121"></script>
+<script type="text/javascript" src="https://image.thehyundai.com/pc/js/swiper.min.js?ver=030121"></script>
+
+
+
+<link rel="stylesheet" type="text/css" href="https://www.thehyundai.com/cssssl/dp.css?ver=21" />
+<script type="text/javascript">
+        var isValidId = false;
+        var isValidPasswd = false;
+        var isValidRePasswd = false;
+        var isCheckedId = false;
+        var isValidMobilePhone = false;
+        var isValidBirthday = false;
+        var isValidName = true;
+        var isValidWelPointEmno = true;
+        var welPointCustYn = "";
+        var _gaPageTitle = "회원가입>간편회원 정보입력";
+        
+        
+        
+            $("input[name='useEmail']").click(function () {
+            isValidId = false;
+            isCheckedId = false;
+            if ($(this).prop("checked")) {
+                $("input[name='mId']")
+                .val($("input[name='mEmail']").val())
+                .prop("readonly", true);
+                $("input[name='mId']").trigger("blur");
+            } else {
+                $("input[name='mId']").val("").prop("readonly", false);
+                var objParent = $("input[name='mId']").parent();
+                $(objParent)
+                .find("span.input-validation")
+                .removeClass("error")
+                .removeClass("checked");
+                $(objParent).find("label.error").hide();
+            }
+            });
+        });
+
+        function displayMsg(objParent, msg) {
+            if (!!msg) {
+            $(objParent)
+                .find("span.input-validation")
+                .removeClass("checked")
+                .addClass("error");
+            $(objParent).find("label.error").html(msg).show();
+            } else {
+            $(objParent)
+                .find("span.input-validation")
+                .removeClass("error")
+                .addClass("checked");
+            $(objParent).find("label.error").hide();
+            }
+        }
+
+        function isValidHangulEng(str) {
+            var bHangul = true;
+            for (var i = 0; i < str.length; i++) {
+            var c = str.charCodeAt(i);
+            if (
+                (c > 0x3130 && c < 0x318f) ||
+                (c >= 0xac00 && c <= 0xd7a3) ||
+                (c > 64 && c < 91) ||
+                (c > 96 && c < 123)
+            ) {
+                continue;
+            }
+            bHangul = false;
+            }
+            return bHangul;
+        }
+
+        function ufn_ASCII(pwd, i) {
+            return pwd.substr(i, i + 1).charCodeAt(0);
+        }
+        // 20161205 추가 //
+        function agreeReject() {
+            /* 거부하기 */
+            alert(
+            "서비스 제공을 위한 최소한의 개인정보 이므로 동의를 해주셔야 이용하실 수 있습니다."
+            );
+        }
+
+        // 20161205 추가 /
+
+        function checkId() {
+            if (isValidId) {
+            var objParent = $("input[name=mId]").parent();
+            showLoadingBar(250, 200);
+            $.ajax({
+                type: "get",
+                url: '/member/check?checkid=' + $("input[name=mId]").val(),
+                success: function (data) {
+                if (data=="0") {
+                    displayMsg(objParent);
+                    isCheckedId = true;
+                } else {
+                    displayMsg(
+                    objParent,
+                    "해당 아이디는 이미 다른 고객님께서 사용 중이십니다."
+                    );
+                    isCheckedId = false;
+                }
+                },
+                error: function (e) {
+                hideBlockLoadingBar();
+                isCheckedId = false;
+                alert(
+                    "일시적인 에러가 발생 하였습니다.\n잠시 후에 다시 시도해주세요."
+                );
+                },
+            });
+            }
+        }
+
+        function setFocus(obj) {
+            $("html,body").animate(
+            { scrollTop: obj.offset().top },
+            200,
+            function () {
+                obj.focus();
+            }
+            );
+        }
+
+        function registMember() {
+           
+            var isValid = true;
+            $("input[name='mId']").trigger("blur");
+            if (!isValidId || !isCheckedId) {
+            console.log(isValidId);
+            console.log(isCheckedId);
+            setFocus($("input[name='mId']"));
+            isValid = false;
+            }
+
+            $("input[name='mPassword']").trigger("blur");
+            if (!isValidPasswd) {
+            if (isValid) setFocus($("input[name='mPassword']"));
+            isValid = false;
+            }
+
+            $("input[name='rePassword']").trigger("blur");
+            if (!isValidRePasswd) {
+            if (isValid) setFocus($("input[name='rePassword']"));
+            isValid = false;
+            }
+
+            if (welPointCustYn == null || welPointCustYn == "") {
+            $("input[name='mName']").trigger("blur");
+            if (!isValidName) {
+                if (isValid) setFocus($("input[name='mName']"));
+                isValid = false;
+            }
+            }
+
+            $("input[name='mBirth']").trigger("blur");
+            if (!isValidBirthday) {
+            if (isValid) setFocus($("input[name='mBirth']"));
+            isValid = false;
+            }
+
+            $("input[name='mPhone']").trigger("blur");
+            if (!isValidMobilePhone) {
+            if (isValid) setFocus($("input[name='mPhone']"));
+            isValid = false;
+            }
+
+            if (!isValid) {
+            return;
+            }
+
+            if (
+            $("input[name='emailReceiveYn']").prop("checked") ||
+            $("input[name='smsReceiveYn']").prop("checked")
+            ) {
+            $("input[name='marketingAgreementYn']").val("N");
+            } else {
+            $("input[name='marketingAgreementYn']").val("Y");
+            }
+
+            $("input[name='mBirth']").val(
+            $("input[name='mBirth']")
+                .val()
+                .replace(/[^0-9]/g, "")
+            );
+            
+            $("input[name='mBirth']").val(
+                    $("input[name='mBirth']")
+                        .val()            
+                    );
+            
+            
+            
+            var mobile = $("input[name='mPhone']").val().split("-");
+            if (mobile.length == 1) {
+            mobile = [
+                mobile[0].substring(0, 3),
+                mobile[0].substring(3, mobile[0].length - 4),
+                mobile[0].substring(mobile[0].length - 4),
+            ];
+            }
+            $("input[name='mobilePhone']").val(mobile[0] + mobile[1] + mobile[2]);
+            
+            $("input[name='mPhone']").val(mobile[0] + mobile[1] + mobile[2]);
+     
+           
+			console.log("회원가입 진행");
+            $("form[name='registMemberForm']").submit();
+        }
+
+        function calcAge(birthday) {
+            var today = new Date(); //현제날짜구하기
+
+            var t_year = today.getFullYear(); //올해
+            var t_mm = today.getMonth() + 1; //이번 달 (0이 1월이라 1더함)
+            var t_dd = today.getDate(); //오늘 날짜
+
+            var b_year = Number(birthday.substring(0, 4)); //태어난 년도 4자리
+            var b_mm = Number(birthday.substring(4, 6)); //태어난 월
+            var b_dd = Number(birthday.substring(6, 8)); //태어난 일
+
+            var diff_year = t_year - b_year; // 나이
+
+            var diff_mm = (t_mm - b_mm) * 100 + (t_dd - b_dd); // 날짜 대소 비교 (숫자 100은 단지 큰 숫자를 곱해준 것)
+
+            return diff_mm >= 0 ? diff_year : diff_year - 1; // 생일이 지나지 않았으면 나이를 1살 더 내린다
+        }
+
+        function isValidDate(param) {
+            // 자리수가 맞지않을때
+            if (isNaN(param) || param.length != 8) {
+            return false;
+            }
+
+            var year = Number(param.substring(0, 4));
+            var month = Number(param.substring(4, 6));
+            var day = Number(param.substring(6, 8));
+
+            if (month < 1 || month > 12) {
+            return false;
+            }
+
+            var maxDaysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+            var maxDay = maxDaysInMonth[month - 1];
+
+            // 윤년 체크
+            if (
+            month == 2 &&
+            ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0)
+            ) {
+            maxDay = 29;
+            }
+
+            if (day <= 0 || day > maxDay) {
+            return false;
+            }
+
+            return true;
+        }
+
+
+
+       
+
+
+
+        function resetCert() {
+            location.reload();
+        }
+
+        
+
+        function validEmail(objParent) {
+            var email = $("input[name='mEmail']").val();
+            var pattern =
+            /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
+
+            if (isEmpty(email)) {
+            displayMsg(objParent, "이메일 주소를 입력해 주세요.");
+            return false;
+            } else if (!pattern.test(email)) {
+            displayMsg(
+                objParent,
+                "이메일 형식이 틀렸습니다. 다시 확인하고 입력해 주세요."
+            );
+            return false;
+            } else {
+            displayMsg(objParent);
+            return true;
+            }
+        }
+
+        function checkEmail(obj) {
+            var objParent = $(obj).parents(".ccs-input-wrap");
+            $("#emailCertFormMsg").hide();
+            // 이메일 유효성 체크
+            $("input[name='mEmail']").val(
+            $("input[name='emailHead']").val() +
+                "@" +
+                $("input[name='emailDomain']").val()
+            );
+            if (!validEmail(objParent)) {
+            $("input[name='emailHead']").focus();
+            return;
+            } else {
+            // 이메일 중복 체크
+            
+            var val = $("input[name='mEmail']").val();
+            
+           
+            $.ajax({
+                type: "get",
+                url: "/member/vaildEmail?emailAdr="+val,
+                success: function (data) {
+                code=data;
+                console.log(code);
+                if (data.resultMsg == "alreadyCertSuccess") {
+                    displayMsg(objParent, "이미 활성화된 계정입니다.");
+                    return;
+                }
+                $("#emailCertFormMsg p:eq(0)").html(
+                    "<strong>__USEREMAIL__으로 메일이 발송</strong>되었습니다."
+                );
+                $("#emailCertFormMsg p:eq(0)").html(
+                    $("#emailCertFormMsg p:eq(0)")
+                    .html()
+                    .replace("__USEREMAIL__", val)
+                );
+                $("#emailCertFormMsg").show();
+                $("#checkEmailFirst").hide();
+                $("#checkEmailSecond").show();
+                },
+                error: function (e) {
+                displayMsg(
+                    objParent,
+                    "일시적인 에러가 발생 하였습니다.\n잠시 후에 다시 시도해주세요."
+                );
+                },
+            });
+            }
+        }
+        
+        
+       
+
+        function sendEmail(objParent) {
+            var val = $("input[name='mEmail']").val();
+            var emailCertNo = $("input[name='emailCertNo']").val();
+            $.ajax({
+            type: "POST",
+            url: "https://www.thehyundai.com/front/cua/emailVerificationAndCert.thd",
+            data: { emailAdr: val, certNo: emailCertNo },
+            dataType: "json",
+            success: function (data) {
+                hideBlockLoadingBar();
+                if (data.result) {
+                if (data.resultMsg == "alreadyCertSuccess") {
+                    displayMsg(objParent, "이미 활성화된 계정입니다.");
+                    return;
+                }
+                $("#emailCertFormMsg p:eq(0)").html(
+                    "<strong>__USEREMAIL__으로 메일이 발송</strong>되었습니다."
+                );
+                $("#emailCertFormMsg p:eq(0)").html(
+                    $("#emailCertFormMsg p:eq(0)")
+                    .html()
+                    .replace("__USEREMAIL__", val)
+                );
+                $("#emailCertFormMsg").show();
+                $("input[name='emailCertNo']").val(data.emailCertNo);
+                $("#checkEmailFirst").hide();
+                $("#checkEmailSecond").show();
+                } else if (!!data.resultMsg) {
+                displayMsg(objParent, data.resultMsg);
+                } else {
+                displayMsg(
+                    objParent,
+                    "일시적인 에러가 발생 하였습니다.\n잠시 후에 다시 시도해주세요."
+                );
+                }
+            },
+            error: function (e) {
+                hideBlockLoadingBar();
+                displayMsg(
+                objParent,
+                "일시적인 에러가 발생 하였습니다.\n잠시 후에 다시 시도해주세요."
+                );
+            },
+            });
+        }
+
+        function sendEmailInfo(obj) {
+            var objParent = $(obj).parents(".ccs-input-wrap");
+            var emailCertNo = $("input[name='emailCertNo']").val();
+            $("#emailCertFormMsg").hide();
+            $.ajax({
+            type: "POST",
+            url: "https://www.thehyundai.com/front/cob/checkEmailCert.thd",
+            data: { emailCertNo: emailCertNo },
+            dataType: "json",
+            success: function (data) {
+                hideBlockLoadingBar();
+                if (data.result) {
+                $(".tab-pane .cert-email").hide();
+                $(".tab-pane .cert-complete:eq(0)").show();
+
+                $(".join-block input, button").prop("disabled", false);
+                $(".btn-wrap button").prop("disabled", false);
+
+                set_pagetitle_manual("회원가입 | THE HYUNDAI");
+                $("input[name='useEmail']").trigger("click");
+
+                var b2eCustNo = "";
+                isCheckedId = false;
+                isValidId = false;
+
+                if (!isEmpty(b2eCustNo)) {
+                    var objParent2 = $("input[name=mId]").parent();
+                    displayMsg(objParent2);
+                    isCheckedId = true;
+                    $("input[name='mId']").prop("readonly", true);
+                }
+                } else {
+                displayMsg(
+                    objParent,
+                    "발송된 이메일이 인증처리 되지 않았습니다.<br><sp style='padding-left:19px;' />이메일이 도착하지 않았다면 재발송을 시도해주세요."
+                );
+                }
+
+                if (!isEmpty(welPointCustYn)) {
+                var objParent2 = $("input[name=mId]").parent();
+                displayMsg(objParent2);
+                isCheckedId = true;
+                $("input[name='mId']").prop("readonly", true);
+                $("input[name='welPointBizpNm']").prop("readonly", true);
+                $("input[name='welPointCustNm']").prop("readonly", true);
+                $("input[name='welPointEmno']").prop("readonly", true);
+                } else {
+                displayMsg(
+                    objParent,
+                    "발송된 이메일이 인증처리 되지 않았습니다.<br><sp style='padding-left:19px;' />이메일이 도착하지 않았다면 재발송을 시도해주세요."
+                );
+                }
+            },
+            error: function (e) {
+                hideBlockLoadingBar();
+                displayMsg(
+                objParent,
+                "일시적인 에러가 발생 하였습니다.\n잠시 후에 다시 시도해주세요."
+                );
+            },
+            });
+        }
+
+        function changeEmailDomain(obj) {
+            var trgObj = $("input[name='emailDomain']");
+            $(trgObj).val($(obj).val());
+            $(trgObj).prop("readonly", !isEmpty($(obj).val()));
+        }
+        </script>
+<style type="text/css">
+.fancybox-margin {
+	margin-right: 16px;
+}
+</style>
+<meta http-equiv="origin-trial"
+	content="A751Xsk4ZW3DVQ8WZng2Dk5s3YzAyqncTzgv+VaE6wavgTY0QHkDvUTET1o7HanhuJO8lgv1Vvc88Ij78W1FIAAAAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjgwNjUyNzk5LCJpc1RoaXJkUGFydHkiOnRydWV9"
+/>
+<meta http-equiv="origin-trial"
+	content="A751Xsk4ZW3DVQ8WZng2Dk5s3YzAyqncTzgv+VaE6wavgTY0QHkDvUTET1o7HanhuJO8lgv1Vvc88Ij78W1FIAAAAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjgwNjUyNzk5LCJpc1RoaXJkUGFydHkiOnRydWV9"
+/>
+
+<link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="//static.groobee.io/dist/g2/css/grb-recommend-list_v2.css" />
+</head>
+
+<script type="text/javascript">
+var isValidBirthday = false;
+var _gaPageTitle = "로그인>아이디 찾기";
+
+jQuery(function($) {
+
+	
+	$("input[name='mBirth']").blur(function() {
+		var birthday = $(this).val().replace(/-/g, "");
+
+		if (isEmpty(birthday)) {
+   			$(".none").show().find(".error:eq(3)").text("생년월일 8자리를 입력해주세요(예.20150115)").show().siblings().hide();
+			isValidBirthday = false;
+		}else{
+	   		if(!isValidDate(birthday)){
+	   			$(".none").show().find(".error:eq(3)").text("올바른 날짜형식이 아닙니다.(예:20150115)").show().siblings().hide();
+				isValidBirthday = false;
+	   		}else if (calcAge(birthday) > 115){
+	   			$(".none").show().find(".error:eq(3)").text("올바른 날짜형식이 아닙니다.(예:20150115)").show().siblings().hide();
+				isValidBirthday = false;
+			}else{
+				$(".none").hide();
+				isValidBirthday = true;
+			}
+		}
+	}).on("keyup", function(e){
+		var code = e.keyCode || e.which;
+		if (code == 13) {
+			findId();
+		}
+	});
+
+});
+
+function calcAge(birthday){
+
+	 var today = new Date();		  //현제날짜구하기
+
+	 var t_year = today.getFullYear();	  //올해
+	 var t_mm = today.getMonth()+1;	 //이번 달 (0이 1월이라 1더함)
+	 var t_dd = today.getDate();	   //오늘 날짜
+
+	 var b_year = Number(birthday.substring(0,4));	 //태어난 년도 4자리
+	 var b_mm = Number(birthday.substring(4,6));	 //태어난 월
+	 var b_dd = Number(birthday.substring(6,8));	 //태어난 일
+
+	 var diff_year = t_year - b_year;  // 나이
+
+	 var diff_mm = (t_mm - b_mm ) * 100 + (t_dd - b_dd); // 날짜 대소 비교 (숫자 100은 단지 큰 숫자를 곱해준 것)
+
+	 return  diff_mm >= 0 ? diff_year : diff_year-1;  // 생일이 지나지 않았으면 나이를 1살 더 내린다
+}
+
+function isValidDate(param) {
+
+	// 자리수가 맞지않을때
+	if( isNaN(param) || param.length!=8 ) {
+		return false;
+	}
+
+	var year = Number(param.substring(0, 4));
+	var month = Number(param.substring(4, 6));
+	var day = Number(param.substring(6, 8));
+
+	if( month<1 || month>12 ) {
+		return false;
+	}
+
+	var maxDaysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+	var maxDay = maxDaysInMonth[month-1];
+
+	// 윤년 체크
+	if( month==2 &&	( year%4==0 && year%100!=0 || year%400==0 ) ) {
+		maxDay = 29;
+	}
+
+	if( day<=0 || day>maxDay ) {
+		return false;
+	}
+
+	return true;
+}
+
+function validateInput() {
+	var name = $.trim($("input[name='mName']").val());
+	$("input[name='mName']").val(name);
+
+	var birthday = $.trim($("input[name='mBirth']").val());
+	$("input[name='mBirth']").val(birthday);
+
+	if (isEmpty(name)) {
+		$(".none").show().find(".error:eq(0)").show().siblings().hide();
+		$("input[name='mName']").focus();
+		return false;
+	}
+
+	if (!isValidHangulEng(name)) {
+		$(".none").show().find(".error:eq(1)").show().siblings().hide();
+		$("input[name='mName']").focus();
+		return false;
+	}
+
+	$("input[name='mBirth']").trigger("blur");
+	if (!isValidBirthday) {
+		$("input[name='mBirth']").focus();
+		return false;
+	}
+
+	$("input[name='bYear']").val(birthday.substring(0, 4));
+	$("input[name='bMonth']").val(birthday.substring(4, 6));
+	$("input[name='bDay']").val(birthday.substring(6));
+	return true;
+}
+
+function findId() {
+	if ( !validateInput() ) {
+		return;
+	}
+
+	$("form[name='findIdForm']").attr("action", "/member/findId");
+	$("form[name='findIdForm']").submit();
+	showLoadingBar(250, 200);
+}
+
+function isValidHangulEng(str) {
+	var bHangul = true;
+    for (var i = 0; i < str.length; i++)
+    {
+    	var c = str.charCodeAt(i);
+        if ( (c > 0x3130 && c < 0x318F) || (c >= 0xAC00 && c <= 0xD7A3) || (c > 64 && c < 91) || (c > 96 && c < 123) )
+        {
+        	continue;
+        }
+    	bHangul = false;
+    }
+    return bHangul;
+}
+
+</script>
+<body>
+	<!-- wrap -->
+	<div id="wrap" class="sub notgnb">
+		<!-- gnb -->
+
+		<script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/co/referCodes.js"></script>
+
+		<script type="text/javascript" src="https://www.thehyundai.com/static/gen/js/mainBnnrContents.js?ver=012146"></script>
+
+		<div id="skip-navigation">
+			<p>
+				<a href="#header-wrap">헤더영역 바로가기</a>
+			</p>
+			<p>
+				<a href="#header-gnb-area">GNB영역 바로가기</a>
+			</p>
+			<p>
+				<a href="#container">컨텐츠영역 바로가기</a>
+			</p>
+			<p>
+				<a href="#footer">푸터영역 바로가기</a>
+			</p>
+		</div>
+
+		<!-- header -->
+		<!-- 서브메뉴 -->
+
+		<!-- top banner -->
+		<div id="js-tpl-topBanner" style="display: none"></div>
+
+		<div class="top-wrap sub">
+			<div class="top-area-setting">
+				<div class="top-con">
+					<div class="top-con-logo">
+						<h1>
+							<a href="http://www.thehyundai.com/Home.html?MainpageGroup=Fix&amp;GroupbannerName=GNB_Logo"><span class="blind">The HYUNDAI</span></a>
+						</h1>
+					</div>
+
+					<div class="top-con-search">
+						<form name="formTopSearchPopup" id="formTopSearchPopup" method="get">
+							<input type="hidden" name="searchtype" id="js_searchtype" />
+							<input type="hidden" name="searchQuery" autocomplete="off" />
+							<div class="top-con-search-unit">
+								<input type="text" class="top-con-search-input" maxlength="30" id="cs-token-input" value="" onfocus="return dq_setTextbox(0,event);"
+									onmousedown="dq_setTextbox(1,event);" onkeydown="dq_setTextbox(1,event);" autocomplete="off"
+								/>
+								<button type="submit" class="top-con-search-btn" onclick="javascript:GA_Event('PC_공통','헤더_검색','검색'); goTopSearch(); return false;">
+									<span class="blind">검색</span>
+								</button>
+
+								<!-- 검색 -->
+								<div class="search-box" id="search_info_box" style="display: none" onmouseover="dq_info_setMouseon();" onmouseout="dq_info_setMouseoff();">
+									<!-- 최근검색어 -->
+									<div class="search-box-list" id="recent_rs_search">
+										<div class="search-box-tit">최근검색어</div>
+										<div class="search-box-cont">
+											<ul class="search-box-text">
+												<li>최근 검색어가 없습니다.</li>
+											</ul>
+										</div>
+									</div>
+
+									<!-- 인기검색어 -->
+									<div class="search-box-list" id="hot_rs_search">
+										<div class="search-box-tit">인기검색어</div>
+										<div class="search-box-cont">
+											<div class="search-box-best">
+												<ul class="search-box-bestnum left">
+													<li><a href="javascript:GA_Event('PC_검색창','인기검색어','명품'); goDirectSearchGnb('명품', 'top', 'search_favoriteKeyword', '명품', '1');"
+														class="lank"
+													>1. 명품</a><span class="status no"><span class="blind">no</span></span></li>
+													<li><a
+														href="javascript:GA_Event('PC_검색창','인기검색어','COS퀼티드백'); goDirectSearchGnb('COS퀼티드백', 'top', 'search_favoriteKeyword', 'COS퀼티드백', '2');"
+														class="lank"
+													>2. COS퀼티드백</a><span class="status no"><span class="blind">no</span></span></li>
+													<li><a
+														href="javascript:GA_Event('PC_검색창','인기검색어','COS 퀼티드'); goDirectSearchGnb('COS 퀼티드', 'top', 'search_favoriteKeyword', 'COS 퀼티드', '3');"
+														class="lank"
+													>3. COS 퀼티드</a><span class="status new">NEW</span></li>
+													<li><a
+														href="javascript:GA_Event('PC_검색창','인기검색어','오니츠카타이거'); goDirectSearchGnb('오니츠카타이거', 'top', 'search_favoriteKeyword', '오니츠카타이거', '4');"
+														class="lank"
+													>4. 오니츠카타이거</a><span class="status down"><span class="blind">down</span></span></li>
+													<li><a
+														href="javascript:GA_Event('PC_검색창','인기검색어','아크테릭스'); goDirectSearchGnb('아크테릭스', 'top', 'search_favoriteKeyword', '아크테릭스', '5');"
+														class="lank"
+													>5. 아크테릭스</a><span class="status down"><span class="blind">down</span></span></li>
+												</ul>
+												<ul class="search-box-bestnum right">
+													<li><a
+														href="javascript:GA_Event('PC_검색창','인기검색어','어그 울트라 미니'); goDirectSearchGnb('어그 울트라 미니', 'top', 'search_favoriteKeyword', '어그 울트라 미니', '6');"
+														class="lank"
+													>6. 어그 울트라 미니</a><span class="status down"><span class="blind">down</span></span></li>
+													<li><a
+														href="javascript:GA_Event('PC_검색창','인기검색어','니트 가디건'); goDirectSearchGnb('니트 가디건', 'top', 'search_favoriteKeyword', '니트 가디건', '7');"
+														class="lank"
+													>7. 니트 가디건</a><span class="status no"><span class="blind">no</span></span></li>
+													<li><a href="javascript:GA_Event('PC_검색창','인기검색어','양말'); goDirectSearchGnb('양말', 'top', 'search_favoriteKeyword', '양말', '8');"
+														class="lank"
+													>8. 양말</a><span class="status no"><span class="blind">no</span></span></li>
+													<li><a
+														href="javascript:GA_Event('PC_검색창','인기검색어','현대식품관'); goDirectSearchGnb('현대식품관', 'top', 'search_favoriteKeyword', '현대식품관', '9');"
+														class="lank"
+													>9. 현대식품관</a><span class="status new">NEW</span></li>
+													<li><a href="javascript:GA_Event('PC_검색창','인기검색어','슬리퍼'); goDirectSearchGnb('슬리퍼', 'top', 'search_favoriteKeyword', '슬리퍼', '10');"
+														class="lank"
+													>10. 슬리퍼</a><span class="status new">NEW</span></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="search-box" id="search_auto_box" style="display: none" onmouseover="dq_setMouseon();" onmouseout="dq_setMouseoff();">
+									<!-- 연관검색어 -->
+									<div class="search-box-list" id="relation_rs_search">
+										<div class="search-box-cont">
+											<ul class="search-box-text">
+												<li>연관 검색어가 없습니다.</li>
+											</ul>
+										</div>
+									</div>
+
+									<!-- 추천브랜드 -->
+									<div class="search-box-list" id="brand_rs_search">
+										<div class="search-box-tit">추천브랜드</div>
+										<div class="search-box-cont">
+											<ul class="search-box-brand">
+												<li>추천 브랜드가 없습니다.</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<!-- //검색 -->
+							</div>
+						</form>
+					</div>
+
+					<div class="top-con-quick">
+						<ul>
+							<li class="myshop-info">
+								<div class="top-con-quick-my">
+									<a href="javascript:GA_Event('PC_공통','헤더_메뉴','로그인/회원'); openLoginPopup();">로그인/회원</a>
+								</div> <!-- 20190118 추가 레이어팝업 -->
+								<div class="myshop-info-layer logout">
+									<!-- logout:비 로그인 상태, login:로그인 상태 -->
+									<div class="myshop-cont">
+										<ul class="myshop-cont-top">
+											<li class="myshop-hyundai"><a onclick="GA_Event('PC_공통','헤더_메뉴','마이현대');"
+												href="https://www.thehyundai.com/front/mpf/selectMyPageMain.thd?MainpageGroup=Util&amp;GroupbannerName=GNB_MyHyundai"
+											>마이현대</a></li>
+											<li><a onclick="GA_Event('PC_공통','헤더_메뉴','주문배송');"
+												href="https://www.thehyundai.com/front/mpa/selectOrdDlvCrst.thd?MainpageGroup=Util&amp;GroupbannerName=GNB_Order"
+											>주문배송</a></li>
+											<li><a onclick="GA_Event('PC_공통','헤더_메뉴','나의찜');" href="https://www.thehyundai.com/front/mpc/sltdItemList.thd">나의 찜</a></li>
+											<li class="myshop-join"><a onclick="GA_Event('PC_공통','헤더_메뉴','회원가입');"
+												href="https://www.thehyundai.com/front/cob/COBCertificationSelect.thd?MainpageGroup=util&amp;GroupbannerName=membership"
+											>회원가입</a></li>
+											<li class="myshop-logout"><a href="javascript:logOut();">로그아웃</a></li>
+										</ul>
+										<ul class="myshop-cont-body">
+											<li class="logout-only"><span class="tit">나의 쇼핑 혜택</span> <a href="javascript://"
+												onclick="javascript:GA_Event('PC_공통','헤더_메뉴','나의 쇼핑 혜택'); buyGradePup(event);return false;"
+											><span class="blind">자세히보기</span></a></li>
+											<li class="login-only"><span class="tit">등급</span> <span class="cont">혜택</span> <a href="javascript://"
+												onclick="javascript:GA_Event('PC_공통','헤더_메뉴','나의 쇼핑 혜택'); buyGradePup(event, 'MainpageGroup=util&amp;GroupbannerName=memberLevel_notice');return false;"
+											><span class="blind">자세히보기</span></a></li>
+											<li><span class="tit">쿠폰</span> <span class="cont login-only">0장</span> <a onclick="GA_Event('PC_공통','헤더_메뉴','쿠폰');"
+												href="https://www.thehyundai.com/front/mpe/selectCopnList.thd?MainpageGroup=util&amp;GroupbannerName=coupon"
+											><span class="blind">자세히보기</span></a></li>
+											<li><span class="tit">H.Point</span> <span class="cont login-only">0P</span> <a onclick="goHpoint()" href="#"><span class="blind">자세히보기</span></a></li>
+											<li><span class="tit">더머니</span> <span class="cont login-only">0원</span> <a onclick="GA_Event('PC_공통','헤더_메뉴','더머니');"
+												href="https://www.thehyundai.com/front/mpe/selectHPntTabPage.thd?MainpageGroup=util&amp;GroupbannerName=theMoney"
+											><span class="blind">자세히보기</span></a></li>
+										</ul>
+									</div>
+								</div> <!-- // 20190118 추가 레이어팝업 -->
+							</li>
+							<li><a onclick="GA_Event('PC_공통','헤더_메뉴', '고객센터');"
+								href="https://www.thehyundai.com/front/cca/main.thd?MainpageGroup=Util&amp;GroupbannerName=GNB_Center"
+							>고객센터</a></li>
+							<li>
+								<div class="top-con-quick-basket">
+									<a onclick="GA_Event('PC_공통','헤더_메뉴', '장바구니');"
+										href="https://www.thehyundai.com/front/odb/basktList.thd?MainpageGroup=Util&amp;GroupbannerName=GNB_Basket"
+									>장바구니</a><span class="basket-num" id="quick_baskt_num">0</span>
+								</div>
+							</li>
+							<!-- 20210830 바로접속 추가// -->
+							<li>
+								<div class="top-con-quick-onoff">
+									<a href="#">바로접속<span class="ic-onff">OFF</span></a>
+								</div>
+							</li>
+							<!-- //20210830 바로접속 추가 -->
+						</ul>
+					</div>
+				</div>
+				<div class="top-nav" id="header-gnb-area">
+					<!-- 20210518 gnb nav 수정// -->
+				</div>
+				<!-- // top-nav -->
+				<!-- //gnb-area -->
+
+
+
+				<script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/dp/dpo/dqAutoCompleteNewCommon.js?ver=030121"></script>
+				<script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/dp/dpo/dqAutoCompleteNew.js?ver=030121"></script>
+
+			</div>
+		</div>
+
+
+		<script type="text/javascript">
+            $(document).ready(function () {});
+        </script>
+
+		<!-- //gnb -->
+
+		<div id="container">
+			<h1 class="blind">컨텐츠영역</h1>
+
+			<!-- breadcrumb -->
+			<div class="breadcrumb">
+				<ul class="breadcrumb-list">
+					<li><a href="#">HOME</a></li>
+					<li><a href="#">로그인</a></li>
+					<li>아이디 찾기</li>
+				</ul>
+			</div>
+			<!-- //breadcrumb -->
+
+			<!-- content-wrap -->
+			<div class="content-wrap signup type3">
+
+				<!-- content -->
+				<div class="content">
+
+					<!-- content-top -->
+					<div class="content-top">
+						<h2 class="subtitle">아이디찾기</h2>
+						<div class="line"></div>
+						<div class="ins">
+							<strong>더현대닷컴</strong>을 방문해 주셔서 감사합니다.<br> 고객님의 정보를 편리하고 안전하게 찾을 수 있도록 도와드리겠습니다.
+						</div>
+					</div>
+					<!-- //content-top -->
+
+					<!-- form-wrap -->
+					<form name="findIdForm" method="post">
+						<input type="hidden" name="bYear">
+						<input type="hidden" name="bMonth">
+						<input type="hidden" name="bDay">
+						<fieldset class="join-input-wrap type1">
+
+							<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+
+							<div class="row-wrap">
+								<label>이름</label>
+								<input type="text" title="이름" maxlength="15" name="mName">
+
+							</div>
+							<div class="row-wrap">
+								<label>생년월일</label>
+								<input type="text" class="onlyNumberInput" title="생년월일" name="mBirth" maxlength="8">
+								<p class="input-msg">생년월일의 연월일을 -없이 입력해주세요. (예: 20010101)</p>
+							</div>
+						</fieldset>
+						<div class="none">
+							<label class="error">이름을 입력해 주세요.</label> <label class="error">이름은 한글 또는 영문만 입력 가능합니다.</label> <label class="error">생년월일을 입력해 주세요.</label> <label
+								class="error"
+							>연월일을 - 없이 숫자 8자리로 입력해주세요. (예:20010101)</label>
+						</div>
+					</form>
+					<!-- //form-wrap -->
+
+					<!-- btn-wrap -->
+					<div class="btn-wrap">
+						<button class="btn size5 color2" type="button" onclick="findId();">확인</button>
+					</div>
+					<!-- //btn-wrap -->
+
+				</div>
+				<!-- //content -->
+
+			</div>
+			<!-- //content-wrap -->
+
+		</div>
+
+		<!-- footer -->
+
+
+		<!-- footer -->
+		<div id="footer">
+			<h1 class="blind">푸터영역</h1>
+			<div class="top">
+				<div class="row">
+					<div class="hyundai-menu">
+						<span class="tit"> <a href="javascript:;"
+							onclick="javascript:GA_Event('PC_공통','푸터_메뉴','현대백화점그룹'); dummyLogCatch('http://www.ehyundai.com/newPortal/ir', 'Footer', 'group', 'blank', 'Y', null)"
+						>현대백화점그룹</a>
+						</span>
+						<ul>
+							<li><a onclick="GA_Event('PC_공통','푸터_메뉴','공지사항');"
+								href="http://www.thehyundai.com/front/ccb/noticeList.thd?MainpageGroup=Footer&amp;GroupbannerName=notice"
+							>공지사항</a></li>
+
+							<li><a href="javascript:;"
+								onclick="javascript:GA_Event('PC_공통','푸터_메뉴','윤리경영'); dummyLogCatch('http://www.ehyundai.com/newPortal/ir/ETH/ETH000001.do?ir=3', 'Footer', 'legal', 'blank', 'Y', null)"
+							>윤리경영</a></li>
+							<li><a href="javascript:;"
+								onclick="javascript:GA_Event('PC_공통','푸터_메뉴','사회공헌'); dummyLogCatch('http://www.ehyundai.com/newPortal/csr/main.do', 'Footer', 'legal', 'blank', 'Y', null)"
+							>사회공헌</a></li>
+							<li><a onclick="GA_Event('PC_공통','푸터_메뉴','이용약관');"
+								href="http://www.thehyundai.com/front/cua/viewPolicyPup.thd?view=1&amp;MainpageGroup=Footer&amp;GroupbannerName=agree" data-toggle="winpopup"
+								data-api="center,900,770,scrollbars" target="_blank"
+							>이용약관</a></li>
+							<li><a onclick="GA_Event('PC_공통','푸터_메뉴','개인정보 처리방침');"
+								href="http://www.thehyundai.com/front/cua/viewPolicyPup.thd?view=2&amp;MainpageGroup=Footer&amp;GroupbannerName=private"
+								data-toggle="winpopup" data-api="center,900,770,scrollbars" target="_blank"
+							><strong>개인정보 처리방침</strong></a></li>
+						</ul>
+					</div>
+
+					<!-- 2016-07-28// -->
+
+					<!-- //2016-07-28 -->
+				</div>
+			</div>
+			<div class="bottom">
+				<div class="row">
+					<div class="logo">
+						<a href="http://www.thehyundai.com/Home.html"><img src="https://image.thehyundai.com/hdmall/images/co/img_bottom_logo.png" alt="THE HYUNDAI" /></a>
+					</div>
+					<div class="info">
+						<!-- 171130 수정// -->
+						<p>주식회사 현대백화점 대표이사 : 김형종 외 2인 서울시 강남구 테헤란로98길 12</p>
+						<p>
+							사업자등록번호 : 211-87-21455 <a href="https://www.ftc.go.kr/bizCommPop.do?wrkr_no=2118721455" data-toggle="winpopup"
+								data-api="center,750,700,scrollbars" target="_blank"
+							>[사업자정보 확인]</a> 통신판매업신고 : 2010-서울강남-01882
+						</p>
+						<p>
+							홈페이지/앱 문의 : <a href="mailto:customerservice@thehyundai.com">customerservice@thehyundai.com</a> 고객센터 : <strong>1800-2233</strong>
+						</p>
+						<p>호스팅서비스 : (주)현대백화점</p>
+						<p class="copy">CopyrightⓒHyundai Department Store. All rights reserved.</p>
+						<!-- //171130 수정 -->
+					</div>
+
+				</div>
+				<div class="certi-wrap row">
+					<p class="certi">
+						<a href="http://www.kolsa.or.kr/neopress/index.php?mid=regular" target="_blank"><img
+							src="https://image.thehyundai.com/hdmall/images/co/img_footer_v2_certi_01.png" alt="사단법인 한국온라인 쇼핑협회 정회원사"
+						/></a> <span class="scol">|</span> <a href="http://www.kca.go.kr/wpge/m_210/ccm1100.do" target="_blank"><img
+							src="https://image.thehyundai.com/hdmall/images/co/img_footer_v2_certi_02.png" alt="공정거래위원회 CCm 인증 [소비자중심 경영우수기업]"
+						/></a> <span class="scol">|</span> <a target="_blank"><img src="https://image.thehyundai.com/hdmall/images/co/img_footer_certi_03.png"
+							alt="위해상품 차단 시스템 운영매장"
+						/></a> <span class="scol">|</span> <a target="_blank"><img src="https://image.thehyundai.com/hdmall/images/co/img_footer_certi_04.png"
+							alt="모바일 어워드 코리아 2016"
+						/></a>
+					</p>
+					<p class="checkguarantee">
+						<span> 고객님의 안전거래를 위해 현금결제시 우리은행과 채무지급보증계약을<br /> 체결하여 안전거래를 보장하고 있습니다.
+						</span>
+						<!--http://www.thehyundai.com/html/contents/-->
+						<a href="#" onclick="javascript:popover_ajax('https://www.thehyundai.com/html/contents/guarantee.html', 750);return false;">서비스 가입사실 확인</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //wrap -->
+
+
+
+	</div>
+</body>
+</html>

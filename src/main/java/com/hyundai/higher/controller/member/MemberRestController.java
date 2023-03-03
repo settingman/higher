@@ -61,7 +61,7 @@ public class MemberRestController {
 	}
 
 	// 비밀번호 찾기 AJAX
-	@GetMapping(value = "/findPw")
+	@GetMapping(value = "/ajaxfindPw")
 	public String findIdPwPage(@RequestParam("mName") String mName, @RequestParam("mId") String mId, Model model) {
 
 		log.info(mName);

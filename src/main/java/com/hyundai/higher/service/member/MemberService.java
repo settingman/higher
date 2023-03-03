@@ -62,7 +62,9 @@ public class MemberService implements UserDetailsService {
 	// Security User 생성
 	@Override
 	public UserDetails loadUserByUsername(String mId) throws UsernameNotFoundException {
+		
 		Member member = memberMapper.findById(mId);
+		
 		log.info("userdetails");
 
 		if (member == null) {

@@ -98,12 +98,12 @@ public class MemberController {
 		return "/member/login";
 
 	}
-	
+
 	// 회원가입 완료
-		@GetMapping(value = "/joincomplete")
-		public String joincomplete(Model model) {
-			return "/member/joincomplete";
-		}
+	@GetMapping(value = "/joincomplete")
+	public String joincomplete(Model model) {
+		return "/member/joincomplete";
+	}
 
 	// 로그인 에러페이지 접근
 	@GetMapping(value = "/login/error")
@@ -120,17 +120,23 @@ public class MemberController {
 		return "redirect:/member/login";
 	}
 
-	// id, pw Page
-	@GetMapping(value = "/findIdPwPage")
-	public String findIdPwPage(Model model) {
+	// 아이디 찾기 페이지 요청
+	@GetMapping(value = "/findId")
+	public String findId(Model model) {
 
-		return "/member/findidpwpage";
+		return "/member/findId";
 	}
 
-	// find id
-	@PostMapping(value = "/findIdPwPage")
-	public String findIdPwPage(@RequestParam("mName") String mName, @RequestParam("mBirth") Integer mBirth,
-			Model model) {
+	// 아이디 찾기 페이지 요청
+	@GetMapping(value = "/findPw")
+	public String findPw(Model model) {
+
+		return "/member/findPw";
+	}
+
+	// find id - 아이디 찾기 기능
+	@PostMapping(value = "/findId")
+	public String findId(@RequestParam("mName") String mName, @RequestParam("mBirth") Integer mBirth, Model model) {
 
 		log.info(mName);
 		log.info(mBirth.toString());
@@ -139,7 +145,7 @@ public class MemberController {
 
 		if (findMember == null) {
 			log.info("fail");
-			return "/member/findidpwpage";
+			return "/member/findId";
 		}
 
 		String mId = findMember.getMId();
@@ -148,7 +154,7 @@ public class MemberController {
 
 		model.addAttribute("findMember", findMember);
 
-		return "/member/searchEasyId";
+		return "/member/findIdComplete";
 	}
 
 }

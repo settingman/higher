@@ -25,6 +25,16 @@
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://image.thehyundai.com/pc/js/jquery-1.11.3.min.js"></script>
+<script src="https://image.thehyundai.com/pc/js/jquery-ui.min.js"></script>
+<script src="https://image.thehyundai.com/pc/js/jquery-migrate.min.js"></script>
+
+<script src="https://image.thehyundai.com/pc/js/plugin.js?ver=030316"></script>
+<script type="text/javascript" src="https://image.thehyundai.com/pc/js/hdmall/co/jquery.form.js"></script>
+<script type="text/javascript" src="https://image.thehyundai.com/pc/js/hdmall/co/default.js?ver=030316"></script>
+<script type="text/javascript" src="https://image.thehyundai.com/pc/js/hdmall/co/common.js?ver=030316"></script>
+<script src="https://image.thehyundai.com/pc/js/common.js?ver=030316"></script>
+<script type="text/javascript" src="https://image.thehyundai.com/pc/js/swiper.min.js?ver=030316"></script>
 
 
 
@@ -594,6 +604,9 @@
         function checkId() {
             if (isValidId) {
             var objParent = $("input[name=mId]").parent();
+            
+            showLoadingBar(250, 200);
+            
             $.ajax({
                 type: "get",
                 url: '/member/check?checkid=' + $("input[name=mId]").val(),
@@ -815,11 +828,12 @@
             
             var val = $("input[name='mEmail']").val();
             
-           
+            showLoadingBar("180px", "150px");
             $.ajax({
                 type: "get",
                 url: "/member/vaildEmail?emailAdr="+val,
                 success: function (data) {
+                hideLoadingBar();
                 code=data;
                 console.log(code);
                 if (data.resultMsg == "alreadyCertSuccess") {
