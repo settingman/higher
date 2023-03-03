@@ -71,7 +71,7 @@ public class MemberRestController {
 
 		if (findMember == null) {
 			log.info("fail");
-			return "/member/findidpwpage";
+			return "fail";
 		}
 
 		String tmpPassword = mailService.getTmpPassword();

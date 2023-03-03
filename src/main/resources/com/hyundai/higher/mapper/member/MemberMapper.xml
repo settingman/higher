@@ -25,8 +25,7 @@
 
 	<select id="findByNameId"
 		resultType="com.hyundai.higher.domain.member.Member">
-		SELECT MID, MPassword, MName, MPhone, MEmail, MZipCode,
-		MAddress1, MAddress2, MBirth, MGender, MRole
+		SELECT MID, MPassword, MName, MPhone, MEmail, MBirth, MRole
 		FROM MEMBER
 		where
 		MName=#{mName} and MId=#{mId}

@@ -611,6 +611,7 @@
                 type: "get",
                 url: '/member/check?checkid=' + $("input[name=mId]").val(),
                 success: function (data) {
+                	hideLoadingBar();
                 if (data=="0") {
                     displayMsg(objParent);
                     isCheckedId = true;
