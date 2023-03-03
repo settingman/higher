@@ -46,6 +46,8 @@ public class MemberRestController {
 	@GetMapping("/check")
 	
 	public String checkId(@RequestParam("checkid") String checkId) {
+		
+		log.info(checkId);
 
 		String result = "1";
 

@@ -98,6 +98,12 @@ public class MemberController {
 		return "/member/login";
 
 	}
+	
+	// 회원가입 완료
+		@GetMapping(value = "/joincomplete")
+		public String joincomplete(Model model) {
+			return "/member/joincomplete";
+		}
 
 	// 로그인 에러페이지 접근
 	@GetMapping(value = "/login/error")

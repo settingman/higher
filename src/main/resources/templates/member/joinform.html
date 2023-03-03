@@ -82,6 +82,8 @@
          			$('#mBirth').attr('disabled',false);
          			$('#registMemberBtn').attr('disabled',false);
          			$('#chkDupId').attr('disabled',false);
+         			$('#emailHead').attr('disabled',true);
+         			$('#email-domain').attr('disabled',true);
          			
          		
          		}else{
@@ -587,19 +589,16 @@
             );
         }
 
-        // 20161205 추가 //
+        // 20161205 추가 /
 
         function checkId() {
             if (isValidId) {
             var objParent = $("input[name=mId]").parent();
             $.ajax({
-                type: "POST",
-                url: "https://www.thehyundai.com/front/cua/memberIdCheckPup.thd",
-                data: { id: $("input[name=mId]").val() },
-                dataType: "json",
+                type: "get",
+                url: '/member/check?checkid=' + $("input[name=mId]").val(),
                 success: function (data) {
-                hideBlockLoadingBar();
-                if (!data.isDupe) {
+                if (data=="0") {
                     displayMsg(objParent);
                     isCheckedId = true;
                 } else {
@@ -636,6 +635,8 @@
             var isValid = true;
             $("input[name='mId']").trigger("blur");
             if (!isValidId || !isCheckedId) {
+            console.log(isValidId);
+            console.log(isCheckedId);
             setFocus($("input[name='mId']"));
             isValid = false;
             }
@@ -711,7 +712,7 @@
             $("input[name='mPhone']").val(mobile[0] + mobile[1] + mobile[2]);
      
            
-
+			console.log("회원가입 진행");
             $("form[name='registMemberForm']").submit();
         }
 
@@ -767,23 +768,7 @@
 
 
 
-        function setCert(hpTel, certSeq) {
-            $(".tab-pane .cert-email").hide();
-            $(".tab-pane .cert-complete:eq(1)").show();
-
-            $(".join-block input, button").prop("disabled", false);
-            $(".btn-wrap button").prop("disabled", false);
-
-            $.fancybox.close();
-
-            set_pagetitle_manual("회원가입 | THE HYUNDAI");
-
-            $("input[name='mPhone']")
-            .val(hpTel)
-            .prop("readonly", true)
-            .trigger("keyup");
-            $("input[name='certSeq']").val(certSeq);
-        }
+       
 
 
 
@@ -1390,9 +1375,17 @@ keyframes rotateSpinner { 0% {
 
 
 
+
+
+
+
 %
 {
 transform
+
+
+
+
 
 
 
@@ -1430,6 +1423,10 @@ transform
 
 
 
+
+
+
+
 rotate
 
 
@@ -1447,7 +1444,15 @@ rotate
 
 
 
+
+
+
+
 (
+
+
+
+
 
 
 
@@ -1485,7 +1490,15 @@ rotate
 
 
 
+
+
+
+
 )
+
+
+
+
 
 
 
@@ -1634,9 +1647,17 @@ keyframes fb_mpn_landing_page_slide_out { 0% {
 
 
 
+
+
+
+
 %
 {
 border-radius
+
+
+
+
 
 
 
@@ -1674,7 +1695,15 @@ border-radius
 
 
 
+
+
+
+
 18px
+
+
+
+
 
 
 
@@ -1712,9 +1741,17 @@ border-radius
 
 
 
+
+
+
+
 %
 {
 border-radius
+
+
+
+
 
 
 
@@ -1752,7 +1789,15 @@ border-radius
 
 
 
+
+
+
+
 50
+
+
+
+
 
 
 
@@ -1789,7 +1834,15 @@ margin
 
 
 
+
+
+
+
 :
+
+
+
+
 
 
 
@@ -1827,7 +1880,15 @@ margin
 
 
 
+
+
+
+
 24px
+
+
+
+
 
 
 
@@ -1846,6 +1907,10 @@ margin
 
 ;
 width
+
+
+
+
 
 
 
@@ -1883,7 +1948,15 @@ width
 
 
 
+
+
+
+
 60px
+
+
+
+
 
 
 
@@ -1928,9 +2001,17 @@ keyframes fb_mpn_landing_page_slide_out_from_left { 0% {
 
 
 
+
+
+
+
 %
 {
 border-radius
+
+
+
+
 
 
 
@@ -1968,7 +2049,15 @@ border-radius
 
 
 
+
+
+
+
 18px
+
+
+
+
 
 
 
@@ -2006,9 +2095,17 @@ border-radius
 
 
 
+
+
+
+
 %
 {
 border-radius
+
+
+
+
 
 
 
@@ -2046,7 +2143,15 @@ border-radius
 
 
 
+
+
+
+
 50
+
+
+
+
 
 
 
@@ -2083,6 +2188,10 @@ left
 
 
 
+
+
+
+
 :
 
 
@@ -2102,7 +2211,15 @@ left
 
 
 
+
+
+
+
 12px
+
+
+
+
 
 
 
@@ -2139,6 +2256,10 @@ width
 
 
 
+
+
+
+
 :
 
 
@@ -2158,7 +2279,15 @@ width
 
 
 
+
+
+
+
 60px
+
+
+
+
 
 
 
@@ -2203,9 +2332,17 @@ keyframes fb_mpn_landing_page_slide_up { 0% {
 
 
 
+
+
+
+
 %
 {
 bottom
+
+
+
+
 
 
 
@@ -2243,7 +2380,15 @@ bottom
 
 
 
+
+
+
+
 24px
+
+
+
+
 
 
 
@@ -2280,6 +2425,10 @@ opacity
 
 
 
+
+
+
+
 :
 
 
@@ -2299,7 +2448,15 @@ opacity
 
 
 
+
+
+
+
 1
+
+
+
+
 
 
 
@@ -2344,9 +2501,17 @@ keyframes fb_mpn_bounce_in { 0% {
 
 
 
+
+
+
+
 %
 {
 opacity
+
+
+
+
 
 
 
@@ -2384,7 +2549,15 @@ opacity
 
 
 
+
+
+
+
 1
+
+
+
+
 
 
 
@@ -2421,6 +2594,10 @@ top
 
 
 
+
+
+
+
 :
 
 
@@ -2440,7 +2617,15 @@ top
 
 
 
+
+
+
+
 0
+
+
+
+
 
 
 
@@ -2485,9 +2670,17 @@ keyframes fb_mpn_fade_out { 0% {
 
 
 
+
+
+
+
 %
 {
 bottom
+
+
+
+
 
 
 
@@ -2525,7 +2718,15 @@ bottom
 
 
 
+
+
+
+
 0
+
+
+
+
 
 
 
@@ -2562,6 +2763,10 @@ opacity
 
 
 
+
+
+
+
 :
 
 
@@ -2581,7 +2786,15 @@ opacity
 
 
 
+
+
+
+
 0
+
+
+
+
 
 
 
@@ -2626,9 +2839,17 @@ keyframes fb_mpn_bounce_out { 0% {
 
 
 
+
+
+
+
 %
 {
 opacity
+
+
+
+
 
 
 
@@ -2666,6 +2887,10 @@ opacity
 
 
 
+
+
+
+
 0
 
 
@@ -2683,7 +2908,15 @@ opacity
 
 
 
+
+
+
+
 .5
+
+
+
+
 
 
 
@@ -2720,6 +2953,10 @@ top
 
 
 
+
+
+
+
 :
 
 
@@ -2739,7 +2976,15 @@ top
 
 
 
+
+
+
+
 100
+
+
+
+
 
 
 
@@ -2785,9 +3030,17 @@ keyframes fb_bounce_in_v2 { 0% {
 
 
 
+
+
+
+
 %
 {
 transform
+
+
+
+
 
 
 
@@ -2825,7 +3078,15 @@ transform
 
 
 
+
+
+
+
 scale
+
+
+
+
 
 
 
@@ -2861,7 +3122,15 @@ scale
 
 
 
+
+
+
+
 1
+
+
+
+
 
 
 
@@ -2897,6 +3166,10 @@ scale
 
 
 
+
+
+
+
 .03
 
 
@@ -2916,7 +3189,15 @@ scale
 
 
 
+
+
+
+
 )
+
+
+
+
 
 
 
@@ -2953,7 +3234,15 @@ transform-origin
 
 
 
+
+
+
+
 :
+
+
+
+
 
 
 
@@ -2991,7 +3280,15 @@ bottom
 
 
 
+
+
+
+
 right
+
+
+
+
 
 
 
@@ -3011,6 +3308,10 @@ right
 ;
 }
 100
+
+
+
+
 
 
 
@@ -3050,6 +3351,10 @@ opacity
 
 
 
+
+
+
+
 :
 
 
@@ -3069,7 +3374,15 @@ opacity
 
 
 
+
+
+
+
 1
+
+
+
+
 
 
 
@@ -3106,7 +3419,15 @@ transform
 
 
 
+
+
+
+
 :
+
+
+
+
 
 
 
@@ -3142,7 +3463,15 @@ scale
 
 
 
+
+
+
+
 (
+
+
+
+
 
 
 
@@ -3182,7 +3511,15 @@ scale
 
 
 
+
+
+
+
 )
+
+
+
+
 
 
 
@@ -3201,6 +3538,10 @@ scale
 
 ;
 transform-origin
+
+
+
+
 
 
 
@@ -3238,6 +3579,10 @@ transform-origin
 
 
 
+
+
+
+
 bottom
 
 
@@ -3257,7 +3602,15 @@ bottom
 
 
 
+
+
+
+
 right
+
+
+
+
 
 
 
@@ -3303,9 +3656,17 @@ keyframes fb_bounce_in_from_left { 0% {
 
 
 
+
+
+
+
 %
 {
 transform
+
+
+
+
 
 
 
@@ -3343,7 +3704,15 @@ transform
 
 
 
+
+
+
+
 scale
+
+
+
+
 
 
 
@@ -3379,7 +3748,15 @@ scale
 
 
 
+
+
+
+
 1
+
+
+
+
 
 
 
@@ -3415,6 +3792,10 @@ scale
 
 
 
+
+
+
+
 .03
 
 
@@ -3434,7 +3815,15 @@ scale
 
 
 
+
+
+
+
 )
+
+
+
+
 
 
 
@@ -3471,7 +3860,15 @@ transform-origin
 
 
 
+
+
+
+
 :
+
+
+
+
 
 
 
@@ -3509,7 +3906,15 @@ bottom
 
 
 
+
+
+
+
 left
+
+
+
+
 
 
 
@@ -3529,6 +3934,10 @@ left
 ;
 }
 100
+
+
+
+
 
 
 
@@ -3568,6 +3977,10 @@ opacity
 
 
 
+
+
+
+
 :
 
 
@@ -3587,7 +4000,15 @@ opacity
 
 
 
+
+
+
+
 1
+
+
+
+
 
 
 
@@ -3624,7 +4045,15 @@ transform
 
 
 
+
+
+
+
 :
+
+
+
+
 
 
 
@@ -3660,7 +4089,15 @@ scale
 
 
 
+
+
+
+
 (
+
+
+
+
 
 
 
@@ -3700,7 +4137,15 @@ scale
 
 
 
+
+
+
+
 )
+
+
+
+
 
 
 
@@ -3719,6 +4164,10 @@ scale
 
 ;
 transform-origin
+
+
+
+
 
 
 
@@ -3756,6 +4205,10 @@ transform-origin
 
 
 
+
+
+
+
 bottom
 
 
@@ -3775,7 +4228,15 @@ bottom
 
 
 
+
+
+
+
 left
+
+
+
+
 
 
 
@@ -3821,9 +4282,17 @@ keyframes fb_bounce_out_v2 { 0% {
 
 
 
+
+
+
+
 %
 {
 opacity
+
+
+
+
 
 
 
@@ -3861,7 +4330,15 @@ opacity
 
 
 
+
+
+
+
 0
+
+
+
+
 
 
 
@@ -3898,7 +4375,15 @@ transform
 
 
 
+
+
+
+
 :
+
+
+
+
 
 
 
@@ -3934,7 +4419,15 @@ scale
 
 
 
+
+
+
+
 (
+
+
+
+
 
 
 
@@ -3974,7 +4467,15 @@ scale
 
 
 
+
+
+
+
 )
+
+
+
+
 
 
 
@@ -3993,6 +4494,10 @@ scale
 
 ;
 transform-origin
+
+
+
+
 
 
 
@@ -4030,6 +4535,10 @@ transform-origin
 
 
 
+
+
+
+
 bottom
 
 
@@ -4049,7 +4558,15 @@ bottom
 
 
 
+
+
+
+
 right
+
+
+
+
 
 
 
@@ -4095,9 +4612,17 @@ keyframes fb_bounce_out_from_left { 0% {
 
 
 
+
+
+
+
 %
 {
 opacity
+
+
+
+
 
 
 
@@ -4135,7 +4660,15 @@ opacity
 
 
 
+
+
+
+
 0
+
+
+
+
 
 
 
@@ -4172,7 +4705,15 @@ transform
 
 
 
+
+
+
+
 :
+
+
+
+
 
 
 
@@ -4208,7 +4749,15 @@ scale
 
 
 
+
+
+
+
 (
+
+
+
+
 
 
 
@@ -4248,7 +4797,15 @@ scale
 
 
 
+
+
+
+
 )
+
+
+
+
 
 
 
@@ -4267,6 +4824,10 @@ scale
 
 ;
 transform-origin
+
+
+
+
 
 
 
@@ -4304,6 +4865,10 @@ transform-origin
 
 
 
+
+
+
+
 bottom
 
 
@@ -4323,7 +4888,15 @@ bottom
 
 
 
+
+
+
+
 left
+
+
+
+
 
 
 
@@ -4368,9 +4941,17 @@ keyframes slideInFromBottom { 0% {
 
 
 
+
+
+
+
 %
 {
 opacity
+
+
+
+
 
 
 
@@ -4408,7 +4989,15 @@ opacity
 
 
 
+
+
+
+
 1
+
+
+
+
 
 
 
@@ -4445,7 +5034,15 @@ transform
 
 
 
+
+
+
+
 :
+
+
+
+
 
 
 
@@ -4481,7 +5078,15 @@ translateY
 
 
 
+
+
+
+
 (
+
+
+
+
 
 
 
@@ -4519,7 +5124,15 @@ translateY
 
 
 
+
+
+
+
 )
+
+
+
+
 
 
 
@@ -4563,9 +5176,17 @@ keyframes slideInFromBottomDelay { 0% {
 
 
 
+
+
+
+
 %
 {
 opacity
+
+
+
+
 
 
 
@@ -4603,7 +5224,15 @@ opacity
 
 
 
+
+
+
+
 0
+
+
+
+
 
 
 
@@ -4640,7 +5269,15 @@ transform
 
 
 
+
+
+
+
 :
+
+
+
+
 
 
 
@@ -4676,7 +5313,15 @@ translateY
 
 
 
+
+
+
+
 (
+
+
+
+
 
 
 
@@ -4712,8 +5357,16 @@ translateY
 
 
 
+
+
+
+
 %
 )
+
+
+
+
 
 
 
@@ -4751,9 +5404,17 @@ translateY
 
 
 
+
+
+
+
 %
 {
 opacity
+
+
+
+
 
 
 
@@ -4791,7 +5452,15 @@ opacity
 
 
 
+
+
+
+
 1
+
+
+
+
 
 
 
@@ -4828,7 +5497,15 @@ transform
 
 
 
+
+
+
+
 :
+
+
+
+
 
 
 
@@ -4864,7 +5541,15 @@ translateY
 
 
 
+
+
+
+
 (
+
+
+
+
 
 
 
@@ -4902,7 +5587,15 @@ translateY
 
 
 
+
+
+
+
 )
+
+
+
+
 
 
 
@@ -5168,16 +5861,8 @@ translateY
 
 						<div class="join-body">
 							<form name="registMemberForm" method="post" id="memberJoinForm" action="/member/joinform" th:object="${memberFormDto}">
-								<input type="hidden" name="emailCertNo" />
-								<input type="hidden" name="hmallAgreementYn" value="Y" />
-								<input type="hidden" name="privacyAgreementYn" value="Y" />
-								<input type="hidden" name="emaliCertYn" value="Y" />
-								<input type="hidden" name="marketingAgreementYn" value="Y" />
-								<input type="hidden" name="b2eCustNo" value="" />
-								<!-- 전자상거래 규제 개선 -->
-								<input type="hidden" name="popupYn" value="N" />
-								<input type="hidden" name="token" />
-								<input type="hidden" name="snsType" />
+
+								<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
 
 								<div class="join-block">
 									<h3>
@@ -5195,9 +5880,9 @@ translateY
 											<div class="ccs-input-wrap">
 												<p class="guide">이메일 인증을 위해 현재 사용하고 계시는 이메일 주소를 입력해주세요.</p>
 												<div class="ccs-input">
-													<input type="text" title="이메일 아이디" maxlength="30" placeholder="이메일주소" name="emailHead" value="" class="email-id" />
+													<input type="text" title="이메일 아이디" maxlength="30" placeholder="이메일주소" id="emailHead" name="emailHead" value="" class="email-id" />
 													<span class="scol">@</span>
-													<input type="text" title="이메일 주소" maxlength="65" name="emailDomain" value="" class="email-domain" />
+													<input type="text" title="이메일 주소" maxlength="65" name="emailDomain" value="" id="email-domain" class="email-domain" />
 													<div class="selectric-wrapper" style="width: 140px">
 														<div class="selectric-hide-select">
 															<select name="emailDomainSelect" title="메일 주소 선택" onchange="changeEmailDomain(this);" tabindex="0" style="display: none">
@@ -5275,14 +5960,6 @@ translateY
 											</div>
 										</div>
 										<!--//완료-->
-										<!--완료(모바일)-->
-										<div class="cert-complete" style="display: none">
-											<div class="ccs-result text">
-												<span><i>인증</i>이 완료되었습니다.</span>
-												<button class="btn" onclick="resetCert(); return false;">다시 인증하기</button>
-											</div>
-										</div>
-										<!--//완료-->
 									</div>
 								</div>
 
@@ -5351,12 +6028,6 @@ translateY
 											<div class="row">
 
 												<input type="hidden" name="mobilePhone">
-												<input type="hidden" name="hpTel">
-												<input type="hidden" name="certSeq" value="0">
-												<input type="hidden" name="mobileDdd">
-												<input type="hidden" name="mobilePhone1">
-												<input type="hidden" name="mobilePhone2">
-
 
 												<input type="text" title="Input-phone" class="onlyNumberInput" name="mPhone" th:field="*{mPhone}" maxlength="13" placeholder="휴대폰번호"
 													disabled="disabled"

@@ -1889,7 +1889,7 @@ translateY
 							<form name="login" id="loginForm" action="/member/login" method="post">
 								<div class="login-fieldset">
 									<div class="login-input">
-										<input type="text" title="아이디" placeholder="H.Point 아이디" name="mId" id="custId" value="" />
+										<input type="text" title="아이디" placeholder="H.Point 아이디" name="mId" id="custId" th:value="${mId}" />
 										<input type="password" title="비밀번호" placeholder="H.Point 비밀번호" name="password" id="custPwd" value="" autocomplete="off" />
 									</div>
 									<!-- [TO DEV] Error msg here. -->
@@ -2075,22 +2075,28 @@ translateY
 		$("#login_btn")
 				.click(
 						function() {
-							var id = $("#loginForm").find("#j_username").val();
-							var pw = $("#loginForm").find("#j_password").val();
+							var id = $("#loginForm").find("#custId").val();
+							var pw = $("#loginForm").find("#custPwd").val();
 
-							document.getElementById("loginLayer").value = "E";
+							
+							console.log(id);
+							console.log(pw);
+							
 
 							//            console.log("id : " + id);
 							//            console.log("pw : " + pw);
 
 							if (false) {
+								console.log("0");
 								if (id == "") {
+									console.log("1");
 									document.getElementById("hpErrMsg").textContent = "이메일을 입력하셔야 합니다.";
 									//layerAlert("이메일을 입력하셔야 합니다.");
 									return;
 								}
 
 								if (pw == "") {
+									console.log("2");
 									document.getElementById("hpErrMsg").textContent = "Please enter your password";
 									//layerAlert("Please enter your password");
 									return;
@@ -2112,7 +2118,6 @@ translateY
 							}
 
 							// 에러 메시지 영역을 초기화
-							displayHpErrMsg("");
 							$("#loginForm").submit();
 
 							return false;
