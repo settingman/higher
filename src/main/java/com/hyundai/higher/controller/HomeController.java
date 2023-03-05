@@ -9,6 +9,18 @@ import lombok.extern.slf4j.Slf4j;
 
 
 
+/**
+ * @since   : 2023. 3. 3.
+ * @FileName: HomeController.java
+ * @author  : 박성환
+ * @설명    : 메인 페이지.
+
+ * <pre>
+ *   수정일         수정자               수정내용
+ * ----------      --------    ---------------------------
+ * 2023. 2. 27.     박성환      	최초 생성
+ * </pre>
+ */
 @Slf4j
 @Controller
 public class HomeController {

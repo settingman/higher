@@ -46,7 +46,6 @@ public class MemberService implements UserDetailsService {
 		return memberMapper.findById(member.getMId());
 	}
 
-	
 	// 회원가입 중복확인
 	public void validateDuplicateMember(Member member) {
 		Member findMember = memberMapper.findById(member.getMId());
@@ -62,9 +61,9 @@ public class MemberService implements UserDetailsService {
 	// Security User 생성
 	@Override
 	public UserDetails loadUserByUsername(String mId) throws UsernameNotFoundException {
-		
+
 		Member member = memberMapper.findById(mId);
-		
+
 		log.info("userdetails");
 
 		if (member == null) {
@@ -80,9 +79,9 @@ public class MemberService implements UserDetailsService {
 		SecurityMember securityMember = new SecurityMember(member.getMId(), member.getMPassword(), authorities);
 		log.info(securityMember.toString());
 
-		
 		// 시큐리티 회원정보 주입. (다른 정보를 더 넣고싶다면 Secuirty 맴버에 필드 추가 후 주입해준다.)
 		securityMember.setMName(member.getMName());
+		securityMember.setMPhone(member.getMPhone());
 
 		log.info(securityMember.toString());
 
