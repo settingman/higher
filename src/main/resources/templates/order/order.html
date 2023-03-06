@@ -26,17 +26,17 @@
 
 <link rel="stylesheet" type="text/css" href="https://image.thehyundai.com/pc/cssssl/co.css?ver=14" />
 <link rel="stylesheet" type="text/css" href="https://image.thehyundai.com/pc/cssssl/wf.css" />
-<script src="https://image.thehyundai.com/pc/js/jquery-1.11.3.min.js"></script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://image.thehyundai.com/pc/js/jquery-ui.min.js"></script>
 <script src="https://image.thehyundai.com/pc/js/jquery-migrate.min.js"></script>
 
-
-<script src="https://image.thehyundai.com/pc/js/plugin.js?ver=030614"></script>
 <script type="text/javascript" src="https://image.thehyundai.com/pc/js/hdmall/co/jquery.form.js"></script>
-<script type="text/javascript" src="https://image.thehyundai.com/pc/js/hdmall/co/default.js?ver=030614"></script>
-<script type="text/javascript" src="https://image.thehyundai.com/pc/js/hdmall/co/common.js?ver=030614"></script>
-<script src="https://image.thehyundai.com/pc/js/common.js?ver=030614"></script>
-<script type="text/javascript" src="https://image.thehyundai.com/pc/js/swiper.min.js?ver=030614"></script>
+<script type="text/javascript" src="https://image.thehyundai.com/pc/js/hdmall/co/default.js?ver=030316"></script>
+<script type="text/javascript" src="https://image.thehyundai.com/pc/js/hdmall/co/common.js?ver=030316"></script>
+<script type="text/javascript" src="https://image.thehyundai.com/pc/js/swiper.min.js?ver=030316"></script>
+
 
 
 
@@ -48,10 +48,8 @@
 <link rel="stylesheet" type="text/css" href="https://www.thehyundai.com/cssssl/dp.css?ver=14" />
 <script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/co/jquery.slidy.min.js"></script>
 <script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/co/json2.js"></script>
-<script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/od/ODAOrderRenw.js?ver=143005"></script>
-<!-- 2020.06.30 카드 즉시할인 -->
-<script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/od/ODAOrderMultiDlvRenw.js?ver=143005"></script>
-<!-- 2020.11.24 배송지/복수배송 리뉴얼 정길화 -->
+
+
 
 <script type="text/javascript">
       var crdInsmMthsInfList = new Array();
@@ -61,21 +59,14 @@
       var _gaPageTitle = "주문서작성";
 
       $(document).ready(function () {
-        //if(navigator.userAgent.substring((navigator.userAgent.lastIndexOf('Chrome')+7),(navigator.userAgent.lastIndexOf('Chrome')+9)) == '80'){
-        //	   alert("현재 고객님께서 사용하시는 크롬웹브라우저(v80)에서 일부 결제수단 사용이 일시적으로 불가능하실 수 있으니, 모바일App 또는 다른 브라우저의 사용을 권장드립니다.");
-        //} 브라우저 얼럿 문구 미노출 처리 (20.02.05)
-
-        // 팝업공지 호출
-        openPup();
+        
 
         // 결제수단 alert공지 설정
         setLayerPupInf();
 
         itemInfListInit();
 
-        if (dcWayExpsExcldMap.size > 0) {
-          initDcWayExpsExcldItemInf();
-        }
+       
 
         //setOptimumDiscount();
 
@@ -147,7 +138,6 @@
         };
 
         // 배송지정보 초기화 + 가격 재계산
-        initAddressArea("1", "1");
 
         // 배송희망일 달력 레이어 생성
         if ($(".input-date-custom").length > 0) {
@@ -1031,7 +1021,6 @@
 
         Products.push(Product);
 
-        setGAProductsData(Products);
       }
 
       function initDcWayExpsExcldItemInf() {
@@ -1088,23 +1077,13 @@
 <meta http-equiv="origin-trial"
 	content="A751Xsk4ZW3DVQ8WZng2Dk5s3YzAyqncTzgv+VaE6wavgTY0QHkDvUTET1o7HanhuJO8lgv1Vvc88Ij78W1FIAAAAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjgwNjUyNzk5LCJpc1RoaXJkUGFydHkiOnRydWV9"
 />
-<script type="text/javascript" async=""
-	src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/879261918/?random=1678080606618&amp;cv=11&amp;fst=1678080606618&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;gtm=45be3310&amp;u_w=1707&amp;u_h=1067&amp;hn=www.googleadservices.com&amp;frm=0&amp;url=https%3A%2F%2Fwww.thehyundai.com%2Ffront%2Foda%2Forder.thd&amp;ref=https%3A%2F%2Fwww.thehyundai.com%2Ffront%2Foda%2ForderRedirect.thd&amp;tiba=%EB%8D%94%ED%98%84%EB%8C%80%EB%8B%B7%EC%BB%B4&amp;auid=1634151386.1677462498&amp;uaa=x86&amp;uab=64&amp;uafvl=Chromium%3B110.0.5481.178%7CNot%2520A(Brand%3B24.0.0.0%7CGoogle%2520Chrome%3B110.0.5481.178&amp;uamb=0&amp;uap=Windows&amp;uapv=15.0.0&amp;uaw=0&amp;data=event%3Dgtag.config&amp;rfmt=3&amp;fmt=4"
-></script>
+</script>
 <link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" />
 </head>
 <body>
 	<!-- wrap -->
 	<div id="wrap" class="sub notgnb simple-gnb">
 		<!-- gnb -->
-
-		<script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/co/referCodes.js"></script>
-		<script src="/js/sso/SsoHttpRequest.js"></script>
-		<script src="/js/sso/SsoAjax.js"></script>
-		<script src="/js/sso/SsoLogin.js"></script>
-		<!-- SSO 로그인 js 공통 처리 2021.02.17-->
-
-		<script type="text/javascript" src="https://www.thehyundai.com/static/gen/js/mainBnnrContents.js?ver=061430"></script>
 
 
 		<div id="skip-navigation">
@@ -1139,14 +1118,14 @@
 					</div>
 
 					<div class="top-con-search">
-						<form name="formTopSearchPopup" id="formTopSearchPopup" method="get" action="https://www.thehyundai.com/front/dpo/hdSearch.thd">
+						<form name="formTopSearchPopup" id="formTopSearchPopup" method="get">
 							<input type="hidden" name="searchtype" id="js_searchtype" />
 							<input type="hidden" name="searchQuery" autocomplete="off" />
 							<div class="top-con-search-unit">
 								<input type="text" class="top-con-search-input" maxlength="30" id="cs-token-input" value="" onfocus="return dq_setTextbox(0,event);"
 									onmousedown="dq_setTextbox(1,event);" onkeydown="dq_setTextbox(1,event);" autocomplete="off"
 								/>
-								<button type="submit" class="top-con-search-btn" onclick="javascript:GA_Event('PC_공통','헤더_검색','검색'); goTopSearch(); return false;">
+								<button type="submit" class="top-con-search-btn" onclick="javascript:goTopSearch(); return false;">
 									<span class="blind">검색</span>
 								</button>
 
@@ -1168,44 +1147,20 @@
 										<div class="search-box-cont">
 											<div class="search-box-best">
 												<ul class="search-box-bestnum left">
-													<li><a href="javascript:GA_Event('PC_검색창','인기검색어','명품'); goDirectSearchGnb('명품', 'top', 'search_favoriteKeyword', '명품', '1');"
-														class="lank"
-													>1. 명품</a><span class="status no"><span class="blind">no</span></span></li>
-													<li><a
-														href="javascript:GA_Event('PC_검색창','인기검색어','COS퀼티드백'); goDirectSearchGnb('COS퀼티드백', 'top', 'search_favoriteKeyword', 'COS퀼티드백', '2');"
-														class="lank"
-													>2. COS퀼티드백</a><span class="status up"><span class="blind">up</span></span></li>
-													<li><a
-														href="javascript:GA_Event('PC_검색창','인기검색어','아크테릭스'); goDirectSearchGnb('아크테릭스', 'top', 'search_favoriteKeyword', '아크테릭스', '3');"
-														class="lank"
-													>3. 아크테릭스</a><span class="status up"><span class="blind">up</span></span></li>
-													<li><a
-														href="javascript:GA_Event('PC_검색창','인기검색어','어그 울트라 미니'); goDirectSearchGnb('어그 울트라 미니', 'top', 'search_favoriteKeyword', '어그 울트라 미니', '4');"
-														class="lank"
-													>4. 어그 울트라 미니</a><span class="status up"><span class="blind">up</span></span></li>
-													<li><a
-														href="javascript:GA_Event('PC_검색창','인기검색어','오니츠카타이거'); goDirectSearchGnb('오니츠카타이거', 'top', 'search_favoriteKeyword', '오니츠카타이거', '5');"
-														class="lank"
-													>5. 오니츠카타이거</a><span class="status up"><span class="blind">up</span></span></li>
+													<li><a href="javascript:goDirectSearchGnb('명품', 'top', 'search_favoriteKeyword', '명품', '1');" class="lank">1. 명품</a><span
+														class="status no"
+													><span class="blind">no</span></span></li>
+													<li><a href="javascript:" class="lank">2. COS퀼티드백</a><span class="status up"><span class="blind">up</span></span></li>
+													<li><a href="javascript:" class="lank">3. 아크테릭스</a><span class="status up"><span class="blind">up</span></span></li>
+													<li><a href="javascript:" class="lank">4. 어그 울트라 미니</a><span class="status up"><span class="blind">up</span></span></li>
+													<li><a href="javascript:" class="lank">5. 오니츠카타이거</a><span class="status up"><span class="blind">up</span></span></li>
 												</ul>
 												<ul class="search-box-bestnum right">
-													<li><a href="javascript:GA_Event('PC_검색창','인기검색어','스카프'); goDirectSearchGnb('스카프', 'top', 'search_favoriteKeyword', '스카프', '6');"
-														class="lank"
-													>6. 스카프</a><span class="status up"><span class="blind">up</span></span></li>
-													<li><a
-														href="javascript:GA_Event('PC_검색창','인기검색어','니트 가디건'); goDirectSearchGnb('니트 가디건', 'top', 'search_favoriteKeyword', '니트 가디건', '7');"
-														class="lank"
-													>7. 니트 가디건</a><span class="status up"><span class="blind">up</span></span></li>
-													<li><a href="javascript:GA_Event('PC_검색창','인기검색어','양말'); goDirectSearchGnb('양말', 'top', 'search_favoriteKeyword', '양말', '8');"
-														class="lank"
-													>8. 양말</a><span class="status up"><span class="blind">up</span></span></li>
-													<li><a href="javascript:GA_Event('PC_검색창','인기검색어','손수건'); goDirectSearchGnb('손수건', 'top', 'search_favoriteKeyword', '손수건', '9');"
-														class="lank"
-													>9. 손수건</a><span class="status new">NEW</span></li>
-													<li><a
-														href="javascript:GA_Event('PC_검색창','인기검색어','남성 티셔츠'); goDirectSearchGnb('남성 티셔츠', 'top', 'search_favoriteKeyword', '남성 티셔츠', '10');"
-														class="lank"
-													>10. 남성 티셔츠</a><span class="status new">NEW</span></li>
+													<li><a href="javascript:" class="lank">6. 스카프</a><span class="status up"><span class="blind">up</span></span></li>
+													<li><a href="javascript:" class="lank">7. 니트 가디건</a><span class="status up"><span class="blind">up</span></span></li>
+													<li><a href="javascript:" class="lank">8. 양말</a><span class="status up"><span class="blind">up</span></span></li>
+													<li><a href="javascript:" class="lank">9. 손수건</a><span class="status new">NEW</span></li>
+													<li><a href="javascript:" class="lank">10. 남성 티셔츠</a><span class="status new">NEW</span></li>
 												</ul>
 											</div>
 										</div>
@@ -1247,44 +1202,47 @@
 									<!-- logout:비 로그인 상태, login:로그인 상태 -->
 									<div class="myshop-cont">
 										<ul class="myshop-cont-top">
-											<li class="myshop-hyundai"><a onclick=
-												href="https://www.thehyundai.com/front/mpf/selectMyPageMain.thd?MainpageGroup=Util&amp;GroupbannerName=GNB_MyHyundai"
+											<li class="myshop-hyundai"><a onclick=href=
+												"https://www.thehyundai.com/front/mpf/selectMyPageMain.thd?MainpageGroup=Util&amp;GroupbannerName=GNB_MyHyundai
+											"
 											>마이현대</a></li>
-											<li><a onclick=
-												href="https://www.thehyundai.com/front/mpa/selectOrdDlvCrst.thd?MainpageGroup=Util&amp;GroupbannerName=GNB_Order"
+											<li><a onclick=href= "https://www.thehyundai.com/front/mpa/selectOrdDlvCrst.thd?MainpageGroup=Util&amp;GroupbannerName=GNB_Order"
 											>주문배송</a></li>
 											<li><a onclick=>나의 찜</a></li>
-											<li class="myshop-join"><a onclick=
-												href="https://www.thehyundai.com/front/cob/COBCertificationSelect.thd?MainpageGroup=util&amp;GroupbannerName=membership"
+											<li class="myshop-join"><a onclick=href=
+												"https://www.thehyundai.com/front/cob/COBCertificationSelect.thd?MainpageGroup=util&amp;GroupbannerName=membership
+											"
 											>회원가입</a></li>
 											<li class="myshop-logout"><a href="javascript:logOut();">로그아웃</a></li>
 										</ul>
 										<ul class="myshop-cont-body">
-											<li class="logout-only"><span class="tit">나의 쇼핑 혜택</span> <a href="javascript://"
-												onclick="javascript:GA_Event('PC_공통','헤더_메뉴','나의 쇼핑 혜택'); buyGradePup(event);return false;"
-											><span class="blind">자세히보기</span></a></li>
+											<li class="logout-only"><span class="tit">나의 쇼핑 혜택</span> <a href="javascript://" onclick="javascript:return false;"><span
+													class="blind"
+												>자세히보기</span></a></li>
 											<li class="login-only"><span class="tit">일반등급</span> <span class="cont">혜택</span> <a href="javascript://"
-												onclick="javascript:GA_Event('PC_공통','헤더_메뉴','나의 쇼핑 혜택'); buyGradePup(event, 'MainpageGroup=util&amp;GroupbannerName=memberLevel_notice');return false;"
+												onclick="javascript:return false;"
 											><span class="blind">자세히보기</span></a></li>
-											<li><span class="tit">쿠폰</span> <span class="cont login-only">0장</span> <a onclick=
-												href="https://www.thehyundai.com/front/mpe/selectCopnList.thd?MainpageGroup=util&amp;GroupbannerName=coupon"
+											<li><span class="tit">쿠폰</span> <span class="cont login-only">0장</span> <a onclick=href=
+												"https://www.thehyundai.com/front/mpe/selectCopnList.thd?MainpageGroup=util&amp;GroupbannerName=coupon
+											"
 											><span class="blind">자세히보기</span></a></li>
 											<li><span class="tit">H.Point</span> <span class="cont login-only">-P</span> <a onclick="goHpoint()" href="#"><span class="blind">자세히보기</span></a></li>
-											<li><span class="tit">더머니</span> <span class="cont login-only">0원</span> <a onclick=
-												href="https://www.thehyundai.com/front/mpe/selectHPntTabPage.thd?MainpageGroup=util&amp;GroupbannerName=theMoney"
+											<li><span class="tit">더머니</span> <span class="cont login-only">0원</span> <a onclick=href=
+												"https://www.thehyundai.com/front/mpe/selectHPntTabPage.thd?MainpageGroup=util&amp;GroupbannerName=theMoney
+											"
 											><span class="blind">자세히보기</span></a></li>
 										</ul>
 									</div>
 								</div> <!-- // 20190118 추가 레이어팝업 -->
 							</li>
-							<li><a onclick=
-								href="https://www.thehyundai.com/front/cca/main.thd?MainpageGroup=Util&amp;GroupbannerName=GNB_Center"
+							<li><a onclick=href= "https://www.thehyundai.com/front/cca/main.thd?MainpageGroup=Util&amp;GroupbannerName=GNB_Center"
 							>고객센터</a></li>
 							<li>
 								<div class="top-con-quick-basket">
-									<a onclick=
-										href="https://www.thehyundai.com/front/odb/basktList.thd?MainpageGroup=Util&amp;GroupbannerName=GNB_Basket"
-									>장바구니</a><span class="basket-num" id="quick_baskt_num">2</span>
+									<a onclick=href= "https://www.thehyundai.com/front/odb/basktList.thd?MainpageGroup=Util&amp;GroupbannerName=GNB_Basket"
+									>장바구니</a><span
+										class="basket-num" id="quick_baskt_num"
+									>2</span>
 								</div>
 							</li>
 							<!-- 20210830 바로접속 추가// -->
@@ -1299,11 +1257,7 @@
 				</div>
 				<div class="top-nav" id="header-gnb-area">
 					<!-- 20210518 gnb nav 수정// -->
-					<script>
-              $(function () {
-                gnbNavSet(); // gnb 네비 셋팅
-              });
-            </script>
+
 					<!--
         기존 top-nav-area 위치에 dom 수정
       -->
@@ -1316,8 +1270,9 @@
 									<ul>
 										<!-- 24 : 0 : 0 : 0 -->
 										<!-- 화장품 -->
-										<li><a onclick=
-											href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=2000&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic"
+										<li><a onclick=href=
+											"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=2000&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic
+										"
 										>화장품</a>
 											<div class="in-cate-area">
 												<!--asis : category-area-->
@@ -1326,37 +1281,45 @@
 													<ul>
 														<!-- 01: 01 : cnt = 1 -->
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30002&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30002&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic
+															"
 															class="hover"
 														>스킨케어</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30015&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30015&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic
+														"
 														>메이크업</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30035&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30035&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic
+														"
 														>바디/헤어케어</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30056&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30056&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic
+														"
 														>기능성케어</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30064&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30064&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic
+														"
 														>향수/캔들</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30069&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30069&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic
+														"
 														>미용기기/용품</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=108799&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=108799&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic
+														"
 														>남성화장품</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=100246&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=100246&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic
+														"
 														>BRAND SHOP</a></li>
 													</ul>
 
@@ -1366,100 +1329,124 @@
 												<!-- 브랜드 -->
 												<div class="brand">
 													<ul>
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=128574&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=128574&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic
+														"
 														>&amp; Other Stories</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=122594&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=122594&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic
+														"
 														>CHANEL BEAUTY</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=192169&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=192169&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic
+														"
 														>Dior</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=147919&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=147919&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic
+														"
 														>아모레퍼시픽</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=152723&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=152723&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic
+														"
 														>SISLEY</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167943&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167943&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic
+														"
 														>L'OCCITANE </a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167938&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167938&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic
+														"
 														>CREED</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=166511&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=166511&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic
+														"
 														>Hermès</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=141184&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=141184&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic
+														"
 														>TOM FORD BEAUTY</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=158973&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=158973&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic
+														"
 														>GUCCI BEAUTY</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167780&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167780&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic
+														"
 														>LANCOME</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167975&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167975&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic
+														"
 														>GUERLAIN</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=204965&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=204965&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic
+														"
 														>Augustinus Bader</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167919&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167919&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic
+														"
 														>GIVENCHY</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167982&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167982&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic
+														"
 														>CLARINS</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167785&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167785&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic
+														"
 														>LA MER</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=172317&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=172317&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic
+														"
 														>LA PRAIRIE</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=173509&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=173509&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic
+														"
 														>VALMONT</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=179371&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=179371&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic
+														"
 														>Be CLEAN</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=185785&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=185785&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic
+														"
 														>Oera</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=172320&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=172320&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic
+														"
 														>SK-Ⅱ</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=173309&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=173309&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic
+														"
 														>NARS </a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=196882&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=196882&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic
+														"
 														>메종 마르지엘라</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=175364&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=175364&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic
+														"
 														>리바이리</a></li>
 													</ul>
 												</div>
@@ -1474,8 +1461,9 @@
 
 													<div class="txt-sub">독일 프리미엄 이노베이션 뷰티</div>
 
-													<a onclick=
-														href="https://www.thehyundai.com/front/dpa/searchSpexSectItem.thd?sectId=204794&amp;MainpageGroup=CategoryBig&amp;GroupbannerName=CateCosmetic01"
+													<a onclick=href=
+														"https://www.thehyundai.com/front/dpa/searchSpexSectItem.thd?sectId=204794&amp;MainpageGroup=CategoryBig&amp;GroupbannerName=CateCosmetic01
+													"
 													><span class="blind">자세히 보기</span></a>
 												</div>
 												<!-- // 배너 -->
@@ -1483,8 +1471,9 @@
 
 										<!-- 14 : 0 : 0 : 0 -->
 										<!-- 명품/잡화 -->
-										<li><a onclick=
-											href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=2001&amp;MainpageGroup=Category&amp;GroupbannerName=luxury"
+										<li><a onclick=href=
+											"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=2001&amp;MainpageGroup=Category&amp;GroupbannerName=luxury
+										"
 										>명품/잡화</a>
 											<div class="in-cate-area">
 												<!--asis : category-area-->
@@ -1493,28 +1482,34 @@
 													<ul>
 														<!-- 02: 02 : cnt = 1 -->
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30271&amp;MainpageGroup=Category&amp;GroupbannerName=luxury"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30271&amp;MainpageGroup=Category&amp;GroupbannerName=luxury
+														"
 														>핸드백/가방</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30286&amp;MainpageGroup=Category&amp;GroupbannerName=luxury"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30286&amp;MainpageGroup=Category&amp;GroupbannerName=luxury
+														"
 														>슈즈</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30301&amp;MainpageGroup=Category&amp;GroupbannerName=luxury"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30301&amp;MainpageGroup=Category&amp;GroupbannerName=luxury
+														"
 														>지갑/벨트</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30308&amp;MainpageGroup=Category&amp;GroupbannerName=luxury"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30308&amp;MainpageGroup=Category&amp;GroupbannerName=luxury
+														"
 														>시계</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30315&amp;MainpageGroup=Category&amp;GroupbannerName=luxury"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30315&amp;MainpageGroup=Category&amp;GroupbannerName=luxury
+														"
 														>악세서리</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30325&amp;MainpageGroup=Category&amp;GroupbannerName=luxury"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30325&amp;MainpageGroup=Category&amp;GroupbannerName=luxury
+														"
 														>기타잡화</a></li>
 													</ul>
 
@@ -1524,60 +1519,74 @@
 												<!-- 브랜드 -->
 												<div class="brand">
 													<ul>
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=201910&amp;MainpageGroup=Category&amp;GroupbannerName=luxury"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=201910&amp;MainpageGroup=Category&amp;GroupbannerName=luxury
+														"
 														>Maison Margiela</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=149554&amp;MainpageGroup=Category&amp;GroupbannerName=luxury"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=149554&amp;MainpageGroup=Category&amp;GroupbannerName=luxury
+														"
 														>Mulberry</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=172506&amp;MainpageGroup=Category&amp;GroupbannerName=luxury"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=172506&amp;MainpageGroup=Category&amp;GroupbannerName=luxury
+														"
 														>JIMMY CHOO</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=174388&amp;MainpageGroup=Category&amp;GroupbannerName=luxury"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=174388&amp;MainpageGroup=Category&amp;GroupbannerName=luxury
+														"
 														>GOLDEN GOOSE</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=113961&amp;MainpageGroup=Category&amp;GroupbannerName=luxury"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=113961&amp;MainpageGroup=Category&amp;GroupbannerName=luxury
+														"
 														>TUMI</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=111184&amp;MainpageGroup=Category&amp;GroupbannerName=luxury"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=111184&amp;MainpageGroup=Category&amp;GroupbannerName=luxury
+														"
 														>MONTBLANC</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=170479&amp;MainpageGroup=Category&amp;GroupbannerName=luxury"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=170479&amp;MainpageGroup=Category&amp;GroupbannerName=luxury
+														"
 														>LONGINES </a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167190&amp;MainpageGroup=Category&amp;GroupbannerName=luxury"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167190&amp;MainpageGroup=Category&amp;GroupbannerName=luxury
+														"
 														>LONGCHAMP </a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=192586&amp;MainpageGroup=Category&amp;GroupbannerName=luxury"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=192586&amp;MainpageGroup=Category&amp;GroupbannerName=luxury
+														"
 														>루즈앤라운지</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=195490&amp;MainpageGroup=Category&amp;GroupbannerName=luxury"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=195490&amp;MainpageGroup=Category&amp;GroupbannerName=luxury
+														"
 														>덱케</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=194567&amp;MainpageGroup=Category&amp;GroupbannerName=luxury"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=194567&amp;MainpageGroup=Category&amp;GroupbannerName=luxury
+														"
 														>TOTEME</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=195255&amp;MainpageGroup=Category&amp;GroupbannerName=luxury"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=195255&amp;MainpageGroup=Category&amp;GroupbannerName=luxury
+														"
 														>매터스</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=184015&amp;MainpageGroup=Category&amp;GroupbannerName=luxury"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=184015&amp;MainpageGroup=Category&amp;GroupbannerName=luxury
+														"
 														>A GIFT PAGE</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=150615&amp;MainpageGroup=Category&amp;GroupbannerName=luxury"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=150615&amp;MainpageGroup=Category&amp;GroupbannerName=luxury
+														"
 														>vunque</a></li>
 													</ul>
 												</div>
@@ -1592,8 +1601,9 @@
 
 													<div class="txt-sub">특별한 화이트데이를 선물하세요</div>
 
-													<a onclick=
-														href="https://www.thehyundai.com/front/dpa/searchSpexSectItem.thd?sectId=194710&amp;MainpageGroup=CategoryBig&amp;GroupbannerName=CateLuxury02"
+													<a onclick=href=
+														"https://www.thehyundai.com/front/dpa/searchSpexSectItem.thd?sectId=194710&amp;MainpageGroup=CategoryBig&amp;GroupbannerName=CateLuxury02
+													"
 													><span class="blind">자세히 보기</span></a>
 												</div>
 												<!-- // 배너 -->
@@ -1601,8 +1611,9 @@
 
 										<!-- 14 : 0 : 0 : 0 -->
 										<!-- 여성패션 -->
-										<li><a onclick=
-											href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=2002&amp;MainpageGroup=Category&amp;GroupbannerName=womenf"
+										<li><a onclick=href=
+											"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=2002&amp;MainpageGroup=Category&amp;GroupbannerName=womenf
+										"
 										>여성패션</a>
 											<div class="in-cate-area">
 												<!--asis : category-area-->
@@ -1611,28 +1622,34 @@
 													<ul>
 														<!-- 03: 03 : cnt = 1 -->
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30686&amp;MainpageGroup=Category&amp;GroupbannerName=womenf"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30686&amp;MainpageGroup=Category&amp;GroupbannerName=womenf
+														"
 														>점퍼/코트/재킷</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30675&amp;MainpageGroup=Category&amp;GroupbannerName=womenf"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30675&amp;MainpageGroup=Category&amp;GroupbannerName=womenf
+														"
 														>티셔츠/블라우스/니트</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30680&amp;MainpageGroup=Category&amp;GroupbannerName=womenf"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30680&amp;MainpageGroup=Category&amp;GroupbannerName=womenf
+														"
 														>팬츠/스커트</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30683&amp;MainpageGroup=Category&amp;GroupbannerName=womenf"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30683&amp;MainpageGroup=Category&amp;GroupbannerName=womenf
+														"
 														>정장/원피스</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30690&amp;MainpageGroup=Category&amp;GroupbannerName=womenf"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30690&amp;MainpageGroup=Category&amp;GroupbannerName=womenf
+														"
 														>가죽/모피</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30693&amp;MainpageGroup=Category&amp;GroupbannerName=womenf"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30693&amp;MainpageGroup=Category&amp;GroupbannerName=womenf
+														"
 														>언더웨어/이지웨어</a></li>
 													</ul>
 
@@ -1642,60 +1659,74 @@
 												<!-- 브랜드 -->
 												<div class="brand">
 													<ul>
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=126964&amp;MainpageGroup=Category&amp;GroupbannerName=womenf"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=126964&amp;MainpageGroup=Category&amp;GroupbannerName=womenf
+														"
 														>COS</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=200334&amp;MainpageGroup=Category&amp;GroupbannerName=womenf"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=200334&amp;MainpageGroup=Category&amp;GroupbannerName=womenf
+														"
 														>TOTEME</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=182570&amp;MainpageGroup=Category&amp;GroupbannerName=womenf"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=182570&amp;MainpageGroup=Category&amp;GroupbannerName=womenf
+														"
 														>Rodebjer</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=163778&amp;MainpageGroup=Category&amp;GroupbannerName=womenf"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=163778&amp;MainpageGroup=Category&amp;GroupbannerName=womenf
+														"
 														>TOM GREYHOUND</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=163779&amp;MainpageGroup=Category&amp;GroupbannerName=womenf"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=163779&amp;MainpageGroup=Category&amp;GroupbannerName=womenf
+														"
 														>FOURM STUDIO</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=119875&amp;MainpageGroup=Category&amp;GroupbannerName=womenf"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=119875&amp;MainpageGroup=Category&amp;GroupbannerName=womenf
+														"
 														>RALPH LAUREN</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=194196&amp;MainpageGroup=Category&amp;GroupbannerName=womenf"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=194196&amp;MainpageGroup=Category&amp;GroupbannerName=womenf
+														"
 														>COLLECTION</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=165678&amp;MainpageGroup=Category&amp;GroupbannerName=womenf"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=165678&amp;MainpageGroup=Category&amp;GroupbannerName=womenf
+														"
 														>1423 Naivewater</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=166257&amp;MainpageGroup=Category&amp;GroupbannerName=womenf"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=166257&amp;MainpageGroup=Category&amp;GroupbannerName=womenf
+														"
 														>HAN STYLE</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=207859&amp;MainpageGroup=Category&amp;GroupbannerName=womenf"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=207859&amp;MainpageGroup=Category&amp;GroupbannerName=womenf
+														"
 														>ADEKUVER</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=170182&amp;MainpageGroup=Category&amp;GroupbannerName=womenf"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=170182&amp;MainpageGroup=Category&amp;GroupbannerName=womenf
+														"
 														>0914</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=137550&amp;MainpageGroup=Category&amp;GroupbannerName=womenf"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=137550&amp;MainpageGroup=Category&amp;GroupbannerName=womenf
+														"
 														>HAZZYS</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=122656&amp;MainpageGroup=Category&amp;GroupbannerName=womenf"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=122656&amp;MainpageGroup=Category&amp;GroupbannerName=womenf
+														"
 														>TOMMY HILFIGER</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=166057&amp;MainpageGroup=Category&amp;GroupbannerName=womenf"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=166057&amp;MainpageGroup=Category&amp;GroupbannerName=womenf
+														"
 														>JILLSTUART NEW YORK</a></li>
 													</ul>
 												</div>
@@ -1710,8 +1741,9 @@
 
 													<div class="txt-sub">그녀를 위한 특별한 선물</div>
 
-													<a onclick=
-														href="https://www.thehyundai.com/front/dpa/searchSpexSectItem.thd?sectId=207390&amp;MainpageGroup=CategoryBig&amp;GroupbannerName=CateWfashion03"
+													<a onclick=href=
+														"https://www.thehyundai.com/front/dpa/searchSpexSectItem.thd?sectId=207390&amp;MainpageGroup=CategoryBig&amp;GroupbannerName=CateWfashion03
+													"
 													><span class="blind">자세히 보기</span></a>
 												</div>
 												<!-- // 배너 -->
@@ -1719,8 +1751,9 @@
 
 										<!-- 7 : 0 : 0 : 0 -->
 										<!-- 영캐주얼 -->
-										<li><a onclick=
-											href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=2003&amp;MainpageGroup=Category&amp;GroupbannerName=youngc"
+										<li><a onclick=href=
+											"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=2003&amp;MainpageGroup=Category&amp;GroupbannerName=youngc
+										"
 										>영캐주얼</a>
 											<div class="in-cate-area">
 												<!--asis : category-area-->
@@ -1729,28 +1762,34 @@
 													<ul>
 														<!-- 04: 04 : cnt = 1 -->
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30835&amp;MainpageGroup=Category&amp;GroupbannerName=youngc"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30835&amp;MainpageGroup=Category&amp;GroupbannerName=youngc
+														"
 														>티셔츠/셔츠/블라우스</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=117668&amp;MainpageGroup=Category&amp;GroupbannerName=youngc"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=117668&amp;MainpageGroup=Category&amp;GroupbannerName=youngc
+														"
 														>카디건/베스트/니트/스웨터</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30840&amp;MainpageGroup=Category&amp;GroupbannerName=youngc"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30840&amp;MainpageGroup=Category&amp;GroupbannerName=youngc
+														"
 														>팬츠/스커트</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30843&amp;MainpageGroup=Category&amp;GroupbannerName=youngc"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30843&amp;MainpageGroup=Category&amp;GroupbannerName=youngc
+														"
 														>정장/수트/원피스</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30846&amp;MainpageGroup=Category&amp;GroupbannerName=youngc"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30846&amp;MainpageGroup=Category&amp;GroupbannerName=youngc
+														"
 														>재킷/코트/점퍼</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30850&amp;MainpageGroup=Category&amp;GroupbannerName=youngc"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30850&amp;MainpageGroup=Category&amp;GroupbannerName=youngc
+														"
 														>가죽/모피</a></li>
 													</ul>
 
@@ -1760,32 +1799,39 @@
 												<!-- 브랜드 -->
 												<div class="brand">
 													<ul>
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=128413&amp;MainpageGroup=Category&amp;GroupbannerName=youngc"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=128413&amp;MainpageGroup=Category&amp;GroupbannerName=youngc
+														"
 														>&amp; Other Stories</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=163791&amp;MainpageGroup=Category&amp;GroupbannerName=youngc"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=163791&amp;MainpageGroup=Category&amp;GroupbannerName=youngc
+														"
 														>FOURM THE STORE</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=150313&amp;MainpageGroup=Category&amp;GroupbannerName=youngc"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=150313&amp;MainpageGroup=Category&amp;GroupbannerName=youngc
+														"
 														>ALLSAINTS </a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=166929&amp;MainpageGroup=Category&amp;GroupbannerName=youngc"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=166929&amp;MainpageGroup=Category&amp;GroupbannerName=youngc
+														"
 														>SISLEY</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=166917&amp;MainpageGroup=Category&amp;GroupbannerName=youngc"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=166917&amp;MainpageGroup=Category&amp;GroupbannerName=youngc
+														"
 														>VOV</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=166923&amp;MainpageGroup=Category&amp;GroupbannerName=youngc"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=166923&amp;MainpageGroup=Category&amp;GroupbannerName=youngc
+														"
 														>G-CUT</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=166800&amp;MainpageGroup=Category&amp;GroupbannerName=youngc"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=166800&amp;MainpageGroup=Category&amp;GroupbannerName=youngc
+														"
 														>SJYP</a></li>
 													</ul>
 												</div>
@@ -1800,8 +1846,9 @@
 
 													<div class="txt-sub">입는순간 감탄하게 되는 울랄라!</div>
 
-													<a onclick=
-														href="http://www.thehyundai.com/front/dpa/searchSpexSectItem.thd?sectId=206640&amp;MainpageGroup=CategoryBig&amp;GroupbannerName=CateYoungcasual04"
+													<a onclick=href=
+														"http://www.thehyundai.com/front/dpa/searchSpexSectItem.thd?sectId=206640&amp;MainpageGroup=CategoryBig&amp;GroupbannerName=CateYoungcasual04
+													"
 													><span class="blind">자세히 보기</span></a>
 												</div>
 												<!-- // 배너 -->
@@ -1809,8 +1856,9 @@
 
 										<!-- 12 : 0 : 0 : 0 -->
 										<!-- 남성패션 -->
-										<li><a onclick=
-											href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=2005&amp;MainpageGroup=Category&amp;GroupbannerName=manf"
+										<li><a onclick=href=
+											"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=2005&amp;MainpageGroup=Category&amp;GroupbannerName=manf
+										"
 										>남성패션</a>
 											<div class="in-cate-area">
 												<!--asis : category-area-->
@@ -1819,32 +1867,39 @@
 													<ul>
 														<!-- 05: 05 : cnt = 1 -->
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=31087&amp;MainpageGroup=Category&amp;GroupbannerName=manf"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=31087&amp;MainpageGroup=Category&amp;GroupbannerName=manf
+														"
 														>정장/수트</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=31092&amp;MainpageGroup=Category&amp;GroupbannerName=manf"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=31092&amp;MainpageGroup=Category&amp;GroupbannerName=manf
+														"
 														>재킷/점퍼/코트</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=31096&amp;MainpageGroup=Category&amp;GroupbannerName=manf"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=31096&amp;MainpageGroup=Category&amp;GroupbannerName=manf
+														"
 														>티셔츠/셔츠/니트/가디건</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=31101&amp;MainpageGroup=Category&amp;GroupbannerName=manf"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=31101&amp;MainpageGroup=Category&amp;GroupbannerName=manf
+														"
 														>팬츠</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=31105&amp;MainpageGroup=Category&amp;GroupbannerName=manf"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=31105&amp;MainpageGroup=Category&amp;GroupbannerName=manf
+														"
 														>패션소품</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=31115&amp;MainpageGroup=Category&amp;GroupbannerName=manf"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=31115&amp;MainpageGroup=Category&amp;GroupbannerName=manf
+														"
 														>캐주얼 의류</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=31124&amp;MainpageGroup=Category&amp;GroupbannerName=manf"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=31124&amp;MainpageGroup=Category&amp;GroupbannerName=manf
+														"
 														>남성 언더웨어/이지웨어</a></li>
 													</ul>
 
@@ -1854,52 +1909,64 @@
 												<!-- 브랜드 -->
 												<div class="brand">
 													<ul>
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=126965&amp;MainpageGroup=Category&amp;GroupbannerName=manf"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=126965&amp;MainpageGroup=Category&amp;GroupbannerName=manf
+														"
 														>COS</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=172682&amp;MainpageGroup=Category&amp;GroupbannerName=manf"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=172682&amp;MainpageGroup=Category&amp;GroupbannerName=manf
+														"
 														>ZEGNA</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=163774&amp;MainpageGroup=Category&amp;GroupbannerName=manf"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=163774&amp;MainpageGroup=Category&amp;GroupbannerName=manf
+														"
 														>폼맨즈라운지</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=119875&amp;MainpageGroup=Category&amp;GroupbannerName=manf"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=119875&amp;MainpageGroup=Category&amp;GroupbannerName=manf
+														"
 														>RALPH LAUREN</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=194197&amp;MainpageGroup=Category&amp;GroupbannerName=manf"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=194197&amp;MainpageGroup=Category&amp;GroupbannerName=manf
+														"
 														>RRL</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=194210&amp;MainpageGroup=Category&amp;GroupbannerName=manf"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=194210&amp;MainpageGroup=Category&amp;GroupbannerName=manf
+														"
 														>Purple Label</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=137550&amp;MainpageGroup=Category&amp;GroupbannerName=manf"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=137550&amp;MainpageGroup=Category&amp;GroupbannerName=manf
+														"
 														>HAZZYS</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=122656&amp;MainpageGroup=Category&amp;GroupbannerName=manf"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=122656&amp;MainpageGroup=Category&amp;GroupbannerName=manf
+														"
 														>TOMMY HILFIGER</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=161174&amp;MainpageGroup=Category&amp;GroupbannerName=manf"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=161174&amp;MainpageGroup=Category&amp;GroupbannerName=manf
+														"
 														>SONGZIO</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=166120&amp;MainpageGroup=Category&amp;GroupbannerName=manf"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=166120&amp;MainpageGroup=Category&amp;GroupbannerName=manf
+														"
 														>Barbour</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=166057&amp;MainpageGroup=Category&amp;GroupbannerName=manf"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=166057&amp;MainpageGroup=Category&amp;GroupbannerName=manf
+														"
 														>JILLSTUART NEW YORK</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=165591&amp;MainpageGroup=Category&amp;GroupbannerName=manf"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=165591&amp;MainpageGroup=Category&amp;GroupbannerName=manf
+														"
 														>Paul Smith</a></li>
 													</ul>
 												</div>
@@ -1914,8 +1981,9 @@
 
 													<div class="txt-sub">추가혜택과 함께 만나보세요.</div>
 
-													<a onclick=
-														href="https://www.thehyundai.com/front/dpa/searchSpexSectItem.thd?sectId=204723&amp;MainpageGroup=CategoryBig&amp;GroupbannerName=CateMfashion05"
+													<a onclick=href=
+														"https://www.thehyundai.com/front/dpa/searchSpexSectItem.thd?sectId=204723&amp;MainpageGroup=CategoryBig&amp;GroupbannerName=CateMfashion05
+													"
 													><span class="blind">자세히 보기</span></a>
 												</div>
 												<!-- // 배너 -->
@@ -1923,8 +1991,9 @@
 
 										<!-- 7 : 0 : 0 : 0 -->
 										<!-- 진/이지 -->
-										<li><a onclick=
-											href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=2004&amp;MainpageGroup=Category&amp;GroupbannerName=jineasy"
+										<li><a onclick=href=
+											"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=2004&amp;MainpageGroup=Category&amp;GroupbannerName=jineasy
+										"
 										>진/이지</a>
 											<div class="in-cate-area">
 												<!--asis : category-area-->
@@ -1933,24 +2002,29 @@
 													<ul>
 														<!-- 06: 06 : cnt = 1 -->
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30943&amp;MainpageGroup=Category&amp;GroupbannerName=jineasy"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30943&amp;MainpageGroup=Category&amp;GroupbannerName=jineasy
+														"
 														>티셔츠/셔츠/블라우스</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=110283&amp;MainpageGroup=Category&amp;GroupbannerName=jineasy"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=110283&amp;MainpageGroup=Category&amp;GroupbannerName=jineasy
+														"
 														>원피스/니트/가디건</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30949&amp;MainpageGroup=Category&amp;GroupbannerName=jineasy"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30949&amp;MainpageGroup=Category&amp;GroupbannerName=jineasy
+														"
 														>팬츠/스커트</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30952&amp;MainpageGroup=Category&amp;GroupbannerName=jineasy"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30952&amp;MainpageGroup=Category&amp;GroupbannerName=jineasy
+														"
 														>데님팬츠</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30956&amp;MainpageGroup=Category&amp;GroupbannerName=jineasy"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=30956&amp;MainpageGroup=Category&amp;GroupbannerName=jineasy
+														"
 														>자켓/점퍼/코트</a></li>
 													</ul>
 
@@ -1960,32 +2034,39 @@
 												<!-- 브랜드 -->
 												<div class="brand">
 													<ul>
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=198017&amp;MainpageGroup=Category&amp;GroupbannerName=jineasy"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=198017&amp;MainpageGroup=Category&amp;GroupbannerName=jineasy
+														"
 														>PEER</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=122656&amp;MainpageGroup=Category&amp;GroupbannerName=jineasy"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=122656&amp;MainpageGroup=Category&amp;GroupbannerName=jineasy
+														"
 														>TOMMY HILFIGER</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167712&amp;MainpageGroup=Category&amp;GroupbannerName=jineasy"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167712&amp;MainpageGroup=Category&amp;GroupbannerName=jineasy
+														"
 														>GUESS JEANS</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167745&amp;MainpageGroup=Category&amp;GroupbannerName=jineasy"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167745&amp;MainpageGroup=Category&amp;GroupbannerName=jineasy
+														"
 														>Calvin Klein Jeans</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=168168&amp;MainpageGroup=Category&amp;GroupbannerName=jineasy"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=168168&amp;MainpageGroup=Category&amp;GroupbannerName=jineasy
+														"
 														>MLB</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167608&amp;MainpageGroup=Category&amp;GroupbannerName=jineasy"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167608&amp;MainpageGroup=Category&amp;GroupbannerName=jineasy
+														"
 														>VERUTUM</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167691&amp;MainpageGroup=Category&amp;GroupbannerName=jineasy"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167691&amp;MainpageGroup=Category&amp;GroupbannerName=jineasy
+														"
 														>NERDY</a></li>
 													</ul>
 												</div>
@@ -2000,8 +2081,9 @@
 
 													<div class="txt-sub">FOR [REST] CAMP</div>
 
-													<a onclick=
-														href="https://www.thehyundai.com/front/dpa/searchSpexSectItem.thd?sectId=208077&amp;MainpageGroup=CategoryBig&amp;GroupbannerName=CateJeaneasy06"
+													<a onclick=href=
+														"https://www.thehyundai.com/front/dpa/searchSpexSectItem.thd?sectId=208077&amp;MainpageGroup=CategoryBig&amp;GroupbannerName=CateJeaneasy06
+													"
 													><span class="blind">자세히 보기</span></a>
 												</div>
 												<!-- // 배너 -->
@@ -2009,8 +2091,9 @@
 
 										<!-- 15 : 0 : 0 : 0 -->
 										<!-- 유아동/문화 -->
-										<li><a onclick=
-											href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=2006&amp;MainpageGroup=Category&amp;GroupbannerName=babyculture"
+										<li><a onclick=href=
+											"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=2006&amp;MainpageGroup=Category&amp;GroupbannerName=babyculture
+										"
 										>유아동/문화</a>
 											<div class="in-cate-area">
 												<!--asis : category-area-->
@@ -2019,40 +2102,49 @@
 													<ul>
 														<!-- 07: 07 : cnt = 1 -->
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=147378&amp;MainpageGroup=Category&amp;GroupbannerName=babyculture"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=147378&amp;MainpageGroup=Category&amp;GroupbannerName=babyculture
+														"
 														>유아의류</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=147379&amp;MainpageGroup=Category&amp;GroupbannerName=babyculture"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=147379&amp;MainpageGroup=Category&amp;GroupbannerName=babyculture
+														"
 														>아동의류</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=31291&amp;MainpageGroup=Category&amp;GroupbannerName=babyculture"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=31291&amp;MainpageGroup=Category&amp;GroupbannerName=babyculture
+														"
 														>유아동 잡화</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=31253&amp;MainpageGroup=Category&amp;GroupbannerName=babyculture"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=31253&amp;MainpageGroup=Category&amp;GroupbannerName=babyculture
+														"
 														>출산용품/스킨케어</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=31262&amp;MainpageGroup=Category&amp;GroupbannerName=babyculture"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=31262&amp;MainpageGroup=Category&amp;GroupbannerName=babyculture
+														"
 														>발육용품</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=41263&amp;MainpageGroup=Category&amp;GroupbannerName=babyculture"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=41263&amp;MainpageGroup=Category&amp;GroupbannerName=babyculture
+														"
 														>유모차/카시트</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=100592&amp;MainpageGroup=Category&amp;GroupbannerName=babyculture"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=100592&amp;MainpageGroup=Category&amp;GroupbannerName=babyculture
+														"
 														>문구/팬시/소품</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=31302&amp;MainpageGroup=Category&amp;GroupbannerName=babyculture"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=31302&amp;MainpageGroup=Category&amp;GroupbannerName=babyculture
+														"
 														>장난감/취미</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=149111&amp;MainpageGroup=Category&amp;GroupbannerName=babyculture"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=149111&amp;MainpageGroup=Category&amp;GroupbannerName=babyculture
+														"
 														>문화/서비스</a></li>
 													</ul>
 
@@ -2062,64 +2154,79 @@
 												<!-- 브랜드 -->
 												<div class="brand">
 													<ul>
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=119875&amp;MainpageGroup=Category&amp;GroupbannerName=babyculture"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=119875&amp;MainpageGroup=Category&amp;GroupbannerName=babyculture
+														"
 														>RALPH LAUREN</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=122656&amp;MainpageGroup=Category&amp;GroupbannerName=babyculture"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=122656&amp;MainpageGroup=Category&amp;GroupbannerName=babyculture
+														"
 														>TOMMY HILFIGER</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=132324&amp;MainpageGroup=Category&amp;GroupbannerName=babyculture"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=132324&amp;MainpageGroup=Category&amp;GroupbannerName=babyculture
+														"
 														>Pottery Barn Kids</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167423&amp;MainpageGroup=Category&amp;GroupbannerName=babyculture"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167423&amp;MainpageGroup=Category&amp;GroupbannerName=babyculture
+														"
 														>봉쁘앙</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167435&amp;MainpageGroup=Category&amp;GroupbannerName=babyculture"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167435&amp;MainpageGroup=Category&amp;GroupbannerName=babyculture
+														"
 														>MLB키즈</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167451&amp;MainpageGroup=Category&amp;GroupbannerName=babyculture"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167451&amp;MainpageGroup=Category&amp;GroupbannerName=babyculture
+														"
 														>노스페이스키즈</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167534&amp;MainpageGroup=Category&amp;GroupbannerName=babyculture"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167534&amp;MainpageGroup=Category&amp;GroupbannerName=babyculture
+														"
 														>Daks Kids</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167598&amp;MainpageGroup=Category&amp;GroupbannerName=babyculture"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167598&amp;MainpageGroup=Category&amp;GroupbannerName=babyculture
+														"
 														>Hazzys Kids</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167603&amp;MainpageGroup=Category&amp;GroupbannerName=babyculture"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167603&amp;MainpageGroup=Category&amp;GroupbannerName=babyculture
+														"
 														>FILA KIDS</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=183401&amp;MainpageGroup=Category&amp;GroupbannerName=babyculture"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=183401&amp;MainpageGroup=Category&amp;GroupbannerName=babyculture
+														"
 														>Green Friends</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSpexSectItem.thd?sectId=201235&amp;MainpageGroup=Category&amp;GroupbannerName=babyculture"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSpexSectItem.thd?sectId=201235&amp;MainpageGroup=Category&amp;GroupbannerName=babyculture
+														"
 														>더현대닷컴 Culture H</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSpexSectItem.thd?sectId=187090&amp;MainpageGroup=Category&amp;GroupbannerName=babyculture"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSpexSectItem.thd?sectId=187090&amp;MainpageGroup=Category&amp;GroupbannerName=babyculture
+														"
 														>[컬쳐H] Gallery H</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSpexSectItem.thd?sectId=201236&amp;MainpageGroup=Category&amp;GroupbannerName=babyculture"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSpexSectItem.thd?sectId=201236&amp;MainpageGroup=Category&amp;GroupbannerName=babyculture
+														"
 														>[컬쳐H] Collectable</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSpexSectItem.thd?sectId=201237&amp;MainpageGroup=Category&amp;GroupbannerName=babyculture"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSpexSectItem.thd?sectId=201237&amp;MainpageGroup=Category&amp;GroupbannerName=babyculture
+														"
 														>[컬쳐H] Entertaining</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSpexSectItem.thd?sectId=201238&amp;MainpageGroup=Category&amp;GroupbannerName=babyculture"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSpexSectItem.thd?sectId=201238&amp;MainpageGroup=Category&amp;GroupbannerName=babyculture
+														"
 														>[컬쳐H] MOKA 현대어린이책미술관</a></li>
 													</ul>
 												</div>
@@ -2134,8 +2241,9 @@
 
 													<div class="txt-sub">프리미엄 유아 용품 브랜드</div>
 
-													<a onclick=
-														href="https://www.thehyundai.com/front/dpa/searchSpexSectItem.thd?sectId=195447&amp;MainpageGroup=CategoryBig&amp;GroupbannerName=CateChildculture07"
+													<a onclick=href=
+														"https://www.thehyundai.com/front/dpa/searchSpexSectItem.thd?sectId=195447&amp;MainpageGroup=CategoryBig&amp;GroupbannerName=CateChildculture07
+													"
 													><span class="blind">자세히 보기</span></a>
 												</div>
 												<!-- // 배너 -->
@@ -2143,8 +2251,9 @@
 
 										<!-- 13 : 0 : 0 : 0 -->
 										<!-- 스포츠/레저 -->
-										<li><a onclick=
-											href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=2007&amp;MainpageGroup=Category&amp;GroupbannerName=sportleisure"
+										<li><a onclick=href=
+											"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=2007&amp;MainpageGroup=Category&amp;GroupbannerName=sportleisure
+										"
 										>스포츠/레저</a>
 											<div class="in-cate-area">
 												<!--asis : category-area-->
@@ -2153,32 +2262,39 @@
 													<ul>
 														<!-- 08: 08 : cnt = 1 -->
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=31400&amp;MainpageGroup=Category&amp;GroupbannerName=sportleisure"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=31400&amp;MainpageGroup=Category&amp;GroupbannerName=sportleisure
+														"
 														>스포츠 의류</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=31417&amp;MainpageGroup=Category&amp;GroupbannerName=sportleisure"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=31417&amp;MainpageGroup=Category&amp;GroupbannerName=sportleisure
+														"
 														>스포츠 슈즈/잡화</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=31429&amp;MainpageGroup=Category&amp;GroupbannerName=sportleisure"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=31429&amp;MainpageGroup=Category&amp;GroupbannerName=sportleisure
+														"
 														>등산/아웃도어</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=31441&amp;MainpageGroup=Category&amp;GroupbannerName=sportleisure"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=31441&amp;MainpageGroup=Category&amp;GroupbannerName=sportleisure
+														"
 														>캠핑용품</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=31448&amp;MainpageGroup=Category&amp;GroupbannerName=sportleisure"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=31448&amp;MainpageGroup=Category&amp;GroupbannerName=sportleisure
+														"
 														>골프의류/용품</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=31455&amp;MainpageGroup=Category&amp;GroupbannerName=sportleisure"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=31455&amp;MainpageGroup=Category&amp;GroupbannerName=sportleisure
+														"
 														>수영/스키/보드/시즌</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=31466&amp;MainpageGroup=Category&amp;GroupbannerName=sportleisure"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=31466&amp;MainpageGroup=Category&amp;GroupbannerName=sportleisure
+														"
 														>BRAND 스포츠/레저</a></li>
 													</ul>
 
@@ -2188,56 +2304,69 @@
 												<!-- 브랜드 -->
 												<div class="brand">
 													<ul>
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=171859&amp;MainpageGroup=Category&amp;GroupbannerName=sportleisure"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=171859&amp;MainpageGroup=Category&amp;GroupbannerName=sportleisure
+														"
 														>나이키 전문관</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=194832&amp;MainpageGroup=Category&amp;GroupbannerName=sportleisure"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=194832&amp;MainpageGroup=Category&amp;GroupbannerName=sportleisure
+														"
 														>아디다스 전문관</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167667&amp;MainpageGroup=Category&amp;GroupbannerName=sportleisure"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167667&amp;MainpageGroup=Category&amp;GroupbannerName=sportleisure
+														"
 														>언더아머</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=165572&amp;MainpageGroup=Category&amp;GroupbannerName=sportleisure"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=165572&amp;MainpageGroup=Category&amp;GroupbannerName=sportleisure
+														"
 														>컨버스</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167678&amp;MainpageGroup=Category&amp;GroupbannerName=sportleisure"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167678&amp;MainpageGroup=Category&amp;GroupbannerName=sportleisure
+														"
 														>파리게이츠</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167496&amp;MainpageGroup=Category&amp;GroupbannerName=sportleisure"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167496&amp;MainpageGroup=Category&amp;GroupbannerName=sportleisure
+														"
 														>파타고니아</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167495&amp;MainpageGroup=Category&amp;GroupbannerName=sportleisure"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167495&amp;MainpageGroup=Category&amp;GroupbannerName=sportleisure
+														"
 														>아크테릭스</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=165905&amp;MainpageGroup=Category&amp;GroupbannerName=sportleisure"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=165905&amp;MainpageGroup=Category&amp;GroupbannerName=sportleisure
+														"
 														>노스페이스</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167494&amp;MainpageGroup=Category&amp;GroupbannerName=sportleisure"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167494&amp;MainpageGroup=Category&amp;GroupbannerName=sportleisure
+														"
 														>디스커버리</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=182770&amp;MainpageGroup=Category&amp;GroupbannerName=sportleisure"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=182770&amp;MainpageGroup=Category&amp;GroupbannerName=sportleisure
+														"
 														>컬럼비아</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=170389&amp;MainpageGroup=Category&amp;GroupbannerName=sportleisure"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=170389&amp;MainpageGroup=Category&amp;GroupbannerName=sportleisure
+														"
 														>VICTORINOX</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=170464&amp;MainpageGroup=Category&amp;GroupbannerName=sportleisure"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=170464&amp;MainpageGroup=Category&amp;GroupbannerName=sportleisure
+														"
 														>보드라이더스</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=160984&amp;MainpageGroup=Category&amp;GroupbannerName=sportleisure"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=160984&amp;MainpageGroup=Category&amp;GroupbannerName=sportleisure
+														"
 														>RVCA</a></li>
 													</ul>
 												</div>
@@ -2252,8 +2381,9 @@
 
 													<div class="txt-sub">NEW BAG&amp;SHOSE</div>
 
-													<a onclick=
-														href="https://www.thehyundai.com/front/dpa/searchSpexSectItem.thd?sectId=202923&amp;MainpageGroup=CategoryBig&amp;GroupbannerName=CateSports08"
+													<a onclick=href=
+														"https://www.thehyundai.com/front/dpa/searchSpexSectItem.thd?sectId=202923&amp;MainpageGroup=CategoryBig&amp;GroupbannerName=CateSports08
+													"
 													><span class="blind">자세히 보기</span></a>
 												</div>
 												<!-- // 배너 -->
@@ -2261,8 +2391,9 @@
 
 										<!-- 13 : 0 : 0 : 0 -->
 										<!-- 리빙/가전 -->
-										<li><a onclick=
-											href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=2008&amp;MainpageGroup=Category&amp;GroupbannerName=livingelect"
+										<li><a onclick=href=
+											"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=2008&amp;MainpageGroup=Category&amp;GroupbannerName=livingelect
+										"
 										>리빙/가전</a>
 											<div class="in-cate-area">
 												<!--asis : category-area-->
@@ -2271,32 +2402,39 @@
 													<ul>
 														<!-- 09: 09 : cnt = 1 -->
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=31612&amp;MainpageGroup=Category&amp;GroupbannerName=livingelect"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=31612&amp;MainpageGroup=Category&amp;GroupbannerName=livingelect
+														"
 														>거실/침실 가구</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=31628&amp;MainpageGroup=Category&amp;GroupbannerName=livingelect"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=31628&amp;MainpageGroup=Category&amp;GroupbannerName=livingelect
+														"
 														>침구/카페트/커튼</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=31654&amp;MainpageGroup=Category&amp;GroupbannerName=livingelect"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=31654&amp;MainpageGroup=Category&amp;GroupbannerName=livingelect
+														"
 														>생활/인테리어</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=31662&amp;MainpageGroup=Category&amp;GroupbannerName=livingelect"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=31662&amp;MainpageGroup=Category&amp;GroupbannerName=livingelect
+														"
 														>바디/욕실용품</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=31669&amp;MainpageGroup=Category&amp;GroupbannerName=livingelect"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=31669&amp;MainpageGroup=Category&amp;GroupbannerName=livingelect
+														"
 														>주방/조리/식기</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=31692&amp;MainpageGroup=Category&amp;GroupbannerName=livingelect"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=31692&amp;MainpageGroup=Category&amp;GroupbannerName=livingelect
+														"
 														>컴퓨터/스마트폰/카메라</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=31700&amp;MainpageGroup=Category&amp;GroupbannerName=livingelect"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=31700&amp;MainpageGroup=Category&amp;GroupbannerName=livingelect
+														"
 														>주방/TV/냉장고/세탁기</a></li>
 													</ul>
 
@@ -2306,56 +2444,69 @@
 												<!-- 브랜드 -->
 												<div class="brand">
 													<ul>
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSpexSectItem.thd?sectId=200128&amp;MainpageGroup=Category&amp;GroupbannerName=livingelect"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSpexSectItem.thd?sectId=200128&amp;MainpageGroup=Category&amp;GroupbannerName=livingelect
+														"
 														>지누스</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=132125&amp;MainpageGroup=Category&amp;GroupbannerName=livingelect"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=132125&amp;MainpageGroup=Category&amp;GroupbannerName=livingelect
+														"
 														>Williams Sonoma</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=132360&amp;MainpageGroup=Category&amp;GroupbannerName=livingelect"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=132360&amp;MainpageGroup=Category&amp;GroupbannerName=livingelect
+														"
 														>west elm</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=132287&amp;MainpageGroup=Category&amp;GroupbannerName=livingelect"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=132287&amp;MainpageGroup=Category&amp;GroupbannerName=livingelect
+														"
 														>Pottery Barn</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=132324&amp;MainpageGroup=Category&amp;GroupbannerName=livingelect"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=132324&amp;MainpageGroup=Category&amp;GroupbannerName=livingelect
+														"
 														>Pottery Barn Kids</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167711&amp;MainpageGroup=Category&amp;GroupbannerName=livingelect"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167711&amp;MainpageGroup=Category&amp;GroupbannerName=livingelect
+														"
 														>LIVART Online</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167726&amp;MainpageGroup=Category&amp;GroupbannerName=livingelect"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167726&amp;MainpageGroup=Category&amp;GroupbannerName=livingelect
+														"
 														>BOSE</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167697&amp;MainpageGroup=Category&amp;GroupbannerName=livingelect"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167697&amp;MainpageGroup=Category&amp;GroupbannerName=livingelect
+														"
 														>드롱기</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167738&amp;MainpageGroup=Category&amp;GroupbannerName=livingelect"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167738&amp;MainpageGroup=Category&amp;GroupbannerName=livingelect
+														"
 														>스메그</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=198704&amp;MainpageGroup=Category&amp;GroupbannerName=livingelect"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=198704&amp;MainpageGroup=Category&amp;GroupbannerName=livingelect
+														"
 														>제이엘꼬께</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=168098&amp;MainpageGroup=Category&amp;GroupbannerName=livingelect"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=168098&amp;MainpageGroup=Category&amp;GroupbannerName=livingelect
+														"
 														>웨지우드</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=168099&amp;MainpageGroup=Category&amp;GroupbannerName=livingelect"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=168099&amp;MainpageGroup=Category&amp;GroupbannerName=livingelect
+														"
 														>로얄 코펜하겐</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167546&amp;MainpageGroup=Category&amp;GroupbannerName=livingelect"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167546&amp;MainpageGroup=Category&amp;GroupbannerName=livingelect
+														"
 														>LUSH</a></li>
 													</ul>
 												</div>
@@ -2370,8 +2521,9 @@
 
 													<div class="txt-sub">LUSH</div>
 
-													<a onclick=
-														href="https://www.thehyundai.com/front/dpa/searchSpexSectItem.thd?sectId=198874&amp;MainpageGroup=CategoryBig&amp;GroupbannerName=CateLiving09"
+													<a onclick=href=
+														"https://www.thehyundai.com/front/dpa/searchSpexSectItem.thd?sectId=198874&amp;MainpageGroup=CategoryBig&amp;GroupbannerName=CateLiving09
+													"
 													><span class="blind">자세히 보기</span></a>
 												</div>
 												<!-- // 배너 -->
@@ -2379,8 +2531,9 @@
 
 										<!-- 9 : 0 : 0 : 0 -->
 										<!-- 식품 -->
-										<li><a onclick=
-											href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=2009&amp;MainpageGroup=Category&amp;GroupbannerName=food"
+										<li><a onclick=href=
+											"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=2009&amp;MainpageGroup=Category&amp;GroupbannerName=food
+										"
 										>식품</a>
 											<div class="in-cate-area">
 												<!--asis : category-area-->
@@ -2389,16 +2542,19 @@
 													<ul>
 														<!-- 10: 10 : cnt = 1 -->
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=100044&amp;MainpageGroup=Category&amp;GroupbannerName=food"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=100044&amp;MainpageGroup=Category&amp;GroupbannerName=food
+														"
 														>베어커리/한과/간식</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=100033&amp;MainpageGroup=Category&amp;GroupbannerName=food"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=100033&amp;MainpageGroup=Category&amp;GroupbannerName=food
+														"
 														>홍삼/건강식품</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=100043&amp;MainpageGroup=Category&amp;GroupbannerName=food"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=100043&amp;MainpageGroup=Category&amp;GroupbannerName=food
+														"
 														>커피/차/음료</a></li>
 													</ul>
 
@@ -2408,40 +2564,49 @@
 												<!-- 브랜드 -->
 												<div class="brand">
 													<ul>
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=149650&amp;MainpageGroup=Category&amp;GroupbannerName=food"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=149650&amp;MainpageGroup=Category&amp;GroupbannerName=food
+														"
 														>산지스토리관</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167425&amp;MainpageGroup=Category&amp;GroupbannerName=food"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167425&amp;MainpageGroup=Category&amp;GroupbannerName=food
+														"
 														>정관장</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167439&amp;MainpageGroup=Category&amp;GroupbannerName=food"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167439&amp;MainpageGroup=Category&amp;GroupbannerName=food
+														"
 														>세노비스</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167442&amp;MainpageGroup=Category&amp;GroupbannerName=food"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167442&amp;MainpageGroup=Category&amp;GroupbannerName=food
+														"
 														>솔가</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167434&amp;MainpageGroup=Category&amp;GroupbannerName=food"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167434&amp;MainpageGroup=Category&amp;GroupbannerName=food
+														"
 														>GNC</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167850&amp;MainpageGroup=Category&amp;GroupbannerName=food"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167850&amp;MainpageGroup=Category&amp;GroupbannerName=food
+														"
 														>명인명촌</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167935&amp;MainpageGroup=Category&amp;GroupbannerName=food"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167935&amp;MainpageGroup=Category&amp;GroupbannerName=food
+														"
 														>오설록</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167928&amp;MainpageGroup=Category&amp;GroupbannerName=food"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167928&amp;MainpageGroup=Category&amp;GroupbannerName=food
+														"
 														>쌍계명차</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167918&amp;MainpageGroup=Category&amp;GroupbannerName=food"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167918&amp;MainpageGroup=Category&amp;GroupbannerName=food
+														"
 														>루이독</a></li>
 													</ul>
 												</div>
@@ -2456,8 +2621,9 @@
 
 													<div class="txt-sub">건강 나들이</div>
 
-													<a onclick=
-														href="https://www.thehyundai.com/front/dpa/searchSpexSectItem.thd?sectId=204738&amp;MainpageGroup=CategoryBig&amp;GroupbannerName=CateFood10"
+													<a onclick=href=
+														"https://www.thehyundai.com/front/dpa/searchSpexSectItem.thd?sectId=204738&amp;MainpageGroup=CategoryBig&amp;GroupbannerName=CateFood10
+													"
 													><span class="blind">자세히 보기</span></a>
 												</div>
 												<!-- // 배너 -->
@@ -2465,8 +2631,9 @@
 
 										<!-- 8 : 0 : 0 : 0 -->
 										<!-- 반려동물 -->
-										<li><a onclick=
-											href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=193997&amp;MainpageGroup=Category&amp;GroupbannerName=animal"
+										<li><a onclick=href=
+											"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=193997&amp;MainpageGroup=Category&amp;GroupbannerName=animal
+										"
 										>반려동물</a>
 											<div class="in-cate-area">
 												<!--asis : category-area-->
@@ -2475,40 +2642,49 @@
 													<ul>
 														<!-- 11: 11 : cnt = 1 -->
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=193998&amp;MainpageGroup=Category&amp;GroupbannerName=animal"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=193998&amp;MainpageGroup=Category&amp;GroupbannerName=animal
+														"
 														>THE PET</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=193999&amp;MainpageGroup=Category&amp;GroupbannerName=animal"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=193999&amp;MainpageGroup=Category&amp;GroupbannerName=animal
+														"
 														>티셔츠</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=194000&amp;MainpageGroup=Category&amp;GroupbannerName=animal"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=194000&amp;MainpageGroup=Category&amp;GroupbannerName=animal
+														"
 														>아우터</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=194001&amp;MainpageGroup=Category&amp;GroupbannerName=animal"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=194001&amp;MainpageGroup=Category&amp;GroupbannerName=animal
+														"
 														>드레스</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=194002&amp;MainpageGroup=Category&amp;GroupbannerName=animal"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=194002&amp;MainpageGroup=Category&amp;GroupbannerName=animal
+														"
 														>올인원</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=194003&amp;MainpageGroup=Category&amp;GroupbannerName=animal"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=194003&amp;MainpageGroup=Category&amp;GroupbannerName=animal
+														"
 														>Acc</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=194004&amp;MainpageGroup=Category&amp;GroupbannerName=animal"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=194004&amp;MainpageGroup=Category&amp;GroupbannerName=animal
+														"
 														>리빙</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=194005&amp;MainpageGroup=Category&amp;GroupbannerName=animal"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=194005&amp;MainpageGroup=Category&amp;GroupbannerName=animal
+														"
 														>케어</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=194006&amp;MainpageGroup=Category&amp;GroupbannerName=animal"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=194006&amp;MainpageGroup=Category&amp;GroupbannerName=animal
+														"
 														>푸드</a></li>
 													</ul>
 
@@ -2518,36 +2694,44 @@
 												<!-- 브랜드 -->
 												<div class="brand">
 													<ul>
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167918&amp;MainpageGroup=Category&amp;GroupbannerName=animal"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167918&amp;MainpageGroup=Category&amp;GroupbannerName=animal
+														"
 														>루이독</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=194133&amp;MainpageGroup=Category&amp;GroupbannerName=animal"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=194133&amp;MainpageGroup=Category&amp;GroupbannerName=animal
+														"
 														>몽슈슈</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=194132&amp;MainpageGroup=Category&amp;GroupbannerName=animal"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=194132&amp;MainpageGroup=Category&amp;GroupbannerName=animal
+														"
 														>위드토리</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=194128&amp;MainpageGroup=Category&amp;GroupbannerName=animal"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=194128&amp;MainpageGroup=Category&amp;GroupbannerName=animal
+														"
 														>비쇼네</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=194172&amp;MainpageGroup=Category&amp;GroupbannerName=animal"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=194172&amp;MainpageGroup=Category&amp;GroupbannerName=animal
+														"
 														>허글앤넬로</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=192316&amp;MainpageGroup=Category&amp;GroupbannerName=animal"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=192316&amp;MainpageGroup=Category&amp;GroupbannerName=animal
+														"
 														>코코스퀘어</a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=194144&amp;MainpageGroup=Category&amp;GroupbannerName=animal"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=194144&amp;MainpageGroup=Category&amp;GroupbannerName=animal
+														"
 														>코니도기 </a></li>
 
-														<li><a onclick=
-															href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=194129&amp;MainpageGroup=Category&amp;GroupbannerName=animal"
+														<li><a onclick=href=
+															"https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=194129&amp;MainpageGroup=Category&amp;GroupbannerName=animal
+														"
 														>펫컴 </a></li>
 													</ul>
 												</div>
@@ -2562,9 +2746,9 @@
 
 													<div class="txt-sub">프리미엄 반려동물 편집샵</div>
 
-													<a onclick=
-														href="http://www.thehyundai.com/front/dpa/searchSpexSectItem.thd?sectId=171389"
-													><span class="blind">자세히 보기</span></a>
+													<a onclick=href= "http://www.thehyundai.com/front/dpa/searchSpexSectItem.thd?sectId=171389"
+													><span class="blind">자세히
+															보기</span></a>
 												</div>
 												<!-- // 배너 -->
 											</div> <!--in-cate-area / asis : category-area--></li>
@@ -2573,8 +2757,9 @@
 
 							<!-- 셀렉션 -->
 							<!-- 셀렉션 추가 필요 02 : https://www.thehyundai.com/front/dpa/selectionTileList.thd?sectId=186254&MainpageGroup=GNB_showroom&GroupbannerName=menu -->
-							<li><a onclick=
-								href="https://www.thehyundai.com/front/dpa/selectionTileList.thd?sectId=186254&amp;MainpageGroup=GNB_showroom&amp;GroupbannerName=menu"
+							<li><a onclick=href=
+								"https://www.thehyundai.com/front/dpa/selectionTileList.thd?sectId=186254&amp;MainpageGroup=GNB_showroom&amp;GroupbannerName=menu
+							"
 							>프리미엄쇼룸</a> <!-- 셀렉션 타입 type-selection 클래스 추가// -->
 								<div class="in-depth-area type-selection">
 									<div class="inner">
@@ -2587,9 +2772,10 @@
 
 											<div class="txt-main">미묘하고 절제된 커팅, 르메르</div>
 
-											<a onclick=
-												href="https://www.thehyundai.com/front/dpa/untdBrndSect.thd?sectId=192689&amp;MainpageGroup=GNB_showroom&amp;GroupbannerName=0"
-											><span class="blind">자세히 보기</span></a>
+											<a onclick=href= "https://www.thehyundai.com/front/dpa/untdBrndSect.thd?sectId=192689&amp;MainpageGroup=GNB_showroom&amp;GroupbannerName=0"
+											><span
+												class="blind"
+											>자세히 보기</span></a>
 										</div>
 
 										<!-- 타이틀 -->
@@ -2611,17 +2797,19 @@
 
 											<div class="txt-main">모던하고 다채로운 밸런스, 질샌더</div>
 
-											<a onclick=
-												href="https://www.thehyundai.com/front/dpa/untdBrndSect.thd?sectId=192699&amp;MainpageGroup=GNB_showroom&amp;GroupbannerName=1"
-											><span class="blind">자세히 보기</span></a>
+											<a onclick=href= "https://www.thehyundai.com/front/dpa/untdBrndSect.thd?sectId=192699&amp;MainpageGroup=GNB_showroom&amp;GroupbannerName=1"
+											><span
+												class="blind"
+											>자세히 보기</span></a>
 										</div>
 									</div>
 								</div> <!-- //셀렉션 타입 --></li>
 
 							<!-- 상품 -->
 							<!-- 상품 추가 필요 04 -->
-							<li><a onclick=
-								href="https://www.thehyundai.com/front/dpa/selectionListDisp.thd?sectId=185814&amp;MainpageGroup=GNB_newItem&amp;GroupbannerName=menu"
+							<li><a onclick=href=
+								"https://www.thehyundai.com/front/dpa/selectionListDisp.thd?sectId=185814&amp;MainpageGroup=GNB_newItem&amp;GroupbannerName=menu
+							"
 							>신상품</a> <!-- 상품 개수 변수 추가 --> <!-- 상품 타입 type-goods 클래스 추가// -->
 								<div class="in-depth-area type-goods type-mixed">
 									<div class="inner">
@@ -2639,8 +2827,9 @@
 													2023 STONEHENgE Presents<br />DAL/ POSY/ U-LOCK Collection
 												</div>
 
-												<a onclick=
-													href="https://www.thehyundai.com/front/dpa/searchSpexSectItem.thd?sectId=101604&amp;MainpageGroup=GNB_newItem&amp;GroupbannerName=0"
+												<a onclick=href=
+													"https://www.thehyundai.com/front/dpa/searchSpexSectItem.thd?sectId=101604&amp;MainpageGroup=GNB_newItem&amp;GroupbannerName=0
+												"
 												><span class="blind">자세히 보기</span></a>
 											</div>
 
@@ -2655,9 +2844,10 @@
 												<div class="txt-price">
 													165,000<span>원</span>
 												</div>
-												<a onclick=
-													href="https://www.thehyundai.com/front/pda/itemPtc.thd?slitmCd=40A1650450&amp;MainpageGroup=GNB_newItem&amp;GroupbannerName=1"
-												><span class="blind">자세히 보기</span></a>
+												<a onclick=href= "https://www.thehyundai.com/front/pda/itemPtc.thd?slitmCd=40A1650450&amp;MainpageGroup=GNB_newItem&amp;GroupbannerName=1"
+												><span
+													class="blind"
+												>자세히 보기</span></a>
 											</div>
 
 											<!-- 상품2 -->
@@ -2671,9 +2861,10 @@
 												<div class="txt-price">
 													529,000<span>원</span>
 												</div>
-												<a onclick=
-													href="https://www.thehyundai.com/front/pda/itemPtc.thd?slitmCd=2148372691&amp;MainpageGroup=GNB_newItem&amp;GroupbannerName=2"
-												><span class="blind">자세히 보기</span></a>
+												<a onclick=href= "https://www.thehyundai.com/front/pda/itemPtc.thd?slitmCd=2148372691&amp;MainpageGroup=GNB_newItem&amp;GroupbannerName=2"
+												><span
+													class="blind"
+												>자세히 보기</span></a>
 											</div>
 
 											<!-- 상품3 -->
@@ -2687,9 +2878,10 @@
 												<div class="txt-price">
 													59,000<span>원</span>
 												</div>
-												<a onclick=
-													href="https://www.thehyundai.com/front/pda/itemPtc.thd?slitmCd=40A1648742&amp;MainpageGroup=GNB_newItem&amp;GroupbannerName=3"
-												><span class="blind">자세히 보기</span></a>
+												<a onclick=href= "https://www.thehyundai.com/front/pda/itemPtc.thd?slitmCd=40A1648742&amp;MainpageGroup=GNB_newItem&amp;GroupbannerName=3"
+												><span
+													class="blind"
+												>자세히 보기</span></a>
 											</div>
 
 											<!-- prodCnt : 3 -->
@@ -2700,8 +2892,9 @@
 
 							<!-- 컨텐츠 -->
 							<!-- 컨텐츠 추가 필요 03 -->
-							<li><a onclick=
-								href="https://www.thehyundai.com/front/dpa/selectionListDisp.thd?sectId=186124&amp;MainpageGroup=GNB_gift&amp;GroupbannerName=menu"
+							<li><a onclick=href=
+								"https://www.thehyundai.com/front/dpa/selectionListDisp.thd?sectId=186124&amp;MainpageGroup=GNB_gift&amp;GroupbannerName=menu
+							"
 							>선물하기</a> <!-- 컨텐츠 타입 type-contents 클래스 추가// -->
 								<div class="in-depth-area type-contents">
 									<div class="inner">
@@ -2717,8 +2910,9 @@
 
 												<div class="txt-sub">행복을 주는 소소한 사치</div>
 
-												<a onclick=
-													href="https://www.thehyundai.com/front/dpa/searchSpexSectItem.thd?sectId=183895&amp;MainpageGroup=GNB_gift&amp;GroupbannerName=0"
+												<a onclick=href=
+													"https://www.thehyundai.com/front/dpa/searchSpexSectItem.thd?sectId=183895&amp;MainpageGroup=GNB_gift&amp;GroupbannerName=0
+												"
 												><span class="blind">자세히 보기</span></a>
 											</div>
 
@@ -2733,8 +2927,9 @@
 
 												<div class="txt-sub">내 맘 속에 저장 ♡</div>
 
-												<a onclick=
-													href="https://www.thehyundai.com/front/dpa/searchSpexSectItem.thd?sectId=183896&amp;MainpageGroup=GNB_gift&amp;GroupbannerName=1"
+												<a onclick=href=
+													"https://www.thehyundai.com/front/dpa/searchSpexSectItem.thd?sectId=183896&amp;MainpageGroup=GNB_gift&amp;GroupbannerName=1
+												"
 												><span class="blind">자세히 보기</span></a>
 											</div>
 
@@ -2749,8 +2944,9 @@
 
 												<div class="txt-sub">남자를 위한 선물</div>
 
-												<a onclick=
-													href="https://www.thehyundai.com/front/dpa/searchSpexSectItem.thd?sectId=183898&amp;MainpageGroup=GNB_gift&amp;GroupbannerName=2"
+												<a onclick=href=
+													"https://www.thehyundai.com/front/dpa/searchSpexSectItem.thd?sectId=183898&amp;MainpageGroup=GNB_gift&amp;GroupbannerName=2
+												"
 												><span class="blind">자세히 보기</span></a>
 											</div>
 
@@ -2765,8 +2961,9 @@
 
 												<div class="txt-sub">건강하게 혹은 달콤하게</div>
 
-												<a onclick=
-													href="https://www.thehyundai.com/front/dpa/searchSpexSectItem.thd?sectId=183897&amp;MainpageGroup=GNB_gift&amp;GroupbannerName=3"
+												<a onclick=href=
+													"https://www.thehyundai.com/front/dpa/searchSpexSectItem.thd?sectId=183897&amp;MainpageGroup=GNB_gift&amp;GroupbannerName=3
+												"
 												><span class="blind">자세히 보기</span></a>
 											</div>
 										</div>
@@ -2775,13 +2972,13 @@
 
 							<!-- 셀렉션 -->
 							<!-- 셀렉션 추가 필요 02 : https://www.thehyundai.com/front/dpa/sbSect.thd?sectId=192956&MainpageGroup=GNB_regreen&GroupbannerName=menu -->
-							<li><a onclick=
-								href="https://www.thehyundai.com/front/dpa/sbSect.thd?sectId=192956&amp;MainpageGroup=GNB_regreen&amp;GroupbannerName=menu"
+							<li><a onclick=href= "https://www.thehyundai.com/front/dpa/sbSect.thd?sectId=192956&amp;MainpageGroup=GNB_regreen&amp;GroupbannerName=menu"
 							>Re.Green</a></li>
 
 							<!-- 선택안함 -->
-							<li><a onclick=
-								href="https://www.thehyundai.com/CS/eva/evntBnftPageDivide.thd?tabNo=1&amp;MainpageGroup=GNB_event&amp;GroupbannerName=menu"
+							<li><a onclick=href=
+								"https://www.thehyundai.com/CS/eva/evntBnftPageDivide.thd?tabNo=1&amp;MainpageGroup=GNB_event&amp;GroupbannerName=menu
+							"
 							>이벤트/혜택</a> <!-- 타이선택 안할 경우 <div class="in-depth-area"> 미노출 --></li>
 						</ul>
 					</div>
@@ -2790,10 +2987,7 @@
 				<!-- // top-nav -->
 				<!-- //gnb-area -->
 
-				<script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/dp/dpo/dqSearch.js?ver=030614"></script>
 
-				<script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/dp/dpo/dqAutoCompleteNewCommon.js?ver=030614"></script>
-				<script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/dp/dpo/dqAutoCompleteNew.js?ver=030614"></script>
 
 				<!-- //header -->
 
@@ -2894,8 +3088,6 @@
 
                     Products.push(Product);
                     EcommerceSet(E_step, Products, actionList, dimension);
-                    // GA 이벤트 전송
-                    GA_Event("PC_공통", "최근본상품_배너", Product.name);
                   });
                 </script>
 							<!-- 최근 본 상품 -->
@@ -2971,20 +3163,18 @@
 
 						<!-- 기타 배너 -->
 						<div class="right-other">
-							<a onclick=
-								href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?venCd=013368&amp;MainpageGroup=Sky&amp;GroupbannerName=Department"
-							><img src="https://image.thehyundai.com/hdmall/images/co/img_bn_other01.jpg" alt="" /></a>
+							<a onclick=href= "https://www.thehyundai.com/front/dpa/searchSectItem.thd?venCd=013368&amp;MainpageGroup=Sky&amp;GroupbannerName=Department"
+							><img
+								src="https://image.thehyundai.com/hdmall/images/co/img_bn_other01.jpg" alt=""
+							/></a>
 						</div>
 						<div class="right-other">
-							<a href="#" onclick="javascript:GA_Event('PC_공통','더한섬닷컴_바로가기', '더한섬닷컴'); dummy();"><img
-								src="https://image.thehyundai.com/hdmall/images/co/img_bn_other02.jpg" alt=""
-							/></a>
+							<a href="#" onclick="javascript:"><img src="https://image.thehyundai.com/hdmall/images/co/img_bn_other02.jpg" alt="" /></a>
 						</div>
 
 						<!-- top 버튼 -->
 						<div class="right-top-moving">
-							<a href="#" onclick=>최상단으로
-									이동</span></a>
+							<a href="#" onclick=>최상단으로 이동</span></a>
 						</div>
 					</div>
 				</div>
@@ -2992,7 +3182,6 @@
 			</div>
 		</div>
 
-		<script type="text/javascript" src="https://image.thehyundai.com/pc/js/hdmall/co/skyscraper.js?ver=030614"></script>
 		<script type="text/javascript">
         $(document).ready(function () {});
       </script>
@@ -3019,67 +3208,7 @@
 				</div>
 				<!-- //cart-head -->
 
-				<!-- DEP01WORK-21646 비회원 회원가입 유도 배너 -->
 
-				<!-- 여러곳으로 배송하기// -->
-
-				<div class="ordersheet-box type-select" id="divMultDlvBtnArea">
-					<label style="white-space: normal"><input id="isMultiDeliveryplace" type="checkbox" name="" value="" class="gencrinputstyle" /><span
-						class="cr-checkbox" id="gencrinputstyle-isMultiDeliveryplace"
-						style="cursor: pointer; margin-left: -21px; margin-top: -0.5px; margin-right: 4px;"
-					></span> 여러곳으로 배송하기</label>
-
-					<!-- 작성방법 선택 -->
-					<div class="selectric-wrapper" style="width: 103px; display: none">
-						<div class="selectric-hide-select">
-							<select id="howMultiDeliveryplace" name="" tabindex="0" style="display: none">
-								<option value="1" selected="selected">직접입력</option>
-
-								<!-- 파일업로드는 명절배송상품을 가져왔을 경우 -->
-								<option value="2">파일업로드</option>
-							</select>
-						</div>
-						<div class="selectric">
-							<p class="label">직접입력</p>
-							<b class="button">▾</b>
-						</div>
-						<div class="selectric-items" tabindex="-1">
-							<div class="selectric-scroll">
-								<ul>
-									<li data-index="0" class="selected">직접입력</li>
-									<li data-index="1" class="last">파일업로드</li>
-								</ul>
-							</div>
-						</div>
-						<input class="selectric-input" tabindex="0" />
-					</div>
-					<!-- //작성방법 선택 -->
-
-					<!-- 배송지 수 선택 -->
-					<div class="selectric-wrapper" style="width: 63px; display: none">
-						<div class="selectric-hide-select">
-							<select id="numberMultiDeliveryplace" name="" tabindex="0" style="display: none">
-								<option value="1" selected="selected">1곳</option>
-
-								<option value="2">2곳</option>
-							</select>
-						</div>
-						<div class="selectric">
-							<p class="label">1곳</p>
-							<b class="button">▾</b>
-						</div>
-						<div class="selectric-items" tabindex="-1">
-							<div class="selectric-scroll">
-								<ul>
-									<li data-index="0" class="selected">1곳</li>
-									<li data-index="1" class="last">2곳</li>
-								</ul>
-							</div>
-						</div>
-						<input class="selectric-input" tabindex="0" />
-					</div>
-					<!-- //배송지 수 선택 -->
-				</div>
 
 				<!-- ordersheet-box -->
 				<div class="ordersheet-box">
@@ -3699,17 +3828,7 @@
 					<input id="isMultiDlvYn" type="hidden" value="N" />
 					<input id="isMultiDlvForCsvYn" type="hidden" value="N" />
 				</div>
-				<!-- // ordersheet-box -->
 
-				<!-- ordersheet-box -->
-				<!-- 배송메세지 20181227 위치이동 및 수정 -->
-				<!-- 2020 배송지/복수배송 리뉴얼 정길화 2020.12.22 : 일반배송 배송메세지 제거 -->
-
-				<!-- // ordersheet-box -->
-
-				<!-- ordersheet-box 20180604 루이자비아로마 -->
-
-				<!-- // ordersheet-box 20180604 루이자비아로마, 20190426 마이테레사 -->
 
 				<!-- ordersheet-box -->
 				<div class="ordersheet-box">
@@ -3717,7 +3836,7 @@
 						<h3>주문상품</h3>
 
 						<div class="right-area best-sale" style="white-space: normal">
-							<input type="checkbox" id="order-product-chk" onclick="javascript:setOptimumDiscount();" class="gencrinputstyle" />
+							<input type="checkbox" id="order-product-chk" class="gencrinputstyle" />
 							<span class="cr-checkbox checked" id="gencrinputstyle-order-product-chk"
 								style="cursor: pointer; margin-left: -17px; margin-top: -0.5px; margin-right: 0px;"
 							></span><span>최적 쿠폰 할인 적용</span>
@@ -3996,7 +4115,7 @@
                                      -->
 															<!-- H.Point 선불 충전 링크 추가 2021.02.02 -->
 															<a href="javascript:void(window.open('https://www.h-point.co.kr/pe/preppoint/prepPayRequest.shd','_blank'))"
-																class="btn size2 color16 ml5" onclick="javascript:GA_Event('PC_주문서작성', '포인트_충전', 'H.Point 충전');"
+																class="btn size2 color16 ml5" onclick="javascript:"
 															><span>포인트 충전</span><i class="icon-arrow more3 ml10"></i></a>
 															<div class="tooltip-cont bottom" id="tooltip-discount-hpoint" data-placement="bottom" data-width="530"
 																style="width: 530px; top: 40.3333px; left: -192.479px; display: none;"
@@ -5017,8 +5136,7 @@
 				<!-- 20190117 추가 -->
 				<div class="warranty-info">
 					<div class="head">
-						채무지급 보증안내 <a href="#" onclick="javascript:servicePopupOpen(); GA_Event('PC_주문서작성', '채무지급_보증안내', '서비스가입사실확인'); return false;" class="btn size1">서비스
-							가입사실 확인</a>
+						채무지급 보증안내 <a href="#" onclick="javascript:servicePopupOpen();  return false;" class="btn size1">서비스 가입사실 확인</a>
 						<!-- 2016-08-16 -->
 					</div>
 					<div class="body">고객님의 안전거래를 위해 현금 결제시 우리은행과 채무지급보증 계약을 체결하여 안전거래를 보장하고 있습니다.</div>
@@ -5545,18 +5663,7 @@
 		</div>
 		<!-- //pop-footer -->
 	</div>
-	<!-- //popover-wrap -->
 
-	<!-- 20170222 강민지 기프티콘 환금성 && 30만원 이상 구매 시, 본인인증 -->
-	<!-- popover-wrap -->
-	<div class="popover-wrap w750" id="popover-certification-gifticon">
-		<input type="hidden" id="giftiCertYn" value="N" />
-		<a href="#popover-btn-layer01" class="popover-close" style="display: none">닫기</a>
-		<iframe id="iframeNonmemberCert" name="iframeNonmemberCert" src="/front/cob/commRlnmCertPup.thd?reqType=gifti" width="750" height="400"
-			scrolling="no"
-		></iframe>
-	</div>
-	<!-- //popover-wrap -->
 
 	<!-- 복수배송 최종 배송지 확인 레이어 추가 22.12.30 -->
 	<!-- popover-wrap -->
@@ -6346,7 +6453,6 @@
       };
       goods.push(maGoods);
 
-      groobee("OR", { goods: goods });
     </script>
 
 	<!-- footer -->
@@ -6367,35 +6473,31 @@
 			<div class="row">
 				<div class="hyundai-menu">
 					<span class="tit"> <a href="javascript:;"
-						onclick="javascript:GA_Event('PC_공통','푸터_메뉴','현대백화점그룹'); dummyLogCatch('http://www.ehyundai.com/newPortal/ir', 'Footer', 'group', 'blank', 'Y', null)"
+						onclick="javascript: dummyLogCatch('http://www.ehyundai.com/newPortal/ir', 'Footer', 'group', 'blank', 'Y', null)"
 					>현대백화점그룹</a>
 					</span>
 					<ul>
-						<li><a onclick=
-							href="http://www.thehyundai.com/front/ccb/noticeList.thd?MainpageGroup=Footer&amp;GroupbannerName=notice"
+						<li><a onclick=href= "http://www.thehyundai.com/front/ccb/noticeList.thd?MainpageGroup=Footer&amp;GroupbannerName=notice"
 						>공지사항</a></li>
 
 						<li><a href="javascript:;"
-							onclick="javascript:GA_Event('PC_공통','푸터_메뉴','윤리경영'); dummyLogCatch('http://www.ehyundai.com/newPortal/ir/ETH/ETH000001.do?ir=3', 'Footer', 'legal', 'blank', 'Y', null)"
+							onclick="javascript: dummyLogCatch('http://www.ehyundai.com/newPortal/ir/ETH/ETH000001.do?ir=3', 'Footer', 'legal', 'blank', 'Y', null)"
 						>윤리경영</a></li>
 						<li><a href="javascript:;"
-							onclick="javascript:GA_Event('PC_공통','푸터_메뉴','사회공헌'); dummyLogCatch('http://www.ehyundai.com/newPortal/csr/main.do', 'Footer', 'legal', 'blank', 'Y', null)"
+							onclick="javascript: dummyLogCatch('http://www.ehyundai.com/newPortal/csr/main.do', 'Footer', 'legal', 'blank', 'Y', null)"
 						>사회공헌</a></li>
-						<li><a onclick=
-							href="http://www.thehyundai.com/front/cua/viewPolicyPup.thd?view=1&amp;MainpageGroup=Footer&amp;GroupbannerName=agree" data-toggle="winpopup"
-							data-api="center,900,770,scrollbars" target="_blank"
+						<li><a onclick=href= "http://www.thehyundai.com/front/cua/viewPolicyPup.thd?view=1&amp;MainpageGroup=Footer&amp;GroupbannerName=agree
+							" data-toggle="winpopup" data-api="center,900,770,scrollbars" target="_blank"
 						>이용약관</a></li>
-						<li><a onclick=
-							href="http://www.thehyundai.com/front/cua/viewPolicyPup.thd?view=2&amp;MainpageGroup=Footer&amp;GroupbannerName=private" data-toggle="winpopup"
-							data-api="center,900,770,scrollbars" target="_blank"
+						<li><a onclick=href= "http://www.thehyundai.com/front/cua/viewPolicyPup.thd?view=2&amp;MainpageGroup=Footer&amp;GroupbannerName=private
+							" data-toggle="winpopup" data-api="center,900,770,scrollbars" target="_blank"
 						><strong>개인정보 처리방침</strong></a></li>
 					</ul>
 				</div>
 
 				<!-- 2016-07-28// -->
 				<div class="family">
-					<a href="#" onclick="javascript:GA_Event('PC_공통','푸터_메뉴','FAMILY SITE'); $(this).parents('.family').toggleClass('current');return false;">FAMILY
-						SITE <i></i>
+					<a href="#" onclick="javascript:return false;">FAMILY SITE <i></i>
 					</a>
 					<div class="family-site">
 						<!-- <h4>쇼핑몰 site</h4> -->
@@ -6403,8 +6505,7 @@
 							<ul>
 								<li><a onclick=>현대식품관 투홈</a></li>
 								<li><a onclick=>현대Hmall</a></li>
-								<li><a onclick=
-									target="_blank"
+								<li><a onclick=target="_blank"
 								>현대백화점 DUTY FREE</a></li>
 								<li><a onclick=>더한섬닷컴</a></li>
 								<li><a onclick=>현대리바트몰</a></li>
@@ -6469,21 +6570,21 @@
 				<div class="sns-quickgo">
 					<ul>
 						<li><a href="javascript:;"
-							onclick="javascript:GA_Event('PC_공통','패밀리사이트','FACEBOOK'); dummyLogCatch('https://www.facebook.com/eHYUNDAI/', 'Footer', 'facebook', 'blank', 'Y', null)"
+							onclick="javascript:dummyLogCatch('https://www.facebook.com/eHYUNDAI/', 'Footer', 'facebook', 'blank', 'Y', null)"
 						><i class="facebook">facebook</i></a></li>
 						<li><a href="javascript:;"
-							onclick="javascript:GA_Event('PC_공통','패밀리사이트','TWITTER'); dummyLogCatch('https://twitter.com/eHyundai_tweets/', 'Footer', 'twitter', 'blank', 'Y', null)"
+							onclick="javascript:dummyLogCatch('https://twitter.com/eHyundai_tweets/', 'Footer', 'twitter', 'blank', 'Y', null)"
 						><i class="twitter">트위터</i></a></li>
 						<!-- 2017-01-25 핀터레스트 제거
               <li><a href="javascript:;" onclick="javascript:dummyLogCatch('https://www.pinterest.com/hyundaidept/', 'Footer', 'pinterest', 'blank', 'Y', null)"><i class=" pinterest">pinterest</i></a></li>
               -->
 						<!-- 2017-01-25 인스타그램 추가 -->
 						<li><a href="javascript:;"
-							onclick="javascript:GA_Event('PC_공통','패밀리사이트','INSTAGRAM'); dummyLogCatch('https://www.instagram.com/the_hyundai/', 'Footer', 'instagram', 'blank', 'Y', null)"
+							onclick="javascript:dummyLogCatch('https://www.instagram.com/the_hyundai/', 'Footer', 'instagram', 'blank', 'Y', null)"
 						><i class="instagram">instagram</i></a></li>
-						<li><a href="javascript:;"
-							onclick="javascript:GA_Event('PC_공통','패밀리사이트','TISTORY'); dummyLogCatch('http://thehyundai.tistory.com/', 'Footer', 'blog', 'blank', 'Y', null)"
-						><i class="tistory">tistory</i></a></li>
+						<li><a href="javascript:;" onclick="javascript:dummyLogCatch('http://thehyundai.tistory.com/', 'Footer', 'blog', 'blank', 'Y', null)"><i
+								class="tistory"
+							>tistory</i></a></li>
 					</ul>
 				</div>
 			</div>
@@ -6508,109 +6609,13 @@
 			</div>
 		</div>
 	</div>
-	<!-- //footer -->
 
-	<!--[if lte IE 9]>
-      <script src="https://www.thehyundai.com/js/common_ie.js"></script>
-    <![endif]-->
-	<!--[if lt IE 8]>
-      <link rel="stylesheet" href="https://www.thehyundai.com/cssssl/ie7.css" />
-      <script
-        type="text/javascript"
-        src="https://www.thehyundai.com/js/IE8.js"
-      ></script>
-    <![endif]-->
 
-	<script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/co/makePCookie.js"></script>
 
-	<!-- 베네피아 iframe 중복 스크롤 방지 script-->
-	<script language="Javascript" type="text/javascript">
-      var visitReferCodeFooter = getCookie("EHReferCode");
-      if (visitReferCodeFooter == "B11") {
-        function resizeBenepiaFrame() {
-          var h = document.documentElement.scrollHeight;
-          var w = document.documentElement.scrollWidth;
-          if (parent.frames["beneFrame"] != undefined) {
-            parent.frames["beneFrame"].resizeTo(w, h);
-          }
-        }
-        resizeBenepiaFrame();
-      }
-    </script>
 
-	<!-- 공통 적용 스크립트 , 모든 페이지에 노출되도록 설치. 단 전환페이지 설정값보다 항상 하단에 위치해야함 -->
-	<script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
-	<script type="text/javascript">
-      var visitReferCode = getCookie("EHReferCode");
-      if (visitReferCode == "441" || visitReferCode == "190") {
-        if (!wcs_add) var wcs_add = {};
-        wcs_add["wa"] = "s_1999141c8036";
-        if (!_nasa) var _nasa = {};
-        wcs.inflow();
-        wcs_do(_nasa);
-      }
-    </script>
 
-	<!-- //이탈방지솔루션, NHN모어(More) -->
-	<!--  <script>
-    var _croID = '5cedeb70e4b059f6b521cd33';
-    console.log("footer");
-    function mcroPushEvent(n)
-      {"undefined"!=typeof globalCRO?
-      globalCRO.sendEvent(n):("undefined"==typeof gCro&&(window.gCro=new Array),gCro.push(n))}
-    function _cro_initialize(){window.globalCRO=new MCro,globalCRO.jsInit(_croID)}
-    console.log("footerend");
-  </script>
-  <script async type="text/javascript" src="//cro.myshp.us/resources/common/js/more-common.js"></script> -->
-	<!-- //이탈방지솔루션, NHN모어(More) -->
 
-	<!-- NABUS 공통 SCRIPT -->
-	<script type="text/javascript" src="https://sc.11h11m.net/s/E5455.js"></script>
 
-	<!-- GA 구축 프로젝트 공통 js 추가, 21.12.09 -->
-	<script src="/js/hdmall/co/googleAnalyticsBuilder.js"></script>
 
-	<!-- SSO 회원화 전환가입 팝업 호출, 22.02.13 -->
-	<script type="text/javascript">
-      $(function () {
-        if (typeof isLogin != "undefined") {
-          //로그인 체크 함수가 존재할 경우
-          if (
-            isLogin() == "false" &&
-            $.cookie("conversionSignupOpened") == "Y"
-          ) {
-            _setCookieAt00("conversionSignupOpened", "N", 1); //로그아웃할때 쿠키 날릴 것  -> 비로그인 상태일때 'N'으로 쿠키 설정
-          }
-        }
-
-        if (typeof callConversionSignupPopup != "undefined") {
-          callConversionSignupPopup();
-        }
-      });
-    </script>
-
-	<!-- 구글 전환스크립트 -->
-	<!-- Global site tag (gtag.js) - Google Ads: 879261918 -->
-	<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-879261918"></script>
-	<script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-
-      gtag("config", "AW-879261918");
-      gtag("config", "UA-69960332-7");
-    </script>
-
-	<!-- Google Tag Manager (noscript) -->
-	<noscript>
-		<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TKDB5QC" height="0" width="0" style="display: none; visibility: hidden"></iframe>
-	</noscript>
-	<!-- End Google Tag Manager (noscript) -->
-
-	<!-- //footer -->
-
-	<iframe id="groobeeBox" name="groobeeBox" style="display: none"></iframe>
 </body>
 </html>
