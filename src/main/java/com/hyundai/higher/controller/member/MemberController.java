@@ -56,7 +56,7 @@ public class MemberController {
 
 		model.addAttribute("memberFormDto", new MemberFormDto());
 
-		return "member/joinform";
+		return "/member/joinform";
 	}
 
 	// 회원가입 진행
@@ -99,7 +99,9 @@ public class MemberController {
 		model.addAttribute("mId", mId);
 		model.addAttribute("error", error);
 		model.addAttribute("exception", exception);
-		return "/member/login";
+		
+		return "member/login";
+		
 
 	}
 
