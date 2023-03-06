@@ -43,5 +43,11 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/order")
 @Controller
 public class OrderController {
+	
+	// 오더페이지 이동.
+	@GetMapping(value = "/order")
+	public String joincomplete(Model model) {
+		return "/order/order";
+	}
 
 }
