@@ -1,27 +1,13 @@
 package com.hyundai.higher.controller.order;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
+import java.security.Principal;
+import java.util.List;
 
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import com.hyundai.higher.domain.member.Member;
-import com.hyundai.higher.domain.member.MemberFormDto;
-import com.hyundai.higher.mapper.member.MemberMapper;
-import com.hyundai.higher.service.member.MailServiceImpl;
-import com.hyundai.higher.service.member.MemberService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -36,18 +22,40 @@ import lombok.extern.slf4j.Slf4j;
  *   수정일         수정자               수정내용
  * ----------      --------    ---------------------------
  * 2023. 3. 3.     박성환      최초 생성
+ * 2023. 3. 6.     박성환      주문 목록 페이지 처리
  *     </pre>
  */
 @Slf4j
 @RequiredArgsConstructor
-@RequestMapping("/order")
+@RequestMapping("/shop")
 @Controller
 public class OrderController {
 	
 	// 오더페이지 이동.
 	@GetMapping(value = "/order")
-	public String joincomplete(Model model) {
-		return "/order/order";
+	public String Order(@RequestParam(required = false) List<Integer> pIdList, Model model, Principal principal) {
+		
+		// List<CartItem> cartItems = cartService.cartToOrder(pIdList,principal.getName());
+		// 장바구니에서 선택된 상품의 id 값을 리스트로 받은 뒤 상품id와 회원 id를 통하여 장바구니 정보를 가져와 담아준다.
+		
+		 // model.addAttribute("cartItems", cartItems);
+		// 장바구니 객체를 리스트로 담아 넘긴다.
+		
+		
+		return "/order/order";	
+	}
+	
+	@GetMapping(value = "/orderComplete")
+	public String OrderComplete(Model model, Principal principal) {
+		
+		// List<CartItem> cartItems = cartService.cartToOrder(pIdList,principal.getName());
+		// 장바구니에서 선택된 상품의 id 값을 리스트로 받은 뒤 상품id와 회원 id를 통하여 장바구니 정보를 가져와 담아준다.
+		
+		 // model.addAttribute("cartItems", cartItems);
+		// 장바구니 객체를 리스트로 담아 넘긴다.
+		
+		
+		return "/order/orderComplete";
 	}
 
 }

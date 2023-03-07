@@ -27,6 +27,8 @@
 <link rel="stylesheet" type="text/css" href="https://image.thehyundai.com/pc/cssssl/co.css?ver=14" />
 <link rel="stylesheet" type="text/css" href="https://image.thehyundai.com/pc/cssssl/wf.css" />
 
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="https://js.tosspayments.com/v1"></script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://image.thehyundai.com/pc/js/jquery-ui.min.js"></script>
@@ -3197,6 +3199,11 @@
 				<!-- cart-head -->
 				<div class="cart-head">
 					<h2>주문서 작성</h2>
+					<section>
+						<!-- ... -->
+						<span>총 주문금액</span> <span>35,000 원</span>
+						<button id="payment-button">35,000원 결제하기</button>
+					</section>
 					<div class="stepwrap">
 						<ul>
 							<li><a href="/front/odb/basktList.thd" class="step-box cart-01"> <i class="mark"></i> <i class="mark-hover"></i> <em>STEP 01</em> <em>장바구니</em></a>
@@ -3238,47 +3245,19 @@
 							<tbody>
 								<tr>
 									<th>이름</th>
-									<td><input class="od-name" type="text" title="이름" name="chgOrdCustNm" maxlength="10" value="박성환"
-											onchange="javascript:modifyOrdCustNm(this);"
-										/></td>
+									<td><span sec:authentication="principal.mName" class="od-name" type="text" title="이름" name="chgOrdCustNm" maxlength="10" /></td>
 									<!-- 20181227 수정 -->
 									<th>전화번호</th>
-									<td><span>010-2927-0550</span></td>
-									<!-- 20221213 배송완료알림// -->
+									<td><span sec:authentication="principal.mPhone">010-2927-0550</span></td>
 
-									<!-- //20221213 배송완료알림 -->
 									<th>이메일</th>
-									<td><span>95tjdghks@gmail.com</span> <input type="hidden" name="isExistsMemberMail" value="Y" /> <!-- 고객정보에 없는경우
-                            <div class="fieldset email small">
-                              <input type="text" title="이메일 아이디" name="email-id" value="">
-                              <span class="scol">@</span>
-                              <input type="text" title="이메일 주소" name="email-addr" value="">
-                              <select title="이메일 주소 선택" name="select">
-                                <option value="">naver.com</option>
-                                <option value="">hanmail.net</option>
-                                <option value="">nate.com</option>
-                                <option value="">hotmail.com</option>
-                                <option value="">gmail.com</option>
-                                <option value="" selected>직접입력</option>
-                              </select>
-                            </div>
-                            <p class="error">
-                              고객정보에 이메일이 없습니다(마이현대>회원정보변경에서 입력하세요.)
-                            </p>
-                            --></td>
+									<td><span sec:authentication="principal.mId	">95tjdghks@gmail.com</span> <input type="hidden" name="isExistsMemberMail" value="Y" /></td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
-					<!-- //buyer-info-box -->
-					<!-- 일반배송 일때 주문고객 영역 제거, 이메일 없는 고객일때는 노출, 다시 살림(21.01.15) -->
-
-					<!-- //buyer-info-box -->
-					<!-- 기프티콘 연동 -->
 				</div>
-				<!-- //  주문고객 영역 -->
-				<!-- // ordersheet-box -->
-				<!-- 기프티콘 연동 2017.02.21 -->
+
 
 				<!-- ordersheet-box -->
 				<div class="ordersheet-box type-normal" id="divDlvInfo" style="display: block">
@@ -3350,77 +3329,35 @@
 									<tbody>
 										<tr>
 											<th scope="row">받는분</th>
-											<td><em>박성환</em> <i class="flag-default">기본배송지</i></td>
+											<td><input type="text" name="addressee_name" value="" id="order_addressee_name" class="form_input" isplaceholderinited="true" /></td>
 
 											<input type="hidden" name="rcvCustNm" value="박성환" />
 										</tr>
 										<tr>
 											<th scope="row">휴대폰번호</th>
-											<td>010-2927-0550</td>
+											<td><input type="text" name="addressee_phone" id="addressee_phone" class="form_input remove_dash" isplaceholderinited="true" /></td>
 
-											<input type="hidden" name="dstnHpIdntNo" value="010" />
-											<input type="hidden" name="dstnHpIntmNo" value="2927" />
-											<input type="hidden" name="dstnHpBckNo" value="0550" />
+
 										</tr>
 										<tr>
 											<th scope="row">배송지</th>
-											<td><em>(08101)</em> <em>서울특별시 양천구 목동남로 48 (신정동, )</em> <em>1</em>
-												<button class="btn size1 color1" type="button" onclick="showAddressSelect(); return false;">변경</button></td>
-
-											<input type="hidden" name="adrKndGbcd" value="2" />
-											<input type="hidden" name="dstnPostNo" value="08101" />
-											<input type="hidden" name="dstnBaseAdr" value="서울특별시 양천구 목동남로 48 (신정동, )" />
-											<input type="hidden" name="dstnPtcAdr" value="1" />
-											<input type="hidden" name="dstnAdr" value="서울특별시 양천구 목동남로 48 (신정동, ) 1" />
-											<input type="hidden" name="baseYn" value="Y" />
-											<input type="hidden" name="apocGbcd" value="10" />
-										</tr>
-										<tr>
-											<th scope="row">배송요청사항 (선택)</th>
-											<td>
-												<div class="delivery-select-box">
-													<div class="selectric-wrapper" style="width: 231px">
-														<div class="selectric-hide-select">
-															<select name="dlvMsg" title="selectBox" id="dlvMsg" style="display: none" tabindex="0">
-																<option value="" selected="selected">배송요청사항을 선택하세요.</option>
-																<option value="문 앞에 놓아 주세요">문 앞에 놓아 주세요</option>
-																<option value="배송 전 연락바랍니다.">배송 전 연락바랍니다.</option>
-																<option value="택배함에 넣어주세요.">택배함에 넣어주세요.</option>
-																<option value="빠른 배송 부탁 드립니다.">빠른 배송 부탁 드립니다.</option>
-																<option value="부재 시 경비실에 맡겨주세요.">부재 시 경비실에 맡겨주세요.</option>
-																<option value="핸드폰으로 연락 부탁 드립니다.">핸드폰으로 연락 부탁 드립니다.</option>
-																<option value="">직접 입력하기</option>
-															</select>
-														</div>
-														<div class="selectric">
-															<p class="label">배송요청사항을 선택하세요.</p>
-															<b class="button">▾</b>
-														</div>
-														<div class="selectric-items" tabindex="-1">
-															<div class="selectric-scroll">
-																<ul>
-																	<li data-index="0" class="selected">배송요청사항을 선택하세요.</li>
-																	<li data-index="1" class="">문 앞에 놓아 주세요</li>
-																	<li data-index="2" class="">배송 전 연락바랍니다.</li>
-																	<li data-index="3" class="">택배함에 넣어주세요.</li>
-																	<li data-index="4" class="">빠른 배송 부탁 드립니다.</li>
-																	<li data-index="5" class="">부재 시 경비실에 맡겨주세요.</li>
-																	<li data-index="6" class="">핸드폰으로 연락 부탁 드립니다.</li>
-																	<li data-index="7" class="last">직접 입력하기</li>
-																</ul>
-															</div>
-														</div>
-														<input class="selectric-input" tabindex="0" />
-													</div>
-													<div class="fieldset byte">
-														<input type="text" name="dlvEtcMsg" id="dlvEtcMsg" data-checklength="30" placeholder="요청사항을 입력해주세요." maxlength="30" />
-														<div class="txt-byte">
-															<span>0</span>/30자
-														</div>
-													</div>
-												</div>
+											<td class="address">
+												<p class="zip">
+													<input type="text" name="addressee_zip" value="" id="order_addressee_zip" class="form_input input_zipcode" readonly=""
+														onclick="zipSearch('ordFrm','addressee_zip','addressee_addr1','addressee_addr2')" isplaceholderinited="true"
+													/>
+													<span class="box_btn white"><a href="javascript:;" onclick="findAddr()"> 우편번호 찾기</a></span>
+												</p>
+												<p>
+													<input type="text" id="addressee_addr1" name="addressee_addr1" value="" class="form_input" readonly=""
+														onclick="zipSearch('ordFrm','addressee_zip','addressee_addr1','addressee_addr2')" isplaceholderinited="true"
+													/>
+													<input type="text" id="addressee_addr2" name="addressee_addr2" value="" class="form_input" isplaceholderinited="true" />
+												</p>
 											</td>
+
 										</tr>
+
 									</tbody>
 								</table>
 							</div>
@@ -3606,99 +3543,6 @@
 								<div class="info-area" id="divMultiDlvNo_1">
 									<!-- table-wrap type-ordersheet -->
 
-									<!-- 기본배송지 있을 경우 -->
-									<div class="table-wrap type-ordersheet" id="">
-										<span id="multiSpanDstnInf_0000000001" data-value="0000000001"> <!-- 
-                            <span class="blind">
-                                <input type="radio" name="dstnSeq" id="MultiDstnSeq_0000000001" value="0000000001" checked="checked">
-                            </span>
-                             -->
-											<table>
-												<caption></caption>
-												<colgroup>
-													<col width="155px" />
-													<col width="*" />
-												</colgroup>
-												<tbody>
-													<tr>
-														<th scope="row">받는분</th>
-														<td><em>박성환</em> <i class="flag-default">기본배송지</i></td>
-
-														<input type="hidden" name="rcvCustNm" value="박성환" />
-													</tr>
-													<tr>
-														<th scope="row">휴대폰번호</th>
-														<td>010-2927-0550</td>
-
-														<input type="hidden" name="dstnHpIdntNo" value="010" />
-														<input type="hidden" name="dstnHpIntmNo" value="2927" />
-														<input type="hidden" name="dstnHpBckNo" value="0550" />
-													</tr>
-													<tr>
-														<th scope="row">배송지</th>
-														<td><em>(08101)</em> <em>서울특별시 양천구 목동남로 48 (신정동, )</em> <em>1</em>
-															<button class="btn size1 color1" type="button" onclick="showAddressSelect('1'); return false;">변경</button></td>
-
-														<input type="hidden" name="adrKndGbcd" value="2" />
-														<input type="hidden" name="dstnPostNo" value="08101" />
-														<input type="hidden" name="dstnBaseAdr" value="서울특별시 양천구 목동남로 48 (신정동, )" />
-														<input type="hidden" name="dstnPtcAdr" value="1" />
-														<input type="hidden" name="dstnAdr" value="서울특별시 양천구 목동남로 48 (신정동, ) 1" />
-														<input type="hidden" name="baseYn" value="Y" />
-														<input type="hidden" name="apocGbcd" value="10" />
-													</tr>
-													<tr>
-														<th scope="row">배송요청사항 (선택)</th>
-														<td>
-															<div class="delivery-select-box">
-																<div class="selectric-wrapper">
-																	<div class="selectric-hide-select">
-																		<select name="multiDlvMsg" title="selectBox" id="multiDlvMsg_1" style="display: none" tabindex="0">
-																			<option value="" selected="selected">배송요청사항을 선택하세요.</option>
-																			<option value="문 앞에 놓아 주세요">문 앞에 놓아 주세요</option>
-																			<option value="배송 전 연락바랍니다.">배송 전 연락바랍니다.</option>
-																			<option value="택배함에 넣어주세요.">택배함에 넣어주세요.</option>
-																			<option value="빠른 배송 부탁 드립니다.">빠른 배송 부탁 드립니다.</option>
-																			<option value="부재 시 경비실에 맡겨주세요.">부재 시 경비실에 맡겨주세요.</option>
-																			<option value="핸드폰으로 연락 부탁 드립니다.">핸드폰으로 연락 부탁 드립니다.</option>
-																			<option value="">직접 입력하기</option>
-																		</select>
-																	</div>
-																	<div class="selectric">
-																		<p class="label">배송요청사항을 선택하세요.</p>
-																		<b class="button">▾</b>
-																	</div>
-																	<div class="selectric-items" tabindex="-1">
-																		<div class="selectric-scroll">
-																			<ul>
-																				<li data-index="0" class="selected">배송요청사항을 선택하세요.</li>
-																				<li data-index="1" class="">문 앞에 놓아 주세요</li>
-																				<li data-index="2" class="">배송 전 연락바랍니다.</li>
-																				<li data-index="3" class="">택배함에 넣어주세요.</li>
-																				<li data-index="4" class="">빠른 배송 부탁 드립니다.</li>
-																				<li data-index="5" class="">부재 시 경비실에 맡겨주세요.</li>
-																				<li data-index="6" class="">핸드폰으로 연락 부탁 드립니다.</li>
-																				<li data-index="7" class="last">직접 입력하기</li>
-																			</ul>
-																		</div>
-																	</div>
-																	<input class="selectric-input" tabindex="0" />
-																</div>
-																<div class="fieldset byte">
-																	<input type="text" name="multiDlvEtcMsg" id="multiDlvEtcMsg_1" data-checklength="30" placeholder="요청사항을 입력해주세요." maxlength="30" />
-																	<div class="txt-byte">
-																		<span>0</span>/30자
-																	</div>
-																</div>
-															</div>
-														</td>
-													</tr>
-												</tbody>
-											</table>
-										</span>
-									</div>
-
-									<!-- //table-wrap type-ordersheet -->
 								</div>
 								<div class="title-area">상품선택</div>
 								<div class="info-area">
@@ -5352,316 +5196,13 @@
 	</div>
 	<!-- //popover-wrap -->
 
-	<!-- popover-wrap -->
-	<div class="popover-wrap w750" style="width: 750px" id="popover-layer-giftcard">
-		<!-- pop-header -->
-		<div class="pop-header">
-			<h1 style="overflow-wrap: break-word; white-space: normal">지류상품권 사용방법</h1>
-			<a href="#" class="popover-close">닫기</a>
-		</div>
-		<!-- //pop-header -->
-		<!-- pop-content -->
-		<div class="pop-content no-padding">
-			<div class="text-box-wrap">
-				<div class="text-box">
-					<h3>현대백화점 방문 후 전환</h3>
-					<p class="target">
-						<span>대상 :</span> 현대백화점 상품권
-					</p>
-					<ul class="number-list">
-						<li><span>1)</span> 집에서 가까운 현대백화점을 방문</li>
-						<li><span>2)</span> 현대백화점 상품권데스크 방문<br />(상품권, 신분증 지참)</li>
-						<li><span>3)</span> 전환신청 및 등록<br />(본인만 가능, 대리인 불가)</li>
-						<li><span>4)</span> 전환금 부여<br />(신청등록 후, 익일부여예정)</li>
-						<li><span>5)</span> 더현대닷컴에서 결제</li>
-					</ul>
-					<div class="instruction2">
-						<div class="title">유의사항</div>
-						<div class="cont">
-							<ul>
-								<li>현금 환불은 전환금액의 60% 이상 사용 시 가능합니다.<br />(단, 1만원 권 이하는 80% 이상)
-								</li>
-								<li>전환한도는 아이디 1개 당 월 1천만 원으로 한정합니다.</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<div class="text-box">
-					<h3>유가 증권 등기 우편</h3>
-					<p class="target">
-						<span>대상 :</span> 현대백화점, 삼성, 현대오일뱅크, SK, 국민관광, GS칼텍스, 대명상품권
-					</p>
-					<ul class="number-list">
-						<li><span>1)</span> 해당 상품권 선택하여 주문완료</li>
-						<li><span>2)</span> 우편물에 주문번호를 적고 유가증권등기로 아래 주소로 발송
-							<p class="addr">
-								06181 서울 강남구 테헤란로 98길 12 9층<br />재경팀 상품권 담당자 앞
-							</p></li>
-						<li><span>3)</span> 상품권 접수 후 주문처리 완료</li>
-					</ul>
-					<div class="instruction2">
-						<div class="title">주의사항</div>
-						<div class="cont">
-							<ul>
-								<li>유가증권등기 발송 시 주문고객과 동일한 이름으로 발송하셔야 합니다.</li>
-								<li>서로다른 상품권과 함께 사용하실 수 없습니다.</li>
-								<li>결제잔액에 대해서는 예치금으로 전환되며, 향후 더현대닷컴에서 사용가능합니다.(단, 상품권 금액의 60%이상 결제하신 잔액에 대해서는 상담원을 통해 환불요청하실 경우, 즉시 환불해 드립니다.)</li>
-								<li>유가증권등기로 보내지 않을 경우 발생하는 문제에 대해 책임을 지지않습니다.</li>
-								<li>기프트 선불카드(신용카드)는 지류상품권이 아닙니다.<br />상기 주소로 보내셔도 결제가 불가능하니, 유의하시기 바랍니다.
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- //pop-content -->
-		<!-- btn-wrap -->
-		<div class="btn-wrap">
-			<a href="#" class="btn size3 color2 popover-close">확인</a>
-		</div>
-		<!-- //btn-wrap -->
+
+
+	<!-- pop-footer// -->
+	<div class="pop-footer">
+		<button id="btnCardListSelect" class="btn size3 color1" type="button">적용</button>
 	</div>
-	<!-- //popover-wrap -->
-
-	<!-- popover-wrap popover-layer-change -->
-	<div class="popover-wrap w500" id="popover-layer-modify">
-		<!-- pop-header -->
-		<div class="pop-header">
-			<h1 style="overflow-wrap: break-word; white-space: normal">주문고객정보</h1>
-			<a href="#" class="popover-close">닫기</a>
-		</div>
-		<!-- //pop-header -->
-		<!-- pop-content -->
-		<div class="pop-content">
-			<div class="pop-ordername">
-				<span>이름</span>
-				<input type="text" name="chgOrdCustNm" id="chgOrdCustNm" maxlength="10" value="박성환" />
-			</div>
-			<div class="pop-ordername-guide">
-				<p>
-					※ E-mail, 연락처 정보는 <strong class="text-point5">마이현대 &gt; 회원정보</strong>에서 변경 가능합니다.<br /> <a href="/front/mpd/changeMemberInfoForm.thd">회원정보변경
-						바로가기</a>
-				</p>
-			</div>
-		</div>
-		<!-- //pop-content -->
-		<!-- btn-wrap -->
-		<div class="btn-wrap">
-			<a href="javascript:modifyOrdCustNm();" class="btn size3 color2">변경</a> <a href="#" class="btn size3 color3 popover-close">취소</a>
-		</div>
-		<!-- //btn-wrap -->
-	</div>
-	<!-- //popover-wrap popover-layer-change -->
-
-	<!-- popover-wrap -->
-	<div class="popover-wrap w900 overview" style="width: 750px" id="popover-layer-coupon"></div>
-	<!-- //popover-wrap -->
-
-	<!-- 무통장입금 안내 레이어 -->
-	<!-- popover-wrap -->
-	<div class="popover-wrap w600" id="popover-layer-viracnt"></div>
-	<!-- //popover-wrap -->
-
-	<!-- 채무지급보증 서비스 가입사실 확인 레이어 -->
-	<!-- popover-wrap -->
-	<div class="popover-wrap w750" id="popover-layer-guarantee">
-		<!-- pop-header -->
-		<div class="pop-header">
-			<h1 style="overflow-wrap: break-word; white-space: normal">지급보증서</h1>
-			<a href="#popover-open-id" class="popover-close">닫기</a>
-		</div>
-		<!-- //pop-header -->
-
-		<!-- pop-content -->
-		<div class="pop-content">
-			<div class="img-guarantee-wrap"></div>
-		</div>
-		<!-- //pop-content -->
-
-		<!-- btn-wrap -->
-		<div class="btn-wrap">
-			<a href="#" class="btn size3 color2" onclick="javascript:$.fancybox.close();return false;">확인</a>
-		</div>
-		<!-- //btn-wrap -->
-	</div>
-	<!-- //popover-wrap -->
-
-	<!-- 기프티콘 연동 2017-02-15 추가 -->
-	<!-- popover-wrap -->
-	<div class="popover-wrap w660" id="popover-sent-address">
-		<!-- pop-header -->
-		<div class="pop-header">
-			<h1 style="overflow-wrap: break-word; white-space: normal">보낸 연락처</h1>
-			<a href="#popover-btn-layer01" class="popover-close">닫기</a>
-		</div>
-		<!-- //pop-header -->
-		<!-- pop-content -->
-		<div class="pop-content">
-			<!-- sent-address-wrap -->
-			<div class="sent-address-wrap">
-				<!-- @보낸 연락처 정보가 있을 경우 -->
-
-				<div class="not-list">
-					<div class="t1">
-						<span>연락처 정보가 없습니다.</span>
-					</div>
-					<div class="t2">
-						소중하고 고마운 사람에 마음을 전해보세요.<span>(주문 시 자동으로 보낸 연락처가 저장 됩니다.)</span>
-					</div>
-				</div>
-			</div>
-			<!-- //sent-address-wrap -->
-		</div>
-		<!-- //pop-content -->
-	</div>
-	<!-- //popover-wrap -->
-
-	<!-- 연락처 재사용 동의 20201103 추가 -->
-	<div class="popover-wrap w660" id="popover-recipientContact-reuse" style="left: 0px; display: none">
-		<!-- pop-header -->
-		<div class="pop-header">
-			<h1 style="overflow-wrap: break-word; white-space: normal">(선택) 받는 사람 연락처 저장하기</h1>
-			<a href="#popover-recipientContact-reuse" class="popover-close">닫기</a>
-		</div>
-		<!-- //pop-header -->
-		<!-- pop-content -->
-		<div class="pop-content">
-			<p class="mb20">다음 주문 시에 기존 '연락처 가져오기' 에서 쉽게 불러 올 수 있습니다.</p>
-			<div class="table-wrap coltype">
-				<table>
-					<colgroup>
-						<col width="*" />
-						<col width="33%" />
-						<col width="33%" />
-					</colgroup>
-					<thead>
-						<tr>
-							<th scope="col">목적</th>
-							<th scope="col">항목</th>
-							<th scope="col">보유기간</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>연락처 저장 후 가져오기</td>
-							<td>휴대폰번호</td>
-							<td>탈퇴시까지</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</div>
-		<!-- //pop-content -->
-	</div>
-
-	<!-- 메시지카드 선택 20210105 추가 -->
-	<!-- popover-wrap -->
-	<div class="popover-wrap w700" id="popover-gift-cardlist">
-		<!-- pop-header -->
-		<div class="pop-header">
-			<h1 style="overflow-wrap: break-word; white-space: normal">메시지카드 선택</h1>
-			<a href="#popover-gift-cardlist" class="popover-close">닫기</a>
-		</div>
-		<!-- //pop-header -->
-		<!-- pop-content -->
-		<div class="pop-content">
-			<!-- gift-card-wrap// -->
-			<div class="gift-card-wrap">
-				<ul>
-					<!-- 2022.08.17 DEP01WORK-21790 선물하기 카드이미지 변경 ~22.9.12 까지는 14,15,16번 카드 최상단 노출 -->
-					<li><label style="white-space: normal"> <input type="radio" name="giftCardList" value="" id="ui-id-32" class="gencrinputstyle" /><span
-							class="cr-radio" id="gencrinputstyle-ui-id-32" style="cursor: pointer; margin-left: -24px; margin-top: 0px; margin-right: 4px;"
-						></span> <img src="https://image.thehyundai.com/hdsmart/images/od/img_gift_card_new_14.jpg" alt="14_명절3" />
-					</label></li>
-					<li><label style="white-space: normal"> <input type="radio" name="giftCardList" value="" id="ui-id-33" class="gencrinputstyle" /><span
-							class="cr-radio" id="gencrinputstyle-ui-id-33" style="cursor: pointer; margin-left: -24px; margin-top: 0px; margin-right: 4px;"
-						></span> <img src="https://image.thehyundai.com/hdsmart/images/od/img_gift_card_new_15.jpg" alt="15_명절1" />
-					</label></li>
-					<li><label style="white-space: normal"> <input type="radio" name="giftCardList" value="" id="ui-id-34" class="gencrinputstyle" /><span
-							class="cr-radio" id="gencrinputstyle-ui-id-34" style="cursor: pointer; margin-left: -24px; margin-top: 0px; margin-right: 4px;"
-						></span> <img src="https://image.thehyundai.com/hdsmart/images/od/img_gift_card_new_16.jpg" alt="16_명절2" />
-					</label></li>
-					<li><label style="white-space: normal"> <input type="radio" name="giftCardList" value="" checked="checked" id="ui-id-35"
-								class="gencrinputstyle"
-							/><span class="cr-radio checked" id="gencrinputstyle-ui-id-35"
-							style="cursor: pointer; margin-left: -24px; margin-top: 0px; margin-right: 4px;"
-						></span> <img src="https://image.thehyundai.com/hdsmart/images/od/img_gift_card_new_01.jpg" alt="01_감사1" />
-					</label></li>
-					<li><label style="white-space: normal"> <input type="radio" name="giftCardList" value="" id="ui-id-36" class="gencrinputstyle" /><span
-							class="cr-radio" id="gencrinputstyle-ui-id-36" style="cursor: pointer; margin-left: -24px; margin-top: 0px; margin-right: 4px;"
-						></span> <img src="https://image.thehyundai.com/hdsmart/images/od/img_gift_card_new_02.jpg" alt="02_감사2" />
-					</label></li>
-					<li><label style="white-space: normal"> <input type="radio" name="giftCardList" value="" id="ui-id-37" class="gencrinputstyle" /><span
-							class="cr-radio" id="gencrinputstyle-ui-id-37" style="cursor: pointer; margin-left: -24px; margin-top: 0px; margin-right: 4px;"
-						></span> <img src="https://image.thehyundai.com/hdsmart/images/od/img_gift_card_new_03.jpg" alt="03_생일1" />
-					</label></li>
-					<li><label style="white-space: normal"> <input type="radio" name="giftCardList" value="" id="ui-id-38" class="gencrinputstyle" /><span
-							class="cr-radio" id="gencrinputstyle-ui-id-38" style="cursor: pointer; margin-left: -24px; margin-top: 0px; margin-right: 4px;"
-						></span> <img src="https://image.thehyundai.com/hdsmart/images/od/img_gift_card_new_04.jpg" alt="04_생일2" />
-					</label></li>
-					<li><label style="white-space: normal"> <input type="radio" name="giftCardList" value="" id="ui-id-39" class="gencrinputstyle" /><span
-							class="cr-radio" id="gencrinputstyle-ui-id-39" style="cursor: pointer; margin-left: -24px; margin-top: 0px; margin-right: 4px;"
-						></span> <img src="https://image.thehyundai.com/hdsmart/images/od/img_gift_card_new_05.jpg" alt="05_축하1" />
-					</label></li>
-					<li><label style="white-space: normal"> <input type="radio" name="giftCardList" value="" id="ui-id-40" class="gencrinputstyle" /><span
-							class="cr-radio" id="gencrinputstyle-ui-id-40" style="cursor: pointer; margin-left: -24px; margin-top: 0px; margin-right: 4px;"
-						></span> <img src="https://image.thehyundai.com/hdsmart/images/od/img_gift_card_new_06.jpg" alt="06_축하2" />
-					</label></li>
-					<li><label style="white-space: normal"> <input type="radio" name="giftCardList" value="" id="ui-id-41" class="gencrinputstyle" /><span
-							class="cr-radio" id="gencrinputstyle-ui-id-41" style="cursor: pointer; margin-left: -24px; margin-top: 0px; margin-right: 4px;"
-						></span> <img src="https://image.thehyundai.com/hdsmart/images/od/img_gift_card_new_07.jpg" alt="07_출산1" />
-					</label></li>
-					<li><label style="white-space: normal"> <input type="radio" name="giftCardList" value="" id="ui-id-42" class="gencrinputstyle" /><span
-							class="cr-radio" id="gencrinputstyle-ui-id-42" style="cursor: pointer; margin-left: -24px; margin-top: 0px; margin-right: 4px;"
-						></span> <img src="https://image.thehyundai.com/hdsmart/images/od/img_gift_card_new_08.jpg" alt="08_출산2" />
-					</label></li>
-					<li><label style="white-space: normal"> <input type="radio" name="giftCardList" value="" id="ui-id-43" class="gencrinputstyle" /><span
-							class="cr-radio" id="gencrinputstyle-ui-id-43" style="cursor: pointer; margin-left: -24px; margin-top: 0px; margin-right: 4px;"
-						></span> <img src="https://image.thehyundai.com/hdsmart/images/od/img_gift_card_new_09.jpg" alt="09_사랑1" />
-					</label></li>
-					<li><label style="white-space: normal"> <input type="radio" name="giftCardList" value="" id="ui-id-44" class="gencrinputstyle" /><span
-							class="cr-radio" id="gencrinputstyle-ui-id-44" style="cursor: pointer; margin-left: -24px; margin-top: 0px; margin-right: 4px;"
-						></span> <img src="https://image.thehyundai.com/hdsmart/images/od/img_gift_card_new_10.jpg" alt="10_사랑2" />
-					</label></li>
-					<li><label style="white-space: normal"> <input type="radio" name="giftCardList" value="" id="ui-id-45" class="gencrinputstyle" /><span
-							class="cr-radio" id="gencrinputstyle-ui-id-45" style="cursor: pointer; margin-left: -24px; margin-top: 0px; margin-right: 4px;"
-						></span> <img src="https://image.thehyundai.com/hdsmart/images/od/img_gift_card_new_11.jpg" alt="11_힘내3" />
-					</label></li>
-					<li><label style="white-space: normal"> <input type="radio" name="giftCardList" value="" id="ui-id-46" class="gencrinputstyle" /><span
-							class="cr-radio" id="gencrinputstyle-ui-id-46" style="cursor: pointer; margin-left: -24px; margin-top: 0px; margin-right: 4px;"
-						></span> <img src="https://image.thehyundai.com/hdsmart/images/od/img_gift_card_new_12.jpg" alt="12_힘내2" />
-					</label></li>
-					<li><label style="white-space: normal"> <input type="radio" name="giftCardList" value="" id="ui-id-47" class="gencrinputstyle" /><span
-							class="cr-radio" id="gencrinputstyle-ui-id-47" style="cursor: pointer; margin-left: -24px; margin-top: 0px; margin-right: 4px;"
-						></span> <img src="https://image.thehyundai.com/hdsmart/images/od/img_gift_card_new_13.jpg" alt="13_힘내1" />
-					</label></li>
-					<li><label style="white-space: normal"> <input type="radio" name="giftCardList" value="" id="ui-id-48" class="gencrinputstyle" /><span
-							class="cr-radio" id="gencrinputstyle-ui-id-48" style="cursor: pointer; margin-left: -24px; margin-top: 0px; margin-right: 4px;"
-						></span> <img src="https://image.thehyundai.com/hdsmart/images/od/img_gift_card_new_17.jpg" alt="17_새해1" />
-					</label></li>
-					<li><label style="white-space: normal"> <input type="radio" name="giftCardList" value="" id="ui-id-49" class="gencrinputstyle" /><span
-							class="cr-radio" id="gencrinputstyle-ui-id-49" style="cursor: pointer; margin-left: -24px; margin-top: 0px; margin-right: 4px;"
-						></span> <img src="https://image.thehyundai.com/hdsmart/images/od/img_gift_card_new_18.jpg" alt="18_새해2" />
-					</label></li>
-					<li><label style="white-space: normal"> <input type="radio" name="giftCardList" value="" id="ui-id-50" class="gencrinputstyle" /><span
-							class="cr-radio" id="gencrinputstyle-ui-id-50" style="cursor: pointer; margin-left: -24px; margin-top: 0px; margin-right: 4px;"
-						></span> <img src="https://image.thehyundai.com/hdsmart/images/od/img_gift_card_new_19.jpg" alt="19_새해3" />
-					</label></li>
-					<li><label style="white-space: normal"> <input type="radio" name="giftCardList" value="" id="ui-id-51" class="gencrinputstyle" /><span
-							class="cr-radio" id="gencrinputstyle-ui-id-51" style="cursor: pointer; margin-left: -24px; margin-top: 0px; margin-right: 4px;"
-						></span> <img src="https://image.thehyundai.com/hdsmart/images/od/img_gift_card_new_20.jpg" alt="20_새해4" />
-					</label></li>
-				</ul>
-			</div>
-			<!-- //gift-card-wrap -->
-		</div>
-		<!-- //pop-content -->
-		<!-- pop-footer// -->
-		<div class="pop-footer">
-			<button id="btnCardListSelect" class="btn size3 color1" type="button">적용</button>
-		</div>
-		<!-- //pop-footer -->
+	<!-- //pop-footer -->
 	</div>
 
 
@@ -6371,89 +5912,167 @@
 
 	<!-- //결제관련 Form -->
 
+
+
 	<script>
-      //2022.02 GB GA구축 로직 추가
-      var _gaAosBrndCd = "";
-      var _gaTotBrndCd = "";
-      var _gaCosBrndCd = "";
-      var _gaArkBrndCd = "";
-      var goods = []; // 2022.09.23 DEP01WORK-20595 MA 솔루션 도입
+	
+    var clientKey = 'test_ck_ODnyRpQWGrNMgvmawLVKwv1M9ENj'
+    var tossPayments = TossPayments(clientKey)
+    var button = document.getElementById('payment-button') // 결제하기 버튼
+    
+    button.addEventListener('click', function () {
+    	
+    	
+    	$.ajax({
+            url: "/toss/order",
+            type: "GET",
+            dataType : "json",
+            data: {
+              amount: 1500,
+              orderName: 'test',
+            },
+            success: function (data) {
+            	
+            	tossPayments.requestPayment('카드', {
+                    amount: data.amount,
+                    orderId: data.orderId,
+                    orderName: data.orderName,
+                    customerName: data.customerName,
+                    successUrl: 'http://localhost:8080/toss/success',
+                    failUrl: 'http://localhost:8080/toss/fail',
+                })
+            }
+          });
+        })
+</script>
 
-      var brndCd = "001201";
-      if (brndCd == "A001804") {
-        //앤아더
-        _gaAosBrndCd = "A001804";
-      } else if (brndCd == "A012747") {
-        //토템
-        _gaTotBrndCd = "A012747";
-      } else if (brndCd == "A001803") {
-        //코스
-        _gaCosBrndCd = "A001803";
-      } else if (brndCd == "A012746") {
-        //아르켓
-        _gaArkBrndCd = "A012746";
-      }
 
-      var maGoods = {
-        name: "설화수[3월][한정수량]자음수 150ml",
-        code: "40A1650970",
-        amt: "68000",
-        prc: "68000",
-        salePrc: "68000",
-        cnt: "1",
-        cat: "R5010202",
-        cateNm: "스킨/토너",
-        catL: "R5",
-        cateLNm: "이미용",
-        catM: "R501",
-        cateMNm: "화장품/프레그넌스",
-        catS: "R50102",
-        cateSNm: "스킨케어(여성용)",
-        catD: "R5010202",
-        cateDNm: "스킨/토너",
-        brand: "001201",
-        brandNm: "설화수",
-      };
-      goods.push(maGoods);
+	<script type="text/javascript">
+			// 인기검색어 폰트사이즈 제어
+			$(document).ready(function() {
+			
+			function orderComplete() {
 
-      var brndCd = "A015814";
-      if (brndCd == "A001804") {
-        //앤아더
-        _gaAosBrndCd = "A001804";
-      } else if (brndCd == "A012747") {
-        //토템
-        _gaTotBrndCd = "A012747";
-      } else if (brndCd == "A001803") {
-        //코스
-        _gaCosBrndCd = "A001803";
-      } else if (brndCd == "A012746") {
-        //아르켓
-        _gaArkBrndCd = "A012746";
-      }
+				console.log($('#order_addressee_name').val());
+				console.log($('#addressee_cell').val());
+				console.log($('#order_addressee_zip').val());
+				console.log($('#addressee_addr1').val());
+				console.log($('#addressee_addr2').val());
+				console.log($('#order_dlv_memo').val());
+				console.log($('input[name="pay_type"]:checked').val());
 
-      var maGoods = {
-        name: "[아우구스티누스바더] 더 아이 크림 노마드 15ml",
-        code: "40A1624448",
-        amt: "273000",
-        prc: "273000",
-        salePrc: "273000",
-        cnt: "1",
-        cat: "R5010205",
-        cateNm: "아이/넥케어",
-        catL: "R5",
-        cateLNm: "이미용",
-        catM: "R501",
-        cateMNm: "화장품/프레그넌스",
-        catS: "R50102",
-        cateSNm: "스킨케어(여성용)",
-        catD: "R5010205",
-        cateDNm: "아이/넥케어",
-        brand: "A015814",
-        brandNm: "아우구스티누스바더",
-      };
-      goods.push(maGoods);
+				$('.orderForm').find('#order_name').val(
+						$('#order_addressee_name').val());
+				$('.orderForm').find('#ORDER_PHONE').val(
+						$('#addressee_cell').val());
+				$('.orderForm').find('#order_postnum').val(
+						$('#order_addressee_zip').val());
+				$('.orderForm').find('#order_adress1').val(
+						$('#addressee_addr1').val());
+				$('.orderForm').find('#order_adress2').val(
+						$('#addressee_addr2').val());
+				$('.orderForm').find('#order_ask').val(
+						$('#order_dlv_memo').val());
+				$('.orderForm').find('#order_payment').val(
+						$('input[name="pay_type"]:checked').val());
 
-    </script>
+				$('.orderForm').submit();
+
+			}
+		</script>
+	</div>
+	<script type="text/javascript" defer="defer">
+		$(document).ready(function() {
+
+			total_price_calc();
+
+		});
+
+		function intToWon(s) {
+
+			return s.toLocaleString() + '원';
+		}
+
+		function wonToInt(s) {
+			return parseInt(s.substr(0, s.length - 1).replaceAll(',', ''));
+		}
+
+		function total_price_calc() {
+
+			let final_price = 0; // 최종적으로 결제해야하는 가격 
+			let deliveryfee = 0; // 배송비
+			let og_price = 0;
+
+			var checkArr = new Array();
+			var PriceNum = new Array();
+
+			$("td[id^=itemPrice]").each(function(index, item) {
+
+				let origin = wonToInt($("#itemPrice" + (index + 1)).text());
+
+				final_price += parseInt(origin);
+
+				console.log(final_price);
+
+			});
+
+			/* 최종 가격 */
+
+			//배송비
+			let delivery = 0;
+
+			if (final_price < 150000) {
+
+				$(".before_price").text(final_price.toLocaleString());
+
+				delivery = 4000;
+				final_price += delivery;
+
+				$(".delivery_prc2").text(delivery.toLocaleString());
+				$(".order_info_sale_prc").text(final_price.toLocaleString());
+
+				$('.orderForm').find('#items_price').val(delivery);
+				$('.orderForm').find('#deliver_price').val(final_price);
+
+			} else {
+				$(".before_price").text(final_price.toLocaleString());
+				$(".delivery_prc2").text(0);
+				$(".order_info_sale_prc").text(final_price.toLocaleString());
+
+				$('.orderForm').find('#items_price').val(final_price);
+				$('.orderForm').find('#deliver_price').val(delivery);
+			}
+
+			console.log(final_price);
+
+		}
+
+		function findAddr() {
+			new daum.Postcode(
+					{
+						oncomplete : function(data) {
+
+							console.log(data);
+
+							// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+							// 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+							// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+							var roadAddr = data.roadAddress; // 도로명 주소 변수
+							var jibunAddr = data.jibunAddress; // 지번 주소 변수
+
+							console.log(roadAddr);
+							console.log(jibunAddr);
+							// 우편번호와 주소 정보를 해당 필드에 넣는다.
+							document.getElementById('order_addressee_zip').value = data.zonecode;
+							if (roadAddr !== '') {
+								document.getElementById("addressee_addr1").value = roadAddr;
+							} else if (jibunAddr !== '') {
+								document.getElementById("addressee_addr1").value = jibunAddr;
+							}
+						}
+					}).open();
+		}
+	</script>
 
 	<!-- footer -->
 
