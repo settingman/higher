@@ -2,7 +2,7 @@ package com.hyundai.higher;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.web.socket.config.annotation.EnableWebSocket;
 
 /**
  * @since : 2023. 2. 24.
@@ -20,6 +20,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 //SecurityAutoConfiguration = 시큐리티 임시 종료
 @SpringBootApplication
+@EnableWebSocket
 public class HigherApplication {
 
 	public static void main(String[] args) {

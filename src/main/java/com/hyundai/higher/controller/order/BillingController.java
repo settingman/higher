@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
 import lombok.extern.slf4j.Slf4j;
@@ -38,6 +39,7 @@ public class BillingController {
 	
 	
 	// 토스페이먼츠로 결제 승인 요청.
+	@ResponseBody
 	@GetMapping("/success")
 	public String requestFinalPayments(@RequestParam String paymentKey, @RequestParam String orderId,
 			@RequestParam Long amount) {
@@ -73,6 +75,8 @@ public class BillingController {
 		ResponseEntity<String> response = restTemplate.postForEntity(url, entity, String.class);
 		// 결제 승인 요청.
 		
+		log.info(response.toString());
+		
 		
 		return "fail";
 		// 결제 성공 페이지로 이동.
@@ -80,3 +84,4 @@ public class BillingController {
 	}
 
 }
+;

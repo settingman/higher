@@ -48,6 +48,21 @@ public class HomeController {
 		return "test";
 	}
 
+	
+	@GetMapping(value = "/test3")
+	public String test2(Model model) {
+
+
+		return "test3";
+	}
+	
+
+	@GetMapping(value = "/test4")
+	public String test4(Model model) {
+
+
+		return "test4";
+	}
 	/*
 	 * @GetMapping("/success") public String requestFinalPayments(@RequestParam
 	 * String paymentKey, @RequestParam String orderId,
