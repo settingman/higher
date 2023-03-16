@@ -96,6 +96,14 @@ function start() {
     };
 }
 
+// 브라우저 종료 시 이벤트
+window.addEventListener('unload', stop);
+
+// 브라우저 뒤로가기 시 이벤트
+window.onhashchange = function(){
+    stop();
+}
+
 function stop() {
     // send a message to the server to remove this client from the room clients list
     log("Send 'leave' message to server");
@@ -214,10 +222,25 @@ function createPeerConnection() {
 
     // the following events are optional and could be realized later if needed
     // myPeerConnection.onremovetrack = handleRemoveTrackEvent;
-    // myPeerConnection.oniceconnectionstatechange = handleICEConnectionStateChangeEvent;
+    myPeerConnection.oniceconnectionstatechange = handleICEConnectionStateChangeEvent;
     // myPeerConnection.onicegatheringstatechange = handleICEGatheringStateChangeEvent;
     // myPeerConnection.onsignalingstatechange = handleSignalingStateChangeEvent;
 }
+
+function handleICEConnectionStateChangeEvent(){
+    let status = myPeerConnection.iceConnectionState;
+
+    if(status === "connected"){
+        log("status : "+status)
+        $("#remote_video").show();
+    }else if(status === "disconnected"){
+        log("status : "+status)
+
+        $("#remote_video").hide();
+    }
+}
+
+
 // add MediaStream to local video element and to the Peer
 function getLocalMediaStream(mediaStream) {
     localStream = mediaStream;
