@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+  <head>
+   <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0">
+  <title>더현대닷컴 - 현대백화점 공식 온라인몰</title>
+  <meta name="description" content="현대백화점, 현대백화점 공식 온라인몰. 의류, 화장품, 잡화, 가전 등 판매">
+  <link rel="shortcut icon" href="https://www.thehyundai.com/favicon.ico">
+  <link rel="stylesheet" href="https://image.thehyundai.com/pc/cssssl/co.css?ver=20230206">
+  <link rel="stylesheet" media="screen" href="https://image.thehyundai.com/pc/cssssl/main_new.css?ver=20230206">
+  <link rel="stylesheet" href="https://image.thehyundai.com/pc/cssssl/dp.css">
+  <link rel="stylesheet" href="https://image.thehyundai.com/pc/cssssl/font.css">
+<link rel="stylesheet" href="https://image.thehyundai.com/pc/cssssl/animate.min.css">
+<link rel="stylesheet" href="https://image.thehyundai.com/pc/cssssl/swiper.min.css">
+<link rel="stylesheet" href="https://image.thehyundai.com/pc/cssssl/swiper-8.4.5.min.css">
+  <script src="https://image.thehyundai.com/pc/js/jquery-1.11.3.min.js"></script>
+  <script src="https://image.thehyundai.com/pc/js/jquery-ui.min.js"></script>
+  <script src="https://image.thehyundai.com/pc/js/jquery-migrate.min.js"></script>
+
+  <script src="https://image.thehyundai.com/pc/js/plugin.js"></script>
+<!--	<script src="https://image.thehyundai.com/pc/js/swiper-5.4.5.min.js"></script>-->
+<script src="https://image.thehyundai.com/pc/js/swiper-8.4.5.min.js"></script>
+<script src="https://image.thehyundai.com/pc/js/swiper-animation.umd.min.js"></script>
+  <script src="https://image.thehyundai.com/pc/js/hdmall/co/jquery.form.js"></script>
+  <script src="https://image.thehyundai.com/pc/js/hdmall/co/default.js"></script>
+  <script src="https://image.thehyundai.com/pc/js/hdmall/co/common.js"></script>
+  <script src="https://image.thehyundai.com/pc/js/common.js"></script>
+  <script src="https://image.thehyundai.com/pc/js/sso/SsoHttpRequest.js"></script>
+  <script src="https://image.thehyundai.com/pc/js/sso/SsoAjax.js"></script>
+  <script src="https://image.thehyundai.com/pc/js/hdmall/dp/main_data_new_tmpl.js?ver=20230206"></script>
+  <script src="https://image.thehyundai.com/pc/js/main_util.js"></script>
+
+    <style>
+    .top-nav-area2 {
+	    width: 100%;
+	    padding-bottom: 19px;
+	    border-bottom: 1px solid #bababa !important;
+	}
+    </style>
+  </head>
+<body>
+  <!-- wrap -->
+  <div id="wrap" class="sub">
+    <!----------------------- header ----------------------->
+    <div th:insert="~{include/sub-header}"></div>
+    <!----------------------- //header ----------------------->
+    <!-- container -->
+    <div id="container">
+      <h1 class="blind">컨텐츠영역</h1>
+      <!-- breadcrumb -->
+      <div class="breadcrumb">
+        <ul class="breadcrumb-list">
+          <li><a href="http://www.thehyundai.com/Home.html">Home</a></li>
+          <!-- 로케이션정보 -->
+          <li>
+            <a th:href="'/product/list?dept1=' + ${categoryListSub[0].dept1no}" class="has-sub" th:text="${categoryListSub[0].dept1name}">선택한 대분류</a>
+            <ul class="subbread">
+              <li th:each="dept1 : ${categoryList}">
+              	<a th:href="'/product/list?dept1=' + ${dept1.dept1no}" class="has-sub" th:text="${dept1.dept1name}">대분류</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="/front/dpa/searchSectItem.thd?sectId=30002" class="has-sub">전체</a>
+            <ul class="subbread">
+              <li><a href="/front/dpa/searchSectItem.thd?sectId=30002" class="has-sub">스킨케어</a></li>
+              <li><a href="/front/dpa/searchSectItem.thd?sectId=30015" class="has-sub">메이크업</a></li>
+              <li><a href="/front/dpa/searchSectItem.thd?sectId=30035" class="has-sub">바디/헤어케어</a></li>
+              <li><a href="/front/dpa/searchSectItem.thd?sectId=30056" class="has-sub">기능성케어</a></li>
+              <li><a href="/front/dpa/searchSectItem.thd?sectId=30064" class="has-sub">향수/캔들</a></li>
+              <li><a href="/front/dpa/searchSectItem.thd?sectId=30069" class="has-sub">미용기기/용품</a></li>
+              <li><a href="/front/dpa/searchSectItem.thd?sectId=108799" class="has-sub">남성화장품</a></li>
+              <li><a href="/front/dpa/searchSectItem.thd?sectId=100246" class="has-sub">BRAND SHOP</a></li>
+            </ul>
+          </li>
+          <ul class="subbread">
+            <li><a href="/front/dpa/searchSectItem.thd?sectId=30002" class="has-sub">스킨케어</a></li>
+            <li><a href="/front/dpa/searchSectItem.thd?sectId=30015" class="has-sub">메이크업</a></li>
+            <li><a href="/front/dpa/searchSectItem.thd?sectId=30035" class="has-sub">바디/헤어케어</a></li>
+            <li><a href="/front/dpa/searchSectItem.thd?sectId=30056" class="has-sub">기능성케어</a></li>
+            <li><a href="/front/dpa/searchSectItem.thd?sectId=30064" class="has-sub">향수/캔들</a></li>
+            <li><a href="/front/dpa/searchSectItem.thd?sectId=30069" class="has-sub">미용기기/용품</a></li>
+            <li><a href="/front/dpa/searchSectItem.thd?sectId=108799" class="has-sub">남성화장품</a></li>
+            <li><a href="/front/dpa/searchSectItem.thd?sectId=100246" class="has-sub">BRAND SHOP</a></li>
+          </ul>
+          <!-- // 로케이션정보 -->
+        </ul>
+      </div>
+      <!-- //breadcrumb -->
+      <!-- content-wrap -->
+      <div class="content-wrap">
+        <!-- content -->
+        <div class="content">
+          <div class="category-top type4" style="margin-bottom: 5px;">
+            <h2 th:text="${categoryListSub[0].dept1name}">대분류</h2>
+            <!-- 중카 변경때문에 2개에서 1개로 변경해서 +2로 -->
+          </div>
+          <form name="form" id="form" method="post" action="/front/dpa/searchSectItem.thd?sectId=40003">
+            <!--검색조건 -->
+            <input type="hidden" name="sortType" id="sortType" value="sale_cnt">
+            <input type="hidden" name="searchMode" id="searchMode" value="true">
+            <input type="hidden" name="page" id="page" value="1">
+            <input type="hidden" name="listSize" id="listSize" value="40">
+            <input type="hidden" name="highBrndCd" id="highBrndCd" value="">
+            <input type="hidden" name="minSellPrc" id="minSellPrc" value="3300">
+            <input type="hidden" name="maxSellPrc" id="maxSellPrc" value="968000">
+            <input type="hidden" name="productListType" id="productListType" value="">
+            <div class="category-submenu">
+              <ul>
+                <li th:each="dept2 : ${categoryListSub[0].dept2List}">
+                	<a href="#" th:text="${dept2.dept2name} + '(' + ${dept2.pcnt} + ')'">중분류(개수)</a>
+                </li>
+              </ul>
+            </div>
+
+
+            <!-- shop-category-top -->
+            <div class="shop-category-top type2">
+              <ul>
+                <li class="current"><a href="javascript:changeSortType('sale_cnt');">많이팔린순</a></li>
+                <li><a href="javascript:changeSortType('new_item');">최근등록순</a></li>
+                <li><a href="javascript:changeSortType('md_item');">MD추천순</a></li>
+                <li><a href="javascript:changeSortType('sale_cost_l');">낮은가격순</a></li>
+                <li><a href="javascript:changeSortType('sale_cost_u');">높은가격순</a></li>
+                <li><a href="javascript:changeSortType('review_cnt');">상품평개수순</a></li>
+              </ul>
+              <div class="right-area">
+                <div class="selectric-wrapper" style="width: 200px;">
+                  <div class="selectric-hide-select"><select title="selectbox" name="prdListSize" id="prdListSize"
+                      onchange="javascript:searchItem();" tabindex="0" style="display: none;">
+                      <option value="40" selected="selected">상품수 40개</option>
+                      <option value="60">상품수 60개</option>
+                    </select></div>
+                  <div class="selectric">
+                    <p class="label">상품수 40개</p><b class="button">▾</b>
+                  </div>
+                  <div class="selectric-items" tabindex="-1">
+                    <div class="selectric-scroll">
+                      <ul>
+                        <li data-index="0" class="selected">상품수 40개</li>
+                        <li data-index="1" class="last">상품수 60개</li>
+                      </ul>
+                    </div>
+                  </div><input class="selectric-input" tabindex="0">
+                </div>
+                <ul class="view-type">
+                  <li id="productListCurrent1" class="current"><a href="#" class="album"
+                      onclick="javascript:product_view_toggle(this, 'type1', 'type2', 'product-list');return false;">앨범형</a>
+                  </li>
+                  <li id="productListCurrent2"><a href="#" class="list"
+                      onclick="javascript:product_view_toggle(this, 'type2', 'type1', 'product-list');return false;">리스트형</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          	<div class="brand-search-wrap">
+					<h2><a href="#" class="js-brand-search-toggle">전체브랜드보기</a></h2>
+					<div class="brand-search-form">
+						<input type="text" title="Inputbox" name="brndSearchNm" id="brndSearchNm" placeholder="브랜드검색" onkeypress="if (event.keyCode==13){ brndSearch();event.returnValue=false}">
+						<a href="javascript:brndSearch();" id="brndSearch"><i class="icon search4">검색</i></a>
+					</div>
+					<div class="brand-search" style="display: none;">
+						<div class="nav">
+							<span class="tit">전체</span>
+							<!-- ㄱ ~ ㅎ, 1 ~ 0 -->
+							<ul>
+
+
+
+											<li><a href="#lk-00" id="lk-m00">ㄱ</a></li>
+
+
+
+
+
+
+											<li><a href="#lk-01" id="lk-m01">ㄴ</a></li>
+
+
+
+
+
+
+											<li><a href="#lk-02" id="lk-m02">ㄷ</a></li>
+
+
+
+
+
+
+											<li><a href="#lk-03" id="lk-m03">ㄹ</a></li>
+
+
+
+
+
+
+											<li><a href="#lk-04" id="lk-m04">ㅁ</a></li>
+
+
+
+
+
+
+											<li><a href="#lk-05" id="lk-m05">ㅂ</a></li>
+
+
+
+
+
+
+											<li><a href="#lk-06" id="lk-m06">ㅅ</a></li>
+
+
+
+
+
+
+											<li><a href="#lk-07" id="lk-m07">ㅇ</a></li>
+
+
+
+
+
+
+											<li><a href="#lk-08" id="lk-m08">ㅈ</a></li>
+
+
+
+
+
+
+
+
+
+											<li><a href="#lk-10" id="lk-m10">ㅋ</a></li>
+
+
+
+
+
+
+											<li><a href="#lk-11" id="lk-m11">ㅌ</a></li>
+
+
+
+
+
+
+											<li><a href="#lk-12" id="lk-m12">ㅍ</a></li>
+
+
+
+
+
+
+											<li><a href="#lk-13" id="lk-m13">ㅎ</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							</ul>
+							<!-- A ~ Z -->
+							<ul>
+
+
+
+
+
+
+										<li><a href="#la-26" id="la-m26">C</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+										<li><a href="#la-39" id="la-m39">P</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+										<li><a href="#la-45" id="la-m45">V</a></li>
+
+
+
+
+
+
+
+
+
+
+							</ul>
+							<!-- 기타 -->
+							<ul>
+
+
+
+							</ul>
+						</div>
+
+						<div class="result">
+							<div class="inner">
+
+
+										<div class="box" id="lk-00">
+											<span class="tit">ㄱ</span>
+
+											<ul>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M10188&amp;pSectId=30002&amp;pSectNm=스킨케어">겔랑</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=MA07185&amp;pSectId=30002&amp;pSectNm=스킨케어">구찌뷰티</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M26844&amp;pSectId=30002&amp;pSectNm=스킨케어">글로벌식스인터내셔널</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M10499&amp;pSectId=30002&amp;pSectNm=스킨케어">끌레드뽀보떼</a></li>
+
+											</ul>
+										</div>
+
+
+
+										<div class="box" id="lk-01">
+											<span class="tit">ㄴ</span>
+
+											<ul>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=MA02237&amp;pSectId=30002&amp;pSectNm=스킨케어">나스</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M24316&amp;pSectId=30002&amp;pSectNm=스킨케어">누페이스</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=MA14854&amp;pSectId=30002&amp;pSectNm=스킨케어">닐스야드레머디스(비클린)</a></li>
+
+											</ul>
+										</div>
+
+
+
+										<div class="box" id="lk-02">
+											<span class="tit">ㄷ</span>
+
+											<ul>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=MA14851&amp;pSectId=30002&amp;pSectNm=스킨케어">다이브(비클린)</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=MA14541&amp;pSectId=30002&amp;pSectNm=스킨케어">닥터제코리</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M10919&amp;pSectId=30002&amp;pSectNm=스킨케어">달팡</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M57926&amp;pSectId=30002&amp;pSectNm=스킨케어">더 문</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=MA02683&amp;pSectId=30002&amp;pSectNm=스킨케어">더말로지카</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=MA02385&amp;pSectId=30002&amp;pSectNm=스킨케어">더바디샵</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=MA08470&amp;pSectId=30002&amp;pSectNm=스킨케어">더샘</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M11045&amp;pSectId=30002&amp;pSectNm=스킨케어">더히스토리오브후</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M17370&amp;pSectId=30002&amp;pSectNm=스킨케어">데코르테</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M48111&amp;pSectId=30002&amp;pSectNm=스킨케어">디오키드스킨</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=MA09230&amp;pSectId=30002&amp;pSectNm=스킨케어">디올</a></li>
+
+											</ul>
+										</div>
+
+
+
+										<div class="box" id="lk-03">
+											<span class="tit">ㄹ</span>
+
+											<ul>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M11410&amp;pSectId=30002&amp;pSectNm=스킨케어">라메르</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=MA13587&amp;pSectId=30002&amp;pSectNm=스킨케어">라부르켓</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M11494&amp;pSectId=30002&amp;pSectNm=스킨케어">라프레리</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M11518&amp;pSectId=30002&amp;pSectNm=스킨케어">랑콤</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M10066&amp;pSectId=30002&amp;pSectNm=스킨케어">랩시리즈</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=MA14873&amp;pSectId=30002&amp;pSectNm=스킨케어">러븀(비클린)</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M11553&amp;pSectId=30002&amp;pSectNm=스킨케어">러쉬</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M11781&amp;pSectId=30002&amp;pSectNm=스킨케어">록시땅</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=MA05736&amp;pSectId=30002&amp;pSectNm=스킨케어">루나</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M11874&amp;pSectId=30002&amp;pSectNm=스킨케어">르샤트라</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M64372&amp;pSectId=30002&amp;pSectNm=스킨케어">리바이리</a></li>
+
+											</ul>
+										</div>
+
+
+
+										<div class="box" id="lk-04">
+											<span class="tit">ㅁ</span>
+
+											<ul>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M12332&amp;pSectId=30002&amp;pSectNm=스킨케어">메이크업포에버</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M53635&amp;pSectId=30002&amp;pSectNm=스킨케어">명품화장품 아워글래스</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=MA14847&amp;pSectId=30002&amp;pSectNm=스킨케어">모라츠(비클린)</a></li>
+
+											</ul>
+										</div>
+
+
+
+										<div class="box" id="lk-05">
+											<span class="tit">ㅂ</span>
+
+											<ul>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M12700&amp;pSectId=30002&amp;pSectNm=스킨케어">바비브라운</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M41491&amp;pSectId=30002&amp;pSectNm=스킨케어">반얀트리</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=MA00710&amp;pSectId=30002&amp;pSectNm=스킨케어">발몽</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=MA01899&amp;pSectId=30002&amp;pSectNm=스킨케어">버츠비</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M59479&amp;pSectId=30002&amp;pSectNm=스킨케어">베네피아향수</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M12882&amp;pSectId=30002&amp;pSectNm=스킨케어">베네피트</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M57114&amp;pSectId=30002&amp;pSectNm=스킨케어">벤스킨케어</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=MA02130&amp;pSectId=30002&amp;pSectNm=스킨케어">불리</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M19243&amp;pSectId=30002&amp;pSectNm=스킨케어">브이디엘</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M13372&amp;pSectId=30002&amp;pSectNm=스킨케어">비오템</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M20772&amp;pSectId=30002&amp;pSectNm=스킨케어">빌리프</a></li>
+
+											</ul>
+										</div>
+
+
+
+										<div class="box" id="lk-06">
+											<span class="tit">ㅅ</span>
+
+											<ul>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=MA06938&amp;pSectId=30002&amp;pSectNm=스킨케어">사봉</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M25768&amp;pSectId=30002&amp;pSectNm=스킨케어">산타마리아노벨라</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=MA01616&amp;pSectId=30002&amp;pSectNm=스킨케어">샤넬</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M13652&amp;pSectId=30002&amp;pSectNm=스킨케어">샹테카이</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=MA14863&amp;pSectId=30002&amp;pSectNm=스킨케어">선덕제주(비클린)</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M13698&amp;pSectId=30002&amp;pSectNm=스킨케어">설화수</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M42398&amp;pSectId=30002&amp;pSectNm=스킨케어">세렌디뷰티</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M62610&amp;pSectId=30002&amp;pSectNm=스킨케어">셀몽드</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=MA14886&amp;pSectId=30002&amp;pSectNm=스킨케어">소이로움</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M13940&amp;pSectId=30002&amp;pSectNm=스킨케어">숨37˚</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=MA02391&amp;pSectId=30002&amp;pSectNm=스킨케어">시바산(미입)</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M14284&amp;pSectId=30002&amp;pSectNm=스킨케어">시세이도</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=MA00308&amp;pSectId=30002&amp;pSectNm=스킨케어">시슬리</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=MA03079&amp;pSectId=30002&amp;pSectNm=스킨케어">시카고</a></li>
+
+											</ul>
+										</div>
+
+
+
+										<div class="box" id="lk-07">
+											<span class="tit">ㅇ</span>
+
+											<ul>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M14597&amp;pSectId=30002&amp;pSectNm=스킨케어">아모레퍼시픽</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M14614&amp;pSectId=30002&amp;pSectNm=스킨케어">아베다</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=MA02684&amp;pSectId=30002&amp;pSectNm=스킨케어">아비브</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=MA14694&amp;pSectId=30002&amp;pSectNm=스킨케어">아우구스티누스바더</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=MA01474&amp;pSectId=30002&amp;pSectNm=스킨케어">아이소이</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=MA10935&amp;pSectId=30002&amp;pSectNm=스킨케어">안달로우내츄럴스</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=MA01507&amp;pSectId=30002&amp;pSectNm=스킨케어">앤아더스토리즈</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=MA14875&amp;pSectId=30002&amp;pSectNm=스킨케어">앰버랑(비클린)</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=MA14701&amp;pSectId=30002&amp;pSectNm=스킨케어">에든버러스킨케어</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=MA08039&amp;pSectId=30002&amp;pSectNm=스킨케어">에르메스</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M15224&amp;pSectId=30002&amp;pSectNm=스킨케어">에스케이투</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M15237&amp;pSectId=30002&amp;pSectNm=스킨케어">에스티로더</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=MA05738&amp;pSectId=30002&amp;pSectNm=스킨케어">에이솔루션</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=MA05735&amp;pSectId=30002&amp;pSectNm=스킨케어">에이지투웨니스</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M15495&amp;pSectId=30002&amp;pSectNm=스킨케어">엘리자베스아덴</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M45968&amp;pSectId=30002&amp;pSectNm=스킨케어">오가나셀</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M15713&amp;pSectId=30002&amp;pSectNm=스킨케어">오리진스</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=MA12192&amp;pSectId=30002&amp;pSectNm=스킨케어">오에라</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=MA13990&amp;pSectId=30002&amp;pSectNm=스킨케어">오하브</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M15806&amp;pSectId=30002&amp;pSectNm=스킨케어">오휘</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M25575&amp;pSectId=30002&amp;pSectNm=스킨케어">용카</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M33097&amp;pSectId=30002&amp;pSectNm=스킨케어">유스트</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M16296&amp;pSectId=30002&amp;pSectNm=스킨케어">이솝</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=MA10938&amp;pSectId=30002&amp;pSectNm=스킨케어">이스라이브러리</a></li>
+
+											</ul>
+										</div>
+
+
+
+										<div class="box" id="lk-08">
+											<span class="tit">ㅈ</span>
+
+											<ul>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M27913&amp;pSectId=30002&amp;pSectNm=스킨케어">정샘물</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M16749&amp;pSectId=30002&amp;pSectNm=스킨케어">존슨앤존슨</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=MA03083&amp;pSectId=30002&amp;pSectNm=스킨케어">지방시뷰티</a></li>
+
+											</ul>
+										</div>
+
+
+
+
+
+										<div class="box" id="lk-10">
+											<span class="tit">ㅋ</span>
+
+											<ul>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M53610&amp;pSectId=30002&amp;pSectNm=스킨케어">코스메플레이스</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M47511&amp;pSectId=30002&amp;pSectNm=스킨케어">코이</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=MA07730&amp;pSectId=30002&amp;pSectNm=스킨케어">쿠오카</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=MA03080&amp;pSectId=30002&amp;pSectNm=스킨케어">크리니크</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M17547&amp;pSectId=30002&amp;pSectNm=스킨케어">크리드</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M17573&amp;pSectId=30002&amp;pSectNm=스킨케어">클라랑스</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M17640&amp;pSectId=30002&amp;pSectNm=스킨케어">키엘</a></li>
+
+											</ul>
+										</div>
+
+
+
+										<div class="box" id="lk-11">
+											<span class="tit">ㅌ</span>
+
+											<ul>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=MA03329&amp;pSectId=30002&amp;pSectNm=스킨케어">톰포드 화장품</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=MA10939&amp;pSectId=30002&amp;pSectNm=스킨케어">트루히알</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=MA11437&amp;pSectId=30002&amp;pSectNm=스킨케어">티퍼런스</a></li>
+
+											</ul>
+										</div>
+
+
+
+										<div class="box" id="lk-12">
+											<span class="tit">ㅍ</span>
+
+											<ul>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M63491&amp;pSectId=30002&amp;pSectNm=스킨케어">펠드아포테케</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=MA05737&amp;pSectId=30002&amp;pSectNm=스킨케어">포인트</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M56602&amp;pSectId=30002&amp;pSectNm=스킨케어">폴앤조</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=MA08824&amp;pSectId=30002&amp;pSectNm=스킨케어">프레쉬</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M18448&amp;pSectId=30002&amp;pSectNm=스킨케어">프리메라</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=MA14452&amp;pSectId=30002&amp;pSectNm=스킨케어">프리미어</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M45541&amp;pSectId=30002&amp;pSectNm=스킨케어">피토메르(미입)</a></li>
+
+											</ul>
+										</div>
+
+
+
+										<div class="box" id="lk-13">
+											<span class="tit">ㅎ</span>
+
+											<ul>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M18943&amp;pSectId=30002&amp;pSectNm=스킨케어">헤라</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=MA13795&amp;pSectId=30002&amp;pSectNm=스킨케어">휴캄</a></li>
+
+											</ul>
+										</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+										<div class="box" id="la-26">
+											<span class="tit">C</span>
+
+											<ul>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=MA00717&amp;pSectId=30002&amp;pSectNm=스킨케어">CNP RX</a></li>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=MA04928&amp;pSectId=30002&amp;pSectNm=스킨케어">COTY코리아</a></li>
+
+											</ul>
+										</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+										<div class="box" id="la-39">
+											<span class="tit">P</span>
+
+											<ul>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=MA10925&amp;pSectId=30002&amp;pSectNm=스킨케어">PATYKA</a></li>
+
+											</ul>
+										</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+										<div class="box" id="la-45">
+											<span class="tit">V</span>
+
+											<ul>
+
+
+													<li><a href="/front/dpa/searchSectItem.thd?brndCd=M47813&amp;pSectId=30002&amp;pSectNm=스킨케어">V&amp;A</a></li>
+
+											</ul>
+										</div>
+
+
+
+
+
+
+
+
+
+
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+          </form>
+          <div class="pagination-wrap">
+            <ul class="pagination itemEvalPaging">
+              <li class="active"><a href="#" onclick="return false;">1</a></li>
+              <li><a href="/front/dpa/searchSectItem.thd?sectId=40003&amp;page=2">2</a></li>
+              <li><a href="/front/dpa/searchSectItem.thd?sectId=40003&amp;page=3">3</a></li>
+              <li><a href="/front/dpa/searchSectItem.thd?sectId=40003&amp;page=4">4</a></li>
+              <li><a href="/front/dpa/searchSectItem.thd?sectId=40003&amp;page=5">5</a></li>
+              <li><a href="/front/dpa/searchSectItem.thd?sectId=40003&amp;page=6">6</a></li>
+              <li><a href="/front/dpa/searchSectItem.thd?sectId=40003&amp;page=7">7</a></li>
+              <li><a href="/front/dpa/searchSectItem.thd?sectId=40003&amp;page=8">8</a></li>
+              <li><a href="/front/dpa/searchSectItem.thd?sectId=40003&amp;page=9">9</a></li>
+              <li><a href="/front/dpa/searchSectItem.thd?sectId=40003&amp;page=10">10</a></li>
+              <li><a class="direction next_1" href="/front/dpa/searchSectItem.thd?sectId=40003&amp;page=11"><i
+                    class="icon-arrow paging-next">ë¤ìíì´ì§</i></a></li>
+              <li><a class="direction next_2" href="/front/dpa/searchSectItem.thd?sectId=40003&amp;page=13"><i
+                    class="icon-arrow paging-last">ë§ì§ë§íì´ì§</i></a></li>
+            </ul>
+          </div>
+          <!-- //shop-category-top -->
+          <!-- product-list start-->
+          <div class="product-list-wrap">
+            <ul class="product-list type1" id="product-list">
+              <li th:each="prod : ${productList}">
+                <div class="prod-unit">
+                  <div class="img">
+                  	<a href="#">
+                  		<img th:src="${prod.thumbImgList[0].iloc}" th:alt="${prod.pname}" onerror="noImage(this, 'https://image.thehyundai.com/hdmall/images/pd/no_image_480x480.jpg')">
+                  		<span class="bg"></span>
+                  	</a>
+                    <div class="hover-info">
+                    	<a href="#"></a>
+                    	<a href="#" target="찜하기" class="zzim"><span>찜하기</span></a>
+                   	</div>
+                  </div>
+                  <div class="info">
+                    <div class="price-info single"><span th:text="${#numbers.formatInteger(prod.pprice, 3, 'COMMA')}">가격</span><span><i>원</i></span></div>
+                   	<a href="#" class="title ellipsis" th:text="${prod.pname}">상품명</a>
+                  </div>
+                  <div class="addinfo">
+                    <div class="gift ellipsis no" title=""></div>
+                    <div class="flag">
+                      <div class="basic"></div><span class="d5">현대백화점 7%</span><span class="d3">무료배송</span>
+                    </div>
+                    <div class="review-info"><span class="score"><i class="icon star">별점</i>5.0점</span><span
+                        class="comment"><i class="icon comment">댓글</i>5개</span></div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <!-- //product-list end -->
+          <div class="pagination-wrap">
+            <ul class="pagination itemEvalPaging">
+              <li class="active"><a href="#" onclick="return false;">1</a></li>
+              <li><a href="/front/dpa/searchSectItem.thd?sectId=40003&amp;page=2">2</a></li>
+              <li><a href="/front/dpa/searchSectItem.thd?sectId=40003&amp;page=3">3</a></li>
+              <li><a href="/front/dpa/searchSectItem.thd?sectId=40003&amp;page=4">4</a></li>
+              <li><a href="/front/dpa/searchSectItem.thd?sectId=40003&amp;page=5">5</a></li>
+              <li><a href="/front/dpa/searchSectItem.thd?sectId=40003&amp;page=6">6</a></li>
+              <li><a href="/front/dpa/searchSectItem.thd?sectId=40003&amp;page=7">7</a></li>
+              <li><a href="/front/dpa/searchSectItem.thd?sectId=40003&amp;page=8">8</a></li>
+              <li><a href="/front/dpa/searchSectItem.thd?sectId=40003&amp;page=9">9</a></li>
+              <li><a href="/front/dpa/searchSectItem.thd?sectId=40003&amp;page=10">10</a></li>
+              <li><a class="direction next_1" href="/front/dpa/searchSectItem.thd?sectId=40003&amp;page=11"><i
+                    class="icon-arrow paging-next">ë¤ìíì´ì§</i></a></li>
+              <li><a class="direction next_2" href="/front/dpa/searchSectItem.thd?sectId=40003&amp;page=13"><i
+                    class="icon-arrow paging-last">ë§ì§ë§íì´ì§</i></a></li>
+            </ul>
+          </div>
+        </div>
+        <!-- //content -->
+      </div>
+      <!-- //content-wrap -->
+    <!----------------------- footer ----------------------->
+	<div th:insert="~{include/footer}"></div>
+    <!----------------------- //footer ----------------------->
+    </div>
+    <!-- //container -->
+  </div>
+</body>
+</html>

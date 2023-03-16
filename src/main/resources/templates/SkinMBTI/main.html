@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0">
+  <title>더현대닷컴 - 현대백화점 공식 온라인몰</title>
+  <meta name="description" content="현대백화점, 현대백화점 공식 온라인몰. 의류, 화장품, 잡화, 가전 등 판매">
+  <link rel="shortcut icon" href="https://www.thehyundai.com/favicon.ico">
+  <link rel="stylesheet" href="https://image.thehyundai.com/pc/cssssl/co.css?ver=20230206">
+  <link rel="stylesheet" media="screen" href="https://image.thehyundai.com/pc/cssssl/main_new.css?ver=20230206">
+  <link rel="stylesheet" href="https://image.thehyundai.com/pc/cssssl/dp.css">
+  <link rel="stylesheet" href="https://image.thehyundai.com/pc/cssssl/font.css">
+  <link rel="stylesheet" href="https://image.thehyundai.com/pc/cssssl/animate.min.css">
+  <link rel="stylesheet" href="https://image.thehyundai.com/pc/cssssl/swiper.min.css">
+  <link rel="stylesheet" href="https://image.thehyundai.com/pc/cssssl/swiper-8.4.5.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <link rel="stylesheet" href="/skinMBTI/css/default.css">
+  <link rel="stylesheet" href="/skinMBTI/css/main.css">
+  <link rel="stylesheet" href="/skinMBTI/css/qna.css">
+  <link rel="stylesheet" href="/skinMBTI/css/animation.css">
+  <link rel="stylesheet" href="/skinMBTI/css/result.css">
+  <script src="https://image.thehyundai.com/pc/js/jquery-1.11.3.min.js"></script>
+  <script src="https://image.thehyundai.com/pc/js/jquery-ui.min.js"></script>
+  <script src="https://image.thehyundai.com/pc/js/jquery-migrate.min.js"></script>
+  <script src="https://image.thehyundai.com/pc/js/plugin.js"></script>
+  <script src="https://image.thehyundai.com/pc/js/swiper-8.4.5.min.js"></script>
+  <script src="https://image.thehyundai.com/pc/js/swiper-animation.umd.min.js"></script>
+  <script src="https://image.thehyundai.com/pc/js/hdmall/co/jquery.form.js"></script>
+  <script src="https://image.thehyundai.com/pc/js/hdmall/co/default.js"></script>
+  <script src="https://image.thehyundai.com/pc/js/hdmall/co/common.js"></script>
+  <script src="https://image.thehyundai.com/pc/js/common.js"></script>
+  <script src="https://image.thehyundai.com/pc/js/sso/SsoHttpRequest.js"></script>
+  <script src="https://image.thehyundai.com/pc/js/sso/SsoAjax.js"></script>
+  <script src="https://image.thehyundai.com/pc/js/hdmall/dp/main_data_new_tmpl.js?ver=20230206"></script>
+  <script src="https://image.thehyundai.com/pc/js/main_util.js"></script>
+  <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+  <script>
+      Kakao.init('be9a5d23789ab552822c2a77d81da49a');
+      Kakao.isInitialized();
+  </script>
+  <style>
+  .top-nav-area2 {
+	  width: 100%;
+	  padding-bottom: 19px;
+	  border-bottom: 1px solid #bababa !important;
+   }
+  </style>
+</head>
+<body>
+  <div id="wrap" class="sub">
+    <!----------------------- header ----------------------->
+    <div th:insert="~{include/sub-header}"></div>
+    <!----------------------- //header ----------------------->
+	<div id="container">
+    <div class="container">
+        <section id="main" class="mx-auto mt-4 py-4 px-4">
+            <h1>
+                WHAT<br>
+                IS<br>
+                MY SKIN TYPE?
+            </h1>
+            <p class="mt-4">
+                16가지 피부 유형 중 정확한 내 피부 타입을 진단해보세요. <br>
+                나에게 맞는 화장품 선택에 중요한 정보가 됩니다.
+            </p>
+            <button type="button" class="btn btn-outline-light mt-3" onclick="js:begin()">피부진단 시작하기</button>
+        </section>
+        <section id="qna" class="px-3 py-4">
+            <div class="status mx-auto my-2">
+                <div class="statusBar">
+
+                </div>
+            </div>
+            <video id="cameraview" width="720" height="480"></video>
+
+            <div class="qBox my-4 py-3 mx-auto">
+
+            </div>
+            <div class="answerBox mx-auto">
+
+            </div>
+        </section>
+        <section id="result">
+            <h1>당신의 결과는?!</h1>
+            <div class="resultName">
+
+            </div>
+            <div id="resultImg">
+
+            </div>
+
+            <div class="resultDesc"></div>
+            <button type="button" onclick="js:kakaoShare()">공유하기</button>
+        </section>
+        <script src="/skinMBTI/js/video.js"></script>
+        <script>
+            mainInit();
+        </script>
+        <script src="/skinMBTI/js/data.js" charset="UTF-8"></script>
+        <script src="/skinMBTI/js/start.js" charset="UTF-8"></script>
+        <script src="/skinMBTI/js/share.js" charset="UTF-8"></script>
+  
+    </div>
+    <!----------------------- footer ----------------------->
+	<div th:insert="~{include/footer}"></div>
+    <!----------------------- //footer ----------------------->
+    </div>
+</div>
+
+</body>
+</html>
