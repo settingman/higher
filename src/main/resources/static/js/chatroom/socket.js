@@ -1,4 +1,5 @@
 'use strict';
+const addr = "localhost:8443"
 
 // document.write("<script src='jquery-3.6.1.js'></script>")
 document.write("<script\n" +
@@ -40,7 +41,7 @@ function connect(event) {
 
     // 연결하고자하는 Socket 의 endPoint
     var socket = new SockJS('/ws-stomp');
-    alert(socket);
+    
     stompClient = Stomp.over(socket);
 
     stompClient.connect({}, onConnected, onError);
