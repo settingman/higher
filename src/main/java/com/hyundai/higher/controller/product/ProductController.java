@@ -20,7 +20,9 @@ import com.hyundai.higher.service.product.ProductService;
  * <pre>
  * 	   수정일          수정자                수정내용
  * -------------   --------    ---------------------------
- * 2023. 03. 06.     신수진       
+ * 2023. 03. 06.    신수진		최초 생성
+ * 2023. 03. 16.	신수진		카테고리, 상품 목록
+ * 2023. 03. 17.	신수진		상품 세부 
  * </pre>
  */
 
@@ -34,6 +36,7 @@ public class ProductController {
 	@Autowired
 	private ProductService service;
 	
+	// 상품 목록 페이지
 	@GetMapping("/list")
 	public String productList(@RequestParam("dept1") String dept1no, @RequestParam(value="dept2", required=false, defaultValue = "") String dept2no, Model model) {
 		
@@ -44,5 +47,15 @@ public class ProductController {
 		
 		return "product/list";
 	}
+	
+	// 상품 세부 페이지
+	@GetMapping("/detail")
+	public String productDetail(@RequestParam("code") String pcode, Model model) {
+		
+		return "product/detail";
+	}
+
+	
+	
 	
 }

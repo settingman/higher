@@ -134,13 +134,13 @@
 			        <!-- 24 : 0 : 0 : 0 -->
 			        <!-- 화장품 -->
 			        <li th:each="category : ${categoryList}">
-			            <a href="#" th:text="${category.dept1name}">대분류</a>
+			            <a th:href="'/product/list?dept1=' + ${category.dept1no}" th:text="${category.dept1name}">대분류</a>
 			            <div class="in-cate-area"><!--asis : category-area-->
 			            		<!-- 서브 카테고리 -->
 			                <div class="menu">
 			                    <ul>
 			                        <li th:each="dept2 : ${category.dept2List}">
-			                        	<a href="#" th:text="${dept2.dept2name}">중분류</a>
+			                        	<a th:href="'/product/list?dept1=' + ${dept2.dept1no} + '&dept2=' + ${dept2.dept2no}" th:text="${dept2.dept2name}">중분류</a>
 			                        </li>
 			                    </ul>
 			                </div>
