@@ -3,7 +3,19 @@ package com.hyundai.higher.webRTC.dto;
 import lombok.*;
 
 
-// WebRTC 연결 시 사용되는 클래스
+
+/**
+ * @since   : 2023. 3. 17.
+ * @FileName: WebSocketMessage.java
+ * @author  : 박성환
+ * @설명    : WebRTC 연결 시 사용
+
+ * <pre>
+ *   수정일         수정자               수정내용
+ * ----------      --------    ---------------------------
+ * 2023. 3. 17.     박성환      	최초 생성
+ * </pre>
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

@@ -13,13 +13,24 @@ import com.hyundai.higher.webRTC.dto.ChatRoomMap;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * @since   : 2023. 3. 16.
+ * @FileName: MsgChatService.java
+ * @author  : 박성환
+ * @설명    : 메세지 채팅 서비스
+
+ * <pre>
+ *   수정일         수정자               수정내용
+ * ----------      --------    ---------------------------
+ * 2023. 3. 16.     박성환      	최초 생성
+ * </pre>
+ */
 @Slf4j
 @RequiredArgsConstructor
 @Service
 public class MsgChatService {
 
 	public ChatRoomDto createChatRoom(String roomName, String roomPwd, boolean secretChk, int maxUserCnt) {
-		// roomName 와 roomPwd 로 chatRoom 빌드 후 return
 		ChatRoomDto room = ChatRoomDto.builder().roomId(UUID.randomUUID().toString()).roomName(roomName)
 				.roomPwd(roomPwd) // 채팅방 패스워드
 				.secretChk(secretChk) // 채팅방 잠금 여부
@@ -81,8 +92,6 @@ public class MsgChatService {
 
 		ChatRoomDto room = chatRoomMap.get(roomId);
 
-		// hashmap 을 for 문을 돌린 후
-		// value 값만 뽑아내서 list 에 저장 후 reutrn
 		room.getUserList().forEach((key, value) -> list.add((String) value));
 		return list;
 	}

@@ -15,6 +15,18 @@ import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 
+/**
+ * @since   : 2023. 3. 15.
+ * @FileName: ChatServiceMain.java
+ * @author  : 박성환
+ * @설명    : 화상/메세지 채팅 Service
+
+ * <pre>
+ *   수정일         수정자               수정내용
+ * ----------      --------    ---------------------------
+ * 2023. 3. 15.     박성환      	최초 생성
+ * </pre>
+ */
 @Service
 @Getter
 @Setter
@@ -24,8 +36,6 @@ public class ChatServiceMain {
 
     private final MsgChatService msgChatService;
     private final RtcChatService rtcChatService;
-
-    // 채팅방 삭제에 따른 채팅방의 사진 삭제를 위한 fileService 선언
 
 
     // 전체 채팅방 조회

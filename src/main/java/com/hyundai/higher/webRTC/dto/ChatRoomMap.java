@@ -7,8 +7,19 @@ import javax.annotation.PostConstruct;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-// 싱글톤으로 생성
-// 모든 ChatService 에서 ChatRooms가 공통된 필요함으로
+
+/**
+ * @since   : 2023. 3. 15.
+ * @FileName: ChatRoomMap.java
+ * @author  : 박성환
+ * @설명    : 채팅방 싱글톤
+
+ * <pre>
+ *   수정일         수정자               수정내용
+ * ----------      --------    ---------------------------
+ * 2023. 3. 15.     박성환      	최초 생성
+ * </pre>
+ */
 @Getter
 @Setter
 public class ChatRoomMap {

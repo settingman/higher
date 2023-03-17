@@ -18,16 +18,26 @@ import com.hyundai.higher.webRTC.service.ChatService.ChatServiceMain;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * @since   : 2023. 3. 15.
+ * @FileName: ChatRoomController.java
+ * @author  : 박성환
+ * @설명    : ROOM Controller
+
+ * <pre>
+ *   수정일         수정자               수정내용
+ * ----------      --------    ---------------------------
+ * 2023. 3. 15.     박성환      	최초 생성
+ * </pre>
+ */
 @Controller
 @RequiredArgsConstructor
 @Slf4j
 public class ChatRoomController {
 
-    // ChatService Bean 가져오기
     private final ChatServiceMain chatServiceMain;
 
     // 채팅방 생성
-    // 채팅방 생성 후 다시 / 로 return
     @PostMapping("/chat/createroom")
     public String createRoom(@RequestParam("roomName") String name,
                              @RequestParam("roomPwd") String roomPwd,
@@ -36,11 +46,6 @@ public class ChatRoomController {
                              @RequestParam("chatType") String chatType,
                              RedirectAttributes rttr) {
     	
-    	
-    	log.info("creatRoom");
-        //log.info("chk {}", secretChk);
-
-        // 매개변수 : 방 이름, 패스워드, 방 잠금 여부, 방 인원수
         ChatRoomDto room;
 
         room = chatServiceMain.createChatRoom(name, roomPwd, Boolean.parseBoolean(secretChk), Integer.parseInt(maxUserCnt), chatType);
@@ -53,8 +58,6 @@ public class ChatRoomController {
     }
 
     // 채팅방 입장 화면
-    // 파라미터로 넘어오는 roomId 를 확인후 해당 roomId 를 기준으로
-    // 채팅방을 찾아서 클라이언트를 chatroom 으로 보낸다.
     @GetMapping("/chat/room")
     public String roomDetail(Model model, String roomId){
 
@@ -84,7 +87,6 @@ public class ChatRoomController {
     	log.info(roomPwd);
 
         // 넘어온 roomId 와 roomPwd 를 이용해서 비밀번호 찾기
-        // 찾아서 입력받은 roomPwd 와 room pwd 와 비교해서 맞으면 true, 아니면  false
         return chatServiceMain.confirmPwd(roomId, roomPwd);
     }
 

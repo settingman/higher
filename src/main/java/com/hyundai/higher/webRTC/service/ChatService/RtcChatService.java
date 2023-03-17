@@ -15,15 +15,25 @@ import com.hyundai.higher.webRTC.dto.WebSocketMessage;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * @since   : 2023. 3. 15.
+ * @FileName: RtcChatService.java
+ * @author  : 박성환
+ * @설명    : 화상채팅 서비스
+
+ * <pre>
+ *   수정일         수정자               수정내용
+ * ----------      --------    ---------------------------
+ * 2023. 3. 15.     박성환      	최초 생성
+ * </pre>
+ */
 @Slf4j
 @RequiredArgsConstructor
 @Service
 public class RtcChatService {
 
-    // repository substitution since this is a very simple realization
 
     public ChatRoomDto createChatRoom(String roomName, String roomPwd, boolean secretChk, int maxUserCnt) {
-        // roomName 와 roomPwd 로 chatRoom 빌드 후 return
         ChatRoomDto room = ChatRoomDto.builder()
                 .roomId(UUID.randomUUID().toString())
                 .roomName(roomName)
@@ -45,18 +55,7 @@ public class RtcChatService {
     }
 
     public Map<String, WebSocketSession> getClients(ChatRoomDto room) {
-        // 공부하기 좋은 기존 코드
-        // unmodifiableMap : read-only 객체를 만들고 싶을 때 사용
-        // Collections emptyMap() : 결과를 반환할 시 반환할 데이터가 없거나 내부조직에 의해 빈 데이터가 반환되어야 하는 경우
-        // NullPointException 을 방지하기 위하여 반환 형태에 따라 List 나 Map 의 인스턴스를 생성하여 반환하여 처리해야하는 경우
-        // size 메서드 등을 체크하고 추가적인 값을 변경하지 않는 경우 Collections.emptyMap() 를 사용하면 매번 동일한 정적 인스턴스가
-        // 변환되므라 각 호출에 대한 불필요한 인스턴스 생성하지 않게 되어 메모리 사용량을 줄일 수 있다
-//        return (Map<String, WebSocketSession>) Optional.ofNullable(room)
-//                .map(r -> Collections.unmodifiableMap(r.getUserList()))
-//                .orElse(Collections.emptyMap());
-
-
-
+       
         Optional<ChatRoomDto> roomDto = Optional.ofNullable(room);
 
         return (Map<String, WebSocketSession>) roomDto.get().getUserList();
