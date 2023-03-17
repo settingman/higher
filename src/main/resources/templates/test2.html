@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<script>
+	function parentWindowRedirect(val) {
+		top.opener.location.href = val;
+		self.close();
+	}
+	
+	$( document ).ready(function() {
+		console.log('hi');
+		opener.document.location.href = 'member/joinform';
+		self.close();
+	});
+</script>
+<body>
+
+
+</body>
+</html>
