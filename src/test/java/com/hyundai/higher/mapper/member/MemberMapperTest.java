@@ -31,7 +31,7 @@ public class MemberMapperTest {
 
 	@Autowired
 	MemberMapper memberMapper;
-
+	
 	@Test
 	public void testSave() {
 		Member member = new Member("test.com", "1234", "테스트", "01029270550", "test@naver.com", new Date(199912123),

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.hyundai.higher.mapper.product.ProductMapper">
+
+	<!-- 카테고리 목록(전체) -->
+	<select id="categoryListAll" resultMap="categoryMap">
+		SELECT m.dept1no, l.dept1name, m.dept2no, m.dept2name
+		FROM category_dept2 m JOIN category_dept1 l ON m.dept1no = l.dept1no
+		ORDER BY m.dept2no ASC, m.dept1no ASC
+	</select>
+	
+	<!-- 카테고리 목록(하위) -->
+	<select id="categoryListSub" resultMap="categoryMap">
+		SELECT c.dept1no, c.dept1name, c.dept2no, c.dept2name, NVL(pcnt, 0) AS pcnt
+		FROM v_cate c LEFT JOIN (SELECT cateno, COUNT(*) as pcnt
+			                     FROM product
+			                     GROUP BY cateno) p
+		ON c.cateno = p.cateno
+		WHERE c.dept1no=#{dept1no}
+	</select>
+
+	<!-- 상품 목록 -->
+	<select id="productList" resultMap="productMap">
+		<![CDATA[
+		SELECT p.pcode, p.pname, p.pprice, p.bno, b.bname, dept1no, dept2no, itype, iloc
+		FROM (SELECT ROWNUM, product.* 
+			  FROM product 
+			  WHERE dept1no=#{dept1no}
+		]]> 
+			<if test="dept2no != ''"> 
+				AND dept2no=#{dept2no} 
+			</if> 
+		<![CDATA[	
+			 AND ROWNUM<=40) p 
+		LEFT JOIN brand b ON p.bno=b.bno
+		JOIN (SELECT pcode, itype, iloc FROM IMG WHERE itype='thumb') i ON p.pcode=i.pcode
+		ORDER BY PTOTALAMOUNT DESC
+		]]> 
+	</select>
+	
+	<!-- 상품 세부 정보 -->
+	<select id="productDetailInfo" resultType="com.hyundai.higher.domain.product.ProductDTO">
+		SELECT pcode, pname, pprice, p.bno, bname, dept1no, dept2no, pvolume, ptype, pexp, puse, pproduce, pcountry, pcaution
+		FROM product p JOIN brand b ON p.bno=b.bno
+		WHERE pcode=#{pcode}
+	</select>
+	
+	<!-- 상품 세부 섬네일 이미지 -->
+	<select id="imgThumbList" resultType="com.hyundai.higher.domain.product.ImgDTO">
+		SELECT iloc, itype, pcode
+		FROM (SELECT pcode, iloc, UPPER(itype) AS itype FROM img)
+		WHERE pcode=#{pcode} AND itype='THUMB'
+	</select>
+	
+	<!-- 상품 세부 디테일 이미지 -->
+	<select id="imgDetailList" resultType="com.hyundai.higher.domain.product.ImgDTO">
+		SELECT iloc, itype, pcode
+		FROM (SELECT pcode, iloc, UPPER(itype) AS itype FROM img)
+		WHERE pcode=#{pcode} AND itype='DETAIL'
+	</select>
+
+	<!-- 상품 세부 옵션 -->
+	<select id="optList" resultType="com.hyundai.higher.domain.product.OptionDTO">
+		SELECT pcode, optname, optcolor
+		FROM poption
+		WHERE pcode=#{pcode}
+	</select>
+
+	<resultMap type="com.hyundai.higher.domain.product.CategoryDTO" id="categoryMap">
+		<result property="dept1no" column="dept1no"/>
+		<result property="dept1name" column="dept1name"/>
+		<collection property="dept2List" resultMap="dept2Map"/>
+	</resultMap>
+	
+	<resultMap type="com.hyundai.higher.domain.product.CategoryDept2DTO" id="dept2Map">
+		<result property="dept1no" column="dept1no"/>
+		<result property="dept2no" column="dept2no"/>
+		<result property="dept2name" column="dept2name"/>
+		<result property="pcnt" column="pcnt"/>		
+	</resultMap>
+	
+	<resultMap type="com.hyundai.higher.domain.product.ProductDTO" id="productMap">
+		<result property="pcode" column="pcode"/>
+		<result property="pname" column="pname"/>
+		<result property="pprice" column="pprice"/>
+		<result property="bno" column="bno"/>
+		<result property="bname" column="bname"/>
+		<result property="dept1no" column="dept1no"/>
+		<result property="dept2no" column="dept2no"/>
+		<collection property="thumbImgList" resultMap="imgMap"/>
+	</resultMap>
+	
+	<resultMap type="com.hyundai.higher.domain.product.ImgDTO" id="imgMap">
+		<result property="pcode" column="pcode"/>
+		<result property="itype" column="itype"/>
+		<result property="iloc" column="iloc"/>
+	</resultMap>
+
+</mapper>
