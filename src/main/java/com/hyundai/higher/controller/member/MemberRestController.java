@@ -46,6 +46,8 @@ public class MemberRestController {
 	@GetMapping("/check")
 	
 	public String checkId(@RequestParam("checkid") String checkId) {
+		
+		log.info(checkId);
 
 		String result = "1";
 
@@ -59,7 +61,7 @@ public class MemberRestController {
 	}
 
 	// 비밀번호 찾기 AJAX
-	@GetMapping(value = "/findPw")
+	@GetMapping(value = "/ajaxfindPw")
 	public String findIdPwPage(@RequestParam("mName") String mName, @RequestParam("mId") String mId, Model model) {
 
 		log.info(mName);
@@ -69,7 +71,7 @@ public class MemberRestController {
 
 		if (findMember == null) {
 			log.info("fail");
-			return "/member/findidpwpage";
+			return "fail";
 		}
 
 		String tmpPassword = mailService.getTmpPassword();
