@@ -10,5 +10,5 @@ public class ProductDetailDTO {
 	private ProductDTO productDTO;
 	private List<ImgDTO> thumbImgList;
 	private List<ImgDTO> detailImgList;
-	
+	private List<OptionDTO> optList;
 }

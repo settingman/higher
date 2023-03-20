@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
   <head>
-   <meta charset="utf-8">
+  <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0">
   <title>더현대닷컴 - 현대백화점 공식 온라인몰</title>
@@ -14,7 +14,6 @@
   <link rel="stylesheet" href="https://image.thehyundai.com/pc/cssssl/animate.min.css">
   <link rel="stylesheet" href="https://image.thehyundai.com/pc/cssssl/swiper.min.css">
   <link rel="stylesheet" href="https://image.thehyundai.com/pc/cssssl/swiper-8.4.5.min.css">
-  <!-- <script src="https://image.thehyundai.com/pc/js/jquery-1.11.3.min.js"></script> -->
   <script src="/js/header.js"></script>
   <script src="https://image.thehyundai.com/pc/js/jquery-ui.min.js"></script>
   <script src="https://image.thehyundai.com/pc/js/jquery-migrate.min.js"></script>
@@ -409,7 +408,7 @@
                 <div class="prod-unit">
                   <div class="img">
                   	<a th:href="'/product/detail?code=' + ${prod.pcode}">
-                  		<img th:src="${prod.thumbImgList[0].iloc}" th:alt="${prod.pname}" onerror="noImage(this, 'https://image.thehyundai.com/hdmall/images/pd/no_image_480x480.jpg')">
+                  		<img th:src="${prod.thumbImgList[0].iloc} + '_600.jpg'" th:alt="${prod.pname}" onerror="noImage(this, 'https://image.thehyundai.com/hdmall/images/pd/no_image_480x480.jpg')">
                   		<span class="bg"></span>
                   	</a>
                     <div class="hover-info">

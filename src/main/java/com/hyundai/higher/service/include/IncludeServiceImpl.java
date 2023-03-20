@@ -34,7 +34,7 @@ public class IncludeServiceImpl implements IncludeService {
 	@Override
 	public List<CategoryDTO> categoryListAll() {
 		List<CategoryDTO> list = mapper.categoryListAll();
-		log.info(list);
+
 		return mapper.categoryListAll();
 	}
 

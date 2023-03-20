@@ -40,7 +40,34 @@
 		ORDER BY PTOTALAMOUNT DESC
 		]]> 
 	</select>
+	
+	<!-- 상품 세부 정보 -->
+	<select id="productDetailInfo" resultType="com.hyundai.higher.domain.product.ProductDTO">
+		SELECT pcode, pname, pprice, p.bno, bname, dept1no, dept2no, pvolume, ptype, pexp, puse, pproduce, pcountry, pcaution
+		FROM product p JOIN brand b ON p.bno=b.bno
+		WHERE pcode=#{pcode}
+	</select>
+	
+	<!-- 상품 세부 섬네일 이미지 -->
+	<select id="imgThumbList" resultType="com.hyundai.higher.domain.product.ImgDTO">
+		SELECT iloc, itype, pcode
+		FROM (SELECT pcode, iloc, UPPER(itype) AS itype FROM img)
+		WHERE pcode=#{pcode} AND itype='THUMB'
+	</select>
+	
+	<!-- 상품 세부 디테일 이미지 -->
+	<select id="imgDetailList" resultType="com.hyundai.higher.domain.product.ImgDTO">
+		SELECT iloc, itype, pcode
+		FROM (SELECT pcode, iloc, UPPER(itype) AS itype FROM img)
+		WHERE pcode=#{pcode} AND itype='DETAIL'
+	</select>
 
+	<!-- 상품 세부 옵션 -->
+	<select id="optList" resultType="com.hyundai.higher.domain.product.OptionDTO">
+		SELECT pcode, optname, optcolor
+		FROM poption
+		WHERE pcode=#{pcode}
+	</select>
 
 	<resultMap type="com.hyundai.higher.domain.product.CategoryDTO" id="categoryMap">
 		<result property="dept1no" column="dept1no"/>

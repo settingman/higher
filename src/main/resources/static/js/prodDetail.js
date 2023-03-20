@@ -65,25 +65,7 @@ function rcmdItemSettingNew() {
   setGroobeeRcmdItem(rcmdCampaignKeyL, 'left', '11');
   setGroobeeRcmdItem(rcmdCampaignKeyR, 'right', '12');
 }
-function setGroobeeRcmdItem(campaignKey, locaiton, rcmdNum) {
-  var jsonResult = groobee.getGroobeeRecommend(campaignKey, {});
-  if (JSON.stringify(jsonResult) == '{}') {
-    return;
-  }
-  var slitmCdArr = new Array();
-  for (var i = 0; i < jsonResult.goodsList.length; i++) {
-    slitmCdArr.push(jsonResult.goodsList[i].goodsCd);
-  }
-  if (slitmCdArr.length != 0) {
-    fnRecommendProductsDataV3(slitmCdArr.join(','), function (resultV2, dataV2) {
-      if (resultV2 == 'success') {
-        rcmdAppendApi(dataV2, locaiton, rcmdNum, jsonResult.algorithmCd, jsonResult.campaignKey);
-        generateDummyLog(null, 'PageName', 'ProductDetail', 'PageBanner', 'Review' + rcmdNum, null, null); // 추천 로직 정보 와이즈로그 전송
-        sendGroobeeDI(dataV2, jsonResult.algorithmCd, jsonResult.campaignKey); // 그루비 상품 노출 정보 전송
-      }
-    });
-  }
-}
+
 // API 추천 상품 리스트 생성
 function rcmdAppendApi(data, location, rcmdNum, algorithmCd, campaignKey) {
   var searchCnt = 9;
@@ -3424,7 +3406,7 @@ function sendEcommerceSet(eventAction, productAction, buttonName) {
   if (eventAction == 'Checkout') {
     actionList.step = 1;
   }
-  EcommerceSet(E_step, Products, actionList, dimension);
+
   // 장바구니, 주문 버튼 클릭시 GA 이벤트 전송
   if (productAction == 'add' || productAction == 'checkout') {
     GA_Event('PC_상품상세', buttonName, '크리니크 치크팝 (3.5g)')
@@ -3524,5 +3506,4 @@ function sendGroobee() {
   groobeeItem.brand = "002265";
   groobeeItem.brandNm = "크리니크";
   groobeeGoods.push(groobeeItem);
-  groobee("VG", { goods: groobeeGoods });
 }

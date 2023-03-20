@@ -64,4 +64,41 @@ public class ProductMapperTest {
 		log.info(list.size());
 	}
 	
+	// 상품 세부 정보
+	@Test
+	public void testProductDetailInfo() {
+		
+		String pcode = "A1565069";
+		
+		log.info(mapper.productDetailInfo(pcode));
+	}
+	
+	// 상품 세부 정보
+	@Test
+	public void testImgThumbList() {
+		
+		String pcode = "A1565069";
+		
+		log.info(mapper.imgThumbList(pcode));
+	}
+	
+	// 상품 세부 정보
+	@Test
+	public void testImgDetailList() {
+		
+		String pcode = "A0473095";
+		
+		log.info(mapper.imgDetailList(pcode));
+	}
+	
+	// 상품 세부 옵션
+	@Test
+	public void testOptList() {
+		
+		String pcode = "A0473095";
+		
+		log.info(mapper.optList(pcode));
+	}
+	
+	
 }
