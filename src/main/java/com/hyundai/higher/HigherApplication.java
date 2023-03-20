@@ -25,6 +25,7 @@ public class HigherApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(HigherApplication.class, args);
+		
 	}
 
 }
