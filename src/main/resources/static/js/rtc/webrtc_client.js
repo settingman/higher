@@ -202,16 +202,33 @@ function stop() {
 
 /*
  UI Handlers
-  */
+  */ 	
 // mute video buttons handler
 videoButtonOff.onclick = () => {
     localVideoTracks = localStream.getVideoTracks();
     localVideoTracks.forEach(track => localStream.removeTrack(track));
+    
+    myPeerConnection.getSenders().forEach((sender) =>{
+	
+
+        // 4. 화면 공유 중지 시 Track 를 localstream 의 videoStram 로 교체함
+        sender.replaceTrack(localStream.getTracks()[1]);
+    })
+    
+    
+    
     $(localVideo).css('display', 'none');
     log('Video Off');
 };
 videoButtonOn.onclick = () => {
     localVideoTracks.forEach(track => localStream.addTrack(track));
+    
+        myPeerConnection.getSenders().forEach((sender) =>{
+	
+
+        sender.replaceTrack(localStream.getTracks()[1]);
+    })
+    
     $(localVideo).css('display', 'inline');
     log('Video On');
 };
@@ -219,10 +236,24 @@ videoButtonOn.onclick = () => {
 // mute audio buttons handler
 audioButtonOff.onclick = () => {
     localVideo.muted = true;
+    
+    myPeerConnection.getSenders().forEach((sender) =>{
+	
+
+        sender.replaceTrack(localStream.getTracks()[1]);
+    })
+    
     log('Audio Off');
 };
 audioButtonOn.onclick = () => {
     localVideo.muted = false;
+    
+    myPeerConnection.getSenders().forEach((sender) =>{
+	
+
+        sender.replaceTrack(localStream.getTracks()[1]);
+    })
+    
     log('Audio On');
 };
 
