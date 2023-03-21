@@ -1,4 +1,16 @@
-h1{
-  font-weight: bold;
-  color: #fff;
+#content-wrap{
+	width: 1120px;
+	margin: 0 auto;
+	font-family: 'Montserrat', sans-serif;
+}
+
+section{
+	width: 900px;
+	height: 1010px;
+	margin: 0 auto;
+	background-color: #faefec;
+}
+
+.mbti-logo img{
+	height: 40px;
 }

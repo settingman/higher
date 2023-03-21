@@ -1,12 +1,33 @@
-#main{
-    background-image: url(/skinMBTI/img/skin-mbti-main.png);
-    background-repeat: round;
-    height: 70vh;
-    width: 500px;
-    text-align: left;
-    color: #fff;
+/* #main{
+	display: none;
+} */
+
+#main-img{
+	width: 750px;
+    margin: 0 auto;
+    display: flex;
 }
 
-#main button{
-    border-radius: 3px;
+#btn-wrap{
+    position: absolute;
+    top: 880px;
+}
+
+#start-btn{
+    background-color: #844d40;
+    border: 1px solid #844d40;
+    border-radius: 10px;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    padding: 8px 30px;
+    font-size: 20px;
+    letter-spacing: 5px;
+    position: relative;
+    left: 415px;
+}
+
+#start-btn:hover{
+	color: #844d40;
+	background-color: #fff;
 }

@@ -54,6 +54,53 @@ function goResult(){
     setResult();
 }
 
+function addAnswer(answerText, qIdx, idx){
+  var a = document.querySelector('.answerBox');
+  var answer = document.createElement('button');
+  answer.classList.add('answerList');
+  answer.classList.add('my-1');
+  answer.classList.add('py-2');
+  answer.classList.add('mx-auto');
+  answer.classList.add('fadeIn');
+
+  a.appendChild(answer);
+  answer.innerHTML = answerText;
+
+  answer.addEventListener("click", function(){
+    var children = document.querySelectorAll('.answerList');
+    for(let i=0; i<children.length; i++){
+      children[i].disabled = true;
+      children[i].style.WebkitAnimation = "fadeOut 0.5s";
+      children[i].style.animation = "fadeOut 0.5s";
+    }
+    setTimeout(() => {
+      select[qnaList[qIdx].a[idx].type[0]] += qnaList[qIdx].a[idx].type[1];
+      for(let i=0; i<children.length; i++){
+        children[i].style.display = 'none';
+      }
+      goNext(++qIdx);
+    }, 450)
+  }, false);
+}
+
+function goNext(qIdx){
+  if(qIdx === endPoint){
+    goResult();
+    return;
+  }
+  
+  var q = document.querySelector(".qBox");
+  
+  
+  
+  q.innerHTML = qnaList[qIdx].q;
+
+  for(let i in qnaList[qIdx].a){
+    addAnswer(qnaList[qIdx].a[i].answer, qIdx, i);
+  }
+
+}
+
 function begin(){
   main.style.WebkitAnimation = "fadeOut 1s";
   main.style.animation = "fadeOut 1s";
@@ -64,5 +111,7 @@ function begin(){
       main.style.display = "none";
       qna.style.display = "block";
     }, 400)
+    let qIdx = 0;
+    goNext(qIdx);
   }, 400);
 }
