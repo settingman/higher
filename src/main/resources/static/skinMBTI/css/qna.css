@@ -1,29 +1,16 @@
 #qna {
-	padding-top: 30px;
 	display: none;
 }
 
-h2{
-	background-color: #fff;
-    width: 100%;
-    border-top: 1.5px solid #776460;
-    border-bottom: 1.5px solid #776460;
-    text-align: center;
-    font-weight: 800;
-    color: #844d40;
-    font-size: 30px;
-    letter-spacing: 4px;
-    padding: 5px;
-}
-
 #qna-wrap{
-	width: 100%;
-	padding: 30px;
+	width: 81%;
+    padding: 50px 30px;
+    margin: 0 auto;
 }
 
 #qna-content-wrap{
 	background-color: #fff;
-	border: 1.5px solid #776460;
+	border: 1.2px solid #776460;
 	padding: 10px;
 }
 
@@ -94,7 +81,7 @@ h2{
 }
 
 #cameraview{
-	border: 1px solid #776460;
+/* 	border: 1px solid #776460; */
 	border-radius: 30px;
 	width: 400px;
 }
@@ -135,9 +122,9 @@ h2{
     color: #776460;
     background-color: #fff;
     border-radius: 12px;
-    padding: 7px 18px;
+    padding: 10px 25px;
     margin: 10px 5px;
-    font-size: 14px;
+    font-size: 15px;
 }
 
 .dir-wrap button:hover{

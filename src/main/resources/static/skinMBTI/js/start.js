@@ -2,43 +2,58 @@ const main = document.querySelector("#main");
 const qna = document.querySelector("#qna");
 const result = document.querySelector("#result");
 const endPoint = 12;
-const select = [0, 0, 0, 0];
+const resultScore = [0, 0, 0, 0];
 
 function calResult(){
-  let resultWord = '';
-
-  if(select[0] <= 7){
-    resultWord += 'D';
-  }else{
-    resultWord += 'O';
+  for(var i=0; i<=3; i++){
+	for(var j=1; j<=3; j++){
+		resultScore[i] += parseInt(select[i][j]);
+	}
   }
 
-  if(select[1] <= 7){
-    resultWord += 'S';
+  let resultWords = ['', ''];
+
+  if(resultScore[0] <= 7){
+    resultWords[0] += 'D';
+    resultWords[1] += '#건성';
   }else{
-    resultWord += 'R';
+    resultWords[0] += 'O';
+    resultWords[1] += '#지성';
   }
 
-  if(select[2] <= 7){
-    resultWord += 'P';
+  if(resultScore[1] <= 7){
+    resultWords[0] += 'S';
+    resultWords[1] += ' #민감성';
   }else{
-    resultWord += 'N';
+    resultWords[0] += 'R';
+    resultWords[1] += ' #저항성';
   }
 
-  if(select[3] <= 7){
-    resultWord += 'W';
+  if(resultScore[2] <= 7){
+    resultWords[0] += 'P';
+    resultWords[1] += ' #색소성';
   }else{
-    resultWord += 'T';
+    resultWords[0] += 'N';
+    resultWords[1] += ' #비색소성';
   }
 
-  return resultWord;
+  if(resultScore[3] <= 7){
+    resultWords[0] += 'W';
+    resultWords[1] += ' #주름';
+  }else{
+    resultWords[0] += 'T';
+    resultWords[1] += ' #탄력';
+  }
+  
+  return resultWords;
 }
 
 function setResult(){
   let setWord = calResult();
   const resultName = document.querySelector(".resultName");
-  resultName.innerHTML = setWord;
-
+  const resultKeyword = document.querySelector(".resultKeyword");
+  resultName.innerHTML = setWord[0];
+  resultKeyword.innerHTML = setWord[1];
 }
 
 function goResult(){

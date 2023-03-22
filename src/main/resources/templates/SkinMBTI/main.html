@@ -31,9 +31,7 @@
 <link rel="stylesheet" href="/skinMBTI/css/result.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Source+Serif+Pro&display=swap"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Nanum+Myeongjo:wght@400;700;800&family=Source+Serif+Pro&display=swap" rel="stylesheet">
 <script src="/js/header.js"></script>
 <script src="http://sgip.kcii.re.kr/third/jquery/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
@@ -70,17 +68,19 @@
 		<div id="container">
 			<div id="content-wrap">
 				<section id="main">
-					<img id="main-img" src="/skinMBTI/img/skinMBTI-main.png">
+					<h2 class="mbti-logo">
+						<img src="/skinMBTI/img/mbti-logo.png">
+					</h2>
+					<img id="main-img" src="/skinMBTI/img/skinMBTI-main2.png">
 					<div id="btn-wrap">
 						<button type="button" id="start-btn" onclick="js:begin()">START
 							NOW</button>
 					</div>
+					<div id="h-logo">
+						<img src="/skinMBTI/img/h-logo-flat.png">
+					</div>
 				</section>
-				<section id="qna">
-					<h2 class="mbti-logo">
-						<img src="/skinMBTI/img/mbti-logo.png">
-					</h2>
-
+				<section id="qna" style="padding-top: 0px;">
 					<div id="qna-wrap">
 						<div id="qna-content-wrap">
 							<div id="progress-wrap">
@@ -744,21 +744,34 @@
 										</div>
 									</div>
 								</div>
-								<div id="btnBox" class="text-right" style="margin-right: 100px;">
-
-									<button class="survey__btn" id="finish"
-										onclick="resultSurvey.surveyFinish()" style="display: none;">정보입력</button>
-								</div>
+								
 							</div>
 							<div class="dir-wrap">
 								<button class="survey__btn prev" id="prev" onclick="move('prev')">이전</button>
 								<button class="survey__btn next" id="next" onclick="move('next')">다음</button>
+								<!-- <button class="survey__btn" id="finish" onclick="move('next')">결과보기</button> -->
 							</div>
 						</div>
 
 					</div>
 			
 			</section>
+			<section id="result">
+				<h2 class="mbti-logo">
+					<img src="/skinMBTI/img/mbti-logo.png">
+				</h2>
+				<div id="result-content-wrap">
+					<div id="result-title">
+						<h1>RESULT</h1>
+					</div>
+					<div class="resultName"></div>
+					<div class="resultKeyword"></div>
+				
+				</div>
+				
+			
+			</section>
+			
 			<script src="/skinMBTI/js/video.js"></script>
 			<script>
 				mainInit();

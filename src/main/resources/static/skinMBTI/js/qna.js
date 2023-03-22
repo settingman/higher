@@ -5,8 +5,16 @@ var part1Len = $("#part1").children().length;
 var part2Len = $("#part2").children().length;
 var part3Len = $("#part3").children().length;
 var part4Len = $("#part4").children().length;
+const select = [[0,0,0,0], [0,0,0,0], [0,0,0,0], [0,0,0,0]];
+
+
 $(document).ready(function() {
 	$("input:radio").on('click', function() {
+		var value = $(this).val();
+		calc(value);
+		if(value.split(',')[2] == ' D3'){
+			checkSelect();
+		}
 		move('next');
 	});
 	$("#prev").hide();
@@ -16,6 +24,33 @@ $(document).ready(function() {
 	$("#resultBox").hide();
 	$(".question__all").width(sliderWidth * totalSlides + 'px');
 });
+
+function checkSelect(){
+  for(var i=0; i<=3; i++){
+	for(var j=1; j<=3; j++){
+		if(select[i][j] == 0){
+			alert('선택되지 않은 항목이 있습니다.');
+			return;
+		}
+	}
+  }
+  goResult();
+}
+
+function calc(obj){
+	var score = obj.split(',')[0];
+	var type = obj.split(',')[2];
+	if(type.charAt(1) == 'A'){
+		select[0][type.charAt(2)] = score;
+	}else if(type.charAt(1) == 'B'){
+		select[1][type.charAt(2)] = score;
+	}else if(type.charAt(1) == 'C'){
+		select[2][type.charAt(2)] = score;
+	}else if(type.charAt(1) == 'D'){
+		select[3][type.charAt(2)] = score;
+	}	
+
+}
 console.log(totalSlides);
 function move(obj) {
 	if (obj == 'next') {
