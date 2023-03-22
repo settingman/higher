@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.hyundai.higher.mapper.beauty.BeautyMapper">
+
+
+	<select id="findReservation"
+		resultType="com.hyundai.higher.webRTC.dto.ReservationDTO">
+		
+		SELECT memberName, memberId, roomChk, to_char(resDate,'yy-mm-dd') as resDate, to_char(resDate,'hh24:mm') as resTime, roomId
+		FROM reservation
+	</select>
+
+
+</mapper>
