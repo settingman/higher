@@ -38,6 +38,9 @@ public class BillingRestController {
 		
 		
 		orderSheet.setOrderId(orderId);
+		
+log.info("set");
+		log.info(orderSheet.toString());
 
 		Gson gson = new Gson();
 

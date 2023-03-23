@@ -4,15 +4,15 @@
  @설명 : 오더 페이지
 -->
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <title>주문 | 더한섬닷컴</title>
+
 <th:block th:replace="common/head :: headFragment"></th:block>
+
 <head>
 <meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0" />
-<title>더현대닷컴</title>
 <link rel="stylesheet" type="text/css" href="https://image.thehyundai.com/pc/cssssl/font.css" />
-<!--<![endif]-->
 <link rel="stylesheet" type="text/css" href="https://image.thehyundai.com/pc/cssssl/co.css?ver=14" />
 <link rel="stylesheet" type="text/css" href="https://image.thehyundai.com/pc/cssssl/wf.css" />
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -27,7 +27,6 @@
 <link rel="stylesheet" type="text/css" href="https://www.thehyundai.com/cssssl/jquery-ui.css?ver=14" />
 <link rel="stylesheet" type="text/css" href="https://www.thehyundai.com/cssssl/co.css?ver=14" />
 <link rel="stylesheet" type="text/css" href="https://www.thehyundai.com/cssssl/od_new.css?ver=14" />
-<!-- 2019.02.14 주문서 리뉴얼 신규 CSS -->
 <link rel="stylesheet" type="text/css" href="https://www.thehyundai.com/cssssl/dp.css?ver=14" />
 <script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/co/jquery.slidy.min.js"></script>
 <script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/co/json2.js"></script>
@@ -36,12 +35,7 @@
 	margin-right: 16px;
 }
 </style>
-<meta http-equiv="origin-trial"
-	content="A751Xsk4ZW3DVQ8WZng2Dk5s3YzAyqncTzgv+VaE6wavgTY0QHkDvUTET1o7HanhuJO8lgv1Vvc88Ij78W1FIAAAAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjgwNjUyNzk5LCJpc1RoaXJkUGFydHkiOnRydWV9"
-/>
-<meta http-equiv="origin-trial"
-	content="A751Xsk4ZW3DVQ8WZng2Dk5s3YzAyqncTzgv+VaE6wavgTY0QHkDvUTET1o7HanhuJO8lgv1Vvc88Ij78W1FIAAAAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjgwNjUyNzk5LCJpc1RoaXJkUGFydHkiOnRydWV9"
-/>
+
 </script>
 <link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" />
 </head>
@@ -844,19 +838,19 @@
 
 			<input type="hidden" name="orderId" id="orderId" value="1">
 			<input type="hidden" name="oName" id="oName" value="1">
-			
+
 			<input type="hidden" name="oDate" id="oDate" value="1">
-			
+
 			<input type="hidden" name="oZipcode" id="oZipcode" value="1">
 			<input type="hidden" name="oAddress1" id="oAddress1" value="1">
 			<input type="hidden" name="oAddress2" id="oAddress2" value="1">
-			
+
 			<input type="hidden" name="oReceiver" id="oReceiver" value="1">
 			<input type="hidden" name="oTel" id="oTel" value="1">
 			<input type="hidden" name="oPayment" id=oPayment value="카드">
-			
+
 			<input type="hidden" name="oTotalPrice" id="oTotalPrice" value="1">
-			
+
 
 
 
@@ -917,6 +911,7 @@
             	
             	console.log(encodeURI(JSON.stringify(data)));
             	
+            	
             	tossPayments.requestPayment('카드', {
                     amount: data.oTotalPrice,
                     orderId: data.orderId,
@@ -936,7 +931,7 @@
 			return parseInt(s.substr(0, s.length - 1).replaceAll(',', ''));
 		}
 </script>
-	
+
 	</div>
 	<script type="text/javascript" defer="defer">
 		$(document).ready(function() {

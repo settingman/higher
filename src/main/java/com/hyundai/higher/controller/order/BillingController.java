@@ -7,11 +7,14 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
+
+import com.google.gson.Gson;
+import com.hyundai.higher.domain.order.OrderSheet;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -39,12 +42,20 @@ public class BillingController {
 	// 토스페이먼츠로 결제 승인 요청.
 	@GetMapping("/success")
 	public String requestFinalPayments(@RequestParam String paymentKey, @RequestParam String orderId,
-			@RequestParam Long amount, @RequestParam String orderInfo) {
+			@RequestParam Long amount, @RequestParam String orderInfo,Model model) {
 
 		
+		log.info("success");
 		// 상품 결과 페이지 주문 목록 가지고 이동 가능
 		log.info(orderInfo);
-
+		log.info("success");
+		
+		Gson gson = new Gson();
+		
+		OrderSheet orderSheet = gson.fromJson(orderInfo, OrderSheet.class);
+		
+		log.info(orderSheet.toString());
+	
 		testSecretApiKey = testSecretApiKey + ":";
 		String encodedAuth = new String(Base64.getEncoder().encode(testSecretApiKey.getBytes(StandardCharsets.UTF_8)));
 
@@ -60,13 +71,16 @@ public class BillingController {
 				+ "\"}";
 		
 		
-		System.out.println(body);
 
 		HttpEntity<String> entity = new HttpEntity<>(body, headers);
 		String url = "https://api.tosspayments.com/v1/payments/confirm";
 
 		ResponseEntity<String> response = restTemplate.postForEntity(url, entity, String.class);
 		// 결제 승인 요청.
+		
+		
+		model.addAttribute("orderSheet",orderSheet);
+		
 
 
 		return "order/orderComplete";
