@@ -338,6 +338,52 @@
 									</tr>
 								</thead>
 								<tbody>
+
+									<tr th:each="cartItem, stat : ${cartItems}">
+										<td class="valign-top">
+											<div class="prod-info no-ctrl">
+												<div class="img" id="img-40A1650970">
+												<input type="hidden" th:value="${cartItem.pId}" />
+													<img src="${cartItem.IMAGE_PATH}"
+														onerror="noImage(this, 'https://image.thehyundai.com/hdmall/images/pd/no_image_100x100.jpg')"
+													/>
+													<div class="hover-info">
+														<a href="http://www.thehyundai.com/front/pda/itemPtc.thd?slitmCd=40A1650970&amp;sectId=102066" target="_blank" title="새창으로 보기">새창으로
+															보기</a><a href="javascript:sltdItemDone('40A1650970:00001','102066',event);return false;" title="찜하기"
+															onclick="javascript:popover_open(this , '#popover-layer-zzim');return false;"
+														>찜하기</a>
+													</div>
+												</div>
+												<div class="title">
+													<a href="http://www.thehyundai.com/front/pda/itemPtc.thd?slitmCd=40A1650970&amp;sectId=102066" target="_blank">설화수[3월][한정수량]자음수 150ml</a>
+												</div>
+											</div>
+										</td>
+										<td class="prod-num">[[${cartItem.pAmount}]]개</td>
+										<td class="price-info">
+											<div class="o-price" th:text="${#numbers.formatInteger(cartItem.pPRICE*cartItem.pAmount, 3, 'COMMA') + '원'}">
+												68,000원
+											</div>
+											<div class="tot-price" id="tot-price-40A1650970-00001" data-tot-prc="68000">
+												<span id="tot-price-txt-40A1650970-00001" data-tcprate="1.0" data-luityn="N" data-stlmdcamt="0" th:text="${#numbers.formatInteger(cartItem.pPRICE*cartItem.pAmount, 3, 'COMMA') + '원'}">68,000원</span>
+											</div>
+										</td>
+										<td class="sale-info">
+											<div class="sale-price">
+												<span id="sale-price-40A1650970-00001">0원<br /></span><a class="btn size0 color1" href="#"
+													onclick="javascript:showUsableCopnPup(this);return false;"
+												>쿠폰변경</a>
+											</div>
+										</td>
+										<td class="shipping" rowspan="2">
+											<div class="free">
+												<div>묶음구매</div>
+												<div class="free">무료배송</div>
+											</div>
+										</td>
+									</tr>
+
+
 									<tr>
 										<td class="valign-top">
 											<div class="prod-info no-ctrl">
@@ -381,6 +427,14 @@
 											</div>
 										</td>
 									</tr>
+
+
+
+
+
+
+
+
 									<tr>
 										<td class="valign-top">
 											<div class="prod-info no-ctrl">

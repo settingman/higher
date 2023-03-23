@@ -26,20 +26,18 @@ public class BillingRestController {
 
 	// 토스페이먼츠로 결제 승인 요청.
 	@GetMapping("/order")
-	public void OrderInfo(@ModelAttribute OrderSheet orderSheet, HttpServletResponse response,
-			Principal principal) throws IOException {
-		
-		
+	public void OrderInfo(@ModelAttribute OrderSheet orderSheet, HttpServletResponse response, Principal principal)
+			throws IOException {
+
 		log.info(orderSheet.toString());
 
 		UUID uuid = UUID.randomUUID();
 		String orderId = uuid.toString();
 		String customerName = principal.getName();
-		
-		
+
 		orderSheet.setOrderId(orderId);
-		
-log.info("set");
+
+		log.info("set");
 		log.info(orderSheet.toString());
 
 		Gson gson = new Gson();
@@ -49,15 +47,13 @@ log.info("set");
 		/*
 		 * data.put("amount", amount); data.put("orderName", orderName);
 		 */
-		
-		data.put("orderSheet",orderSheet);
+
+		data.put("orderSheet", orderSheet);
 		data.put("orderId", orderId);
 		data.put("customerName", customerName);
-		
 
 		response.setCharacterEncoding("UTF-8");
 		response.getWriter().print(gson.toJson(orderSheet));
-
 
 	}
 
