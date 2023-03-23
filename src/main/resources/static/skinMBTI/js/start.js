@@ -54,6 +54,22 @@ function setResult(){
   const resultKeyword = document.querySelector(".resultKeyword");
   resultName.innerHTML = setWord[0];
   resultKeyword.innerHTML = setWord[1];
+  
+  $.ajax({
+	url : '/skinMBTI/getData?stype=' + setWord[0],
+	type : 'get',
+	success : function(r){
+		$("#title").text('"' + r.stitle + '"');
+		$(".resultExplain").text(r.sexplain);
+		$("#pros").text(r.spros);
+		$("#cons").text(r.scons);
+		$("#solution").text(r.ssolution);
+	},
+	error : function(e){
+		console.log(e);
+	}
+  });
+  
 }
 
 function goResult(){

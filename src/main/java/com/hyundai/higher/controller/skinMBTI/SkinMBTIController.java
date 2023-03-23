@@ -4,9 +4,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.hyundai.higher.domain.skinMBTI.SkinMBTIDTO;
 import com.hyundai.higher.service.include.IncludeService;
+import com.hyundai.higher.service.skinMBTI.SkinMBTIService;
+
+import lombok.extern.log4j.Log4j2;
 
 /**
  * @since : 2023. 03. 16.
@@ -21,12 +28,16 @@ import com.hyundai.higher.service.include.IncludeService;
  * </pre>
  */
 
+@Log4j2
 @RequestMapping("/skinMBTI")
 @Controller
 public class SkinMBTIController {
 
 	@Autowired(required=true)
 	private IncludeService iService;
+	
+	@Autowired
+	private SkinMBTIService service;
 
 	@GetMapping("/main")
 	public String skinMBTIMain(Model model) {
@@ -34,6 +45,13 @@ public class SkinMBTIController {
 		model.addAttribute("categoryList", iService.categoryListAll());
 		
 		return "/skinMBTI/main";
+	}
+	
+	@ResponseBody
+	@GetMapping("/getData")
+	public SkinMBTIDTO getSkinMBTIData(@RequestParam("stype") String stype) {
+				
+		return service.selectSkinMBTI(stype);
 	}
 	
 }

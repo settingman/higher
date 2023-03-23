@@ -3,7 +3,7 @@
 } */
 
 #main-img{
-    width: 800px;
+    width: 900px;
     margin: 0 auto;
     display: flex;
     margin-top: 50px;
@@ -12,7 +12,7 @@
 
 #btn-wrap{
     position: absolute;
-    top: 725px;
+    top: 810px;
 }
 
 #start-btn{
@@ -23,10 +23,10 @@
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     padding: 13px 20px;
-    font-size: 18px;
+    font-size: 20px;
     letter-spacing: 5px;
     position: relative;
-    left: 603px;
+    left: 610px;
 }
 
 #start-btn:hover{

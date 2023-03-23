@@ -1,5 +1,6 @@
 #result{
   display: none;
+  height: 1270px;
 }
 
 #result-content-wrap{
@@ -8,8 +9,7 @@ background-color: #fff;
     padding: 10px;
     width: 81%;
     margin: 0 auto;
-    margin-top: 20px;
-    height: 820px;
+    height: fit-content;
 }
 
 #result-title{
@@ -42,3 +42,77 @@ background: no-repeat url(/skinMBTI/img/result-title.png);
     color: #66604C;
     font-size: 13px;	
 }
+
+.graph{
+	height: 450px;
+    width: 450px;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.resultInfo{
+	width: 700px;
+    margin: 0 auto;
+}
+
+.infoBox {
+    width: fit-content;
+    margin: 0 auto;
+    background-color: #FAEFEC;
+    border-radius: 30px;
+    padding: 40px 80px;
+}
+
+.infoBox h4{
+	font-size: 31px;
+    color: #444444;
+    text-align: center;
+    font-family: 'Nanum Pen Script', cursive;
+}
+
+p{
+    font-family: 'Montserrat';
+    font-size: 15px;
+}
+
+table{
+	background: none;
+}
+
+.resultExplain{
+    margin: 20px 0;
+    text-align: center;
+    color: #66604C;
+}
+
+.infoName{
+	color: #420E07;
+	font-weight: 600;
+	width: 100px;
+}
+
+.button-wrap{
+	text-align: center;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+.button-wrap button{
+    border: 0;
+    padding: 13px 30px;
+    font-size: 16px;
+    border-radius: 12px;
+}
+
+#resultSave{
+    background-color: #E0CFC8;
+    color: #420E07;
+    margin-right: 15px;
+}
+
+#findCos{
+	background-color: #844D40;
+	color: #fff;
+}
+
