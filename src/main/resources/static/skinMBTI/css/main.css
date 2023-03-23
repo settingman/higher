@@ -1,0 +1,47 @@
+/* #main{
+	display: none;
+} */
+
+#main-img{
+    width: 800px;
+    margin: 0 auto;
+    display: flex;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#btn-wrap{
+    position: absolute;
+    top: 725px;
+}
+
+#start-btn{
+	background-color: #844d40;
+    border: 1px solid #844d40;
+    border-radius: 10px;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    padding: 13px 20px;
+    font-size: 18px;
+    letter-spacing: 5px;
+    position: relative;
+    left: 603px;
+}
+
+#start-btn:hover{
+	color: #844d40;
+	background-color: #fff;
+}
+
+#h-logo{
+    background-color: #fff;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    margin-top: 30px;
+}
+
+#h-logo img{
+	height: 25px;
+}
