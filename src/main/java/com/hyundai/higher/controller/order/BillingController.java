@@ -39,8 +39,11 @@ public class BillingController {
 	// 토스페이먼츠로 결제 승인 요청.
 	@GetMapping("/success")
 	public String requestFinalPayments(@RequestParam String paymentKey, @RequestParam String orderId,
-			@RequestParam Long amount) {
+			@RequestParam Long amount, @RequestParam String orderInfo) {
 
+		
+		// 상품 결과 페이지 주문 목록 가지고 이동 가능
+		log.info(orderInfo);
 
 		testSecretApiKey = testSecretApiKey + ":";
 		String encodedAuth = new String(Base64.getEncoder().encode(testSecretApiKey.getBytes(StandardCharsets.UTF_8)));
@@ -66,7 +69,7 @@ public class BillingController {
 		// 결제 승인 요청.
 
 
-		return "order/order";
+		return "order/orderComplete";
 		// 결제 성공 페이지로 이동 편집.
 
 	}

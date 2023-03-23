@@ -215,7 +215,7 @@
 									<td><span sec:authentication="principal.mName" class="od-name" type="text" title="이름" name="chgOrdCustNm" maxlength="10" /></td>
 									<!-- 20181227 수정 -->
 									<th>전화번호</th>
-									<td><span sec:authentication="principal.mPhone">010-2927-0550</span></td>
+									<td><span id="mPhone" sec:authentication="principal.mPhone"></span></td>
 									<th>이메일</th>
 									<td><span sec:authentication="principal.mId	">95tjdghks@gmail.com</span> <input type="hidden" name="isExistsMemberMail" value="Y" /></td>
 								</tr>
@@ -915,14 +915,14 @@
             data: $("#OrderSheet").serialize(),
             success: function (data) {
             	
-            	console.log(data);
+            	console.log(encodeURI(JSON.stringify(data)));
             	
             	tossPayments.requestPayment('카드', {
                     amount: data.oTotalPrice,
                     orderId: data.orderId,
                     orderName: data.oName,
                     customerName: data.oReceiver,
-                    successUrl: 'https://'+ window.location.host +'/toss/success',
+                    successUrl: 'https://'+ window.location.host +'/toss/success?orderInfo='+encodeURI(JSON.stringify(data)),
                     failUrl: 'https://'+ window.location.host +'/toss/fail',
                 })
             }

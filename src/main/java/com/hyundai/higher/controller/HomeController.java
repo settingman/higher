@@ -45,7 +45,7 @@ public class HomeController {
 
 		log.info("main");
 
-		return "test";
+		return "order/orderComplete";
 	}
 
 	
