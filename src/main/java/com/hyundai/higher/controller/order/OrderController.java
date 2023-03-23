@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -45,17 +46,22 @@ public class OrderController {
 		return "/order/order";	
 	}
 	
-	@GetMapping(value = "/orderComplete")
-	public String OrderComplete(Model model, Principal principal) {
-		
-		// List<CartItem> cartItems = cartService.cartToOrder(pIdList,principal.getName());
-		// 장바구니에서 선택된 상품의 id 값을 리스트로 받은 뒤 상품id와 회원 id를 통하여 장바구니 정보를 가져와 담아준다.
-		
-		 // model.addAttribute("cartItems", cartItems);
-		// 장바구니 객체를 리스트로 담아 넘긴다.
-		
-		
-		return "/order/orderComplete";
-	}
+	/*
+	 * // 주문완료 요청
+	 * 
+	 * @PostMapping("/oredercomplete") public String OrederComplete(OrderDTO
+	 * orderDTO, Model model, Principal principal) {
+	 * 
+	 * Integer member_id = memberMapper.idid(principal.getName());
+	 * 
+	 * OrderCompleteDTO orderCompleteDTO = orderService.insertOrder(orderDTO,
+	 * member_id);
+	 * 
+	 * model.addAttribute("orderCompleteDTO", orderCompleteDTO);
+	 * 
+	 * return "order/orderComplete";
+	 * 
+	 * }
+	 */
 
 }

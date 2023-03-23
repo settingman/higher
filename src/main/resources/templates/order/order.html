@@ -835,62 +835,108 @@
 			<a href="#" onclick="javascript:$.fancybox.close();return false;" class="btn size3 color2">확인</a>
 		</div>
 		<!-- //btn-wrap -->
+
+
+
+
+		<form class="orderForm" id="OrderSheet" action="/shop/oredercomplete" method="post">
+
+
+			<input type="hidden" name="orderId" id="orderId" value="1">
+			<input type="hidden" name="oName" id="oName" value="1">
+			
+			<input type="hidden" name="oDate" id="oDate" value="1">
+			
+			<input type="hidden" name="oZipcode" id="oZipcode" value="1">
+			<input type="hidden" name="oAddress1" id="oAddress1" value="1">
+			<input type="hidden" name="oAddress2" id="oAddress2" value="1">
+			
+			<input type="hidden" name="oReceiver" id="oReceiver" value="1">
+			<input type="hidden" name="oTel" id="oTel" value="1">
+			<input type="hidden" name="oPayment" id=oPayment value="카드">
+			
+			<input type="hidden" name="oTotalPrice" id="oTotalPrice" value="1">
+			
+
+
+
+
+		</form>
+
+
+
+
 	</div>
 
 	<script>
     var clientKey = 'test_ck_ODnyRpQWGrNMgvmawLVKwv1M9ENj'
     var tossPayments = TossPayments(clientKey)
     var button = document.getElementById('payment-button') // 결제하기 버튼
+    
+    var totalPrice = wonToInt($('#divTotPrdtAmt').text());
+    
+    var orderName = '상품 리스트 보고 정하기';
+    
+    
+    
     button.addEventListener('click', function () {
+    	
+    	$('#OrderSheet').find('#orderId').val(
+				$('#order_addressee_name').val());
+    	
+    	$('#OrderSheet').find('#oName').val(orderName);
+    	
+    	
+    	$('#OrderSheet').find('#oZipcode').val(
+				$('#order_addressee_zip').val());
+    	
+    	$('#OrderSheet').find('#oAddress1').val(
+				$('#addressee_addr1').val());
+    	
+    	$('#OrderSheet').find('#oAddress2').val(
+				$('#addressee_addr2').val());
+    	
+    	$('#OrderSheet').find('#oReceiver').val(
+				$('#order_addressee_name').val());
+    	
+    	$('#OrderSheet').find('#oTel').val(
+				$('#addressee_phone').val());
+    	
+    	$('#OrderSheet').find('#oTotalPrice').val(totalPrice);
+    	
+    	
+    	
+    	
+    	
     	$.ajax({
             url: "/toss/order",
             type: "GET",
             dataType : "json",
-            data: {
-              amount: 1500,
-              orderName: 'test',
-            },
+            data: $("#OrderSheet").serialize(),
             success: function (data) {
+            	
+            	console.log(data);
+            	
             	tossPayments.requestPayment('카드', {
-                    amount: data.amount,
+                    amount: data.oTotalPrice,
                     orderId: data.orderId,
-                    orderName: data.orderName,
-                    customerName: data.customerName,
+                    orderName: data.oName,
+                    customerName: data.oReceiver,
                     successUrl: 'https://'+ window.location.host +'/toss/success',
                     failUrl: 'https://'+ window.location.host +'/toss/fail',
                 })
             }
           });
         })
+        
+        
+        
+        
+        function wonToInt(s) {
+			return parseInt(s.substr(0, s.length - 1).replaceAll(',', ''));
+		}
 </script>
-	<script type="text/javascript">
-			// 인기검색어 폰트사이즈 제어
-			$(document).ready(function() {
-			function orderComplete() {
-				console.log($('#order_addressee_name').val());
-				console.log($('#addressee_cell').val());
-				console.log($('#order_addressee_zip').val());
-				console.log($('#addressee_addr1').val());
-				console.log($('#addressee_addr2').val());
-				console.log($('#order_dlv_memo').val());
-				console.log($('input[name="pay_type"]:checked').val());
-				$('.orderForm').find('#order_name').val(
-						$('#order_addressee_name').val());
-				$('.orderForm').find('#ORDER_PHONE').val(
-						$('#addressee_cell').val());
-				$('.orderForm').find('#order_postnum').val(
-						$('#order_addressee_zip').val());
-				$('.orderForm').find('#order_adress1').val(
-						$('#addressee_addr1').val());
-				$('.orderForm').find('#order_adress2').val(
-						$('#addressee_addr2').val());
-				$('.orderForm').find('#order_ask').val(
-						$('#order_dlv_memo').val());
-				$('.orderForm').find('#order_payment').val(
-						$('input[name="pay_type"]:checked').val());
-				$('.orderForm').submit();
-			}
-		</script>
+	
 	</div>
 	<script type="text/javascript" defer="defer">
 		$(document).ready(function() {

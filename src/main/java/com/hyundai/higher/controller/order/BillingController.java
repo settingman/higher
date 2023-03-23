@@ -55,6 +55,9 @@ public class BillingController {
 		headers.set("Content-Type", "application/json");
 		String body = "{\"paymentKey\":\"" + paymentKey + "\",\"amount\":" + amount + ",\"orderId\":\"" + orderId
 				+ "\"}";
+		
+		
+		System.out.println(body);
 
 		HttpEntity<String> entity = new HttpEntity<>(body, headers);
 		String url = "https://api.tosspayments.com/v1/payments/confirm";
