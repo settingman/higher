@@ -43,6 +43,8 @@ public class FileController {
     @PostMapping("/upload")
     public FileUploadDto uploadFile(@RequestParam("file") MultipartFile file, @RequestParam("roomId")String roomId){
 
+        	
+    	
         FileUploadDto fileReq = fileService.uploadFile(file, UUID.randomUUID().toString(), roomId);
         log.info("최종 upload Data {}", fileReq);
 

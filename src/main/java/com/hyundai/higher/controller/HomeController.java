@@ -53,7 +53,7 @@ public class HomeController {
 	public String test2(Model model) {
 
 
-		return "admin/layout/default_layout";
+		return "test3";
 	}
 	
 

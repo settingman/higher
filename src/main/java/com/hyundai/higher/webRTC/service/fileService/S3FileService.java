@@ -26,6 +26,18 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 
+/**
+ * @since   : 2023. 3. 17.
+ * @FileName: S3FileService.java
+ * @author  : 박성환
+ * @설명    : 파일 관리 서비스
+
+ * <pre>
+ *   수정일         수정자               수정내용
+ * ----------      --------    ---------------------------
+ * 2023. 3. 24.     박성환      	최초 생성
+ * </pre>
+ */
 @Service
 @RequiredArgsConstructor
 @Slf4j
