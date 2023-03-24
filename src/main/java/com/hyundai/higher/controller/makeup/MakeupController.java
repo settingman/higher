@@ -1,6 +1,7 @@
 package com.hyundai.higher.controller.makeup;
 
 import java.io.IOException;
+import java.util.Map;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -14,6 +15,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -29,6 +33,7 @@ import lombok.extern.log4j.Log4j2;
  * ----------      --------    ---------------------------
  * 2023. 3. 21.     이세아       create
  * 2023. 3. 21.     이세아       html 연결 및 makeup api 연동
+ * 2023. 3. 23.		이세아	   makeup api 색상 선택별로 변경 가능하게 함
  *     </pre>
  */
 
@@ -61,26 +66,38 @@ public class MakeupController {
 	// Flask api 연결 코드 -> 파이썬 세팅된 컴퓨터만 가능
 	@PostMapping("/makeup.api")
 	public String MakeupApi(@RequestParam("filePath") String filePath,
-	        @RequestParam("choice") String choice,@RequestParam("color") String color,Model model) throws IOException {
+	        @RequestParam("lips") String lips,@RequestParam("blush") String blush,
+	        @RequestParam("foundation") String foundation, Model model) throws IOException {
 	    
-		log.info("선택한 메이크업 방식 : " + choice);
-		log.info("선택된 색상 : " + color);
-	    log.info(filePath);
+		log.info("선택한 입술 색상 : " + lips);
+		log.info("선택된 블러쉬 색상 : " + blush);
+		log.info("선택된 파운데이션 색상 : " + foundation);
+	    log.info("원본 파일 경로 : " + filePath);
 
 	    RestTemplate restTemplate = new RestTemplate();
-	    HttpHeaders headers = new HttpHeaders();
-	    headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
 
 	    MultiValueMap<String, String> map= new LinkedMultiValueMap<String, String>();
 	    map.add("filePath", filePath);
-	    map.add("choice", choice);
-	    map.add("color", color);
+	    map.add("lips", lips);
+	    map.add("blush", blush);
+	    map.add("foundation", foundation);
 
-	    HttpEntity<MultiValueMap<String, String>> requestEntity = new HttpEntity<MultiValueMap<String, String>>(map, headers);
-
-	    String responseString = restTemplate.postForObject("http://127.0.0.1:5000/apply-makeup/", requestEntity, String.class);
-
-	    model.addAttribute("file_path", responseString);
+	    String apiUrl = "http://127.0.0.1:5000/apply-makeup/";
+	    HttpHeaders headers = new HttpHeaders();
+	    headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+	    HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(map, headers);
+	    String responseJson = restTemplate.postForObject(apiUrl, request, String.class);
+	    
+	    ObjectMapper mapper = new ObjectMapper();
+	    Map<String, String> responseData = mapper.readValue(responseJson, new TypeReference<Map<String, String>>() {});
+	    
+	    model.addAttribute("lips", responseData.get("lips"));
+	    model.addAttribute("blush", responseData.get("blush"));
+	    model.addAttribute("foundation", responseData.get("foundation"));
+	    model.addAttribute("output_filepath", responseData.get("output_filepath"));
+	    
+	    log.info(responseData);
+	    
 	    return "makeup-result";
 	}
 
