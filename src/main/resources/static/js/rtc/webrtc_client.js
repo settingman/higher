@@ -25,9 +25,12 @@ document.querySelector('#view_off').addEventListener('click', stopScreenShare);
 // WebRTC STUN servers
 // WebRTC STUN 서버 정보
 const peerConnectionConfig = {
-    'iceServers': [
-        {'urls': 'stun:stun.stunprotocol.org:3478'},
-        {'urls': 'stun:stun.l.google.com:19302'},
+    'iceServers': [{
+            'urls': 'stun:stun.stunprotocol.org:3478'
+        },
+        {
+            'urls': 'stun:stun.l.google.com:19302'
+        },
     ]
 };
 
@@ -47,7 +50,7 @@ let localVideoTracks;
 let myPeerConnection;
 
 // on page load runner
-$(function(){
+$(function() {
     start();
 });
 
@@ -77,7 +80,7 @@ function start() {
                 message.data = chatListCount();
 
                 log('Client is starting to ' + (message.data === "true)" ? 'negotiate' : 'wait for a peer'));
-                log("messageDATA : "+message.data)
+                log("messageDATA : " + message.data)
                 handlePeerConnection(message);
                 break;
 
@@ -92,26 +95,26 @@ function start() {
 
 
     // ICE 를 위한 chatList 인원 확인
-    function chatListCount(){
+    function chatListCount() {
 
         let data;
 
         $.ajax({
-            url : "/webrtc/usercount",
-            type : "get",
-            async : false,
-            data : {
-                "from" : localUserName,
-                "type" : "findCount",
-                "data" : localRoom,
-                "candidate" : null,
-                "sdp" : null
+            url: "/webrtc/usercount",
+            type: "get",
+            async: false,
+            data: {
+                "from": localUserName,
+                "type": "findCount",
+                "data": localRoom,
+                "candidate": null,
+                "sdp": null
             },
-            success(result){
+            success(result) {
                 data = result;
             },
-            error(result){
-                console.log("error : "+result);
+            error(result) {
+                console.log("error : " + result);
             }
         });
 
@@ -150,7 +153,7 @@ function start() {
 window.addEventListener('unload', stop);
 
 // 브라우저 뒤로가기 시 이벤트
-window.onhashchange = function(){
+window.onhashchange = function() {
     stop();
 }
 
@@ -207,11 +210,28 @@ function stop() {
 videoButtonOff.onclick = () => {
     localVideoTracks = localStream.getVideoTracks();
     localVideoTracks.forEach(track => localStream.removeTrack(track));
+
+    myPeerConnection.getSenders().forEach((sender) => {
+
+
+        // 4. 화면 공유 중지 시 Track 를 localstream 의 videoStram 로 교체함
+        sender.replaceTrack(localStream.getTracks()[1]);
+    })
+
+
+
     $(localVideo).css('display', 'none');
     log('Video Off');
 };
 videoButtonOn.onclick = () => {
     localVideoTracks.forEach(track => localStream.addTrack(track));
+
+    myPeerConnection.getSenders().forEach((sender) => {
+
+
+        sender.replaceTrack(localStream.getTracks()[1]);
+    })
+
     $(localVideo).css('display', 'inline');
     log('Video On');
 };
@@ -219,10 +239,27 @@ videoButtonOn.onclick = () => {
 // mute audio buttons handler
 audioButtonOff.onclick = () => {
     localVideo.muted = true;
+
+
+    // peer에게 현재 본인의 스트림을 다시보냄.
+    myPeerConnection.getSenders().forEach((sender) => {
+
+
+        sender.replaceTrack(localStream.getTracks()[1]);
+    })
+
     log('Audio Off');
 };
+
 audioButtonOn.onclick = () => {
     localVideo.muted = false;
+
+    myPeerConnection.getSenders().forEach((sender) => {
+
+
+        sender.replaceTrack(localStream.getTracks()[1]);
+    })
+
     log('Audio On');
 };
 
@@ -232,7 +269,7 @@ exitButton.onclick = () => {
 };
 
 function log(message) {
-     // console.log(message);
+    // console.log(message);
 }
 
 function handleErrorMessage(message) {
@@ -270,6 +307,9 @@ function handlePeerConnection(message) {
 }
 
 function createPeerConnection() {
+
+    //peerConnection 
+
     myPeerConnection = new RTCPeerConnection(peerConnectionConfig);
 
     // event handlers for the ICE negotiation process
@@ -287,14 +327,14 @@ function createPeerConnection() {
 /** peerConnection 과 관련된 이벤트 처리
  * 다른 peer 와 연결되었을 때 remote_video show 상태로로, 끊졌을때는 remote_video 를 hide 상태로 변경
  * **/
-function handleICEConnectionStateChangeEvent(){
+function handleICEConnectionStateChangeEvent() {
     let status = myPeerConnection.iceConnectionState;
 
-    if(status === "connected"){
-        log("status : "+status)
+    if (status === "connected") {
+        log("status : " + status)
         $("#remote_video").show();
-    }else if(status === "disconnected"){
-        log("status : "+status)
+    } else if (status === "disconnected") {
+        log("status : " + status)
 
         $("#remote_video").hide();
     }
@@ -310,7 +350,7 @@ function getLocalMediaStream(mediaStream) {
 // handle get media error
 function handleGetUserMediaError(error) {
     log('navigator.getUserMedia error: ', error);
-    switch(error.name) {
+    switch (error.name) {
         case "NotFoundError":
             alert("Unable to open your call because no camera and/or microphone were found.");
             break;
@@ -352,12 +392,12 @@ function handleTrackEvent(event) {
 // 3. 미디어 형식, 해상도 등에 대한 내용을 서버에 전달
 function handleNegotiationNeededEvent() {
     myPeerConnection.createOffer().then(function(offer) {
-        return myPeerConnection.setLocalDescription(offer);
-    })
+            return myPeerConnection.setLocalDescription(offer);
+        })
         .then(function() {
             sendToServer({
                 from: localUserName,
-                data:localRoom,
+                data: localRoom,
                 type: 'offer',
                 sdp: myPeerConnection.localDescription
             });
@@ -376,11 +416,11 @@ function handleOfferMessage(message) {
     //TODO test this
     if (desc != null && message.sdp != null) {
         log('RTC Signalling state: ' + myPeerConnection.signalingState);
-        myPeerConnection.setRemoteDescription(desc).then(function () {
-            log("Set up local media stream");
-            return navigator.mediaDevices.getUserMedia(mediaConstraints);
-        })
-            .then(function (stream) {
+        myPeerConnection.setRemoteDescription(desc).then(function() {
+                log("Set up local media stream");
+                return navigator.mediaDevices.getUserMedia(mediaConstraints);
+            })
+            .then(function(stream) {
                 log("-- Local video stream obtained");
                 localStream = stream;
                 try {
@@ -392,7 +432,7 @@ function handleOfferMessage(message) {
                 log("-- Adding stream to the RTCPeerConnection");
                 localStream.getTracks().forEach(track => myPeerConnection.addTrack(track, localStream));
             })
-            .then(function () {
+            .then(function() {
                 log("-- Creating answer");
                 // Now that we've successfully set the remote description, we need to
                 // start our stream up locally then create an SDP answer. This SDP
@@ -400,14 +440,14 @@ function handleOfferMessage(message) {
                 // information, options agreed upon, and so forth.
                 return myPeerConnection.createAnswer();
             })
-            .then(function (answer) {
+            .then(function(answer) {
                 log("-- Setting local description after creating answer");
                 // We now have our answer, so establish that as the local description.
                 // This actually configures our end of the call to match the settings
                 // specified in the SDP.
                 return myPeerConnection.setLocalDescription(answer);
             })
-            .then(function () {
+            .then(function() {
                 log("Sending answer packet back to other peer");
 
                 sendToServer({
@@ -439,21 +479,21 @@ function handleNewICECandidateMessage(message) {
 }
 
 /** 화면 공유 실행 과정
- * 나와 연결된 다른 peer 에 나의 화면을 공유하기 위해서는 다른 peer 에 보내는 Track 에서 stream 을 교체할 필요가 있다.
- * Track 이란 현재 MediaStream 을 구성하는 각 요소를 의미한다.
+ * 나와 연결된 다른 peer 에 나의 화면을 공유하기 위해서는 다른 peer 에 보내는 Track 에서 stream 을 교체해야한다.
+ * Track 이란 현재 MediaStream 을 구성하는 각 요소를 의미
  *    - Track 는 오디오, 비디오, 자막 총 3개의 stream 으로 구성된다.
  *    - 때문에 Track 객체는 track[0] = 오디오, track[1] = 비디오 의 배열 구조로 되어있다
  * MediaStream 이란 video stream 과 audio steam 등의 미디어 스트림을 다루는 객체를 이야기한다
- * - stream(스트림)이란 쉽게 생각하자면 비디오와 오디오 데이터라고 이해하면 될 듯 하다 -
+ * - stream(스트림)이란 쉽게 생각하자면 비디오와 오디오 데이터
  *
- * 즉 상대방에게 보내는 track 에서 나의 웹캠 videoStream 대신 공유 화면에 해당하는 videoStream 으로 변경하는 것이다.
+ * 상대방에게 보내는 track 에서 나의 웹캠 videoStream 대신 공유 화면에 해당하는 videoStream 으로 변경하는 것이다.
  *
- * 이렇듯 Track 에서 steam 을 교체 - replace - 하기 위해서는 아래와 같은 과정을 거친다.
- * 1. myPeerConnection 에서 sender 를 가져온다. sender 란 나와 연결된 다른 peer 로 생각하면 된다.
+ * Track 에서 steam 을 교체 - replace - 하기 위해서는 아래와 같은 과정을 거친다.
+ * 1. myPeerConnection 에서 sender 를 가져온다. sender 란 나와 연결된 다른 peer 로 생각
  * 2. sender 객체에서 replaceTrack 함수를 활용해서 stream 을 교체한다.
  * 3. shareView 의 Track[0] 에는 videoStream 이 들어있다. 따라서 replaceTrack 의 파라미터에 shareView.getTrack[0] 을 넣는다.
- * 4. 화면 공유 취소 시 원래 화상 화면으로 되돌리기 위해서는 다시 Track 를 localstream 으로 교체해주면 된다!
- *      이때 localStream 에는 audio 와 video 모두 들어가 있음으로 video 에 해당하는 Track[1] 만 꺼내서 교체해준다.
+ * 4. 화면 공유 취소 시 원래 화상 화면으로 되돌리기 위해서는 다시 Track 를 localstream 으로 교체
+ *      이때 localStream 에는 audio 와 video 모두 들어가 있음으로 video 에 해당하는 Track[1] 만 꺼내서 교체
  * **/
 
 /*  화면 공유를 위한 변수 선언 */
@@ -540,7 +580,7 @@ async function startScreenShare() {
 
     // 1. myPeerConnection 에 연결된 다른 sender 쪽으로 - 즉 다른 Peer 쪽으로 -
     // 2. shareView 의 Track 에서 0번째 인덱스에 들어있는 값 - 즉 videoStream 로 - 교체한다.
-    await myPeerConnection.getSenders().forEach((sender)=>{ // 연결된 sender 로 보내기위한 반복문
+    await myPeerConnection.getSenders().forEach((sender) => { // 연결된 sender 로 보내기위한 반복문
 
         // 3. track 를 shareView 트랙으로 교체
         sender.replaceTrack(shareView.getTracks()[0])
@@ -554,11 +594,11 @@ async function startScreenShare() {
     /**
      * 화면 공유 중지 눌렀을 때 이벤트
      */
-    shareView.getVideoTracks()[0].addEventListener('ended', () =>{
+    shareView.getVideoTracks()[0].addEventListener('ended', () => {
         // log('screensharing has ended')
 
         // 4. 화면 공유 중지 시 Track 를 localstream 의 videoStram 로 교체함
-        myPeerConnection.getSenders().forEach((sender) =>{
+        myPeerConnection.getSenders().forEach((sender) => {
             sender.replaceTrack(localStream.getTracks()[1]);
         })
 
@@ -569,14 +609,14 @@ async function startScreenShare() {
 }
 
 /*
-*  video off 버튼을 통해 스크린 API 종료
-* */
-async function stopScreenShare(){
+ *  video off 버튼을 통해 스크린 API 종료
+ * */
+async function stopScreenShare() {
 
     // screen share 종료
     await screenHandler.end();
     // myPeerConnection
-    await myPeerConnection.getSenders().forEach((sender) =>{
+    await myPeerConnection.getSenders().forEach((sender) => {
 
         // 4. 화면 공유 중지 시 Track 를 localstream 의 videoStram 로 교체함
         sender.replaceTrack(localStream.getTracks()[1]);

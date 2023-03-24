@@ -71,11 +71,11 @@ public class ChatRoomController {
 
 
         if (ChatRoomDto.ChatType.MSG.equals(room.getChatType())) {
-            return "chatroom";
+            return "webRTC/chatroom";
         }else{
             model.addAttribute("uuid", UUID.randomUUID().toString());
 
-            return "rtcroom";
+            return "webRTC/rtcroom";
         }
     }
 
@@ -91,7 +91,7 @@ public class ChatRoomController {
     }
 
     // 채팅방 삭제
-    @GetMapping("/chat/delRoom/{roomId}")
+    @GetMapping("/chat/del	Room/{roomId}")
     public String delChatRoom(@PathVariable String roomId){
 
         // roomId 기준으로 chatRoomMap 에서 삭제, 해당 채팅룸 안에 있는 사진 삭제
