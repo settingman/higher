@@ -631,9 +631,12 @@
 											<!-- 딜 옵션 상품들 전부 선물하기 불가 상품일 때도 미노출 로직 추가 필요 -->
 											<!-- 마이테레사, 루이자비아로마 선물하기 버튼 미노출 -->
 
-											<button class="btn size6 color4 gift" type="button"
-												onclick="sendEcommerceSet('Checkout', 'checkout', '선물하기'); buyDirectGift()">선물하기</button>
+											<!-- <button class="btn size6 color4 gift" type="button"
+												onclick="sendEcommerceSet('Checkout', 'checkout', '선물하기'); buyDirectGift()">선물하기</button> -->
 
+											<button class="btn size6 color4" type="button"
+												onclick="put()">비교함에 담기</button>
+												
 											<button class="btn size6 color9" type="button"
 												onclick="sendEcommerceSet('Checkout', 'checkout', '바로구매' ); setIsGiftN(); buyDirect();">바로구매</button>
 
@@ -3703,6 +3706,39 @@
 		<!-- //container -->
 	</div>
 	<div id="criteo-tags-div" style="display: none;"></div>
+	
+	<!-- 비교함에 담기 -->
+	  <script>
+    function put() {
+      const pcode = document.querySelector('.prd-share-info strong').textContent;
+      const pname = document.querySelector('.prd-title h2').textContent;
+      var brand = $('.prd-shop').find('.brand a').text();
+      const price = document.querySelector('.dis-price').textContent.trim();
+      const imglink = document.querySelector('.cloudzoom').src;
+      const rate = document.querySelector('.prd-review-info span').textContent;
+      const review = document.querySelector('.text-point4').textContent;
+  
+      let arr = JSON.parse(localStorage.getItem("arr")) || []; // null일 경우 빈 배열 생성
+  
+      if (arr.length >= 10) {
+        alert("비교함에는 10개의 상품을 담을 수 있습니다.");
+        return false;
+      }
+  
+      if (arr.some(item => item[0] === pcode)) { // 이미 비교함에 추가된 상품인 경우
+        alert("이미 비교함에 담긴 상품입니다.");
+      } else {
+        arr.push([pcode, pname, brand, price, imglink, rate, review]); // 상품 정보 저장
+        localStorage.setItem("arr", JSON.stringify(arr));
+      }
+
+      console.log("비교함에 담음");
+      //담았으면 옆에 사이드바에 띄워줘야 함
+    }
+
+
+  </script>
+	
 	<!-- //wrap -->
 	<!----------------------- footer ----------------------->
 	<div th:insert="~{include/footer}"></div>

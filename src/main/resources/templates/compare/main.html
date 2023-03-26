@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html class="">
+	<head>
+	<!-- 상품 비교 -->
+  <link href="https://www.card-gorilla.com/css/app.efea5715.css" rel="preload" as="style">
+  <link href="https://www.card-gorilla.com/css/app.efea5715.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://www.card-gorilla.com/css/6a0415a6.bb230c3e.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+
+<!-- 	<link rel="stylesheet" href="/compare/css/style.css">
+ -->
+ 
+ <style type="text/css">
+ 	
+    swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+			height: 480px;
+    }
+
+    swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    swiper-container {
+      width: 95%;
+      height: 490px;
+      margin: 20px auto;
+    }
+
+		:root {
+			--swiper-theme-color: rgb(66, 31, 0);
+		}
+
+		.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    margin: 0px 5px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.1s;
+    width:120px;
+    cursor: pointer;
+    border-radius: 4px;
+		height: 40px;
+		font-weight: 700;
+
+}
+
+.button5{
+    background-color: #806A53;
+		margin-left: 0px;
+    color: #FFFEF2;
+		float: left;
+		line-height: 3;
+}
+
+.button5:hover {
+    background-color: #FFFFFF;
+    color: #806A53;
+    border: 1.5px solid #806A53;
+}
+.button4{
+		background-color: #FFFFFF;
+    color: #806A53;
+    border: 1.5px solid #806A53;
+		float: right;
+		margin-left: 0px;
+		line-height: 3;
+}
+
+.button4:hover {
+	background-color: #806A53;
+    color: #FFFEF2;
+
+}
+
+.prod-unit .title {
+	font-size: 18px !important;
+	line-height: 40px !important;
+	margin-top: 0px !important;
+}
+	
+	.card_choice .bn_box a[data-v-4ade122e] {
+		width:130px;
+	}
+	.compare {
+		background-color: #806A53;
+    height: 40px;
+    width: 120px;
+    line-height: 40px;
+    margin: 0 5px;
+    font-size: 13px;
+    color: #FFFEF2;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    border-radius: 4px;
+    display: inline-block;
+
+	}
+	.detailB {
+    background-color: #FFF;
+    height: 40px;
+    width: 120px;
+    line-height: 40px;
+    margin: 0 5px;
+    margin-top: 0px;
+    font-size: 13px;
+    color: #333333;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    border-radius: 4px;
+    display: inline-block;
+    border: 1px solid #806A53;
+	}
+	.product-list.type1 li {
+		padding-top: 0px;
+	}
+	
+	.card_choice .txt .card_name[data-v-4ade122e] {
+		font-size:20px;
+	}
+ 
+ </style>
+
+	<!-- 스와이퍼 -->
+	<meta charset="utf-8" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
+
+	<!-- 스와이퍼 end -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+	<!-- 상품 비교 end -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0">
+	<title>메이크업 | 더현대닷컴</title>
+
+<link rel="stylesheet" type="text/css" href="https://image.thehyundai.com/pc/cssssl/font.css">
+
+<link rel="stylesheet" type="text/css" href="https://image.thehyundai.com/pc/cssssl/co.css?ver=14">
+<link rel="stylesheet" type="text/css" href="https://image.thehyundai.com/pc/cssssl/wf.css">
+<script src="https://image.thehyundai.com/pc/js/jquery-1.11.3.min.js"></script>
+<script src="https://image.thehyundai.com/pc/js/jquery-ui.min.js"></script>
+<script src="https://image.thehyundai.com/pc/js/jquery-migrate.min.js"></script>
+
+<script type="text/javascript">
+document.domain = "thehyundai.com";
+var locationHref = document.location.href;
+var imageServer = "https://image.thehyundai.com";
+var serverHost = "https://www.thehyundai.com";
+var serverHostForSSL = "https://www.thehyundai.com";
+
+var switch_serverHost;
+var contextPath = "/front";
+
+if (locationHref.indexOf("https") > -1) {
+	switch_serverHost = serverHostForSSL;
+
+} else if (locationHref.indexOf("http") > -1) {
+	switch_serverHost = serverHost;
+
+}
+
+
+
+function timeOutLogOut(){
+	try{
+		gfnSsoDscdToknReq(dscdCallback2);
+	}catch(exception){
+		console.log(exception);
+	}finally{
+		location.href="https://www.thehyundai.com/front/cob/logout.thd";
+	}
+}
+
+// 로그아웃 스크립트 2021.02.15 추가
+// 1.주문서는 타임아웃 자동로그아웃 제외
+// 2.다중 탭 열린 상태에서 한 탭 타임아웃 시 타임아웃 안된 다른 탭 남아있으면 로그아웃 방지
+function timeOutLogOutCookie(){
+    if(top.location.href.indexOf('order.thd')<0)
+    {
+        var currentDtm = new Date();
+        var ChkSTDtmVal = "";
+        var ca = document.cookie.split(';');
+        for (var i=0;i<ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf('ChkSTDtm=') == 0) ChkSTDtmVal = c.substring('ChkSTDtm='.length,c.length);
+        }
+        if (currentDtm.getTime() > ChkSTDtmVal)
+        {
+        	timeOutLogOut();
+        }
+    }
+}
+
+function dscdCallback2(data){
+	//console.log("data.rtnMsg:"+data.rtnMsg);
+	if(data.succYn == "Y"){
+		console.log("토큰 만료처리");
+
+	}else{
+		console.log("토큰 미존재");
+
+	}
+	//location.href="https://www.thehyundai.com/front/cob/logout.thd";
+}
+
+
+
+</script>
+
+<script src="https://image.thehyundai.com/pc/js/plugin.js?ver=030314"></script>
+<script type="text/javascript" src="https://image.thehyundai.com/pc/js/hdmall/co/jquery.form.js"></script>
+<script type="text/javascript" src="https://image.thehyundai.com/pc/js/hdmall/co/default.js?ver=030314"></script>
+<script type="text/javascript" src="https://image.thehyundai.com/pc/js/hdmall/co/common.js?ver=030314"></script>
+<script src="https://image.thehyundai.com/pc/js/common.js?ver=030314"></script>
+<script type="text/javascript" src="https://image.thehyundai.com/pc/js/swiper.min.js?ver=030314"></script>
+
+<!-- 그루비(MA) 솔루션 스크립트 삽입 -->
+<script src="/js/hdmall/co/groobeeAnalyticsBuilder.js"></script> 
+
+ 
+<script type="text/javascript">
+(function(a,i,u,e,o){
+a[u]=a[u]||function(){(a[u].q=a[u].q||[]).push(arguments)};
+})(window, document, "groobee");
+if(window.location.host.indexOf('dev') != -1 || window.location.host.indexOf('stg') != -1){
+	groobee("serviceKey","6ab0c3cdd6c9458ab02dec4fc6c0cccd");
+}else{
+	groobee("serviceKey","4dd20a40cca8449988053b600a926c57");
+}
+groobee("siteType","custom");
+</script>
+<script charset="utf-8" src="//static.groobee.io/dist/g2/groobee.init.min.js"></script>
+ 
+<meta property="groobee:member_id" content="">
+<meta property="groobee:member_grade" content="">
+<meta property="groobee:member_gender" content="">
+<meta property="groobee:member_type" content="">
+<meta property="groobee:member_age" content="">
+
+<script type="text/javascript"> 
+
+var custNoMa = '';
+var itntGrdMa = '';
+var sexGbcdMa = '';
+var upntCustMa = '';
+var birthMa = '';
+if(pageViewObj2.custNo != null) custNoMa = pageViewObj2.custNo;
+if(pageViewObj2.itntGrd != null) itntGrdMa = pageViewObj2.itntGrd;
+if(pageViewObj2.sexGbcd != null) sexGbcdMa = pageViewObj2.sexGbcd;
+if(pageViewObj2.upntCustYn != null) upntCustMa = pageViewObj2.upntCustYn;
+if(pageViewObj2.birthday != null) birthMa = pageViewObj2.birthday;
+
+
+$('meta[property="groobee:member_id"]').attr('content',custNoMa);
+$('meta[property="groobee:member_grade"]').attr('content',itntGrdMa);
+$('meta[property="groobee:member_gender"]').attr('content',sexGbcdMa);
+$('meta[property="groobee:member_type"]').attr('content',upntCustMa);
+$('meta[property="groobee:member_age"]').attr('content',birthMa);
+
+</script>
+
+	<link rel="stylesheet" href="https://www.thehyundai.com/cssssl/cc.css">
+	<link rel="stylesheet" type="text/css" href="https://www.thehyundai.com/cssssl/dp.css?ver=14">
+
+<script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/co/md5.js"></script>
+<script type="text/javascript" src="//static.criteo.net/js/ld/ld.js" async="true"></script>
+
+<meta http-equiv="origin-trial" content="A9+ldib+sKhGj2FcIjq5GnvBZFuIiXID0+NkE6k7cEk71MhaHFGqo3wUlUFmZ6d9w0KPwx9UxGiCTYWtRnTGDQkAAACAeyJvcmlnaW4iOiJodHRwczovL2NyaXRlby5uZXQ6NDQzIiwiZmVhdHVyZSI6IlByaXZhY3lTYW5kYm94QWRzQVBJcyIsImV4cGlyeSI6MTY4MDY1Mjc5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0="><meta http-equiv="origin-trial" content="AzLNuh8GFzfIOcwvhEg7Ymr7YCzlYVTKeD7i2iETABbRf+sL2FAx+r+HlTtxSi1zgUFxBlJVoxgLjuhqiwTjAw4AAACAeyJvcmlnaW4iOiJodHRwczovL2NyaXRlby5jb206NDQzIiwiZmVhdHVyZSI6IlByaXZhY3lTYW5kYm94QWRzQVBJcyIsImV4cGlyeSI6MTY4MDY1Mjc5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0="><style type="text/css">.fancybox-margin{margin-right:21px;}</style><meta http-equiv="origin-trial" content="A751Xsk4ZW3DVQ8WZng2Dk5s3YzAyqncTzgv+VaE6wavgTY0QHkDvUTET1o7HanhuJO8lgv1Vvc88Ij78W1FIAAAAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjgwNjUyNzk5LCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A751Xsk4ZW3DVQ8WZng2Dk5s3YzAyqncTzgv+VaE6wavgTY0QHkDvUTET1o7HanhuJO8lgv1Vvc88Ij78W1FIAAAAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjgwNjUyNzk5LCJpc1RoaXJkUGFydHkiOnRydWV9"><script type="text/javascript" async="" src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/879261918/?random=1677822408378&amp;cv=11&amp;fst=1677822408378&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;gtm=45be3310&amp;u_w=1707&amp;u_h=1067&amp;hn=www.googleadservices.com&amp;frm=0&amp;url=https%3A%2F%2Fwww.thehyundai.com%2Ffront%2Fdpa%2FsearchSectItem.thd%3FsectId%3D30015%26MainpageGroup%3DCategory%26GroupbannerName%3Dcosmetic&amp;ref=https%3A%2F%2Fwww.thehyundai.com%2FHome.html%3FMainpageGroup%3DFix%26GroupbannerName%3DGNB_Logo&amp;tiba=%EB%A9%94%EC%9D%B4%ED%81%AC%EC%97%85%20%7C%20%EB%8D%94%ED%98%84%EB%8C%80%EB%8B%B7%EC%BB%B4&amp;auid=1570508613.1673504375&amp;uaa=x86&amp;uab=64&amp;uafvl=Chromium%3B110.0.5481.178%7CNot%2520A(Brand%3B24.0.0.0%7CGoogle%2520Chrome%3B110.0.5481.178&amp;uamb=0&amp;uap=Windows&amp;uapv=15.0.0&amp;uaw=0&amp;data=event%3Dgtag.config&amp;rfmt=3&amp;fmt=4"></script><link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css"><meta http-equiv="origin-trial" content="A9+ldib+sKhGj2FcIjq5GnvBZFuIiXID0+NkE6k7cEk71MhaHFGqo3wUlUFmZ6d9w0KPwx9UxGiCTYWtRnTGDQkAAACAeyJvcmlnaW4iOiJodHRwczovL2NyaXRlby5uZXQ6NDQzIiwiZmVhdHVyZSI6IlByaXZhY3lTYW5kYm94QWRzQVBJcyIsImV4cGlyeSI6MTY4MDY1Mjc5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0="><meta http-equiv="origin-trial" content="AzLNuh8GFzfIOcwvhEg7Ymr7YCzlYVTKeD7i2iETABbRf+sL2FAx+r+HlTtxSi1zgUFxBlJVoxgLjuhqiwTjAw4AAACAeyJvcmlnaW4iOiJodHRwczovL2NyaXRlby5jb206NDQzIiwiZmVhdHVyZSI6IlByaXZhY3lTYW5kYm94QWRzQVBJcyIsImV4cGlyeSI6MTY4MDY1Mjc5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0="><meta http-equiv="origin-trial" content="A751Xsk4ZW3DVQ8WZng2Dk5s3YzAyqncTzgv+VaE6wavgTY0QHkDvUTET1o7HanhuJO8lgv1Vvc88Ij78W1FIAAAAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjgwNjUyNzk5LCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A751Xsk4ZW3DVQ8WZng2Dk5s3YzAyqncTzgv+VaE6wavgTY0QHkDvUTET1o7HanhuJO8lgv1Vvc88Ij78W1FIAAAAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjgwNjUyNzk5LCJpc1RoaXJkUGFydHkiOnRydWV9"><script type="text/javascript" async="" src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/879261918/?random=1677828299145&amp;cv=11&amp;fst=1677828299145&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;gtm=45be3310&amp;u_w=1707&amp;u_h=1067&amp;hn=www.googleadservices.com&amp;frm=0&amp;url=http%3A%2F%2F192.168.0.40%3A5500%2F%25EC%2583%2581%25ED%2592%2588%25EB%25B9%2584%25EA%25B5%2590.html&amp;ref=http%3A%2F%2F192.168.0.40%3A5500%2F%25EC%2583%2581%25ED%2592%2588%25EB%25B9%2584%25EA%25B5%2590.html&amp;tiba=%EB%A9%94%EC%9D%B4%ED%81%AC%EC%97%85%20%7C%20%EB%8D%94%ED%98%84%EB%8C%80%EB%8B%B7%EC%BB%B4&amp;auid=1713564398.1677739958&amp;data=event%3Dgtag.config&amp;rfmt=3&amp;fmt=4"></script><style type="text/css">.fancybox-margin{margin-right:22px;}</style><style type="text/css">.fancybox-margin{margin-right:23px;}</style><meta http-equiv="origin-trial" content="A9+ldib+sKhGj2FcIjq5GnvBZFuIiXID0+NkE6k7cEk71MhaHFGqo3wUlUFmZ6d9w0KPwx9UxGiCTYWtRnTGDQkAAACAeyJvcmlnaW4iOiJodHRwczovL2NyaXRlby5uZXQ6NDQzIiwiZmVhdHVyZSI6IlByaXZhY3lTYW5kYm94QWRzQVBJcyIsImV4cGlyeSI6MTY4MDY1Mjc5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0="><meta http-equiv="origin-trial" content="AzLNuh8GFzfIOcwvhEg7Ymr7YCzlYVTKeD7i2iETABbRf+sL2FAx+r+HlTtxSi1zgUFxBlJVoxgLjuhqiwTjAw4AAACAeyJvcmlnaW4iOiJodHRwczovL2NyaXRlby5jb206NDQzIiwiZmVhdHVyZSI6IlByaXZhY3lTYW5kYm94QWRzQVBJcyIsImV4cGlyeSI6MTY4MDY1Mjc5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0="><meta http-equiv="origin-trial" content="A751Xsk4ZW3DVQ8WZng2Dk5s3YzAyqncTzgv+VaE6wavgTY0QHkDvUTET1o7HanhuJO8lgv1Vvc88Ij78W1FIAAAAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjgwNjUyNzk5LCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A751Xsk4ZW3DVQ8WZng2Dk5s3YzAyqncTzgv+VaE6wavgTY0QHkDvUTET1o7HanhuJO8lgv1Vvc88Ij78W1FIAAAAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjgwNjUyNzk5LCJpc1RoaXJkUGFydHkiOnRydWV9"><script type="text/javascript" async="" src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/879261918/?random=1677828542206&amp;cv=11&amp;fst=1677828542206&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;gtm=45be3310&amp;u_w=1707&amp;u_h=1067&amp;hn=www.googleadservices.com&amp;frm=0&amp;url=http%3A%2F%2F192.168.0.40%3A5500%2F%25EC%2583%2581%25ED%2592%2588%25EB%25B9%2584%25EA%25B5%2590.html&amp;ref=http%3A%2F%2F192.168.0.40%3A5500%2F%25EC%2583%2581%25ED%2592%2588%25EB%25B9%2584%25EA%25B5%2590.html&amp;tiba=%EB%A9%94%EC%9D%B4%ED%81%AC%EC%97%85%20%7C%20%EB%8D%94%ED%98%84%EB%8C%80%EB%8B%B7%EC%BB%B4&amp;auid=1713564398.1677739958&amp;data=event%3Dgtag.config&amp;rfmt=3&amp;fmt=4"></script>
+
+</head>
+<body>   
+
+<!-- wrap -->
+<div id="wrap" class="sub">
+		<!------ header ------>
+		<div th:insert="~{include/sub-header}"></div>
+		<!------ //header ------>
+	<!-- container -->
+
+<script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/co/referCodes.js"></script>
+<script src="/js/sso/SsoHttpRequest.js"></script>
+<script src="/js/sso/SsoAjax.js"></script>
+<script src="/js/sso/SsoLogin.js"></script> <!-- SSO 로그인 js 공통 처리 2021.02.17-->
+
+<script type="text/javascript" src="https://www.thehyundai.com/static/gen/js/mainBnnrContents.js?ver=031446"></script>
+<!-- header -->
+<!-- 서브메뉴 -->
+
+<!-- top banner -->
+
+<div id="container">
+		
+		<h1 class="blind">컨텐츠영역</h1>
+
+		<!-- content-wrap -->
+		<div class="content-wrap">
+
+			<!-- content -->
+			<div class="content" style="border-top: 1px solid #666; padding-top: 0px;">
+
+
+				<!-- product-list type -->
+				<div style="background-color: #FFFEF2;">
+					<img src="./img/comparelogo.png" style="margin: auto;width:1118.51px;display: block;border-bottom: 1px solid #666;">
+				</div>
+		<!-- <h4 class="sort-title">Find The ONE!</h4> -->
+		<p style="text-align: right; margin-right: 10px;font-size: 15px;margin-top: 10px;">비교함에는 10개의 상품까지 담을 수 있습니다.</p>
+
+		<swiper-container class="mySwiper" slides-per-view="4" centered-slides="true" space-between="30"
+    pagination-type="fraction" navigation="true" >
+
+    
+    <swiper-slide class="slide0"></swiper-slide>
+		<swiper-slide class="slide1"></swiper-slide>
+		<swiper-slide class="slide2"></swiper-slide>
+    <swiper-slide class="slide3"></swiper-slide>
+    <swiper-slide class="slide4"></swiper-slide>
+		<swiper-slide class="slide5"></swiper-slide>
+    <swiper-slide class="slide6"></swiper-slide>
+    <swiper-slide class="slide7"></swiper-slide>
+    <swiper-slide class="slide8"></swiper-slide>
+		<swiper-slide class="slide9"></swiper-slide>
+
+  </swiper-container>
+
+	<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
+				
+											<h4 class="sort-title" style="margin-bottom: 0px;"></h4>
+		<!-- <h4 class="sort-title">NEW 아이템</h4> -->
+
+		<!-- 상품 비교 -->
+
+  <div id="q-app" style="width: 50%;">
+  <div>
+  <div data-v-214bdc2f="" id="q-app">
+  <div data-v-58e952e9="" data-v-214bdc2f="" class="floating-layers">
+  <!---->
+  <!---->
+  <!---->
+  <div data-v-58e952e9="" class="toast-banner-small" style="display: none;">
+  <div data-v-0a0e3ee1="" data-v-58e952e9="" class="display-container bg-grey-2 full-height relative-position display-container" style="outline: red solid 0px;">
+  <div data-v-0a0e3ee1="" class="full-height">
+  <!---->
+  </div>
+  </div>
+  </div>
+  <!---->
+  <!---->
+  <b data-v-58e952e9="">
+  </b>
+  </div>
+  <div data-v-35734774="" data-v-902ef014="" data-v-214bdc2f="">
+  <section data-v-35734774="" class="">
+  <!---->
+
+  </section>
+  </div>
+  <section data-v-214bdc2f="" class="contentArea" style="min-width: 1119px;background-color: #fff;">
+  <div data-v-35734774="" data-v-4ade122e="" data-v-214bdc2f="" class="compare_detail" style="padding-top: 0px;">
+		<div class="col" style="background-color: #FFFEF2;border-bottom: 1px solid black;">
+			<!-- <h4 style="padding-bottom: 20px; text-align: center; border-bottom: 1px solid #666;padding-top: 30px;">What's Your Pick?</h4> -->
+				<img src="./img/pick.png" style="margin: auto;width:1050px;display: block;">
+		</div>
+  <section data-v-35734774="" class="">
+  <article data-v-4ade122e="" data-v-35734774="" class="cd_con card_choice">
+  <h3 data-v-4ade122e="" data-v-35734774="" class="hide">카드선택</h3>
+  <div data-v-4ade122e="" data-v-35734774="" class="inner">
+
+		<div data-v-4ade122e="" data-v-35734774="" class="card_01">
+			<div data-v-4ade122e="" data-v-35734774="">
+				<div data-v-4ade122e="" data-v-35734774="" class="card_img">
+					<p data-v-4ade122e="" data-v-35734774="" class="img">
+						<img data-v-4ade122e="" data-v-35734774="" src="" width="auto" height="auto" style="max-width: 200px; max-height: 200px;">
+					</p>
+				</div>
+				<div data-v-4ade122e="" data-v-35734774="" class="txt">
+					<p data-v-4ade122e="" data-v-35734774="" class="card_name"></p>
+					<p data-v-4ade122e="" data-v-35734774="" class="corp_name"></p>
+				</div>
+				<div data-v-4ade122e="" data-v-35734774="" class="bn_box" style="display: none;">
+					<a data-v-4ade122e="" data-v-35734774="" class="card_change" style="background-color: #806A53;color: #FFFEF2;" href="">제품상세보기</a>
+					<a data-v-4ade122e="" class="benefit_detail" data-v-35734774="" href="" style="background-color: white;color: #6c5944;border: 1px solid #806A53;">장바구니담기</a>
+				</div>
+				<a data-v-4ade122e="" data-v-35734774="" class="card_del" style="display:none;" onclick="delThis('card_01')">삭제하기</a>
+			</div>
+		</div>
+
+		<div data-v-4ade122e="" data-v-35734774="" class="card_02">
+			<div data-v-4ade122e="" data-v-35734774="">
+				<div data-v-4ade122e="" data-v-35734774="" class="card_img">
+					<p data-v-4ade122e="" data-v-35734774="" class="img">
+						<img data-v-4ade122e="" data-v-35734774="" src="" width="auto" height="auto" style="max-width: 200px; max-height: 200px;">
+					</p>
+			</div>
+			<div data-v-4ade122e="" data-v-35734774="" class="txt">
+				<!-- <p data-v-4ade122e="" data-v-35734774="" class="card_name">신한카드 Mr.Life</p>
+				<p data-v-4ade122e="" data-v-35734774="" class="corp_name">신한카드</p> -->
+				<p data-v-4ade122e="" data-v-35734774="" class="card_name"></p>
+				<p data-v-4ade122e="" data-v-35734774="" class="corp_name"></p>
+			</div>
+			<div data-v-4ade122e="" data-v-35734774="" class="bn_box" style="display: none;">
+				<a data-v-4ade122e="" data-v-35734774="" class="card_change" style="background-color: #806A53;color: #FFFEF2;" href="">제품상세보기</a>
+				<a data-v-4ade122e="" class="benefit_detail" data-v-35734774="" href="" style="background-color: white;color: #6c5944;border: 1px solid #806A53;">장바구니담기</a>
+			</div>
+			<a data-v-4ade122e="" data-v-35734774="" class="card_del" style="display:none;" onclick="delThis('card_02')">삭제하기</a>
+			</div>
+		</div>
+
+		<div data-v-4ade122e="" data-v-35734774="" class="card_03">
+			<div data-v-4ade122e="" data-v-35734774="">
+				<div data-v-4ade122e="" data-v-35734774="" class="card_img">
+					<p data-v-4ade122e="" data-v-35734774="" class="img">
+						<img data-v-4ade122e="" data-v-35734774="" src="" width="auto" height="auto" style="max-width: 200px; max-height: 200px;">
+					</p>
+			</div>
+			<div data-v-4ade122e="" data-v-35734774="" class="txt">
+				<p data-v-4ade122e="" data-v-35734774="" class="card_name"></p>
+				<p data-v-4ade122e="" data-v-35734774="" class="corp_name"></p>
+			</div>
+			<div data-v-4ade122e="" data-v-35734774="" class="bn_box" style="display: none;">
+				<a data-v-4ade122e="" data-v-35734774="" class="card_change" style="background-color: #806A53;color: #FFFEF2;" href="">제품상세보기</a>
+				<a data-v-4ade122e="" class="benefit_detail" data-v-35734774="" href="" style="background-color: white;color: #6c5944;border: 1px solid #806A53;">장바구니담기</a>
+			</div>
+			<a data-v-4ade122e="" data-v-35734774="" class="card_del" style="display:none;" onclick="delThis('card_03')">삭제하기</a>
+			</div>
+		</div>
+
+  </div>
+  </article>
+
+  <article data-v-4ade122e="" data-v-35734774="" class="cd_con card_sort">
+  <h3 data-v-4ade122e="" data-v-35734774="">평점</h3>
+  <div data-v-4ade122e="" data-v-35734774="" class="inner txt_box">
+		<div data-v-4ade122e="" data-v-35734774="" class="card_01">
+			<!-- <span data-v-4ade122e="" data-v-35734774="" class="rates">제품1 평점</span> -->
+			<span data-v-4ade122e="" data-v-35734774="" class="rates"></span>
+		</div>
+		<div data-v-4ade122e="" data-v-35734774="" class="card_02">
+			<span data-v-4ade122e="" data-v-35734774="" class="rates"></span>
+		</div>
+		<div data-v-4ade122e="" data-v-35734774="" class="card_03">
+			<span data-v-4ade122e="" data-v-35734774="" class="rates"></span>
+		</div>
+  </div>
+  </article>
+
+  <article data-v-4ade122e="" data-v-35734774="" class="cd_con card_event">
+  <h3 data-v-4ade122e="" data-v-35734774="">가격</h3>
+  <div data-v-4ade122e="" data-v-35734774="" class="inner txt_box">
+
+  	<div data-v-4ade122e="" data-v-35734774="" class="card_01">
+  		<div data-v-4ade122e="" data-v-35734774="">
+  			<p data-v-4ade122e="" data-v-35734774=""></p>
+				<p class="price"></p>
+  			<p></p>
+  		</div>
+  	</div>
+
+		<div data-v-4ade122e="" data-v-35734774="" class="card_02">
+			<div data-v-4ade122e="" data-v-35734774="">
+				<p data-v-4ade122e="" data-v-35734774=""></p>
+				<p class="price"></p>
+				<!-- <p class="price">신한카드 이용하고 최대 17만원 캐시백 받아가자!</p> -->
+				<p></p>
+			</div>
+		</div>
+		
+		<div data-v-4ade122e="" data-v-35734774="" class="card_03">
+			<div data-v-4ade122e="" data-v-35734774="">
+				<p data-v-4ade122e="" data-v-35734774=""></p>
+				<p class="price"></p>
+				<p></p>
+			</div>
+		</div>
+  </div>
+  </article>
+
+  <article data-v-4ade122e="" data-v-35734774="" class="cd_con annual_fee">
+  <h3 data-v-4ade122e="" data-v-35734774="">주요 키워드</h3>
+  <div data-v-4ade122e="" data-v-35734774="" class="inner txt_box">
+		
+		<div data-v-4ade122e="" data-v-35734774="" class="card_01">
+		<span data-v-4ade122e="" data-v-35734774="" class="keyword"></span>
+		<!-- <span data-v-4ade122e="" data-v-35734774="" class="keyword">국내전용 [20,000원] / 해외겸용 [20,000원]</span> -->
+		</div>
+		
+		<div data-v-4ade122e="" data-v-35734774="" class="card_02">
+		<span data-v-4ade122e="" data-v-35734774="" class="keyword"></span>
+		</div>
+		
+		<div data-v-4ade122e="" data-v-35734774="" class="card_03">
+			<span data-v-4ade122e="" data-v-35734774="" class="keyword"></span>
+		</div>
+  </div>
+  </article>
+
+  <article data-v-4ade122e="" data-v-35734774="" class="cd_con last_result">
+  <h3 data-v-4ade122e="" data-v-35734774="">20가지 주의성분</h3>
+  <div data-v-4ade122e="" data-v-35734774="" class="inner txt_box">
+
+		<div data-v-4ade122e="" data-v-35734774="" class="card_01">
+		<!-- <span data-v-4ade122e="" data-v-35734774="" class="caution">50 만원 이상</span> -->
+			<span data-v-4ade122e="" data-v-35734774="" class="caution"></span>
+		</div>
+		<div data-v-4ade122e="" data-v-35734774="" class="card_02">
+			<span data-v-4ade122e="" data-v-35734774=""class="caution"></span>
+		</div>
+		<div data-v-4ade122e="" data-v-35734774="" class="card_03">
+			<span data-v-4ade122e="" data-v-35734774="" class="caution"></span>
+		</div>
+  </div>
+  </article>
+
+  <article data-v-4ade122e="" data-v-35734774="" class="cd_con card_benefit">
+  <h3 data-v-4ade122e="" data-v-35734774="">주요혜택</h3>
+  <div data-v-4ade122e="" data-v-35734774="" class="inner">
+
+		<div data-v-4ade122e="" data-v-35734774="" class="card_01">
+			<div data-v-4ade122e="" data-v-35734774="">
+			<dl data-v-4ade122e="" data-v-35734774="">
+			<dt data-v-4ade122e="" data-v-35734774=""></dt>
+			<dd data-v-4ade122e="" data-v-35734774=""></dd>		
+			<!-- <dt data-v-4ade122e="" data-v-35734774="">공과금</dt>
+			<dd data-v-4ade122e="" data-v-35734774="">[생활업종]아파트관리비 10% 할인</dd> -->
+			</dl>
+			<dl data-v-4ade122e="" data-v-35734774="">
+			<dt data-v-4ade122e="" data-v-35734774=""></dt>
+			<dd data-v-4ade122e="" data-v-35734774=""></dd>
+			</dl>
+			<dl data-v-4ade122e="" data-v-35734774="">
+			<dt data-v-4ade122e="" data-v-35734774=""></dt>
+			<dd data-v-4ade122e="" data-v-35734774=""></dd>
+			</dl>
+			</div>
+		</div>
+
+		<div data-v-4ade122e="" data-v-35734774="" class="card_02">
+			<div data-v-4ade122e="" data-v-35734774="">
+			<dl data-v-4ade122e="" data-v-35734774="">
+			<dt data-v-4ade122e="" data-v-35734774=""></dt>
+			<dd data-v-4ade122e="" data-v-35734774=""></dd>
+			</dl>
+			<dl data-v-4ade122e="" data-v-35734774="">
+			<dt data-v-4ade122e="" data-v-35734774=""></dt>
+			<dd data-v-4ade122e="" data-v-35734774=""></dd>
+			</dl>
+			<dl data-v-4ade122e="" data-v-35734774="">
+			<dt data-v-4ade122e="" data-v-35734774=""></dt>
+			<dd data-v-4ade122e="" data-v-35734774=""></dd>
+			</dl>
+			</div>
+		</div>
+
+		<div data-v-4ade122e="" data-v-35734774="" class="card_03">
+			<div data-v-4ade122e="" data-v-35734774="">
+				<dl data-v-4ade122e="" data-v-35734774="">
+				<dt data-v-4ade122e="" data-v-35734774=""></dt>
+				<dd data-v-4ade122e="" data-v-35734774=""></dd>
+				</dl>
+				<dl data-v-4ade122e="" data-v-35734774="">
+				<dt data-v-4ade122e="" data-v-35734774=""></dt>
+				<dd data-v-4ade122e="" data-v-35734774=""></dd>
+				</dl>
+				<dl data-v-4ade122e="" data-v-35734774="">
+				<dt data-v-4ade122e="" data-v-35734774=""></dt>
+				<dd data-v-4ade122e="" data-v-35734774=""></dd>
+				</dl>
+				</div>
+		</div>
+  </div>
+  </article>
+  
+  </section>
+  </div>
+  </section>
+  </div>
+  </div>
+  </div>
+
+
+		<!-- 상품 비교 end -->
+
+				<!-- product-list type2 -->
+
+				<!-- exhibition-wrap -->
+				
+				
+				<!-- //exhibition-wrap -->
+
+			</div>
+			<!-- //content -->
+
+		</div>
+		<!-- //content-wrap -->
+
+	</div>
+	<!-- //container -->
+
+</div>
+<!-- //wrap -->
+
+<!-- 20190514 skyscraper -->
+<script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/co/skyscraper.js?ver=030314"></script><div id="criteo-tags-div" style="display: none;"></div>
+<!-- //20190514 skyscraper -->
+
+	<!------ footer ------>
+	<div th:insert="~{include/footer}"></div>
+	<!------ //footer ------>
+
+<script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/co/makePCookie.js"></script>
+
+
+<!-- 공통 적용 스크립트 , 모든 페이지에 노출되도록 설치. 단 전환페이지 설정값보다 항상 하단에 위치해야함 -->
+<script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
+<script type="text/javascript">
+	var visitReferCode = getCookie('EHReferCode');
+	if(visitReferCode == '441' || visitReferCode == '190'){
+		if (!wcs_add) var wcs_add={};
+		wcs_add["wa"] = "s_1999141c8036";
+		if (!_nasa) var _nasa={};
+		wcs.inflow();
+		wcs_do(_nasa);
+ 	}
+ </script>
+
+<!-- //이탈방지솔루션, NHN모어(More) -->
+
+<!-- //이탈방지솔루션, NHN모어(More) -->
+
+<!-- NABUS 공통 SCRIPT -->
+<script type="text/javascript" src="https://sc.11h11m.net/s/E5455.js"></script>
+
+<!-- GA 구축 프로젝트 공통 js 추가, 21.12.09 -->
+<script src="/js/hdmall/co/googleAnalyticsBuilder.js"></script>
+
+<!-- SSO 회원화 전환가입 팝업 호출, 22.02.13 -->
+<script type="text/javascript">
+$(function(){
+	if(typeof isLogin != "undefined"){      //로그인 체크 함수가 존재할 경우
+        if(isLogin() == 'false' && $.cookie('conversionSignupOpened') == 'Y'){
+            _setCookieAt00('conversionSignupOpened', 'N', 1);       //로그아웃할때 쿠키 날릴 것  -> 비로그인 상태일때 'N'으로 쿠키 설정
+        }
+    }
+    
+        
+            if(typeof callConversionSignupPopup != "undefined"){
+                callConversionSignupPopup();
+            }
+        
+    
+});
+</script>
+
+<!-- 구글 전환스크립트 -->
+<!-- Global site tag (gtag.js) - Google Ads: 879261918 -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-879261918"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-879261918');
+  gtag('config', 'UA-69960332-7');
+</script>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TKDB5QC"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
+
+<!-- //footer -->
+
+
+
+<iframe id="groobeeBox" name="groobeeBox" style="display: none;">
+</iframe>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+<iframe id="groobeeBox" name="groobeeBox" style="display: none;"></iframe><!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+<script type="text/javascript">
+	function compareThis(slidenum) {
+	console.log("비교하기 상품");
+		
+	var imglink = document.querySelector(`.${slidenum} img`).getAttribute('src') ;
+	var name= document.querySelector(`.${slidenum} .price-info.single span`).textContent;
+	var brand= document.querySelector(`.${slidenum} .title.ellipsis`).textContent;
+	var rates = document.querySelector(`.${slidenum} .score`).textContent.trim().replace(/^별점\s*/, '');
+	var review = document.querySelector(`.${slidenum} .comment`).textContent.trim().replace(/^댓글\s*/, '');
+
+	const price = document.querySelector(`.${slidenum} .price`).value;
+	const pcode = document.querySelector(`.${slidenum} .pcode`).value;
+
+
+
+	if($(".card_choice .card_01").find(".card_name").text() == ""){ //카드1 섹션이 비워져있을 때 1에 상품 삽입
+		
+		const card01 = document.querySelector(".cd_con.card_choice .card_01");
+		card01.querySelector("img").src = imglink;
+		card01.querySelector(".card_name").textContent = name;
+		card01.querySelector(".corp_name").textContent = brand;
+
+		const bnBox = card01.querySelector('.bn_box'); 
+		card01.querySelector('.card_change').setAttribute('href',`/product/detail?code=${pcode}`);
+		const cardDel = card01.querySelector('.card_del');
+		bnBox.style.display ="";
+		cardDel.style.display = '';
+
+		const card = document.querySelector(".cd_con.card_sort .card_01");
+		card.querySelector(".rates").textContent = rates + "점      /      "+ review +"개";
+		
+		const c = document.querySelector(".cd_con.card_event .card_01");
+		console.log(price);
+		c.querySelector('.price').textContent = price;
+	}else if ($(".card_choice .card_02").find(".card_name").text() == "") { //카드 섹션 1 채워져있고 2 비워져있을 때 2에 삽입
+
+		const card02 = document.querySelector(".cd_con.card_choice .card_02");
+		card02.querySelector("img").src = imglink;
+		card02.querySelector(".card_name").textContent = name;
+		card02.querySelector(".corp_name").textContent = brand;
+
+		const bnBox = card02.querySelector('.bn_box'); 
+		card02.querySelector('.card_change').setAttribute('href',`/product/detail?code=${pcode}`);
+		const cardDel = card02.querySelector('.card_del');
+		bnBox.style.display ="";
+		cardDel.style.display = '';
+
+		const card = document.querySelector(".cd_con.card_sort .card_02");
+		card.querySelector(".rates").textContent = rates + "점      /      "+ review +"개";
+		
+		const c = document.querySelector(".cd_con.card_event .card_02");
+		console.log(price);
+		c.querySelector('.price').textContent = price;
+
+	}else if ($(".card_choice .card_02").find(".card_name").text() != "") { //카드 섹션 2 비워져있을 때 3에 삽입
+
+			const card03 = document.querySelector(".cd_con.card_choice .card_03");
+			card03.querySelector("img").src = imglink;
+			card03.querySelector(".card_name").textContent = name;
+			card03.querySelector(".corp_name").textContent = brand;
+
+			const bnBox = card03.querySelector('.bn_box'); 
+			card03.querySelector('.card_change').setAttribute('href',`/product/detail?code=${pcode}`);
+			const cardDel = card03.querySelector('.card_del');
+			bnBox.style.display ="";
+			cardDel.style.display = '';
+
+			const card = document.querySelector(".cd_con.card_sort .card_03");
+			card.querySelector(".rates").textContent = rates + "점      /      "+ review +"개";
+
+			const c = document.querySelector(".cd_con.card_event .card_03");
+			console.log(price);
+			c.querySelector('.price').textContent = price;
+
+	}else {
+		alert('최대 3개의 상품까지 비교할 수 있습니다.');
+	}
+
+	//넣은 상품 또 안 넣어지게
+	//성분 관련 정보 ajax 넣기
+}
+
+	function deleteOnly(num) {
+		console.log('deleteOnly');
+		const cardDiv = document.querySelector(`.${num}`);
+			
+			cardDiv.querySelector('img').src ="";
+			cardDiv.querySelector('.bn_box').style.display = "none";
+			cardDiv.querySelector('.card_del').style.display = "none";
+			cardDiv.querySelector('.card_name').textContent="";
+			cardDiv.querySelector('.corp_name').innerText="";
+
+			document.querySelector(`.${num} .rates`).textContent = '';
+			document.querySelector(`.${num} .price`).textContent = '';
+			document.querySelector(`.${num} .caution`).textContent = '';
+			document.querySelector(`.${num} .keyword`).textContent = '';
+
+			const elements = document.querySelectorAll(`.${num} dt, .${num} dd`);
+			for (let i = 0; i < elements.length; i++) {
+				elements[i].textContent = "";
+			}
+	}
+	function move(give, take) {
+		console.log('move---');
+		// const card02 = document.querySelector('.card_02');
+		// const card03 = document.querySelector('.card_03');
+		// card02.innerHTML = card03.innerHTML;
+
+		document.querySelector(`.${take}`).innerHTML = document.querySelector(`.${give}`).innerHTML;
+
+		//다른 article 내용 바꾸기
+		document.querySelector(`.${take} .card_del`).setAttribute('onclick', `delThis('${take}')`);
+		document.querySelector(`.${take} .rates`).textContent = document.querySelector(`.${give} .rates`).textContent;
+		document.querySelector(`.${take} .price`).textContent = document.querySelector(`.${give} .price`).textContent;
+		document.querySelector(`.${take} .caution`).textContent = document.querySelector(`.${give} .caution`).textContent;
+		document.querySelector(`.${take} .keyword`).textContent = document.querySelector(`.${give} .keyword`).textContent;
+
+	}
+
+	function delThis(card_num) {
+		console.log(card_num+ "-----------------");
+
+		if(card_num == 'card_01'){ //card 1 삭제 -> 2존재 시 1로, 3존재 시 2로
+	
+			if(document.querySelector('.card_03 .card_name').textContent != '' ){ //card3 존재 시 card2,3 옮기기
+
+				move('card_02','card_01');
+				move('card_03','card_02');
+				deleteOnly('card_03');
+
+			}else if(document.querySelector('.card_02 .card_name').textContent != ''){ //card2까지만 존재 -> 2를 1로 
+			
+				move('card_02','card_01');
+				deleteOnly('card_02');
+
+			}else { //card1만 삭제
+				deleteOnly('card_01');
+			}
+
+		}else if (card_num == 'card_02' ) { //card 2 삭제 -> 3존재 시 2로
+			console.log('2선택');
+			if(document.querySelector('.card_03 .card_name').textContent != '') { //card3 존재
+				console.log('2선택 3존재');
+
+				move('card_03','card_02');
+				deleteOnly('card_03');
+
+			}else { //card 2만 삭제
+				console.log('2선택 2삭제');
+				deleteOnly('card_02');
+			}
+
+		}else { //card3 삭제 -> 하나만 삭제
+			deleteOnly('card_03');
+		}
+
+}
+
+</script>
+<iframe id="groobeeBox" name="groobeeBox" style="display: none;"></iframe><div id="criteo-tags-div" style="display: none;">
+</div>
+<!-- 비교함 상품 출력 -->
+<script>
+	const arr = JSON.parse(localStorage.getItem("arr")) || [];
+	
+	console.log("-------------"+ arr.length);
+	
+	if(arr.length == 0) { //비교함에 담긴 상품이 없을 경우
+		for(let i =1;i<=10;i++) {
+			const slide = document.querySelector(`.slide${i}`);
+			slide.innerHTML = '상품을 비교함에 담아보세요';
+		}
+	}else {
+		for(let i=0;i<arr.length;i++) {
+			console.log('상품 출력 중 ' + i);
+			const slide = document.querySelector(`.slide${i}`);					
+	    const [pcode, pname, brand, price, imglink, rate, review] = arr[i];
+	    slide.innerHTML = `
+      <div class="prod-unit">
+        <div class="img" data-slitmcd="" data-info="">
+					<input type="hidden" class="pcode" value="${pcode}">
+					<input type="hidden" class="price" value="${price}">
+          <a href="#" onclick="javascript:untdItemDetailView('30015','${pcode}', 'N','00','X');return false;"> 
+            <img src="${imglink}" alt="${pname}" onerror="noImage(this, 'https://image.thehyundai.com/hdmall/images/pd/no_image_480x480.jpg')">
+          </a>
+        </div>
+        <div class="info">
+          <div class="price-info single"><span style="font-size:18px;">${pname}</span></div>
+          <a href="#" class="title ellipsis" onclick="javascript:untdItemDetailView('30015','${pcode}', 'N','00','');return false;" style="font-size:16px !important">${brand}</a>
+        </div>
+        <div class="addinfo" style="margin-top:0px;">
+          <div class="review-info">
+            <span class="score"><i class="icon star">별점 </i>${rate}</span>
+            <span class="comment"><i class="icon comment">댓글</i>${review}</span>
+          </div>
+        </div>
+        <div class="card_choice">
+          <div class="bn_box" style="margin-top:10px;">
+            <a type="button" class="button button5" onclick="compareThis('slide${i}')">비교하기</button>
+            <a onclick="del('${pcode}',${i})" class="button button4" data-v-35734774="">삭제하기</a>  
+          </div>
+        </div>
+      </div>
+  		  `; //나중에 버튼 이벤트 링크 수정하기
+  
+		}
+		for(let i=arr.length;i<=10;i++) {
+			console.log('빈 상품 출력');
+			const slide = document.querySelector(`.slide${i}`);
+			slide.innerHTML = '상품을 비교함에 담아보세요';
+		}
+
+	}
+	
+</script>
+<script>
+	function del(pcode, slidenum) {
+		console.log(pcode);
+    let arr = JSON.parse(localStorage.getItem("arr")) || []; // null일 경우 빈 배열 생성
+
+    arr = arr.filter(item => item[0] !== pcode); // 삭제할 상품을 제외한 배열 반환
+    localStorage.setItem("arr", JSON.stringify(arr)); // 수정된 배열 다시 저장
+
+		
+    console.log('삭제');
+		//그 슬라이드부터 prod-unit 있는 슬라이드까지
+		for(let i = slidenum+1;i<=arr.length;i++) {
+			console.log("내용 복사중" + i);
+			var next = document.querySelector(`.slide${i}`);	
+			console.log('slide'+i);		
+			var prev = document.querySelector('.slide'+(i-1));
+
+			prev.innerHTML = next.innerHTML;
+		}
+
+		//마지막 prod-unit 슬라이드부터 10까지
+		for( let i = arr.length; i<=9; i++) {
+			var slide = document.querySelector('.slide'+i);
+			slide.innerHTML = '상품을 비교함에 담아보세요';
+		}
+
+    alert('삭제했습니다');
+
+			//비교함과 플로팅 박스에서 삭제
+			//비교함 순서 땡기기
+  }
+
+</script>
+<!-- 비교함 상품 출력 end-->
+
+
+</body>
+</html>
