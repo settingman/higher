@@ -1,21 +1,14 @@
-<html class="">
-<!--<!
-  [endif]-->
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<title>주문완료 | 더한섬닷컴</title>
+<th:block th:replace="common/head :: headFragment"></th:block>
+
 <head>
-
-
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta http-equiv="Cache-Control" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0" />
 
-<title>더현대닷컴</title>
-
-
 <link rel="stylesheet" type="text/css" href="https://image.thehyundai.com/pc/cssssl/font.css" />
-<!--<![endif]-->
-
 
 
 <link rel="stylesheet" type="text/css" href="https://image.thehyundai.com/pc/cssssl/co.css?ver=14" />
@@ -24,79 +17,6 @@
 <script src="https://image.thehyundai.com/pc/js/jquery-ui.min.js"></script>
 <script src="https://image.thehyundai.com/pc/js/jquery-migrate.min.js"></script>
 
-<script type="text/javascript">
-      document.domain = "thehyundai.com";
-      var locationHref = document.location.href;
-      var imageServer = "https://image.thehyundai.com";
-      var serverHost = "http://www.thehyundai.com";
-      var serverHostForSSL = "https://www.thehyundai.com";
-
-      var switch_serverHost;
-      var contextPath = "/front";
-
-      if (locationHref.indexOf("https") > -1) {
-        switch_serverHost = serverHostForSSL;
-      } else if (locationHref.indexOf("http") > -1) {
-        switch_serverHost = serverHost;
-      }
-
-      var _timer;
-      $(document).ready(function () {
-        var interval = 1801000;
-        var ChkSTDtm = new Date();
-        var expireDtm = new Date();
-        ChkSTDtm.setMinutes(ChkSTDtm.getMinutes() + 30);
-        expireDtm.setDate(expireDtm.getDate() + 1);
-        document.cookie =
-          "ChkSTDtm=" +
-          ChkSTDtm.getTime() +
-          "; path=/; expires=" +
-          expireDtm.toUTCString() +
-          "; path=/";
-        _timer = setTimeout("timeOutLogOutCookie()", interval);
-      });
-
-      function timeOutLogOut() {
-        try {
-          gfnSsoDscdToknReq(dscdCallback2);
-        } catch (exception) {
-          console.log(exception);
-        } finally {
-          location.href = "https://www.thehyundai.com/front/cob/logout.thd";
-        }
-      }
-
-      // 로그아웃 스크립트 2021.02.15 추가
-      // 1.주문서는 타임아웃 자동로그아웃 제외
-      // 2.다중 탭 열린 상태에서 한 탭 타임아웃 시 타임아웃 안된 다른 탭 남아있으면 로그아웃 방지
-      function timeOutLogOutCookie() {
-        if (top.location.href.indexOf("order.thd") < 0) {
-          var currentDtm = new Date();
-          var ChkSTDtmVal = "";
-          var ca = document.cookie.split(";");
-          for (var i = 0; i < ca.length; i++) {
-            var c = ca[i];
-            while (c.charAt(0) == " ") c = c.substring(1, c.length);
-            if (c.indexOf("ChkSTDtm=") == 0)
-              ChkSTDtmVal = c.substring("ChkSTDtm=".length, c.length);
-          }
-          if (currentDtm.getTime() > ChkSTDtmVal) {
-            timeOutLogOut();
-          }
-        }
-      }
-
-      function dscdCallback2(data) {
-        //console.log("data.rtnMsg:"+data.rtnMsg);
-        if (data.succYn == "Y") {
-          console.log("토큰 만료처리");
-        } else {
-          console.log("토큰 미존재");
-        }
-        //location.href="https://www.thehyundai.com/front/cob/logout.thd";
-      }
-    </script>
-
 <script src="https://image.thehyundai.com/pc/js/plugin.js?ver=030614"></script>
 <script type="text/javascript" src="https://image.thehyundai.com/pc/js/hdmall/co/jquery.form.js"></script>
 <script type="text/javascript" src="https://image.thehyundai.com/pc/js/hdmall/co/default.js?ver=030614"></script>
@@ -104,20 +24,10 @@
 <script src="https://image.thehyundai.com/pc/js/common.js?ver=030614"></script>
 <script type="text/javascript" src="https://image.thehyundai.com/pc/js/swiper.min.js?ver=030614"></script>
 
-
-
-
-<
-
 <link rel="stylesheet" type="text/css" href="https://www.thehyundai.com/cssssl/jquery-ui.css?ver=14" />
 <link rel="stylesheet" type="text/css" href="https://www.thehyundai.com/cssssl/co.css?ver=14" />
 <link rel="stylesheet" type="text/css" href="https://www.thehyundai.com/cssssl/od_new.css?ver=14" />
-<!-- 2019.02.14 주문서 리뉴얼 신규 CSS -->
 <link rel="stylesheet" type="text/css" href="https://www.thehyundai.com/cssssl/dp.css?ver=14" />
-
-
-
-
 
 
 <style type="text/css">
@@ -125,12 +35,7 @@
 	margin-right: 16px;
 }
 </style>
-<meta http-equiv="origin-trial"
-	content="A751Xsk4ZW3DVQ8WZng2Dk5s3YzAyqncTzgv+VaE6wavgTY0QHkDvUTET1o7HanhuJO8lgv1Vvc88Ij78W1FIAAAAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjgwNjUyNzk5LCJpc1RoaXJkUGFydHkiOnRydWV9"
-/>
-<meta http-equiv="origin-trial"
-	content="A751Xsk4ZW3DVQ8WZng2Dk5s3YzAyqncTzgv+VaE6wavgTY0QHkDvUTET1o7HanhuJO8lgv1Vvc88Ij78W1FIAAAAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjgwNjUyNzk5LCJpc1RoaXJkUGFydHkiOnRydWV9"
-/>
+
 <script type="text/javascript" async=""
 	src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/879261918/?random=1678080685959&amp;cv=11&amp;fst=1678080685959&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;gtm=45be3310&amp;u_w=1707&amp;u_h=1067&amp;hn=www.googleadservices.com&amp;frm=0&amp;url=https%3A%2F%2Fwww.thehyundai.com%2Ffront%2Foda%2ForderComplete.thd&amp;ref=https%3A%2F%2Fwww.thehyundai.com%2Ffront%2Foda%2Forder.thd&amp;tiba=%EB%8D%94%ED%98%84%EB%8C%80%EB%8B%B7%EC%BB%B4&amp;auid=1634151386.1677462498&amp;uaa=x86&amp;uab=64&amp;uafvl=Chromium%3B110.0.5481.178%7CNot%2520A(Brand%3B24.0.0.0%7CGoogle%2520Chrome%3B110.0.5481.178&amp;uamb=0&amp;uap=Windows&amp;uapv=15.0.0&amp;uaw=0&amp;data=event%3Dgtag.config&amp;rfmt=3&amp;fmt=4"
 ></script>
@@ -142,12 +47,7 @@
 	src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/879261918/?random=1678080686789&amp;cv=11&amp;fst=1678080686789&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;gtm=45be3310&amp;u_w=1707&amp;u_h=1067&amp;hn=www.googleadservices.com&amp;frm=0&amp;url=https%3A%2F%2Fwww.thehyundai.com%2Ffront%2Foda%2ForderComplete.thd&amp;ref=https%3A%2F%2Fwww.thehyundai.com%2Ffront%2Foda%2Forder.thd&amp;tiba=%EB%8D%94%ED%98%84%EB%8C%80%EB%8B%B7%EC%BB%B4&amp;oid=23030600618040&amp;value=341000&amp;currency_code=KRW&amp;auid=1634151386.1677462498&amp;uaa=x86&amp;uab=64&amp;uafvl=Chromium%3B110.0.5481.178%7CNot%2520A(Brand%3B24.0.0.0%7CGoogle%2520Chrome%3B110.0.5481.178&amp;uamb=0&amp;uap=Windows&amp;uapv=15.0.0&amp;uaw=0&amp;data=event%3Dpurchase%3Bid%3D40A1650970%2C40A1624448&amp;rfmt=3&amp;fmt=4"
 ></script>
 <script type="text/javascript" async="" src="//tpc.googlesyndication.com/sodar/1s9mPOHO.js"></script>
-<meta http-equiv="origin-trial"
-	content="A9+ldib+sKhGj2FcIjq5GnvBZFuIiXID0+NkE6k7cEk71MhaHFGqo3wUlUFmZ6d9w0KPwx9UxGiCTYWtRnTGDQkAAACAeyJvcmlnaW4iOiJodHRwczovL2NyaXRlby5uZXQ6NDQzIiwiZmVhdHVyZSI6IlByaXZhY3lTYW5kYm94QWRzQVBJcyIsImV4cGlyeSI6MTY4MDY1Mjc5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0="
-/>
-<meta http-equiv="origin-trial"
-	content="AzLNuh8GFzfIOcwvhEg7Ymr7YCzlYVTKeD7i2iETABbRf+sL2FAx+r+HlTtxSi1zgUFxBlJVoxgLjuhqiwTjAw4AAACAeyJvcmlnaW4iOiJodHRwczovL2NyaXRlby5jb206NDQzIiwiZmVhdHVyZSI6IlByaXZhY3lTYW5kYm94QWRzQVBJcyIsImV4cGlyeSI6MTY4MDY1Mjc5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0="
-/>
+
 </head>
 <body>
 	<!-- wrap -->
@@ -158,196 +58,10 @@
 		<script src="/js/sso/SsoHttpRequest.js"></script>
 		<script src="/js/sso/SsoAjax.js"></script>
 		<script src="/js/sso/SsoLogin.js"></script>
-		<!-- SSO 로그인 js 공통 처리 2021.02.17-->
 
 		<script type="text/javascript" src="https://www.thehyundai.com/static/gen/js/mainBnnrContents.js?ver=061431"></script>
 
-		<!-- skip-navigation -->
 
-		<script type="text/javascript">
-        $(document).ready(function () {
-          //check ReferCode
-          if (isDirectVisit()) {
-            $(".ic-onff").removeClass("off");
-            $(".ic-onff").addClass("on");
-            $(".ic-onff").html("ON");
-          }
-          /*전환가입 체크용도*/
-          var reloadYn = "";
-          try {
-            reloadYn = getCookie("reloadYn");
-          } catch (e) {
-            reloadYn = "";
-          }
-          //alert("reloadYn>>"+reloadYn);
-          if (reloadYn == "Y") {
-            goReloadSession();
-          }
-        });
-
-        function isDirectVisit() {
-          try {
-            var visitReferCode = getCookie("EHReferCode");
-            if (REFER_CODES.indexOf(visitReferCode) > -1) {
-              return true;
-            }
-            return false;
-          } catch (e) {
-            return false;
-          }
-        }
-
-        function getCookie(cookieName) {
-          var i, key, value;
-          var cookieList = document.cookie.split(";");
-          //console.log(cookieList);
-          for (i = 0; i < cookieList.length; i++) {
-            key = cookieList[i].substr(0, cookieList[i].indexOf("="));
-            key = key.replace(" ", "");
-            value = cookieList[i].substr(cookieList[i].indexOf("=") + 1);
-            key = key.replace(/^s+|s+$/g, "");
-            if (key == cookieName) {
-              return unescape(value);
-            }
-          }
-        }
-
-        function dummy() {
-          // 와이즈로그 수집위해 빈 URL 호출
-          $.ajax({
-            type: "post",
-            url: "/front/dpl/dummyLogParam.thd?MainpageGroup=Menu&GroupbannerName=handsome",
-            dataType: "json",
-            success: function (data) {
-              window.open(
-                "http://www.thehandsome.com/ko/?ref=thehyundai.com",
-                "_blank"
-              );
-            },
-            error: function (e) {
-              window.open(
-                "http://www.thehandsome.com/ko/?ref=thehyundai.com",
-                "_blank"
-              );
-            },
-          });
-        }
-        function dummyGnb() {
-          // 와이즈로그 수집위해 빈 URL 호출
-          $.ajax({
-            type: "post",
-            url: "/front/dpl/dummyLogParam.thd?MainpageGroup=Fix&GroupbannerName=GNB_handsome",
-            dataType: "json",
-            success: function (data) {
-              window.open(
-                "http://www.thehandsome.com/ko/?ref=thehyundai.com",
-                "_blank"
-              );
-            },
-            error: function (e) {
-              window.open(
-                "http://www.thehandsome.com/ko/?ref=thehyundai.com",
-                "_blank"
-              );
-            },
-          });
-        }
-        function logOut() {
-          try {
-            //gfnSsoDscdToknReqAjax(dscdCallback);
-            gfnSsoDscdToknReq(dscdCallback);
-          } catch (exception) {
-            console.log(exception);
-
-            //location.href="https://www.thehyundai.com/front/cob/logout.thd";
-          } finally {
-            location.href = "https://www.thehyundai.com/front/cob/logout.thd";
-          }
-        }
-        function deleteCookie(cookieName) {
-          var expireDate = new Date();
-          expireDate.setDate(expireDate.getDate() - 1);
-          //alert(cookieName + "= " + "; expires=" + expireDate.toGMTString());
-          document.cookie =
-            cookieName +
-            "= " +
-            "; expires=" +
-            expireDate.toGMTString() +
-            ";path=/;";
-        }
-        //토큰만료 콜백
-        function dscdCallback(data) {
-          //console.log("data.rtnMsg:"+data.rtnMsg);
-          if (data.succYn == "Y") {
-            console.log("토큰 만료처리");
-          } else {
-            console.log("토큰 미존재");
-          }
-          //location.href="https://www.thehyundai.com/front/cob/logout.thd";
-        }
-        function goReloadSession() {
-          showLoadingBar("180px", "150px");
-          $.ajax({
-            url: "https://www.thehyundai.com/front/sessionReload.thd",
-            type: "post",
-            dataType: "json",
-            data: { id: "95tjdghks@gmail.com" },
-            success: function (responseData) {
-              hideBlockLoadingBar();
-              //alert(responseData.resultType);
-              if (responseData.resultType == "A") {
-                //alert(responseData.authKey);
-                //alert(responseData.authSsoCd);
-                gfnReqSSoToknIssuHttp(
-                  responseData.authKey,
-                  responseData.authSsoCd,
-                  fnCallback03
-                );
-              }
-              deleteCookie("reloadYn"); // 처리가 되었으므로 쿠키를 제거해 토큰재발급을 막는다.
-              hideBlockLoadingBar();
-            },
-            error: function (e) {
-              hideBlockLoadingBar();
-            },
-          });
-        }
-        function fnCallback03(data) {
-          //alert("테스트용 토큰발급 성공여부::"+data.succYn);
-        }
-
-        function goHpoint() {
-          
-          if (
-            confirm(
-              "H.Point의 사용/적립현황은 H.Point 사이트에서 확인할 수 있습니다.\nH.Point 사이트로 이동하시겠습니까?"
-            )
-          ) {
-            $.get("/front/coe/goHpoint.thd", function (data) {
-              window.open(data, "", "");
-            });
-          }
-        }
-      </script>
-
-		<div id="skip-navigation">
-			<p>
-				<a href="#header-wrap">헤더영역 바로가기</a>
-			</p>
-			<p>
-				<a href="#header-gnb-area">GNB영역 바로가기</a>
-			</p>
-			<p>
-				<a href="#container">컨텐츠영역 바로가기</a>
-			</p>
-			<p>
-				<a href="#footer">푸터영역 바로가기</a>
-			</p>
-		</div>
-		<!-- //skip-navigation -->
-
-		<!-- header -->
-		<!-- 서브메뉴 -->
 
 		<!-- top banner -->
 		<div id="js-tpl-topBanner" style="display: none"></div>
@@ -361,132 +75,12 @@
 						</h1>
 					</div>
 
-					<div class="top-con-search">
-						<form name="formTopSearchPopup" id="formTopSearchPopup" method="get" action="https://www.thehyundai.com/front/dpo/hdSearch.thd">
-							<input type="hidden" name="searchtype" id="js_searchtype" />
-							<input type="hidden" name="searchQuery" autocomplete="off" />
-							<div class="top-con-search-unit">
-								<input type="text" class="top-con-search-input" maxlength="30" id="cs-token-input" value="" onfocus="return dq_setTextbox(0,event);"
-									onmousedown="dq_setTextbox(1,event);" onkeydown="dq_setTextbox(1,event);" autocomplete="off"
-								/>
-								<button type="submit" class="top-con-search-btn" onclick="javascript: return false;">
-									<span class="blind">검색</span>
-								</button>
-
-								<!-- 검색 -->
-								<div class="search-box" id="search_info_box" style="display: none" onmouseover="dq_info_setMouseon();" onmouseout="dq_info_setMouseoff();">
-									<!-- 최근검색어 -->
-									<div class="search-box-list" id="recent_rs_search">
-										<div class="search-box-tit">최근검색어</div>
-										<div class="search-box-cont">
-											<ul class="search-box-text">
-												<li>최근 검색어가 없습니다.</li>
-											</ul>
-										</div>
-									</div>
-
-									<!-- 인기검색어 -->
-									<div class="search-box-list" id="hot_rs_search">
-										<div class="search-box-tit">인기검색어</div>
-										<div class="search-box-cont">
-											<div class="search-box-best">
-												<ul class="search-box-bestnum left">
-													<li><a href="javascript:" class="lank">1. 명품</a><span class="status no"><span class="blind">no</span></span></li>
-													<li><a href="javascript:" class="lank">2. COS퀼티드백</a><span class="status up"><span class="blind">up</span></span></li>
-													<li><a href="javascript:" class="lank">3. 아크테릭스</a><span class="status up"><span class="blind">up</span></span></li>
-													<li><a href="javascript:" class="lank">4. 어그 울트라 미니</a><span class="status up"><span class="blind">up</span></span></li>
-													<li><a href="javascript:" class="lank">5. 오니츠카타이거</a><span class="status up"><span class="blind">up</span></span></li>
-												</ul>
-												<ul class="search-box-bestnum right">
-													<li><a href="javascript:" class="lank">6. 스카프</a><span class="status up"><span class="blind">up</span></span></li>
-													<li><a href="javascript:" class="lank">7. 니트 가디건</a><span class="status up"><span class="blind">up</span></span></li>
-													<li><a href="javascript:" class="lank">8. 양말</a><span class="status up"><span class="blind">up</span></span></li>
-													<li><a href="javascript:" class="lank">9. 손수건</a><span class="status new">NEW</span></li>
-													<li><a href="javascript:" class="lank">10. 남성 티셔츠</a><span class="status new">NEW</span></li>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="search-box" id="search_auto_box" style="display: none" onmouseover="dq_setMouseon();" onmouseout="dq_setMouseoff();">
-									<!-- 연관검색어 -->
-									<div class="search-box-list" id="relation_rs_search">
-										<div class="search-box-cont">
-											<ul class="search-box-text">
-												<li>연관 검색어가 없습니다.</li>
-											</ul>
-										</div>
-									</div>
-
-									<!-- 추천브랜드 -->
-									<div class="search-box-list" id="brand_rs_search">
-										<div class="search-box-tit">추천브랜드</div>
-										<div class="search-box-cont">
-											<ul class="search-box-brand">
-												<li>추천 브랜드가 없습니다.</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-								<!-- //검색 -->
-							</div>
-						</form>
-					</div>
 
 					<div class="top-con-quick">
 						<ul>
 							<li class="myshop-info">
-								<div class="top-con-quick-my">
-									박성환님
-									<!-- <a href="javascript:logOut();">로그아웃</a> -->
-								</div> <!-- 20190118 추가 레이어팝업 -->
-								<div class="myshop-info-layer login">
-									<!-- logout:비 로그인 상태, login:로그인 상태 -->
-									<div class="myshop-cont">
-										<ul class="myshop-cont-top">
-											<li class="myshop-hyundai"><a onclick=""
-												href="https://www.thehyundai.com/front/mpf/selectMyPageMain.thd?MainpageGroup=Util&amp;GroupbannerName=GNB_MyHyundai"
-											>마이현대</a></li>
-											<li><a onclick="" href="https://www.thehyundai.com/front/mpa/selectOrdDlvCrst.thd?MainpageGroup=Util&amp;GroupbannerName=GNB_Order">주문배송</a></li>
-											<li><a onclick="" href="https://www.thehyundai.com/front/mpc/sltdItemList.thd">나의 찜</a></li>
-											<li class="myshop-join"><a onclick=""
-												href="https://www.thehyundai.com/front/cob/COBCertificationSelect.thd?MainpageGroup=util&amp;GroupbannerName=membership"
-											>회원가입</a></li>
-											<li class="myshop-logout"><a href="javascript:logOut();">로그아웃</a></li>
-										</ul>
-										<ul class="myshop-cont-body">
-											<li class="logout-only"><span class="tit">나의 쇼핑 혜택</span> <a href="javascript://" onclick="javascript:return false;"><span
-													class="blind"
-												>자세히보기</span></a></li>
-											<li class="login-only"><span class="tit">일반등급</span> <span class="cont">혜택</span> <a href="javascript://"
-												onclick="javascript:return false;"
-											><span class="blind">자세히보기</span></a></li>
-											<li><span class="tit">쿠폰</span> <span class="cont login-only">0장</span> <a onclick=""
-												href="https://www.thehyundai.com/front/mpe/selectCopnList.thd?MainpageGroup=util&amp;GroupbannerName=coupon"
-											><span class="blind">자세히보기</span></a></li>
-											<li><span class="tit">H.Point</span> <span class="cont login-only">-P</span> <a onclick="goHpoint()" href="#"><span class="blind">자세히보기</span></a></li>
-											<li><span class="tit">더머니</span> <span class="cont login-only">0원</span> <a onclick=""
-												href="https://www.thehyundai.com/front/mpe/selectHPntTabPage.thd?MainpageGroup=util&amp;GroupbannerName=theMoney"
-											><span class="blind">자세히보기</span></a></li>
-										</ul>
-									</div>
-								</div> <!-- // 20190118 추가 레이어팝업 -->
+								<div class="top-con-quick-my">박성환님</div> <!-- 20190118 추가 레이어팝업 -->
 							</li>
-							<li><a onclick="" href="https://www.thehyundai.com/front/cca/main.thd?MainpageGroup=Util&amp;GroupbannerName=GNB_Center">고객센터</a></li>
-							<li>
-								<div class="top-con-quick-basket">
-									<a onclick="" href="https://www.thehyundai.com/front/odb/basktList.thd?MainpageGroup=Util&amp;GroupbannerName=GNB_Basket">장바구니</a><span
-										class="basket-num" id="quick_baskt_num"
-									>0</span>
-								</div>
-							</li>
-							<!-- 20210830 바로접속 추가// -->
-							<li>
-								<div class="top-con-quick-onoff">
-									<a href="#">바로접속<span class="ic-onff on">ON</span></a>
-								</div>
-							</li>
-							<!-- //20210830 바로접속 추가 -->
 						</ul>
 					</div>
 				</div>
@@ -500,202 +94,15 @@
 
 				<!-- //header -->
 
-				<!-- skyscraper -->
-				<!-- skyscraper - left -->
-				<!-- 20190121 추가 -->
-				<div class="sky-left sub" id="leftBanner_skyScrpr"></div>
-				<div class="sky-left main">
-					<!-- 비주얼 -->
-					<div class="main-sign">
-						<ul class="main-sign-bn" id="js-tpl-leftSkyBanner"></ul>
-						<div class="main-sign-name">
-							<div class="prev">
-								<a href="#"><span class="blind">이전</span></a>
-							</div>
-							<ul class="sign-name-list" id="js-tpl-leftSkyBannerTitle"></ul>
-							<div class="next">
-								<a href="#"><span class="blind">다음</span></a>
-							</div>
-						</div>
-					</div>
-					<!-- 롤링배너 -->
-					<div class="left-bn-rolling">
-						<ul class="rolling-bn swiper-wrapper" id="js-tpl-leftSkyBanner1Column"></ul>
-						<div class="prev">
-							<span class="blind">이전</span>
-						</div>
-						<div class="next">
-							<span class="blind">다음</span>
-						</div>
-					</div>
 
-					<!-- 4블럭 배너 -->
-					<div class="left-bn-icon column4">
-						<!-- class:타입, column4:배너4개, column3:배너3개(기본) -->
-						<ul class="icon-bn" id="js-tpl-leftSkyBanner4Column"></ul>
-					</div>
-				</div>
-				<!-- skyscraper - right -->
-				<div class="sky-right">
-					<div class="right-top" style="">
-						<div class="right-top-quick">
-							<a href="https://www.thehyundai.com/CS/eva/directAccess.thd?MainpageGroup=Fix&amp;GroupbannerName=GNB_On">바로접속<span class="ic-onff on">ON</span></a>
-						</div>
-						<div class="right-top-customer">
-							<a href="https://www.thehyundai.com/CS/eva/evntBnftPageDivide.thd?MainpageGroup=Util&amp;GroupbannerName=GNB_Event&amp;tabNo=1">이벤트/혜택</a>
-						</div>
-					</div>
-
-					<div class="sky-right-auto top">
-						<!-- 단일 배너 -->
-						<div id="topBanner_skyScrpr"></div>
-
-						<!-- 롤링 배너 -->
-						<div id="rightBanner_skyScrpr" class="right-bnarea"></div>
-
-						<!-- 최근 본 상품 -->
-						<div id="rcntImgs_skyScrpr" class="right-view">
-							<script>
-                  //(JIRA : DEP01WORK-14658 GA 구축 프로젝트)
-                  $(document).on("click", ".right-view-image a", function () {
-                    var dimension = new Object();
-                    var Product = new Object();
-                    var actionList = new Object();
-                    var Products = new Array();
-
-                    // data_slitmCd = 상품코드:매장번호
-                    // data_info = 브랜드코드:지점코드:지점명:담당MD코드:담당MD명
-                    var data_slitmCd = $(this)
-                      .parents(".right-view-image")
-                      .attr("data-slitmcd");
-                    var data_info = $(this)
-                      .parents(".right-view-image")
-                      .attr("data-info");
-
-                    dimension.category = "Ecommerce";
-                    dimension.action = "Click";
-                    var E_step = "click";
-                    Product.id = data_slitmCd.split(":")[0]; // 상품코드
-                    Product.name = $(this)
-                      .parents(".right-view-image")
-                      .find("img")
-                      .attr("alt"); // 상품명
-                    Product.dimension37 = data_info.split(":")[0]; // 브랜드코드
-                    Product.dimension38 = data_slitmCd.split(":")[1]; // 매장번호
-                    Product.dimension39 =
-                      data_info.split(":")[1] + "_" + data_info.split(":")[2]; // 점포코드_점포명
-                    //Product.position = $('.right-view-image').parent('li:not(.bx-clone)').children('span').index($(this).parents('.right-view-image')) + 1;     // 제품 위치 - 기획서 변경으로 제외
-                    Product.dimension40 =
-                      data_info.split(":")[4] +
-                      "(" +
-                      data_info.split(":")[3] +
-                      ")"; // 담당MD명(담당MD코드)
-
-                    actionList.action = "click";
-                    actionList.currency = "KRW";
-                    actionList.list = "최근본상품";
-
-                    Products.push(Product);
-                    EcommerceSet(E_step, Products, actionList, dimension);
-                    // GA 이벤트 전송
-                    
-                  });
-                </script>
-							<!-- 최근 본 상품 -->
-
-							<div class="bx-wrapper" style="max-width: 100%; margin: 0px auto">
-								<div class="bx-viewport" style="width: 100%; overflow: hidden; position: relative; height: 100px;">
-									<ul class="swiper-wrapper" style="width: 415%; position: relative; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
-										<li class="swiper-slide bx-clone" style="float: left; list-style: none; position: relative; width: 100px;"><span
-											class="right-view-image" data-slitmcd="H40A1650972:40008" data-info="001201:013368:판교점:1013:국내화장품,색조,향수 외"
-										> <a href="#"
-												onclick="itemDetailViewParam('40008', '40A1650972', 'N', '', '&amp;MainpageGroup=Sky&amp;GroupbannerName=Resentitem' ); return false;"
-											> <img src="https://image.thehyundai.com/static/7/9/0/65/A1/40A1650972_0_170.jpg" alt="설화수[3월][한정수량]순행클렌징폼 200ml" id="recent2"
-													onerror="noImage(this, 'https://image.thehyundai.com/hdmall/images/pd/no_image_170x170.jpg')"
-												/>
-											</a>
-										</span></li>
-
-										<li class="swiper-slide" style="float: left; list-style: none; position: relative; width: 100px;"><span class="right-view-image"
-											data-slitmcd="H40A1650970:102066" data-info="001201:013368:판교점:1013:국내화장품,색조,향수 외"
-										> <a href="#"
-												onclick="itemDetailViewParam('102066', '40A1650970', 'N', '', '&amp;MainpageGroup=Sky&amp;GroupbannerName=Resentitem' ); return false;"
-											> <img src="https://image.thehyundai.com/static/7/9/0/65/A1/40A1650970_0_170.jpg" alt="설화수[3월][한정수량]자음수 150ml" id="recent0"
-													onerror="noImage(this, 'https://image.thehyundai.com/hdmall/images/pd/no_image_170x170.jpg')"
-												/>
-											</a>
-										</span> <span class="right-view-image" data-slitmcd="H40A1624448:40059" data-info="A015814:002836:본점:1001:수입화장품"> <a href="#"
-												onclick="itemDetailViewParam('40059', '40A1624448', 'N', '', '&amp;MainpageGroup=Sky&amp;GroupbannerName=Resentitem' ); return false;"
-											> <img src="https://image.thehyundai.com/static/4/4/4/62/A1/40A1624448_0_170.jpg" alt="[아우구스티누스바더] 더 아이 크림 노마드 15ml" id="recent1"
-													onerror="noImage(this, 'https://image.thehyundai.com/hdmall/images/pd/no_image_170x170.jpg')"
-												/>
-											</a>
-										</span></li>
-
-										<li class="swiper-slide" style="float: left; list-style: none; position: relative; width: 100px;"><span class="right-view-image"
-											data-slitmcd="H40A1650972:40008" data-info="001201:013368:판교점:1013:국내화장품,색조,향수 외"
-										> <a href="#"
-												onclick="itemDetailViewParam('40008', '40A1650972', 'N', '', '&amp;MainpageGroup=Sky&amp;GroupbannerName=Resentitem' ); return false;"
-											> <img src="https://image.thehyundai.com/static/7/9/0/65/A1/40A1650972_0_170.jpg" alt="설화수[3월][한정수량]순행클렌징폼 200ml" id="recent2"
-													onerror="noImage(this, 'https://image.thehyundai.com/hdmall/images/pd/no_image_170x170.jpg')"
-												/>
-											</a>
-										</span></li>
-
-										<li class="swiper-slide bx-clone" style="float: left; list-style: none; position: relative; width: 100px;"><span
-											class="right-view-image" data-slitmcd="H40A1650970:102066" data-info="001201:013368:판교점:1013:국내화장품,색조,향수 외"
-										> <a href="#"
-												onclick="itemDetailViewParam('102066', '40A1650970', 'N', '', '&amp;MainpageGroup=Sky&amp;GroupbannerName=Resentitem' ); return false;"
-											> <img src="https://image.thehyundai.com/static/7/9/0/65/A1/40A1650970_0_170.jpg" alt="설화수[3월][한정수량]자음수 150ml" id="recent0"
-													onerror="noImage(this, 'https://image.thehyundai.com/hdmall/images/pd/no_image_170x170.jpg')"
-												/>
-											</a>
-										</span> <span class="right-view-image" data-slitmcd="H40A1624448:40059" data-info="A015814:002836:본점:1001:수입화장품"> <a href="#"
-												onclick="itemDetailViewParam('40059', '40A1624448', 'N', '', '&amp;MainpageGroup=Sky&amp;GroupbannerName=Resentitem' ); return false;"
-											> <img src="https://image.thehyundai.com/static/4/4/4/62/A1/40A1624448_0_170.jpg" alt="[아우구스티누스바더] 더 아이 크림 노마드 15ml" id="recent1"
-													onerror="noImage(this, 'https://image.thehyundai.com/hdmall/images/pd/no_image_170x170.jpg')"
-												/>
-											</a>
-										</span></li>
-									</ul>
-								</div>
-							</div>
-							<div class="right-paging">
-								<div class="prev">
-									<a href="#"><img src="https://image.thehyundai.com/hdmall/images/main/btn_bn_left.jpg" alt="" /></a>
-								</div>
-								<div class="page">1/2</div>
-								<div class="next">
-									<a href="#"><img src="https://image.thehyundai.com/hdmall/images/main/btn_bn_right.jpg" alt="" /></a>
-								</div>
-							</div>
-							<!-- 기타 배너 -->
-						</div>
-
-						<!-- 기타 배너 -->
-						<div class="right-other">
-							<a onclick="" href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?venCd=013368&amp;MainpageGroup=Sky&amp;GroupbannerName=Department"><img
-								src="https://image.thehyundai.com/hdmall/images/co/img_bn_other01.jpg" alt=""
-							/></a>
-						</div>
-						<div class="right-other">
-							<a href="#" onclick="javascript:"><img src="https://image.thehyundai.com/hdmall/images/co/img_bn_other02.jpg" alt="" /></a>
-						</div>
-
-						<!-- top 버튼 -->
-						<div class="right-top-moving">
-							<a href="#" onclick=" return false;"><span class="blind">최상단으로 이동</span></a>
-						</div>
-					</div>
-				</div>
-				<!-- //skyscraper -->
 			</div>
 		</div>
 
 		<script type="text/javascript" src="https://image.thehyundai.com/pc/js/hdmall/co/skyscraper.js?ver=030614"></script>
 		<script type="text/javascript">
-        $(document).ready(function () {});
-      </script>
+			$(document).ready(function() {
+			});
+		</script>
 
 		<!-- //gnb -->
 
@@ -729,171 +136,16 @@
 				<!-- order-complete -->
 				<div class="order-complete pt50" id="divOrderCompleteInf">
 					<!-- 20170512// -->
-					<script>
-              function notiPopupSet() {
-                /*
-			추가 20170512 팝업 중복 호출시 수정
-			@노출 우선 순위
-			1) 적립금 리워드
-			2) 빌리프적립
-		*/
 
-                //popover_open(this , '#popover-belif');
-                //popover_open(this , '#popover-money-reward');
-
-                // 적립금 리워드 팝업 있을경우
-                if ($("#popover-money-reward").length > 0) {
-                  /* if ($('#popover-oera-info').length > 0){
-				setTimeout(function(){
-					popover_open(this, '#popover-oera-info'); // 오에라 팝업 보이기
-				} , 250);
-				$('#popover-oera-info .popover-close').bind('click' , function(){
-					setTimeout(function(){
-						popover_open(this , '#popover-money-reward'); // 적립금 리워드 팝업 보이기
-					} , 250);
-				});
-				$('#popover-oera-completion .popover-close').bind('click' , function(){
-					setTimeout(function(){
-						popover_open(this , '#popover-money-reward'); // 적립금 리워드 팝업 보이기
-					} , 250);
-				});
-			} else {
-				setTimeout(function(){
-					popover_open(this , '#popover-money-reward'); // 적립금 리워드 팝업 보이기
-				} , 250);
-			} */
-                  setTimeout(function () {
-                    popover_open(this, "#popover-money-reward"); // 적립금 리워드 팝업 보이기
-                  }, 250);
-
-                  // 적립금 리워드 닫기
-                  $("#popover-money-reward .popover-close").bind(
-                    "click",
-                    function () {
-                      // 적립금 리워드 팝업 있을경우
-                      /* 2020.04.03 빌리프 정책 중단에 따른 주석 처리
-				setTimeout(function(){
-					if($('#popover-belif').length > 0){
-						popover_open(this , '#popover-belif'); // 빌리프 보이기
-					}
-				} , 250);
-				*/
-
-                      setTimeout(function () {
-                        if ($("#popover-chanel-joininfo2").length > 0) {
-                          popover_open(this, "#popover-chanel-joininfo2"); // 샤넬 팝업 보이기
-                        }
-                      }, 250);
-
-                      /* 2018.06.29 키엘, 랑콤 정책 중단에 따른 주석 처리
-				setTimeout(function(){
-					if ($('#popover-kiehls').length > 0){
-						popover_open(this, '#popover-kiehls'); // 키엘 팝업 보이기
-					}
-				} , 250);
-
-				setTimeout(function(){
-					if ($('#popover-lancome').length > 0){
-						popover_open(this, '#popover-lancome'); // 랑콤 팝업 보이기
-					}
-				} , 250);
-				*/
-                    }
-                  );
-                } else if ($("#popover-chanel-joininfo2").length > 0) {
-
-                /* 2020.04.03 빌리프 정책 중단에 따른 주석 처리
-		// 빌리프 팝업 있을경우
-		else if($("#popover-belif").length > 0){
-			setTimeout(function(){
-				popover_open(this , '#popover-belif'); // 빌리프 팝업 보이기
-			} , 250);
-		}
-		*/
-                  setTimeout(function () {
-                    popover_open(this, "#popover-chanel-joininfo2"); // 샤넬 팝업 보이기
-                  }, 250);
-                }
-
-                /* 2018.06.29 키엘, 랑콤 정책 중단에 따른 주석 처리
-		else if ($("#popover-kiehls").length > 0){
-			setTimeout(function(){
-				popover_open(this, '#popover-kiehls'); // 키엘 팝업 보이기
-			} , 250);
-		}
-
-		else if ($("#popover-lancome").length > 0){
-			setTimeout(function(){
-				popover_open(this, '#popover-lancome'); // 랑콤 팝업 보이기
-			} , 250);
-		}
-		*/
-                /* else if ($("#popover-oera-info").length > 0) {
-			setTimeout(function(){
-				popover_open(this, '#popover-oera-info'); // 오에라 팝업 보이기
-			} , 250);
-		} */
-              }
-
-              $(function () {
-                notiPopupSet(); // 팝업호출 20170512
-              });
-
-              // 2017.05.15 샤넬 제휴 프로세스 추가
-              // 2021.08.25 오에라 제휴 프로세스 추가에 따른 로직 수정
-              function updtChanelAlliAgr(agrYn, agrGbcd) {
-                var alliYn = agrYn;
-                var agrCd = agrGbcd;
-
-                /* if(agrCd == "80"){
-			// 오에라 체크박스 동의여부
-			if (!$('#popover-oera-info input').is(':checked')) {
-				alert('제3자 정보 제공에 동의해주세요.');
-				return false;
-			}
-		} */
-
-                $.ajax({
-                  type: "post",
-                  url:
-                    "/front/mpd/updtChanelAlliAgr.thd?agrYn=" +
-                    agrYn +
-                    "&agrGbcd=" +
-                    agrGbcd,
-                  async: false,
-                  dataType: "json",
-                  success: function (data) {
-                    if (alliYn == "Y") {
-                      alert("제 3자 제공에 동의 처리되었습니다.");
-                      if (agrCd == "50") {
-                        $("#ordCustInfo").attr("target", "_blank");
-                        $("#ordCustInfo").submit();
-                      }
-                    } else {
-                      alert("제 3자 제공에 미동의 처리되었습니다.");
-                    }
-                    $.fancybox.close();
-                    /* if(agrCd == "80"){
-					popover_open(this, '#popover-oera-completion');
-				} */
-                  },
-                });
-              }
-            </script>
 					<!-- //20170512 -->
 					<p>더현대닷컴 쇼핑몰을 이용해 주셔서 감사합니다.</p>
 					<h3>
 						주문이 정상적으로 <strong class="text-point2">완료</strong>되었습니다.
 					</h3>
 					<h4 class="order-number">
-						주문번호 : <strong class="text-point5 underline">23030600618040</strong>
+						주문번호 : <strong class="text-point5 underline"> [[${orderSheet.orderId}]]</strong>
 					</h4>
-					<!--
-	<script type="text/javascript">
-	dmcf1q('init', 'f1', {fbpid : '1290162141068629'}); // 픽셀 ID
-	dmcf1q('track', 'PageView', {product_catalog_id : '1842692849310691'}); // 카탈로그 ID
-	</script>
-	-->
+
 					<!-- info-table -->
 					<div class="info-table">
 						<div class="table-wrap">
@@ -907,11 +159,11 @@
 								<tbody>
 									<tr>
 										<th scope="row">주문하신 분</th>
-										<td colspan="3">박성환</td>
+									<td><span sec:authentication="principal.mName" class="od-name" type="text" title="이름" name="chgOrdCustNm" maxlength="10" /></td>
 									</tr>
 									<tr>
 										<th scope="row">휴대폰 번호</th>
-										<td colspan="3">010-2927-0550</td>
+									<td><span id="mPhone" sec:authentication="principal.mPhone"></span></td>
 									</tr>
 								</tbody>
 							</table>
@@ -1029,15 +281,15 @@
 										</tr>
 										<tr>
 											<th scope="row">받으시는 분</th>
-											<td colspan="3">박성환</td>
+											<td colspan="3">[[${orderSheet.oReceiver}]]</td>
 										</tr>
 										<tr>
 											<th scope="row">휴대폰 번호</th>
-											<td colspan="3">010-2927-0550</td>
+											<td colspan="3">[[${orderSheet.oTel}]]</td>
 										</tr>
 										<tr>
 											<th scope="row">배송지</th>
-											<td colspan="3">08101 서울특별시 양천구 목동남로 48 (신정동, ) 1</td>
+											<td colspan="3">[[${orderSheet.oZipcode}]] - [[${orderSheet.oAddress1}]] [[${orderSheet.oAddress2}]]</td>
 										</tr>
 									</tbody>
 								</table>
@@ -1056,8 +308,7 @@
 									<tr>
 										<td>
 											<div class="title">주문금액</div>
-											<div class="price">
-												341,000<span>원</span>
+											<div class="price" th:text="${#numbers.formatInteger(orderSheet.oTotalPrice, 3, 'COMMA') + '원'}">
 											</div>
 										</td>
 										<td>
@@ -1072,53 +323,9 @@
 										</td>
 										<td class="equal">
 											<div class="title">총 결제금액</div>
-											<div class="price sum">
-												341,000<span>원</span>
+											<div class="price sum" th:text="${#numbers.formatInteger(orderSheet.oTotalPrice, 3, 'COMMA') + '원'}">
 											</div>
 										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-						<div class="table-wrap for-comp"></div>
-						<div style="display: none">
-							<!-- 픽셀정보 (고정값) -->
-							<f1tg id="f1_product_catalog_id" desc="Catalog ID">1842692849310691</f1tg>
-							<!-- 상품정보 (변수값) -->
-							<f1tg id="f1_value" desc="Product Total Price">341000</f1tg>
-							<f1tg id="f1_currency" desc="Currency">KRW</f1tg>
-							<!-- 원화일경우 ‘KRW’ / 미화일경우 ‘USD’ -->
-						</div>
-						<div class="table-wrap for-comp nobdt">
-							<table>
-								<caption></caption>
-								<colgroup>
-									<col style="width: 120px" />
-									<col style="width: 190px" />
-									<col style="width: 100px" />
-									<col style="width: 250px" />
-									<col style="width: 100px" />
-									<col />
-								</colgroup>
-								<tbody>
-									<tr>
-										<th scope="row" rowspan="2" class="type">결제내역</th>
-
-										<th scope="row" rowspan="2">무통장입금</th>
-										<th class="inner">입금금액</th>
-										<td colspan="3">
-											<p>341,000원</p>
-
-											<p>2023년 03월 07일까지 입금하지 않으면 주문이 취소됩니다.</p>
-										</td>
-									</tr>
-									<tr>
-										<th scope="row" class="inner">입금계좌</th>
-										<td>신한 26190180781066
-											<button class="btn size1 color1 ml10" onclick="copyToClipboard('26190180781066', '계좌번호가 복사되었습니다.');">복사</button>
-										</td>
-										<th scope="row" class="inner">입금자명</th>
-										<td>박성환</td>
 									</tr>
 								</tbody>
 							</table>
@@ -1130,65 +337,6 @@
 						></i></a> <a href="http://www.thehyundai.com/Home.html" class="btn size7 wide2 color3" onclick="javascript:">쇼핑 계속하기</a>
 					</div>
 
-					<!-- Layer Popup -->
-
-					<!-- //Layer Popup -->
-
-					<!-- //빌리프 레이어 팝업 -->
-
-					<!-- 2016-06-24 적립금 리워드 레이어 -->
-
-					<script>
-              $(document).ready(function () {});
-            </script>
-					<!-- popover-wrap -->
-					<div id="popover-money-reward" class="popover-wrap w660" style="left: 0px; display: none">
-						<!-- pop-header -->
-						<div class="pop-header type-money-reward">
-							<h1>
-								<span>적립금 리워드</span> 신청하세요!
-							</h1>
-							<a href="#popover-open-id" class="popover-close">닫기</a>
-						</div>
-						<!-- //pop-header -->
-						<!-- pop-content -->
-						<div class="pop-content type-money-reward">
-							<dl>
-								<dt>적립금 리워드 이벤트란?</dt>
-								<dd>
-									<div class="txt-box type-letter">
-										구매고객님 중 <span>신청자에 한하여</span> 구매금의 일정금액을 <span>더머니(적립금)로</span> 돌려드리는 행사 입니다.
-									</div>
-								</dd>
-								<dt>적립금 리워드 적립 절차</dt>
-								<dd>
-									<ul class="step-box">
-										<li><img src="https://image.thehyundai.com/hdmall/images/popup/popup_moneyreward_img01.png" alt="적립금 대상상품 구매" /></li>
-										<li class="blt"><img src="https://image.thehyundai.com/hdmall/images/popup/popup_belif_img04.png" alt=">" /></li>
-										<li><img src="https://image.thehyundai.com/hdmall/images/popup/popup_moneyreward_img02.png" alt="적립금 리워드 신청" /></li>
-										<li class="blt"><img src="https://image.thehyundai.com/hdmall/images/popup/popup_belif_img04.png" alt=">" /></li>
-										<li><img src="https://image.thehyundai.com/hdmall/images/popup/popup_moneyreward_img03.png" alt="적립금 부여" /></li>
-									</ul>
-								</dd>
-								<dt>유의사항</dt>
-								<dd>
-									<div class="txt-box">대상상품에 한함 / 적립금 신청 필수</div>
-								</dd>
-							</dl>
-							<div class="btn-wrap">
-								<a class="btn size5 color4"
-									href="http://www.thehyundai.com/CS/eva/evntBnftPageDivide.thd?MainpageGroup=Util&amp;GroupbannerName=GNB_Event&amp;tabNo=1" target="_blank"
-									onclick="javascript:"
-								>적립 신청하러가기</a>
-
-								<button class="btn size5 color3 popover-close" type="button">취소</button>
-							</div>
-						</div>
-						<!-- //pop-content -->
-					</div>
-
-					<!-- //popover-wrap -->
-					<!-- //적립금 리워드 레이어 -->
 
 					<div id="divOrdInf" style="display: none" data-ordno="23030600618040" data-allirefcd="800" data-linkyn="Y" data-totamt="341000" data-dlvamt="0">
 						<span id="spanOrdSlitmInf_40A1650970" data-slitmcd="40A1650970" data-sitmcd="A1650970" data-itmnm="설화수[3월][한정수량]자음수 150ml" data-acptqty="1"
@@ -1198,509 +346,12 @@
 						></span>
 					</div>
 
-					<!-- 오에라 안내 레이어팝업 20210820// -->
-
-					<!-- //오에라 안내 레이어팝업 20210820 -->
-
-					<!-- 오에라 신청완료 레이어팝업 20210820// -->
-					<!-- popover-wrap -->
-
-					<!-- //popover-wrap -->
-					<!-- //오에라 신청완료 레이어팝업 20210820 -->
-
-					<!--
-<script type="text/javascript" src="//dmcf1.com/rs/lib/pixel/dmcf1_tag_1.1.0.js"></script>
-<script>
-dmcf1q('track', 'Purchase', {content_ids : f1_tags('f1_content_ids'), value: f1_tag('f1_value'), products_price : f1_tags('f1_products_price'), currency: f1_tag('f1_currency'), product_catalog_id : f1_tag('f1_product_catalog_id')});
-</script>
--->
-					<!-- 2018.04.13 스마트 인터랙티브 태그 추가 -->
-					<!-- 2020.01.06 스마트 인터렉티브 스크립트 제거
-<from id="ordSmrForTrc">
-	<input type="hidden" name="slitmAmtForTrc"  value="341000">
-	<input type="hidden" name="slitmNmForTrc"   value="[아우구스티누스바더] 더 아이 크림 노마드 15ml, 설화수[3월][한정수량]자음수 150ml, ">
-	<input type="hidden" name="slitmQtyForTrc"  value="2">
-</from>
--->
-					<!-- 2018.08.31 크리테오 구매전환 페이지 트래커  -->
-					<script type="text/javascript" src="//static.criteo.net/js/ld/ld.js" async="true"></script>
 					<script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/co/md5.js"></script>
-					<script type="text/javascript">
-              //2018.08.27 크리테오 트래커
 
-              var criteoCustNo = "202303039252";
-              var hashedCustNo = hex_md5(criteoCustNo);
-
-              var item = [];
-
-              var buyObj = new Object();
-              buyObj.id = "40A1650970";
-              buyObj.price = 68000;
-              buyObj.quantity = 1;
-
-              item.push(buyObj);
-
-              var buyObj = new Object();
-              buyObj.id = "40A1624448";
-              buyObj.price = 273000;
-              buyObj.quantity = 1;
-
-              item.push(buyObj);
-
-              window.criteo_q = window.criteo_q || [];
-              window.criteo_q.push(
-                { event: "setAccount", account: 52201 },
-                { event: "setCustomerId", id: hashedCustNo },
-                { event: "setSiteType", type: "d" }, // 일반웹페이지는 d, 모바일 m
-                {
-                  event: "trackTransaction",
-                  id: "23030600618040",
-                  deduplication: "800" == "210" ? 1 : 0, // 크리테오 레퍼코드 210
-                  item: item,
-                }
-              );
-            </script>
-					<!-- 2018.12.16 KOOST 추천 서비스(개인화 추천 솔루션) 적용 -->
-					<!-- <script src="//trk.adnext.co/script/adlib_rat.js" type='text/javascript'></script>
-<script type='text/javascript'>
-var _rat_site_id = "", _rat_shop_id = "";
-function _adlib_trk() {
-	AdlibTrk.RatInit("5b8621ee0cf2475f66709a5d");
-
-	
-		
-			
-				var ordObj = new Object();
-
-				ordObj.slitmCd    = "40A1650970";
-				ordObj.ordItemNm  = "설화수[3월][한정수량]자음수 150ml";
-				ordObj.sellUprc   = "68000";
-				ordObj.thumb      = "https://image.thehyundai.com" + "/static" + "/7/9/0/65/A1/40A1650970_0_100.jpg";
-				ordObj.itemLCsfCd = "이미용";
-				ordObj.itemMCsfCd = "화장품/프레그넌스";
-				ordObj.itemSCsfCd = "스킨케어(여성용)";
-				ordObj.itemDCsfCd = "스킨/토너";
-				ordObj.brndNm     = "명품화장품(한) 설화수";
-				ordObj.acptChGbcd = "pc";
-				ordObj.ordNo      = "23030600618040"
-				ordObj.acptQty    = "1";
-				/*
-				alert(ordObj.slitmCd + '\n' +
-					  ordObj.ordItemNm + '\n' +
-					  ordObj.sellUprc + '\n' +
-					  ordObj.thumb + '\n' +
-					  ordObj.itemLCsfCd + '\n' +
-					  ordObj.itemMCsfCd + '\n' +
-					  ordObj.itemSCsfCd + '\n' +
-					  ordObj.itemDCsfCd + '\n' +
-					  ordObj.brndNm + '\n' +
-					  ordObj.acptChGbcd + '\n' +
-					  ordObj.ordNo + '\n' +
-					  ordObj.acptQty);
-				*/
-				var koost_data = {
-					p_no:ordObj.slitmCd,        // 상품코드
-					p_name:ordObj.ordItemNm,    // 상품명
-					price:ordObj.sellUprc,      // 개당 가격, 콤마 제외, 문자형으로 따옴표 안에 위치
-					thumb:ordObj.thumb,         // 상품 썸네일 url
-					cate1:ordObj.itemLCsfCd,    // 카테고리 대, 코드 아닌 텍스트 값
-					cate2:ordObj.itemMCsfCd,    // 카테고리 중, 코드 아닌 텍스트 값
-					cate3:ordObj.itemSCsfCd,    // 카테고리 소, 코드 아닌 텍스트 값
-					brand:ordObj.brndNm,        // 브랜드명
-					platform:ordObj.acptChGbcd, // pc, mobile_web, mobile_app 중 하나의 값
-					referrer:"Y",               // 고정값
-					url:window.location.href,   // 고정값
-					order_id:ordObj.ordNo,      // 주문 번호
-					qty:ordObj.acptQty          // 구매 개수
-				};
-				rat_helper.send_event("BUY", koost_data);
-			
-				var ordObj = new Object();
-
-				ordObj.slitmCd    = "40A1624448";
-				ordObj.ordItemNm  = "[아우구스티누스바더] 더 아이 크림 노마드 15ml";
-				ordObj.sellUprc   = "273000";
-				ordObj.thumb      = "https://image.thehyundai.com" + "/static" + "/4/4/4/62/A1/40A1624448_0_100.jpg";
-				ordObj.itemLCsfCd = "이미용";
-				ordObj.itemMCsfCd = "화장품/프레그넌스";
-				ordObj.itemSCsfCd = "스킨케어(여성용)";
-				ordObj.itemDCsfCd = "아이/넥케어";
-				ordObj.brndNm     = "아우구스티누스바더";
-				ordObj.acptChGbcd = "pc";
-				ordObj.ordNo      = "23030600618040"
-				ordObj.acptQty    = "1";
-				/*
-				alert(ordObj.slitmCd + '\n' +
-					  ordObj.ordItemNm + '\n' +
-					  ordObj.sellUprc + '\n' +
-					  ordObj.thumb + '\n' +
-					  ordObj.itemLCsfCd + '\n' +
-					  ordObj.itemMCsfCd + '\n' +
-					  ordObj.itemSCsfCd + '\n' +
-					  ordObj.itemDCsfCd + '\n' +
-					  ordObj.brndNm + '\n' +
-					  ordObj.acptChGbcd + '\n' +
-					  ordObj.ordNo + '\n' +
-					  ordObj.acptQty);
-				*/
-				var koost_data = {
-					p_no:ordObj.slitmCd,        // 상품코드
-					p_name:ordObj.ordItemNm,    // 상품명
-					price:ordObj.sellUprc,      // 개당 가격, 콤마 제외, 문자형으로 따옴표 안에 위치
-					thumb:ordObj.thumb,         // 상품 썸네일 url
-					cate1:ordObj.itemLCsfCd,    // 카테고리 대, 코드 아닌 텍스트 값
-					cate2:ordObj.itemMCsfCd,    // 카테고리 중, 코드 아닌 텍스트 값
-					cate3:ordObj.itemSCsfCd,    // 카테고리 소, 코드 아닌 텍스트 값
-					brand:ordObj.brndNm,        // 브랜드명
-					platform:ordObj.acptChGbcd, // pc, mobile_web, mobile_app 중 하나의 값
-					referrer:"Y",               // 고정값
-					url:window.location.href,   // 고정값
-					order_id:ordObj.ordNo,      // 주문 번호
-					qty:ordObj.acptQty          // 구매 개수
-				};
-				rat_helper.send_event("BUY", koost_data);
-			
-		
-	
-
-
-}
-</script> -->
-
-					<!-- 전환페이지 설정 -->
-					<script type="text/javascript">
-              var visitReferCode = getCookie("EHReferCode");
-              if (visitReferCode == "441" || visitReferCode == "190") {
-                var _nasa = {};
-                _nasa["cnv"] = wcs.cnv("1", "341000"); // 구매완료 전환유형 변수값 = "1", 전환가치 = 주문금액
-              }
-            </script>
-					<!-- 공통 적용 스크립트 , 모든 페이지에 노출되도록 설치. 단 전환페이지 설정값보다 항상 하단에 위치해야함 -->
-					<script type="text/javascript">
-              var visitReferCode = getCookie("EHReferCode");
-              if (visitReferCode == "441" || visitReferCode == "190") {
-                if (!wcs_add) var wcs_add = {};
-                wcs_add["wa"] = "s_1999141c8036";
-                if (!_nasa) var _nasa = {};
-                wcs.inflow();
-                wcs_do(_nasa);
-              }
-            </script>
-
-					<!-- 19.08.19 모어 스크립트 적용 -->
-					<!-- <script>
-$(document).ready(mcroPageLoaded);
-function mcroPageLoaded()
-{
-	try
-	{
-		//  상품 구매 건수만큼 반복 호출, 단 '사은품(=진열제외)' 상품의 경우 호출하지 않음.
-		
-			
-				
- 					var evt_data = {};
-  					evt_data.evt = 'buy';            		//  이벤트코드 'buy' 고정.
-					evt_data.order_id = '23030600618040';     	//  주문번호
-   					evt_data.p_no = '40A1650970';     		//  url상에서 쓰이는 상품코드
-   					evt_data.p_name = '설화수[3월][한정수량]자음수 150ml';  	// 상품명
-  					evt_data.price = '68000';          // 실제결제금액(배송료포함X - 숫자만 포함한 문자열)
-					//  상품결제단가 * qty
-					evt_data.qty = '1';     			// 상품구매수량(숫자만 포함한 문자열)
-   					mcroPushEvent(evt_data);
-				
- 					var evt_data = {};
-  					evt_data.evt = 'buy';            		//  이벤트코드 'buy' 고정.
-					evt_data.order_id = '23030600618040';     	//  주문번호
-   					evt_data.p_no = '40A1624448';     		//  url상에서 쓰이는 상품코드
-   					evt_data.p_name = '[아우구스티누스바더] 더 아이 크림 노마드 15ml';  	// 상품명
-  					evt_data.price = '273000';          // 실제결제금액(배송료포함X - 숫자만 포함한 문자열)
-					//  상품결제단가 * qty
-					evt_data.qty = '1';     			// 상품구매수량(숫자만 포함한 문자열)
-   					mcroPushEvent(evt_data);
-				
-			
-		
-	//   상품 구매 건수만큼 반복 호출
-	}catch(e){}
-}
-</script> -->
-
-					<!-- NABUS 컨버전 스크립트  -->
-					<script type="text/javascript">
-              /**
-               * 전환(구매) 전체에 대한 데이터 입니다.
-               * 입력하지 않아도 되지만 많이 입력할수록 다양한 리포트 제공이 가능합니다.
-               */
-              var _11h11mConv = {};
-
-              var convKey = "23030600618040";
-              var convCa = "341000";
-              var convDetName = "";
-              var convDetCost = "";
-              var convDetCnt = "";
-              var convDetCategory = "";
-
-              convDetName += "설화수[3월][한정수량]자음수 150ml";
-              convDetCost += "68000";
-              convDetCnt += "1";
-              convDetCategory += "스킨/토너";
-
-              convDetName += ";";
-              convDetCost += ";";
-              convDetCnt += ";";
-              convDetCategory += ";";
-
-              convDetName += "[아우구스티누스바더] 더 아이 크림 노마드 15ml";
-              convDetCost += "273000";
-              convDetCnt += "1";
-              convDetCategory += "아이/넥케어";
-
-              convDetName += ";";
-              convDetCost += ";";
-              convDetCnt += ";";
-              convDetCategory += ";";
-
-              _11h11mConv["convTypeId"] = "C01"; //컨버전 타입 ID : 관리사이트에서 발급된 고유 ID (필수입력값임. 수정하지 마세요)
-              _11h11mConv["convKey"] = convKey; //컨버전 키 : 내부 시스템에서 사용하는 구매 ID
-              _11h11mConv["convCa"] = convCa; //매출 : 최종 구매 금액 (선택)
-
-              /**
-               * 전환(구매) 개별대한 상세 데이터 입니다. 여러 상품을 판매했을 경우 ; 로 구분해서 입력하시면 됩니다.
-               * 입력하지 않아도 되지만 많이 입력할수록 다양한 리포트 제공이 가능합니다.
-               */
-              _11h11mConv["convDetName"] = convDetName; //컨버전 상세 명 : 컨버전(상품)의 개별 이름을 입력
-              _11h11mConv["convDetCost"] = convDetCost; //컨버전 상세 금액 : 컨버전(상품)의 개별 단가(1개 상품 금액)를 입력
-              _11h11mConv["convDetCnt"] = convDetCnt; //컨버전 상세 수량 : 컨버전(상품)의 개별 판매 수량
-              _11h11mConv["convDetCategory"] = convDetCategory; //컨버전 상세 카테고리 : 컨버전(상품)의 개별 카테고리를 입력
-
-              try {
-                _11h11m.log(_11h11mConv, "conv");
-              } catch (e) {} //로그를 전송합는 코드입니다. (수정하지 마세요)
-            </script>
-
-					<!-- 구글 전환스크립트 -->
-					<!-- Event snippet for 더현대닷컴_구글전환 conversion page -->
-					<script>
-              var actionList = new Object();
-              var Ecommerce = new Object();
-              var Products = new Array();
-              var dimension = new Object();
-              var goods = []; // DEP01WORK-20595 MA 솔루션 도입
-              var maGoodsMap = new Map();
-
-              var dimension36 = "구매하기";
-              if ("" != null && "" == "Y") {
-                dimension36 = "선물하기";
-              } else if ("1" == "4") {
-                dimension36 = "스토어픽구매";
-              }
-
-              var Product = new Object();
-              Product.id = "40A1650970";
-              Product.name = "설화수[3월][한정수량]자음수 150ml";
-              Product.brand = "설화수";
-              Product.category = "화장품/BRAND SHOP (노출)/설화수/기획세트";
-              Product.variant = "없음";
-              var lastStlmAmt = "68000";
-              var uitmQuantity = "1";
-              Product.price = Number(lastStlmAmt) / Number(uitmQuantity);
-              Product.quantity = uitmQuantity;
-              Product.coupon = "";
-              Product.dimension36 = dimension36;
-              Product.dimension37 = "001201";
-              Product.dimension38 = "102066";
-              Product.dimension39 = "013368_판교점";
-              Product.dimension40 = "국내화장품,색조,향수 외(1013)";
-              Products.push(Product);
-
-              var maGoodsKey = "40A1650970_00001";
-              var maGoods = maGoodsMap.get(maGoodsKey);
-              if (isEmpty(maGoods)) {
-                maGoods = {
-                  name: "설화수[3월][한정수량]자음수 150ml",
-                  code: "40A1650970",
-                  amt: "68000",
-                  prc: "68000",
-                  salePrc: "68000",
-                  cnt: "1",
-                  cat: "R5010202",
-                  cateNm: "스킨/토너",
-                  catL: "R5",
-                  cateLNm: "이미용",
-                  catM: "R501",
-                  cateMNm: "화장품/프레그넌스",
-                  catS: "R50102",
-                  cateSNm: "스킨케어(여성용)",
-                  catD: "R5010202",
-                  cateDNm: "스킨/토너",
-                  brand: "001201",
-                  brandNm: "명품화장품(한) 설화수",
-                };
-                maGoodsMap.set(maGoodsKey, maGoods);
-              } else {
-                maGoods.cnt = Number(maGoods.cnt) + 1;
-                maGoods.amt = Number(maGoods.salePrc) * Number(maGoods.cnt);
-              }
-
-              var Product = new Object();
-              Product.id = "40A1624448";
-              Product.name = "[아우구스티누스바더] 더 아이 크림 노마드 15ml";
-              Product.brand = "아우구스티누스바더";
-              Product.category = "화장품/기능성케어/아이케어";
-              Product.variant = "더 아이 크림 노마드 15ml";
-              var lastStlmAmt = "273000";
-              var uitmQuantity = "1";
-              Product.price = Number(lastStlmAmt) / Number(uitmQuantity);
-              Product.quantity = uitmQuantity;
-              Product.coupon = "";
-              Product.dimension36 = dimension36;
-              Product.dimension37 = "A015814";
-              Product.dimension38 = "40059";
-              Product.dimension39 = "002836_본점";
-              Product.dimension40 = "수입화장품(1001)";
-              Products.push(Product);
-
-              var maGoodsKey = "40A1624448_00001";
-              var maGoods = maGoodsMap.get(maGoodsKey);
-              if (isEmpty(maGoods)) {
-                maGoods = {
-                  name: "[아우구스티누스바더] 더 아이 크림 노마드 15ml",
-                  code: "40A1624448",
-                  amt: "273000",
-                  prc: "273000",
-                  salePrc: "273000",
-                  cnt: "1",
-                  cat: "R5010205",
-                  cateNm: "아이/넥케어",
-                  catL: "R5",
-                  cateLNm: "이미용",
-                  catM: "R501",
-                  cateMNm: "화장품/프레그넌스",
-                  catS: "R50102",
-                  cateSNm: "스킨케어(여성용)",
-                  catD: "R5010205",
-                  cateDNm: "아이/넥케어",
-                  brand: "A015814",
-                  brandNm: "아우구스티누스바더",
-                };
-                maGoodsMap.set(maGoodsKey, maGoods);
-              } else {
-                maGoods.cnt = Number(maGoods.cnt) + 1;
-                maGoods.amt = Number(maGoods.salePrc) * Number(maGoods.cnt);
-              }
-
-              maGoodsMap.forEach(function (value, key) {
-                goods.push(value);
-                console.log("add groobee goods");
-              });
-              groobee("PU", { orderNo: "23030600618040", goods: goods });
-              console.log("[PU] sent groobee contents. " + goods.length);
-
-              var dlvCost = "없음";
-              if ("" != null && "" > 0) {
-                dlvCost = "";
-              }
-
-              var freeDlvCopnNm = "없음";
-              var idmtDcAmt = "0";
-              var stlmWayDcAmt = "0";
-
-              var stlmWay = "";
-              var giftYn = "없음";
-
-              var dlvAdr = "서울특별시 양천구 목동남로 48 (신정동, )";
-              var uPointUseAmt = "0";
-              var hPointUseAmt = "0";
-              var cdpstUseAmt = "0";
-
-              stlmWay = "현금";
-
-              dimension.category = "Ecommerce";
-              dimension.action = "Purchase";
-              dimension.nonInteraction = true;
-              dimension.dimension41 = stlmWay;
-              dimension.dimension42 = dimension36;
-              dimension.dimension43 = giftYn;
-              dimension.dimension44 = dlvAdr;
-              dimension.metric1 = idmtDcAmt;
-              dimension.metric2 = stlmWayDcAmt;
-              dimension.metric3 = uPointUseAmt;
-              dimension.metric4 = uPointUseAmt;
-              dimension.metric5 = cdpstUseAmt;
-              dimension.metric6 = "341000";
-              dimension.metric7 = "341000";
-
-              actionList.id = "23030600618040";
-              actionList.revenue = "341000";
-              actionList.shipping = dlvCost;
-              actionList.coupon = freeDlvCopnNm;
-              actionList.action = "purchase";
-              var E_step = "purchase";
-
-              EcommerceSet(E_step, Products, actionList, dimension);
-
-              gtag("event", "conversion", {
-                send_to: "AW-879261918/DAtcCKWT6bYBEN7xoaMD",
-                value: "341000",
-                currency: "KRW",
-                transaction_id: "23030600618040",
-              });
-
-              <!-- 20210729 ga스크립트 추가 -->
-
-              var items = [];
-
-              var item = {};
-              item.id = "40A1650970";
-              item.name = "설화수[3월][한정수량]자음수 150ml";
-              item.brand = "명품화장품(한) 설화수";
-              item.category = "이미용";
-              item.variant = "없음";
-              item.quantity = "1";
-              item.price = "68000";
-              items.push(item);
-
-              var item = {};
-              item.id = "40A1624448";
-              item.name = "[아우구스티누스바더] 더 아이 크림 노마드 15ml";
-              item.brand = "아우구스티누스바더";
-              item.category = "이미용";
-              item.variant = "더 아이 크림 노마드 15ml";
-              item.quantity = "1";
-              item.price = "273000";
-              items.push(item);
-
-              gtag("event", "purchase", {
-                transaction_id: "23030600618040",
-                value: "341000", //전체 주문 금액
-                currency: "KRW",
-                items: items,
-              });
-            </script>
 				</div>
-				<!-- //order-complete -->
-
-				<!-- 이런 아이템도 있어요 -->
-				<!-- <div class="with-buy-wrap" id="orderComplete_recommendProductDivId">
-
-				</div> -->
-				<!-- // 이런 아이템도 있어요 -->
 			</div>
-			<!-- //content-wrap -->
 		</div>
-		<!-- //container -->
 	</div>
-	<!-- //wrap -->
-	<!-- footer -->
-
-	<!-- skip-navigation -->
-	<!-- <div id="skip-navigation"> -->
-	<!-- 	<p><a href="#header-wrap">헤더영역 바로가기</a></p> -->
-	<!-- 	<p><a href="#header-gnb-area">GNB영역 바로가기</a></p> -->
-	<!-- 	<p><a href="#container">컨텐츠영역 바로가기</a></p> -->
-	<!-- 	<p><a href="#footer">푸터영역 바로가기</a></p> -->
-	<!-- </div> -->
-	<!-- //skip-navigation -->
 
 	<!-- footer -->
 	<div id="footer">
@@ -1809,9 +460,9 @@ function mcroPageLoaded()
 						<li><a href="javascript:;"
 							onclick="javascript: dummyLogCatch('https://twitter.com/eHyundai_tweets/', 'Footer', 'twitter', 'blank', 'Y', null)"
 						><i class="twitter">트위터</i></a></li>
-						<!-- 2017-01-25 핀터레스트 제거
-						<li><a href="javascript:;" onclick="javascript:dummyLogCatch('https://www.pinterest.com/hyundaidept/', 'Footer', 'pinterest', 'blank', 'Y', null)"><i class=" pinterest">pinterest</i></a></li>
-						-->
+						<li><a href="javascript:;"
+							onclick="javascript:dummyLogCatch('https://www.pinterest.com/hyundaidept/', 'Footer', 'pinterest', 'blank', 'Y', null)"
+						><i class=" pinterest">pinterest</i></a></li> -->
 						<!-- 2017-01-25 인스타그램 추가 -->
 						<li><a href="javascript:;"
 							onclick="javascript: dummyLogCatch('https://www.instagram.com/the_hyundai/', 'Footer', 'instagram', 'blank', 'Y', null)"
@@ -1845,9 +496,5 @@ function mcroPageLoaded()
 	</div>
 	<!-- //footer -->
 
-	
-
-
-	
 </body>
 </html>

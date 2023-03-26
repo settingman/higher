@@ -1,7 +1,6 @@
 package com.hyundai.higher.controller;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Arrays;
 
 import org.springframework.http.HttpEntity;
@@ -14,8 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
-
-import com.hyundai.higher.service.include.IncludeService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -35,16 +32,11 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 public class HomeController {
 
-	@Autowired(required=true)
-	private IncludeService iService;
-	
-	@GetMapping(value = "/")
+	@GetMapping(value = "/main")
 	public String memberForm(Model model) {
 
 		log.info("main");
 
-		model.addAttribute("categoryList", iService.categoryListAll());
-		
 		return "main";
 	}
 
@@ -53,7 +45,7 @@ public class HomeController {
 
 		log.info("main");
 
-		return "test";
+		return "order/orderComplete";
 	}
 
 	

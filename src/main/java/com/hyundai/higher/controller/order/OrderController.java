@@ -1,6 +1,7 @@
 package com.hyundai.higher.controller.order;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -8,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.hyundai.higher.domain.cart.CartItem;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -30,32 +33,24 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/shop")
 @Controller
 public class OrderController {
-	
+
 	// 오더페이지 이동.
 	@GetMapping(value = "/order")
 	public String Order(@RequestParam(required = false) List<Integer> pIdList, Model model, Principal principal) {
-		
-		// List<CartItem> cartItems = cartService.cartToOrder(pIdList,principal.getName());
+
+		List<CartItem> cartItems = new ArrayList<CartItem>();
+
+		CartItem cart = new CartItem("test", "테스트", 10000, "Brand", "Color", 3,"option", "img_path");
+		// cartService.cartToOrder(pIdList,principal.getName());
 		// 장바구니에서 선택된 상품의 id 값을 리스트로 받은 뒤 상품id와 회원 id를 통하여 장바구니 정보를 가져와 담아준다.
+
 		
-		 // model.addAttribute("cartItems", cartItems);
+		cartItems.add(cart);
+		// 장바구니에서 상품id를 넘겨받아서 그걸 사용해서 카트테이블 조회해서 카트 객체 받아서 뿌림.
+		model.addAttribute("cartItems", cartItems);
 		// 장바구니 객체를 리스트로 담아 넘긴다.
-		
-		
-		return "/order/order";	
-	}
-	
-	@GetMapping(value = "/orderComplete")
-	public String OrderComplete(Model model, Principal principal) {
-		
-		// List<CartItem> cartItems = cartService.cartToOrder(pIdList,principal.getName());
-		// 장바구니에서 선택된 상품의 id 값을 리스트로 받은 뒤 상품id와 회원 id를 통하여 장바구니 정보를 가져와 담아준다.
-		
-		 // model.addAttribute("cartItems", cartItems);
-		// 장바구니 객체를 리스트로 담아 넘긴다.
-		
-		
-		return "/order/orderComplete";
+
+		return "/order/order";
 	}
 
 }

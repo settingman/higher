@@ -7,25 +7,28 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
+
+import com.google.gson.Gson;
+import com.hyundai.higher.domain.order.OrderSheet;
 
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * @since   : 2023. 3. 7.
+ * @since : 2023. 3. 7.
  * @FileName: BillingController.java
- * @author  : 박성환
- * @설명    : 토스 결제 컨트롤러
-
- * <pre>
+ * @author : 박성환
+ * @설명 : 토스 결제 컨트롤러
+ * 
+ *     <pre>
  *   수정일         수정자               수정내용
  * ----------      --------    ---------------------------
  * 2023. 3. 7.     박성환      	최초 생성
- * </pre>
+ *     </pre>
  */
 @Slf4j
 @RequestMapping("/toss")
@@ -36,52 +39,53 @@ public class BillingController {
 	private static String testSecretApiKey = "test_sk_YPBal2vxj81Rx9BLyw35RQgOAND7";
 	private static String tossOriginUrl = "https://api.tosspayments.com/v1/payments/confirm";
 
-	
-	
 	// 토스페이먼츠로 결제 승인 요청.
-	@ResponseBody
 	@GetMapping("/success")
 	public String requestFinalPayments(@RequestParam String paymentKey, @RequestParam String orderId,
-			@RequestParam Long amount) {
+			@RequestParam Long amount, @RequestParam String orderInfo,Model model) {
 
-		System.out.println("paymentKey = " + paymentKey);
-		System.out.println("orderId = " + orderId);
-		System.out.println("amount = " + amount);
 		
+		log.info("success");
+		// 상품 결과 페이지 주문 목록 가지고 이동 가능
+		log.info(orderInfo);
+		log.info("success");
+		
+		Gson gson = new Gson();
+		
+		OrderSheet orderSheet = gson.fromJson(orderInfo, OrderSheet.class);
+		
+		log.info(orderSheet.toString());
+	
 		testSecretApiKey = testSecretApiKey + ":";
-	    String encodedAuth = new String(Base64.getEncoder().encode(testSecretApiKey.getBytes(StandardCharsets.UTF_8)));
-		
+		String encodedAuth = new String(Base64.getEncoder().encode(testSecretApiKey.getBytes(StandardCharsets.UTF_8)));
+
 		System.out.println("encodedAuth = " + encodedAuth);
 
 		RestTemplate restTemplate = new RestTemplate();
-		
-		System.out.println("hi = ");
-		
-		HttpHeaders headers = new HttpHeaders();
-		
-		System.out.println("hi = ");
-		
 
-		headers.set("Authorization", "Basic "+encodedAuth);
+		HttpHeaders headers = new HttpHeaders();
+
+		headers.set("Authorization", "Basic " + encodedAuth);
 		headers.set("Content-Type", "application/json");
 		String body = "{\"paymentKey\":\"" + paymentKey + "\",\"amount\":" + amount + ",\"orderId\":\"" + orderId
 				+ "\"}";
-		System.out.println("body = " + body);
+		
+		
 
 		HttpEntity<String> entity = new HttpEntity<>(body, headers);
 		String url = "https://api.tosspayments.com/v1/payments/confirm";
-		
-		
+
 		ResponseEntity<String> response = restTemplate.postForEntity(url, entity, String.class);
 		// 결제 승인 요청.
 		
-		log.info(response.toString());
 		
+		model.addAttribute("orderSheet",orderSheet);
 		
-		return "fail";
-		// 결제 성공 페이지로 이동.
-	
+
+
+		return "order/orderComplete";
+		// 결제 성공 페이지로 이동 편집.
+
 	}
 
-}
-;
+};
