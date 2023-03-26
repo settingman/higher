@@ -6,6 +6,7 @@ import enum
 import uuid
 import time
 import json
+import boto3
 
 app = Flask(__name__)
 CORS(app)
@@ -15,6 +16,22 @@ class FeatureChoice(str, enum.Enum):
     blush = 'blush'
     foundation = 'foundation'
 
+def s3_connection():
+    try:
+        # s3 클라이언트 생성
+        s3 = boto3.client(
+            service_name="s3",
+            region_name="ap-northeast-2",
+            aws_access_key_id="AKIARGO2DAHDK5ATCHPN",
+            aws_secret_access_key="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",
+        )
+    except Exception as e:
+        print(e)
+    else:
+        print("=========s3 bucket connected!==========") 
+        return s3
+        
+s3 = s3_connection()
 
 @app.route('/apply-makeup/', methods=['POST'])
 def try_makeup():
@@ -58,6 +75,7 @@ def try_makeup():
     
     # 파일경로 불러오기
     image = cv2.imread(filePath, cv2.IMREAD_UNCHANGED)
+    print(filePath)
     
     # 각 부위 별 색상 넣기
     output_lip = apply_makeup(image, False, 'lips', color, 1, False)
@@ -74,10 +92,17 @@ def try_makeup():
     
     # output 저장 -> 뒤에 시간에 따른 uuid 붙음
     output_filename = f"output_{int(time.time())}_{uuid.uuid4()}.jpg"
-    output_filepath1= f"../img/{output_filename}"
-    cv2.imwrite(output_filepath1, blend)
+    output_filepath_local= f"../img/{output_filename}"
+    cv2.imwrite(output_filepath_local, blend)
+    print(output_filepath_local)
+    print(output_filename)
     
-    output_filepath = output_filepath1[1:]
+    output_filepath= f"https://s3.ap-northeast-2.amazonaws.com/hbeauty.bucket/{output_filename}"
+    
+    try:
+        s3.upload_file(output_filepath_local,"hbeauty.bucket",output_filename)
+    except Exception as e:
+     print(e)
     
     #java로 선택된 값 전송
     response_data = {
