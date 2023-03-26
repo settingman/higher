@@ -1,8 +1,10 @@
 package com.hyundai.higher.controller.makeup;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -22,6 +24,10 @@ import org.springframework.web.client.RestTemplate;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.hyundai.higher.domain.makeup.BlushVO;
+import com.hyundai.higher.domain.makeup.FoundationVO;
+import com.hyundai.higher.domain.makeup.LipVO;
+import com.hyundai.higher.service.makeup.MakeupService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -40,6 +46,7 @@ import lombok.extern.log4j.Log4j2;
  * 2023. 3. 23.		이세아	   makeup api 색상 선택별로 변경 가능하게 함
  * 2023. 3. 25.		이세아	   ajax를 위한 json 타입으로 return 변경, ajax done
  * 2023. 3. 26. 	이세아	   makeup result를 위한 controller 추가
+ * 2023. 3. 27.		이세아	   makeup service을 통한 결과값 불러오기 완료
  *     </pre>
  */
 
@@ -48,6 +55,9 @@ import lombok.extern.log4j.Log4j2;
 @RequestMapping("/makeup")
 @Controller
 public class MakeupController {
+	
+	@Autowired
+	private MakeupService service;
 
 	@GetMapping("/reserv_main")
 	public void reserv_main() {
@@ -111,8 +121,16 @@ public class MakeupController {
 		model.addAttribute("output_filepath", responseData.get("output_filepath"));
 
 		log.info(responseData);
+		
+		List<LipVO> liplist = service.pickLip(lips);
+		List<BlushVO> blushlist = service.pickBlush(blush);
+		List<FoundationVO> foundationlist = service.pickFoundation(foundation);
+		
+		model.addAttribute("liplist", liplist);
+		model.addAttribute("blushlist", blushlist);
+		model.addAttribute("foundationlist", foundationlist);
 
-		return "makeup-result";
+		return "makeup_result";
 	}
 
 	// ajax용 코드
