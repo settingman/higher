@@ -25,6 +25,16 @@
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://image.thehyundai.com/pc/js/jquery-1.11.3.min.js"></script>
+<script src="https://image.thehyundai.com/pc/js/jquery-ui.min.js"></script>
+<script src="https://image.thehyundai.com/pc/js/jquery-migrate.min.js"></script>
+
+<script src="https://image.thehyundai.com/pc/js/plugin.js?ver=030316"></script>
+<script type="text/javascript" src="https://image.thehyundai.com/pc/js/hdmall/co/jquery.form.js"></script>
+<script type="text/javascript" src="https://image.thehyundai.com/pc/js/hdmall/co/default.js?ver=030316"></script>
+<script type="text/javascript" src="https://image.thehyundai.com/pc/js/hdmall/co/common.js?ver=030316"></script>
+<script src="https://image.thehyundai.com/pc/js/common.js?ver=030316"></script>
+<script type="text/javascript" src="https://image.thehyundai.com/pc/js/swiper.min.js?ver=030316"></script>
 
 
 
@@ -82,6 +92,8 @@
          			$('#mBirth').attr('disabled',false);
          			$('#registMemberBtn').attr('disabled',false);
          			$('#chkDupId').attr('disabled',false);
+         			$('#emailHead').attr('disabled',true);
+         			$('#email-domain').attr('disabled',true);
          			
          		
          		}else{
@@ -462,8 +474,7 @@
                 displayMsg(objParent);
                 isValidMobilePhone = true;
                 var b2eCustNo = "";
-                isCheckedId = false;
-                isValidId = false;
+               
 
                 if (!isEmpty(b2eCustNo)) {
                     var objParent2 = $("input[name=mId]").parent();
@@ -587,19 +598,20 @@
             );
         }
 
-        // 20161205 추가 //
+        // 20161205 추가 /
 
         function checkId() {
             if (isValidId) {
             var objParent = $("input[name=mId]").parent();
+            
+            showLoadingBar(250, 200);
+            
             $.ajax({
-                type: "POST",
-                url: "https://www.thehyundai.com/front/cua/memberIdCheckPup.thd",
-                data: { id: $("input[name=mId]").val() },
-                dataType: "json",
+                type: "get",
+                url: '/member/check?checkid=' + $("input[name=mId]").val(),
                 success: function (data) {
-                hideBlockLoadingBar();
-                if (!data.isDupe) {
+                	hideLoadingBar();
+                if (data=="0") {
                     displayMsg(objParent);
                     isCheckedId = true;
                 } else {
@@ -634,8 +646,11 @@
         function registMember() {
            
             var isValid = true;
+            
             $("input[name='mId']").trigger("blur");
             if (!isValidId || !isCheckedId) {
+            console.log(isValidId);
+            console.log(isCheckedId);
             setFocus($("input[name='mId']"));
             isValid = false;
             }
@@ -711,7 +726,7 @@
             $("input[name='mPhone']").val(mobile[0] + mobile[1] + mobile[2]);
      
            
-
+			console.log("회원가입 진행");
             $("form[name='registMemberForm']").submit();
         }
 
@@ -767,23 +782,7 @@
 
 
 
-        function setCert(hpTel, certSeq) {
-            $(".tab-pane .cert-email").hide();
-            $(".tab-pane .cert-complete:eq(1)").show();
-
-            $(".join-block input, button").prop("disabled", false);
-            $(".btn-wrap button").prop("disabled", false);
-
-            $.fancybox.close();
-
-            set_pagetitle_manual("회원가입 | THE HYUNDAI");
-
-            $("input[name='mPhone']")
-            .val(hpTel)
-            .prop("readonly", true)
-            .trigger("keyup");
-            $("input[name='certSeq']").val(certSeq);
-        }
+       
 
 
 
@@ -830,11 +829,12 @@
             
             var val = $("input[name='mEmail']").val();
             
-           
+            showLoadingBar("180px", "150px");
             $.ajax({
                 type: "get",
                 url: "/member/vaildEmail?emailAdr="+val,
                 success: function (data) {
+                hideLoadingBar();
                 code=data;
                 console.log(code);
                 if (data.resultMsg == "alreadyCertSuccess") {
@@ -1390,9 +1390,17 @@ keyframes rotateSpinner { 0% {
 
 
 
+
+
+
+
 %
 {
 transform
+
+
+
+
 
 
 
@@ -1430,6 +1438,10 @@ transform
 
 
 
+
+
+
+
 rotate
 
 
@@ -1447,7 +1459,15 @@ rotate
 
 
 
+
+
+
+
 (
+
+
+
+
 
 
 
@@ -1485,7 +1505,15 @@ rotate
 
 
 
+
+
+
+
 )
+
+
+
+
 
 
 
@@ -1634,9 +1662,17 @@ keyframes fb_mpn_landing_page_slide_out { 0% {
 
 
 
+
+
+
+
 %
 {
 border-radius
+
+
+
+
 
 
 
@@ -1674,7 +1710,15 @@ border-radius
 
 
 
+
+
+
+
 18px
+
+
+
+
 
 
 
@@ -1712,9 +1756,17 @@ border-radius
 
 
 
+
+
+
+
 %
 {
 border-radius
+
+
+
+
 
 
 
@@ -1752,7 +1804,15 @@ border-radius
 
 
 
+
+
+
+
 50
+
+
+
+
 
 
 
@@ -1789,7 +1849,15 @@ margin
 
 
 
+
+
+
+
 :
+
+
+
+
 
 
 
@@ -1827,7 +1895,15 @@ margin
 
 
 
+
+
+
+
 24px
+
+
+
+
 
 
 
@@ -1846,6 +1922,10 @@ margin
 
 ;
 width
+
+
+
+
 
 
 
@@ -1883,7 +1963,15 @@ width
 
 
 
+
+
+
+
 60px
+
+
+
+
 
 
 
@@ -1928,9 +2016,17 @@ keyframes fb_mpn_landing_page_slide_out_from_left { 0% {
 
 
 
+
+
+
+
 %
 {
 border-radius
+
+
+
+
 
 
 
@@ -1968,7 +2064,15 @@ border-radius
 
 
 
+
+
+
+
 18px
+
+
+
+
 
 
 
@@ -2006,9 +2110,17 @@ border-radius
 
 
 
+
+
+
+
 %
 {
 border-radius
+
+
+
+
 
 
 
@@ -2046,7 +2158,15 @@ border-radius
 
 
 
+
+
+
+
 50
+
+
+
+
 
 
 
@@ -2083,6 +2203,10 @@ left
 
 
 
+
+
+
+
 :
 
 
@@ -2102,7 +2226,15 @@ left
 
 
 
+
+
+
+
 12px
+
+
+
+
 
 
 
@@ -2139,6 +2271,10 @@ width
 
 
 
+
+
+
+
 :
 
 
@@ -2158,7 +2294,15 @@ width
 
 
 
+
+
+
+
 60px
+
+
+
+
 
 
 
@@ -2203,9 +2347,17 @@ keyframes fb_mpn_landing_page_slide_up { 0% {
 
 
 
+
+
+
+
 %
 {
 bottom
+
+
+
+
 
 
 
@@ -2243,7 +2395,15 @@ bottom
 
 
 
+
+
+
+
 24px
+
+
+
+
 
 
 
@@ -2280,6 +2440,10 @@ opacity
 
 
 
+
+
+
+
 :
 
 
@@ -2299,7 +2463,15 @@ opacity
 
 
 
+
+
+
+
 1
+
+
+
+
 
 
 
@@ -2344,9 +2516,17 @@ keyframes fb_mpn_bounce_in { 0% {
 
 
 
+
+
+
+
 %
 {
 opacity
+
+
+
+
 
 
 
@@ -2384,7 +2564,15 @@ opacity
 
 
 
+
+
+
+
 1
+
+
+
+
 
 
 
@@ -2421,6 +2609,10 @@ top
 
 
 
+
+
+
+
 :
 
 
@@ -2440,7 +2632,15 @@ top
 
 
 
+
+
+
+
 0
+
+
+
+
 
 
 
@@ -2485,9 +2685,17 @@ keyframes fb_mpn_fade_out { 0% {
 
 
 
+
+
+
+
 %
 {
 bottom
+
+
+
+
 
 
 
@@ -2525,7 +2733,15 @@ bottom
 
 
 
+
+
+
+
 0
+
+
+
+
 
 
 
@@ -2562,6 +2778,10 @@ opacity
 
 
 
+
+
+
+
 :
 
 
@@ -2581,7 +2801,15 @@ opacity
 
 
 
+
+
+
+
 0
+
+
+
+
 
 
 
@@ -2626,9 +2854,17 @@ keyframes fb_mpn_bounce_out { 0% {
 
 
 
+
+
+
+
 %
 {
 opacity
+
+
+
+
 
 
 
@@ -2666,6 +2902,10 @@ opacity
 
 
 
+
+
+
+
 0
 
 
@@ -2683,7 +2923,15 @@ opacity
 
 
 
+
+
+
+
 .5
+
+
+
+
 
 
 
@@ -2720,6 +2968,10 @@ top
 
 
 
+
+
+
+
 :
 
 
@@ -2739,7 +2991,15 @@ top
 
 
 
+
+
+
+
 100
+
+
+
+
 
 
 
@@ -2785,9 +3045,17 @@ keyframes fb_bounce_in_v2 { 0% {
 
 
 
+
+
+
+
 %
 {
 transform
+
+
+
+
 
 
 
@@ -2825,7 +3093,15 @@ transform
 
 
 
+
+
+
+
 scale
+
+
+
+
 
 
 
@@ -2861,7 +3137,15 @@ scale
 
 
 
+
+
+
+
 1
+
+
+
+
 
 
 
@@ -2897,6 +3181,10 @@ scale
 
 
 
+
+
+
+
 .03
 
 
@@ -2916,7 +3204,15 @@ scale
 
 
 
+
+
+
+
 )
+
+
+
+
 
 
 
@@ -2953,7 +3249,15 @@ transform-origin
 
 
 
+
+
+
+
 :
+
+
+
+
 
 
 
@@ -2991,7 +3295,15 @@ bottom
 
 
 
+
+
+
+
 right
+
+
+
+
 
 
 
@@ -3011,6 +3323,10 @@ right
 ;
 }
 100
+
+
+
+
 
 
 
@@ -3050,6 +3366,10 @@ opacity
 
 
 
+
+
+
+
 :
 
 
@@ -3069,7 +3389,15 @@ opacity
 
 
 
+
+
+
+
 1
+
+
+
+
 
 
 
@@ -3106,7 +3434,15 @@ transform
 
 
 
+
+
+
+
 :
+
+
+
+
 
 
 
@@ -3142,7 +3478,15 @@ scale
 
 
 
+
+
+
+
 (
+
+
+
+
 
 
 
@@ -3182,7 +3526,15 @@ scale
 
 
 
+
+
+
+
 )
+
+
+
+
 
 
 
@@ -3201,6 +3553,10 @@ scale
 
 ;
 transform-origin
+
+
+
+
 
 
 
@@ -3238,6 +3594,10 @@ transform-origin
 
 
 
+
+
+
+
 bottom
 
 
@@ -3257,7 +3617,15 @@ bottom
 
 
 
+
+
+
+
 right
+
+
+
+
 
 
 
@@ -3303,9 +3671,17 @@ keyframes fb_bounce_in_from_left { 0% {
 
 
 
+
+
+
+
 %
 {
 transform
+
+
+
+
 
 
 
@@ -3343,7 +3719,15 @@ transform
 
 
 
+
+
+
+
 scale
+
+
+
+
 
 
 
@@ -3379,7 +3763,15 @@ scale
 
 
 
+
+
+
+
 1
+
+
+
+
 
 
 
@@ -3415,6 +3807,10 @@ scale
 
 
 
+
+
+
+
 .03
 
 
@@ -3434,7 +3830,15 @@ scale
 
 
 
+
+
+
+
 )
+
+
+
+
 
 
 
@@ -3471,7 +3875,15 @@ transform-origin
 
 
 
+
+
+
+
 :
+
+
+
+
 
 
 
@@ -3509,7 +3921,15 @@ bottom
 
 
 
+
+
+
+
 left
+
+
+
+
 
 
 
@@ -3529,6 +3949,10 @@ left
 ;
 }
 100
+
+
+
+
 
 
 
@@ -3568,6 +3992,10 @@ opacity
 
 
 
+
+
+
+
 :
 
 
@@ -3587,7 +4015,15 @@ opacity
 
 
 
+
+
+
+
 1
+
+
+
+
 
 
 
@@ -3624,7 +4060,15 @@ transform
 
 
 
+
+
+
+
 :
+
+
+
+
 
 
 
@@ -3660,7 +4104,15 @@ scale
 
 
 
+
+
+
+
 (
+
+
+
+
 
 
 
@@ -3700,7 +4152,15 @@ scale
 
 
 
+
+
+
+
 )
+
+
+
+
 
 
 
@@ -3719,6 +4179,10 @@ scale
 
 ;
 transform-origin
+
+
+
+
 
 
 
@@ -3756,6 +4220,10 @@ transform-origin
 
 
 
+
+
+
+
 bottom
 
 
@@ -3775,7 +4243,15 @@ bottom
 
 
 
+
+
+
+
 left
+
+
+
+
 
 
 
@@ -3821,9 +4297,17 @@ keyframes fb_bounce_out_v2 { 0% {
 
 
 
+
+
+
+
 %
 {
 opacity
+
+
+
+
 
 
 
@@ -3861,7 +4345,15 @@ opacity
 
 
 
+
+
+
+
 0
+
+
+
+
 
 
 
@@ -3898,7 +4390,15 @@ transform
 
 
 
+
+
+
+
 :
+
+
+
+
 
 
 
@@ -3934,7 +4434,15 @@ scale
 
 
 
+
+
+
+
 (
+
+
+
+
 
 
 
@@ -3974,7 +4482,15 @@ scale
 
 
 
+
+
+
+
 )
+
+
+
+
 
 
 
@@ -3993,6 +4509,10 @@ scale
 
 ;
 transform-origin
+
+
+
+
 
 
 
@@ -4030,6 +4550,10 @@ transform-origin
 
 
 
+
+
+
+
 bottom
 
 
@@ -4049,7 +4573,15 @@ bottom
 
 
 
+
+
+
+
 right
+
+
+
+
 
 
 
@@ -4095,9 +4627,17 @@ keyframes fb_bounce_out_from_left { 0% {
 
 
 
+
+
+
+
 %
 {
 opacity
+
+
+
+
 
 
 
@@ -4135,7 +4675,15 @@ opacity
 
 
 
+
+
+
+
 0
+
+
+
+
 
 
 
@@ -4172,7 +4720,15 @@ transform
 
 
 
+
+
+
+
 :
+
+
+
+
 
 
 
@@ -4208,7 +4764,15 @@ scale
 
 
 
+
+
+
+
 (
+
+
+
+
 
 
 
@@ -4248,7 +4812,15 @@ scale
 
 
 
+
+
+
+
 )
+
+
+
+
 
 
 
@@ -4267,6 +4839,10 @@ scale
 
 ;
 transform-origin
+
+
+
+
 
 
 
@@ -4304,6 +4880,10 @@ transform-origin
 
 
 
+
+
+
+
 bottom
 
 
@@ -4323,7 +4903,15 @@ bottom
 
 
 
+
+
+
+
 left
+
+
+
+
 
 
 
@@ -4368,9 +4956,17 @@ keyframes slideInFromBottom { 0% {
 
 
 
+
+
+
+
 %
 {
 opacity
+
+
+
+
 
 
 
@@ -4408,7 +5004,15 @@ opacity
 
 
 
+
+
+
+
 1
+
+
+
+
 
 
 
@@ -4445,7 +5049,15 @@ transform
 
 
 
+
+
+
+
 :
+
+
+
+
 
 
 
@@ -4481,7 +5093,15 @@ translateY
 
 
 
+
+
+
+
 (
+
+
+
+
 
 
 
@@ -4519,7 +5139,15 @@ translateY
 
 
 
+
+
+
+
 )
+
+
+
+
 
 
 
@@ -4563,9 +5191,17 @@ keyframes slideInFromBottomDelay { 0% {
 
 
 
+
+
+
+
 %
 {
 opacity
+
+
+
+
 
 
 
@@ -4603,7 +5239,15 @@ opacity
 
 
 
+
+
+
+
 0
+
+
+
+
 
 
 
@@ -4640,7 +5284,15 @@ transform
 
 
 
+
+
+
+
 :
+
+
+
+
 
 
 
@@ -4676,7 +5328,15 @@ translateY
 
 
 
+
+
+
+
 (
+
+
+
+
 
 
 
@@ -4712,8 +5372,16 @@ translateY
 
 
 
+
+
+
+
 %
 )
+
+
+
+
 
 
 
@@ -4751,9 +5419,17 @@ translateY
 
 
 
+
+
+
+
 %
 {
 opacity
+
+
+
+
 
 
 
@@ -4791,7 +5467,15 @@ opacity
 
 
 
+
+
+
+
 1
+
+
+
+
 
 
 
@@ -4828,7 +5512,15 @@ transform
 
 
 
+
+
+
+
 :
+
+
+
+
 
 
 
@@ -4864,7 +5556,15 @@ translateY
 
 
 
+
+
+
+
 (
+
+
+
+
 
 
 
@@ -4902,7 +5602,15 @@ translateY
 
 
 
+
+
+
+
 )
+
+
+
+
 
 
 
@@ -4971,7 +5679,7 @@ translateY
 								<input type="text" class="top-con-search-input" maxlength="30" id="cs-token-input" value="" onfocus="return dq_setTextbox(0,event);"
 									onmousedown="dq_setTextbox(1,event);" onkeydown="dq_setTextbox(1,event);" autocomplete="off"
 								/>
-								<button type="submit" class="top-con-search-btn" onclick="javascript:GA_Event('PC_공통','헤더_검색','검색'); goTopSearch(); return false;">
+								<button type="submit" class="top-con-search-btn" onclick="javascript:">
 									<span class="blind">검색</span>
 								</button>
 
@@ -4993,43 +5701,43 @@ translateY
 										<div class="search-box-cont">
 											<div class="search-box-best">
 												<ul class="search-box-bestnum left">
-													<li><a href="javascript:GA_Event('PC_검색창','인기검색어','명품'); goDirectSearchGnb('명품', 'top', 'search_favoriteKeyword', '명품', '1');"
+													<li><a href="javascript:"
 														class="lank"
 													>1. 명품</a><span class="status no"><span class="blind">no</span></span></li>
 													<li><a
-														href="javascript:GA_Event('PC_검색창','인기검색어','COS퀼티드백'); goDirectSearchGnb('COS퀼티드백', 'top', 'search_favoriteKeyword', 'COS퀼티드백', '2');"
+														href="javascript:"
 														class="lank"
 													>2. COS퀼티드백</a><span class="status no"><span class="blind">no</span></span></li>
 													<li><a
-														href="javascript:GA_Event('PC_검색창','인기검색어','COS 퀼티드'); goDirectSearchGnb('COS 퀼티드', 'top', 'search_favoriteKeyword', 'COS 퀼티드', '3');"
+														href="javascript:"
 														class="lank"
 													>3. COS 퀼티드</a><span class="status new">NEW</span></li>
 													<li><a
-														href="javascript:GA_Event('PC_검색창','인기검색어','오니츠카타이거'); goDirectSearchGnb('오니츠카타이거', 'top', 'search_favoriteKeyword', '오니츠카타이거', '4');"
+														href="javascript:"
 														class="lank"
 													>4. 오니츠카타이거</a><span class="status down"><span class="blind">down</span></span></li>
 													<li><a
-														href="javascript:GA_Event('PC_검색창','인기검색어','아크테릭스'); goDirectSearchGnb('아크테릭스', 'top', 'search_favoriteKeyword', '아크테릭스', '5');"
+														href="javascript:"
 														class="lank"
 													>5. 아크테릭스</a><span class="status down"><span class="blind">down</span></span></li>
 												</ul>
 												<ul class="search-box-bestnum right">
 													<li><a
-														href="javascript:GA_Event('PC_검색창','인기검색어','어그 울트라 미니'); goDirectSearchGnb('어그 울트라 미니', 'top', 'search_favoriteKeyword', '어그 울트라 미니', '6');"
+														href="javascript:"
 														class="lank"
 													>6. 어그 울트라 미니</a><span class="status down"><span class="blind">down</span></span></li>
 													<li><a
-														href="javascript:GA_Event('PC_검색창','인기검색어','니트 가디건'); goDirectSearchGnb('니트 가디건', 'top', 'search_favoriteKeyword', '니트 가디건', '7');"
+														href="javascript:"
 														class="lank"
 													>7. 니트 가디건</a><span class="status no"><span class="blind">no</span></span></li>
-													<li><a href="javascript:GA_Event('PC_검색창','인기검색어','양말'); goDirectSearchGnb('양말', 'top', 'search_favoriteKeyword', '양말', '8');"
+													<li><a href="javascript:"
 														class="lank"
 													>8. 양말</a><span class="status no"><span class="blind">no</span></span></li>
 													<li><a
-														href="javascript:GA_Event('PC_검색창','인기검색어','현대식품관'); goDirectSearchGnb('현대식품관', 'top', 'search_favoriteKeyword', '현대식품관', '9');"
+														href="javascript:"
 														class="lank"
 													>9. 현대식품관</a><span class="status new">NEW</span></li>
-													<li><a href="javascript:GA_Event('PC_검색창','인기검색어','슬리퍼'); goDirectSearchGnb('슬리퍼', 'top', 'search_favoriteKeyword', '슬리퍼', '10');"
+													<li><a href="javascript:"
 														class="lank"
 													>10. 슬리퍼</a><span class="status new">NEW</span></li>
 												</ul>
@@ -5066,48 +5774,48 @@ translateY
 						<ul>
 							<li class="myshop-info">
 								<div class="top-con-quick-my">
-									<a href="javascript:GA_Event('PC_공통','헤더_메뉴','로그인/회원'); openLoginPopup();">로그인/회원</a>
+									<a href="javascript:">로그인/회원</a>
 								</div> <!-- 20190118 추가 레이어팝업 -->
 								<div class="myshop-info-layer logout">
 									<!-- logout:비 로그인 상태, login:로그인 상태 -->
 									<div class="myshop-cont">
 										<ul class="myshop-cont-top">
-											<li class="myshop-hyundai"><a onclick="GA_Event('PC_공통','헤더_메뉴','마이현대');"
+											<li class="myshop-hyundai"><a onclick=
 												href="https://www.thehyundai.com/front/mpf/selectMyPageMain.thd?MainpageGroup=Util&amp;GroupbannerName=GNB_MyHyundai"
 											>마이현대</a></li>
-											<li><a onclick="GA_Event('PC_공통','헤더_메뉴','주문배송');"
+											<li><a onclick=
 												href="https://www.thehyundai.com/front/mpa/selectOrdDlvCrst.thd?MainpageGroup=Util&amp;GroupbannerName=GNB_Order"
 											>주문배송</a></li>
-											<li><a onclick="GA_Event('PC_공통','헤더_메뉴','나의찜');" href="https://www.thehyundai.com/front/mpc/sltdItemList.thd">나의 찜</a></li>
-											<li class="myshop-join"><a onclick="GA_Event('PC_공통','헤더_메뉴','회원가입');"
+											<li><a onclick=>나의 찜</a></li>
+											<li class="myshop-join"><a onclick=
 												href="https://www.thehyundai.com/front/cob/COBCertificationSelect.thd?MainpageGroup=util&amp;GroupbannerName=membership"
 											>회원가입</a></li>
 											<li class="myshop-logout"><a href="javascript:logOut();">로그아웃</a></li>
 										</ul>
 										<ul class="myshop-cont-body">
 											<li class="logout-only"><span class="tit">나의 쇼핑 혜택</span> <a href="javascript://"
-												onclick="javascript:GA_Event('PC_공통','헤더_메뉴','나의 쇼핑 혜택'); buyGradePup(event);return false;"
+												onclick="javascript:"
 											><span class="blind">자세히보기</span></a></li>
 											<li class="login-only"><span class="tit">등급</span> <span class="cont">혜택</span> <a href="javascript://"
-												onclick="javascript:GA_Event('PC_공통','헤더_메뉴','나의 쇼핑 혜택'); buyGradePup(event, 'MainpageGroup=util&amp;GroupbannerName=memberLevel_notice');return false;"
+												onclick="javascript:"
 											><span class="blind">자세히보기</span></a></li>
-											<li><span class="tit">쿠폰</span> <span class="cont login-only">0장</span> <a onclick="GA_Event('PC_공통','헤더_메뉴','쿠폰');"
+											<li><span class="tit">쿠폰</span> <span class="cont login-only">0장</span> <a onclick=
 												href="https://www.thehyundai.com/front/mpe/selectCopnList.thd?MainpageGroup=util&amp;GroupbannerName=coupon"
 											><span class="blind">자세히보기</span></a></li>
 											<li><span class="tit">H.Point</span> <span class="cont login-only">0P</span> <a onclick="goHpoint()" href="#"><span class="blind">자세히보기</span></a></li>
-											<li><span class="tit">더머니</span> <span class="cont login-only">0원</span> <a onclick="GA_Event('PC_공통','헤더_메뉴','더머니');"
+											<li><span class="tit">더머니</span> <span class="cont login-only">0원</span> <a onclick=
 												href="https://www.thehyundai.com/front/mpe/selectHPntTabPage.thd?MainpageGroup=util&amp;GroupbannerName=theMoney"
 											><span class="blind">자세히보기</span></a></li>
 										</ul>
 									</div>
 								</div> <!-- // 20190118 추가 레이어팝업 -->
 							</li>
-							<li><a onclick="GA_Event('PC_공통','헤더_메뉴', '고객센터');"
+							<li><a onclick=
 								href="https://www.thehyundai.com/front/cca/main.thd?MainpageGroup=Util&amp;GroupbannerName=GNB_Center"
 							>고객센터</a></li>
 							<li>
 								<div class="top-con-quick-basket">
-									<a onclick="GA_Event('PC_공통','헤더_메뉴', '장바구니');"
+									<a onclick=
 										href="https://www.thehyundai.com/front/odb/basktList.thd?MainpageGroup=Util&amp;GroupbannerName=GNB_Basket"
 									>장바구니</a><span class="basket-num" id="quick_baskt_num">0</span>
 								</div>
@@ -5168,16 +5876,8 @@ translateY
 
 						<div class="join-body">
 							<form name="registMemberForm" method="post" id="memberJoinForm" action="/member/joinform" th:object="${memberFormDto}">
-								<input type="hidden" name="emailCertNo" />
-								<input type="hidden" name="hmallAgreementYn" value="Y" />
-								<input type="hidden" name="privacyAgreementYn" value="Y" />
-								<input type="hidden" name="emaliCertYn" value="Y" />
-								<input type="hidden" name="marketingAgreementYn" value="Y" />
-								<input type="hidden" name="b2eCustNo" value="" />
-								<!-- 전자상거래 규제 개선 -->
-								<input type="hidden" name="popupYn" value="N" />
-								<input type="hidden" name="token" />
-								<input type="hidden" name="snsType" />
+
+								<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
 
 								<div class="join-block">
 									<h3>
@@ -5195,9 +5895,9 @@ translateY
 											<div class="ccs-input-wrap">
 												<p class="guide">이메일 인증을 위해 현재 사용하고 계시는 이메일 주소를 입력해주세요.</p>
 												<div class="ccs-input">
-													<input type="text" title="이메일 아이디" maxlength="30" placeholder="이메일주소" name="emailHead" value="" class="email-id" />
+													<input type="text" title="이메일 아이디" maxlength="30" placeholder="이메일주소" id="emailHead" name="emailHead" value="" class="email-id" />
 													<span class="scol">@</span>
-													<input type="text" title="이메일 주소" maxlength="65" name="emailDomain" value="" class="email-domain" />
+													<input type="text" title="이메일 주소" maxlength="65" name="emailDomain" value="" id="email-domain" class="email-domain" />
 													<div class="selectric-wrapper" style="width: 140px">
 														<div class="selectric-hide-select">
 															<select name="emailDomainSelect" title="메일 주소 선택" onchange="changeEmailDomain(this);" tabindex="0" style="display: none">
@@ -5275,14 +5975,6 @@ translateY
 											</div>
 										</div>
 										<!--//완료-->
-										<!--완료(모바일)-->
-										<div class="cert-complete" style="display: none">
-											<div class="ccs-result text">
-												<span><i>인증</i>이 완료되었습니다.</span>
-												<button class="btn" onclick="resetCert(); return false;">다시 인증하기</button>
-											</div>
-										</div>
-										<!--//완료-->
 									</div>
 								</div>
 
@@ -5351,12 +6043,6 @@ translateY
 											<div class="row">
 
 												<input type="hidden" name="mobilePhone">
-												<input type="hidden" name="hpTel">
-												<input type="hidden" name="certSeq" value="0">
-												<input type="hidden" name="mobileDdd">
-												<input type="hidden" name="mobilePhone1">
-												<input type="hidden" name="mobilePhone2">
-
 
 												<input type="text" title="Input-phone" class="onlyNumberInput" name="mPhone" th:field="*{mPhone}" maxlength="13" placeholder="휴대폰번호"
 													disabled="disabled"
@@ -5398,25 +6084,25 @@ translateY
 				<div class="row">
 					<div class="hyundai-menu">
 						<span class="tit"> <a href="javascript:;"
-							onclick="javascript:GA_Event('PC_공통','푸터_메뉴','현대백화점그룹'); dummyLogCatch('http://www.ehyundai.com/newPortal/ir', 'Footer', 'group', 'blank', 'Y', null)"
+							onclick="javascript:"
 						>현대백화점그룹</a>
 						</span>
 						<ul>
-							<li><a onclick="GA_Event('PC_공통','푸터_메뉴','공지사항');"
+							<li><a onclick=
 								href="http://www.thehyundai.com/front/ccb/noticeList.thd?MainpageGroup=Footer&amp;GroupbannerName=notice"
 							>공지사항</a></li>
 
 							<li><a href="javascript:;"
-								onclick="javascript:GA_Event('PC_공통','푸터_메뉴','윤리경영'); dummyLogCatch('http://www.ehyundai.com/newPortal/ir/ETH/ETH000001.do?ir=3', 'Footer', 'legal', 'blank', 'Y', null)"
+								onclick="javascript:"
 							>윤리경영</a></li>
 							<li><a href="javascript:;"
-								onclick="javascript:GA_Event('PC_공통','푸터_메뉴','사회공헌'); dummyLogCatch('http://www.ehyundai.com/newPortal/csr/main.do', 'Footer', 'legal', 'blank', 'Y', null)"
+								onclick="javascript:"
 							>사회공헌</a></li>
-							<li><a onclick="GA_Event('PC_공통','푸터_메뉴','이용약관');"
+							<li><a onclick=
 								href="http://www.thehyundai.com/front/cua/viewPolicyPup.thd?view=1&amp;MainpageGroup=Footer&amp;GroupbannerName=agree" data-toggle="winpopup"
 								data-api="center,900,770,scrollbars" target="_blank"
 							>이용약관</a></li>
-							<li><a onclick="GA_Event('PC_공통','푸터_메뉴','개인정보 처리방침');"
+							<li><a onclick=
 								href="http://www.thehyundai.com/front/cua/viewPolicyPup.thd?view=2&amp;MainpageGroup=Footer&amp;GroupbannerName=private"
 								data-toggle="winpopup" data-api="center,900,770,scrollbars" target="_blank"
 							><strong>개인정보 처리방침</strong></a></li>
