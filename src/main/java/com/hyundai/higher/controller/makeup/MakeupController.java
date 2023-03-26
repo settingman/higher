@@ -39,6 +39,7 @@ import lombok.extern.log4j.Log4j2;
  * 2023. 3. 21.     이세아       html 연결 및 makeup api 연동
  * 2023. 3. 23.		이세아	   makeup api 색상 선택별로 변경 가능하게 함
  * 2023. 3. 25.		이세아	   ajax를 위한 json 타입으로 return 변경, ajax done
+ * 2023. 3. 26. 	이세아	   makeup result를 위한 controller 추가
  *     </pre>
  */
 
@@ -47,7 +48,7 @@ import lombok.extern.log4j.Log4j2;
 @RequestMapping("/makeup")
 @Controller
 public class MakeupController {
-	
+
 	@GetMapping("/reserv_main")
 	public void reserv_main() {
 		log.info("==== Make-on 메인 페이지====");
@@ -55,9 +56,9 @@ public class MakeupController {
 
 	@GetMapping("/reserv_type")
 	public void reserv_type() {
-		log.info("==== Make-on 메인 페이지====");
+		log.info("==== Make-on 예약 타입 선정 ====");
 	}
-	
+
 	@GetMapping("/reserv_offline")
 	public void reserv_offline() {
 		log.info("==== 예약 디테일 입력 페이지 : 오프라인 전용 ====");
@@ -67,7 +68,54 @@ public class MakeupController {
 	public void reserv_online() {
 		log.info("==== 예약 디테일 입력 페이지 : 온라인 전용 ====");
 	}
+	
+	@GetMapping("/makeupform")
+	public String makeupForm() {
+		log.info("====== 플라스크 연동 메이크업 시연 ======");
+		return "makeupform";
+	}
 
+	// 결과 DB 연동 코드 -> result 보내기
+	// Flask api 연결 코드 -> 파이썬 세팅된 컴퓨터만 가능
+	@PostMapping("/makeupresult")
+	public String MakeupResult(@RequestParam("filePath") String filePath, @RequestParam("lips") String lips,
+			@RequestParam("blush") String blush, @RequestParam("foundation") String foundation, Model model)
+			throws IOException {
+
+		log.info("선택한 입술 색상 : " + lips);
+		log.info("선택된 블러쉬 색상 : " + blush);
+		log.info("선택된 파운데이션 색상 : " + foundation);
+		log.info("원본 파일 경로 : " + filePath);
+
+		RestTemplate restTemplate = new RestTemplate();
+
+		MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
+		map.add("filePath", filePath);
+		map.add("lips", lips);
+		map.add("blush", blush);
+		map.add("foundation", foundation);
+
+		String apiUrl = "http://127.0.0.1:5000/apply-makeup/";
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+		HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(map, headers);
+		String responseJson = restTemplate.postForObject(apiUrl, request, String.class);
+
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String, String> responseData = mapper.readValue(responseJson, new TypeReference<Map<String, String>>() {
+		});
+
+		model.addAttribute("lips", responseData.get("lips"));
+		model.addAttribute("blush", responseData.get("blush"));
+		model.addAttribute("foundation", responseData.get("foundation"));
+		model.addAttribute("output_filepath", responseData.get("output_filepath"));
+
+		log.info(responseData);
+
+		return "makeup-result";
+	}
+
+	// ajax용 코드
 	// Flask api 연결 코드 -> 파이썬 세팅된 컴퓨터만 가능
 	@PostMapping("/makeup.api")
 	@ResponseBody
@@ -105,6 +153,7 @@ public class MakeupController {
 
 		log.info(responseData);
 
+		//ajax 처리를 위한 json 추가
 		try {
 			String json = mapper.writeValueAsString(responseData);
 			return ResponseEntity.ok(json);

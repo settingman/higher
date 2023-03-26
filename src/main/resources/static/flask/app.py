@@ -8,6 +8,23 @@ import time
 import json
 import boto3
 
+#
+ # @since : 2023. 3. 13.
+ # @FileName: app.py
+ # @author : 이세아
+ # @설명 : 색조 화장기능 실행 파이썬
+ # 
+ # 수정일           수정자               수정내용
+ # ----------      --------    ---------------------------
+ # 2023. 3. 13.     이세아      create
+ # 2023. 3. 14.     이세아      flask 및 기본 세팅
+ # 2023. 3. 15.     이세아      메이크업 기능 작동 확인
+ # 2023. 3. 19.     이세아      Spring boot와 연동 완료
+ # 2023. 3. 23.     이세아      색상 변경 확인 및 구체화 완료
+ # 2023. 3. 24.     이세아      AWS s3와 연동 완료
+# 
+
+
 app = Flask(__name__)
 CORS(app)
 
@@ -33,7 +50,7 @@ def s3_connection():
         
 s3 = s3_connection()
 
-@app.route('/apply-makeup/', methods=['POST'])
+@app.route('/makeup/apply-makeup/', methods=['POST'])
 def try_makeup():
     lips = request.form['lips']
     blush = request.form['blush']
@@ -82,7 +99,7 @@ def try_makeup():
     output_blush = apply_makeup(image, False, 'blush', color, 1,False)
     output_foundation = apply_makeup(image, False, 'foundation',(0,0,0), gamma, False)
     
-    # Blend the three output images together
+    # 혼합
     alpha1 = 0.5 
     alpha2 = 0.3  
     alpha3 = 0.2  
@@ -97,6 +114,7 @@ def try_makeup():
     print(output_filepath_local)
     print(output_filename)
     
+    # s3에 저장
     output_filepath= f"https://s3.ap-northeast-2.amazonaws.com/hbeauty.bucket/{output_filename}"
     
     try:

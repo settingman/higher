@@ -4,6 +4,22 @@ from landmarks import detect_landmarks, normalize_landmarks, plot_landmarks
 from mediapipe.python.solutions.face_detection import FaceDetection
 from typing import Tuple
 
+#
+ # @since : 2023. 3. 09.
+ # @FileName:main.py
+ # @author : 이세아
+ # @설명 : 색조 화장기능 메인 util
+ # @참조 : https://github.com/Charan0/Virtual-Makeup.git
+ # 
+ # 수정일           수정자               수정내용
+ # ----------      --------    ---------------------------
+ # 2023. 3. 09.     이세아      코드 확인
+ # 2023. 3. 12.     이세아      색상 구체화 위한 color 변수 설정
+ # 2023. 3. 15.     이세아      foundation 기능을 위한 gamma 변수 설정
+ # 2023. 3. 15.     이세아      색상 blend 설정을 위한 채도값 변경
+ # 2023. 3. 23.     이세아      기능 구체화 확인 완료
+# 
+
 upper_lip = [61, 185, 40, 39, 37, 0, 267, 269, 270, 408, 415, 272, 271, 268, 12, 38, 41, 42, 191, 78, 76]
 lower_lip = [61, 146, 91, 181, 84, 17, 314, 405, 320, 307, 308, 324, 318, 402, 317, 14, 87, 178, 88, 95]
 face_conn = [10, 338, 297, 332, 284, 251, 389, 264, 447, 376, 433, 288, 367, 397, 365, 379, 378, 400, 377, 152,
@@ -23,7 +39,7 @@ def apply_makeup(src: np.ndarray, is_stream: bool, feature: str, color: Tuple[in
         feature_landmarks = normalize_landmarks(ret_landmarks, height, width, cheeks)
         mask = blush_mask(src, feature_landmarks, color, 50)
         output = cv2.addWeighted(src, 1.0, mask, 1, 1.0)
-    else:  # Defaults to blush for any other thing
+    else:  
         skin_mask = mask_skin(src)
         output = np.where(src * skin_mask >= 1, gamma_correction(src, gamma), src)
     if show_landmarks and feature_landmarks is not None:
@@ -31,21 +47,21 @@ def apply_makeup(src: np.ndarray, is_stream: bool, feature: str, color: Tuple[in
     return output
 
 
-def apply_feature(src: np.ndarray, feature: str, landmarks: list, color: Tuple[int, int, int], normalize: bool = False,
+def apply_feature(src: np.ndarray, feature: str, landmarks: list, color: Tuple[int, int, int], gamma: int, normalize: bool = False,
                   show_landmarks: bool = False):
     height, width, _ = src.shape
     if normalize:
         landmarks = normalize_landmarks(landmarks, height, width)
     if feature == 'lips':
         mask = lip_mask(src, landmarks, color)
-        output = cv2.addWeighted(src, 1.0, mask, 1.0, 1.0)
+        output = cv2.addWeighted(src, 1.0, mask, 1, 1.0)
     elif feature == 'blush':
         mask = blush_mask(src, landmarks, color, 50)
-        output = cv2.addWeighted(src, 1.0, mask, 1.0, 1.0)
-    else:  # Does not require any landmarks for skin masking -> Foundation
+        output = cv2.addWeighted(src, 1.0, mask, 1, 1.0)
+    else: 
         skin_mask = mask_skin(src)
-        output = np.where(src * skin_mask >= 1, gamma_correction(src, 1.75), src)
-    if show_landmarks:  # Refrain from using this during an API Call
+        output = np.where(src * skin_mask >= 1, gamma_correction(src, gamma), src)
+    if show_landmarks:  
         plot_landmarks(src, landmarks, True)
     return output
 
@@ -58,33 +74,27 @@ def lip_mask(src: np.ndarray, points: np.ndarray, color: Tuple[int, int, int]):
 
 
 def blush_mask(src: np.ndarray, points: np.ndarray, color: Tuple[int, int, int], radius: int):
-    # TODO: Make the effect more subtle
-    mask = np.zeros_like(src)  # Mask that will be used for the cheeks
+    mask = np.zeros_like(src)
     for point in points:
-        mask = cv2.circle(mask, point, radius, color, cv2.FILLED)  # Blush => Color filled circle
-        x, y = point[0] - radius, point[1] - radius  # Get the top-left of the mask
-        mask[y:y + 2 * radius, x:x + 2 * radius] = vignette(mask[y:y + 2 * radius, x:x + 2 * radius],
-                                                            10)  # Vignette on the mask
+        mask = cv2.circle(mask, point, radius, color, cv2.FILLED)
+        x, y = point[0] - radius, point[1] - radius 
+        mask[y:y + 2 * radius, x:x + 2 * radius] = vignette(mask[y:y + 2 * radius, x:x + 2 * radius], 10) 
 
     return mask
 
 
 def mask_skin(src: np.ndarray):
-    """
-    Given a source image of a person (face image)
-    returns a mask that can be identified as the skin
-    """
-    lower = np.array([0, 133, 77], dtype='uint8')  # The lower bound of skin color
-    upper = np.array([255, 173, 127], dtype='uint8')  # Upper bound of skin color
-    dst = cv2.cvtColor(src, cv2.COLOR_BGR2YCR_CB)  # Convert to YCR_CB
-    skin_mask = cv2.inRange(dst, lower, upper)  # Get the skin
+
+    lower = np.array([0, 133, 77], dtype='uint8') 
+    upper = np.array([255, 173, 127], dtype='uint8')  
+    dst = cv2.cvtColor(src, cv2.COLOR_BGR2YCR_CB) 
+    skin_mask = cv2.inRange(dst, lower, upper)  
     kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (5, 5))
-    skin_mask = cv2.dilate(skin_mask, kernel, iterations=2)[..., np.newaxis]  # Dilate to fill in blobs
+    skin_mask = cv2.dilate(skin_mask, kernel, iterations=2)[..., np.newaxis] 
 
     if skin_mask.ndim != 3:
         skin_mask = np.expand_dims(skin_mask, axis=-1)
-    return (skin_mask / 255).astype("uint8")  # A binary mask containing only 1s and 0s
-
+    return (skin_mask / 255).astype("uint8") 
 
 def face_mask(src: np.ndarray, points: np.ndarray):
     mask = np.zeros_like(src)
@@ -93,7 +103,6 @@ def face_mask(src: np.ndarray, points: np.ndarray):
 
 
 def clicked_at(event, x, y, flags, params):
-    # TODO: Add some atol to np.allclose
     if event == cv2.EVENT_LBUTTONDOWN:
         print(f"Clicked at {x, y}")
         point = np.array([x, y])
@@ -120,7 +129,7 @@ def vignette(src: np.ndarray, sigma: int):
 
 def face_bbox(src: np.ndarray, offset_x: int = 0, offset_y: int = 0):
     height, width, _ = src.shape
-    with FaceDetection(model_selection=0) as detector:  # 0 -> dist <= 2mts from the camera
+    with FaceDetection(model_selection=0) as detector: 
         results = detector.process(cv2.cvtColor(src, cv2.COLOR_BGR2RGB))
         if not results.detections:
             return None
@@ -134,13 +143,8 @@ def face_bbox(src: np.ndarray, offset_x: int = 0, offset_y: int = 0):
 
 
 def gamma_correction(src: np.ndarray, gamma: float, coefficient: int = 1):
-    """
-    Performs gamma correction on a source image
-    gamma > 1 => Darker Image
-    gamma < 1 => Brighted Image
-    """
     dst = src.copy()
-    dst = dst / 255.  # Converted to float64
+    dst = dst / 255. 
     dst = coefficient * np.power(dst, gamma)
     dst = (dst * 255).astype('uint8')
     return dst
