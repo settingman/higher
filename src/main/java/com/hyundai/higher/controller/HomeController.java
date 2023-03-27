@@ -32,12 +32,12 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 public class HomeController {
 
-	@GetMapping(value = "/main")
+	@GetMapping(value = "/")
 	public String memberForm(Model model) {
 
 		log.info("main");
 
-		return "main";
+		return "test";
 	}
 
 	@GetMapping(value = "/test")

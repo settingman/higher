@@ -50,7 +50,7 @@ public class OrderController {
 		model.addAttribute("cartItems", cartItems);
 		// 장바구니 객체를 리스트로 담아 넘긴다.
 
-		return "/order/order";
+		return "order/order";
 	}
 
 }

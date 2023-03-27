@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hyundai.higher.mapper.beauty.BeautyMapper;
 import com.hyundai.higher.webRTC.dto.ReservationDTO;
@@ -27,13 +28,14 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Controller
 @RequiredArgsConstructor
+@RequestMapping("/rtc")
 @Slf4j
 public class MainController {
 
 	private final ChatServiceMain chatServiceMain;
 	private final BeautyMapper beautyMapper;
 
-	@GetMapping("/")
+	@GetMapping("/room")
 	public String goChatRoom(Model model) {
 
 		model.addAttribute("list", chatServiceMain.findAllRoom());
@@ -42,9 +44,6 @@ public class MainController {
 		
 		model.addAttribute("reservations", reservations);
 		
-		log.info(reservations.toString());
-		
-
 		log.debug("SHOW ALL ChatList {}", chatServiceMain.findAllRoom());
 		return "webRTC/roomlist";
 	}
