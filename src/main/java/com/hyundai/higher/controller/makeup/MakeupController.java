@@ -59,25 +59,6 @@ public class MakeupController {
 	@Autowired
 	private MakeupService service;
 
-	@GetMapping("/reserv_main")
-	public void reserv_main() {
-		log.info("==== Make-on 메인 페이지====");
-	}
-
-	@GetMapping("/reserv_type")
-	public void reserv_type() {
-		log.info("==== Make-on 예약 타입 선정 ====");
-	}
-
-	@GetMapping("/reserv_offline")
-	public void reserv_offline() {
-		log.info("==== 예약 디테일 입력 페이지 : 오프라인 전용 ====");
-	}
-
-	@GetMapping("/reserv_online")
-	public void reserv_online() {
-		log.info("==== 예약 디테일 입력 페이지 : 온라인 전용 ====");
-	}
 	
 	@GetMapping("/makeupform")
 	public String makeupForm() {

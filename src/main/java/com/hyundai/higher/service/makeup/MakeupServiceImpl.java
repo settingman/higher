@@ -18,17 +18,17 @@ public class MakeupServiceImpl implements MakeupService{
 
 	@Override
 	public List<LipVO> pickLip(String optcolor) {
-		return mapper.pickLip(optcolor);
+		return mapper.PickLip(optcolor);
 	}
 
 	@Override
 	public List<BlushVO> pickBlush(String optcolor) {
-		return mapper.pickBlush(optcolor);
+		return mapper.PickBlush(optcolor);
 	}
 
 	@Override
 	public List<FoundationVO> pickFoundation(String optcolor) {
-		return mapper.pickFoundation(optcolor);
+		return mapper.PickFoundation(optcolor);
 	}
 
 }

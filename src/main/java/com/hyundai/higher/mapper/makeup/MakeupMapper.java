@@ -25,12 +25,12 @@ import com.hyundai.higher.domain.makeup.LipVO;
 public interface MakeupMapper {
 	
 	// Lip 제품 선정
-	public List<LipVO> pickLip(String optcolor);
+	public List<LipVO> PickLip(String optcolor);
 	
 	// Blush 제품 선정
-	public List<BlushVO> pickBlush(String optcolor);
+	public List<BlushVO> PickBlush(String optcolor);
 	
 	// Foundation 제품 선정
-	public List<FoundationVO> pickFoundation(String optcolor);
+	public List<FoundationVO> PickFoundation(String optcolor);
 
 }
