@@ -1,0 +1,227 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Makeup</title>
+</head>
+<body>
+	<div class="logo" style="text-align: center; margin: 50;">
+		<img class="output" src="../../img/logo.png"
+			style="width: fit-content;">
+	</div>
+	<form method="post" enctype="multipart/form-data"
+		th:action="@{/makeup/makeup_result}">
+		<div class="makeupwrapper"
+			style="grid-template-columns: repeat(2, 1fr); place-items: center; display: grid; margin: 0 50 0 50;">
+			<div class="wrapper1">
+				<div class="faceupload"
+					style="width: 600px; height: 800px; background: darkgray; float: left;">
+					<img class="face" id="output-filepath" name="output_filepath"
+						src="" value="output-filepath">
+				</div>
+			</div>
+			<div class="wrapper2">
+				<div class="lip"
+					style="font-size: 30; text-align: center; margin: 30px;">Lips</div>
+				<div class="colorwrapper">
+					<div class="lips"
+						style="text-align: center; display: grid; grid-template-columns: repeat(5, 1fr); width: 800px; height: 180px;">
+						<input type="radio" id="none" name="lips" value="none"
+							checked="checked"><label for="none"
+							style="background: lightgray;"></label> <input type="radio"
+							id="orange" name="lips" value="orange"><label
+							for="orange" style="background: rgb(255, 127, 0);"></label> <input
+							type="radio" id="lightpurple" name="lips" value="lightpurple"><label
+							for="lightpurple" style="background: #673AB7;"></label> <input
+							type="radio" id="pink" name="lips" value="pink"><label
+							for="pink" style="background: rgb(250, 5, 234);"></label> <input
+							type="radio" id="salmon" name="lips" value="salmon"><label
+							for="salmon" style="background: rgb(255, 150, 118);"></label> <input
+							type="radio" id="darkrose" name="lips" value="darkrose"><label
+							for="darkrose" style="background: rgb(195, 24, 83);"></label> <input
+							type="radio" id="rose" name="lips" value="rose"><label
+							for="rose" style="background: rgb(250, 5, 5);"></label> <input
+							type="radio" id="purple" name="lips" value="purple"><label
+							for="purple" style="background: rgb(92, 0, 86);"></label> <input
+							type="radio" id="red" name="lips" value="red"><label
+							for="red" style="background: red;"></label> <input type="radio"
+							id="coral" name="lips" value="coral"><label for="coral"
+							style="background: rgb(175, 53, 167);"></label>
+					</div>
+				</div>
+
+				<div class="blushs"
+					style="font-size: 30; text-align: center; margin: 30px;">Blush</div>
+				<div class="colorwrapper">
+					<div class="blush"
+						style="text-align: center; display: grid; grid-template-columns: repeat(5, 1fr); width: 800px; height: 180px;">
+						<input type="radio" id="none1" name="blush" value="none"
+							checked="checked"><label for="none1"
+							style="background: lightgray;"></label> <input type="radio"
+							id="orange1" name="blush" value="orange"><label
+							for="orange1" style="background: rgb(255, 127, 0);"></label> <input
+							type="radio" id="lightpurple1" name="blush" value="lightpurple"><label
+							for="lightpurple1" style="background: #673AB7;"></label> <input
+							type="radio" id="pink1" name="blush" value="pink"><label
+							for="pink1" style="background: rgb(250, 5, 234);"></label> <input
+							type="radio" id="salmon1" name="blush" value="salmon"><label
+							for="salmon1" style="background: rgb(255, 150, 118);"></label> <input
+							type="radio" id="darkrose1" name="blush" value="darkrose"><label
+							for="darkrose1" style="background: rgb(195, 24, 83);"></label> <input
+							type="radio" id="rose1" name="blush" value="rose"><label
+							for="rose1" style="background: rgb(250, 5, 5);"></label> <input
+							type="radio" id="purple1" name="blush" value="purple"><label
+							for="purple1" style="background: rgb(92, 0, 86);"></label> <input
+							type="radio" id="beige1" name="blush" value="beige"><label
+							for="beige1" style="background: rgb(255, 121, 121);"></label> <input
+							type="radio" id="coral1" name="blush" value="coral"><label
+							for="coral1" style="background: rgb(175, 53, 167);"></label>
+					</div>
+				</div>
+
+				<div style="font-size: 30; text-align: center; margin: 30px;">Foundation</div>
+				<div class="colorwrapper">
+					<div class="foundation"
+						style="text-align: center; display: grid; grid-template-columns: repeat(5, 1fr); width: 800px; height: 90px;">
+						<input type="radio" id="none2" name="foundation" value="none"
+							checked="checked"><label for="none2"
+							style="background: lightgray;"></label> <input type="radio"
+							id="dark" name="foundation" value="dark"><label
+							for="dark" style="background: rgba(175, 149, 115, 0.815);"></label>
+						<input type="radio" id="warmbeige" name="foundation"
+							value="warmbeige"><label for="warmbeige"
+							style="background: rgb(211, 199, 199);"></label> <input
+							type="radio" id="coolpink" name="foundation" value="coolpink"><label
+							for="coolpink" style="background: #fde3f3;"></label> <input
+							type="radio" id="lightbeige" name="foundation" value="lightbeige"><label
+							for="lightbeige" style="background: rgb(230, 227, 216);"></label>
+					</div>
+				</div>
+
+				<input type="hidden" name="filePath" class="filePath"
+					value="C:\shin.jpg">
+				<p style="text-align: center;">
+					<button type="submit">확인</button>
+				</p>
+			</div>
+		</div>
+	</form>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$('input[type="radio"]').click(function() {
+				var filePath = $(".filePath").val();
+				var lips = $("input[name=lips]:checked").val();
+				var blush = $("input[name=blush]:checked").val();
+				var foundation = $("input[name=foundation]:checked").val();
+
+				console.log("filePath: " + filePath);
+				console.log("lips: " + lips);
+				console.log("blush: " + blush);
+				console.log("foundation: " + foundation);
+
+				if ($(this).is(':checked')) {
+
+					$.ajax({
+						url : "/makeup/makeup.api",
+						type : "POST",
+						data : {
+							filePath : filePath,
+							lips : lips,
+							blush : blush,
+							foundation : foundation
+						},
+						success : function(response) {
+							console.log(response);
+							var responseData = JSON.parse(response);
+							var outputFilePath = responseData.output_filepath;
+							$('#output-filepath').attr('src', outputFilePath);
+							$('#output-filepath').attr('val', outputFilePath);
+						},
+						error : function(error) {
+							console.log(error);
+						}
+					});
+				}
+				;
+			});
+		});
+	</script>
+	<style>
+.lips input[type=radio] {
+	display: none;
+}
+
+.lips input[type=radio]+label {
+	display: inline-block;
+	cursor: pointer;
+	height: 70;
+	width: 70;
+	border-radius: 50%;
+	border: 5px solid white;
+	margin: auto;
+}
+
+.lips input[type=radio]+label {
+	color: #333;
+}
+
+.lips input[type=radio]:checked+label {
+	background-color: #333;
+	color: #fff;
+	border-color: black;
+	border-width: 5px;
+}
+
+.blush input[type=radio] {
+	display: none;
+}
+
+.blush input[type=radio]+label {
+	display: inline-block;
+	cursor: pointer;
+	height: 70;
+	width: 70;
+	border-radius: 50%;
+	border: 5px solid white;
+	margin: auto;
+}
+
+.blush input[type=radio]+label {
+	color: #333;
+}
+
+.blush input[type=radio]:checked+label {
+	background-color: #333;
+	color: #fff;
+	border-color: black;
+	border-width: 5px;
+}
+
+.foundation input[type=radio] {
+	display: none;
+}
+
+.foundation input[type=radio]+label {
+	display: inline-block;
+	cursor: pointer;
+	height: 70;
+	width: 70;
+	border-radius: 50%;
+	border: 5px solid white;
+	margin: auto;
+}
+
+.foundation input[type=radio]+label {
+	color: #333;
+}
+
+.foundation input[type=radio]:checked+label {
+	background-color: #333;
+	color: #fff;
+	border-color: black;
+	border-width: 5px;
+}
+</style>
+</body>
+</html>

@@ -55,63 +55,52 @@ import lombok.extern.log4j.Log4j2;
 @RequestMapping("/makeup")
 @Controller
 public class MakeupController {
-	
+
 	@Autowired
 	private MakeupService service;
 
-	
-	@GetMapping("/makeupform")
-	public String makeupForm() {
+	@GetMapping("/makeup_form")
+	public void makeupForm() {
 		log.info("====== 플라스크 연동 메이크업 시연 ======");
-		return "makeupform";
+	}
+
+	@GetMapping("/finish")
+	public void makeupFinish() {
+		log.info("====== 결과 전송 + 상담 완료 백오피스 창 =====");
+	}
+
+	@PostMapping("/makeup_finish")
+	public String ResultSend(@RequestParam("lippcode") String lippcode, @RequestParam("lipopt") String lipopt) {
+
+		return ("/makeup/makeup_finish");
 	}
 
 	// 결과 DB 연동 코드 -> result 보내기
 	// Flask api 연결 코드 -> 파이썬 세팅된 컴퓨터만 가능
-	@PostMapping("/makeupresult")
+	@PostMapping("/makeup_result")
 	public String MakeupResult(@RequestParam("filePath") String filePath, @RequestParam("lips") String lips,
-			@RequestParam("blush") String blush, @RequestParam("foundation") String foundation, Model model)
-			throws IOException {
+			@RequestParam("blush") String blush, @RequestParam("foundation") String foundation,
+			@RequestParam("output_filepath") String output_filepath, Model model) throws IOException {
 
 		log.info("선택한 입술 색상 : " + lips);
 		log.info("선택된 블러쉬 색상 : " + blush);
 		log.info("선택된 파운데이션 색상 : " + foundation);
 		log.info("원본 파일 경로 : " + filePath);
+		log.info("결과 이미지 : " + output_filepath);
 
-		RestTemplate restTemplate = new RestTemplate();
-
-		MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
-		map.add("filePath", filePath);
-		map.add("lips", lips);
-		map.add("blush", blush);
-		map.add("foundation", foundation);
-
-		String apiUrl = "http://127.0.0.1:5000/apply-makeup/";
-		HttpHeaders headers = new HttpHeaders();
-		headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-		HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(map, headers);
-		String responseJson = restTemplate.postForObject(apiUrl, request, String.class);
-
-		ObjectMapper mapper = new ObjectMapper();
-		Map<String, String> responseData = mapper.readValue(responseJson, new TypeReference<Map<String, String>>() {
-		});
-
-		model.addAttribute("lips", responseData.get("lips"));
-		model.addAttribute("blush", responseData.get("blush"));
-		model.addAttribute("foundation", responseData.get("foundation"));
-		model.addAttribute("output_filepath", responseData.get("output_filepath"));
-
-		log.info(responseData);
-		
 		List<LipVO> liplist = service.pickLip(lips);
 		List<BlushVO> blushlist = service.pickBlush(blush);
 		List<FoundationVO> foundationlist = service.pickFoundation(foundation);
-		
+
 		model.addAttribute("liplist", liplist);
 		model.addAttribute("blushlist", blushlist);
 		model.addAttribute("foundationlist", foundationlist);
 
-		return "makeup_result";
+		log.info(liplist);
+		log.info(blushlist);
+		log.info(foundationlist);
+
+		return "/makeup/makeup_result";
 	}
 
 	// ajax용 코드
@@ -152,7 +141,7 @@ public class MakeupController {
 
 		log.info(responseData);
 
-		//ajax 처리를 위한 json 추가
+		// ajax 처리를 위한 json 추가
 		try {
 			String json = mapper.writeValueAsString(responseData);
 			return ResponseEntity.ok(json);

@@ -3,27 +3,42 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.hyundai.higher.mapper.makeup.MakeupMapper">
-	
-	<select id="PickLip" resultType="com.hyundai.higher.domain.makeup.LipVO">
+
+	<select id="PickLip"
+		resultType="com.hyundai.higher.domain.makeup.LipVO">
 		select a.pcode, pname, pprice, dept2no, optcolor, optname, iloc, itype
 		from product a, poption b, img c
-		where a.pcode=b.pcode and a.pcode=c.pcode and dept2no=22 
+		where a.pcode=b.pcode and
+		a.pcode=c.pcode and dept2no=22
 		and itype='thumb' and iloc like '%0' and optcolor=#{optcolor} and rownum<![CDATA[ <= ]]>15
 	</select>
-	
-	<select id="PickBlush" resultType="com.hyundai.higher.domain.makeup.BlushVO">
+
+	<select id="PickBlush"
+		resultType="com.hyundai.higher.domain.makeup.BlushVO">
 		select a.pcode, pname, pprice, dept2no, optcolor, optname, iloc, itype
 		from product a, poption b, img c
-		where a.pcode=b.pcode and a.pcode=c.pcode and dept2no=24 
+		where a.pcode=b.pcode and
+		a.pcode=c.pcode and dept2no=24
 		and itype='thumb' and iloc like '%0' and optcolor=#{optcolor} and rownum<![CDATA[ <= ]]>15
 	</select>
-	
-	<select id="PickFoundation" resultType="com.hyundai.higher.domain.makeup.FoundationVO">
-		select a.pcode, pname, pprice, dept2no, ptype, optcolor, optname, iloc, itype
+
+	<select id="PickFoundation"
+		resultType="com.hyundai.higher.domain.makeup.FoundationVO">
+		select a.pcode, pname, pprice, dept2no, ptype, optcolor, optname,
+		iloc, itype
 		from product a, poption b, img c
-		where a.pcode=b.pcode and a.pcode=c.pcode and dept2no=21
-		and itype='thumb' or iloc like '%0' and optcolor=#{optcolor} and rownum<![CDATA[ <= ]]>15
+		where a.pcode=b.pcode and
+		a.pcode=c.pcode and dept2no=21
+		and itype='thumb' or iloc like '%0' and
+		optcolor=#{optcolor} and rownum<![CDATA[ <= ]]>15
 	</select>
-	
+
+	<insert id="insertResult"
+		parameterType="com.hyundai.higher.domain.makeup.ResultVO">
+		insert into result values (#{rid},#{result_img}, #{lip},
+		#{lip_pcode}, #{lip_opt}, #{blush}, #{blush_pcode}, #{blush_opt},
+		#{face}, #{face_pcode}, #{face_opt})
+	</insert>
+
 
 </mapper>
