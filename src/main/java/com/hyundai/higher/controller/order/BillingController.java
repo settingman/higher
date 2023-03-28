@@ -94,6 +94,20 @@ public class BillingController {
 		orderSheet.setODate(now.toString());
 		orderMapper.insertOrder(orderSheet, customerName);
 		
+		int size = orderSheet.getProduct_id().size();
+		
+		String oId = orderSheet.getOrderId();
+		
+		for(int i=0; i<size; i++) {
+			
+			String pCode = orderSheet.getProduct_id().get(i);
+			int pAmount =  orderSheet.getProduct_Quntity().get(i);
+			
+			orderMapper.insertOrderList(oId, pCode, pAmount);
+			
+			
+		}
+		
 		
 		
 		// ORDER ITEMS 에 주문된 상품 목록 넣기.

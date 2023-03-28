@@ -343,7 +343,7 @@
 										<td class="valign-top">
 											<div class="prod-info no-ctrl">
 												<div class="img" id="img-40A1650970">
-													<input type="hidden" th:value="${cartItem.pCode}" />
+													<input type="hidden" th:value="${cartItem.pcode}" />
 													<img src="${cartItem.IMAGE_PATH}" onerror="noImage(this, 'https://image.thehyundai.com/hdmall/images/pd/no_image_100x100.jpg')" />
 													<div class="hover-info">
 														<a href="http://www.thehyundai.com/front/pda/itemPtc.thd?slitmCd=40A1650970&amp;sectId=102066" target="_blank" title="새창으로 보기">새창으로
@@ -361,13 +361,13 @@
 												</div>
 											</div>
 										</td>
-										<td class="prod-num">[[${cartItem.pAmount}]]개</td>
+										<td class="prod-num">[[${cartItem.pamount}]]개</td>
 										<td class="price-info">
-											<input type="hidden" class="total-price" th:value="${cartItem.pPRICE*cartItem.pAmount}"/>
-											<div class="o-price" th:text="${#numbers.formatInteger(cartItem.pPRICE, 3, 'COMMA') + '원'}"></div>
+											<input type="hidden" class="total-price" th:value="${cartItem.pprice*cartItem.pamount}"/>
+											<div class="o-price" th:text="${#numbers.formatInteger(cartItem.pprice, 3, 'COMMA') + '원'}"></div>
 											<div class="tot-price" >
 												<span data-tcprate="1.0" data-luityn="N" data-stlmdcamt="0"
-													th:text="${#numbers.formatInteger(cartItem.pPRICE*cartItem.pAmount, 3, 'COMMA') + '원'}"
+													th:text="${#numbers.formatInteger(cartItem.pprice*cartItem.pamount, 3, 'COMMA') + '원'}"
 												></span>
 											</div>
 										</td>
@@ -821,9 +821,16 @@
 
 			<div th:each="cartItem, stat : ${cartItems}">
 
-				<input type="hidden" name="product_id" id=product_id th:value="${cartItem.pCode}">
+				<input type="hidden" name="product_id" id=product_id th:value="${cartItem.pcode}">
 
-				<input type="hidden" name="product_Quntity" id="product_Quntity" th:value="${cartItem.pAmount}">
+				<input type="hidden" name="product_Quntity" id="product_Quntity" th:value="${cartItem.pamount}">
+				
+				<input type="hidden" name="product_name" id="product_name" th:value="${cartItem.pname}">
+				<input type="hidden" name="product_image" id="product_image" th:value="${cartItem.IMAGE_PATH}">
+				
+				<input type="hidden" name="product_price" id="product_price" th:value="${cartItem.pprice}">
+				
+				
 
 
 			</div>

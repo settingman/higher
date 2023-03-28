@@ -24,6 +24,19 @@
 
 
 	</insert>
+	
+	
+	
+	<insert id="insertOrderList">
+		
+	
+		INSERT INTO OrderITEM
+		VALUES(#{pCode}, null,
+		#{pAmount}, #{oId}
+		)
+
+
+	</insert>
 
 
 

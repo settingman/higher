@@ -201,67 +201,50 @@
 											<th scope="col">주문금액</th>
 											<th scope="col">배송비</th>
 										</tr>
-									</thead>
+									</thead>	
 									<tbody>
-										<tr>
-											<td class="valign-top">
-												<div class="prod-info no-ctrl">
-													<div class="img">
-														<img src="https://image.thehyundai.com/static/7/9/0/65/A1/40A1650970_0_100.jpg"
-															onerror="noImage(this, 'https://image.thehyundai.com/hdmall/images/pd/no_image_100x100.jpg')"
-														/>
-														<div class="hover-info">
-															<a href="http://www.thehyundai.com/front/pda/itemPtc.thd?slitmCd=40A1650970&amp;sectId=102066" target="_blank" title="새창으로 보기">새창으로
-																보기</a> <a href="#" onclick="javascript:sltdItemDone('40A1650970:00001','102066',event);return false;" title="찜하기">찜하기</a>
-														</div>
-													</div>
-													<div class="title">
-														<a href="http://www.thehyundai.com/front/pda/itemPtc.thd?slitmCd=40A1650970&amp;sectId=102066" target="_self">설화수[3월][한정수량]자음수 150ml</a>
-													</div>
-
-													<div class="option-info hastit">
-														<!-- 기본구성 / 추가구성 정보 -->
+										<tr th:each="item, stat : ${orderSheet.product_id}">
+										<td class="valign-top">
+											<div class="prod-info no-ctrl">
+												<div class="img" id="img-40A1650970">
+													<input type="hidden" th:value="${orderSheet.product_id[stat.index]}" />
+													<img src="${orderSheet.product_image[stat.index]}" onerror="noImage(this, 'https://image.thehyundai.com/hdmall/images/pd/no_image_100x100.jpg')" />
+													<div class="hover-info">
+														<a href="http://www.thehyundai.com/front/pda/itemPtc.thd?slitmCd=40A1650970&amp;sectId=102066" target="_blank" title="새창으로 보기">새창으로
+															보기</a><a href="javascript:sltdItemDone('40A1650970:00001','102066',event);return false;" title="찜하기"
+															onclick="javascript:popover_open(this , '#popover-layer-zzim');return false;"
+														>찜하기</a>
 													</div>
 												</div>
-											</td>
-											<td>1개</td>
-											<td>68,000원</td>
-
-											<td rowspan="2">
-												<div>묶음구매</div>
-
+												<div class="title">
+													<a href="http:	//www.thehyundai.com/front/pda/itemPtc.thd?slitmCd=40A1650970&amp;sectId=102066" target="_blank">[[${orderSheet.product_name[stat.index]}]]</a>
+												</div>
+												<div class="option-info">
+													<span class="tit">옵션 : 상품옵션 넣기</span>
+												</div>
+											</div>
+										</td>
+										<td class="prod-num">[[${orderSheet.product_Quntity[stat.index]}]]개</td>
+										
+										<td class="price-info">
+											<div class="o-price" th:text="${#numbers.formatInteger(orderSheet.product_price[stat.index]*orderSheet.product_Quntity[stat.index], 3, 'COMMA') + '원'}"></div>
+											<div class="tot-price" >
+												<span data-tcprate="1.0" data-luityn="N" data-stlmdcamt="0"
+													th:text="${#numbers.formatInteger(orderSheet.product_price[stat.index]*orderSheet.product_Quntity[stat.index], 3, 'COMMA') + '원'}"
+												></span>
+											</div>
+										</td>
+										<td  th:if="${stat.index == 0}")class="shipping" rowspan="2">
+											<div class="free">
 												<div class="free">무료배송</div>
-											</td>
-										</tr>
-
-										<tr>
-											<td class="valign-top">
-												<div class="prod-info no-ctrl">
-													<div class="img">
-														<img src="https://image.thehyundai.com/static/4/4/4/62/A1/40A1624448_0_100.jpg"
-															onerror="noImage(this, 'https://image.thehyundai.com/hdmall/images/pd/no_image_100x100.jpg')"
-														/>
-														<div class="hover-info">
-															<a href="http://www.thehyundai.com/front/pda/itemPtc.thd?slitmCd=40A1624448&amp;sectId=40059" target="_blank" title="새창으로 보기">새창으로
-																보기</a> <a href="#" onclick="javascript:sltdItemDone('40A1624448:00001','40059',event);return false;" title="찜하기">찜하기</a>
-														</div>
-													</div>
-													<div class="title">
-														<a href="http://www.thehyundai.com/front/pda/itemPtc.thd?slitmCd=40A1624448&amp;sectId=40059" target="_self">[아우구스티누스바더] 더 아이 크림 노마드
-															15ml</a>
-													</div>
-
-													<div class="option-info hastit">
-														<span class="tit">옵션 :</span>
-														<p>더 아이 크림 노마드 15ml</p>
-
-														<!-- 기본구성 / 추가구성 정보 -->
-													</div>
-												</div>
-											</td>
-											<td>1개</td>
-											<td>273,000원</td>
-										</tr>
+											</div>
+										</td>
+										
+										
+										
+										
+									</tr>
+									
 									</tbody>
 								</table>
 							</div>

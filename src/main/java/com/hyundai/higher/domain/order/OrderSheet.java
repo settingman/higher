@@ -3,6 +3,7 @@ package com.hyundai.higher.domain.order;
 import java.sql.Date;
 import java.util.List;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -24,6 +25,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @ToString
 public class OrderSheet {
 
@@ -46,6 +48,11 @@ public class OrderSheet {
 	
 	private List<String> product_id;
 	private List<Integer> product_Quntity;
+	private List<String> product_name;
+	private List<String> product_image;
+	private List<Integer> product_price;
 	
+	
+
 
 }

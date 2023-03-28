@@ -1,18 +1,13 @@
 package com.hyundai.higher.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 
-import java.util.Arrays;
-
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.client.RestTemplate;
+
+import com.hyundai.higher.domain.order.OrderSheet;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -48,18 +43,42 @@ public class HomeController {
 		return "order/orderComplete";
 	}
 
-	
 	@GetMapping(value = "/test3")
 	public String test2(Model model) {
+		
+		List<String> product_id = new ArrayList<>();
+		List<Integer> product_Quntity= new ArrayList<>();
+		List<String> product_name= new ArrayList<>();
+		List<String> product_image= new ArrayList<>();
+		List<Integer> product_price= new ArrayList<>();
+		
+		
+		product_id.add("1");
+		product_id.add("2");
+		
+		product_Quntity.add(1);
+		product_Quntity.add(2);
+		
+		product_name.add("1");
+		product_name.add("2");
+		
+		product_image.add("1");
+		product_image.add("2");
+		
+		product_price.add(1);
+		product_price.add(2);
+		
+		OrderSheet orderSheet = new OrderSheet("orderId","oName","oDate",123,"oadd1","oadd2","oreceiver","otel","opay",1234,product_id,product_Quntity,product_name,product_image,product_price) ;
+		
+		
+		model.addAttribute("orderSheet",orderSheet);
 
 
 		return "test3";
 	}
-	
 
 	@GetMapping(value = "/test4")
 	public String test4(Model model) {
-
 
 		return "test4";
 	}
