@@ -31,12 +31,14 @@ public class CartController {
 	@Autowired(required=true)
 	private IncludeService iService;
 	
-	// 장바구니 페이지
-		@GetMapping("/mycart")
-		public String cart(Model model) {
+	// 장바구니 페이지로 이동
+	@GetMapping("/mycart")
+	public String cart(Model model) {
 
-			model.addAttribute("categoryList", iService.categoryListAll());
+		model.addAttribute("categoryList", iService.categoryListAll());
 			
-			return "cart/mycart";
-		}
+	return "cart/mycart";
+	}
+	
+	
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:sec="http://www.w3.org/1999/xhtml"
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
 	xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -16,8 +16,11 @@
 	href="https://image.thehyundai.com/pc/cssssl/co.css?ver=14">
 <link rel="stylesheet" type="text/css"
 	href="https://image.thehyundai.com/pc/cssssl/wf.css">
+	
+
+
 <script src="/js/header.js"></script>
-<script src="https://image.thehyundai.com/pc/js/jquery-ui.min.js"></script>
+<script src="https://image.thehyundai.com/pc/js/1-ui.min.js"></script>
 <script src="https://image.thehyundai.com/pc/js/jquery-migrate.min.js"></script>
 <script src="https://image.thehyundai.com/pc/js/plugin.js?ver=031714"></script>
 <script type="text/javascript"
@@ -54,6 +57,10 @@
 	margin-right: 22px;
 }
 </style>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -620,7 +627,7 @@
 											<!-- @REQ-SD-010 @20181128 @황희선 @찜버튼 위치 변경 -->
 
 											<button class="btn size6 color17" type="button"
-												onclick="sendEcommerceSet('Add to Cart', 'add', '장바구니'); addCart(this);">장바구니</button>
+												onclick="addCart();">장바구니</button>
 
 											<!--JIRA : THD-4441 류지원 2020.01.21 PC 상품상세 선물하기 버튼 추가 -->
 											<!--2021.09.09 명절상품 선물하기 버튼 미노출 처리 (itemTypeGbcd == '04'), 2022.09.02.김민규, 명절상품 선물하기 버튼 미노출 처리 -->
@@ -3704,8 +3711,20 @@
 			<!-- //content-wrap -->
 		</div>
 		<!-- //container -->
+<!-- 			<div sec:authorize="isAuthenticated()">
+  			  <input type="hidden" th:name="mid" th:value="${#authentication.mid}" />
+			</div> -->
+			
+			<div th:if="${#authentication.getPrincipal() != null}">
+				<input type="hidden" id="mid" th:value="${#authentication.getName()}">
+			</div>
+			<div th:unless="${#authentication.getPrincipal() != null}">
+			</div>
+			
 	</div>
+	
 	<div id="criteo-tags-div" style="display: none;"></div>
+
 	
 	<!-- 비교함에 담기 -->
 	  <script>
@@ -3738,6 +3757,42 @@
 
 
   </script>
+
+	<script>
+	function addCart() {
+		console.log('장바구니 담기');
+		var pcode = document.querySelector('.prd-share-info strong').textContent;
+		var optname = document.querySelector('input[name="optNm"]').value;
+		var pamount = document.querySelector('input[name="uitmCd"]').value;
+		var mid = document.getElementById('mid').value;
+		console.log(mid);
+		console.log(pcode);
+		
+		var requestData = JSON.stringify({
+		    pcode : pcode,
+		    optname : optname,
+		    pamount : pamount,
+		    mid : mid
+		});
+
+
+		 $.ajax({
+			url: '/restcart/addCart',
+			type: 'post',
+			data: requestData,
+			contentType: "application/json",
+			success	: function(data){
+				console.log("장바구니 success");
+			},
+			error :function(request, status, error) {
+				console.log(error);
+			}
+		}); 
+		
+		
+	}
+
+	</script>
 	
 	<!-- //wrap -->
 	<!----------------------- footer ----------------------->

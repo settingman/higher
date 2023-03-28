@@ -18,6 +18,7 @@ import lombok.Setter;
  *   수정일         수정자               수정내용
  * ----------      --------    ---------------------------
  * 2023. 3. 23.     박성환      	최초 생성
+ * 2023. 3. 28.		박서현		mid 추가
  *     </pre>
  */
 @NoArgsConstructor
@@ -33,9 +34,10 @@ public class CartItem {
 	private Integer pAmount;
 	private String pOption;
 	private String IMAGE_PATH;
+	private String mid;
 
 	public CartItem(String pCode, String pName, Integer pPRICE, String brand, String color, Integer pAmount,
-			String pOption, String iMAGE_PATH) {
+			String pOption, String iMAGE_PATH, String mid) {
 		this.pCode = pCode;
 		this.pName = pName;
 		this.pPRICE = pPRICE;
@@ -44,6 +46,7 @@ public class CartItem {
 		this.pAmount = pAmount;
 		this.pOption = pOption;
 		this.IMAGE_PATH = iMAGE_PATH;
+		this.mid = mid;
 	}
 
 }

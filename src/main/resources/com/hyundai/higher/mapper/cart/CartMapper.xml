@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyundai.higher.mapper.cart.CartMapper">
+
+<insert id="addCart" parameterType="CartDTO">
+    INSERT INTO cart
+    (pcode, optname, pamount, mid)
+    VALUES (#{item.pcode}, #{item.optname}, #{item.pamount}, #{item.mid})
+</insert>
+
+
+
+</mapper>
