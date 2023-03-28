@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.hyundai.higher.mapper.order.OrderMapper">
+
+
+	<insert id="insertOrder"
+		parameterType="com.hyundai.higher.domain.order.OrderSheet">
+		
+	
+		INSERT INTO OrderList
+		VALUES(#{orderSheet.orderId}, #{mId},
+		#{orderSheet.oZipcode}, #{orderSheet.oAddress1}, #{orderSheet.oDate},
+		#{orderSheet.oReceiver},
+		#{orderSheet.oTel},
+		null, null,1,
+		#{orderSheet.oPayment},
+		#{orderSheet.oAddress2},
+		#{orderSheet.oName},
+		#{orderSheet.oTotalPrice}
+		)
+
+
+	</insert>
+
+
+
+</mapper>

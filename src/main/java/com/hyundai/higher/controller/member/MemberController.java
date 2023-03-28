@@ -111,6 +111,8 @@ public class MemberController {
 	// 회원가입 완료
 	@GetMapping(value = "/joincomplete")
 	public String joincomplete(Model model) {
+		
+		
 		return "member/joincomplete";
 	}
 

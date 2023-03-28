@@ -52,6 +52,8 @@ public class BillingController {
 		
 		Gson gson = new Gson();
 		
+		
+		// GSON String 을 ordersheet 객체로 바로 변환.
 		OrderSheet orderSheet = gson.fromJson(orderInfo, OrderSheet.class);
 		
 		log.info(orderSheet.toString());
@@ -80,6 +82,9 @@ public class BillingController {
 		
 		
 		model.addAttribute("orderSheet",orderSheet);
+		
+		// ORDER TABLE INSERT
+		
 		
 
 

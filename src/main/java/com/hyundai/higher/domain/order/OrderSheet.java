@@ -44,7 +44,7 @@ public class OrderSheet {
 	
 	private Integer oTotalPrice;
 	
-	private List<Integer> product_id;
+	private List<String> product_id;
 	private List<Integer> product_Quntity;
 	
 

@@ -30,22 +30,24 @@
 
 	<!--인증시 사용된 객체에 대한 정보-->
 	<div sec:authorize="isAuthenticated()">Only Authenticated user can see this Text
+		 <b>Authenticated DTO: Authenticated user 정보 (SecurityMember 객체 정보)</b>
+	<div sec:authentication="principal"></div>
+	<div sec:authentication="principal.mPhone"></div>
 		 
 	</div>
 	<!--인증시 사용된 객체에 대한 정보-->
 	<br>
 
-	<b>Authenticated DTO: Authenticated user 정보 (SecurityMember 객체 정보)</b>
-	<div sec:authentication="principal"></div>
-	<div sec:authentication="principal.mPhone"></div>
-	<input class="od-name" type="text" title="이름" name="chgOrdCustNm" maxlength="10" value="박성환" />
-
+	
 
 	<!--인증시 사용된 객체의 Username (ID)-->
 	<br>
 	<b>Authenticated username:</b>
 	<div sec:authentication="name"></div>
 	<div th:text="${#authentication.name}"></div>
+	
+	<div th:text="${#authentication}"></div>
+	
 	<h1></h1>
 	<br>
 
