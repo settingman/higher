@@ -1,6 +1,8 @@
 package com.hyundai.higher.controller.order;
 
 import java.nio.charset.StandardCharsets;
+import java.security.Principal;
+import java.time.LocalDate;
 import java.util.Base64;
 
 import org.springframework.http.HttpEntity;
@@ -15,7 +17,9 @@ import org.springframework.web.client.RestTemplate;
 
 import com.google.gson.Gson;
 import com.hyundai.higher.domain.order.OrderSheet;
+import com.hyundai.higher.mapper.order.OrderMapper;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -32,9 +36,11 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @RequestMapping("/toss")
+@RequiredArgsConstructor
 @Controller
 public class BillingController {
 
+	private final OrderMapper orderMapper;
 	private RestTemplate restTemplate = new RestTemplate();
 	private static String testSecretApiKey = "test_sk_YPBal2vxj81Rx9BLyw35RQgOAND7";
 	private static String tossOriginUrl = "https://api.tosspayments.com/v1/payments/confirm";
@@ -42,22 +48,20 @@ public class BillingController {
 	// 토스페이먼츠로 결제 승인 요청.
 	@GetMapping("/success")
 	public String requestFinalPayments(@RequestParam String paymentKey, @RequestParam String orderId,
-			@RequestParam Long amount, @RequestParam String orderInfo,Model model) {
+			@RequestParam Long amount, @RequestParam String orderInfo, Model model, Principal principal) {
 
-		
 		log.info("success");
 		// 상품 결과 페이지 주문 목록 가지고 이동 가능
 		log.info(orderInfo);
 		log.info("success");
-		
+
 		Gson gson = new Gson();
-		
-		
+
 		// GSON String 을 ordersheet 객체로 바로 변환.
 		OrderSheet orderSheet = gson.fromJson(orderInfo, OrderSheet.class);
-		
+
 		log.info(orderSheet.toString());
-	
+
 		testSecretApiKey = testSecretApiKey + ":";
 		String encodedAuth = new String(Base64.getEncoder().encode(testSecretApiKey.getBytes(StandardCharsets.UTF_8)));
 
@@ -71,22 +75,31 @@ public class BillingController {
 		headers.set("Content-Type", "application/json");
 		String body = "{\"paymentKey\":\"" + paymentKey + "\",\"amount\":" + amount + ",\"orderId\":\"" + orderId
 				+ "\"}";
-		
-		
 
 		HttpEntity<String> entity = new HttpEntity<>(body, headers);
 		String url = "https://api.tosspayments.com/v1/payments/confirm";
 
 		ResponseEntity<String> response = restTemplate.postForEntity(url, entity, String.class);
 		// 결제 승인 요청.
-		
-		
-		model.addAttribute("orderSheet",orderSheet);
-		
-		// ORDER TABLE INSERT
-		
-		
 
+		model.addAttribute("orderSheet", orderSheet);
+
+		// ORDER TABLE INSERT
+
+		
+		
+		String customerName = principal.getName();
+		LocalDate now = LocalDate.now();
+
+		orderSheet.setODate(now.toString());
+		orderMapper.insertOrder(orderSheet, customerName);
+		
+		
+		
+		// ORDER ITEMS 에 주문된 상품 목록 넣기.
+		
+		
+		
 
 		return "order/orderComplete";
 		// 결제 성공 페이지로 이동 편집.

@@ -23,12 +23,11 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RequestMapping("/toss")
-@RequiredArgsConstructor
 @RestController
 public class BillingRestController {
 
 	
-	private final OrderMapper orderMapper;
+	
 	
 	// 토스페이먼츠로 결제 승인 요청.
 	@GetMapping("/order")
@@ -43,10 +42,7 @@ public class BillingRestController {
 
 		orderSheet.setOrderId(orderId);
 
-		
-		log.info(customerName);
-		
-		log.info("set");
+		log.info(orderSheet.toString());
 		
 
 		Gson gson = new Gson();
@@ -61,14 +57,6 @@ public class BillingRestController {
 		data.put("orderId", orderId);
 		data.put("customerName", customerName);
 		
-		LocalDate now = LocalDate.now();
-		
-		orderSheet.setODate(now.toString());
-		
-		log.info(orderSheet.toString());
-		
-		
-		orderMapper.insertOrder(orderSheet, customerName);
 		
 		
 		
