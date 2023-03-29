@@ -322,16 +322,16 @@
                                         <th scope="col">방 생성 여부</th>
                                         <th scope="col">입장 하기</th>
                                     </tr>
-                                    <th:block th:fragment="content">
+                                    <th:block th:fragment="content" id="block">
 
                                         <tr th:each="res : ${reservations}">
-                                            <td class="fw-normal visible">[[${res.memberName}]]</td>
-                                            <td class="fw-normal visible">[[${res.memberId}]]</td>
-                                            <td class="fw-normal visible">[[${res.resDate}]]</td>
-                                            <td class="fw-normal visible">[[${res.resTime}]]</td>
-                                            <td th:if="${res.roomChk}"><span class="col-sm-2 align-self-auto"> 생성 완료 </span></td>
-                                            <td th:if="${!res.roomChk}"><span class="col-sm-2 align-self-auto"> 생성 대기중 </span></td>
-                                            <td class="fw-normal visible"><a th:href="@{/chat/room(roomId=${res.roomId})}" th:roomId="${res.roomId}" onclick="return chkRoomUserCnt(this.getAttribute('roomId'));">방 입장</a></td>
+                                            <td class="fw-normal visible mname">[[${res.MNAME}]]</td>
+                                            <td class="fw-normal visible mid">[[${res.MID}]]</td>
+                                            <td class="fw-normal visible rdare">[[${res.RDATE}]]</td>
+                                            <td class="fw-normal visible rtime">[[${res.RTIME}]]</td>
+                                            <td class="rcheck" th:if="${res.RCHECK}"><span class="col-sm-2 align-self-auto"> 생성 완료 </span></td>
+                                            <td class="rcheck2" th:if="${!res.RCHECK}"><span class="col-sm-2 align-self-auto">  <button type="button" class="btn btn-info open" data-bs-toggle="modal" data-bs-target="#roomModal" th:onclick="modalOpen([[${res.MNAME}]],[[${res.MID}]],[[${res.RID}]])">방 생성</button> </span></td>
+                                            <td class="fw-normal visible roomURL"><a th:href="@{/chat/room(roomId=${res.roomId})}" th:roomId="${res.roomId}" onclick="return chkRoomUserCnt(this.getAttribute('roomId'));">방 입장</a></td>
                                         </tr>
                                     </th:block>
 
@@ -394,7 +394,12 @@
 												<input type="text" class="form-control" id="roomName" name="roomName">
 											</div>
 											<div class="mb-3">
-												<label for="roomPwd" class="col-form-label">방 설정 번호(방 삭제시 필요합니다)</label>
+												<label for="roomName" class="col-form-label">회원 아이디</label>
+												<input type="text" class="form-control" id="customerID" name="customerID" readonly>
+												<input type="hidden" id="reservationID" name="reservationID"/>
+											</div>
+											<div class="mb-3">
+												<label for="roomPwd" class="col-form-label">방 설정 번호</label>
 												<div class="input-group">
 													<input type="password" name="roomPwd" id="roomPwd" class="form-control" data-toggle="password">
 													<div class="input-group-append">
@@ -405,11 +410,11 @@
 											<div class="mb-3">
 												<div class="form-check">
 													<input class="form-check-input" type="radio" name="chatType" id="msgType" value="msgChat">
-													<label class="form-check-label" for="msgType"> 일반 채팅(최대 100명) </label>
+													<label class="form-check-label" for="msgType"> 일반 채팅 </label>
 												</div>
 												<div class="form-check">
 													<input class="form-check-input" type="radio" name="chatType" id="rtcType" value="rtcChat">
-													<label class="form-check-label" for="rtcType"> 화상 채팅(1:1 Only) </label>
+													<label class="form-check-label" for="rtcType"> 화상 채팅 </label>
 												</div>
 											</div>
 											<div class="mb-3">
@@ -422,6 +427,7 @@
 												<label class="form-check-label" for="secret"> 채팅방 잠금 </label>
 											</div>
 										</div>
+										
 										<div class="modal-footer">
 											<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 											<input type="submit" class="btn btn-primary" value="방 생성하기">
@@ -553,6 +559,27 @@
 					</div>
 				</div>
 			</div>
+			
+			
+			<script>
+			
+			
+			function modalOpen(mName,mid,rid){
+				
+				
+				$('#roomName').val(mName + "님 온라인 뷰티 ");
+				$('#customerID').val(mid);
+				$('#reservationID').val(rid);
+				
+					
+				
+			}
+			
+			
+			
+			
+			
+			</script>
 
 			<!-- Bootstrap core JavaScript-->
 			<script src="/admin/vendor/jquery/jquery.min.js"></script>

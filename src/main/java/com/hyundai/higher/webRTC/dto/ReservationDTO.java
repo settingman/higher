@@ -28,14 +28,20 @@ import lombok.ToString;
 @ToString
 public class ReservationDTO {
 	
+	private String RID; // 예약번호.
 	
     private String roomId; // 채팅방 아이디(URL)
     
-    private String memberName; // 고객명
-    private String memberId; // 고객 아이디
-    private boolean roomChk; // 채팅방 생성 여부
-    private String resDate; // 예약 날짜
-    private String resTime; // 예약 시간
+    private String MID; // 고객 아이디
+    private String MNAME; // 고객명
+    
+    private boolean RCHECK; // 채팅방 생성 여부
+    private String RDATE; // 예약 날짜
+    private String RTIME; // 예약 시간
+    
+    private String RIMG; // 고객이 등록한 이미지 URL
+    
+    
 
 	
 
