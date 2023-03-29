@@ -74,7 +74,12 @@
 							</div>
 						</div>
 
-						<a href="/">
+						<a sec:authorize="hasRole('USER')" href="/rtc/room">
+							<button type="button" class="btn btn-outline-danger" id="exit" name="exit">
+								<i class="fa-solid fa-phone-slash fa-xl"></i>
+							</button>
+						</a>
+						<a sec:authorize="hasRole('ADMIN')" href="/rtc/room">
 							<button type="button" class="btn btn-outline-danger" id="exit" name="exit">
 								<i class="fa-solid fa-phone-slash fa-xl"></i>
 							</button>
