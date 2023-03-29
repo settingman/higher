@@ -47,6 +47,14 @@ public class SkinMBTIController {
 		return "/skinMBTI/main";
 	}
 	
+	@GetMapping("/main2")
+	public String skinMBTIMain2(Model model) {
+		
+		model.addAttribute("categoryList", iService.categoryListAll());
+		
+		return "/skinMBTI/main2";
+	}
+	
 	@ResponseBody
 	@GetMapping("/getData")
 	public SkinMBTIDTO getSkinMBTIData(@RequestParam("stype") String stype) {

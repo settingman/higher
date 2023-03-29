@@ -1,29 +1,13 @@
 <!DOCTYPE html>
-<html xmlns:sec="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+<html lang="ko">
 <head>
-<meta charset="utf-8">
+<title>The Hyundai Beauty - 더현대뷰티</title>
+<meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport"
-	content="width=device-width,initial-scale=1,maximum-scale=1.0">
-<title>더현대닷컴 - 현대백화점 공식 온라인몰</title>
-<meta name="description"
-	content="현대백화점, 현대백화점 공식 온라인몰. 의류, 화장품, 잡화, 가전 등 판매">
-<link rel="shortcut icon" href="https://www.thehyundai.com/favicon.ico">
-<link rel="stylesheet" type="text/css"
-	href="https://image.thehyundai.com/pc/cssssl/co.css?ver=11">
-<link rel="stylesheet" media="screen"
-	href="https://image.thehyundai.com/pc/cssssl/main_new.css?ver=20230206">
-<link rel="stylesheet"
-	href="https://image.thehyundai.com/pc/cssssl/dp.css">
-<link rel="stylesheet"
-	href="https://image.thehyundai.com/pc/cssssl/font.css">
-<link rel="stylesheet"
-	href="https://image.thehyundai.com/pc/cssssl/animate.min.css">
-<link rel="stylesheet"
-	href="https://image.thehyundai.com/pc/cssssl/swiper.min.css">
-<link rel="stylesheet"
-	href="https://image.thehyundai.com/pc/cssssl/swiper-8.4.5.min.css">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+<link rel="stylesheet" href="/include/css/reset.css">
+<link rel="stylesheet" href="/include/css/style.css">
+<link rel="stylesheet" href="/include/css/swiper.min.css">
 <link rel="stylesheet" href="/skinMBTI/css/default.css">
 <link rel="stylesheet" href="/skinMBTI/css/main.css">
 <link rel="stylesheet" href="/skinMBTI/css/qna.css">
@@ -31,54 +15,50 @@
 <link rel="stylesheet" href="/skinMBTI/css/result.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Nanum+Myeongjo:wght@400;700;800&family=Source+Serif+Pro&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
-<script src="/js/header.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-<script src="https://image.thehyundai.com/pc/js/plugin.js"></script>
-<script src="https://image.thehyundai.com/pc/js/swiper-5.4.5.min.js"></script>
-<script src="https://image.thehyundai.com/pc/js/swiper-8.4.5.min.js"></script>
-<script src="https://image.thehyundai.com/pc/js/hdmall/co/default.js"></script>
-<script src="https://image.thehyundai.com/pc/js/hdmall/co/common.js"></script>
-<script src="https://image.thehyundai.com/pc/js/common.js"></script>
-<script src="https://image.thehyundai.com/pc/js/sso/SsoHttpRequest.js"></script>
-<script src="https://image.thehyundai.com/pc/js/sso/SsoAjax.js"></script>
+<link
+	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Nanum+Myeongjo:wght@400;700;800&family=Source+Serif+Pro&display=swap"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap"
+	rel="stylesheet">
+<script type="text/javascript" async=""
+	src="https://www.google-analytics.com/analytics.js"></script>
+<script async="" src="//www.googletagmanager.com/gtm.js?id=GTM-N2P448C"></script>
+<script src="/include/js/lib/jquery.min.js"></script>
+<script src="/include/js/lib/TweenMax.min.js"></script>
+<script src="/include/js/lib/swiper.min.js"></script>
+<script src="/include/js/ui.js"></script>
+<script src="/include/js/lib/jquery.form.min.js"></script>
+<script src="/include/js/lib/jquery.validate.min.js"></script>
+<script src="/include/js/lib/vue.min.js"></script>
+<script src="/include/js/lib/jquery.cookie.js"></script>
+<script src="/include/js/lib/moment.min.js"></script>
+<script src="/include/js/lib/moment-timezone-with-data.min.js"></script>
+<script src="/include/js/hanbang/app.js"></script>
 <script
-	src="https://image.thehyundai.com/pc/js/hdmall/dp/main_data_new_tmpl.js?ver=20230206"></script>
-<script src="https://image.thehyundai.com/pc/js/main_util.js"></script>
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
+	integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
+	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<style>
-.top-nav-area2 {
-	width: 100%;
-	padding-bottom: 19px;
-	border-bottom: 1px solid #bababa !important;
-}
-</style>
 </head>
 <body>
-	<!-- wrap -->
-	<div id="wrap" class="sub">
-		<!------ header ------>
-		<div th:insert="~{include/sub-header}"></div>
-		<!------ //header ------>
-		<!-- container -->
-		<div id="container">
+	<div id="wrap">
+		<!-- header -->
+		<div th:insert="~{include/header}"></div>
+		<!-- /header -->
+
+		<div id="container" class="prd_list ctgryVue">
 			<div id="content-wrap">
 				<section id="main">
-					<h2 class="mbti-logo">
-						<img src="/skinMBTI/img/mbti-logo.png">
-					</h2>
 					<img id="main-img" src="/skinMBTI/img/skinMBTI-main2.png">
 					<div id="btn-wrap">
 						<button type="button" id="start-btn" onclick="js:begin()">START
 							NOW</button>
 					</div>
-	
+
 				</section>
-				<section id="qna" style="padding-top: 0px;">
+				<section id="qna">
 					<div id="qna-wrap">
 						<div id="qna-content-wrap">
 							<div id="progress-wrap">
@@ -261,8 +241,7 @@
 														<div class="survey__radio">
 															<div class="survey__radio__answer4">
 																<input style="display: none;" type="radio" id="1_3_1"
-																	name="3" value="1, 없다 , A3"> <label
-																	for="1_3_1">
+																	name="3" value="1, 없다 , A3"> <label for="1_3_1">
 																	<div
 																		style="background: center/contain no-repeat url(/skinMBTI/img/1-3/1-3-1.png);"></div>
 																	<span>없다</span>
@@ -359,8 +338,7 @@
 														<div class="survey__radio">
 															<div class="survey__radio__answer4">
 																<input style="display: none;" type="radio" id="2_2_1"
-																	name="5" value="1, 없다 , B2"> <label
-																	for="2_2_1">
+																	name="5" value="1, 없다 , B2"> <label for="2_2_1">
 																	<div
 																		style="background: center/contain no-repeat url(/skinMBTI/img/2-2/2-2-1.png);"></div>
 																	<span>없다</span>
@@ -741,78 +719,84 @@
 										</div>
 									</div>
 								</div>
-								
+
 							</div>
 							<div class="dir-wrap">
-								<button class="survey__btn prev" id="prev" onclick="move('prev')">이전</button>
-								<button class="survey__btn next" id="next" onclick="move('next')">다음</button>
+								<button class="survey__btn prev" id="prev"
+									onclick="move('prev')">이전</button>
+								<button class="survey__btn next" id="next"
+									onclick="move('next')">다음</button>
 								<!-- <button class="survey__btn" id="finish" onclick="move('next')">결과보기</button> -->
 							</div>
 						</div>
 
 					</div>
-			
-			</section>
-			<section id="result">
-				<div id="result-content-wrap">
-					<div id="result-title">
-						<h1>RESULT</h1>
+
+				</section>
+				<section id="result">
+					<div id="result-content-wrap">
+						<div id="result-title">
+							<h1>RESULT</h1>
+						</div>
+						<div class="resultName"></div>
+						<div class="resultKeyword"></div>
+
+						<div class="graph">
+							<canvas id="myChart"></canvas>
+						</div>
+
+						<div class="resultInfo">
+							<div class="infoBox">
+								<h4 id="title"></h4>
+								<p class="resultExplain"></p>
+								<table>
+									<tr id="infoPros">
+										<td class="infoName">Strength</td>
+										<td id="pros"></td>
+									</tr>
+									<tr>
+										<td class="infoName">Weakness</td>
+										<td id="cons"></td>
+									</tr>
+									<tr>
+										<td class="infoName">Solution</td>
+										<td id="solution"></td>
+									</tr>
+
+								</table>
+							</div>
+						</div>
+
+						<div class="button-wrap">
+							<button id="resultSave">결과 저장하기</button>
+							<button id="findCos">매칭 화장품 찾기</button>
+						</div>
+
 					</div>
-					<div class="resultName"></div>
-					<div class="resultKeyword"></div>
-					
-					<div class="graph">
-				    	<canvas id="myChart"></canvas>
-				    </div>
-				    
-				    <div class="resultInfo">
-				    	<div class="infoBox">
-				    		<h4 id="title"></h4>
-				    		<p class="resultExplain"></p>
-							<table>
-								<tr id="infoPros">
-									<td class="infoName">Strength</td>
-									<td id="pros"></td>
-								</tr>
-								<tr>
-									<td class="infoName">Weakness</td>
-									<td id="cons"></td>
-								</tr>
-								<tr>
-									<td class="infoName">Solution</td>
-									<td id="solution"></td>
-								</tr>
-							
-							</table>
-				    	</div>
-				    </div>
-				    
-				    <div class="button-wrap">
-				    	<button id="resultSave">결과 저장하기</button>
-				    	<button id="findCos">매칭 화장품 찾기</button>
-				    </div>
-				
-				</div>
-				
-			
-			</section>
-			
-			<script src="/skinMBTI/js/video.js"></script>
-			<script>
+
+
+				</section>
+
+				<script src="/skinMBTI/js/video.js"></script>
+				<script>
 				mainInit();
 			</script>
-			<script src="/skinMBTI/js/data.js" charset="UTF-8"></script>
-			<script src="/skinMBTI/js/start.js" charset="UTF-8"></script>
-			<script src="/skinMBTI/js/share.js" charset="UTF-8"></script>
-			<script src="/skinMBTI/js/qna.js" charset="UTF-8"></script>
-			<script src="/skinMBTI/js/result.js" charset="UTF-8"></script>
+				<script src="/skinMBTI/js/data.js" charset="UTF-8"></script>
+				<script src="/skinMBTI/js/start.js" charset="UTF-8"></script>
+				<script src="/skinMBTI/js/share.js" charset="UTF-8"></script>
+				<script src="/skinMBTI/js/qna.js" charset="UTF-8"></script>
+				<script src="/skinMBTI/js/result.js" charset="UTF-8"></script>
+			</div>
+
+
+
+
 		</div>
 
+		<!-- footer -->
+		<div th:insert="~{include/footer}"></div>
+		<!-- /footer -->
 	</div>
-	<!-- //container -->
-	<!------ footer ------>
-	<div th:insert="~{include/footer}"></div>
-	<!------ //footer ------>
-	</div>
+	<div class="dim"></div>
 </body>
 </html>

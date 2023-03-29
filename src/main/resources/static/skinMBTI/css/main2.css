@@ -3,14 +3,16 @@
 } */
 
 #main-img{
-	width: 1000px;
+    width: 900px;
     margin: 0 auto;
     display: flex;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 #btn-wrap{
     position: absolute;
-    top: 960px;
+    top: 810px;
 }
 
 #start-btn{
@@ -20,11 +22,11 @@
     color: #fff;
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
-    padding: 15px 32px;
-    font-size: 25px;
+    padding: 13px 20px;
+    font-size: 20px;
     letter-spacing: 5px;
     position: relative;
-    left: 775px;
+    left: 610px;
 }
 
 #start-btn:hover{

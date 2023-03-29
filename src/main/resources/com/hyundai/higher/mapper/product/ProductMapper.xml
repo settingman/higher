@@ -43,7 +43,7 @@
 	
 	<!-- 상품 세부 정보 -->
 	<select id="productDetailInfo" resultType="com.hyundai.higher.domain.product.ProductDTO">
-		SELECT pcode, pname, pprice, p.bno, bname, dept1no, dept2no, pvolume, ptype, pexp, puse, pproduce, pcountry, pcaution
+		SELECT pcode, pname, pprice, p.bno, bname, dept1no, dept2no, pvolume, ptype, pexp, puse, pproduce, pcountry, pcaution, pingredient
 		FROM product p JOIN brand b ON p.bno=b.bno
 		WHERE pcode=#{pcode}
 	</select>

@@ -3,15 +3,15 @@
 }
 
 #qna-wrap{
-	width: 1000px;
-    padding: 0px 30px;
+	width: 81%;
+    padding: 50px 30px;
     margin: 0 auto;
 }
 
 #qna-content-wrap{
 	background-color: #fff;
-    padding: 25px 50px 40px;
-    border-radius: 70px;
+	border: 1.2px solid #776460;
+	padding: 10px;
 }
 
 #progress-wrap{
@@ -30,7 +30,7 @@
     border-radius: 30px;
     float: left;
     display: flex;
-    padding: 5px 15px 5px 3px;
+    padding: 3px 12px 3px 3px;
 }
 
 .prog-dept1{
@@ -40,13 +40,11 @@
 .prog-kor{
 	font-weight: 700;
 	font-size: 13px;
-	padding-top: 2px;
-    padding-bottom: 2px;
 }
 
 .prog-eng{
 	color: #844227;
-	font-size: 11px;
+	font-size: 10px;
 }
 
 .prog-num{
@@ -58,31 +56,25 @@
     background-color: #844227;
     color: #fff;
     line-height: 30px;
-    margin-right: 8px;
-    font-weight: 600;
-    font-size: 15px;
+    margin-right: 5px;
 }
 
 .qna-num-box div{
     text-align: center;
     background-color: #776460;
     color: #fff;
-    width: 180px;
+    width: 170px;
     margin: 0 auto;
-    margin-bottom: 30px;
-    padding: 10px 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding: 5px 10px;
     border-radius: 80px;
     font-weight: 600;
-    font-size: 18px;
-}
-
-#camera-box{
-	margin-top: 40px;
-    margin-bottom: 40px;
+    font-size: 17px;
 }
 
 #camera-box div{
-	width: 450px;
+	width: 400px;
     margin: 0 auto;
     margin-top: 30px;
     margin-bottom: 20px;
@@ -91,7 +83,7 @@
 #cameraview{
 /* 	border: 1px solid #776460; */
 	border-radius: 30px;
-	width: 450px;
+	width: 400px;
 }
 
 .q-box {
@@ -1452,7 +1444,7 @@ a:focus, a:active {
 .survey__chapter__arrow {
 	display: flex;
 	align-items: center;
-	margin: 10px 8px;
+	margin: 7px;
 }
 
 .survey__chapter__number {

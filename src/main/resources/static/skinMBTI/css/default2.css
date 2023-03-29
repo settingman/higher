@@ -1,4 +1,5 @@
 #content-wrap{
+	width: 1120px;
 	margin: 0 auto;
 	font-family: 'Montserrat', sans-serif;
 	position: relative;
@@ -18,10 +19,13 @@ h2{
 }
 
 section{
+	width: 1120px;
+    height: 1050px;
     margin: 0 auto;
     background-color: #faefec;
-    padding-top: 250px;
-    padding-bottom: 100px;
+    padding-top: 50px;
+    position: relative;
+    top: -20px;
 }
 
 .mbti-logo img{

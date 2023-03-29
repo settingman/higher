@@ -1,0 +1,51 @@
+#search-wrap{
+	position: absolute;
+    bottom: 350px;
+    width: 100%;
+    text-align: center;
+}
+
+#search-box{
+	width: 670px;
+    background-color: #fff;
+    margin: 0 auto;
+    height: 65px;
+    border-radius: 50px;
+    box-shadow: 0 0 15px #d3d3d3;
+}
+
+#search-input{
+	width: 550px;
+    height: 65px;
+}
+
+#search-btn{
+	width: 30px;
+	height: 30px;
+	background-image: url(/similarCos/img/search.png);
+	background-size: contain;
+    background-repeat: no-repeat;
+    vertical-align: middle;
+    margin-bottom: 5px;
+    margin-left: 20px;
+}
+
+.find-btn-wrap{
+	width: 100%;
+	margin-top: 15px;
+	text-align: center;
+}
+
+.find-btn{
+    border: 1px solid #000;
+    width: 95%;
+    height: 50px;
+	margin: 0 auto;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.find-btn:hover{
+	background-color: #000;
+	color: #fff;
+}

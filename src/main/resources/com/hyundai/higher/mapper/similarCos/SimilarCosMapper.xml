@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.hyundai.higher.mapper.similarCos.SimilarCosMapper">
+	
+	<select id="cntList" resultType="com.hyundai.higher.domain.similarCos.SimilarCosDTO">
+		<![CDATA[
+		SELECT ROWNUM, pcode, total
+		FROM (
+		    SELECT PCODE, COUNT(*) AS TOTAL
+		    FROM (
+		]]>
+		    	<foreach collection="list" item="item" separator="UNION ALL">
+			        SELECT PCODE, CASE WHEN PINGREDIENT LIKE '%'||#{item}||'%' THEN 1 ELSE 0 END AS CNT
+			        FROM PRODUCT
+			        WHERE DEPT1NO=#{dept1no} AND DEPT2NO=#{dept2no}
+		        </foreach>
+		<![CDATA[
+		        )
+		    WHERE CNT >= 1 AND PCODE != #{pcode}
+		    GROUP BY PCODE
+		    ORDER BY TOTAL DESC) P
+		WHERE ROWNUM <= 10
+		]]>
+	</select>
+	
+	
+</mapper>

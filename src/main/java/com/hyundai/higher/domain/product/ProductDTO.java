@@ -36,5 +36,6 @@ public class ProductDTO {
 	private String pproduce;
 	private String pcountry;
 	private String pcaution;
+	private String pingredient;
 	
 }
