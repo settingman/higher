@@ -312,25 +312,25 @@
                     <body>
                         <div class="container">
                             <div class="container">
-                                <h2>예약 관리</h2>
+                                <h2>예약 내역</h2>
                                 <table class="table table-hover" id="table">
-                                    <tr>
+                                    <tr align="center">
                                         <th scope="col">고객명</th>
                                         <th scope="col">고객 아이디</th>
                                         <th scope="col">예약 날짜</th>
                                         <th scope="col">시 간</th>
-                                        <th scope="col">방 생성 여부</th>
+                                        <th scope="col">방 생성</th>
                                         <th scope="col">입장 하기</th>
                                     </tr>
                                     <th:block th:fragment="content" id="block">
 
-                                        <tr th:each="res : ${reservations}">
+                                        <tr align="center" th:each="res : ${reservations}">
                                             <td class="fw-normal visible mname">[[${res.MNAME}]]</td>
                                             <td class="fw-normal visible mid">[[${res.MID}]]</td>
                                             <td class="fw-normal visible rdare">[[${res.RDATE}]]</td>
                                             <td class="fw-normal visible rtime">[[${res.RTIME}]]</td>
                                             <td class="rcheck" th:if="${res.RCHECK}"><span class="col-sm-2 align-self-auto"> 생성 완료 </span></td>
-                                            <td class="rcheck2" th:if="${!res.RCHECK}"><span class="col-sm-2 align-self-auto">  <button type="button" class="btn btn-info open" data-bs-toggle="modal" data-bs-target="#roomModal" th:onclick="modalOpen([[${res.MNAME}]],[[${res.MID}]],[[${res.RID}]])">방 생성</button> </span></td>
+                                            <td class="rcheck2" th:if="${!res.RCHECK}"><span class="col-sm-2 align-self-auto">  <button type="button" class="btn btn-info btn-icon-split btn-sm open" data-bs-toggle="modal" data-bs-target="#roomModal" th:onclick="modalOpen([[${res.MNAME}]],[[${res.MID}]],[[${res.RID}]])">방 생성</button> </span></td>
                                             <td class="fw-normal visible roomURL"><a th:href="@{/chat/room(roomId=${res.roomId})}" th:roomId="${res.roomId}" onclick="return chkRoomUserCnt(this.getAttribute('roomId'));">방 입장</a></td>
                                         </tr>
                                     </th:block>
@@ -339,15 +339,15 @@
 
                                 <div class="col">
                                     <h2>
-                                        채팅방 리스트
+                                        온라인 상담 내역
                                         <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#roomModal">방 생성</button>
                                     </h2>
                                 </div>
 
 
                                 <table class="table table-hover" id="table">
-                                    <tr>
-                                        <th scope="col">채팅방명</th>
+                                    <tr align="center">
+                                        <th scope="col">온라인 상담</th>
                                         <th scope="col">잠금 여부</th>
                                         <th scope="col">참여 인원</th>
                                         <th scope="col">채팅 종류</th>
@@ -355,7 +355,7 @@
                                     </tr>
                                     <th:block th:fragment="content">
 
-                                        <tr th:each="room : ${list}">
+                                        <tr align="center" th:each="room : ${list}">
                                             <span class="hidden" th:id="${room.roomName}"></span>
                                             <td th:if="${room.secretChk}"><a href="#enterRoomModal" data-bs-toggle="modal" data-target="#enterRoomModal" th:data-id="${room.roomId}">[[${room.roomName}]]</a></td>
                                             <td th:if="${!room.secretChk}">
