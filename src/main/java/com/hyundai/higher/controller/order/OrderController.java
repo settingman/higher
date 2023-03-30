@@ -40,9 +40,33 @@ public class OrderController {
 	
 	// 오더페이지 이동.
 	@GetMapping(value = "/order")
-	public String Order(@RequestParam(required = false) List<Integer> pIdList, Model model, Principal principal) {
+	public String Order(@RequestParam(required = false,defaultValue = "") List<String> pIdList, Model model, Principal principal) {
 
 		List<CartItem> cartItems = new ArrayList<CartItem>();
+		
+		
+		String mid = principal.getName();
+		
+		
+		pIdList.add("A1504419");
+		
+		
+		
+		if(!pIdList.isEmpty()) {
+			
+			for(String pcode : pIdList) {
+				
+				
+				
+				cartItems.add(orderMapper.selectCartItem(mid, pcode));
+				
+			}
+			
+			
+		}
+		
+		
+		
 
 		CartItem cart = new CartItem("test", "테스트", 10000, "Brand", "Color", 3,"option", "img_path");
 		

@@ -3,6 +3,7 @@ package com.hyundai.higher.mapper.order;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import com.hyundai.higher.domain.cart.CartItem;
 import com.hyundai.higher.domain.order.OrderSheet;
 
 /**
@@ -25,5 +26,7 @@ public interface OrderMapper {
 	public void insertOrderList(@Param("oId") String oId, @Param("pCode") String pCode,
 			@Param("pAmount") int pAmount);
 
+	
+	public CartItem selectCartItem (@Param("mId") String mId,  @Param("pCode") String pCode);
 
 }

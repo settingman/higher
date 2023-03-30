@@ -8,8 +8,8 @@
 
 	<insert id="insertOrder"
 		parameterType="com.hyundai.higher.domain.order.OrderSheet">
-		
-	
+
+
 		INSERT INTO OrderList
 		VALUES(#{orderSheet.orderId}, #{mId},
 		#{orderSheet.oZipcode}, #{orderSheet.oAddress1}, #{orderSheet.oDate},
@@ -24,19 +24,30 @@
 
 
 	</insert>
-	
-	
-	
+
+
+
 	<insert id="insertOrderList">
-		
-	
+
+
 		INSERT INTO OrderITEM
 		VALUES(#{pCode}, null,
 		#{pAmount}, #{oId}
 		)
 
-
 	</insert>
+
+
+
+	<select id="selectCartItem"
+		resultType="com.hyundai.higher.domain.cart.CartItem">
+		
+		SELECT p.pcode, p.pname, p.pprice,b.bname as brand, o.OPTCOLOR as color,c.pamount,c.OPTNAME as poption,i.iloc as Image_path 
+		FROM CART c, PRODUCT p,IMG i, POPTION o , Brand b
+		where c.pcode=#{pCode} and c.MID = #{mId} and c.pcode =p.pcode and p.pcode=i.pcode and i.itype ='thumb' and o.pcode=c.pcode and p.BNO = b.BNO
+        
+ 
+	</select>
 
 
 
