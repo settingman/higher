@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import com.hyundai.higher.domain.beauty.Profile;
 import com.hyundai.higher.webRTC.dto.ReservationDTO;
 
 /**
@@ -25,5 +26,7 @@ public interface BeautyMapper {
 	List<ReservationDTO> findReservation();
 
 	void updateRoomID(@Param("mid") String mid, @Param("rid") String rid, @Param("roomID") String roomID);
+	
+	Profile findProfile(@Param("mid") String mid, @Param("rid") String rid);
 
 }

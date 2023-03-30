@@ -3,367 +3,391 @@
 
 <head>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
 
-    <title>온라인 뷰티 예약 관리</title>
+<title>온라인 뷰티 예약 관리</title>
 
-    <!-- Custom fonts for this template-->
-    <link href="/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+<!-- Custom fonts for this template-->
+<link href="/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-    <!-- Custom styles for this template-->
-    <link href="/admin/css/sb-admin-2.min.css" rel="stylesheet">
+<!-- Custom styles for this template-->
+<link href="/admin/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
 
 <head>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"
+>
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"
+></script>
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-    <script src="/js/roomlist/bootstrap-show-password.min.js"></script>
-    <script th:inline="javascript">
-        let roomId;
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+	integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous"
+>
+<script src="/js/roomlist/bootstrap-show-password.min.js"></script>
 
-        $(function() {
-            let $maxChk = $("#maxChk");
-            let $maxUserCnt = $("#maxUserCnt");
-            let $rtcType = $("#rtcType");
-            let $msgType = $("#msgType");
 
-            // 모달창 열릴 때 이벤트 처리 => roomId 가져오기
-            $("#enterRoomModal").on("show.bs.modal", function(event) {
-                roomId = $(event.relatedTarget).data('id');
-                // console.log("roomId: " + roomId);
 
-            });
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></script>
 
-            $("#confirmPwdModal").on("show.bs.modal", function(e) {
-                roomId = $(e.relatedTarget).data('id');
-                // console.log("roomId: " + roomId);
+<script th:inline="javascript">
+	let roomId;
 
-            });
+	$(function() {
+		let $maxChk = $("#maxChk");
+		let $maxUserCnt = $("#maxUserCnt");
+		let $rtcType = $("#rtcType");
+		let $msgType = $("#msgType");
 
-            // 채팅방 설정 시 비밀번호 확인
-            confirmPWD();
+		// 모달창 열릴 때 이벤트 처리 => roomId 가져오기
+		$("#enterRoomModal").on("show.bs.modal", function(event) {
+			roomId = $(event.relatedTarget).data('id');
+			// console.log("roomId: " + roomId);
 
-            // // 기본은 유저 설정 칸 미활성화
-            // $maxUserCnt.hide();
+		});
 
-            // // 체크박스 체크에 따라 인원 설정칸 활성화 여부
-            // $maxChk.change(function(){
-            //     if($maxChk.is(':checked')){
-            //         $maxUserCnt.val('');
-            //         $maxUserCnt.show();
-            //     }else{
-            //         $maxUserCnt.hide();
-            //     }
-            // })
+		$("#confirmPwdModal").on("show.bs.modal", function(e) {
+			roomId = $(e.relatedTarget).data('id');
+			// console.log("roomId: " + roomId);
 
-            // 화상 채팅 시 1:1 임으로 2명 고정
-            $rtcType.change(function() {
-                if ($rtcType.is(':checked')) {
-                    let number = 2;
+		});
 
-                    $("#maxUserCnt").val(parseInt(2));
-                    // $("#maxUserCnt").attr('value', 2)
-                    $("#maxUserCnt").attr('disabled', true);
-                }
-            })
+		// 채팅방 설정 시 비밀번호 확인
+		confirmPWD();
 
-            // 문자 채팅 누를 시 disabled 풀림
-            $msgType.change(function() {
-                if ($msgType.is(':checked')) {
-                    $maxUserCnt.attr('disabled', false);
-                }
-            })
-        })
+		// // 기본은 유저 설정 칸 미활성화
+		// $maxUserCnt.hide();
 
-        // 채팅방 설정 시 비밀번호 확인 - keyup 펑션 활용
-        function confirmPWD() {
-            $("#confirmPwd")
-                .on(
-                    "keyup",
-                    function() {
-                        let $confirmPwd = $("#confirmPwd").val();
-                        const $configRoomBtn = $("#configRoomBtn");
-                        let $confirmLabel = $("#confirmLabel");
+		// // 체크박스 체크에 따라 인원 설정칸 활성화 여부
+		// $maxChk.change(function(){
+		//     if($maxChk.is(':checked')){
+		//         $maxUserCnt.val('');
+		//         $maxUserCnt.show();
+		//     }else{
+		//         $maxUserCnt.hide();
+		//     }
+		// })
 
-                        $
-                            .ajax({
-                                type: "get",
-                                url: "/chat/confirmPwd/" + roomId,
-                                data: {
-                                    "roomPwd": $confirmPwd
-                                },
-                                success: function(result) {
-                                    // console.log("동작완료")
+		// 화상 채팅 시 1:1 임으로 2명 고정
+		$rtcType.change(function() {
+			if ($rtcType.is(':checked')) {
+				let number = 2;
 
-                                    // result 의 결과에 따라서 아래 내용 실행
-                                    if (result) { // true 일때는
-                                        // $configRoomBtn 를 활성화 상태로 만들고 비밀번호 확인 완료를 출력
-                                        $configRoomBtn.attr("class",
-                                            "btn btn-primary");
-                                        $configRoomBtn.attr(
-                                            "aria-disabled", false);
+				$("#maxUserCnt").val(parseInt(2));
+				// $("#maxUserCnt").attr('value', 2)
+				$("#maxUserCnt").attr('disabled', true);
+			}
+		})
 
-                                        $confirmLabel
-                                            .html("<span id='confirm'>비밀번호 확인 완료</span>");
-                                        $("#confirm").css({
-                                            "color": "#0D6EFD",
-                                            "font-weight": "bold",
-                                        });
+		// 문자 채팅 누를 시 disabled 풀림
+		$msgType.change(function() {
+			if ($msgType.is(':checked')) {
+				$maxUserCnt.attr('disabled', false);
+			}
+		})
+	})
 
-                                    } else { // false 일때는
-                                        // $configRoomBtn 를 비활성화 상태로 만들고 비밀번호가 틀립니다 문구를 출력
-                                        $configRoomBtn
-                                            .attr("class",
-                                                "btn btn-primary disabled");
-                                        $configRoomBtn.attr(
-                                            "aria-disabled", true);
+	// 채팅방 설정 시 비밀번호 확인 - keyup 펑션 활용
+	function confirmPWD() {
+		$("#confirmPwd")
+				.on(
+						"keyup",
+						function() {
+							let $confirmPwd = $("#confirmPwd").val();
+							const $configRoomBtn = $("#configRoomBtn");
+							let $confirmLabel = $("#confirmLabel");
 
-                                        $confirmLabel
-                                            .html("<span id='confirm'>비밀번호가 틀립니다</span>");
-                                        $("#confirm").css({
-                                            "color": "#FA3E3E",
-                                            "font-weight": "bold",
-                                        });
+							$
+									.ajax({
+										type : "get",
+										url : "/chat/confirmPwd/" + roomId,
+										data : {
+											"roomPwd" : $confirmPwd
+										},
+										success : function(result) {
+											// console.log("동작완료")
 
-                                    }
-                                }
-                            })
-                    })
-        }
+											// result 의 결과에 따라서 아래 내용 실행
+											if (result) { // true 일때는
+												// $configRoomBtn 를 활성화 상태로 만들고 비밀번호 확인 완료를 출력
+												$configRoomBtn.attr("class",
+														"btn btn-primary");
+												$configRoomBtn.attr(
+														"aria-disabled", false);
 
-        // 채팅 인원 숫자만 정규식 체크
-        function numberChk() {
-            let check = /^[0-9]+$/;
-            if (!check.test($("#maxUserCnt").val())) {
-                alert("채팅 인원에는 숫자만 입력 가능합니다!!")
-                return false;
-            }
-            return true;
-        }
+												$confirmLabel
+														.html("<span id='confirm'>비밀번호 확인 완료</span>");
+												$("#confirm").css({
+													"color" : "#0D6EFD",
+													"font-weight" : "bold",
+												});
 
-        // 채팅방 생성
-        function createRoom() {
+											} else { // false 일때는
+												// $configRoomBtn 를 비활성화 상태로 만들고 비밀번호가 틀립니다 문구를 출력
+												$configRoomBtn
+														.attr("class",
+																"btn btn-primary disabled");
+												$configRoomBtn.attr(
+														"aria-disabled", true);
 
-            let name = $("#roomName").val();
-            let pwd = $("#roomPwd").val();
-            let secret = $("#secret").is(':checked');
-            let secretChk = $("#secretChk");
+												$confirmLabel
+														.html("<span id='confirm'>비밀번호가 틀립니다</span>");
+												$("#confirm").css({
+													"color" : "#FA3E3E",
+													"font-weight" : "bold",
+												});
 
-            // console.log("name : " + name);
-            // console.log("pwd : " + pwd);
+											}
+										}
+									})
+						})
+	}
 
-            if (name === "") {
-                alert("방 이름은 필수입니다")
-                return false;
-            }
-            if ($("#" + name).length > 0) {
-                alert("이미 존재하는 방입니다")
-                return false;
-            }
-            if (pwd === "") {
-                alert("비밀번호는 필수입니다")
-                return false;
-            }
+	// 채팅 인원 숫자만 정규식 체크
+	function numberChk() {
+		let check = /^[0-9]+$/;
+		if (!check.test($("#maxUserCnt").val())) {
+			alert("채팅 인원에는 숫자만 입력 가능합니다!!")
+			return false;
+		}
+		return true;
+	}
 
-            // 최소 방 인원 수는 2, 최대 100명
-            if ($("#maxUserCnt").val() <= 1) {
-                alert("채팅은 최소 2명 이상!!");
-                return false;
-            } else if ($("#maxUserCnt").val() > 100) {
-                alert("100명 이상은 서버가 못 버텨요ㅠ.ㅠ");
-                return false;
-            }
+	// 채팅방 생성
+	function createRoom() {
 
-            // 채팅 타입 필수
-            if ($('input[name=chatType]:checked').val() == null) {
-                alert("채팅 타입은 필수입니다")
-                return false;
-            }
+		let name = $("#roomName").val();
+		let pwd = $("#roomPwd").val();
+		let secret = $("#secret").is(':checked');
+		let secretChk = $("#secretChk");
 
-            if (secret) {
-                secretChk.attr('value', true);
-            } else {
-                secretChk.attr('value', false);
-            }
+		// console.log("name : " + name);
+		// console.log("pwd : " + pwd);
 
-            if (!numberChk()) {
-                return false;
-            }
+		if (name === "") {
+			alert("방 이름은 필수입니다")
+			return false;
+		}
+		if ($("#" + name).length > 0) {
+			alert("이미 존재하는 방입니다")
+			return false;
+		}
+		if (pwd === "") {
+			alert("비밀번호는 필수입니다")
+			return false;
+		}
 
-            return true;
-        }
+		// 최소 방 인원 수는 2, 최대 100명
+		if ($("#maxUserCnt").val() <= 1) {
+			alert("채팅은 최소 2명 이상!!");
+			return false;
+		} else if ($("#maxUserCnt").val() > 100) {
+			alert("100명 이상은 서버가 못 버텨요ㅠ.ㅠ");
+			return false;
+		}
 
-        // 채팅방 입장 시 비밀번호 확인
-        function enterRoom() {
-            let $enterPwd = $("#enterPwd").val();
+		// 채팅 타입 필수
+		if ($('input[name=chatType]:checked').val() == null) {
+			alert("채팅 타입은 필수입니다")
+			return false;
+		}
 
-            $.ajax({
-                type: "get",
-                url: "/chat/confirmPwd/" + roomId,
-                async: false,
-                data: {
-                    "roomPwd": $enterPwd
-                },
-                success: function(result) {
-                    // console.log("동작완료")
-                    // console.log("확인 : "+chkRoomUserCnt(roomId))
+		if (secret) {
+			secretChk.attr('value', true);
+		} else {
+			secretChk.attr('value', false);
+		}
 
-                    if (result) {
-                        if (chkRoomUserCnt(roomId)) {
-                            location.href = "/chat/room?roomId=" + roomId;
-                        }
-                    } else {
-                        alert("비밀번호가 틀립니다. \n 비밀번호를 확인해주세요")
-                    }
-                }
-            })
-        }
+		if (!numberChk()) {
+			return false;
+		}
 
-        // 채팅방 삭제
-        function delRoom() {
-            location.href = "/chat/delRoom/" + roomId;
-        }
+		return true;
+	}
 
-        // 채팅방 입장 시 인원 수에 따라서 입장 여부 결정
-        function chkRoomUserCnt(roomId) {
-            let chk;
+	// 채팅방 입장 시 비밀번호 확인
+	function enterRoom() {
+		let $enterPwd = $("#enterPwd").val();
 
-            // 비동기 처리 설정 false 로 변경 => ajax 통신이 완료된 후 return 문 실행
-            // 기본설정 async = true 인 경우에는 ajax 통신 후 결과가 나올 때까지 기다리지 않고 먼저 return 문이 실행되서
-            // 제대로된 값 - 원하는 값 - 이 return 되지 않아서 문제가 발생한다.
-            $.ajax({
-                type: "GET",
-                url: "/chat/chkUserCnt/" + roomId,
-                async: false,
-                success: function(result) {
+		$.ajax({
+			type : "get",
+			url : "/chat/confirmPwd/" + roomId,
+			async : false,
+			data : {
+				"roomPwd" : $enterPwd
+			},
+			success : function(result) {
+				// console.log("동작완료")
+				// console.log("확인 : "+chkRoomUserCnt(roomId))
 
-                    // console.log("여기가 먼저")
-                    if (!result) {
-                        alert("채팅방이 꽉 차서 입장 할 수 없습니다");
-                    }
+				if (result) {
+					if (chkRoomUserCnt(roomId)) {
+						location.href = "/chat/room?roomId=" + roomId;
+					}
+				} else {
+					alert("비밀번호가 틀립니다. \n 비밀번호를 확인해주세요")
+				}
+			}
+		})
+	}
 
-                    chk = result;
-                }
-            })
-            return chk;
-        }
-    </script>
-    <style>
-        a {
-            text-decoration: none;
-        }
+	// 채팅방 삭제
+	function delRoom() {
+		location.href = "/chat/delRoom/" + roomId;
+	}
 
-        #table {
-            margin-top: 40px;
-        }
+	// 채팅방 입장 시 인원 수에 따라서 입장 여부 결정
+	function chkRoomUserCnt(roomId) {
+		let chk;
 
-        h2 {
-            margin-top: 40px;
-        }
+		// 비동기 처리 설정 false 로 변경 => ajax 통신이 완료된 후 return 문 실행
+		// 기본설정 async = true 인 경우에는 ajax 통신 후 결과가 나올 때까지 기다리지 않고 먼저 return 문이 실행되서
+		// 제대로된 값 - 원하는 값 - 이 return 되지 않아서 문제가 발생한다.
+		$.ajax({
+			type : "GET",
+			url : "/chat/chkUserCnt/" + roomId,
+			async : false,
+			success : function(result) {
 
-        input#maxUserCnt {
-            width: 160px;
-        }
+				// console.log("여기가 먼저")
+				if (!result) {
+					alert("채팅방이 꽉 차서 입장 할 수 없습니다");
+				}
 
-        span.input-group-text.input-password-hide {
-            height: 40px;
-        }
+				chk = result;
+			}
+		})
+		return chk;
+	}
+</script>
+<style>
+a {
+	text-decoration: none;
+}
 
-        span.input-group-text.input-password-show {
-            height: 40px;
-        }
-    </style>
+#table {
+	margin-top: 40px;
+}
+
+h2 {
+	margin-top: 40px;
+}
+
+input#maxUserCnt {
+	width: 160px;
+}
+
+span.input-group-text.input-password-hide {
+	height: 40px;
+}
+
+span.input-group-text.input-password-show {
+	height: 40px;
+}
+</style>
 </head>
 
 
 <body id="page-top">
 
-    <!-- Page Wrapper -->
-    <div id="wrapper">
+	<!-- Page Wrapper -->
+	<div id="wrapper">
 
-        <th:block th:replace="admin/fragments/sidebar :: sidebarFragment"></th:block>
+		<th:block th:replace="admin/fragments/sidebar :: sidebarFragment"></th:block>
 
-        <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
+		<!-- Content Wrapper -->
+		<div id="content-wrapper" class="d-flex flex-column">
 
-            <!-- Main Content -->
-            <div id="content">
+			<!-- Main Content -->
+			<div id="content">
 
-                <th:block th:replace="admin/fragments/header :: headerFragment"></th:block>
+				<th:block th:replace="admin/fragments/header :: headerFragment"></th:block>
 
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
-
-
-                    <th:block th:replace="common/head :: headFragment"></th:block>
-
-                    <body>
-                        <div class="container">
-                            <div class="container">
-                                <h2>예약 내역</h2>
-                                <table class="table table-hover" id="table">
-                                    <tr align="center">
-                                        <th scope="col">고객명</th>
-                                        <th scope="col">고객 아이디</th>
-                                        <th scope="col">예약 날짜</th>
-                                        <th scope="col">시 간</th>
-                                        <th scope="col">방 생성</th>
-                                        <th scope="col">입장 하기</th>
-                                    </tr>
-                                    <th:block th:fragment="content" id="block">
-
-                                        <tr align="center" th:each="res : ${reservations}">
-                                            <td class="fw-normal visible mname">[[${res.MNAME}]]</td>
-                                            <td class="fw-normal visible mid">[[${res.MID}]]</td>
-                                            <td class="fw-normal visible rdare">[[${res.RDATE}]]</td>
-                                            <td class="fw-normal visible rtime">[[${res.RTIME}]]</td>
-                                            <td class="rcheck" th:if="${res.RCHECK}"><span class="col-sm-2 align-self-auto"> 생성 완료 </span></td>
-                                            <td class="rcheck2" th:if="${!res.RCHECK}"><span class="col-sm-2 align-self-auto">  <button type="button" class="btn btn-info btn-icon-split btn-sm open" data-bs-toggle="modal" data-bs-target="#roomModal" th:onclick="modalOpen([[${res.MNAME}]],[[${res.MID}]],[[${res.RID}]])">방 생성</button> </span></td>
-                                            <td class="fw-normal visible roomURL"><a th:href="@{/chat/room(roomId=${res.roomId})}" th:roomId="${res.roomId}" onclick="return chkRoomUserCnt(this.getAttribute('roomId'));">방 입장</a></td>
-                                        </tr>
-                                    </th:block>
-
-                                </table>
-
-                                <div class="col">
-                                    <h2>
-                                        온라인 상담 내역
-                                        <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#roomModal">방 생성</button>
-                                    </h2>
-                                </div>
+				<!-- Begin Page Content -->
+				<div class="container-fluid">
 
 
-                                <table class="table table-hover" id="table">
-                                    <tr align="center">
-                                        <th scope="col">온라인 상담</th>
-                                        <th scope="col">잠금 여부</th>
-                                        <th scope="col">참여 인원</th>
-                                        <th scope="col">채팅 종류</th>
-                                        <th scope="col">채팅방 설정</th>
-                                    </tr>
-                                    <th:block th:fragment="content">
+					<th:block th:replace="common/head :: headFragment"></th:block>
 
-                                        <tr align="center" th:each="room : ${list}">
-                                            <span class="hidden" th:id="${room.roomName}"></span>
-                                            <td th:if="${room.secretChk}"><a href="#enterRoomModal" data-bs-toggle="modal" data-target="#enterRoomModal" th:data-id="${room.roomId}">[[${room.roomName}]]</a></td>
-                                            <td th:if="${!room.secretChk}">
-                                                <!-- thymeleaf 의 변수를 onclick 에 넣는 방법 --> <a th:href="@{/chat/room(roomId=${room.roomId})}" th:roomId="${room.roomId}" onclick="return chkRoomUserCnt(this.getAttribute('roomId'));">[[${room.roomName}]]</a>
-                                            </td>
-                                            <td><span th:if="${room.secretChk}"> 🔒︎ </span></td>
-                                            <td><span class="badge bg-primary rounded-pill">[[${room.userCount}]]/[[${room.maxUserCnt}]]</span></td>
-                                            <td><span th:if="${#strings.equals(room.chatType, 'MSG')}">일반 채팅</span> <span th:unless="${#strings.equals(room.chatType, 'MSG')}">화상
+					<body>
+						<div class="container">
+							<div class="container">
+								<h2>예약 내역</h2>
+								<table class="table table-hover" id="table">
+									<tr align="center">
+										<th scope="col">고객명</th>
+										<th scope="col">고객 아이디</th>
+										<th scope="col">예약 날짜</th>
+										<th scope="col">시 간</th>
+										<th scope="col">방 생성</th>
+										<th scope="col">입장 하기</th>
+									</tr>
+									<th:block th:fragment="content" id="block">
+
+										<tr align="center" th:each="res : ${reservations}">
+											<td class="fw-normal visible mname">[[${res.MNAME}]]</td>
+											<td class="fw-normal visible mid">[[${res.MID}]]</td>
+											<td class="fw-normal visible rdare">[[${res.RDATE}]]</td>
+											<td class="fw-normal visible rtime">[[${res.RTIME}]]</td>
+											<td class="rcheck" th:if="${res.RCHECK}"><span class="col-sm-2 align-self-auto"> 생성 완료 </span></td>
+											<td class="rcheck2" th:if="${!res.RCHECK}"><span class="col-sm-2 align-self-auto">
+													<button type="button" class="btn btn-info btn-icon-split btn-sm open" data-bs-toggle="modal" data-bs-target="#roomModal"
+														th:onclick="modalOpen([[${res.MNAME}]],[[${res.MID}]],[[${res.RID}]])"
+													>방 생성</button>
+											</span></td>
+											<td class="fw-normal visible roomURL"><a th:href="@{/chat/room(roomId=${res.roomId})}" th:roomId="${res.roomId}"
+												onclick="return chkRoomUserCnt(this.getAttribute('roomId'));"
+											>방 입장</a></td>
+										</tr>
+									</th:block>
+
+								</table>
+
+								<div class="col">
+									<h2>
+										온라인 상담 내역
+										<button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#roomModal">방 생성</button>
+									</h2>
+								</div>
+
+
+								<table class="table table-hover" id="table">
+									<tr align="center">
+										<th scope="col">온라인 상담</th>
+										<th scope="col">잠금 여부</th>
+										<th scope="col">참여 인원</th>
+										<th scope="col">채팅 종류</th>
+										<th scope="col">채팅방 설정</th>
+									</tr>
+									<th:block th:fragment="content">
+
+										<tr align="center" th:each="room : ${list}">
+											<span class="hidden" th:id="${room.roomName}"></span>
+											<td th:if="${room.secretChk}"><a href="#enterRoomModal" data-bs-toggle="modal" data-target="#enterRoomModal"
+												th:data-id="${room.roomId}"
+											>[[${room.roomName}]]</a></td>
+											<td th:if="${!room.secretChk}">
+												<!-- thymeleaf 의 변수를 onclick 에 넣는 방법 --> <a th:href="@{/chat/room(roomId=${room.roomId})}" th:roomId="${room.roomId}"
+												onclick="return chkRoomUserCnt(this.getAttribute('roomId'));"
+											>[[${room.roomName}]]</a>
+											</td>
+											<td><span th:if="${room.secretChk}"> 🔒︎ </span></td>
+											<td><span class="badge bg-primary rounded-pill">[[${room.userCount}]]/[[${room.maxUserCnt}]]</span></td>
+											<td><span th:if="${#strings.equals(room.chatType, 'MSG')}">일반 채팅</span> <span th:unless="${#strings.equals(room.chatType, 'MSG')}">화상
 													채팅</span></td>
 											<td>
 												<button class="btn btn-primary btn-sm" id="configRoom" data-bs-toggle="modal" data-bs-target="#confirmPwdModal"
@@ -396,7 +420,7 @@
 											<div class="mb-3">
 												<label for="roomName" class="col-form-label">회원 아이디</label>
 												<input type="text" class="form-control" id="customerID" name="customerID" readonly>
-												<input type="hidden" id="reservationID" name="reservationID"/>
+												<input type="hidden" id="reservationID" name="reservationID" />
 											</div>
 											<div class="mb-3">
 												<label for="roomPwd" class="col-form-label">방 설정 번호</label>
@@ -427,7 +451,7 @@
 												<label class="form-check-label" for="secret"> 채팅방 잠금 </label>
 											</div>
 										</div>
-										
+
 										<div class="modal-footer">
 											<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 											<input type="submit" class="btn btn-primary" value="방 생성하기">
@@ -515,7 +539,7 @@
 											<input type="text" class="form-control" id="chRoomUserCnt" name="chUserCnt">
 										</div>
 										<div class="form-check">
-											<input class="form-check-input" type="checkbox" id="chSecret">
+											<input class="form-check-input" typve="checkbox" id="chSecret">
 											<input type="hidden" name="secretChk" id="chSecretChk" value="">
 											<label class="form-check-label" for="secret"> 채팅방 잠금 </label>
 										</div>
@@ -537,41 +561,124 @@
 			</div>
 			<!-- End of Page Wrapper -->
 
-			<!-- Scroll to Top Button-->
-			<a class="scroll-to-top rounded" href="#page-top"> <i class="fas fa-angle-up"></i>
-			</a>
 
-			<!-- Logout Modal-->
-			<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-				<div class="modal-dialog" role="document">
+
+
+			<div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLbel" aria-hidden="true">
+				<div class="modal-dialog">
 					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-							<button class="close" type="button" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true">×</span>
-							</button>
-						</div>
-						<div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-						<div class="modal-footer">
-							<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-							<a class="btn btn-primary" href="login.html">Logout</a>
+						<div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
+							<div class="card p-4">
+								<div class=" image d-flex flex-column justify-content-center align-items-center">
+									<button class="btn btn-secondary">
+										<img th:id="profileIMG" src="https://i.imgur.com/wvxPV9S.png" height="100" width="100" />
+									</button>
+									<span class="name mt-3" th:id="profileName">Eleanor Pena</span> <span class="idd" th:id="profileMBTI">@eleanorpena</span>
+									<div class="text mt-3">
+										<span th:id="profileAge">
+										</span>
+									</div>
+									<div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center">
+										<span><i class="fa fa-twitter"></i></span> <span><i class="fa fa-facebook-f"></i></span> <span><i class="fa fa-instagram"></i></span> <span><i
+											class="fa fa-linkedin"
+										></i></span>
+									</div>
+									<div class=" d-flex mt-2">
+										<button class="btn1 btn-dark" id="profileMakeup" th:onclick="MakeUp(this)" data-makeup="123123">가상 메이크업</button>
+									</div>
+									
+									<div class=" px-2 rounded mt-4 date ">
+										<span class="join">Joined May,2021</span>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			
-			
-			<script>
-			
-			
-			function modalOpen(mName,mid,rid){
+
+
+
+
+
+
+
+			<!-- Scroll to Top Button-->
+			<a class="scroll-to-top rounded" href="#page-top"> <i class="fas fa-angle-up"></i>
+			</a> 여기에요
+			<button type="button" class="btn btn-info btn-icon-split btn-sm open" data-bs-toggle="modal" data-bs-target="#profileModal"
+				th:onclick="profileOpen('95parksh@naver.com2','99')"
+			>모달 테스트</button>
+
+
+
+
+		</div>
+
+
+		<script>
+		
+		
+			function MakeUp(e){
+				
+				var a = $(e).data('makeup');
+				
+				console.log(a);
+				
+				window.open(a);
 				
 				
+			}
+		
+		
+			function modalOpen(mName, mid, rid) {
+
 				$('#roomName').val(mName + "님 온라인 뷰티 ");
 				$('#customerID').val(mid);
 				$('#reservationID').val(rid);
+
+			}
+			
+			
+			
+			
+			
+			function profileOpen(mid,rid){
 				
+				$
+				.ajax({
+					type : "get",
+					url : "/beauty/profile",
+					data : {
+						"mid" : mid,
+						"rid" : rid
+					},
+					success : function(profile) {
+						
+						console.log(profile);
+						
+						$('#profileMBTI').text(profile.mbti);
+						$('#profileAge').text(profile.age);
 					
+						
+						
+						$('#profileName').text(profile.mname);
+						
+						$('#profileIMG').attr("src", profile.rimg);
+						
+						$('#profileMakeup').attr('data-makeup', '/beauty/makeup?rid='+rid) ;
+						
+				
+					}
+				})
+				
+				
+				
+				
+				
+				
+				
+				
 				
 			}
 			
@@ -579,24 +686,105 @@
 			
 			
 			
-			</script>
+			
+			
+		</script>
 
-			<!-- Bootstrap core JavaScript-->
-			<script src="/admin/vendor/jquery/jquery.min.js"></script>
-			<script src="/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<!-- Bootstrap core JavaScript-->
+		<script src="/admin/vendor/jquery/jquery.min.js"></script>
+		<script src="/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-			<!-- Core plugin JavaScript-->
-			<script src="/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+		<!-- Core plugin JavaScript-->
+		<script src="/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-			<!-- Custom scripts for all pages-->
-			<script src="/admin/js/sb-admin-2.min.js"></script>
+		<!-- Custom scripts for all pages-->
+		<script src="/admin/js/sb-admin-2.min.js"></script>
 
-			<!-- Page level plugins -->
-			<script src="/admin/vendor/chart.js/Chart.min.js"></script>
+		<!-- Page level plugins -->
+		<script src="/admin/vendor/chart.js/Chart.min.js"></script>
 
-			<!-- Page level custom scripts -->
-			<script src="/admin/js/demo/chart-area-demo.js"></script>
-			<script src="/admin/js/demo/chart-pie-demo.js"></script>
+		<!-- Page level custom scripts -->
+		<script src="/admin/js/demo/chart-area-demo.js"></script>
+		<script src="/admin/js/demo/chart-pie-demo.js"></script>
 </body>
+
+<style>
+
+/*프로필 카드 */
+
+* {
+	margin: 0;
+	padding: 0
+}
+
+body {
+	background-color: #000
+}
+
+.card {
+	width: 350px;
+	background-color: #efefef;
+	border: none;
+	cursor: pointer;
+	transition: all 0.5s;
+}
+
+.image img {
+	transition: all 0.5s
+}
+
+.card:hover .image img {
+	transform: scale(1.5)
+}
+
+.name {
+	font-size: 22px;
+	font-weight: bold
+}
+
+.idd {
+	font-size: 14px;
+	font-weight: 600
+}
+
+.idd1 {
+	font-size: 12px
+}
+
+.number {
+	font-size: 22px;
+	font-weight: bold
+}
+
+.follow {
+	font-size: 12px;
+	font-weight: 500;
+	color: #444444
+}
+
+.text span {
+	font-size: 13px;
+	color: #545454;
+	font-weight: 500
+}
+
+.icons i {
+	font-size: 19px
+}
+
+hr .new1 {
+	border: 1px solid
+}
+
+.join {
+	font-size: 14px;
+	color: #a0a0a0;
+	font-weight: bold
+}
+
+.date {
+	background-color: #ccc
+}
+</style>
 
 </html>
