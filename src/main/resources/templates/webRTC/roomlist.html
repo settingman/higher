@@ -344,12 +344,12 @@ span.input-group-text.input-password-show {
 											<td class="fw-normal visible mid">[[${res.MID}]]</td>
 											<td class="fw-normal visible rdare">[[${res.RDATE}]]</td>
 											<td class="fw-normal visible rtime">[[${res.RTIME}]]</td>
-											<td class="fw-normal visible rmakeup"><button type="button" class="btn btn-info btn-icon-split btn-sm open" data-bs-toggle="modal"
+											<td class="fw-normal visible rmakeup"><button type="button" class="btn btn-primary btn-sm open" data-bs-toggle="modal"
 													data-bs-target="#profileModal" th:onclick="profileOpen([[${res.MID}]],[[${res.RID}]])"
 												>정보 확인</button></td>
 											<td class="rcheck" th:if="${res.RCHECK}"><span class="col-sm-2 align-self-auto"> 생성 완료 </span></td>
 											<td class="rcheck2" th:if="${!res.RCHECK}"><span class="col-sm-2 align-self-auto">
-													<button type="button" class="btn btn-info btn-icon-split btn-sm open" data-bs-toggle="modal" data-bs-target="#roomModal"
+													<button type="button" class="btn btn-primary btn-sm open" data-bs-toggle="modal" data-bs-target="#roomModal"
 														th:onclick="modalOpen([[${res.MNAME}]],[[${res.MID}]],[[${res.RID}]])"
 													>방 생성</button>
 											</span></td>
@@ -364,7 +364,7 @@ span.input-group-text.input-password-show {
 								<div class="col">
 									<h2>
 										온라인 상담 내역
-										<button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#roomModal">방 생성</button>
+										<button type="button" class="btn btn-primary btn-sm open" data-bs-toggle="modal" data-bs-target="#roomModal">방 생성</button>
 									</h2>
 								</div>
 
@@ -594,7 +594,7 @@ span.input-group-text.input-password-show {
 									
 			
 									<div class=" d-flex mt-2">
-										<button class="btn btn-info btn-icon-split btn-sm open" id="profileMakeup" th:onclick="MakeUp(this)" data-makeup="123123">가상 메이크업</button>
+										<button class="btn btn-primary btn-sm open" id="profileMakeup" th:onclick="MakeUp(this)" data-makeup="123123">가상 메이크업</button>
 									</div>
 
 						
