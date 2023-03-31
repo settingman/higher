@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.hyundai.higher.domain.order.OrderSheet;
+import com.hyundai.higher.domain.cart.CartItem;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -46,32 +46,23 @@ public class HomeController {
 	@GetMapping(value = "/test3")
 	public String test2(Model model) {
 		
-		List<String> product_id = new ArrayList<>();
-		List<Integer> product_Quntity= new ArrayList<>();
-		List<String> product_name= new ArrayList<>();
-		List<String> product_image= new ArrayList<>();
-		List<Integer> product_price= new ArrayList<>();
+		
+		 log.info("장바구니 이동");
+	      
+	      List<CartItem> carts = new ArrayList<>();
+	      
+	      CartItem cart = new CartItem("A1504419", "테스트", 10000, "Brand", "Color", 3,"option", "img_path");
+			
+			CartItem cart2 = new CartItem("A1643072", "테스트2", 20000, "Brand", "Color", 2,"option", "img_path");
+			
+			carts.add(cart);
+			carts.add(cart2);
+	      
+	      model.addAttribute("carts", carts);
+
 		
 		
-		product_id.add("1");
-		product_id.add("2");
 		
-		product_Quntity.add(1);
-		product_Quntity.add(2);
-		
-		product_name.add("1");
-		product_name.add("2");
-		
-		product_image.add("1");
-		product_image.add("2");
-		
-		product_price.add(1);
-		product_price.add(2);
-		
-		OrderSheet orderSheet = new OrderSheet("orderId","oName","oDate",123,"oadd1","oadd2","oreceiver","otel","opay",1234,product_id,product_Quntity,product_name,product_image,product_price) ;
-		
-		
-		model.addAttribute("orderSheet",orderSheet);
 
 
 		return "test3";
