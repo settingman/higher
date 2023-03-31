@@ -339,12 +339,12 @@
 								</thead>
 								<tbody>
 
-									<tr th:each="cartItem, stat : ${cartItems}">
+									<tr th:each="orderItem, stat : ${orderItems}">
 										<td class="valign-top">
 											<div class="prod-info no-ctrl">
 												<div class="img" id="img-40A1650970">
-													<input type="hidden" th:value="${cartItem.pcode}" />
-													<img src="${cartItem.IMAGE_PATH}" onerror="noImage(this, 'https://image.thehyundai.com/hdmall/images/pd/no_image_100x100.jpg')" />
+													<input type="hidden" th:value="${orderItem.pcode}" />
+													<img src="${orderItem.IMAGE_PATH}" onerror="noImage(this, 'https://image.thehyundai.com/hdmall/images/pd/no_image_100x100.jpg')" />
 													<div class="hover-info">
 														<a href="http://www.thehyundai.com/front/pda/itemPtc.thd?slitmCd=40A1650970&amp;sectId=102066" target="_blank" title="새창으로 보기">새창으로
 															보기</a><a href="javascript:sltdItemDone('40A1650970:00001','102066',event);return false;" title="찜하기"
@@ -353,20 +353,20 @@
 													</div>
 												</div>
 												<div class="title">
-													<a href="http:	//www.thehyundai.com/front/pda/itemPtc.thd?slitmCd=40A1650970&amp;sectId=102066" target="_blank">[[${cartItem.pname}]]</a>
+													<a href="http:	//www.thehyundai.com/front/pda/itemPtc.thd?slitmCd=40A1650970&amp;sectId=102066" target="_blank">[[${orderItem.pname}]]</a>
 												</div>
 												<div class="option-info">
-													<span class="tit">[[${cartItem.poption}]]</span>
+													<span class="tit">[[${orderItem.poption}]]</span>
 												</div>
 											</div>
 										</td>
-										<td class="prod-num">[[${cartItem.pamount}]]개</td>
+										<td class="prod-num">[[${orderItem.pamount}]]개</td>
 										<td class="price-info">
-											<input type="hidden" class="total-price" th:value="${cartItem.pprice*cartItem.pamount}"/>
-											<div class="o-price" th:text="${#numbers.formatInteger(cartItem.pprice, 3, 'COMMA') + '원'}"></div>
+											<input type="hidden" class="total-price" th:value="${orderItem.pprice*orderItem.pamount}"/>
+											<div class="o-price" th:text="${#numbers.formatInteger(orderItem.pprice, 3, 'COMMA') + '원'}"></div>
 											<div class="tot-price" >
 												<span data-tcprate="1.0" data-luityn="N" data-stlmdcamt="0"
-													th:text="${#numbers.formatInteger(cartItem.pprice*cartItem.pamount, 3, 'COMMA') + '원'}"
+													th:text="${#numbers.formatInteger(orderItem.pprice*orderItem.pamount, 3, 'COMMA') + '원'}"
 												></span>
 											</div>
 										</td>
@@ -818,16 +818,16 @@
 
 			<input type="hidden" name="oTotalPrice" id="oTotalPrice" value="1">
 
-			<div th:each="cartItem, stat : ${cartItems}">
+			<div th:each="orderItem, stat : ${orderItems}">
 
-				<input type="hidden" name="product_id" id=product_id th:value="${cartItem.pcode}">
+				<input type="hidden" name="product_id" id=product_id th:value="${orderItem.pcode}">
 
-				<input type="hidden" name="product_Quntity" id="product_Quntity" th:value="${cartItem.pamount}">
+				<input type="hidden" name="product_Quntity" id="product_Quntity" th:value="${orderItem.pamount}">
 				
-				<input type="hidden" name="product_name" id="product_name" th:value="${cartItem.pname}">
-				<input type="hidden" name="product_image" id="product_image" th:value="${cartItem.IMAGE_PATH}">
+				<input type="hidden" name="product_name" id="product_name" th:value="${orderItem.pname}">
+				<input type="hidden" name="product_image" id="product_image" th:value="${orderItem.IMAGE_PATH}">
 				
-				<input type="hidden" name="product_price" id="product_price" th:value="${cartItem.pprice}">
+				<input type="hidden" name="product_price" id="product_price" th:value="${orderItem.pprice}">
 				
 				
 

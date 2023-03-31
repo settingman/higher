@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hyundai.higher.domain.cart.CartItem;
+import com.hyundai.higher.domain.cart.OrderItem;
 import com.hyundai.higher.mapper.order.OrderMapper;
 
 import lombok.RequiredArgsConstructor;
@@ -42,15 +43,11 @@ public class OrderController {
 	@GetMapping(value = "/order")
 	public String Order(@RequestParam(required = false,defaultValue = "") List<String> pIdList, Model model, Principal principal) {
 
-		List<CartItem> cartItems = new ArrayList<CartItem>();
+		List<OrderItem> orderItems = new ArrayList<OrderItem>();
 		
 		
 		String mid = principal.getName();
-		
-		
-		pIdList.add("A1504419");
-		
-		
+			
 		
 		if(!pIdList.isEmpty()) {
 			
@@ -58,7 +55,7 @@ public class OrderController {
 				
 				
 				
-				cartItems.add(orderMapper.selectCartItem(mid, pcode));
+				orderItems.add(orderMapper.selectCartItem(mid, pcode));
 				
 			}
 			
@@ -68,17 +65,17 @@ public class OrderController {
 		
 		
 
-		CartItem cart = new CartItem("test", "테스트", 10000, "Brand", "Color", 3,"option", "img_path");
+		OrderItem cart = new OrderItem("test", "테스트", 10000, "Brand", "Color", 3,"option", "img_path");
 		
-		CartItem cart2 = new CartItem("test2", "테스트2", 20000, "Brand", "Color", 2,"option", "img_path");
+		OrderItem cart2 = new OrderItem("test2", "테스트2", 20000, "Brand", "Color", 2,"option", "img_path");
 		// cartService.cartToOrder(pIdList,principal.getName());
 		// 장바구니에서 선택된 상품의 id 값을 리스트로 받은 뒤 상품id와 회원 id를 통하여 장바구니 정보를 가져와 담아준다.
 
 		
-		cartItems.add(cart);
-		cartItems.add(cart2);
+		orderItems.add(cart);
+		orderItems.add(cart2);
 		// 장바구니에서 상품id를 넘겨받아서 그걸 사용해서 카트테이블 조회해서 카트 객체 받아서 뿌림.
-		model.addAttribute("cartItems", cartItems);
+		model.addAttribute("orderItems", orderItems);
 		// 장바구니 객체를 리스트로 담아 넘긴다.
 
 		return "order/order";
