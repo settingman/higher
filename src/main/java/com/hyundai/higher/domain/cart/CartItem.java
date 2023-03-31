@@ -1,12 +1,13 @@
 package com.hyundai.higher.domain.cart;
 
-import java.sql.Date;
+import java.util.List;
 
-import com.hyundai.higher.domain.member.MemberRole;
+import com.hyundai.higher.domain.product.OptionDTO;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 /**
  * @since : 2023. 3. 23.
@@ -19,34 +20,40 @@ import lombok.Setter;
  * ----------      --------    ---------------------------
  * 2023. 3. 23.     박성환      	최초 생성
  * 2023. 3. 28.		박서현		mid 추가
+ * 2323. 3. 30.		박서현		optionList 추가
  *     </pre>
  */
 @NoArgsConstructor
 @Getter
 @Setter
+@ToString
 public class CartItem {
 
-	private String pCode;
-	private String pName;
-	private Integer pPRICE;
-	private String Brand;
-	private String Color;
-	private Integer pAmount;
-	private String pOption;
+	private String pcode;
+	private String pname;
+	private Integer pprice;
+	private String brand;
+	private String color;
+	private Integer pamount;
+	private String poption;
 	private String IMAGE_PATH;
 	private String mid;
-
-	public CartItem(String pCode, String pName, Integer pPRICE, String brand, String color, Integer pAmount,
-			String pOption, String iMAGE_PATH, String mid) {
-		this.pCode = pCode;
-		this.pName = pName;
-		this.pPRICE = pPRICE;
-		this.Brand = brand;
-		this.Color = color;
-		this.pAmount = pAmount;
-		this.pOption = pOption;
+	
+	private List<OptionDTO> optionList;
+	
+	public CartItem(String pcode, String pname, Integer pprice, String brand, String color, Integer pamount,
+			String poption, String iMAGE_PATH, String mid) {
+		this.pcode = pcode;
+		this.pname = pname;
+		this.pprice = pprice;
+		this.brand = brand;
+		this.color = color;
+		this.pamount = pamount;
+		this.poption = poption;
 		this.IMAGE_PATH = iMAGE_PATH;
 		this.mid = mid;
 	}
+
+	
 
 }

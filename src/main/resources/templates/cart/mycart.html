@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-	
+		
+<head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,9 +11,13 @@
 	<meta http-equiv="Pragma" content="no-cache">
 	<title>더현대닷컴</title>
 	
+	<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script> -->
+
 	<link rel="stylesheet" type="text/css" href="https://image.thehyundai.com/pc/cssssl/co.css?ver=23">
 	<link rel="stylesheet" type="text/css" href="https://image.thehyundai.com/pc/cssssl/wf.css">
-	<script src="https://image.thehyundai.com/pc/js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=UA-69960332-7&amp;l=dataLayer&amp;cx=c"></script><script src="https://image.thehyundai.com/pc/js/jquery-1.11.3.min.js"></script>
 	<script src="https://image.thehyundai.com/pc/js/jquery-ui.min.js"></script>
 	<script src="https://image.thehyundai.com/pc/js/jquery-migrate.min.js"></script>
 
@@ -150,8 +155,10 @@ $('meta[property="groobee:member_age"]').attr('content',birthMa);
 	<link rel="stylesheet" type="text/css" href="https://www.thehyundai.com/cssssl/jquery-ui.css?ver=23">
 	<link rel="stylesheet" type="text/css" href="https://www.thehyundai.com/cssssl/od.css?ver=23">
 	<link rel="stylesheet" type="text/css" href="https://www.thehyundai.com/cssssl/dp.css?ver=23">
-	<script src="https://www.thehyundai.com/js/cart.js?ver=030123"></script>
-	<script type="text/javascript">
+<!-- 	<script src="https://www.thehyundai.com/js/cart.js?ver=030123"></script>
+ -->	<script src="/js/cart/cart.js"></script>
+ 	
+ <script type="text/javascript">
 	var _gaPageTitle = "장바구니";
 	    
 		$(function(){
@@ -401,6 +408,7 @@ $('meta[property="groobee:member_age"]').attr('content',birthMa);
 			// 체크박스 변경시 결제금액 재계산 처리
 			$(".cart-list-wrap div.icheckbox").on("ifChanged", function() {
 				// 결제금액 계산
+				cal();
 				calcSellPrc();
 			});
 
@@ -414,7 +422,7 @@ $('meta[property="groobee:member_age"]').attr('content',birthMa);
 		            (event.keyCode == 65 && event.ctrlKey === true) ||
 		             // Allow: home, end, left, right
 		            (event.keyCode >= 35 && event.keyCode <= 39)) {
-		                 // let it happen, don't do anything
+		                 // let it happen, don't do  anything
 		                 return;
 		        }
 		        else {
@@ -425,16 +433,6 @@ $('meta[property="groobee:member_age"]').attr('content',birthMa);
 		        }
 		    });
 		}
-		<!--
-		function setPositionObject(ofObj,myObj) {
-		    var $this=$(ofObj);
-		    $(myObj).fadeIn("fast").position({
-		            of : $this,
-		            my : "center top",
-		            at : "center bottom"
-		        });
-		}
-		//-->
 		$(document).ready(function() {
 			calcSellPrc();
 		});
@@ -721,44 +719,37 @@ $('meta[property="groobee:member_age"]').attr('content',birthMa);
 		}
 
 		
-		function checkOrdQty(obj, limitCnt, slitmCd, uitmCd, basktTypeGbcd) {
-		    var input = $(obj);
+		// function checkOrdQty(obj, limitCnt, slitmCd, uitmCd, basktTypeGbcd) {
+		//     var input = $(obj);
 
-		    if($(input).val() == ""){
-		    	$(input).val("1");
-		    }
+		//     if($(input).val() == ""){
+		//     	$(input).val("1");
+		//     }
 
-		    var ordQty = Number($(input).val());
+		//     var ordQty = Number($(input).val());
 
-		    if(isEmpty(limitCnt) || limitCnt > 99) {
-		        limitCnt = 99;
-		    }
+		//     if(isEmpty(limitCnt) || limitCnt > 99) {
+		//         limitCnt = 99;
+		//     }
 
-		    if(ordQty > limitCnt) {
-		    	alert("여러 고객님들에게 구매 기회를 드리기 위해 동일 상품은 일일 "+limitCnt+"개로 구매가 제한됩니다. 고객 여러분들의 양해 부탁드립니다.");
-		        input.val(limitCnt);
-		        return;
-		    }
+		//     if(ordQty > limitCnt) {
+		//     	alert("여러 고객님들에게 구매 기회를 드리기 위해 동일 상품은 일일 "+limitCnt+"개로 구매가 제한됩니다. 고객 여러분들의 양해 부탁드립니다.");
+		//         input.val(limitCnt);
+		//         return;
+		//     }
 
-		    modifyOrdQty(slitmCd, uitmCd, basktTypeGbcd, $(input).val(), ordQty, obj);
-		}
+		//     modifyOrdQty(slitmCd, uitmCd, basktTypeGbcd, $(input).val(), ordQty, obj);
+		// }
 
 		
-		function plusOrdQty(obj, qtyChgPossYn, limitCnt, slitmCd, uitmCd, basktTypeGbcd) {
-			// 상품 수랭 변경 불가
-			if(qtyChgPossYn == "N"){
-				return;
-			}
-			
-			GA_Event('PC_장바구니', '수량', '+');
+		function plusOrdQty(obj, pcode, poption, cindex) {
 
+			
 		    var input = $(obj).siblings("input[name='cnt']");
 		    var ordQty = Number($(input).val());
 
-		    if(isEmpty(limitCnt) || limitCnt > 99) {
-		        limitCnt = 99;
-		    }
-
+		    var limitCnt = 99;
+		    
 		    if(ordQty >= limitCnt) {
 		    	alert("여러 고객님들에게 구매 기회를 드리기 위해 동일 상품은 일일 "+limitCnt+"개로 구매가 제한됩니다. 고객 여러분들의 양해 부탁드립니다.");
 		        return;
@@ -766,17 +757,43 @@ $('meta[property="groobee:member_age"]').attr('content',birthMa);
 
 		    $(input).val(ordQty + 1);
 
+				var requestData = JSON.stringify({
+							pcode : pcode,
+							poption : poption,
+							pamount : $(input).val()
+					});
+					
+					console.log("---"+requestData);
+
+					$.ajax({
+						url: '/restcart/modifyAmount',
+						type: 'post',
+						data: requestData,
+						contentType: "application/json",
+						success	: function(result){
+							console.log("장바구니 수량 변경 success");
+
+							var bbprc = parseFloat($("#" + cindex + " input[name='bbprc']").val());
+							console.log(bbprc+"-----------");
+							var new_price = bbprc * $(input).val();
+							$("#" + cindex + " .o-price").text(new_price.toLocaleString() + "원");
+							$("#" + cindex + " input[name='prodPrc']").val(new_price);
+							$("#" + cindex + " .tot-price").text(new_price.toLocaleString() + "원");	
+							cal();
+							loadingBar.stop();
+								
+						},
+						error :function(request, status, error) {
+							console.log(error);
+						}
+					}); 
+
 		    //modifyOrdQty(slitmCd, uitmCd, basktTypeGbcd, $(input).val(), ordQty, obj);
 		}
 
 		
-		function minusOrdQty(obj, qtyChgPossYn, slitmCd, uitmCd, basktTypeGbcd) {
-			// 상품 수량 변경 불가
-			if(qtyChgPossYn == "N"){
-				return;
-			}
-			
-			GA_Event('PC_장바구니', '수량', '-');
+		function minusOrdQty(obj, pcode, poption, cindex) {
+			// loadingBar.start();
 			
 		    var input = $(obj).siblings("input[name='cnt']");
 		    var ordQty = Number($(input).val());
@@ -787,276 +804,199 @@ $('meta[property="groobee:member_age"]').attr('content',birthMa);
 
 		    $(input).val(ordQty - 1);
 
+				var requestData = JSON.stringify({
+							pcode : pcode,
+							poption : poption,
+							pamount : $(input).val()
+					});
+					
+					console.log("---"+requestData);
+
+					$.ajax({
+						url: '/restcart/modifyAmount',
+						type: 'post',
+						data: requestData,
+						contentType: "application/json",
+						success	: function(result){
+							console.log("장바구니 수량 변경 success");
+
+							var bbprc = parseFloat($("#" + cindex + " input[name='bbprc']").val());
+							console.log(bbprc+"-----------");
+							var new_price = bbprc * $(input).val();
+							$("#" + cindex + " .o-price").text(new_price.toLocaleString() + "원");
+							$("#" + cindex + " input[name='prodPrc']").val(new_price);
+							$("#" + cindex + " .tot-price").text(new_price.toLocaleString() + "원");	
+							cal();
+							loadingBar.stop();
+								
+						},
+						error :function(request, status, error) {
+							console.log(error);
+						}
+					}); 
+
 		    //modifyOrdQty(slitmCd, uitmCd, basktTypeGbcd, $(input).val(), ordQty, obj);
 		}
 
-
-
-		
-		function modifyOrdQty(slitmCd, uitmCd, basktTypeGbcd, ordQty, oldOrdQty, obj) {
-			loadingBar.start();
-		    $.ajax({
-		        type: "post"
-		        , url: "/front/odb/modifyBasktOrdQty.thd"
-		        , dataType: "json"
-		        , data : {slitmCd : slitmCd, uitmCd : uitmCd, basktTypeGbcd : basktTypeGbcd, ordQty : ordQty}
-		        , success : function(data) {
-		            if(!isEmpty(data.errorMessages)) {
-		            	loadingBar.stop();
-		                alert(data.errorMessages);
-		                if($(obj).attr("name") == "cnt"){
-			                $(obj).val(Number(data.currOrdQty));
-		                }
-		                else {
-			                $(obj).siblings("input[name='cnt']").val(Number(oldOrdQty));
-		                }
-		            } else {
-		            	var basktInfArr = new Array();
-		    			var typeGb = $("div.cart-list-wrap.active").attr("id").substring(9);
-		            	var checkAllYn = false;
-		            	$(".cart-list-wrap input[name='checkbox_all']").each(function(){
-		            		if($(this).prop("checked")){
-		            			if($(this).val() == "checkbox"+typeGb){
-		            				checkAllYn = true;
-		            			}
-		            		}
-		            	});
-		    			if($("div.cart-list-wrap.active h4.blind")){
-		    				var cart_list = $("div.cart-list-wrap.active h4.blind").parent();
-		    				$(cart_list).find("div.cart-list-cont").each(function() {
-		    					if($(this).find("input[name='checkbox"+typeGb+"']").prop("checked")){
-		    						basktInfArr.push($(this).find("input[name='checkbox"+typeGb+"']").index("input[name='checkbox"+typeGb+"']"));
-		    					}
-		    				});
-		    			}
-		            	$.post("/front/odb/basktList.thd", {isAjax:"true"}, function(data) {
-		            		if(data.indexOf("loginError") > -1){
-		            			loadingBar.stop();
-		            			alert("로그인이 필요합니다. 로그인 후 다시 시도해 주세요.");
-		            			var rtUrl = "/front/cob/loginForm.thd?redirectUrl=/front/odb/basktList.thd";
-		            			try {
-		            				window.location(rtUrl);
-		            			}catch(e) {}
-		            		}
-		            		else {
-		            			$("#divCartInfo").html(data);
-			                    initSelectbox();
-			                    initCartBody();
-
-				            	$(".cart-list-wrap input[name='checkbox_all']").each(function(){
-				            		if("checkbox"+typeGb == $(this).val()){
-				            			if(checkAllYn){
-				            				$(this).iCheck("check");
-				            			}
-				            			else {
-				            				$(this).iCheck("uncheck");
-				            			}
-			                    	}
-			                    	else {
-			                    		$(this).iCheck("check");
-			                    	}
-				            	});
-
-			                    $("div.cart-cont-wrap").find("li").each(function(){
-			                    	if($(this).attr("tabid") == typeGb){
-					                    changeTab(typeGb);
-				                    }
-			                    });
-
-			                 	// 체크박스처리
-			                    if($("div.cart-list-wrap.active h4.blind")){
-				    				var cart_list = $("div.cart-list-wrap.active h4.blind").parent();
-				    				$(cart_list).find("div.cart-list-cont").each(function() {
-
-			    						var idx = $(this).find("input[name='checkbox"+typeGb+"']").index("input[name='checkbox"+typeGb+"']");
-			    						var bCheck = false;
-				    					for(var i = 0; i < basktInfArr.length; i++) {
-					                    	if(basktInfArr[i] == idx){
-					                    		bCheck = true;
-					                    		break;
-					                    	}
-					                    }
-				    					if(!bCheck){
-				    						$(this).find("input[name='checkbox"+typeGb+"']").iCheck("uncheck");
-				    					}
-				    				});
-				    			}
-
-			        			calcSellPrc();
-			        			loadingBar.stop();
-		            		}
-		            	});
-		            }
-
-		        }
-		        , error: function(data) {
-		        	loadingBar.stop();
-		            alert("시스템 오류입니다. 다시 시도해주세요.");
-		        }
-		    });
-		}
-
-		
-		function deleteBaskt(obj, targetObj, delType) {
-			// adbaycheck = 2;
-		    var form = $(obj).parent().parent().parent();
-		    var aa  = new Array();
-		    var confirmStr = "선택한 상품을 삭제하시겠습니까?";
-
-		    if(delType =="ALL"){
-		    	aa = $(form).find("input[name='"+targetObj+"']");
-		    	confirmStr = "삭제하시겠습니까?";
-		    }
-		    else if(delType =="SEL"){
-		    	GA_Event('PC_장바구니', '선택삭제', '선택삭제');
-			    if($(form).find("input[name='"+targetObj+"']:checked").length == 0) {
-			        alert("선택된 상품이 없습니다.");
-			        return;
-			    }
-
-			    aa = $(form).find("input[name='"+targetObj+"']:checked");
-		    }
-
-		    if(!confirm(confirmStr)) {
-	            return false;
-	        }
-		    
-		    var slitmInfList = new Array();
-		    if(delType == "SEL"){
-    		    $(form).find("input[name='"+targetObj+"']:checked").each(function (index, subObj){
-					slitmInfList.push($(subObj).parent().parent().parent().find("input[name='slitmInf']").val());
-    		    });
-        	}
-
-		    $("#tmpBasktForm").html("");
-			for(var i=0; i<aa.length; i++){
-				$("#tmpBasktForm").append('<input type="hidden" name="basktInf" value="' + aa[i].value + '"/>');
+		function cal() {
+			let liList = document.querySelectorAll(".cart-list-unit");
+			let totOrdPrc = 0;
+			let totProdPrc = 0;
+			let payPrc = 0;
+			for (let i = 0; i < liList.length; i++) {
+				if ($(liList[i]).find('.icheckbox').hasClass('checked')) {
+				
+				var prodPrc = $(liList[i]).find("input[name='prodPrc']").val();
+				// let prodPrc = parseInt(liList[i].querySelector(".prodPrc"));
+				console.log(prodPrc+"----");
+				totOrdPrc += parseInt(prodPrc);
+				totProdPrc += parseInt(prodPrc);
+				}
 			}
-			loadingBar.start();
-			// $.ajax({
-		  //       type: "post"
-		  //       , url: "/front/odb/deleteBaskt.thd"
-		  //       , dataType: "json"
-		  //       , data : $("#tmpBasktForm").serialize()
-		  //       ,success : function(data) {
-		  //           if(!isEmpty(data.errorMessages)) {
-		  //           	loadingBar.stop();
-		  //               alert(data.errorMessages);
-		  //           } else {
-		            	
-		  //           	if(slitmInfList.length > 0 && delType == "SEL"){
-    	// 					ecommerceSetDeleteItem(slitmInfList);
-	    // 				}
-		            	
-		  //           	var basktInfArr = new Array();
-		  //   			var typeGb = $("div.cart-list-wrap.active").attr("id").substring(9);
-		  //           	var checkAllYn = false;
-		  //           	$(".cart-list-wrap input[name='checkbox_all']").each(function(){
-		  //           		if($(this).prop("checked")){
-		  //           			if($(this).val() == "checkbox"+typeGb){
-		  //           				checkAllYn = true;
-		  //           			}
-		  //           		}
-		  //           	});
-		  //   			if($("div.cart-list-wrap.active h4.blind")){
-		  //   				var cart_list = $("div.cart-list-wrap.active h4.blind").parent();
-		  //   				$(cart_list).find("div.cart-list-cont").each(function() {
-		  //   					if($(this).find("input[name='checkbox"+typeGb+"']").prop("checked")){
-		  //   						//basktInfArr.push($(this).find("input[name='checkbox"+typeGb+"']").index("input[name='checkbox"+typeGb+"']"));
-		  //   						basktInfArr.push($(this).find("input[name='checkbox"+typeGb+"']").val());
-		  //   					}
-		  //   				});
-		  //   			}
-		  //           	$.post("/front/odb/basktList.thd", {isAjax:"true"}, function(data) {
-		  //           		if(data.indexOf("loginError") > -1){
-		  //           			loadingBar.stop();
-		  //           			alert("로그인이 필요합니다. 로그인 후 다시 시도해 주세요.");
-		  //           			var rtUrl = "/front/cob/loginForm.thd?redirectUrl=/front/odb/basktList.thd";
-		  //           			try {
-		  //           				window.location(rtUrl);
-		  //           			}catch(e) {}
-		  //           		}
-		  //           		else {
-			//                     $("#divCartInfo").html(data);
-			//                     initSelectbox();
-			//                     initCartBody();
+			payPrc = totProdPrc; 
+			// let totO = document.getElementById("totOrdPrc");
+  		// totO.textContent = payPrc.toLocaleString();
+			// let totP = document.getElementById("totProdPrc");
+  		// totP.textContent = payPrc.toLocaleString();
+			// let spanElement = document.getElementById("payPrc");
+  		// spanElement.textContent = payPrc.toLocaleString();
 
-			// 	            	$(".cart-list-wrap input[name='checkbox_all']").each(function(){
-			// 	            		if("checkbox"+typeGb == $(this).val()){
-			// 	            			if(checkAllYn){
-			// 	            				$(this).iCheck("check");
-			// 	            			}
-			// 	            			else {
-			// 	            				$(this).iCheck("uncheck");
-			// 	            			}
-			//                     	}
-			//                     	else {
-			//                     		$(this).iCheck("check");
-			//                     	}
-			// 	            	});
+			console.log(`totOrdPrc: ${totOrdPrc}원, totProdPrc: ${totProdPrc}원, payPrc: ${payPrc}원`);
 
-			//                     $("div.cart-cont-wrap").find("li").each(function(){
-			//                     	if($(this).attr("tabid") == typeGb){
-			// 		                    changeTab(typeGb);
-			// 	                    }
-			//                     });
-
-			//                     // 체크박스처리
-			//                     if($("div.cart-list-wrap.active h4.blind")){
-			// 	    				var cart_list = $("div.cart-list-wrap.active h4.blind").parent();
-			// 	    				$(cart_list).find("div.cart-list-cont").each(function() {
-
-			//     						var checkVal = $(this).find("input[name='checkbox"+typeGb+"']").val();
-			//     						var bCheck = false;
-			// 	    					for(var i = 0; i < basktInfArr.length; i++) {
-			// 		                    	if(basktInfArr[i] == checkVal){
-			// 		                    		bCheck = true;
-			// 		                    		break;
-			// 		                    	}
-			// 		                    }
-			// 	    					if(!bCheck){
-			// 	    						$(this).find("input[name='checkbox"+typeGb+"']").iCheck("uncheck");
-			// 	    					}
-			// 	    				});
-			// 	    			}
-
-			//         			calcSellPrc();
-			//         			loadingBar.stop();
-		  //           		}
-		  //           	});
-
-		  //               //window.location.reload();
-		  //           }
-		  //         	//장바구니개수
-		  //   		$("#quick_baskt_num").html(fnSelectBasktCount());
-		  //       }
-		  //       , error: function(data) {
-		  //       	loadingBar.stop();
-			// 		alert("시스템 오류입니다. 다시 시도해주세요.");
-		  //       }
-		  //   });
-		
-			//
+			// let first = document.getElementById("totOrdprc");
+			// first.innerText = payPrc.toLocaleString;
+			// let second = document.getElementById("totOrdprc");
+			// second.innerText = payPrc.toLocaleString;
+			// let third = document.getElementById("totOrdprc");
+			// third.innerText = payPrc.toLocaleString;
+			$("#totOrdPrc").text(gfn_appendComma(payPrc));
+			$("#totProdPrc").text(gfn_appendComma(payPrc));
+			$("#payPrc").text(gfn_appendComma(payPrc));
 			
-			//이 위에 ajax
-			loadingBar.stop();
+			// document.getElementById("totOrdPrc").innerText = payPrc.toLocaleString();
+			// document.getElementById("totProdPrc").innerText = payPrc.toLocaleString();
+			// document.getElementById("payPrc").innerText = payPrc.toLocaleString();
+
+		}
+
+
+
+		
+		// function modifyOrdQty(slitmCd, uitmCd, basktTypeGbcd, ordQty, oldOrdQty, obj) {
+		// 	console.log("상품 수량 변경");
+		// 	loadingBar.start();
+
+		
+		// 	}
+
+		
+		function deleteBaskt(obj, targetObj, delType) { 
+			
+			//버튼이 눌렸을 때
+		let liList = document.querySelectorAll(".cart-list-unit");
+			console.log("-------");
+			let pcodeTest = $("#c0").find(".check-group").children("#pcode").val();
+			console.log(pcodeTest);
+		var arr = new Array();
+		var checked = new Array();
+	
+  
+	for (let i = 0; i < liList.length; i++) {
+ 	console.log("-----------");
+	
+ 	if ($(liList[i]).find('.icheckbox').hasClass('checked')) {
+ 	    const pcode = $(liList[i]).find('#pcode').val();
+ 	    console.log(pcode);
+ 	  	const poption = $(liList[i]).find('.cnt-opt').text();
+			console.log("option"+poption);
+        arr.push({ pcode: pcode, poption: poption });
+			checked.push("c"+i);
+		}
+
+	}
+	
+ 	$.ajax({
+ 	    url: '/restcart/deleteCarts', // 서버 측에서 정의한 URL 주소
+	    type: 'post',
+	    data: JSON.stringify(arr),
+	    contentType: "application/json",
+
+	    success: function (result) {
+	        console.log("장바구니 선택 삭제 success");
+
+	        for (let i = 0; i < checked.length; i++) {
+	        	const li = document.getElementById(checked[i]);
+						li.remove();
+						cal();
+	         	if ($(liList[i]).find('.icheckbox').hasClass('checked')) {
+	         	    
+	        		}
+
+	        	}
+	    },
+	    error: function(request, status, error) {
+	        console.log(error);
+	        // 처리 중 에러가 발생한 경우에 실행할 코드 작성
+	    }
+	});
+	    /* 	    success: function (result) {
+							console.log("장바구니 선택 삭제 success");
+							
+							// const li = document.getElementById(cindex);
+
+							// li.remove();
+							// cal();
+								
+						},
+						error :function(request, status, error) {
+							console.log(error);
+						}
+					});   */
+
 		
 		}
 
 		
-		function deleteBasktItem(obj, basktInf) {
+		function deleteBasktItem(pcode, poption, cindex) {
 		    if(!confirm("삭제하시겠습니까?")) {
 	            return false;
 	        }
+
+					var requestData = JSON.stringify({
+							pcode : pcode,
+							poption : poption,
+					});
+					
+					console.log("---"+requestData);
+
+					$.ajax({
+						url: '/restcart/deleteCart',
+						type: 'post',
+						data: requestData,
+						contentType: "application/json",
+						success	: function(result){
+							console.log("장바구니 삭제 success");
+							
+							const li = document.getElementById(cindex);
+
+							li.remove();
+							cal();
+								
+						},
+						error :function(request, status, error) {
+							console.log(error);
+						}
+					}); 
+
 		    
-		    var slitmInfList = new Array();
-        	if($(obj).parent().parent().parent().find("input[name='slitmInf']").val() != null){
-				slitmInfList.push($(obj).parent().parent().parent().find("input[name='slitmInf']").val());
-        	}
+		    // var slitmInfList = new Array();
+        // 	if($(obj).parent().parent().parent().find("input[name='slitmInf']").val() != null){
+				// slitmInfList.push($(obj).parent().parent().parent().find("input[name='slitmInf']").val());
+        // 	}
 		    
 			// adbayCheck = 1;
 			// updateAdbayItem(basktInf, adbayCheck);
-			loadingBar.start();
+			//loadingBar.start();
 			// $.ajax({
 		  //       type: "post"
 		  //       , url: "/front/odb/deleteBaskt.thd"
@@ -2426,7 +2366,7 @@ $('meta[property="groobee:member_age"]').attr('content',birthMa);
 <script type="text/javascript" async="" src="./더현대닷컴_files/f.txt"></script>
 <link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
 <link rel="styeleshet" type="text/css" href="//static.groobee.io/dist/g2/css/grb-recommend-list_v2.css">
-</head>
+<meta http-equiv="origin-trial" content="A9+ldib+sKhGj2FcIjq5GnvBZFuIiXID0+NkE6k7cEk71MhaHFGqo3wUlUFmZ6d9w0KPwx9UxGiCTYWtRnTGDQkAAACAeyJvcmlnaW4iOiJodHRwczovL2NyaXRlby5uZXQ6NDQzIiwiZmVhdHVyZSI6IlByaXZhY3lTYW5kYm94QWRzQVBJcyIsImV4cGlyeSI6MTY4MDY1Mjc5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0="><meta http-equiv="origin-trial" content="AzLNuh8GFzfIOcwvhEg7Ymr7YCzlYVTKeD7i2iETABbRf+sL2FAx+r+HlTtxSi1zgUFxBlJVoxgLjuhqiwTjAw4AAACAeyJvcmlnaW4iOiJodHRwczovL2NyaXRlby5jb206NDQzIiwiZmVhdHVyZSI6IlByaXZhY3lTYW5kYm94QWRzQVBJcyIsImV4cGlyeSI6MTY4MDY1Mjc5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0="><style type="text/css">.fancybox-margin{margin-right:13px;}</style><meta http-equiv="origin-trial" content="A727AcAeLCei/ZogJHBlJUS63SxP6AeIROo7qXrkjrxkoxBu0eSSmypAHmGYwk4HjBMQp5nxCFODzfVnUIe31AQAAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjg4MDgzMTk5LCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A727AcAeLCei/ZogJHBlJUS63SxP6AeIROo7qXrkjrxkoxBu0eSSmypAHmGYwk4HjBMQp5nxCFODzfVnUIe31AQAAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjg4MDgzMTk5LCJpc1RoaXJkUGFydHkiOnRydWV9"><script type="text/javascript" async="" src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/879261918/?random=1679898029293&amp;cv=11&amp;fst=1679898029293&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;gtm=45be33m0&amp;u_w=1707&amp;u_h=1067&amp;url=http%3A%2F%2F192.168.137.247%3A5500%2F%25EB%258D%2594%25ED%2598%2584%25EB%258C%2580%25EB%258B%25B7%25EC%25BB%25B4.html&amp;ref=http%3A%2F%2F192.168.137.247%3A5500%2F%25EB%258D%2594%25ED%2598%2584%25EB%258C%2580%25EB%258B%25B7%25EC%25BB%25B4.html&amp;hn=www.googleadservices.com&amp;frm=0&amp;tiba=%EB%8D%94%ED%98%84%EB%8C%80%EB%8B%B7%EC%BB%B4&amp;auid=1184932784.1678862774&amp;data=event%3Dgtag.config&amp;rfmt=3&amp;fmt=4"></script></head>
 <body>
 <form id="orderForm" action="https://www.thehyundai.com/front/oda/orderRedirect.thd" method="post">
 </form>
@@ -2693,28 +2633,25 @@ function goHpoint(){
 					<label class="">
 						<div class="icheckbox checked type-green" style="position: relative;">
 							<input class="type-green notCRinput" type="checkbox" name="checkbox_all" value="checkbox01" style="position: absolute; top: -40%; left: -40%; display: block; width: 180%; height: 180%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;" checked="checked">
-							<ins class="iCheck-helper" style="position: absolute; top: -40%; left: -40%; display: block; width: 180%; height: 180%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;">
-							</ins>
 						</div>
 						전체선택
 					</label>
-					<div class="cart-list-check-del"><a href="javascript:void(0);" onclick="deleteBaskt(this, &#39;checkbox01&#39;, &#39;SEL&#39;);return false;">선택삭제</a></div>
+					<div class="cart-list-check-del"><a href="javascript:void(0);" onclick="deleteBaskt(this, 'checkbox01', 'SEL');return false;">선택삭제</a></div>
 				</div>
 				<!-- //cart-list-check -->
 
 				<!-- cart-list-area -->
 				<div class="cart-list-area">
 					<ul class="cart-list-group">
-					
-							<li class="cart-list-unit">
+						<li class="cart-list-unit" th:each="carts, state : ${carts}" th:id="c+${state.index}">
 								<div class="cart-list-cont">
-
 									<!-- 체크영역 -->
 									<div class="check-group">
 										<div class="icheckbox checked type-green" style="position: relative;">
-											<input class="type-green notCRinput" type="checkbox" name="checkbox01" title="선택" data-itemgbcd="00" data-itemtypegbcd="00" data-qrstlmitemyn="N" data-vstrcvnitemyn="" data-luityn="N" data-nftcombitemyn="" value="40A1580453|00011|01|1|131000||[겔랑] 빠뤼르 골드 스킨 파운데이션 세트|300" style="position: absolute; top: -40%; left: -40%; display: block; width: 180%; height: 180%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;" checked="checked"><ins class="iCheck-helper" style="position: absolute; top: -40%; left: -40%; display: block; width: 180%; height: 180%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;">
-											</ins>
+											<input class="type-green notCRinput" type="checkbox" name="checkbox01" title="선택" data-itemgbcd="00" data-itemtypegbcd="00" data-qrstlmitemyn="N" data-vstrcvnitemyn="" data-luityn="N" data-nftcombitemyn="" value="40A1580453|00011|01|1|131000||[겔랑] 빠뤼르 골드 스킨 파운데이션 세트|300" style="position: absolute; top: -40%; left: -40%; display: block; width: 180%; height: 180%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;" checked="checked">
+											<ins class="iCheck-helper" style="position: absolute; top: -40%; left: -40%; display: block; width: 180%; height: 180%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
 										</div>
+										<!-- 여기에 보낼 거 넣기 -->
 										<input type="hidden" name="ordAgreeInf" value="N|N|[겔랑] 빠뤼르 골드 스킨 파운데이션 세트|매트/00C|40A1580453|40A1580453_0_100.jpg|N">
                            				<input type="hidden" name="sectId" value="50019">
                            				<input type="hidden" name="dlvcPayGbcd" value="10">
@@ -2726,25 +2663,22 @@ function goHpoint(){
                            				<input type="hidden" name="basktBndlKey" value="004503|">
                            				<input type="hidden" name="slitmNmInf" value="[겔랑] 빠뤼르 골드 스킨 파운데이션 세트">
                            				<input type="hidden" name="slitmInf" value="40A1580453|[겔랑] 빠뤼르 골드 스킨 파운데이션 세트|겔랑|화장품/메이크업/페이스/파운데이션_컨실러|매트/00C|1|000042|50019|013368_판교점|수입화장품(1001)">
-										<input type="hidden" name="brndCd" value="000042">
+										<input type="hidden" name="brndCd" value="000042">                           				                 				
+                   	<input type="hidden" name="imdtCrdDcCnt" value="0">
+										<input type="hidden" id="pcode" th:value="${carts.pcode}">
 
-                           				<!-- 2020 카드 즉시할인 프로젝트 박민성 -->
-                           				<!-- 청구/즉시 카드 할인이 있는 지에 대한 여부 카운트 -->
-                           				
-
-                           				
-                           				<input type="hidden" name="imdtCrdDcCnt" value="0">
-										<button class="btn-list-delete" onclick="javascript:deleteBasktItem(this, &#39;40A1580453|00011|01|1|131000&#39;);return false;"><img src="https://image.thehyundai.com/hdmall/images/co/icon_delete.png" alt="삭제"></button>
+										<button class="btn-list-delete" th:onclick='deleteBasktItem([[${carts.pcode}]],[[${carts.poption}]],"c[[${state.index}]]");'><img src="https://image.thehyundai.com/hdmall/images/co/icon_delete.png" alt="삭제"></button>
 									</div>
 
 									<!-- 이미지영역 -->
 									<div class="image-group">
 										<div class="prod-info">
-											<div class="img" onclick="javascript:GA_Event(&#39;PC_장바구니&#39;, &#39;상품&#39;, &#39;[겔랑] 빠뤼르 골드 스킨 파운데이션 세트&#39;);">
-												<img src="https://image.thehyundai.com/static/5/4/0/58/A1/40A1580453_0_300.jpg" onerror="noImage(this, 'https://image.thehyundai.com/hdmall/images/pd/no_image_300x300.jpg')">
+											<div class="img">
+												<a th:href="'/product/detail?code=' + ${carts.pcode}">
+												<img th:src="${carts.IMAGE_PATH} + '_600.jpg'" onerror="noImage(this, 'https://image.thehyundai.com/hdmall/images/pd/no_image_300x300.jpg')">
+												</a>
 												<div class="hover-info">
-													<a href="http://www.thehyundai.com/front/pda/itemPtc.thd?slitmCd=40A1580453&amp;sectId=50019" target="_blank" title="새창으로 보기">새창으로 보기</a>
-													<a href="javascript:void(0);" title="찜하기" onclick="javascript:sltdItemDone('40A1580453:00011', '50019',event);return false;">찜하기</a>
+													
 												</div>
 											</div>
 										</div>
@@ -2755,9 +2689,7 @@ function goHpoint(){
 
 										<!-- 상품명 -->
 										<div class="title">
-											<a href="http://www.thehyundai.com/front/pda/itemPtc.thd?slitmCd=40A1580453&amp;sectId=50019">[겔랑] 빠뤼르 골드 스킨 파운데이션 세트
-												
-											</a>
+											<a th:href="'/product/detail?code=' + ${carts.pcode}" th:text="${carts.pname}"></a>
 										</div>
 
 										<!-- 각인  -->
@@ -2768,26 +2700,29 @@ function goHpoint(){
 										<!-- 상품옵션 -->
 										<div class="option-info">
 											<p class="cnt-ctrl">
-												<a href="javascript:void(0);" class="cnt-up" onclick="minusOrdQty(this, &#39;&#39;, &#39;40A1580453&#39;, &#39;00011&#39;, &#39;01&#39;); return false;">－</a>
-												<input type="text" class="onlyNumberInput" name="cnt" title="inputarea" value="1" style="ime-mode:disabled;" onclick="this.focus();" onblur="checkOrdQty(this, 300, &#39;40A1580453&#39;, &#39;00011&#39;, &#39;01&#39;)" maxlength="2">
-												<a href="javascript:void(0);" class="cnt-down" onclick="plusOrdQty(this, &#39;&#39;, 300, &#39;40A1580453&#39;, &#39;00011&#39;, &#39;01&#39;); return false;">＋</a>
+												<a href="javascript:void(0);" class="cnt-up" th:onclick='minusOrdQty(this,[[${carts.pcode}]],[[${carts.poption}]],"c[[${state.index}]]" );'>－</a>
+												<input type="text" class="onlyNumberInput" name="cnt" title="inputarea" th:value="${carts.pamount}" style="ime-mode:disabled;" onclick="this.focus();" maxlength="2">
+												<a href="javascript:void(0);" class="cnt-down" th:onclick='plusOrdQty(this, [[${carts.pcode}]],[[${carts.poption}]],"c[[${state.index}]]" );'>＋</a>
 											</p>
 											
-												<p class="cnt-opt">매트/00C</p>
-											
+												<p class="cnt-opt">[[${carts.poption}]]</p>
+
+												<select class="form-select form-select-sm" aria-label=".form-select-sm example">
+													<option value="${carts.poption}" th:text="${carts.poption}" selected=""></option>
+													<option th:each="options, oState : ${carts.optionList}" th:unless="${options.optname} == ${carts.poption}" th:text="${options.optname}"></option>
+													<!-- <option selected="">Open this select menu</option>
+													<option value="1">One</option>
+													<option value="2">Two</option>
+													<option value="3">Three</option> -->
+												</select>
+												
 											<!-- 기본구성 / 추가구성 정보 -->
 																				
 												<p class="cnt-deliver">
-													<span class="deliver">
-               
-						                                    		30,000원 이상
-							                                    
-						                                    	 무료배송
-						                                    		                             
-						                                <input type="hidden" name="dlvCost" value="0">
+													<span class="deliver">	30,000원 이상 무료배송						                                    		                             
+						              <input type="hidden" name="dlvCost" value="0">
 													</span>
 												</p>
-											
 											
 											<!-- //픽업날짜 변경 pickup-date -->
 										</div>
@@ -2795,159 +2730,26 @@ function goHpoint(){
 										<!-- 상품가격 및 버튼 -->
 										<div class="option-price">
 											<div class="price-info">
-												<div class="tot-price">131,000원</div>
-												<div class="o-price">131,000원
-													
-													
-												</div>
-												<input type="hidden" name="bbprc" value="131000">
-				                                <input type="hidden" name="prodPrc" value="131000">
-				                                <input type="hidden" name="bbprcPrc" value="0">
+												<div class="tot-price" th:text="${#numbers.formatInteger(carts.pprice * carts.pamount,3,'COMMA')} + 원"></div>
+												<div class="o-price" th:text="${#numbers.formatInteger(carts.pprice* carts.pamount,3,'COMMA')}+원"></div>
+												<input type="hidden" name="bbprc" th:value="${carts.pprice}">
+				                <input type="hidden" name="prodPrc" th:value="${carts.pprice* carts.pamount}">
+				                <input type="hidden" name="bbprcPrc" value="0">
 											</div>
 
 											<div class="btn-area">
 												
-													<button class="btn size4 color15" type="button" onclick="javascript:showChgUitmPup(this, &#39;40A1580453&#39;, &#39;00011&#39;, &#39;[겔랑] 빠뤼르 골드 스킨 파운데이션 세트&#39;, &#39;매트/00C&#39;, 131000, &#39;40A1580453&#39;,&#39;01&#39;, 1, 300);return false;">옵션변경</button>
+												<button class="btn size4 color15" type="button" onclick="javascript:showChgUitmPup(this, '40A1580453', '00011', '[겔랑] 빠뤼르 골드 스킨 파운데이션 세트', '매트/00C', 131000, '40A1580453','01', 1, 300);return false;">옵션변경</button>
 												
-												<button class="btn size4 color4" type="button" onclick="javascript:buyDirect(this, &#39;checkbox01&#39;);GA_Event(&#39;PC_장바구니&#39;, &#39;바로주문&#39;, &#39;[겔랑] 빠뤼르 골드 스킨 파운데이션 세트&#39;);return false;">바로주문</button>
+												<button class="btn size4 color4" type="button" onclick="javascript:buyDirect(this, 'checkbox01');GA_Event('PC_장바구니', '바로주문', '[겔랑] 빠뤼르 골드 스킨 파운데이션 세트');return false;">바로주문</button>
 											</div>
 										</div>
-
 									</div>
-								</div>
-
-								<!-- 판매가격 변경 안내 -->
-								
+								</div> 
 							</li>
-						
-							<li class="cart-list-unit" >
-								<div class="cart-list-cont">
 
-									<!-- 체크영역 -->
-									<div class="check-group">
-										<div class="icheckbox checked type-green" style="position: relative;"><input class="type-green notCRinput" type="checkbox" name="checkbox01" title="선택" data-itemgbcd="00" data-itemtypegbcd="00" data-qrstlmitemyn="N" data-vstrcvnitemyn="" data-luityn="N" data-nftcombitemyn="" value="60A1630727|00001|01|1|190000||[디올] NEW 디올쇼 10 꿀뢰르 팔레트 - 미차 리미티드 에디션|3" style="position: absolute; top: -40%; left: -40%; display: block; width: 180%; height: 180%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;" checked="checked"><ins class="iCheck-helper" style="position: absolute; top: -40%; left: -40%; display: block; width: 180%; height: 180%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
-										<input type="hidden" name="ordAgreeInf" value="N|N|[디올] NEW 디올쇼 10 꿀뢰르 팔레트 - 미차 리미티드 에디션|디올쇼 10 꿀뢰르 팔레트 - 미차 리미티드 에디션|60A1630727|60A1630727_0_100.jpg|N">
-                           				<input type="hidden" name="sectId" value="50029">
-                           				<input type="hidden" name="dlvcPayGbcd" value="10">
-                           				<input type="hidden" name="prpyDlvCost" value="">
-                           				<input type="hidden" name="sdlvcMinStlmAmt" value="">
-                           				<input type="hidden" name="sdlvcDlvCost" value="">
-                           				<input type="hidden" name="dptsDlvMinStlmAmt" value="30000">
-                           				<input type="hidden" name="baseDlvCost" value="3000">
-                           				<input type="hidden" name="basktBndlKey" value="004503|">
-                           				<input type="hidden" name="slitmNmInf" value="[디올] NEW 디올쇼 10 꿀뢰르 팔레트 - 미차 리미티드 에디션">
-                           				<input type="hidden" name="slitmInf" value="60A1630727|[디올] NEW 디올쇼 10 꿀뢰르 팔레트 - 미차 리미티드 에디션|디올|화장품/메이크업/아이/아이라이너|디올쇼 10 꿀뢰르 팔레트 - 미차 리미티드 에디션|1|002267|50029|013368_판교점|수입화장품(1001)">
-										<input type="hidden" name="brndCd" value="002267">
-
-                           				<!-- 2020 카드 즉시할인 프로젝트 박민성 -->
-                           				<!-- 청구/즉시 카드 할인이 있는 지에 대한 여부 카운트 -->
-                           				
-
-                           				
-                           				<input type="hidden" name="imdtCrdDcCnt" value="0">
-										<button class="btn-list-delete" onclick="javascript:deleteBasktItem(this, &#39;60A1630727|00001|01|1|190000&#39;);return false;"><img src="https://image.thehyundai.com/hdmall/images/co/icon_delete.png" alt="삭제"></button>
-									</div>
-
-									<!-- 이미지영역 -->
-									<div class="image-group">
-										<div class="prod-info">
-											<div class="img" onclick="javascript:GA_Event(&#39;PC_장바구니&#39;, &#39;상품&#39;, &#39;[디올] NEW 디올쇼 10 꿀뢰르 팔레트 - 미차 리미티드 에디션&#39;);">
-												<img src="https://image.thehyundai.com/static/2/7/0/63/A1/60A1630727_0_300.jpg" onerror="noImage(this, 'https://image.thehyundai.com/hdmall/images/pd/no_image_300x300.jpg')">
-												<div class="hover-info">
-													<a href="http://www.thehyundai.com/front/pda/itemPtc.thd?slitmCd=60A1630727&amp;sectId=50029" target="_blank" title="새창으로 보기">새창으로 보기</a>
-													<a href="javascript:void(0);" title="찜하기" onclick="javascript:sltdItemDone(&#39;60A1630727:00001&#39;, &#39;50029&#39;,event);return false;">찜하기</a>
-												</div>
-											</div>
-										</div>
-									</div>
-
-									<!-- 상품내용 -->
-									<div class="cont-group">
-
-										<!-- 상품명 -->
-										<div class="title">
-											<a href="http://www.thehyundai.com/front/pda/itemPtc.thd?slitmCd=60A1630727&amp;sectId=50029">[디올] NEW 디올쇼 10 꿀뢰르 팔레트 - 미차 리미티드 에디션
-												
-											</a>
-										</div>
-
-										<!-- 각인  -->
-										<div class="option-stamp">
-											
-										</div>
-
-										<!-- 상품옵션 -->
-										<div class="option-info">
-											<p class="cnt-ctrl">
-												<a href="javascript:void(0);" class="cnt-up" onclick="minusOrdQty(this, &#39;&#39;, &#39;60A1630727&#39;, &#39;00001&#39;, &#39;01&#39;); return false;">－</a>
-												<input type="text" class="onlyNumberInput" name="cnt" title="inputarea" value="1" style="ime-mode:disabled;" onclick="this.focus();" onblur="checkOrdQty(this, 3, &#39;60A1630727&#39;, &#39;00001&#39;, &#39;01&#39;)" maxlength="2">
-												<a href="javascript:void(0);" class="cnt-down" onclick="plusOrdQty(this, &#39;&#39;, 3, &#39;60A1630727&#39;, &#39;00001&#39;, &#39;01&#39;); return false;">＋</a>
-											</p>
-											
-												<p class="cnt-opt">디올쇼 10 꿀뢰르 팔레트 - 미차 리미티드 에디션</p>
-											
-											<!-- 기본구성 / 추가구성 정보 -->
-											
-											
-											
-											
-												<p class="cnt-deliver">
-													<span class="deliver">
-
-														
-						                                    
-						                                    
-						                                    
-							                                    
-						                                    		30,000원 이상
-							                                    
-						                                    	 무료배송
-						                                    
-						                                    
-						                                
-						                                <input type="hidden" name="dlvCost" value="0">
-													</span>
-												</p>
-											
-											
-											<!-- //픽업날짜 변경 pickup-date -->
-										</div>
-
-										<!-- 상품가격 및 버튼 -->
-										<div class="option-price">
-											<div class="price-info">
-												<div class="tot-price">190,000원</div>
-												<div class="o-price">190,000원
-													
-													
-												</div>
-												<input type="hidden" name="bbprc" value="190000">
-				                                <input type="hidden" name="prodPrc" value="190000">
-				                                <input type="hidden" name="bbprcPrc" value="0">
-											</div>
-
-											<div class="btn-area">
-												
-													<button class="btn size4 color15" type="button" onclick="javascript:showChgUitmPup(this, &#39;60A1630727&#39;, &#39;00001&#39;, &#39;[디올] NEW 디올쇼 10 꿀뢰르 팔레트 - 미차 리미티드 에디션&#39;, &#39;디올쇼 10 꿀뢰르 팔레트 - 미차 리미티드 에디션&#39;, 190000, &#39;60A1630727&#39;,&#39;01&#39;, 1, 3);return false;">옵션변경</button>
-												
-												<button class="btn size4 color4" type="button" onclick="javascript:buyDirect(this, &#39;checkbox01&#39;);GA_Event(&#39;PC_장바구니&#39;, &#39;바로주문&#39;, &#39;[디올] NEW 디올쇼 10 꿀뢰르 팔레트 - 미차 리미티드 에디션&#39;);return false;">바로주문</button>
-											</div>
-										</div>
-
-									</div>
-								</div>
-
-								<!-- 판매가격 변경 안내 -->
-								
-							</li>
-						
-					
 					</ul>
 				</div>
-            
-
-			
-
 					</div>
 					<!-- //cart-tab cart-list-wrap -->
 	
@@ -2965,7 +2767,7 @@ function goHpoint(){
 							<li>
 								<div>
 									<h4>총 주문금액</h4>
-									<p><strong><span id="totOrdPrc">321,000</span></strong> 원</p>
+									<p><strong><span id="totOrdPrc" ></span></strong> 원</p>
 								</div>
 								<ul class="sub plus">
 									<li>
@@ -3277,7 +3079,7 @@ if($("div.cart-list-wrap.active h4.blind")){
 <!-- GA 구축 프로젝트 공통 js 추가, 21.12.09 -->
 <script src="./더현대닷컴_files/googleAnalyticsBuilder.js.다운로드"></script>
 
-<!-- SSO 회원화 전환가입 팝업 호출, 22.02.13 -->
+<div id="criteo-tags-div" style="display: none;"></div><!-- SSO 회원화 전환가입 팝업 호출, 22.02.13 -->
 <script type="text/javascript">
 $(function(){
 	if(typeof isLogin != "undefined"){      //로그인 체크 함수가 존재할 경우
@@ -3310,5 +3112,169 @@ $(function(){
 	<!-- //footer -->
 
 
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+<!-- <script>
+	window.onload = function() {
+		let total = 0; // 총 금액을 저장할 변수
+
+		// ul 요소 가져오기
+		const ul = document.querySelector('.cart-list-group');
+
+		// 모든 prodPrc 값에 대해 반복문 실행
+		ul.querySelectorAll('input[name="prodPrc"]').forEach(input => {
+			total += parseInt(input.value); // 총 금액에 현재 상품 가격 더하기
+		});
+
+		console.log(`총 금액: ${total}원`);
+	}
+
+</script> -->
+<!-- <script>
+window.onload = function() {
+  let liList = document.querySelectorAll(".cart-list-unit");
+  let totOrdPrc = 0;
+  let totProdPrc = 0;
+  let payPrc = 0;
+  for (let i = 0; i < liList.length; i++) {
+    let prodPrc = parseInt(liList[i].querySelector(".prod-price").innerText.replace(/[^0-9]/g, ""));
+    totOrdPrc += prodPrc;
+    totProdPrc += prodPrc;
+  }
+  payPrc = totProdPrc; 
+  console.log(`totOrdPrc: ${totOrdPrc}원, totProdPrc: ${totProdPrc}원, payPrc: ${payPrc}원`);
+};
+
+</script> -->
+<div class="fancybox-wrap fancybox-desktop fancybox-type-html fancybox_overview fancybox-opened" tabindex="-1" style="display:none;width: 500px; height: auto; position: fixed; top: 465px; left: 314px; opacity: 1; overflow: visible;">
+	<div class="fancybox-skin" style="padding: 0px; width: auto; height: auto;">
+		<div class="fancybox-outer">
+			<div class="fancybox-inner" style="overflow: hidden; width: 500px; height: auto;">
+				<div class="popover-wrap w500 overview" id="popover-layer-change" style="left: 0px; display: block;">
+
+	<!-- pop-header -->
+	<div class="pop-header">
+		<h1 style="overflow-wrap: break-word; white-space: normal;">옵션 선택 변경</h1>
+		<a href="#" class="popover-close">닫기</a>
+	</div>
+	<!-- //pop-header -->
+
+	<!-- pop-content -->
+	<div class="pop-content"><div class="pop-option-box uitmDiv"><div class="pop-option-title"><p><span class="tit">상품 : </span>[데코르테] AQ 아우라 리플렉터 세트</p></div><div class="opt-select-box"><div class="opt-select-value"><a id="aTagId" href="#">01 크리스탈 라벤더<i class="icon-arrow opt-toggle"></i></a></div><ul class="opt-select-layer"><li class="current"><a href="#" class="depth-menu ellipsis"><strong>색상/속성</strong> <span class="selected-opt">선택하세요</span></a><ul class="depth-opt-list"><li><a href="#" value="00001" class="selectUitmAttrType2"><span class="opt-name">01 크리스탈 라벤더</span></a></li><li><a href="#" value="00002" class="selectUitmAttrType2"><span class="opt-name">02 라이트 믹스</span></a></li><li><a href="#" value="00003" class="selectUitmAttrType2"><span class="opt-name">03 사쿠라 베이지</span></a></li></ul></li></ul></div></div></div>
+	<!-- //pop-content -->
+
+	<!-- btn-wrap -->
+	<div class="btn-wrap">
+		<a href="#" class="btn size3 color2" onclick="javascript:changeBasktItemUitmInf();">선택상품 저장</a>
+		<a href="#" class="btn size3 color3 popover-close">취소</a>
+	</div>
+	<!-- //btn-wrap -->
+</div></div></div></div></div>
+<script>
+$("select.form-select").on("change", function() {
+  var selectedOption = $(this).children("option:selected").val();
+	// var pcode = $(this).siblings("#pcode").val();
+	const pcode = this.closest('.cart-list-unit').querySelector('#pcode').value;
+  console.log(selectedOption);
+	console.log(pcode);
+
+	var requestData = JSON.stringify({
+							pcode : pcode,
+							poption : selectedOption,
+					});
+					
+					console.log("---"+requestData);
+
+					$.ajax({
+						url: '/restcart/modifyOption',
+						type: 'post',
+						data: requestData,
+						contentType: "application/json",
+						success	: function(result){
+							console.log("장바구니 옵션 변경 success");
+
+							// var bbprc = parseFloat($("#" + cindex + " input[name='bbprc']").val());
+							// console.log(bbprc+"-----------");
+							// var new_price = bbprc * $(input).val();
+							// $("#" + cindex + " .o-price").text(new_price.toLocaleString() + "원");
+							// $("#" + cindex + " input[name='prodPrc']").val(new_price);
+							// $("#" + cindex + " .tot-price").text(new_price.toLocaleString() + "원");	
+							// cal();
+							
+							loadingBar.stop();
+								
+						},
+						error :function(request, status, error) {
+							console.log(error);
+						}
+					}); 
+
+});
+
+</script>
+<script>
+// 	$('.icheckbox').click(function(){
+// $(this).removeClass('checked');
+// });
+
+$('input[name="checkbox_all"]').change(function(){
+if ($(this).is(':checked')) {
+$('.cart-list-group li .icheckbox').addClass('checked');
+cal();
+} else {
+$('.cart-list-group li .icheckbox').removeClass('checked');
+cal();
+}
+});
+
+$('.icheckbox').click(function(){
+if ($(this).hasClass('checked')) {
+$(this).removeClass('checked');
+cal();
+
+} else {
+$(this).addClass('checked');
+cal();
+
+}
+});
+</script>
+<iframe id="groobeeBox" name="groobeeBox" style="display: none;"></iframe><iframe height="0" width="0" title="Criteo DIS iframe" style="display: none;"></iframe>
 </body>
 </html>

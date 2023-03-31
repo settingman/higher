@@ -3761,19 +3761,25 @@
 	<script>
 	function addCart() {
 		console.log('장바구니 담기');
-		var pcode = document.querySelector('.prd-share-info strong').textContent;
-		var optname = document.querySelector('input[name="optNm"]').value;
-		var pamount = document.querySelector('input[name="uitmCd"]').value;
+		var pCode = document.querySelector('.prd-share-info strong').textContent;
+		var pOption = document.querySelector('input[name="optNm"]').value;
+		var pAmount = document.querySelector('input[name="uitmCd"]').value;
 		var mid = document.getElementById('mid').value;
 		console.log(mid);
-		console.log(pcode);
+		console.log(pCode);
 		
-		var requestData = JSON.stringify({
-		    pcode : pcode,
-		    optname : optname,
-		    pamount : pamount,
-		    mid : mid
+		if (mid !='anonymousUser'){
+			var requestData = JSON.stringify({
+				pcode : pCode,
+				poption : pOption,
+			    pamount : pAmount,
+			    mid  :mid
+		  
 		});
+		//로그인 여부 확인 
+		//중복 상품 확인
+		
+		console.log(requestData);
 
 
 		 $.ajax({
@@ -3781,14 +3787,26 @@
 			type: 'post',
 			data: requestData,
 			contentType: "application/json",
-			success	: function(data){
+			success	: function(result){
 				console.log("장바구니 success");
+				if(result == '0'){
+					alert("장바구니에 추가를 하지 못하였습니다.");
+				} else if(result == '1'){
+					alert("장바구니에 추가되었습니다.");
+				} else if(result == '2'){
+					alert("장바구니에 담긴 상품으로 수량이 추가되었습니다.");
+				} 
 			},
 			error :function(request, status, error) {
 				console.log(error);
 			}
 		}); 
-		
+		}else {
+			console.log("로그인 필요");
+			alert('장바구니는 로그인이 필요합니다.');
+			var loginUrl = "/member/login";
+			window.location.href = loginUrl;
+		}
 		
 	}
 

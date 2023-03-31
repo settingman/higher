@@ -3,12 +3,88 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hyundai.higher.mapper.cart.CartMapper">
 
-<insert id="addCart" parameterType="CartDTO">
-    INSERT INTO cart
-    (pcode, optname, pamount, mid)
-    VALUES (#{item.pcode}, #{item.optname}, #{item.pamount}, #{item.mid})
-</insert>
-
-
-
+	<resultMap type="com.hyundai.higher.domain.cart.CartItem" id="cartMap">
+		<result property="pcode" column="pcode"/>
+		<result property="pname" column="pname"/>
+		<result property="pprice" column="pprice"/>
+		<result property="pamount" column="pamount"/>
+		<result property="poption" column="optname"/>
+		<result property="IMAGE_PATH" column="iloc"/>
+<!-- 		<collection property="optionList" resultMap="optionMap" /> -->
+	<collection property="optionList" column="{pcode = pcode}" ofType="com.hyundai.higher.domain.product.OptionDTO"
+	select="selectOptions" />
+	</resultMap>
+	<select id="selectOptions" resultType="com.hyundai.higher.domain.product.OptionDTO">
+		select optname from poption where pcode =  #{pcode}
+	</select>
+	
+<!-- 	<resultMap type="com.hyundai.higher.domain.product.OptionDTO" id="optionMap">
+		<result property="pcode" column="pcode"/>
+		<result property="optname" column="optname"/>
+		<result property="optcolor" column="optcolor"/>	
+	</resultMap> -->
+	
+	<insert id="addCart" parameterType="CartItem">
+	    INSERT INTO cart
+	    (pcode, optname, pamount, mid)
+	    VALUES (#{item.pcode}, #{item.poption}, #{item.pamount}, #{item.mid})
+	</insert>
+	
+	<delete id="deleteCart">
+		delete from cart where mid = #{mid} and pcode = #{pcode} and optname =#{optname}
+	</delete>
+	
+<!-- 	<delete id="deleteCarts">
+		delete from cart where mid = = #{mid} and pcode = #{pcode} and optname =#{optname}
+	</delete>  -->
+	
+	<update id="modifyAmount" parameterType="CartItem">
+		update cart set pamount=#{item.pamount} 
+		where mid = #{mid} and pcode = #{item.pcode} and optname = #{item.poption}
+	</update>
+	
+	<update id="modifyOption" parameterType="CartItem">
+		update cart set optname=#{item.poption} where  mid = #{mid} and pcode = #{item.pcode}
+	</update>
+	
+	<select id="getCart" resultMap="cartMap">
+<!-- 		select a.pcode, o.optname, a.pamount, a.iloc, a.pname, a.pprice
+		from
+		(select ci.pcode, ci.pamount, ci.iloc, p.pname, p.pprice
+		from  (
+		    select c.pcode, c.pamount, i.iloc, 
+		          row_number() over
+		          (partition by c.pcode order by i.iloc desc) as rn 
+		    from img i right join cart c on c.pcode=i.pcode
+		    where i.itype='thumb' and mid = #{mid}
+		    ) ci right join product p on ci.pcode = p.pcode
+		    where ci.rn =1
+		) a join poption o on o.pcode = a.pcode -->
+		    select ci.pcode, ci.optname ,ci.pamount, ci.iloc, p.pname, p.pprice
+			from  (
+			    select c.pcode, c.optname, c.pamount, i.iloc, 
+			          row_number() over
+			          (partition by c.pcode order by i.iloc desc) as rn 
+			    from img i right join cart c on c.pcode=i.pcode
+			    where i.itype='thumb' and mid = #{mid}
+			    ) ci right join product p on ci.pcode = p.pcode
+			    where ci.rn =1
+	</select>
+	
+<!-- 	<select id="getOptions" parameterType="CartItem" resultType="com.hyundai.higher.domain.product.OptionDTO">
+		select pcode, optname, optcolor
+		from poption  
+		where pcode =#{item.pcode}      
+	</select> -->
+	
+	<update id="SameUpdate" parameterType="CartItem">
+		update cart set pamount = pamount+1 where mid = #{item.mid} and pcode =#{item.pcode} and optname=#{item.poption}
+	</update>
+	
+	<select id="checkSame" parameterType="CartItem" resultType ="integer">
+		select count(*) from cart where pcode = #{item.pcode} and mid=#{item.mid} and optname=#{item.poption}
+	</select>
+	
+	
+	
 </mapper>

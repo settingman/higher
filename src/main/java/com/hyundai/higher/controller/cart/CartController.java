@@ -1,11 +1,16 @@
 package com.hyundai.higher.controller.cart;
 
+import java.security.Principal;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.hyundai.higher.domain.cart.CartItem;
+import com.hyundai.higher.service.cart.CartService;
 import com.hyundai.higher.service.include.IncludeService;
 
 import lombok.extern.log4j.Log4j2;
@@ -31,14 +36,22 @@ public class CartController {
 	@Autowired(required=true)
 	private IncludeService iService;
 	
+	@Autowired(required=true)
+	private CartService cService;
+	
+	
+	
 	// 장바구니 페이지로 이동
 	@GetMapping("/mycart")
-	public String cart(Model model) {
-
+	public String cart(Model model, Principal principal) {
+		log.info("장바구니 이동");
 		model.addAttribute("categoryList", iService.categoryListAll());
+		String mid = principal.getName();
+		List<CartItem> carts = cService.getCart(mid);
+		
+		model.addAttribute("carts", carts);
 			
 	return "cart/mycart";
 	}
-	
 	
 }

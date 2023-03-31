@@ -40,7 +40,7 @@ public class OrderController {
 
 		List<CartItem> cartItems = new ArrayList<CartItem>();
 
-		CartItem cart = new CartItem("test", "테스트", 10000, "Brand", "Color", 3,"option", "img_path");
+		CartItem cart = new CartItem("test", "테스트", 10000, "Brand", "Color", 3,"option", "img_path","mid");
 		// cartService.cartToOrder(pIdList,principal.getName());
 		// 장바구니에서 선택된 상품의 id 값을 리스트로 받은 뒤 상품id와 회원 id를 통하여 장바구니 정보를 가져와 담아준다.
 
