@@ -1,0 +1,6623 @@
+@charset "utf-8";
+
+/* layout  */
+body,
+html {
+  position: relative;
+  z-index: 1;
+  min-height: 100%;
+}
+
+#wrap {
+  padding: 232px 0 249px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  min-width: 1140px;
+}
+
+#header {
+  position: relative;
+  left: 0;
+  top: 0;
+  z-index: 102;
+  width: 100%;
+  min-height: 182px;
+  margin-top: -232px;
+  background: #fff;
+  border-bottom: #bcbcbc solid 1px;
+  -webkit-box-sizing: border-box;
+}
+
+#container {
+  position: relative;
+  min-height: 100%;
+  -webkit-box-sizing: border-box;
+}
+
+#contents {
+  position: relative;
+  width: 1140px;
+  min-height: 100%;
+  margin: 0 auto 100px;
+  -webkit-box-sizing: border-box;
+}
+
+#contents:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+#contents .sideleft {
+  float: left;
+  width: 190px;
+}
+
+#contents .sideright {
+  position: absolute;
+  top: 84px;
+  right: 0;
+  width: 270px;
+}
+
+#contents .sideconts_warp {
+  float: right;
+  width: 850px;
+}
+
+#contents .sideconts_warp.left {
+  float: left;
+  width: 810px;
+}
+
+#contents .sideconts:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+#footer {
+  position: relative;
+  left: 0;
+  bottom: 0;
+  z-index: 20;
+  width: 100%;
+  height: 249px;
+  margin-bottom: -228px;
+  background: #fff;
+  border-top: #333 solid 1px;
+  -webkit-box-sizing: border-box;
+}
+
+/* main layout */
+#wrap.main {
+  padding: 182px 0 228px;
+}
+
+#wrap.main #header {
+  margin-top: -182px;
+}
+
+#wrap.main #contents {
+  width: auto;
+}
+
+#wrap.main #contents>div {
+  position: relative;
+  display: block;
+  padding: 80px 0 0;
+  width: 1140px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#wrap.main #contents>div:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+#wrap.main #contents>div h2 {
+  display: block;
+  margin-bottom: 40px;
+  font-size: 40px;
+  color: #000;
+  font-family: 'locator-light';
+}
+
+#wrap.main #contents>div h2 em {
+  display: block;
+  margin-top: 5px;
+  font-size: 16px;
+  color: #959595;
+  font-family: 'notokr-demilight';
+}
+
+#wrap.main #contents>div h2 i {
+  display: inline-block;
+  padding: 0 20px;
+  font-style: normal;
+  background: #fff;
+}
+
+#wrap.main #contents>div .left {
+  position: relative;
+  float: left;
+}
+
+#wrap.main #contents>div .right {
+  position: relative;
+  float: right;
+}
+
+#wrap.main #contents>div .btn_more {
+  position: absolute;
+  top: 100px;
+  right: 0;
+  display: block;
+  width: 90px;
+  height: 30px;
+}
+
+#wrap.main #contents>div .btn_more:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  margin: -5px 0 0 -30px;
+  width: 60px;
+  height: 10px;
+  background: url('https://www.larocheposay.co.kr/images/common/ico_comm_sp.png') no-repeat -224px -127px;
+  background-size: 300px 300px;
+}
+
+#wrap.main .onlyone_hotdeal {
+  padding: 80px 0 !important;
+}
+
+#wrap.main .onlyone_hotdeal h2 {
+  background: url('https://www.larocheposay.co.kr/images/main/bg_h2line.png') repeat-x 0 11px;
+}
+
+#wrap.main .onlyone_hotdeal .prdlist {
+  float: left;
+  width: 345px;
+}
+
+#wrap.main #mainslider {
+  width: auto !important;
+  height: 699px;
+  padding: 0 !important;
+  z-index: 100;
+}
+
+#wrap.main #mainslider .mainslider-prev {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  margin-top: -38px;
+  width: 50px;
+  height: 76px;
+  background: url('https://www.larocheposay.co.kr/images/common/ico_comm_sp.png') no-repeat 0 -129px;
+  background-size: 300px 300px;
+  z-index: 2;
+}
+
+#wrap.main #mainslider .mainslider-next {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  margin-top: -38px;
+  width: 50px;
+  height: 76px;
+  background: url('https://www.larocheposay.co.kr/images/common/ico_comm_sp.png') no-repeat -55px -129px;
+  background-size: 300px 300px;
+  z-index: 2;
+}
+
+#wrap.main #mainslider .swiper-slide {
+  position: relative;
+}
+
+#wrap.main #mainslider .swiper-slide a {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+#wrap.main #mainslider .swiper-slide .img_banner {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-position: 50% 0;
+  background-repeat: no-repeat;
+}
+
+#wrap.main #mainslider .mainslider-pagination {
+  position: absolute;
+  width: 100%;
+  bottom: 62px;
+  z-index: 1;
+}
+
+#wrap.main #mainslider .swiper-pagination-switch {
+  display: inline-block;
+  cursor: pointer;
+  width: 8px;
+  height: 8px;
+  background: none;
+  border: #fff solid 2px;
+  border-radius: 0;
+  opacity: 0.4;
+  margin: 0 3px;
+  vertical-align: text-bottom;
+}
+
+#wrap.main #mainslider .swiper-active-switch {
+  width: 12px;
+  height: 18px;
+  background: #bfae90;
+  border: none;
+  opacity: 1;
+}
+
+#wrap.main .bestseller_slider {
+  position: relative;
+}
+
+#wrap.main .bestseller_slider .bsprd-prev {
+  position: absolute;
+  top: 50%;
+  left: -30px;
+  margin-top: -44px;
+  width: 17px;
+  height: 32px;
+  background: url('https://www.larocheposay.co.kr/images/common/ico_comm_sp.png') no-repeat -169px 0;
+  background-size: 300px 300px;
+  z-index: 2;
+}
+
+#wrap.main .bestseller_slider .bsprd-next {
+  position: absolute;
+  top: 50%;
+  right: -30px;
+  margin-top: -44px;
+  width: 17px;
+  height: 32px;
+  background: url('https://www.larocheposay.co.kr/images/common/ico_comm_sp.png') no-repeat -191px 0;
+  background-size: 300px 300px;
+  z-index: 2;
+}
+
+#wrap.main .bestseller_slider #bsprd {
+  width: auto !important;
+  height: 490px;
+  padding: 0 !important;
+}
+
+#wrap.main .bestseller_slider #bsprd .bsprd-pagination {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  z-index: 1;
+}
+
+#wrap.main .bestseller_slider #bsprd .bsprd-pagination span {
+  display: none;
+}
+
+#wrap.main .bestseller_slider #bsprd .bsprd-pagination span:nth-child(4n-3) {
+  display: inline-block;
+}
+
+#wrap.main .bestseller_slider #bsprd .swiper-pagination-switch {
+  display: inline-block;
+  cursor: pointer;
+  width: 8px;
+  height: 8px;
+  background: none;
+  border: #e4e4e4 solid 2px;
+  border-radius: 0;
+  margin: 0 3px;
+  vertical-align: text-bottom;
+}
+
+#wrap.main .bestseller_slider #bsprd .swiper-active-switch {
+  width: 12px;
+  height: 18px;
+  background: #bfae90;
+  border: none;
+  opacity: 1;
+}
+
+/*메인 웨비나 추가 css*/
+/*
+#wrap.main #contents > div.brand_story_banner {width:1425px;}
+#wrap.main .brand_story_banner > p { height: 24px; line-height: 24px; margin-right:574px; text-align:right; color: #8f8f8f; font-size: 10px; font-style: italic; overflow:hidden;}
+ */
+#wrap.main .brand_story_banner {
+  position: relative;
+  margin: 20px 0;
+  overflow: hidden;
+  display: none;
+}
+
+#wrap.main .brand_story_banner:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+#wrap.main .brand_story_banner ul {
+  position: relative;
+  display: block;
+}
+
+#wrap.main .brand_story_banner ul:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+#wrap.main .brand_story_banner ul li {
+  float: left;
+  margin-right: 1px;
+  width: 284px;
+  height: 270px;
+}
+
+#wrap.main .brand_story_banner ul li:last-child {
+  margin-right: 0;
+}
+
+#wrap.main .brand_story_banner ul li a {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+
+#wrap.main .brand_story_banner ul li a>em {
+  position: absolute;
+  bottom: 35px;
+  left: 20px;
+  font-size: 18px;
+  font-family: 'notokr-medium';
+  text-align: left;
+  color: #fff;
+}
+
+#wrap.main .brand_story_banner ul li a>em .locator-medium {
+  font-size: 21px;
+}
+
+#wrap.main .brand_story_banner ul li a>span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  width: 100%;
+  height: 270px;
+  background-position: 50% 0;
+  background-repeat: no-repeat;
+}
+
+#wrap.main .brand_story_banner ul li a .new {
+  top: 15px;
+  right: 15px;
+  left: auto;
+  bottom: auto;
+  font-size: 21px;
+  font-family: 'locator-medium';
+}
+
+#wrap.main .brand_story_banner ul li a:hover>em {
+  opacity: 0;
+}
+
+#wrap.main .brand_story_banner ul li a:hover>span {
+  opacity: 1;
+  transition: all .5s ease-in-out;
+  -webkit-transition: all .5s ease-in-out;
+}
+
+#wrap.main .brand_story_banner>p {
+  height: 24px;
+  line-height: 24px;
+  margin-right: 286px;
+  text-align: right;
+  color: #8f8f8f;
+  font-size: 10px;
+  font-style: italic;
+  overflow: hidden;
+}
+
+#wrap.main .brand_story_banner>p .refer1 {
+  float: left;
+}
+
+#wrap.main .skinsolution_warp {
+  position: relative;
+  display: block;
+  width: auto !important;
+  background: #f7f7f7;
+}
+
+#wrap.main .skinsolution_warp .skinsolution_slider {
+  position: relative;
+  display: block;
+  padding: 0 0 60px;
+  width: 1170px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#wrap.main .skinsolution_warp .skinsolution_slider button {
+  display: inline-block;
+}
+
+#wrap.main .skinsolution_warp .skinsolution_slider button.disabled {
+  display: none;
+}
+
+#wrap.main .skinsolution_warp .skinsolution_slider .skinprd-prev {
+  position: absolute;
+  top: 50%;
+  left: -20px;
+  margin-top: -90px;
+  width: 52px;
+  height: 52px;
+  background: url('https://www.larocheposay.co.kr/images/common/ico_comm_sp.png') no-repeat -110px -129px;
+  background-size: 300px 300px;
+  z-index: 2;
+}
+
+#wrap.main .skinsolution_warp .skinsolution_slider .skinprd-next {
+  position: absolute;
+  top: 50%;
+  right: -20px;
+  margin-top: -90px;
+  width: 52px;
+  height: 52px;
+  background: url('https://www.larocheposay.co.kr/images/common/ico_comm_sp.png') no-repeat -167px -129px;
+  background-size: 300px 300px;
+  z-index: 2;
+}
+
+#wrap.main .skinsolution_warp .skinsolution_slider #skinprd {
+  width: auto !important;
+  height: 478px;
+  padding: 0 !important;
+}
+
+#wrap.main .skinsolution_warp .skinsolution_slider #skinprd .swiper-slide {
+  width: 366px !important;
+  height: 400px !important;
+  margin: 0 12px !important;
+}
+
+#wrap.main .skinsolution_warp .skinsolution_slider #skinprd a {
+  position: relative;
+  display: block;
+  height: 400px;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 100% 100%;
+  transition: all .6s ease-in-out;
+}
+
+#wrap.main .skinsolution_warp .skinsolution_slider #skinprd a:hover {
+  background-size: 110% 110%;
+  transition: all .6s ease-in-out;
+}
+
+#wrap.main .skinsolution_warp .skinsolution_slider #skinprd .swiper-slide.branding1 a {
+  background-image: url('https://www.larocheposay.co.kr/images/main/bg_branding01.png?1');
+}
+
+#wrap.main .skinsolution_warp .skinsolution_slider #skinprd .swiper-slide.branding2 a {
+  background-image: url('https://www.larocheposay.co.kr/images/main/bg_branding02.png');
+}
+
+#wrap.main .skinsolution_warp .skinsolution_slider #skinprd .swiper-slide.branding3 a {
+  background-image: url('https://www.larocheposay.co.kr/images/main/bg_branding03.png?2');
+}
+
+#wrap.main .skinsolution_warp .skinsolution_slider #skinprd .swiper-slide.branding4 a {
+  background-image: url('https://www.larocheposay.co.kr/images/main/bg_branding04.png');
+}
+
+#wrap.main .skinsolution_warp .skinsolution_slider #skinprd .swiper-slide.branding5 a {
+  background-image: url('https://www.larocheposay.co.kr/images/main/bg_branding05.png?2');
+}
+
+
+#wrap.main .skinsolution_warp .skinsolution_slider #skinprd .line_wrap {
+  position: absolute;
+  bottom: 50px;
+  left: 40px;
+  display: inline-block;
+  width: 286px;
+  padding: 10px 10px 12px;
+  font-size: 30px;
+  line-height: 36px;
+  text-align: left;
+  color: #fff;
+  box-sizing: border-box;
+}
+
+#wrap.main .skinsolution_warp .skinsolution_slider #skinprd .line_wrap sup {
+  vertical-align: text-top;
+}
+
+#wrap.main .skinsolution_warp .skinsolution_slider #skinprd .line_wrap:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: inline-block;
+  width: 100%;
+  height: 1px;
+  background-color: #fff;
+  transition: all .5s ease-in-out;
+  -webkit-transition: all .5s ease-in-out;
+}
+
+#wrap.main .skinsolution_warp .skinsolution_slider #skinprd .line_wrap:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: inline-block;
+  width: 100%;
+  height: 1px;
+  background-color: #fff;
+  transition: all .5s ease-in-out;
+  -webkit-transition: all .5s ease-in-out;
+}
+
+#wrap.main .skinsolution_warp .skinsolution_slider #skinprd .refer {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: inline-block;
+  font-style: italic;
+  font-size: 12px;
+  color: #fff;
+  opacity: 0.6;
+}
+
+#wrap.main .skinsolution_warp .skinsolution_slider #skinprd a:hover .line_wrap {
+  color: #bfae90;
+}
+
+#wrap.main .skinsolution_warp .skinsolution_slider #skinprd a:hover .line_wrap:before,
+#wrap.main .skinsolution_warp .skinsolution_slider #skinprd a:hover .line_wrap:after {
+  width: 0;
+  background-color: #bfae90;
+  transition: all .5s ease-in-out;
+  -webkit-transition: all .5s ease-in-out;
+}
+
+
+#wrap.main .skinsolution_warp .skinsolution_slider #skinprd .skinprd-pagination {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  z-index: 1;
+}
+
+#wrap.main .skinsolution_warp .skinsolution_slider #skinprd .skinprd-pagination span {
+  display: none;
+}
+
+#wrap.main .skinsolution_warp .skinsolution_slider #skinprd .skinprd-pagination span:nth-child(1),
+#wrap.main .skinsolution_warp .skinsolution_slider #skinprd .skinprd-pagination span:nth-child(3) {
+  display: inline-block;
+}
+
+#wrap.main .skinsolution_warp .skinsolution_slider #skinprd .swiper-pagination-switch {
+  display: inline-block;
+  cursor: pointer;
+  width: 8px;
+  height: 8px;
+  background: none;
+  border: #e4e4e4 solid 2px;
+  border-radius: 0;
+  margin: 0 3px;
+  vertical-align: text-bottom;
+}
+
+#wrap.main .skinsolution_warp .skinsolution_slider #skinprd .swiper-active-switch {
+  width: 12px;
+  height: 18px;
+  background: #bfae90;
+  border: none;
+  opacity: 1;
+}
+
+#wrap.main .prdlist {
+  position: relative;
+}
+
+#wrap.main .prdlist,
+#wrap.main .prdlist a,
+#wrap.main .prdlist span {
+  display: block;
+}
+
+#wrap.main .prdlist span.ico {
+  position: absolute;
+  top: 25px;
+  left: 14px;
+  width: 40px;
+  z-index: 1;
+}
+
+#wrap.main .prdlist span.ico i {
+  display: block;
+  margin-bottom: 3px;
+  font-size: 0;
+  width: 40px;
+  height: 40px;
+  background: url('https://www.larocheposay.co.kr/images/common/ico_comm_sp.png') no-repeat 0 -23px;
+  background-size: 300px 300px;
+}
+
+#wrap.main .prdlist span.ico i.ico_new {
+  background-position: 0 -23px;
+}
+
+#wrap.main .prdlist span.ico i.ico_best {
+  background-position: -45px -23px;
+}
+
+#wrap.main .prdlist span.photo {
+  width: 100%;
+  height: 260px;
+}
+
+#wrap.main .prdlist span.photo img {
+  width: 210px;
+  height: 210px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#wrap.main .prdlist span.hash {
+  color: #959595;
+  font-size: 14px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+#wrap.main .prdlist span.tit {
+  font-size: 16px;
+  margin: 12px 0 10px;
+  overflow: hidden;
+  max-height: 67px;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-wrap: break-word;
+  padding: 0 20px;
+}
+
+#wrap.main .prdlist span.tit strong {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 8px;
+  font-family: 'notokr-medium';
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+#wrap.main .prdlist span.star {
+  font-size: 0;
+}
+
+#wrap.main .prdlist span.star .star-rating {
+  vertical-align: middle;
+}
+
+#wrap.main .prdlist span.star em {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 4px;
+  color: #8f8f8f;
+  font-size: 14px;
+  font-family: 'locator-regular';
+}
+
+#wrap.main .prdlist span.price {
+  margin: 10px 0 16px;
+  font-size: 22px;
+  color: #222;
+  font-family: 'locator-medium';
+}
+
+#wrap.main .prdlist span.price em {
+  font-family: 'notokr-demilight';
+}
+
+#wrap.main .prdlist span.price .sale {
+  margin-left: 5px;
+  font-size: 16px;
+  vertical-align: middle;
+  display: inline-block;
+  color: #fa2b49;
+  font-family: 'locator-medium';
+}
+
+#wrap.main .prdlist span.price del {
+  vertical-align: middle;
+  display: inline-block;
+  font-size: 16px;
+  color: #8f8f8f;
+  font-family: 'locator-regular';
+}
+
+#wrap.main .prdlist span.price del>em {
+  font-size: 14px;
+  font-family: 'notokr-demilight';
+}
+
+#wrap.main .prdlist span.price i {
+  font-size: 16px;
+  font-style: normal;
+  font-family: 'notokr-demilight';
+}
+
+#wrap.main .prdlist span.gift {
+  font-size: 0;
+}
+
+#wrap.main .prdlist span.gift i {
+  display: inline-block;
+  border: 1px solid #4e80d3;
+  margin: 0 1.5px;
+  /* width: 40px; */
+  width: auto;
+  min-width: 22px;
+  padding: 0 8px;
+  height: 16px;
+  line-height: 16px;
+  font-size: 12px;
+  color: #4e80d3;
+  font-family: 'notokr-medium';
+  text-align: center;
+}
+
+#wrap.main .prdlist span.gift i.ico_gift {
+  border-color: #4e80d3;
+  color: #4e80d3;
+}
+
+#wrap.main .prdlist span.gift i.ico_coupon {
+  border-color: #00a0c2;
+  color: #00a0c2;
+}
+
+#wrap.main .prdlist span.gift i.ico_sale {
+  border-color: #fa2b49;
+  color: #fa2b49;
+}
+
+#wrap.main .prdlist button.like {
+  position: absolute;
+  top: 200px;
+  left: 20px;
+  width: 28px;
+  height: 25px;
+  font-size: 0;
+  background: url('https://www.larocheposay.co.kr/images/common/ico_comm_sp.png') no-repeat -213px 0;
+  background-size: 300px 300px;
+  z-index: 1;
+}
+
+#wrap.main .prdlist button.like.on {
+  background-position: -246px 0;
+}
+
+#wrap.main .prdlist:hover>a+.over {
+  opacity: 1;
+  transition: all .5s ease;
+}
+
+#wrap.main .prdlist:hover>a:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 440px;
+  border: 1px solid #bfae90;
+  box-sizing: border-box;
+}
+
+#wrap.main .prdlist .over {
+  opacity: 0;
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  margin-left: -60px;
+  overflow: hidden;
+}
+
+#wrap.main .prdlist .over button {
+  display: block;
+  width: 56px;
+  height: 56px;
+  background: url('https://www.larocheposay.co.kr/images/product/bg_product_sp.png') -444px 0 no-repeat;
+  text-indent: -9999px;
+  float: left;
+  margin-left: 8px;
+}
+
+#wrap.main .prdlist .over button:first-child {
+  background: url('https://www.larocheposay.co.kr/images/product/bg_product_sp.png') -380px 0 no-repeat;
+  margin-left: 0;
+}
+
+#wrap.main .prdlist .over button:hover {
+  border-radius: 28px;
+  -webkit-box-shadow: inset 0px 0px 35px rgba(0, 131, 188, 0.3);
+}
+
+#wrap.main .membership {
+  padding: 78px 0 !important;
+}
+
+#wrap.main .membership .left {
+  margin-top: 8px;
+}
+
+#wrap.main .membership .left:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -35px;
+  width: 69px;
+  height: 69px;
+  background: url('https://www.larocheposay.co.kr/images/common/ico_comm_sp.png') no-repeat 100% -147px;
+  background-size: 300px 300px;
+}
+
+#wrap.main .membership .left h2 {
+  padding-top: 85px;
+  font-size: 22px !important;
+  margin-bottom: 0 !important;
+  font-family: 'locator-medium' !important;
+}
+
+#wrap.main .membership .left h2 em {
+  position: relative;
+  width: 160px;
+  text-align: left;
+  font-size: 16px;
+  padding-right: 10px;
+  margin: 0 auto;
+  letter-spacing: -0.7px;
+}
+
+#wrap.main .membership .left h2 em:before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  right: 0;
+  width: 15px;
+  height: 10px;
+  background: url('https://www.larocheposay.co.kr/images/common/ico_comm_sp.png') no-repeat -268px -128px;
+  background-size: 300px 300px;
+}
+
+#wrap.main .membership .left .btn_base {
+  min-width: auto;
+  font-size: 12px;
+  padding: 0 15px;
+}
+
+#wrap.main .membership .left .btn_base:after {
+  float: right;
+  content: '→';
+  position: relative;
+  top: 10px;
+  margin-left: 10px;
+  width: 10px;
+  height: 10px;
+  line-height: 10px;
+  font-size: 12px;
+  color: #222;
+}
+
+#wrap.main .membership .right ul {
+  margin: 3px -50px 0 0;
+}
+
+#wrap.main .membership .right li {
+  float: left;
+  width: 240px;
+  height: 140px;
+  border-left: #e9e9e9 solid 1px;
+}
+
+#wrap.main .membership .right li:first-child {
+  border-left: 0;
+}
+
+#wrap.main .membership .right li a {
+  position: relative;
+  display: block;
+  padding: 90px 0 0;
+}
+
+#wrap.main .membership .right li a:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -55px 0 0 -32px;
+  width: 64px;
+  height: 60px;
+  background: url('https://www.larocheposay.co.kr/images/main/ico_mem1.jpg') no-repeat 50%;
+  background-size: 100%;
+}
+
+#wrap.main .membership .right li a strong {
+  display: block;
+  color: #222;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+#wrap.main .membership .right li a span {
+  color: #8f8f8f;
+  font-size: 14px;
+}
+
+#wrap.main .membership .right li a:hover:after {
+  margin: -58px 0 0 -35px;
+  width: 70px;
+  height: 66px;
+  transition: all .2s ease;
+}
+
+#wrap.main .membership .right li:nth-child(1) a:after {
+  background-image: url('https://www.larocheposay.co.kr/images/main/ico_mem1.jpg');
+}
+
+#wrap.main .membership .right li:nth-child(2) a:after {
+  background-image: url('https://www.larocheposay.co.kr/images/main/ico_mem2.jpg');
+}
+
+#wrap.main .membership .right li:nth-child(3) a:after {
+  background-image: url('https://www.larocheposay.co.kr/images/main/ico_mem3.jpg');
+}
+
+#wrap.main .membership .right li:nth-child(4) a:after {
+  background-image: url('https://www.larocheposay.co.kr/images/main/ico_mem4.jpg');
+}
+
+#wrap.main .movie_warp {
+  position: relative;
+  display: block;
+  width: auto !important;
+  height: 800px;
+  background: url('https://www.larocheposay.co.kr/images/main/bg_movielink_210429.jpg') no-repeat 50% 100%;
+}
+
+#wrap.main .movie_warp .movie {
+  position: relative;
+  display: block;
+  padding: 0 0 60px;
+  width: 1140px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#wrap.main .movie_warp .movie h2 {
+  height: 100px;
+  margin-bottom: 0 !important;
+  color: #fff !important;
+}
+
+#wrap.main .movie_warp .movie h2 em {
+  color: #fff !important;
+}
+
+#wrap.main .movie_warp .movie #youtube {
+  position: relative;
+  height: 0;
+  padding-bottom: 52.5%;
+}
+
+#wrap.main .movie_warp .movie #youtube iframe,
+#wrap.main .movie_warp .movie #youtube div,
+#wrap.main .movie_warp .movie #youtube a {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0
+}
+
+#wrap.main .movie_warp .movie #youtube span {
+  background: rgba(255, 255, 255, 0.9);
+  font-size: 18px;
+  display: table-cell;
+  width: 1140px;
+  height: 599px;
+  vertical-align: middle;
+}
+
+#wrap.main .movie_warp .movie #youtube span a {
+  color: #bfae90;
+  text-decoration: underline;
+}
+
+#wrap.main .realreview_warp {
+  position: relative;
+  display: block;
+  width: auto !important;
+  padding: 0 !important;
+  background: #dfeff8;
+}
+
+#wrap.main .realreview_warp .realreview {
+  position: relative;
+  width: 1140px;
+  margin: 0 auto;
+  padding: 60px 0 0;
+}
+
+#wrap.main .realreview_warp .realreview_slider {
+  position: relative;
+  display: block;
+  padding: 0;
+  width: 1140px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#wrap.main .realreview_warp .realreview_slider {
+  position: relative;
+}
+
+#wrap.main .realreview_warp .realreview_slider .realprd-prev {
+  position: absolute;
+  top: 50%;
+  left: -30px;
+  margin-top: -66px;
+  width: 17px;
+  height: 32px;
+  background: url('https://www.larocheposay.co.kr/images/common/ico_comm_sp.png') no-repeat -169px 0;
+  background-size: 300px 300px;
+  z-index: 2;
+}
+
+#wrap.main .realreview_warp .realreview_slider .realprd-next {
+  position: absolute;
+  top: 50%;
+  right: -30px;
+  margin-top: -66px;
+  width: 17px;
+  height: 32px;
+  background: url('https://www.larocheposay.co.kr/images/common/ico_comm_sp.png') no-repeat -191px 0;
+  background-size: 300px 300px;
+  z-index: 2;
+}
+
+#wrap.main .realreview_warp .realreview_slider #realprd {
+  width: auto !important;
+  height: 540px;
+  padding: 0 !important;
+}
+
+#wrap.main .realreview_warp .realreview_slider #realprd .swiper-slide {
+  height: 422px;
+  text-align: center;
+}
+
+#wrap.main .realreview_warp .realreview_slider #realprd .swiper-slide a {
+  display: inline-block;
+  width: 210px;
+  padding: 15px 30px;
+  text-align: left;
+  background: #fff;
+  height: 400px;
+  border: #fff solid 1px;
+}
+
+#wrap.main .realreview_warp .realreview_slider #realprd .swiper-slide a>span {
+  display: block;
+  pointer-events: none;
+  word-break: break-word;
+}
+
+#wrap.main .realreview_warp .realreview_slider #realprd .swiper-slide a>span.img {
+  margin: 0 -15px;
+}
+
+#wrap.main .realreview_warp .realreview_slider #realprd .swiper-slide a>span.img img {
+  width: 240px;
+  height: 160px;
+}
+
+#wrap.main .realreview_warp .realreview_slider #realprd .swiper-slide a>span.hash {
+  color: #959595;
+  margin: 25px 0 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+#wrap.main .realreview_warp .realreview_slider #realprd .swiper-slide a>span.tit {
+  font-size: 18px;
+  margin-bottom: 17px;
+  line-height: 24px;
+  font-family: 'notokr-demilight';
+  color: #222;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+#wrap.main .realreview_warp .realreview_slider #realprd .swiper-slide a>span.tit strong {
+  display: block;
+  font-family: 'notokr-medium';
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+#wrap.main .realreview_warp .realreview_slider #realprd .swiper-slide a>span.reply {
+  color: #8f8f8f;
+  line-height: 20px;
+  height: 60px;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  word-wrap: break-word;
+  overflow: hidden;
+}
+
+#wrap.main .realreview_warp .realreview_slider #realprd .swiper-slide a>span.data {
+  margin-top: 22px;
+  padding-top: 18px;
+  color: #8f8f8f;
+  font-family: 'locator-regular';
+  border-top: #e9e9e9 solid 1px;
+}
+
+#wrap.main .realreview_warp .realreview_slider #realprd .swiper-slide a>span.data:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+#wrap.main .realreview_warp .realreview_slider #realprd .swiper-slide a>span.data .userid {
+  float: left;
+}
+
+#wrap.main .realreview_warp .realreview_slider #realprd .swiper-slide a>span.data .star-rating {
+  float: right;
+}
+
+#wrap.main .realreview_warp .realreview_slider #realprd .swiper-slide a:hover {
+  border: #bbdef2 solid 1px;
+  box-shadow: 0px 20px 30px -10px rgba(0, 0, 0, 0.1);
+}
+
+#wrap.main .realreview_warp .realreview_slider #realprd .realprd-pagination {
+  position: absolute;
+  width: 100%;
+  bottom: 60px;
+  z-index: 1;
+}
+
+#wrap.main .realreview_warp .realreview_slider #realprd .realprd-pagination span {
+  display: none;
+}
+
+#wrap.main .realreview_warp .realreview_slider #realprd .realprd-pagination span:nth-child(4n-3) {
+  display: inline-block;
+}
+
+#wrap.main .realreview_warp .realreview_slider #realprd .swiper-pagination-switch {
+  display: inline-block;
+  cursor: pointer;
+  width: 10px;
+  height: 10px;
+  background: none;
+  border: #e4e4e4 solid 2px;
+  border-radius: 0;
+  margin: 0 3px;
+  vertical-align: text-bottom;
+}
+
+#wrap.main .realreview_warp .realreview_slider #realprd .swiper-active-switch {
+  width: 12px;
+  height: 18px;
+  background: #bfae90;
+  border: none;
+  opacity: 1;
+}
+
+#wrap.main .instagram {}
+
+#wrap.main .instagram ul li {
+  float: left;
+  margin-left: 20px;
+}
+
+#wrap.main .instagram ul li:first-child {
+  margin-left: 0;
+}
+
+#wrap.main .instagram ul li a {
+  position: relative;
+  display: block;
+  width: 270px;
+  height: 270px;
+}
+
+#wrap.main .instagram ul li a img {
+  width: 270px;
+  height: 270px;
+}
+
+#wrap.main .instagram ul li a .more {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  opacity: 0;
+  -webkit-transition-duration: .3s;
+  transition-duration: .3s;
+}
+
+#wrap.main .instagram ul li a .more p {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  margin-top: -10px;
+  width: 100%;
+}
+
+#wrap.main .instagram ul li a .more p>span {
+  margin: 0 10px;
+}
+
+#wrap.main .instagram ul li a .more p>span>i {
+  position: relative;
+  top: -2px;
+  vertical-align: middle;
+  display: inline-block;
+  width: 19px;
+  height: 19px;
+  margin: 0 8px;
+  background: url('https://www.larocheposay.co.kr/images/common/ico_comm_sp.png') no-repeat 0 0;
+  background-size: 300px;
+}
+
+#wrap.main .instagram ul li a .more p>span.heart>i {
+  background-position: -65px -281px;
+}
+
+#wrap.main .instagram ul li a .more p>span.comment>i {
+  background-position: -90px -281px;
+}
+
+#wrap.main .instagram ul li a:hover .more {
+  opacity: 1;
+  background: rgba(0, 0, 0, .4);
+}
+
+#wrap.main .notice_warp {}
+
+#wrap.main .notice_warp .left {
+  width: 740px;
+  text-align: left;
+}
+
+#wrap.main .notice_warp .notice_info {}
+
+#wrap.main .notice_warp .notice_info>dl {
+  /* border-bottom: #e9e9e9 solid 1px; */
+  padding-left: 20px;
+}
+
+#wrap.main .notice_warp .notice_info>dl:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+#wrap.main .notice_warp .notice_info>dl:first-child {
+  border: solid #e9e9e9;
+  border-width: 1px 0;
+  height: 70px;
+  line-height: 70px;
+}
+
+#wrap.main .notice_warp .notice_info>dl:first-child dd {
+  width: 553px;
+}
+
+#wrap.main .notice_warp .notice_info>dl:first-child dd a:after {
+  content: '';
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  width: 14px;
+  height: 9px;
+  background: url('https://www.larocheposay.co.kr/images/common/ico_comm_sp.png') no-repeat -269px -128px;
+  background-size: 300px;
+}
+
+#wrap.main .notice_warp .notice_info>dl:last-child dt {
+  margin-top: 28px;
+}
+
+#wrap.main .notice_warp .notice_info>dl dt {
+  float: left;
+  color: #222;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 0 10px;
+}
+
+#wrap.main .notice_warp .notice_info>dl dd {
+  float: right;
+  position: relative;
+  width: 553px;
+  font-size: 12px;
+}
+
+#wrap.main .notice_warp .notice_info>dl dd a {
+  display: block;
+  color: #666;
+  font-size: 16px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+  overflow: hidden;
+  padding-right: 45px;
+}
+
+#wrap.main .notice_warp .notice_info .helpdesk {
+  padding: 30px 0;
+  height: 117px;
+}
+
+#wrap.main .notice_warp .notice_info .helpdesk:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+#wrap.main .notice_warp .notice_info .helpdesk .left {
+  position: relative;
+  float: left;
+  width: 199px;
+  -webkit-box-sizing: border-box;
+}
+
+#wrap.main .notice_warp .notice_info .helpdesk .left span:first-child {
+  margin-bottom: 28px;
+}
+
+#wrap.main .notice_warp .notice_info .helpdesk .left:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -1px;
+  width: 1px;
+  height: 117px;
+  background: #e9e9e9;
+}
+
+#wrap.main .notice_warp .notice_info .helpdesk .left a {
+  padding: 0;
+}
+
+#wrap.main .notice_warp .notice_info .helpdesk .right {
+  width: 314px;
+  padding-left: 40px;
+}
+
+#wrap.main .notice_warp .notice_info .helpdesk .right span:first-child {
+  margin-bottom: 15px;
+}
+
+#wrap.main .notice_warp .notice_info .helpdesk .right a {
+  font-size: 12px;
+  color: #666;
+  height: 16px;
+  line-height: 15px;
+  display: inline-block;
+  margin-right: 12px;
+  border-bottom: #666 solid 1px;
+}
+
+#wrap.main .notice_warp .notice_info .helpdesk>div>span {
+  display: block;
+  font-size: 14px;
+  color: #8f8f8f;
+}
+
+#wrap.main .notice_warp .notice_info .helpdesk>div>span strong {
+  color: #222;
+  font-size: 18px;
+}
+
+#wrap.main .notice_warp .notice_info .helpdesk>div>span p {
+  line-height: 17px;
+  display: block;
+  margin-top: 2px;
+}
+
+#wrap.main .notice_warp .notice_info .helpdesk>div>span i {
+  color: #222;
+  font-size: 21px;
+  font-style: normal;
+  font-family: 'locator-medium';
+}
+
+#wrap.main .notice_warp .notice_info .helpdesk>div>span i img {
+  vertical-align: baseline;
+}
+
+#wrap.main .notice_warp .notice_info .helpdesk>div>span em {
+  display: block;
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+#wrap.main .notice_warp .notice_info .helpdesk>div>span button {
+  min-width: 90px;
+  width: auto;
+  margin-left: 3px;
+  padding: 0 10px;
+  border-color: #d9d9d9;
+  letter-spacing: -1px;
+}
+
+#wrap.main .notice_warp .notice_info .helpdesk>div>span button:after {
+  margin-left: 4px;
+}
+
+#wrap.main .mainpop {
+  position: absolute;
+  top: 54%;
+  left: 17%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  z-index: 101;
+  box-sizing: border-box;
+  box-shadow: 0px 5px 30px -10px rgba(0, 0, 0, 0.2);
+}
+
+#wrap.main .mainpop .layerpop {
+  position: relative;
+  margin: 0 auto;
+  padding: 0;
+  background: #fff;
+}
+
+/* #wrap.main .mainpop .layerpop a {width: 100%; height: 628px; display: block; overflow-x: hidden; overflow-y: auto;} */
+#wrap.main .mainpop .layerpop a {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+#wrap.main .mainpop .layerpop a img {
+  width: 100%;
+  height: auto;
+}
+
+#wrap.main .mainpop .layerpop:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+#wrap.main .mainpop .mainpop_foot {
+  position: relative;
+  display: block;
+  height: 44px;
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+#wrap.main .mainpop .mainpop_foot .close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 44px;
+  height: 44px;
+  color: transparent;
+}
+
+#wrap.main .mainpop .mainpop_foot .close:after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -7px 0 0 -7px;
+  width: 14px;
+  height: 14px;
+  background: url('https://www.larocheposay.co.kr/images/common/ico_comm_sp.png') no-repeat -253px -79px;
+  background-size: 300px;
+}
+
+#wrap.main .mainpop .main_pop_cont {
+  width: 475px;
+  /*min-height:100px;*/
+}
+
+#wrap.main .mainpop .main_pop_cont .mainpop_indi_wrap {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  font-size: 0;
+}
+
+#wrap.main .mainpop .main_pop_cont .mainpop-pagination {
+  display: inline-block;
+  margin: 3px 25px 0;
+  vertical-align: top;
+}
+
+#wrap.main .mainpop .main_pop_cont .mainpop-pagination .swiper-pagination-switch {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin: 0 5px;
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+#wrap.main .mainpop .main_pop_cont .mainpop-pagination .swiper-active-switch {
+  opacity: 1;
+}
+
+#wrap.main .mainpop .main_pop_cont .mainpop-prev {
+  width: 8px;
+  height: 15px;
+  background: url('https://www.larocheposay.co.kr/images/main/ico_pop_prev.png') no-repeat;
+}
+
+#wrap.main .mainpop .main_pop_cont .mainpop-next {
+  width: 8px;
+  height: 15px;
+  background: url('https://www.larocheposay.co.kr/images/main/ico_pop_next.png') no-repeat;
+}
+
+
+/* 탑 배너 */
+#top_banner {
+  height: 0;
+  -webkit-transition: height 0.1s;
+  transition: height 0.1s;
+}
+
+/* 탑 배너 노출 시 #wrap 엘리먼트에 addClass(top_banner_on) 적용  */
+.top_banner_on #top_banner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  display: block;
+  background: #fff;
+}
+
+.top_banner_on #top_banner .top_banner_img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: 50% 0;
+}
+
+.top_banner_on #top_banner .top_banner_img a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.top_banner_on #top_banner button.top_banner_close {
+  position: absolute;
+  top: 50%;
+  right: 40px;
+  margin-top: -15px;
+  width: 30px;
+  height: 30px;
+  display: block;
+  background: url('https://www.larocheposay.co.kr/images/common/ico_comm_sp.png') no-repeat 100% 100%;
+  background-size: 300px;
+}
+
+/* 탑 배너 노출 시 전체 레이아웃 변경(이동) */
+.top_banner_on #header,
+.top_banner_on #container {
+  top: 80px;
+}
+
+.top_banner_on .mainpop {
+  top: 298px !important;
+}
+
+.top_banner_on #footer {
+  bottom: -100px;
+}
+
+/* header */
+#header h1 {
+  position: absolute;
+  top: 40px;
+  left: 42%;
+  z-index: 1;
+  margin-left: -112px;
+  width: 400px;
+  height: 40px;
+  font-size: 27.7px;
+  color: transparent;
+  background: url(/common/image/h-logo-flat.png) no-repeat 0 0;
+  background-size: contain;
+  cursor: pointer;
+}
+
+#header h1 em,
+#header h1 span {
+  display: block;
+  font-size: 14.2px;
+}
+
+#header h1 span {
+  font-size: 11.7px;
+}
+
+#header .top_nav>nav {
+  height: 36px;
+}
+
+#header .top_nav>nav:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+#header .top_nav>nav>ul {
+  float: right;
+  margin-right: 42px;
+}
+
+#header .top_nav>nav>ul>li {
+  position: relative;
+  float: left;
+  line-height: 36px;
+  text-align: center;
+}
+
+#header .top_nav>nav>ul>li:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 14px;
+  right: 0;
+  width: 1px;
+  height: 10px;
+  background: #e9e9e9;
+}
+
+#header .top_nav>nav>ul>li:last-child:after {
+  display: none;
+}
+
+#header .top_nav>nav>ul>li>a {
+  position: relative;
+  padding: 0 8px;
+  color: #959595;
+  font-size: 12px;
+}
+
+#header .top_nav>nav>ul>li>a:hover {
+  color: #bfae90;
+}
+
+#header .top_nav>nav>ul>li.myinfo {
+  position: relative;
+}
+
+#header .top_nav>nav>ul>li.myinfo a strong {
+  color: #bfae90;
+  font-size: 12px;
+}
+
+#header .top_nav>nav>ul>li.myinfo a i {
+  position: relative;
+  top: -1px;
+  display: inline-block;
+  vertical-align: middle;
+  width: 6px;
+  height: 4px;
+  background: url('https://www.larocheposay.co.kr/images/common/ico_comm_sp.png') no-repeat -90px -47px;
+  background-size: 300px 300px;
+}
+
+#header .top_nav>nav>ul>li.myinfo a.on i {
+  background-position: -90px -55px;
+}
+
+#header .top_nav>nav>ul>li.myinfo #myinfo_layer {
+  display: none;
+  position: absolute;
+  top: 36px;
+  left: 50%;
+  margin-left: -84px;
+  width: 237px;
+  height: auto;
+  letter-spacing: -0.3px;
+  text-align: left;
+  padding: 18px 0 0 0;
+  border: 1px solid #bcbcbc;
+  background: #FFF;
+  z-index: 1;
+  -webkit-box-sizing: border-box;
+  box-shadow: 0px 20px 20px -5px rgba(0, 0, 0, 0.2);
+}
+
+#header .top_nav>nav>ul>li.myinfo #myinfo_layer:after,
+#header .top_nav>nav>ul>li.myinfo #myinfo_layer:before {
+  bottom: 100%;
+  left: 50%;
+  border: solid transparent;
+  content: '';
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+#header .top_nav>nav>ul>li.myinfo #myinfo_layer:after {
+  border-color: rgba(255, 255, 255, 0);
+  border-bottom-color: #fff;
+  border-width: 7px;
+  margin-left: -7px;
+}
+
+#header .top_nav>nav>ul>li.myinfo #myinfo_layer:before {
+  border-color: rgba(188, 188, 188, 0);
+  border-bottom-color: #bcbcbc;
+  border-width: 8px;
+  margin-left: -8px;
+}
+
+#header .top_nav>nav>ul>li.myinfo #myinfo_layer dt {
+  position: relative;
+  display: block;
+  padding: 15px 30px;
+  margin-bottom: 17px;
+  height: auto;
+  font-size: 14px;
+  color: #666;
+  line-height: normal;
+}
+
+#header .top_nav>nav>ul>li.myinfo #myinfo_layer dt:after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 30px;
+  width: 175px;
+  height: 1px;
+  border-bottom: #bcbcbc dashed 1px;
+}
+
+#header .top_nav>nav>ul>li.myinfo #myinfo_layer dt strong {
+  color: #222;
+  font-family: 'notokr-medium';
+}
+
+#header .top_nav>nav>ul>li.myinfo #myinfo_layer dt span {
+  color: #222;
+}
+
+#header .top_nav>nav>ul>li.myinfo #myinfo_layer dd span {
+  display: block;
+  height: 24px;
+  line-height: 24px;
+  padding-left: 30px;
+  font-size: 14px;
+  color: #666;
+  line-height: normal;
+}
+
+#header .top_nav>nav>ul>li.myinfo #myinfo_layer dd span strong {
+  color: #222;
+  font-family: 'notokr-medium';
+}
+
+#header .top_nav>nav>ul>li.myinfo #myinfo_layer dd ul {
+  background: #f7f7f7;
+  padding: 18px 30px;
+  margin-top: 11px;
+}
+
+#header .top_nav>nav>ul>li.myinfo #myinfo_layer dd ul li {
+  position: relative;
+  border-bottom: #e9e9e9 solid 1px;
+}
+
+#header .top_nav>nav>ul>li.myinfo #myinfo_layer dd ul li:before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 15px;
+  right: 0;
+  width: 4px;
+  height: 7px;
+  background: url('https://www.larocheposay.co.kr/images/common/ico_comm_sp.png') no-repeat -101px -47px;
+  background-size: 300px 300px;
+}
+
+#header .top_nav>nav>ul>li.myinfo #myinfo_layer dd ul li:last-child {
+  border-bottom: 0;
+}
+
+#header .top_nav>nav>ul>li.myinfo #myinfo_layer dd ul li a {
+  color: #666;
+  height: 35px;
+  line-height: 35px;
+}
+
+#header .cf_side {
+  position: relative;
+  width: 1140px;
+  margin: 0 auto;
+}
+
+#header .cf_side:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+#header .cf_side .campain {
+  float: left;
+  width: 100%;
+  margin-top: 55px;
+}
+
+#header .cf_side .campain>a.btn_campain {
+  position: relative;
+  line-height: 24px;
+  font-size: 16px;
+  display: block;
+  color: #bfae90;
+  margin-bottom: 12px;
+  cursor: initial;
+  visibility: hidden;
+}
+
+#header .cf_side .campain>a.btn_campain:before {
+  content: '';
+  display: inline-block;
+  margin: -3px 6px 0 0;
+  vertical-align: middle;
+  width: 23px;
+  height: 20px;
+  background: url('https://www.larocheposay.co.kr/images/common/bg_button.png?1') no-repeat -98px 0;
+  background-size: 500px 500px;
+}
+
+/*
+#header .cf_side .campain>a.btn_campain:after {content: ''; display: inline-block; margin: -2px 0 0 11px; vertical-align: middle; width: 8px; height: 5px; background: url('https://www.larocheposay.co.kr/images/common/bg_button.png?1') no-repeat -145px 0; background-size: 500px 500px;}
+*/
+#header .cf_side .campain>a.btn_campain.on:after {
+  background-position: -158px 0;
+}
+
+/*
+#header .cf_side .campain #campain_banner {position: relative; width: 100%; margin: 20px 0; overflow: hidden; display: none;}
+#header .cf_side .campain #campain_banner:after {content: ''; display: block; clear: both;}
+#header .cf_side .campain #campain_banner ul {position: relative; display: block;}
+#header .cf_side .campain #campain_banner ul:after {content: ''; display: block; clear: both;}
+#header .cf_side .campain #campain_banner ul li {float: left; width: 285px; height: 380px;}
+#header .cf_side .campain #campain_banner ul li a {display: block; width: 285px; height: 380px; background: #eaeaea;}
+#header .cf_side .campain #campain_banner ul li img {width: 285px; height: 380px;}
+#header .cf_side .campain #campain_banner > p {height: 36px; line-height: 36px; color: #8f8f8f; font-size: 14px; font-style: italic;}
+*/
+/* 4개에서 5개로 변경 19.02.27 */
+#header .cf_side .campain #campain_banner {
+  position: relative;
+  width: 100%;
+  margin: 20px 0;
+  overflow: hidden;
+  display: none;
+}
+
+#header .cf_side .campain #campain_banner:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+#header .cf_side .campain #campain_banner ul {
+  position: relative;
+  display: block;
+}
+
+#header .cf_side .campain #campain_banner ul:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+#header .cf_side .campain #campain_banner ul li {
+  float: left;
+  width: 228px;
+  height: 380px;
+}
+
+#header .cf_side .campain #campain_banner ul li a {
+  display: block;
+  width: 100%;
+  background: #eaeaea;
+}
+
+/* #header .cf_side .campain #campain_banner ul li img {width: 285px; height: 380px;} */
+#header .cf_side .campain #campain_banner>p {
+  height: 36px;
+  line-height: 36px;
+  color: #8f8f8f;
+  font-size: 14px;
+  font-style: italic;
+}
+
+#header .cf_side .fastinfo {
+  position: absolute;
+  top: 7px;
+  right: 0;
+}
+
+#header .cf_side .fastinfo .search_cart:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+#header .cf_side .fastinfo .search_cart .search_faq {
+  float: left;
+  padding-right: 34px;
+}
+
+#header .cf_side .fastinfo .search_cart .search_faq input,
+#header .cf_side .fastinfo .search_cart .search_faq input:focus {
+  border-bottom-width: 1px !important;
+  padding: 8px 10px;
+  width: 240px;
+  border-color: #8f8f8f;
+}
+
+#header .cf_side .fastinfo .search_cart .search_faq button {
+  width: 34px;
+}
+
+#header .cf_side .fastinfo .btn-cart {
+  position: relative;
+  float: right;
+  display: block;
+  width: 34px;
+  height: 40px;
+  color: transparent;
+  background: #fff;
+}
+
+#header .cf_side .fastinfo .btn-cart:before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 7px;
+  top: 9px;
+  width: 22px;
+  height: 22px;
+  background: url('https://www.larocheposay.co.kr/images/common/bg_button.png?1') no-repeat -27px 0;
+  background-size: 500px 500px;
+}
+
+#header .cf_side .fastinfo .btn-cart .count {
+  position: absolute;
+  top: 0;
+  right: -8px;
+  width: 20px;
+  height: 20px;
+  color: #fff;
+  font-size: 12px;
+  line-height: 20px;
+  text-align: center;
+  border-radius: 20px;
+  background: #bfae90;
+}
+
+#header .cf_side .fastinfo .btn-cart .count.hide {
+  display: none;
+}
+
+#header .cf_side .hashtag {
+  position: relative;
+  width: 308px;
+  height: 20px;
+  margin-top: 12px;
+  overflow: hidden;
+}
+
+#header .cf_side .hashtag a {
+  /*float: left; display: block;*/
+  height: 20px;
+  line-height: 20px;
+  padding: 0 8px;
+  margin-right: 3px;
+  background: #f7f7f7;
+  color: #666;
+  font-size: 12px;
+  display: inline-block;
+}
+
+#header .btn_webinar {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  display: block;
+  width: 169px;
+  height: 79px;
+  margin-left: -570px;
+  white-space: nowrap;
+  text-indent: 100%;
+  overflow: hidden;
+  background: url('https://www.larocheposay.co.kr/images/common/btn_webinar.png?1') no-repeat;
+}
+
+#header .gnb_nav {
+  border-top: #e9e9e9 1px solid;
+  box-sizing: border-box;
+}
+
+#header .gnb_nav nav {
+  width: 1140px;
+  height: 53px;
+  margin: 0 auto;
+}
+
+#header .gnb_nav nav ul>li {
+  position: relative;
+  float: left;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+#header .gnb_nav nav ul>li>a {
+  position: relative;
+  color: #222;
+  line-height: 53px;
+  height: 53px;
+  font-size: 16px;
+  display: block;
+}
+
+#header .gnb_nav nav ul>li>a>em {
+  position: relative;
+  color: #bfae90;
+  padding: 0 6px;
+  font-style: normal;
+  display: none;
+  letter-spacing: 0;
+  font-family: 'locator-medium';
+}
+
+#header .gnb_nav nav ul>li>a>span {
+  position: relative;
+  display: block;
+  font-family: 'notokr-medium';
+}
+
+#header .gnb_nav nav ul>li>a .ico_new {
+  display: none;
+  position: absolute;
+  left: 18px;
+  top: 7px;
+  color: #fa2b49;
+  font-size: 11px;
+  font-family: 'locator-medium';
+  font-weight: 800;
+  line-height: 1;
+}
+
+#header .gnb_nav nav ul.left>li:first-child {
+  min-width: 135px;
+  text-align: left;
+}
+
+#header .gnb_nav nav ul.left>li:first-child+li {
+  min-width: 117px;
+}
+
+#header .gnb_nav nav ul.left>li:first-child+li+li {
+  min-width: 112px;
+}
+
+#header .gnb_nav nav ul.left>li:first-child+li+li+li {
+  min-width: 111px;
+}
+
+#header .gnb_nav nav ul.left>li:first-child+li+li+li+li {
+  min-width: 118px;
+}
+
+#header .gnb_nav nav ul.left>li:last-child {
+  min-width: 101px;
+}
+
+#header .gnb_nav nav ul.left>li:first-child>a>em {
+  padding: 0 6px 0 0;
+}
+
+#header .gnb_nav nav ul.left>li:first-child>a .ico {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin: -3px 6px 0 0;
+  vertical-align: middle;
+  background: url('https://www.larocheposay.co.kr/images/common/bg_button.png?1') no-repeat -54px 0;
+  background-size: 500px 500px;
+}
+
+#header .gnb_nav nav ul.left>li:first-child>a>em,
+#header .gnb_nav nav ul.left>li:nth-child(2)>a>em {
+  font-family: 'notokr-medium';
+}
+
+#header .gnb_nav nav ul.right>li {
+  min-width: 94px;
+}
+
+#header .gnb_nav nav ul.right>li:last-child {
+  min-width: 121px;
+}
+
+#header .gnb_nav nav ul.right>li:nth-child(3)>a .ico {
+  display: inline-block;
+  width: 25px;
+  height: 17px;
+  margin: -3px 5px 0 0;
+  vertical-align: middle;
+  background: url('https://www.larocheposay.co.kr/images/common/ico_comm_sp.png') no-repeat -232px -30px;
+  background-size: 300px 300px;
+}
+
+#header .gnb_nav nav ul.right>li:nth-child(3)>a span {
+  padding: 0 0 0 6px;
+}
+
+#header .gnb_nav nav ul>li:hover>a>em:after,
+#header .gnb_nav nav ul>li.on a>em:after,
+#header .gnb_nav nav ul>li.act a>em:after {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  content: '';
+  background: #bfae90;
+}
+
+#header .gnb_nav nav ul>li>a:hover>span,
+#header .gnb_nav nav ul>li.on>a>span,
+#header .gnb_nav nav ul>li.act>a>span {
+  display: none;
+}
+
+#header .gnb_nav nav ul>li>a:hover>em,
+#header .gnb_nav nav ul>li.on>a>em,
+#header .gnb_nav nav ul>li.act>a>em {
+  display: inline-block;
+}
+
+#header .gnb_nav nav ul>li.block,
+#header .gnb_nav nav ul>li.block>a:hover>span {
+  display: inline-block !important;
+}
+
+#header .gnb_nav nav ul>li.block>a:hover span:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  content: '';
+  background: #bfae90;
+}
+
+#header .gnb_nav nav ul>li .sub_contain {
+  display: none;
+  position: absolute;
+  top: 53px;
+  left: 0;
+  width: 1140px;
+  min-height: 356px;
+  text-align: left;
+  border: #bcbcbc solid 1px;
+  background: #fff;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+#header .gnb_nav nav ul>li .sub_contain:after,
+#header .gnb_nav nav ul>li .sub_contain:before {
+  bottom: 100%;
+  left: 50%;
+  border: solid transparent;
+  content: '';
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+#header .gnb_nav nav ul>li .sub_contain:after {
+  border-color: rgba(255, 255, 255, 0);
+  border-bottom-color: #fff;
+  border-width: 8px;
+  margin-left: -8px;
+}
+
+#header .gnb_nav nav ul>li .sub_contain:before {
+  border-color: rgba(188, 188, 188, 0);
+  border-bottom-color: #bcbcbc;
+  border-width: 9px;
+  margin-left: -9px;
+}
+
+#header .gnb_nav nav ul>li .sub_contain>div {
+  float: left;
+  width: auto;
+  margin: 50px 0 0 40px;
+}
+
+#header .gnb_nav nav ul>li .sub_contain>div.menu {
+  padding: 40px 30px;
+  margin: 0;
+  max-width: 158px;
+}
+
+#header .gnb_nav nav ul>li .sub_contain>div.menu>ul>li {
+  display: block;
+  width: 100%;
+  text-align: left;
+}
+
+#header .gnb_nav nav ul>li .sub_contain>div.menu>ul>li a {
+  height: 36px;
+  line-height: 36px;
+}
+
+#header .gnb_nav nav ul>li .sub_contain>div.menu>ul>li a:hover {
+  color: #bfae90;
+}
+
+#header .gnb_nav nav ul>li .sub_contain>div.submenu {
+  /* width: 150px; */
+  min-width: 150px;
+  margin: 50px 0 20px 40px;
+}
+
+#header .gnb_nav nav ul>li .sub_contain>div:first-child.submenu {
+  margin-left: 50px;
+}
+
+#header .gnb_nav nav ul>li .sub_contain>div>dl>dt {
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+  border-bottom: #e9e9e9 solid 1px;
+  color: #222;
+  font-size: 16px;
+  font-family: 'notokr-medium';
+}
+
+#header .gnb_nav nav ul>li .sub_contain>div>dl>dd>a {
+  display: block;
+  height: 32px;
+  line-height: 32px;
+  color: #666;
+}
+
+#header .gnb_nav nav ul>li .sub_contain>div>dl:hover dt,
+#header .gnb_nav nav ul>li .sub_contain>div>dl>dd>a:hover {
+  color: #bfae90;
+}
+
+#header .gnb_nav nav ul>li .sub_contain>div.sub_contain_button {
+  width: 187px;
+  margin-left: 50px;
+}
+
+#header .gnb_nav nav ul>li .sub_contain>div.sub_contain_button button {
+  width: 100%;
+  border-width: 2px;
+  border-color: #e9e9e9;
+  margin-bottom: 5px;
+  letter-spacing: -1px;
+  font-family: 'notokr-medium';
+}
+
+#header .gnb_nav nav ul>li .sub_contain>div.sub_contain_banner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  margin: 0;
+  padding: 30px 40px;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+#header .gnb_nav nav ul>li .sub_contain>div.sub_contain_banner:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 30px;
+  left: 0;
+  bottom: 30px;
+  width: 1px;
+  background: #e9e9e9;
+}
+
+#header .gnb_nav nav ul>li .sub_contain>div.sub_contain_banner>img {
+  width: 200px;
+  height: 296px;
+  display: block;
+  background: #ccc;
+}
+
+#header .gnb_nav nav ul>li .sub_contain>div.sub_contain_banner .product_banner {
+  display: block;
+  width: 200px;
+}
+
+#header .gnb_nav nav ul>li .sub_contain>div.sub_contain_banner .product_banner img {
+  display: block;
+  width: 170px;
+  height: 170px;
+  margin: 0 auto 20px;
+  /* background: #ccc; */
+}
+
+#header .gnb_nav nav ul>li .sub_contain>div.sub_contain_banner .product_banner>span {
+  display: block;
+  text-align: center;
+}
+
+#header .gnb_nav nav ul>li .sub_contain>div.sub_contain_banner .product_banner .tit {
+  margin-top: 7px;
+  font-size: 18px;
+  font-family: 'notokr-medium';
+  color: #222;
+  letter-spacing: -1px;
+}
+
+#header .gnb_nav nav ul>li .sub_contain>div.sub_contain_banner .product_banner .kind {
+  margin: 6px 0 10px;
+  font-size: 16px;
+  font-family: 'notokr-demilight';
+  color: #222;
+  letter-spacing: -2px;
+}
+
+#header .gnb_nav nav ul>li .sub_contain>div.sub_contain_banner .product_banner .price {
+  color: #222;
+  font-size: 22px;
+  font-family: 'locator-medium';
+  margin: 10px 0 16px;
+  letter-spacing: -1px;
+}
+
+#header .gnb_nav nav ul>li .sub_contain>div.sub_contain_banner .product_banner .price span {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#header .gnb_nav nav ul>li .sub_contain>div.sub_contain_banner .product_banner .price em {
+  font-family: 'notokr-demilight';
+  font-size: 16px;
+}
+
+#header .gnb_nav nav ul>li .sub_contain>div.sub_contain_banner .product_banner .price .sale {
+  height: 16px;
+  line-height: 18px;
+  overflow: hidden;
+  padding: 0 2px;
+  border: 1px solid #bfae90;
+  border-radius: 2px;
+  color: #bfae90;
+  font-size: 16px;
+}
+
+#header .gnb_nav nav ul>li .sub_contain>div.sub_contain_banner .product_banner .price .before {
+  position: relative;
+  margin-left: -1px;
+  padding-right: 7px;
+  color: #979797;
+  font-family: 'locator-regular';
+  font-size: 16px;
+  /* text-decoration: line-through; */
+}
+
+#header .gnb_nav nav ul>li .sub_contain>div.sub_contain_banner .product_banner .price .before:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 7px;
+  display: inline-block;
+  width: calc(100% - 7px);
+  height: 1px;
+  background-color: #979797;
+}
+
+#header .gnb_nav nav ul>li .sub_contain>div.sub_contain_banner .product_banner .price .before:after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 7px;
+  display: inline-block;
+  width: 7px;
+  height: 6px;
+  background: url('https://www.larocheposay.co.kr/images/common/ico_price_before.png') no-repeat;
+}
+
+#header .gnb_nav nav ul>li .sub_contain>div.sub_contain_banner .product_banner .price .before em {
+  font-size: 14px;
+}
+
+#header .gnb_nav nav ul>li .sub_contain>div.sub_contain_banner .product_banner .price .after {
+  font-size: 24px;
+  color: #bfae90;
+  letter-spacing: -1.8px;
+}
+
+#header .gnb_nav nav ul>li .sub_contain>div.sub_contain_banner .product_banner .price .after em {
+  vertical-align: baseline;
+  color: #222;
+}
+
+#header .gnb_nav nav ul>li .sub_contain a {
+  display: block;
+}
+
+#header .gnb_nav nav ul>li .sub_contain.active {
+  display: block;
+}
+
+#header .gnb_nav nav ul.left {
+  float: left;
+}
+
+#header .gnb_nav nav ul.right {
+  float: right
+}
+
+/* HOT 아이템 */
+#header .gnb_nav nav ul.left>li:first-child .sub_contain {
+  left: -25px;
+  width: 500px;
+}
+
+#header .gnb_nav nav ul.left>li:first-child .sub_contain:after,
+#header .gnb_nav nav ul.left>li:first-child .sub_contain:before {
+  left: 75px;
+}
+
+/* 병원판매제품 */
+#header .gnb_nav nav ul.left>li:first-child+li .sub_contain {
+  left: -135px;
+  width: 800px;
+}
+
+#header .gnb_nav nav ul.left>li:first-child+li .sub_contain:after,
+#header .gnb_nav nav ul.left>li:first-child+li .sub_contain:before {
+  left: 190px;
+}
+
+/* 스킨케어 */
+#header .gnb_nav nav ul.left>li:first-child+li+li .sub_contain {
+  left: -252px;
+}
+
+#header .gnb_nav nav ul.left>li:first-child+li+li .sub_contain:after,
+#header .gnb_nav nav ul.left>li:first-child+li+li .sub_contain:before {
+  left: 307px;
+}
+
+/* 바디케어 */
+#header .gnb_nav nav ul.left>li:first-child+li+li+li .sub_contain {
+  left: -364px;
+}
+
+#header .gnb_nav nav ul.left>li:first-child+li+li+li .sub_contain:after,
+#header .gnb_nav nav ul.left>li:first-child+li+li+li .sub_contain:before {
+  left: 419px;
+}
+
+/* UV 케어 */
+#header .gnb_nav nav ul.left>li:first-child+li+li+li+li .sub_contain {
+  left: -475px;
+}
+
+#header .gnb_nav nav ul.left>li:first-child+li+li+li+li .sub_contain:after,
+#header .gnb_nav nav ul.left>li:first-child+li+li+li+li .sub_contain:before {
+  left: 530px;
+}
+
+/* 맘/베이비 */
+#header .gnb_nav nav ul.left>li:first-child+li+li+li+li+li .sub_contain {
+  left: -563px;
+}
+
+#header .gnb_nav nav ul.left>li:first-child+li+li+li+li+li .sub_contain:after,
+#header .gnb_nav nav ul.left>li:first-child+li+li+li+li+li .sub_contain:before {
+  left: 620px;
+}
+
+/* 이벤트 */
+/* #header .gnb_nav nav ul.right>li:first-child .sub_contain {left: -47px; width: 190px; height: auto; min-height: auto;} */
+#header .gnb_nav nav ul.right>li:nth-child(2) .sub_contain {
+  left: -47px;
+  width: 190px;
+  height: auto;
+  min-height: auto;
+}
+
+/* 쿠폰/멤버십 */
+/* #header .gnb_nav nav ul.right>li:first-child+li .sub_contain {left: -40px; width: 190px; height: auto; min-height: auto;}
+#header .gnb_nav nav ul.right>li:first-child+li .sub_contain:after, #header .gnb_nav nav ul.right>li:first-child+li .sub_contain:before {left: 100px;} */
+#header .gnb_nav nav ul.right>li:nth-child(3) .sub_contain {
+  left: -40px;
+  width: 190px;
+  height: auto;
+  min-height: auto;
+}
+
+#header .gnb_nav nav ul.right>li:nth-child(3) .sub_contain:after,
+#header .gnb_nav nav ul.right>li:nth-child(3) .sub_contain:before {
+  left: 100px;
+}
+
+/* 정기배송 */
+#header .gnb_nav nav ul.right>li:nth-child(1)>a {
+  font-family: 'notokr-medium';
+  color: #bfae90;
+}
+
+#header .gnb_nav nav ul.right>li:nth-child(1) .sub_contain {
+  left: -54px;
+  width: 200px;
+  height: auto;
+  min-height: auto;
+}
+
+/* 상단 네비게이션 */
+.h_link li>ul {
+  display: none;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  text-align: left;
+  border: #bcbcbc solid 1px;
+  background: #fff;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 20px;
+  width: 150%;
+  margin-left: -25%;
+}
+
+.h_link li>ul:after,
+.h_link li>ul:before {
+  bottom: 100%;
+  left: 50%;
+  border: solid transparent;
+  content: '';
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.h_link li>ul:after {
+  border-color: rgba(255, 255, 255, 0);
+  border-bottom-color: #fff;
+  border-width: 8px;
+  margin-left: -8px;
+}
+
+.h_link li>ul:before {
+  border-color: rgba(188, 188, 188, 0);
+  border-bottom-color: #bcbcbc;
+  border-width: 9px;
+  margin-left: -9px;
+}
+
+.h_link li>ul li {
+  margin-top: 14px;
+  line-height: 1.1;
+}
+
+.h_link li>ul li:first-child {
+  margin-top: 0;
+}
+
+.h_link li>ul li a {
+  display: block;
+  font-size: 13px;
+  color: #666666;
+}
+
+.h_link li>ul li.on a {
+  color: #bfae90;
+  font-family: 'notokr-medium';
+}
+
+.h_link {
+  background: #f7f7f7;
+  position: relative;
+  z-index: 101;
+}
+
+.h_link nav {
+  position: relative;
+  width: 1140px;
+  height: 50px;
+  margin: 0 auto;
+  z-index: 1;
+}
+
+.h_link nav:after {
+  clear: both;
+  display: block;
+  content: '';
+}
+
+.h_link ol>li {
+  position: relative;
+  float: left;
+  line-height: 50px;
+  padding: 0 24px 0 20px;
+  font-size: 13px;
+  font-family: 'locator-regular';
+}
+
+.h_link ol>li:after {
+  content: '';
+  position: absolute;
+  top: 21px;
+  right: 0;
+  width: 4px;
+  height: 7px;
+  background: url('https://www.larocheposay.co.kr/images/common/ico_comm_sp.png') no-repeat -107px 0;
+  background-size: 300px 300px;
+}
+
+.h_link ol>li:first-child {
+  padding-left: 0;
+}
+
+.h_link ol>li:last-child:after {
+  display: none;
+}
+
+.h_link ol>li i {
+  position: relative;
+  color: #8f8f8f;
+  padding-right: 17px;
+  font-style: normal;
+  line-height: normal;
+}
+
+.h_link ol>li:first-child i:after {
+  display: none;
+}
+
+.h_link ol>li i:after {
+  content: '';
+  position: absolute;
+  top: 5px;
+  right: 0;
+  width: 7px;
+  height: 5px;
+  background: url('https://www.larocheposay.co.kr/images/common/ico_comm_sp.png') no-repeat -95px 0;
+  background-size: 300px 300px;
+}
+
+.h_link ol>li:first-child i {
+  padding: 0;
+}
+
+.h_link ol>li:first-child i:after {
+  display: none;
+}
+
+.h_link ol>li.kor {
+  line-height: 48px;
+  font-family: 'notokr-demilight';
+}
+
+.h_link ol>li.kor:after {
+  font-family: 'locator-regular';
+}
+
+.h_link ol>li.kor i:after {
+  top: 7px;
+}
+
+.h_link ol>li.current i,
+.h_link ol>li.current i:after {
+  color: #222;
+  background-position: -95px -10px;
+}
+
+.h_link ol>li.current i.on,
+.h_link ol>li.current i.on:after {
+  background-position: -106px -12px;
+}
+
+/* sub_visual */
+.sub_visual_warp {
+  display: table;
+  width: 100%;
+  height: 210px;
+  text-align: center;
+  background: #45675b;
+}
+
+.sub_visual_warp .sub_visual {
+    width: 100%;
+    min-width: 1140px;
+    height: 210px;
+    overflow: hidden;
+    position: relative;
+    z-index: 100;
+    color: whitesmoke;
+}
+
+.sub_visual_warp .sub_visual h1{
+    font-size: 42px;
+    font-family: 'notokr-medium';
+    margin-top: 55px;
+    margin-bottom: 15px;
+}
+
+.sub_visual_warp .sub_visual h2{
+    font-family: 'locator-medium';
+    font-size: 16px;
+    line-height: 20px;
+}
+
+
+.sub_visual_warp .sub_visual>h1>p.kor {
+  font-size: 36px;
+  letter-spacing: -3px;
+  margin-bottom: 5px;
+  font-family: 'notokr-light';
+ 
+}
+
+.sub_visual_warp .sub_visual>h1>span {
+  position: relative;
+  top: -134px;
+  font-size: 16px;
+  color: #fff;
+}
+
+/* footer */
+#footer .foot_nav {
+  display: block;
+  border-bottom: #e9e9e9 solid 1px;
+}
+
+#footer .foot_nav>nav {
+  width: 1140px;
+  height: 58px;
+  margin: 0 auto;
+}
+
+#footer .foot_nav>nav:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+#footer .foot_nav>nav>ul>li {
+  position: relative;
+  float: left;
+  font-size: 15px;
+  margin-left: 20px;
+}
+
+#footer .foot_nav>nav>ul>li>a {
+  position: relative;
+  display: block;
+  color: #222;
+  line-height: 58px;
+}
+
+#footer .foot_nav>nav>ul.left>li:first-child {
+  /*font-family: 'locator-regular'; font-size: 16px;*/
+  margin-left: 0;
+}
+
+#footer .foot_nav>nav>ul.left>li:nth-child(2):before,
+#footer .foot_nav>nav>ul.left>li:nth-child(3):before,
+#footer .foot_nav>nav>ul.left>li:nth-child(4):before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: -10px;
+  top: 21px;
+  width: 1px;
+  height: 15px;
+  background: #e9e9e9;
+}
+
+#footer .foot_nav>nav>ul.left>li:first-child+li+li a {
+  color: #bfae90;
+}
+
+/* 정품인증 hidden */
+#footer .foot_nav>nav>ul.left>li:first-child+li+li {}
+
+#footer .foot_nav>nav>ul.left>li:nth-child(4):before {}
+
+/*#footer .foot_nav > nav > ul.left > li:first-child + li + li + li + li {margin-left: 40px; padding-left: 30px;}
+#footer .foot_nav > nav > ul.left > li:first-child + li + li + li + li:before {content: ''; display: block; position: absolute; left: 0; top: 21px; width: 1px; height: 15px; background: #e9e9e9;}*/
+#footer .foot_nav>nav>ul {
+  letter-spacing: -0.45px;
+}
+
+#footer .foot_nav>nav>ul>li.facebook a {
+  width: 35px;
+  height: 58px;
+}
+
+#footer .foot_nav>nav>ul>li.facebook a:after {
+  position: absolute;
+  top: 21px;
+  left: 50%;
+  margin-left: -4px;
+  content: '';
+  width: 7px;
+  height: 15px;
+  background: url('https://www.larocheposay.co.kr/images/common/bg_button.png?1') no-repeat -171px 0;
+  background-size: 500px 500px;
+}
+
+#footer .foot_nav>nav>ul>li.instagram {
+  margin-left: 0;
+}
+
+#footer .foot_nav>nav>ul>li.instagram a {
+  width: 35px;
+  height: 58px;
+}
+
+#footer .foot_nav>nav>ul>li.instagram a:after {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  margin-left: -8px;
+  content: '';
+  width: 17px;
+  height: 17px;
+  background: url('https://www.larocheposay.co.kr/images/common/bg_button.png?1') no-repeat -183px 0;
+  background-size: 500px 500px;
+}
+
+#footer .foot_nav>nav>ul>li.youtube {
+  margin-left: 0;
+}
+
+#footer .foot_nav>nav>ul>li.youtube a {
+  width: 46px;
+  height: 58px;
+}
+
+#footer .foot_nav>nav>ul>li.naver_post {
+  margin-left: 0;
+}
+
+#footer .foot_nav>nav>ul>li.naver_post a {
+  width: 25px;
+  height: 58px;
+}
+
+#footer .foot_nav>nav>ul>li.naver_post a:after {
+  position: absolute;
+  top: 21px;
+  left: 50%;
+  margin-left: -8px;
+  content: '';
+  width: 15px;
+  height: 15px;
+  background: url('https://www.larocheposay.co.kr/images/common/bg_button.png?1') no-repeat -330px 0;
+  background-size: 500px 500px;
+}
+
+#footer .foot_nav>nav>ul>li.youtube a:after {
+  position: absolute;
+  top: 21px;
+  left: 50%;
+  margin-left: -9px;
+  content: '';
+  width: 19px;
+  height: 15px;
+  background: url('https://www.larocheposay.co.kr/images/common/bg_button.png?1') no-repeat -306px 0;
+  background-size: 500px 500px;
+}
+
+#footer .foot_nav>nav>ul.left>li:nth-child(4):after,
+#footer .foot_nav>nav>ul>li.facebook:after,
+#footer .foot_nav>nav>ul>li.instagram:after,
+#footer .foot_nav>nav>ul>li.youtube:after {
+  display: none;
+}
+
+#footer .foot_nav>nav>ul.right {
+  float: right;
+  letter-spacing: 0;
+}
+
+#footer .foot_nav>nav>ul.right li:first-child {
+  font-family: 'locator-medium';
+}
+
+#footer .foot_nav>nav>ul.right li:first-child a {
+  font-size: 13px;
+  color: #666;
+  padding-right: 14px;
+}
+
+#footer .foot_nav>nav>ul.right li:first-child a:after {
+  position: absolute;
+  top: 24px;
+  right: 0;
+  content: '';
+  width: 4px;
+  height: 7px;
+  background: url('https://www.larocheposay.co.kr/images/common/ico_comm_sp.png') no-repeat -19px 0;
+  background-size: 300px 300px;
+}
+
+#footer .foot_contents {
+  position: relative;
+  width: 1140px;
+  margin: 29px auto 0;
+  letter-spacing: -0.35px;
+  -webkit-box-sizing: border-box;
+}
+
+#footer .foot_contents .foot_link:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+#footer .foot_contents .foot_link li {
+  position: relative;
+  float: left;
+  height: 14px;
+  line-height: 14px;
+  color: #222;
+  font-size: 13px;
+  margin-right: 16px;
+}
+
+#footer .foot_contents .foot_link li:nth-child(1):after {
+  content: '';
+  display: block;
+  position: absolute;
+  right: -9px;
+  top: 2px;
+  width: 1px;
+  height: 10px;
+  background: #d9d9d9;
+}
+
+#footer .foot_contents .foot_link li a {
+  position: relative;
+  line-height: 14px;
+  display: block;
+  color: #222;
+  font-size: 13px;
+  border-bottom: #222 solid 1px;
+}
+
+#footer .foot_contents .foot_link li:nth-child(3) a:after {
+  position: absolute;
+  top: 4px;
+  right: -12px;
+  content: '';
+  width: 4px;
+  height: 7px;
+  background: url('https://www.larocheposay.co.kr/images/common/ico_comm_sp.png') no-repeat -19px 0;
+  background-size: 300px 300px;
+}
+
+#footer .foot_contents .kg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  max-width: 378px;
+  padding-left: 30px;
+  font-size: 13px;
+  border-left: #e9e9e9 solid 1px;
+  -webkit-box-sizing: border-box;
+}
+
+#footer .foot_contents .kg dt {
+  color: #222;
+}
+
+#footer .foot_contents .kg dd {
+  color: #8f8f8f;
+  margin-top: 7px;
+  line-height: 22px;
+}
+
+#footer .foot_contents .kg dd button {
+  margin-top: 19px;
+  line-height: 26px;
+  font-size: 13px;
+  border-color: #d9d9d9;
+}
+
+#footer .foot_contents address {
+  width: 532px;
+  padding-left: 30px;
+  border-left: 1px solid #e9e9e9;
+  font-size: 13px;
+  line-height: 22px;
+  font-style: normal;
+  color: #222;
+  position: absolute;
+  top: -4px;
+  right: 0;
+}
+
+#footer .foot_contents address:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+#footer .foot_contents address span {
+  position: relative;
+  /* float: left; */
+  padding-right: 8px;
+  margin-right: 7px;
+  display: block;
+}
+
+#footer .foot_contents address span a {
+  margin-left: 5px;
+  line-height: 14px;
+  color: #222;
+  font-size: 13px;
+  border-bottom: #222 solid 1px;
+}
+
+#footer .foot_contents address span:nth-child(2),
+#footer .foot_contents address span:nth-child(3) {
+  display: inline-block;
+}
+
+#footer .foot_contents address span:nth-child(2):after {
+  content: '';
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 6px;
+  width: 1px;
+  height: 11px;
+  background: #cdcdcd;
+}
+
+#footer .foot_contents address em {
+  display: inline-block;
+  color: #8f8f8f;
+}
+
+#footer .foot_contents address button {
+  border: 0;
+  background: none;
+  color: #8f8f8f;
+  text-align: left;
+  line-height: 22px;
+  font-size: 13px;
+  white-space: normal;
+  letter-spacing: -0.35px;
+}
+
+#footer .foot_contents small {
+  display: block;
+  margin-top: 19px;
+  font-family: 'locator-regular';
+  font-size: 13px;
+  color: #666;
+  letter-spacing: 0;
+}
+
+#footer .foot_contents small span {
+  position: relative;
+  height: 16px;
+  line-height: 16px;
+  padding: 0 8px 0 28px;
+  margin-right: 7px;
+}
+
+#footer .foot_contents small span:before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 14px;
+  height: 11px;
+  background: url('https://www.larocheposay.co.kr/images/common/ico_comm_sp.png') no-repeat 0 0;
+  background-size: 300px 300px;
+}
+
+#footer .foot_contents small span:after {
+  content: '';
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 3px;
+  width: 1px;
+  height: 9px;
+  background: #e9e9e9;
+}
+
+#footer .foot_contents .foot_cs {
+  margin-top: 4px;
+}
+
+#footer .foot_contents .foot_cs li {
+  padding-left: 8px;
+  text-indent: -8px;
+  font-size: 13px;
+  line-height: 22px;
+  font-style: normal;
+  color: #222;
+}
+
+#footer .foot_contents .foot_cs li.bull {
+  /* font-size:12px; line-height:20px; */
+  color: #8f8f8f;
+}
+
+#footer .foot_contents .foot_cs li.bull:before {
+  content: '';
+  display: inline-block;
+  width: 3px;
+  height: 3px;
+  margin-right: 5px;
+  border-radius: 50%;
+  background-color: #8f8f8f;
+  vertical-align: middle;
+}
+
+#footer .foot_contents .foot_cs li i.bar {
+  display: inline-block;
+  width: 1px;
+  height: 11px;
+  margin: 0 7px;
+  background: #cdcdcd;
+}
+
+/*
+#footer .foot_contents address {width:437px; margin-top: 7px; font-size: 13px; line-height: 22px; font-style: normal; color: #8f8f8f;}
+#footer .foot_contents address:after {content: ''; display: block; clear: both;}
+#footer .foot_contents address span {position: relative; float: left; padding-right: 8px; margin-right: 7px;}
+#footer .foot_contents address span a {margin-left: 5px; line-height: 14px; color: #222; font-size: 13px; border-bottom: #222 solid 1px;}
+#footer .foot_contents address span:nth-child(2):after {content: ''; display: block; position: absolute; right: 0; top: 6px; width: 1px; height: 11px; background: #cdcdcd;}
+
+#footer .foot_contents small {display: block; margin-top: 10px; font-family: 'locator-regular'; font-size: 13px; color: #666; letter-spacing: 0;}
+#footer .foot_contents small span {position: relative; height: 16px; line-height: 16px; padding: 0 8px 0 28px; margin-right: 7px;}
+#footer .foot_contents small span:before {content: ''; display: block; position: absolute; left: 0; top: 2px; width: 14px; height: 11px; background: url('https://www.larocheposay.co.kr/images/common/ico_comm_sp.png') no-repeat 0 0; background-size: 300px 300px;}
+#footer .foot_contents small span:after {content: ''; display: block; position: absolute; right: 0; top: 3px; width: 1px; height: 9px; background: #e9e9e9;}
+#footer .foot_contents .foot_cs {position: absolute; top: -4px; right: 377px; width: 230px; padding-right:30px;}
+#footer .foot_contents .foot_cs li {padding-left:6px; text-indent:-6px; font-size: 13px; line-height: 22px; font-style: normal; color: #222;}
+#footer .foot_contents .foot_cs li.bull {font-size:12px; line-height:20px; color: #8f8f8f;}
+#footer .foot_contents .foot_cs li.bull:before {content:''; display:inline-block; width:3px; height:3px; margin-right:3px; border-radius:50%; background-color: #8f8f8f; vertical-align: middle;}
+*/
+
+/* sideleft */
+.sideleft h2 {
+  display: block;
+  font-size: 22px;
+  color: #000;
+  padding: 60px 0 30px;
+  margin: 0 0 18px;
+  font-family: 'locator-medium';
+  border-bottom: #e9e9e9 solid 1px;
+}
+
+.sideleft>div {
+  position: relative;
+}
+
+.sideleft>div .init {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 54px;
+  width: 30px;
+  height: 30px;
+}
+
+.sideleft>div .init:before {
+  content: '';
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  margin-top: -8px;
+  width: 15px;
+  height: 15px;
+  background: url('https://www.larocheposay.co.kr/images/common/ico_comm_sp.png') no-repeat -38px -285px;
+  background-size: 300px 300px;
+}
+
+.sideleft nav {
+  padding-bottom: 20px;
+}
+
+.sideleft .accordion {
+  width: 100%;
+}
+
+.sideleft .accordion>li {
+  position: relative;
+}
+
+.sideleft .accordion.filter>li {
+  position: relative;
+  padding: 15px 0;
+  border-top: 1px solid #e9e9e9;
+}
+
+.sideleft .accordion.filter>li:first-child {
+  border-top: 0;
+}
+
+.sideleft nav+div h2 {
+  margin-bottom: 0;
+}
+
+.sideleft .accordion>li>a,
+.accordion>li>span {
+  position: relative;
+  cursor: pointer;
+  display: block;
+  font-size: 18px;
+  padding: 12px 0;
+  color: #222;
+}
+
+.sideleft .accordion li:last-child .link {}
+
+.sideleft .accordion>li>a:hover,
+.sideleft .accordion>li>span:hover,
+.sideleft .accordion>li>.link:hover .sideleft .accordion>li.current>a,
+.sideleft .accordion>li.current>span,
+.sideleft .accordion>li.current>span a {
+  color: #bfae90;
+  font-family: 'notokr-medium';
+}
+
+.sideleft .accordion .submenu {
+  display: none;
+  padding: 0;
+}
+
+.sideleft .accordion .submenu li {
+  position: relative;
+}
+
+.sideleft .accordion .submenu li:before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 10px;
+  top: 15px;
+  width: 5px;
+  height: 1px;
+  background: #bcbcbc;
+}
+
+.sideleft .accordion .submenu li i {
+  font-style: normal;
+}
+
+.sideleft .accordion .submenu>span {
+  display: block;
+  margin: 14px 0;
+}
+
+.sideleft .accordion .submenu a {
+  display: block;
+  color: #666;
+  padding: 9px 0 9px 24px;
+}
+
+.sideleft .accordion .submenu a:hover {
+  color: #bfae90;
+}
+
+.sideleft .accordion .submenu a:hover i,
+.sideleft .accordion .submenu li.current a i {
+  color: #bfae90;
+  border-bottom: #bfae90 solid 1px;
+  font-family: 'notokr-medium';
+}
+
+.sideleft .accordion.filter>li:before {
+  content: '';
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 32px;
+  width: 15px;
+  height: 8px;
+  background: url('https://www.larocheposay.co.kr/images/common/ico_comm_sp.png') no-repeat -117px -13px;
+  background-size: 300px 300px;
+}
+
+.sideleft .accordion.filter>li.open:before {
+  background-position: -117px 0;
+}
+
+/* .sideconts_warp */
+.sideconts_warp {}
+
+.sideconts_warp>h1 {
+  display: block;
+  font-size: 36px;
+  padding: 60px 0 30px;
+}
+
+.sideconts_warp .sideconts {}
+
+/* tab */
+.tab_wrap {
+  position: relative;
+  margin-bottom: 60px;
+}
+
+.tab_wrap>ul:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.tab_wrap>ul>li {
+  position: relative;
+  float: left;
+  width: 50%;
+  margin-left: -1px;
+}
+
+.tab_wrap>ul>li:after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 51px;
+  width: 100%;
+  height: 1px;
+  background: #d9d9d9;
+}
+
+.tab_wrap>ul>li:first-child {
+  margin-left: 0;
+}
+
+.tab_wrap>ul>li:nth-child(1)>.tab_cont {
+  margin-left: 0;
+}
+
+.tab_wrap>ul>li:nth-child(2)>.tab_cont {
+  margin-left: -100%;
+}
+
+.tab_wrap>ul>li:nth-child(3)>.tab_cont {
+  margin-left: -200%;
+}
+
+.tab_wrap>ul>li:nth-child(4)>.tab_cont {
+  margin-left: -300%;
+}
+
+.tab_wrap>ul>li:nth-child(5)>.tab_cont {
+  margin-left: -400%;
+}
+
+.tab_wrap>ul>li>a {
+  display: block;
+  padding: 16px 0 17px;
+  border: 1px solid #d9d9d9;
+  border-bottom: none;
+  background: #fff;
+  font-size: 18px;
+  color: #666;
+  text-align: center;
+}
+
+.tab_wrap>ul>li>.tab_cont {
+  display: none;
+  position: relative;
+  padding: 20px 0;
+  width: 200%;
+}
+
+.tab_wrap>ul>li.on>a {
+  position: relative;
+  z-index: 1;
+  border: 1px solid #bfae90;
+  border-bottom: none;
+  background: #bfae90;
+  font-weight: bold;
+  color: #fff;
+}
+
+.tab_wrap>ul>li.on>.tab_cont {
+  display: block;
+}
+
+.tab_wrap>ul>li.on:after {
+  background: #fff;
+}
+
+.tab_wrap>ul>li.multi>a {
+  padding: 7px 0 8px;
+}
+
+.tab_wrap>ul>li.multi>a .sm_text {
+  display: block;
+  font-size: 15px;
+  margin-bottom: 3px;
+}
+
+.tab_wrap.three>ul>li {
+  width: 33.33%;
+}
+
+.tab_wrap.three>ul>li>.tab_cont {
+  width: 300%;
+}
+
+.tab_wrap.four>ul>li {
+  width: 25%;
+}
+
+.tab_wrap.four>ul>li>.tab_cont {
+  width: 400%;
+}
+
+.tab_wrap.five>ul>li {
+  width: 20%;
+}
+
+.tab_wrap.five>ul>li>.tab_cont {
+  width: 500%;
+}
+
+.tabtext_warp {
+  margin: 20px 0 39px;
+}
+
+.tabtext_warp:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.tabtext_warp .tabtext {
+  float: right;
+  position: relative;
+  left: -50%;
+  text-align: center;
+}
+
+.tabtext_warp .tabtext>ul {
+  position: relative;
+  left: 50%;
+}
+
+.tabtext_warp .tabtext>ul>li {
+  position: relative;
+  float: left;
+  position: relative;
+}
+
+.tabtext_warp .tabtext>ul>li:after {
+  content: '';
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 22px;
+  width: 1px;
+  height: 14px;
+  background: #e9e9e9;
+}
+
+.tabtext_warp .tabtext>ul>li:last-child:after {
+  display: none;
+}
+
+.tabtext_warp .tabtext>ul>li>a {
+  display: block;
+  padding: 20px;
+  font-size: 18px;
+  border: none;
+}
+
+.tabtext_warp .tabtext>ul>li>a>i {
+  font-style: normal;
+  font-family: 'notokr-demilight';
+  pointer-events: none;
+}
+
+.tabtext_warp .tabtext>ul>li>a:hover,
+.tabtext_warp .tabtext>ul>li.on>a {
+  color: #bfae90;
+  font-family: 'notokr-medium';
+}
+
+/* table */
+.table_wrap {
+  width: 100%;
+  border-collapse: collapse;
+  border-top: 1px solid #333;
+  border-bottom: #bcbcbc solid 1px;
+}
+
+.table_wrap table .t_left {
+  text-align: left;
+  border-left: 1px solid #d9d9d9;
+}
+
+.table_wrap table {
+  width: 100%;
+  font-size: 14px;
+  color: #3d424d;
+  line-height: 16px;
+}
+
+.table_wrap table tr th {
+  padding: 20px 30px 18px 30px;
+  border-bottom: 1px solid #bcbcbc;
+  border-right: 1px solid #e9e9e9;
+  background-color: #f7f7f7;
+  text-align: center;
+  color: #666;
+}
+
+.mypage_wrap table tr th {
+  border-bottom: 1px solid #bcbcbc;
+}
+
+.mypage_wrap .tbl_wrap table tr th {
+  border-bottom: 0;
+}
+
+.table_wrap table tr th:first-child {
+  border-left: 0;
+}
+
+.table_wrap table tr th:last-child {
+  border-right: 0;
+}
+
+.table_wrap table tbody tr:last-child th {
+  border-bottom: 0;
+}
+
+.table_wrap table tr td {
+  padding: 20px 35px 18px 35px;
+  border-bottom: 1px solid #e9e9e9;
+  border-right: 1px solid #e9e9e9;
+  text-align: center;
+  font-size: 13px;
+  color: #8f8f8f;
+}
+
+.table_wrap table tr td:last-child {
+  border-right: 0;
+}
+
+.table_wrap table tr:last-child td {
+  border-bottom: 0;
+}
+
+.table_wrap table tr.nodata td {
+  padding: 33px 5px 33px 8px;
+  border-left: 0;
+  border-right: 0;
+  background-color: #f7f7f7;
+  color: #333;
+  text-align: center;
+}
+
+.bb_none {
+  border-bottom: none !important;
+}
+
+/* table - col th*/
+.table_wrap.coltype table tr th {
+  border-bottom: 1px solid #e9e9e9;
+}
+
+.table_wrap.coltype table tr:last-child th {
+  bordrer-bottom: none;
+}
+
+/*table - type1*/
+.table_wrap.type1 {
+  border-bottom: 0;
+}
+
+.table_wrap.type1 table tr th {
+  border-right: 0;
+  background: #fff;
+  color: #222222;
+  line-height: 46px;
+  padding: 0 10px;
+}
+
+.layerCancel table tr th {
+  background: #f7f7f7 !important;
+  border-bottom: 0;
+}
+
+.table_wrap.type1 table tr th:first-child {
+  border-left: 0;
+}
+
+.table_wrap.type1 table tr td {
+  border-right: 0;
+  padding: 23px 10px;
+}
+
+.table_wrap.type1 table tr td.left {
+  text-align: left;
+}
+
+.table_wrap.type1 table tr td:first-child {
+  border-left: 0;
+}
+
+.table_wrap.type1 table tr:last-child td {
+  border-bottom: 1px solid #bcbcbc;
+}
+
+.table_wrap.type2 table tr:last-child td {
+  border-bottom: 1px solid #bcbcbc;
+}
+
+.table_wrap.type2 {
+  border-bottom: 0;
+}
+
+.table_wrap.type2.br_b table tr:last-child td {
+  border-bottom: 0;
+}
+
+.table_wrap.type2.br_b table {
+  border-bottom: 1px solid #bcbcbc
+}
+
+/* 세로형  td-border none */
+.table_wrap.type3 table tr th {
+  text-align: center;
+  padding: 0 !important;
+  color: #222222;
+  font-size: 14px;
+}
+
+.table_wrap.type3 table tr td {
+  border: 0;
+  font-size: 14px;
+  color: #666;
+}
+
+/*th 색상*/
+.table_wrap.type_color th {
+  color: #222;
+  font-size: 16px;
+}
+
+/* border */
+.border_warp {}
+
+.border_warp .border_top {
+  padding: 40px 0;
+}
+
+.border_warp .border_top .search_faq {
+  width: 483px;
+  margin: 0 auto;
+}
+
+.border_warp .border_conts {}
+
+.border_warp .border_conts .list {}
+
+.border_warp .border_conts .list>li {
+  position: relative;
+  border-bottom: #e9e9e9 solid 1px;
+}
+
+.border_warp .border_conts .list>li a {
+  display: block;
+  line-height: 80px;
+  color: #666;
+  padding: 0 40px;
+  font-size: 16px;
+}
+
+.border_warp .border_conts .list>li a em {
+  position: absolute;
+  top: 0;
+  right: 40px;
+  font-size: 14px;
+  font-family: 'locator-regular';
+}
+
+.border_warp .border_conts .list>li.notice {
+  background: #f7fbfe;
+}
+
+.border_warp .border_conts .list>li.notice a {
+  color: #222;
+  padding-left: 78px;
+}
+
+.border_warp .border_conts .list>li.notice a i {
+  position: absolute;
+  top: 50%;
+  left: 40px;
+  margin-top: -8px;
+  display: block;
+  width: 22px;
+  height: 16px;
+  background: url('https://www.larocheposay.co.kr/images/common/ico_comm_sp.png') no-repeat -28px 0;
+  background-size: 300px 300px;
+}
+
+.border_warp .border_conts .view {
+  border-top: #222 solid 1px;
+  border-bottom: #bcbcbc solid 1px;
+}
+
+.border_warp .border_conts .view>dt {
+  position: relative;
+  padding: 0 35px;
+  height: 80px;
+  line-height: 80px;
+  font-size: 18px;
+  border-bottom: #e9e9e9 solid 1px;
+}
+
+.border_warp .border_conts .view>dt.notice {
+  padding-left: 78px;
+}
+
+.border_warp .border_conts .view>dt.notice i {
+  position: absolute;
+  top: 50%;
+  left: 40px;
+  margin-top: -8px;
+  display: block;
+  width: 22px;
+  height: 16px;
+  background: url('https://www.larocheposay.co.kr/images/common/ico_comm_sp.png') no-repeat -28px 0;
+  background-size: 300px 300px;
+}
+
+.border_warp .border_conts .view>dt em {
+  position: absolute;
+  top: 0;
+  right: 40px;
+  font-size: 14px;
+  color: #8f8f8f;
+  font-family: 'locator-regular';
+}
+
+.border_warp .border_conts .view>dd {
+  padding: 40px 35px;
+  line-height: 1.4;
+  color: #666;
+}
+
+.border_warp .border_conts .view>dd>div:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.border_warp .border_conts .write {
+  border-top: #333 solid 1px;
+  border-bottom: #bcbcbc solid 1px;
+  padding: 24px 0;
+  margin-bottom: 40px;
+}
+
+.border_warp .border_conts .write:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.border_warp .border_conts .write li {
+  display: table;
+  width: 100%;
+  min-height: 40px;
+  padding: 6px 30px;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+.border_warp .border_conts .write li:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.border_warp .border_conts .write li.line {
+  border-top: #e9e9e9 solid 1px;
+  padding-top: 30px;
+  margin-top: 24px;
+}
+
+.border_warp .border_conts .write li>span {
+  position: relative;
+  display: table-cell;
+  color: #222;
+  vertical-align: top;
+}
+
+.border_warp .border_conts .write li>span>label,
+.border_warp .border_conts .write li>span>em.tit {
+  line-height: 40px;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.border_warp .border_conts .write li>span>label.line {
+  line-height: 20px;
+}
+
+.border_warp .border_conts .write li>span:first-child {
+  min-width: 120px;
+  max-width: 120px;
+  width: 10%;
+  font-size: 16px;
+  letter-spacing: -0.5px;
+}
+
+.border_warp .border_conts .write li>span:last-child {
+  width: 90%;
+}
+
+.border_warp .border_conts .write li>span .required {
+  display: inline-block;
+  margin-left: 8px;
+  overflow: hidden;
+  position: relative;
+  width: 7px;
+  height: 7px;
+  background: yellow url('https://www.larocheposay.co.kr/images/common/ico_comm_sp.png') no-repeat -55px 0;
+  background-size: 300px 300px;
+  text-indent: -9999px;
+}
+
+.border_warp .border_conts .write li>span .form_wrap.side select,
+.border_warp .border_conts .write li>span .form_wrap.side input {
+  float: initial;
+}
+
+.border_warp .border_conts .write li>span .radio_wrap {
+  margin-top: 11px;
+}
+
+.border_warp .border_conts .write li>span .radio_wrap .radiocss {
+  margin-right: 30px;
+}
+
+.border_warp .border_conts .write li>span .star-rating {
+  margin-top: 9px;
+}
+
+.border_warp .border_conts .write li>span>p {
+  display: block;
+  margin-top: 12px;
+  font-size: 13px;
+  color: #bcbcbc;
+}
+
+.border_warp .border_btn {
+  display: block;
+  margin-top: 60px;
+  text-align: center;
+}
+
+.border_warp .border_btn button {
+  margin: 0 2px;
+}
+
+/* agreement */
+.agreement {}
+
+.agreement .top {
+  padding: 20px 0;
+}
+
+.agreement .top:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.agreement .top>h2 {
+  float: left;
+  font-size: 16px;
+  color: #222;
+}
+
+.agreement .top>h2 em {
+  color: #fa2b49;
+}
+
+.agreement .top>h2 a {
+  color: #666666;
+  font-size: 14px;
+  text-decoration: underline;
+  display: inline-block;
+  padding: 0 15px;
+}
+
+.agreement .top>.right {
+  float: right;
+}
+
+.agreement .agree_box {
+  display: block;
+  line-height: 21px;
+  height: 158px;
+  padding: 30px;
+  color: #8f8f8f;
+  border: #d9d9d9 solid 1px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background: #f7f7f7;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+/* file */
+.list_file {
+  margin-top: 3px;
+}
+
+.list_file li {
+  position: relative;
+  margin-top: 12px;
+}
+
+.list_file li:first-child {
+  margin-top: 4px;
+}
+
+.list_file li .txt {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 39px;
+  padding: 11px 40px 0 16px;
+  border: 1px solid #d9d9d9;
+  border-radius: 3px;
+  background-color: #fff;
+  font-size: 14px;
+  color: #666;
+  vertical-align: middle;
+  -webkit-box-sizing: border-box;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1) inset;
+}
+
+.list_file li .btn_file_del {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 35px;
+  height: 37px;
+  background: url('https://www.larocheposay.co.kr/images/common/bg_form.png') no-repeat 12px 0;
+  background-size: 100px 100px;
+  text-indent: -9999px;
+}
+
+.list_file li .txt_file_desc {
+  display: block;
+  margin-top: 2px;
+}
+
+.list_file li .txt_file_desc textarea {
+  height: 37px;
+  padding: 9px 16px;
+  color: #666;
+}
+
+/* layerpop */
+.document-dimed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 999;
+}
+
+.document-dimed:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.7;
+  background: #000;
+}
+
+.layerpop_warp {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 9999;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+.layerpop_warp .layerpop {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0 auto;
+  padding: 0 24px 24px;
+  border-top: #bfae90 solid 4px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.layerpop_warp .layerpop:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.layerpop_warp .layerpop .layerpop_head {
+  display: block;
+  height: 57px;
+  line-height: 57px;
+  border-bottom: #e9e9e9 solid 1px;
+}
+
+.layerpop_warp .layerpop .layerpop_head>h1 {
+  font-size: 18px;
+  color: #666;
+}
+
+.layerpop_warp .layerpop .layerpop_cont {
+  text-align: center;
+  padding: 24px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.layerpop_warp .layerpop .layerpop_cont:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.layerpop_warp .layerpop .close {
+  position: absolute;
+  right: 24px;
+  top: 18px;
+  width: 18px;
+  height: 18px;
+  color: transparent;
+  background: url('https://www.larocheposay.co.kr/images/common/bg_button.png?1') no-repeat -236px 1px;
+  background-size: 500px;
+}
+
+.layerpop_warp .layerpop .btn_wrap button+button {
+  margin-left: 3px;
+}
+
+/* layerpop 재입고 알림 */
+.layerpop_warp#orderalert {}
+
+.layerpop_warp#orderalert .layerpop {
+  padding: 0;
+  border: 0;
+}
+
+.layerpop_warp#orderalert .layerpop .layerpop_head {
+  height: 50px;
+  line-height: 50px;
+  padding: 0 20px;
+  border: 0;
+  color: #bfae90;
+  background: #bfae90;
+}
+
+.layerpop_warp#orderalert .layerpop .layerpop_head>h1 {
+  font-size: 20px;
+  color: #fff;
+}
+
+.layerpop_warp#orderalert .layerpop .layerpop_cont {}
+
+.layerpop_warp#orderalert .layerpop .layerpop_cont .orderalert {
+  text-align: left;
+}
+
+.layerpop_warp#orderalert .layerpop .layerpop_cont .orderalert .top {
+  display: block;
+  padding-bottom: 24px;
+  margin-bottom: 24px;
+  border-bottom: #e9e9e9 solid 1px;
+}
+
+.layerpop_warp#orderalert .layerpop .layerpop_cont .orderalert .top:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.layerpop_warp#orderalert .layerpop .layerpop_cont .orderalert .top .left {
+  float: left;
+  width: 84px;
+  height: 84px;
+  border: #e9e9e9 solid 1px;
+}
+
+.layerpop_warp#orderalert .layerpop .layerpop_cont .orderalert .top .left img {
+  width: 84px;
+  height: 84px;
+}
+
+.layerpop_warp#orderalert .layerpop .layerpop_cont .orderalert .top .right {
+  float: right;
+  width: 310px;
+  min-height: 78px;
+  font-size: 18px;
+  color: #222;
+  margin-top: 8px;
+  overflow: hidden;
+}
+
+.layerpop_warp#orderalert .layerpop .layerpop_cont .orderalert .top .right h2 {
+  display: block;
+  font-size: 20px;
+  margin-bottom: 8px;
+  font-family: 'notokr-medium';
+}
+
+.layerpop_warp#orderalert .layerpop .layerpop_cont .orderalert .top .right em {}
+
+.layerpop_warp#orderalert .layerpop .layerpop_cont .orderalert .conts {}
+
+.layerpop_warp#orderalert .layerpop .layerpop_cont .orderalert .conts>h3 {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 16px;
+  color: #222;
+}
+
+.layerpop_warp#orderalert .layerpop .layerpop_cont .orderalert .conts>span.phone {
+  display: block;
+  padding: 19px;
+  margin-bottom: 20px;
+  font-size: 20px;
+  color: #222;
+  text-align: center;
+  background: #f7f7f7;
+  font-family: 'locator-medium';
+}
+
+.layerpop_warp#orderalert .layerpop .layerpop_cont .orderalert .conts>ul {}
+
+.layerpop_warp#orderalert .layerpop .layerpop_cont .orderalert .conts>ul>li {
+  position: relative;
+  padding-left: 15px;
+  font-size: 14px;
+  line-height: 22px;
+  margin: 10px 0;
+  color: #8f8f8f;
+}
+
+.layerpop_warp#orderalert .layerpop .layerpop_cont .orderalert .conts>ul>li:before {
+  content: '';
+  position: absolute;
+  top: 9px;
+  left: 0;
+  width: 3px;
+  height: 3px;
+  background: #666;
+}
+
+.layerpop_warp#orderalert .layerpop .layerpop_cont .orderalert .conts>ul>li>i {
+  font-style: normal;
+  border-bottom: #8f8f8f solid 1px;
+}
+
+.layerpop_warp#orderalert .layerpop .layerpop_cont .orderalert .conts>span.btn_warp {
+  display: block;
+  margin-top: 25px;
+  text-align: center;
+}
+
+.layerpop_warp#orderalert .layerpop .layerpop_cont .orderalert .conts>span.btn_warp button {
+  width: 140px;
+  height: 48px;
+  margin: 0 1px;
+  font-size: 16px;
+}
+
+.layerpop_warp#orderalert .layerpop .close {
+  position: absolute;
+  right: 18px;
+  top: 16px;
+  width: 18px;
+  height: 18px;
+  color: transparent;
+  background: url('https://www.larocheposay.co.kr/images/common/bg_button.png?1') no-repeat -257px 1px;
+  background-size: 500px;
+}
+
+/* layerpop review */
+.layerpop_warp.boardview_pop {}
+
+.layerpop_warp.boardview_pop .layerpop {
+  padding: 0;
+  border: 0;
+}
+
+.layerpop_warp.boardview_pop .layerpop .layerpop_head {
+  padding: 0 20px;
+  height: 50px;
+  line-height: 50px;
+  border-bottom: none;
+  color: #fff;
+  background: #bfae90;
+}
+
+.layerpop_warp.boardview_pop .layerpop .layerpop_head>h1 {
+  color: #fff;
+}
+
+.layerpop_warp.boardview_pop .layerpop .layerpop_cont {
+  text-align: left;
+  padding: 0;
+}
+
+.layerpop_warp.boardview_pop .layerpop .close {
+  right: 20px;
+  top: 15px;
+  background-position: -257px 1px;
+}
+
+.layerpop_warp.link-type .layerpop {
+  padding: 0;
+  border: 0;
+}
+
+.layerpop_warp.link-type .layerpop .layerpop_head {
+  padding: 0 20px;
+  height: 50px;
+  line-height: 50px;
+  border-bottom: none;
+  color: #fff;
+  background: #bfae90;
+}
+
+.layerpop_warp.link-type .layerpop .layerpop_head>h1 {
+  color: #fff;
+}
+
+.layerpop_warp.link-type .layerpop .layerpop_cont {
+  text-align: left;
+  padding: 0;
+}
+
+.layerpop_warp.link-type .layerpop .close {
+  right: 20px;
+  top: 15px;
+  background-position: -257px 1px;
+}
+
+.layerpop_warp .layerpop.blue {
+  padding: 0;
+  border: 0;
+}
+
+.layerpop_warp .layerpop.blue .layerpop_head {
+  padding: 0 20px;
+  height: 50px;
+  line-height: 50px;
+  border-bottom: none;
+  color: #fff;
+  background: #bfae90;
+}
+
+.layerpop_warp .layerpop.blue .layerpop_head>h1 {
+  color: #fff;
+}
+
+.layerpop_warp .layerpop.blue .layerpop_cont {
+  text-align: left;
+  padding: 30px 40px;
+}
+
+.layerpop_warp .layerpop.blue .close {
+  right: 20px;
+  top: 15px;
+  background-position: -257px 1px;
+}
+
+/* layer toolpop */
+.toolpop_warp {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 413px;
+  height: 399px;
+  border: #bcbcbc solid 1px;
+  box-shadow: 0px 15px 15px 5px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+.toolpop_warp:after,
+.toolpop_warp:before {
+  bottom: 100%;
+  left: 164px;
+  border: solid transparent;
+  content: '';
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.toolpop_warp:after {
+  border-color: rgba(247, 247, 247, 0);
+  border-bottom-color: #f7f7f7;
+  border-width: 5px;
+  margin-left: -5px;
+}
+
+.toolpop_warp:before {
+  border-color: rgba(188, 188, 188, 0);
+  border-bottom-color: #bcbcbc;
+  border-width: 6px;
+  margin-left: -6px;
+}
+
+.toolpop_warp .toolpop_head {
+  display: block;
+  padding: 0 20px;
+  background: #f7f7f7;
+}
+
+.toolpop_warp .toolpop_head>h1 {
+  height: 38px;
+  line-height: 38px;
+  font-size: 14px;
+  color: #666;
+}
+
+.toolpop_warp .toolpop_cont {
+  position: relative;
+  height: 359px;
+  padding: 20px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #fff;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+.toolpop_warp .toolpop_cont:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.toolpop_warp .close {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  width: 18px;
+  height: 18px;
+  color: transparent;
+  background: url('https://www.larocheposay.co.kr/images/common/bg_button.png?1') no-repeat -200px 3px;
+  background-size: 500px;
+}
+
+/* toolpop - 제품검색 */
+.toolpop_warp .toolpop_cont .ps .prd_list {
+  padding: 0;
+  text-align: left;
+}
+
+.toolpop_warp .toolpop_cont .ps .prd_list span {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.toolpop_warp .toolpop_cont .ps .prd_list li {
+  position: relative;
+  padding: 0 100px 0 90px;
+  margin-top: 12px;
+  min-height: 80px;
+  display: table;
+  width: calc(100% - 190px);
+}
+
+.toolpop_warp .toolpop_cont .ps .prd_list li:first-child {
+  margin-top: 0;
+}
+
+.toolpop_warp .toolpop_cont .ps .prd_list li.empty_all {
+  display: block;
+  width: 100%;
+}
+
+.toolpop_warp .toolpop_cont .ps .prd_list .img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 1px solid #e9e9e9;
+  width: 80px;
+  height: 80px;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.toolpop_warp .toolpop_cont .ps .prd_list .img img {
+  width: 100%;
+  height: 100%;
+}
+
+/* .toolpop_warp .toolpop_cont .ps .prd_list strong {display: block; margin: 15px 0 7px; font-size: 14px; font-family: 'notokr-medium'; color: #222222;} */
+.toolpop_warp .toolpop_cont .ps .prd_list strong {
+  display: block;
+  margin: 0 0 2px;
+  font-size: 14px;
+  font-family: 'notokr-medium';
+  color: #222222;
+}
+
+.toolpop_warp .toolpop_cont .ps .prd_list em {
+  line-height: 1.5;
+}
+
+.toolpop_warp .toolpop_cont .ps .prd_list .date {
+  padding-top: 2px;
+  font-size: 13px;
+  color: #8f8f8f;
+}
+
+.toolpop_warp .toolpop_cont .ps .prd_list button {
+  position: absolute;
+  top: 20px;
+  right: 0;
+  border: 1px solid #e9e9e9;
+}
+
+.toolpop_warp .toolpop_cont .ps .search_faq {
+  width: 280px;
+  margin: 0 0 30px 20px;
+}
+
+.toolpop_warp .toolpop_cont .ps .search_faq input {
+  border-bottom: 1px solid #8f8f8f;
+  border-width: 0 0 1px 0;
+}
+
+.toolpop_warp .toolpop_cont .ps .search_faq input:focus {
+  border-width: 0 0 1px 0 !important;
+}
+
+/* toolpop - 주문번호 */
+.toolpop_warp .toolpop_cont .po p {
+  color: #8f8f8f;
+  font-size: 14px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.toolpop_warp .toolpop_cont .po .table_wrap table tr td .oder_date strong {
+  color: #222222;
+  font-size: 16px;
+  font-family: 'locator-medium';
+  word-break: break-all;
+  display: block;
+}
+
+.toolpop_warp .toolpop_cont .po .table_wrap table tr td .oder_date em {
+  color: #8f8f8f;
+  font-size: 14px;
+  font-family: 'locator-regular';
+}
+
+.toolpop_warp .toolpop_cont .po .table_wrap table tr td .prd_name {
+  position: relative;
+  min-height: 80px;
+  text-align: left;
+  padding: 20px 0;
+  display: table;
+}
+
+.toolpop_warp .toolpop_cont .po .table_wrap table tr td .prd_name span {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.toolpop_warp .toolpop_cont .po .table_wrap table tr td .prd_name .img {
+  padding-right: 15px;
+}
+
+.toolpop_warp .toolpop_cont .po .table_wrap table tr td .prd_name .img img {
+  width: 80px;
+  height: 80px;
+  padding: 6px;
+  border: 1px solid #e9e9e9;
+  box-sizing: border-box;
+}
+
+.toolpop_warp .toolpop_cont .po .table_wrap table tr td .prd_name strong {
+  color: #222222;
+  display: block;
+  font-size: 14px;
+  font-family: 'notokr-medium';
+  margin-bottom: 5px;
+}
+
+.toolpop_warp .toolpop_cont .po .table_wrap table tr td .prd_name em {
+  color: #222222;
+  font-size: 14px;
+  font-family: 'notokr-demilight';
+}
+
+.toolpop_warp .toolpop_cont .po .table_wrap table tr td .price {
+  color: #bfae90;
+  font-size: 18px;
+  font-family: 'locator-medium';
+}
+
+.toolpop_warp .toolpop_cont .po .table_wrap table tr td .price em {
+  font-family: 'notokr-demilight';
+  font-size: 14px;
+  color: #222222;
+}
+
+.toolpop_warp .toolpop_cont .po .table_wrap table tr td button {
+  border-radius: 2px;
+}
+
+.toolpop_warp .toolpop_cont .po .table_wrap.type1 table tr td {
+  padding: 14px 10px;
+}
+
+/* tooltip 공용 */
+.tooltip {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  background: url('https://www.larocheposay.co.kr/images/common/ico_comm_sp.png') no-repeat -283px -45px;
+  background-size: 300px 300px;
+}
+
+.tooltip_conts {
+  display: none;
+  padding: 15px 20px;
+  font-size: 13px;
+  color: #222;
+  line-height: 21px;
+  background: #fff;
+  border: #bcbcbc solid 1px;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-shadow: 0px 15px 20px 0px rgba(0, 0, 0, 0.1);
+}
+
+.tooltip_conts:after,
+.tooltip_conts:before {
+  bottom: 100%;
+  left: 92%;
+  border: solid transparent;
+  content: '';
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.tooltip_conts:after {
+  border-color: rgba(255, 255, 255, 0);
+  border-bottom-color: #ffffff;
+  border-width: 7px;
+  margin-left: -7px;
+}
+
+.tooltip_conts:before {
+  border-color: rgba(188, 188, 188, 0);
+  border-bottom-color: #bcbcbc;
+  border-width: 8px;
+  margin-left: -8px;
+}
+
+/* 회원가입 팝업 */
+.layerpop_cont .join_txt {
+  color: #222;
+  font-size: 22px;
+}
+
+.layerpop_cont .join_txt span {
+  color: #bfae90;
+}
+
+.layerpop_cont .join_txt em {
+  color: #8f8f8f;
+  font-size: 16px;
+  display: inline-block;
+  margin: 15px 0 30px;
+  line-height: 1.4;
+}
+
+.layerpop_cont .dot_list {
+  padding-top: 26px;
+}
+
+.layerpop_cont .dot_list li {
+  padding-left: 15px;
+  text-indent: -15px;
+  text-align: left;
+  font-size: 14px;
+  line-height: 22px;
+  color: #8f8f8f;
+}
+
+.layerpop_cont .dot_list li:before {
+  content: '';
+  display: inline-block;
+  width: 3px;
+  height: 3px;
+  margin-right: 12px;
+  background: #8f8f8f;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+.layerpop_cont .dot_list li+li {
+  margin-top: 10px;
+}
+
+/*회원가입 폼*/
+#wrap_all {
+  width: 580px;
+  margin: 0 auto;
+  position: relative
+}
+
+#wrap_all #header {
+  min-height: 0;
+  margin-top: 0;
+  border-bottom: none;
+  width: 100%;
+  background: none;
+}
+
+#wrap_all #header h1 {
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  margin-left: 0;
+  width: auto;
+  height: auto;
+  background: none;
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+#wrap_all #contents {
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+/*회원가입 푸터*/
+#wrap_all #footer {
+  position: relative;
+  left: 0;
+  bottom: 0;
+  z-index: 20;
+  width: 100%;
+  height: auto;
+  margin-top: 30px;
+  background: none;
+  border-top: 0;
+  margin-bottom: 0;
+}
+
+#wrap_all #footer .foot_link {
+  text-align: center;
+}
+
+#wrap_all #footer .foot_link li {
+  position: relative;
+  display: inline-block;
+  padding: 0 15px;
+}
+
+#wrap_all #footer .foot_link li:first-child:after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 100%;
+  width: 1px;
+  height: 12px;
+  background: #d9d9d9;
+}
+
+#wrap_all #footer .foot_link li a {
+  color: #222222;
+  font-size: 15px;
+}
+
+#wrap_all #footer .foot_link li a.blue {
+  color: #bfae90;
+}
+
+#wrap_all .foot_copyright {
+  font-size: 13px;
+  color: #8f8f8f;
+  padding: 20px 0 70px;
+  text-align: center;
+}
+
+/*error*/
+#wrap_all.error_wrap {
+  height: 100%;
+  width: 1000px;
+  min-height: 768px;
+}
+
+#wrap_all.error_wrap #container {
+  min-height: 0;
+}
+
+#wrap_all.error_wrap #footer {
+  position: absolute;
+}
+
+#wrap_all.error_wrap .type1 {
+  position: relative;
+  padding-top: 200px;
+}
+
+#wrap_all.error_wrap .type1:before {
+  content: '';
+  position: absolute;
+  top: 55px;
+  left: 50%;
+  width: 140px;
+  height: 112px;
+  margin-left: -70px;
+  background: url('https://www.larocheposay.co.kr/images/common/ico_error.png') no-repeat;
+}
+
+#wrap_all.error_wrap .type2 {
+  position: relative;
+  padding-top: 200px;
+}
+
+#wrap_all.error_wrap .type2:before {
+  content: '';
+  position: absolute;
+  top: 55px;
+  left: 50%;
+  width: 140px;
+  height: 112px;
+  margin-left: -70px;
+  background: url('https://www.larocheposay.co.kr/images/common/ico_error.png') no-repeat 0 -228px;
+}
+
+#wrap_all.error_wrap .type3 {
+  position: relative;
+  padding-top: 200px;
+}
+
+#wrap_all.error_wrap .type3:before {
+  content: '';
+  position: absolute;
+  top: 55px;
+  left: 50%;
+  width: 140px;
+  height: 112px;
+  margin-left: -70px;
+  background: url('https://www.larocheposay.co.kr/images/common/ico_error.png') no-repeat 0 -114px;
+}
+
+#wrap_all.error_wrap #contents h2 {
+  color: #222222;
+  font-size: 36px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+#wrap_all.error_wrap #contents p {
+  color: #666666;
+  font-size: 16px;
+  line-height: 1.5;
+  margin-top: 20px;
+  text-align: center;
+}
+
+#wrap_all.error_wrap #contents div.type3 div.noti_box {
+  width: 600px;
+  margin: 40px auto;
+  background: #f7f7f7;
+  padding: 20px 90px;
+  box-sizing: border-box;
+}
+
+#wrap_all.error_wrap #contents div.type3 div.noti_box span {
+  display: block;
+  font-size: 16px;
+  color: #666666;
+}
+
+#wrap_all.error_wrap #contents div.type3 div.noti_box span em {
+  display: inline-block;
+  width: 80px;
+  color: #222222;
+}
+
+#wrap_all.error_wrap #contents div.type3 div.noti_box span:first-child {
+  margin-bottom: 10px;
+  color: #bfae90;
+}
+
+#wrap_all.error_wrap .foot_copyright {
+  padding-bottom: 40px;
+}
+
+#wrap_all.error_wrap .type4 {
+  position: relative;
+  margin-top: 50px;
+  padding-top: 200px;
+}
+
+#wrap_all.error_wrap .type4:before {
+  content: '';
+  position: absolute;
+  top: 55px;
+  left: 50%;
+  width: 140px;
+  height: 112px;
+  margin-left: -70px;
+  background: url('https://www.larocheposay.co.kr/images/common/ico_error.png') no-repeat 0 -342px;
+}
+
+#wrap_all.error_wrap #contents h2 {
+  color: #222222;
+  font-size: 36px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+#wrap_all.error_wrap #contents p {
+  color: #666666;
+  font-size: 16px;
+  line-height: 1.5;
+  margin-top: 20px;
+  text-align: center;
+}
+
+#wrap_all.error_wrap #contents div.type4 div.noti_box {
+  width: 600px;
+  margin: 40px auto;
+  background: #f7f7f7;
+  padding: 21px 90px;
+  box-sizing: border-box;
+}
+
+#wrap_all.error_wrap #contents div.type4 div.noti_box p {
+  display: block;
+  margin-top: 0;
+  font-family: 'notokr-medium';
+  font-size: 16px;
+  color: #666666;
+  text-align: center;
+}
+
+#wrap_all.error_wrap #contents div.type4 div.noti_box span {
+  display: inline-block;
+  font-size: 16px;
+  color: #bfae90;
+}
+
+#wrap_all.error_wrap #contents div.type4 div.noti_box em {
+  display: inline-block;
+  color: #000;
+  text-decoration: underline;
+}
+
+#wrap_all.error_wrap .foot_copyright {
+  padding-bottom: 40px;
+}
+
+/*mail input */
+.mail_box {
+  display: block;
+  position: relative;
+  float: left;
+  border: 1px solid #d9d9d9;
+  height: 38px;
+}
+
+.mail_box input:focus {
+  border: 0 !important;
+}
+
+.mail_box input {
+  border: 0 !important;
+  height: 38px;
+  line-height: 38px;
+}
+
+.mail_box input:last-child {
+  padding: 0 10px;
+}
+
+.mail_box+select {
+  margin-left: 9px;
+}
+
+/* 장바구니 팝업 */
+.layerpop_warp .layerpop.type_shop {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0 auto;
+  padding: 0;
+  border-top: 0;
+  background: #fff;
+  z-index: 9999;
+}
+
+.layerpop_warp .layerpop.type_shop .layerpop_head {
+  display: block;
+  height: 50px;
+  line-height: 50px;
+  border-bottom: 0;
+  margin: 0;
+  padding: 0 20px;
+  background: #bfae90;
+}
+
+.layerpop_warp .layerpop.type_shop .layerpop_head>h1 {
+  font-size: 20px;
+  color: #fff;
+}
+
+.layerpop_warp .layerpop.type_shop .layerpop_head .ntc_text {
+  position: absolute;
+  top: 0;
+  right: 50px;
+  color: #fa2b49;
+  font-size: 13px;
+}
+
+.layerpop_warp .layerpop.type_shop .layerpop_cont {
+  text-align: center;
+  padding: 30px 30px 0 30px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.layerpop_warp .layerpop.type_shop .layerpop_cont:after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 30px;
+}
+
+.layerpop_warp .layerpop.type_shop .layerpop_cont .mark_box {
+  background: #f7f7f7;
+  padding: 25px 25px 25px 100px;
+  text-align: left;
+  line-height: 1.5;
+}
+
+.layerpop_warp .layerpop.type_shop .layerpop_cont .mark_box {
+  position: relative;
+  color: #666666;
+  font-size: 14px;
+}
+
+.layerpop_warp .layerpop.type_shop .layerpop_cont .mark_box:before {
+  content: '';
+  position: absolute;
+  top: 27px;
+  left: 30px;
+  width: 40px;
+  height: 40px;
+  background: url('https://www.larocheposay.co.kr/images/customer/bg_customer_sp.png') 0 -153px no-repeat;
+}
+
+.layerpop_warp .layerpop.type_shop .layerpop_cont .mark_box span {
+  font-family: 'notokr-medium';
+}
+
+.layerpop_warp .layerpop.type_shop .layerpop_cont .mark_box span em {
+  color: #bfae90;
+  text-decoration: underline;
+}
+
+.layerpop_warp .layerpop.type_shop .layerpop_cont .coupon_list {
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #bcbcbc;
+  margin-top: 30px;
+}
+
+.layerpop_warp .layerpop.type_shop .layerpop_cont .coupon_list li {
+  text-align: left;
+  padding: 25px 0 25px 30px;
+  border-top: 1px solid #e9e9e9;
+}
+
+.layerpop_warp .layerpop.type_shop .layerpop_cont .coupon_list li.on {
+  background: #f8fcfe;
+}
+
+.layerpop_warp .layerpop.type_shop .layerpop_cont .coupon_list li:first-child {
+  border-top: 0;
+}
+
+.layerpop_warp .layerpop.type_shop .layerpop_cont .coupon_list li>.radiocss label {
+  color: #222222;
+  font-size: 18px;
+  font-family: 'notokr-medium';
+}
+
+.layerpop_warp .layerpop.type_shop .layerpop_cont .coupon_list li.on .radiocss label em {
+  background: #f8fcfe;
+}
+
+.layerpop_warp .layerpop.type_shop .layerpop_cont .coupon_list li>div {
+  overflow: hidden;
+  margin-top: 12px;
+  padding: 0 30px;
+}
+
+.layerpop_warp .layerpop.type_shop .layerpop_cont .coupon_list li>div span {
+  display: inline-block;
+  color: #666;
+  width: 190px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.layerpop_warp .layerpop.type_shop .layerpop_cont .coupon_list li em.price {
+  font-size: 18px;
+  color: #8f8f8f;
+  font-family: 'locator-medium';
+  float: right;
+}
+
+.layerpop_warp .layerpop.type_shop .layerpop_cont .coupon_list li:first-child em.price {
+  margin-top: 10px;
+}
+
+.layerpop_warp .layerpop.type_shop .layerpop_cont .coupon_list li:first-child.on em.price {
+  color: #bfae90
+}
+
+.layerpop_warp .layerpop.type_shop .layerpop_cont .coupon_list li div.on em.price {
+  color: #bfae90
+}
+
+.layerpop_warp .layerpop.type_shop .layerpop_cont .coupon_list li em.price i {
+  font-style: normal;
+  color: #222222;
+  font-size: 14px;
+  font-family: 'notokr-demilight';
+}
+
+.layerpop_warp .layerpop.type_shop .layerpop_cont .select_coupon {
+  overflow: hidden;
+  padding: 30px;
+}
+
+.layerpop_warp .layerpop.type_shop .layerpop_cont .select_coupon span {
+  color: #222222;
+  font-size: 18px;
+  float: left;
+}
+
+.layerpop_warp .layerpop.type_shop .layerpop_cont .select_coupon em.price {
+  font-size: 30px;
+  color: #bfae90;
+  font-family: 'locator-medium';
+  float: right;
+}
+
+.layerpop_warp .layerpop.type_shop .layerpop_cont .select_coupon em.price i {
+  font-style: normal;
+  color: #222222;
+  font-size: 18px;
+  font-family: 'notokr-demilight';
+}
+
+.layerpop_warp .layerpop.type_shop .layerpop_cont .btn_wrap {
+  margin: 30px 0;
+}
+
+.layerpop_warp .layerpop.type_shop .close {
+  background: url('https://www.larocheposay.co.kr/images/common/bg_button.png?1') no-repeat -257px 1px;
+}
+
+.milege_shop .product_wrap .product_list li {
+  height: 431px;
+  margin-bottom: 60px;
+}
+
+.milege_shop .product_wrap .product_list.n_count li {
+  height: 431px;
+}
+
+.milege_shop .product_wrap .product_list.n_count li .bg_over {
+  background: url('https://www.larocheposay.co.kr/images/product/bg_over_milege2.jpg') no-repeat;
+}
+
+.milege_shop .product_list li span.tit .mileage {
+  background: url('https://www.larocheposay.co.kr/images/common/ico_comm_sp2.png') 0 -126px no-repeat;
+  display: inline-block;
+  width: 19px;
+  height: 19px;
+  text-indent: -9999px;
+}
+
+.milege_shop .product_list li span.kind {
+  line-height: 25px;
+  height: 50px;
+  overflow: hidden;
+}
+
+.milege_shop .product_wrap .product_list li span.price {
+  margin: 10px 0 5px;
+  color: #8f8f8f;
+  font-size: 16px;
+  font-family: 'locator-regular';
+  display: inline-block;
+  text-decoration: line-through;
+}
+
+.milege_shop .product_wrap .product_list li span.price em {
+  color: #8f8f8f;
+  font-size: 14px;
+  font-family: 'notokr-demilight';
+}
+
+.milege_shop .product_wrap .product_list li span.milege_price {
+  color: #222222;
+  font-size: 16px;
+  display: inline-block;
+}
+
+.milege_shop .product_wrap .product_list li span.milege_price em {
+  font-family: 'locator-medium';
+  font-size: 22px;
+  padding-left: 5px;
+}
+
+.milege_shop .product_wrap .product_list li span.milege_price i {
+  font-family: 'notokr-demilight';
+  font-size: 16px;
+  font-style: normal;
+}
+
+.milege_shop .product_wrap .product_list li .bg_over {
+  background: url('https://www.larocheposay.co.kr/images/product/bg_over_milege2.jpg') no-repeat;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: block;
+  position: absolute;
+}
+
+.milege_shop .product_wrap .product_list li .bg_over p {
+  margin-top: 200px;
+  color: #fff;
+  font-size: 22px;
+  text-align: center
+}
+
+.milege_shop .product_wrap .product_list li .bg_over p em {
+  font-family: 'locator-medium';
+  font-size: 26px;
+}
+
+.milege_shop .product_wrap .product_list li .bg_over p span {
+  font-size: 16px;
+  display: block;
+  margin-top: 5px;
+}
+
+.milege_shop .border_box {
+  overflow: hidden;
+}
+
+.milege_shop .border_box .f_left {
+  float: left;
+}
+
+.milege_shop .border_box .f_left .txt1 {
+  color: #222;
+  font-size: 22px;
+  display: block;
+}
+
+.milege_shop .border_box .f_left .txt2 {
+  color: #8f8f8f;
+  font-size: 14px;
+  display: block;
+  text-align: left;
+  margin-top: 10px;
+}
+
+.milege_shop .border_box .f_left .txt1.ico {
+  color: #222;
+  font-size: 22px;
+  display: block;
+  line-height: 40px;
+  padding-left: 75px;
+  position: relative;
+  letter-spacing: -1px;
+}
+
+/* .milege_shop .border_box .f_left .txt1.ico:before {content: ''; position: absolute; top: 10px; left: 0; width: 58px; height: 51px; background: url('https://www.larocheposay.co.kr/images/common/ico_comm_sp2.png') 100% -136px no-repeat;} */
+.milege_shop .border_box .f_left .txt1.ico:before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 0;
+  width: 58px;
+  height: 51px;
+  background: url('https://www.larocheposay.co.kr/images/common/ico_giftshop.png') 0 0 no-repeat;
+}
+
+.milege_shop .border_box .f_left .txt1.ico.type2:before {
+  top: 15px;
+}
+
+.milege_shop .border_box .f_left .txt1.ico+.txt2 {
+  padding-left: 75px;
+  margin-top: 0;
+}
+
+.milege_shop .border_box .f_left .txt2+.txt2 {
+  padding-left: 75px;
+}
+
+.milege_shop .border_box .f_right {
+  float: right;
+  margin-top: 20px;
+}
+
+.milege_shop .border_box .f_right span:first-child {
+  color: #666666;
+  vertical-align: top;
+  margin-top: 6px;
+  display: inline-block;
+}
+
+.milege_shop .border_box .f_right span.price_m {
+  color: #bfae90;
+  font-size: 24px;
+  font-family: 'locator-medium';
+  padding: 0 30px 0 20px;
+  position: relative;
+}
+
+.milege_shop .border_box .f_right span.price_m i {
+  color: #222;
+  font-size: 16px;
+  font-family: 'notokr-demilight';
+  vertical-align: top;
+  display: inline-block;
+  margin-top: 4px;
+  margin-left: 3px;
+}
+
+/* .milege_shop .border_box .f_right span.price_m:before {content: ''; position: absolute; top: 2px; right: 0; width: 23px; height: 23px; background: url('https://www.larocheposay.co.kr/images/common/ico_comm_sp2.png') -234px -195px no-repeat;} */
+.milege_shop .count {
+  font-size: 16px;
+  color: #222;
+  font-family: 'locator-regular';
+  padding-left: 52px;
+  margin-top: 17px;
+}
+
+.milege_shop .count button {
+  float: left;
+  width: 35px;
+  height: 35px;
+  color: #222;
+  border: #d9d9d9 solid 1px;
+}
+
+.milege_shop .count button.disabled {
+  background: #f7f7f7;
+  cursor: auto;
+}
+
+.milege_shop .count input[type="text"] {
+  float: left;
+  width: 35px;
+  height: 35px;
+  color: #222;
+  border-color: #d9d9d9;
+  padding: 0;
+  text-align: center;
+  border-style: solid;
+  border-width: 1px 0 1px !important;
+}
+
+.milege_shop .pos_rel {
+  position: relative;
+}
+
+.milege_shop .pos_rel .bg_box.ico1+.btn_wrap {
+  position: absolute;
+  top: 50%;
+  right: 30px;
+  margin-top: -42px;
+  overflow: hidden;
+  width: 135px;
+}
+
+.milege_shop .pos_rel .bg_box.ico1+.btn_wrap {
+  float: left;
+}
+
+/*마이페이지 팝업*/
+.type_shop .agree_cont .box {
+  padding: 20px;
+  background: #f8fcfe;
+  text-align: left;
+  word-break: keep-all;
+  line-height: 1.5;
+  color: #666;
+}
+
+.type_shop .agree_cont p {
+  color: #666;
+  text-align: left;
+  margin: 25px 0 8px;
+}
+
+.type_shop .table_wrap table tr td a {
+  display: table;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.type_shop .table_wrap table tr td a span {
+  display: table-cell;
+  position: relative;
+  vertical-align: middle;
+}
+
+.type_shop .table_wrap table tr td a .img {
+  position: relative;
+}
+
+.type_shop .table_wrap table tr td a .img+span {
+  padding-left: 10px;
+}
+
+.type_shop .table_wrap table tr td a .img img {
+  width: 90px;
+  height: 90px;
+}
+
+.type_shop .table_wrap table tr td a span strong {
+  display: block;
+  color: #222;
+  font-size: 16px;
+  font-family: 'notokr-medium';
+  margin: 0 0 5px;
+}
+
+.type_shop .table_wrap table tr td a span em {
+  color: #787878;
+  font-size: 14px;
+}
+
+.type_shop .table_wrap table tr td span.price {
+  font-size: 18px;
+  font-family: 'locator-regular';
+  color: #222222;
+}
+
+.type_shop .table_wrap table tr td span.price em {
+  font-size: 14px;
+  font-family: 'notokr-demilight';
+}
+
+.type_shop .table_wrap table tr td span.price.blue {
+  font-family: 'locator-medium';
+  color: #bfae90;
+  white-space: nowrap;
+}
+
+.type_shop .table_wrap table tr td span.price.blue em {
+  font-size: 14px;
+  font-family: 'notokr-demilight';
+  color: #222;
+}
+
+.type_shop .table_wrap table tr td i.gift_ico {
+  position: absolute;
+  top: 0;
+  left: 10px;
+  display: inline-block;
+  border: 1px solid #4e80d3;
+  padding: 2px 8px;
+  background: #fff;
+  font-size: 12px;
+  color: #4e80d3;
+  font-family: 'notokr-medium';
+  font-style: normal;
+}
+
+.type_shop td .count {
+  font-size: 16px;
+  color: #222;
+  font-family: 'locator-regular';
+}
+
+.type_shop .count button {
+  float: left;
+  width: 35px;
+  height: 35px;
+  color: #222;
+  border: #d9d9d9 solid 1px;
+}
+
+.type_shop .count button.disabled {
+  background: #f7f7f7;
+  cursor: auto;
+}
+
+.type_shop .count input[type="text"] {
+  float: left;
+  width: 35px;
+  height: 35px;
+  color: #222;
+  border-color: #d9d9d9;
+  padding: 0;
+  text-align: center;
+  border-style: solid;
+  border-width: 1px 0 1px !important;
+}
+
+.type_shop .tbl_title {
+  text-align: left;
+  font-size: 20px;
+  text-align: left;
+  margin: 40px 0 15px;
+}
+
+.type_shop .border_warp .border_conts .write li {
+  padding: 6px 20px;
+}
+
+.type_shop .border_warp .border_conts .write li>span:first-child {
+  text-align: left;
+  color: #222222;
+  font-size: 16px;
+  min-width: 140px;
+  max-width: 140px;
+}
+
+.type_shop .border_warp .border_conts .write li>span.middle {
+  vertical-align: middle;
+}
+
+.border_warp .border_conts .write li select {
+  vertical-align: top;
+}
+
+.type_shop .textarea textarea {
+  min-height: 100px
+}
+
+.type_shop div.refund_total {
+  border-top: #333 solid 1px;
+  border-bottom: #bcbcbc solid 1px;
+}
+
+.type_shop div.refund_total .detail {
+  overflow: hidden;
+  padding: 30px 0 25px;
+}
+
+.type_shop div.refund_total .detail>span {
+  display: block;
+  width: 33%;
+  float: left;
+  padding: 0 30px;
+  box-sizing: border-box;
+}
+
+.type_shop div.refund_total .detail>span:nth-child(2) {
+  border-left: 1px dashed #bcbcbc;
+}
+
+.type_shop div.refund_total .detail>span.last {
+  border-left: 1px dashed #bcbcbc;
+}
+
+.type_shop div.refund_total .detail.ea02>span {
+  width: 50%;
+}
+
+.type_shop div.refund_total .detail.ea02>span:nth-child(2) {
+  border-left: 1px dashed #bcbcbc;
+  border-right: 0;
+}
+
+.type_shop div.refund_total .detail em {
+  color: #8f8f8f;
+  font-size: 14px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.type_shop div.refund_total .detail strong {
+  color: #222;
+  font-family: 'locator-medium';
+  font-size: 24px;
+}
+
+.type_shop div.refund_total .detail strong.red {
+  color: #fa2b49
+}
+
+.type_shop div.refund_total .detail strong i {
+  font-style: normal;
+  font-size: 16px;
+  font-family: 'notokr-demilight';
+  color: #222;
+}
+
+.type_shop div.refund_total .detail span.total_mileage {
+  display: block;
+  overflow: hidden;
+  margin-top: 15px;
+}
+
+.type_shop div.refund_total .detail span.total_mileage em {
+  float: left;
+  display: block;
+  color: #8f8f8f;
+  margin-bottom: 8px;
+  min-width: 77px;
+  text-align: left;
+  font-size: 13px;
+  width: 47%;
+}
+
+.type_shop div.refund_total .detail span.total_mileage strong {
+  float: right;
+  color: #222;
+  font-family: 'locator-medium';
+  font-size: 16px;
+  margin-bottom: 5px;
+  width: 53%;
+  text-align: right;
+}
+
+.type_shop div.refund_total .detail span.total_mileage strong i {
+  font-style: normal;
+  font-size: 13px;
+  font-family: 'notokr-demilight';
+  color: #222;
+  min-width: 75px;
+  text-align: right;
+}
+
+.type_shop div.total {
+  text-align: right;
+  padding: 0 30px;
+  line-height: 60px;
+  background: #f8fcfe;
+  border-top: 1px solid #e9e9e9;
+  background: #f8fcfe;
+}
+
+.type_shop div.total em {
+  color: #8f8f8f;
+  font-size: 14px;
+  display: inline-block;
+  margin-right: 55px;
+  padding-left: 50px;
+  position: relative;
+}
+
+.type_shop div.total em:before {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: 0;
+  width: 30px;
+  height: 30px;
+  background: url('https://www.larocheposay.co.kr/images/common/ico_comm_sp2.png') -128px -195px no-repeat;
+}
+
+.type_shop div.total strong {
+  color: #bfae90;
+  font-family: 'locator-medium';
+  font-size: 24px;
+}
+
+.type_shop div.total strong i {
+  font-style: normal;
+  font-size: 16px;
+  font-family: 'notokr-demilight';
+  color: #222222;
+}
+
+/*교환신청 팝업*/
+.type_shop .border_warp .border_conts .write.pd30 {
+  padding: 30px 0;
+}
+
+.type_shop .border_warp .border_conts .write.pd30 li {
+  padding: 0 20px;
+}
+
+.type_shop .border_warp .border_conts .write .right {
+  text-align: left;
+}
+
+.type_shop .border_warp .border_conts .write .right span {
+  display: inline-block;
+  width: 85px;
+  color: #666666;
+}
+
+.type_shop .border_warp .border_conts .write .right .seller span {
+  margin-top: 13px;
+}
+
+.type_shop .border_warp .border_conts .write .right span em {
+  color: #bfae90;
+  display: block;
+  margin-top: 5px;
+}
+
+.type_shop .border_warp .border_conts .write .right>div:first-child {
+  padding-bottom: 30px;
+}
+
+.type_shop .border_warp .border_conts .write .right>div:nth-child(2) {
+  padding: 30px 0;
+  border-top: 1px dashed #bcbcbc;
+}
+
+.type_shop .border_warp .border_conts .write .right div.btn_wrap {
+  display: inline-block;
+  vertical-align: top;
+  width: calc(100% - 90px);
+}
+
+.type_shop .border_warp .border_conts .write .right div.btn_wrap button {
+  margin-left: 3px;
+  border-radius: 2px;
+}
+
+.type_shop .border_warp .border_conts .write li.line_bottom {
+  border-bottom: 1px solid #e9e9e9;
+  margin-bottom: 30px;
+}
+
+.type_shop .table_wrap.type_color {
+  margin-bottom: 40px;
+}
+
+.type_shop .table_wrap.type_color strong {
+  color: #222;
+}
+
+.type_shop .table_wrap.type_color td {
+  color: #8f8f8f;
+  font-size: 14px;
+  padding: 20px;
+}
+
+.type_shop .table_wrap.type_color td.td_info {
+  line-height: 1.5;
+}
+
+.type_shop .table_wrap.type_color td .name {
+  color: #222;
+}
+
+.type_shop .border_warp .border_conts .write li>em.txt {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 10px;
+  color: #bfae90;
+}
+
+/*팝업 주문취소 상세 */
+.type_shop .tbl_title+.date {
+  position: absolute;
+  top: 35px;
+  right: 30px;
+  color: #8f8f8f;
+  font-size: 14px;
+}
+
+.type_shop .tbl_title+.date em {
+  color: #222;
+  padding-right: 5px;
+}
+
+/*padding border 수정 tpye01*/
+.table_wrap.type01 table tr th {
+  padding: 0 15px;
+  line-height: 46px;
+  border: 0;
+}
+
+.table_wrap.type01 table tr td {
+  padding: 15px 5px;
+  border: 0;
+  border-top: 1px solid #e9e9e9;
+  color: #666666;
+  font-size: 14px;
+}
+
+.table_wrap.type01 table tr:first-child td {
+  border-top: 0;
+}
+
+.table_wrap.type01 table tr td.addr_name {
+  color: #222222;
+  word-break: keep-all;
+}
+
+.table_wrap.type01 table tr td.default {
+  font-family: 'notokr-medium';
+}
+
+.table_wrap.type01 table tr td.addr {
+  text-align: left;
+}
+
+.table_wrap.type01 table tr td.empty {
+  height: 175px;
+}
+
+/*가로형 padding border*/
+.table_wrap.type02 table tr th {
+  padding: 15px 15px 15px 20px;
+}
+
+.table_wrap.type02 table tr td {
+  padding: 10px 15px;
+  border: 0;
+  border-top: 1px solid #e9e9e9;
+  color: #666666;
+  font-size: 14px;
+}
+
+.table_wrap.type02 table tr:first-child td {
+  border-top: 0;
+}
+
+/*middot*/
+.dot_list2 li {
+  padding-left: 12px;
+  color: #8f8f8f;
+  font-size: 13px;
+  line-height: 1.5;
+  margin-top: 15px;
+  position: relative;
+  word-break: keep-all;
+}
+
+.dot_list2 li:before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 0;
+  width: 3px;
+  height: 3px;
+  background: url('https://www.larocheposay.co.kr/images/common/ico_comm_sp2.png') 0 -297px no-repeat;
+}
+
+.dot_list2.type_margin {
+  margin-top: 25px;
+}
+
+.dot_list2.type_margin li {
+  margin-top: 0;
+}
+
+.dot_list2.type_margin li a {
+  color: #8f8f8f;
+  text-decoration: underline;
+}
+
+.dot_list2.bg_box {
+  padding: 30px;
+  background: #f7f7f7;
+}
+
+.dot_list2.bg_box li {
+  text-align: left;
+  color: #666666;
+  font-size: 14px;
+  margin-top: 0;
+}
+
+.dot_list2.bg_box li:before {
+  top: 9px;
+}
+
+.dot_list2.bg_box li strong {
+  color: #222;
+}
+
+.dot_list2.bg_box li a {
+  text-decoration: underline;
+}
+
+.dot_list2.bg_box.ico1 {
+  position: relative;
+  padding-left: 100px;
+}
+
+.dot_list2.bg_box.ico1:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  margin-top: -20px;
+  left: 30px;
+  width: 40px;
+  height: 40px;
+  background: url(/images/customer/bg_customer_sp.png) 0 -153px no-repeat;
+}
+
+/* layerpop form */
+.layerpop_form {
+  text-align: left;
+}
+
+.layerpop_form_inner {
+  overflow: hidden;
+  position: relative;
+  margin-top: 10px;
+}
+
+.layerpop_form_inner.t_right label {
+  float: left;
+}
+
+.layerpop_form_inner.mail_wrap {
+  border: 1px solid #d9d9d9;
+}
+
+.layerpop_form_inner.mail_wrap input {
+  position: relative;
+  float: left;
+  border: 0 !important;
+}
+
+.layerpop_form_inner.mail_wrap input:focus {
+  border: 0 !important;
+}
+
+.layerpop_form_inner.mail_wrap input:last-child {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 0;
+}
+
+.layerpop_form_inner.mail_wrap span {
+  position: relative;
+  top: 10px;
+  float: left;
+  z-index: 1;
+}
+
+.layerpop_form .btn_wrap {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.layerpop_form_inner label {
+  display: inline-block;
+  min-width: 125px;
+  font-size: 16px;
+  line-height: 40px;
+  color: #222;
+}
+
+.layerpop_form .dashed_wrap {
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px dashed #d9d9d9;
+  color: #8f8f8f;
+  line-height: 1.5;
+}
+
+.layerpop_form .dot_list2 li {
+  margin-top: 10px;
+}
+
+.layerpop_form .dot_list2 li:first-child {
+  margin-top: 0;
+}
+
+.layerpop_form_inner_fix {
+  position: relative;
+  padding-left: 118px;
+  font-size: 0;
+}
+
+.layerpop_form_inner_fix label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 118px;
+  font-size: 16px;
+  line-height: 40px;
+  color: #222;
+}
+
+.layerpop_form_inner_fix .required {
+  display: inline-block;
+  margin-left: 8px;
+  overflow: hidden;
+  position: relative;
+  width: 7px;
+  height: 7px;
+  background: yellow url('https://www.larocheposay.co.kr/images/common/ico_comm_sp.png') no-repeat -55px 0;
+  background-size: 300px 300px;
+  vertical-align: middle;
+  text-indent: -9999px;
+}
+
+.layerpop_form_inner_fix input,
+.layerpop_form_inner_fix button,
+.layerpop_form_inner_fix select {
+  margin-bottom: 8px;
+}
+
+.layerpop_form_inner_fix input+a {
+  vertical-align: top;
+}
+
+.layerpop_form_inner_fix .w100 {
+  width: 100%;
+}
+
+.layerpop_form_inner_fix .w50 {
+  width: calc((100% - 6px)/2);
+}
+
+.layerpop_form_inner_fix .w50+.w50 {
+  margin-left: 6px;
+}
+
+.layerpop_form_inner_fix .w25 {
+  width: calc((100% - 18px)/4);
+}
+
+.layerpop_form_inner_fix .w25+.w25 {
+  margin-left: 6px;
+}
+
+.layerpop_form_inner_fix .add_text {
+  display: inline-block;
+  margin: 0 0 8px 6px;
+  line-height: 40px;
+  font-size: 14px;
+  color: #bcbcbc;
+}
+
+/*회원 정보입력 추가*/
+.add_agree {
+  border: 1px solid #d9d9d9;
+  padding: 0 30px;
+  margin-top: 20px;
+}
+
+.add_agree p {
+  margin: 15px -30px 0;
+  padding: 20px 30px;
+  background: #f7f7f7;
+  word-break: keep-all;
+  line-height: 1.3;
+  color: #8f8f8f;
+}
+
+.sign_coupon {
+  margin: 15px 0 0;
+  padding: 24px 22px;
+  background: #f7f7f7;
+  word-break: keep-all;
+  line-height: 1.3;
+  color: #8f8f8f;
+}
+
+.sign_coupon .input_wrap:after {
+  display: block;
+  content: '';
+  clear: both;
+}
+
+.sign_coupon .input_wrap input[type='text'] {
+  float: left;
+  width: 322px;
+  height: 52px;
+  line-height: 52px;
+  padding-left: 20px;
+  border: 0;
+}
+
+.sign_coupon .input_wrap button {
+  float: right;
+  width: 149px;
+  height: 52px;
+  line-height: 52px;
+  font-size: 16px;
+}
+
+.sign_coupon .dot_list {
+  display: block;
+  width: 100%;
+  margin-top: 18px !important;
+}
+
+.sign_coupon .dot_list li {
+  position: relative;
+  display: block;
+  padding-left: 12px;
+  margin: 0 !important;
+  font-size: 12px;
+  line-height: 20px;
+  color: #8f8f8f;
+  word-break: keep-all;
+  letter-spacing: -0.3px;
+}
+
+.sign_coupon .dot_list li:before {
+  content: '';
+  position: absolute;
+  top: 9px;
+  left: 0;
+  width: 3px;
+  height: 3px;
+  background: url(/images/common/ico_comm_sp2.png) 0 -297px no-repeat;
+}
+
+.sign_coupon .dot_list li a {
+  color: #222;
+  text-decoration: underline;
+}
+
+.sign_coupon .dot_list li em {
+  color: #222;
+  text-decoration: underline;
+}
+
+.sign_coupon .dot_list li span {
+  color: #222;
+}
+
+/* 쿠폰코드 입력 버튼 */
+.btn_couponZone_wrap {
+  display: block;
+  width: 402px;
+  height: 48px;
+}
+
+.btn_couponZone_wrap:after {
+  display: block;
+  content: '';
+  clear: both;
+}
+
+.btn_couponZone_wrap .btn_base.download {
+  float: left;
+  width: 191px;
+  height: 48px;
+}
+
+.btn_couponZone_wrap .btn_base.codeInput {
+  float: right;
+  width: 191px;
+  height: 48px;
+  position: relative;
+  padding-right: 50px;
+  border: 1px solid #bfae90;
+  background-color: #bfae90;
+  font-size: 16px;
+  color: #fff;
+}
+
+.btn_couponZone_wrap .btn_base.codeInput:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  margin-top: -8px;
+  width: 24px;
+  height: 16px;
+  background: url('https://www.larocheposay.co.kr/images/common/ico_comm_sp2.png') -160px -163px no-repeat;
+}
+
+/* 쿠폰코드 입력 팝업 */
+.layerpop_warp.couponInput_pop .layerpop {
+  height: 316px;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+.layerpop_warp.couponInput_pop .layerpop .layerpop_head {
+  height: 50px;
+  padding: 16px 20px;
+  background: #bfae90;
+  box-sizing: border-box;
+}
+
+.layerpop_warp.couponInput_pop .layerpop .layerpop_head h1 {
+  font-size: 20px;
+  line-height: 1;
+  color: #fff;
+}
+
+.layerpop_warp.couponInput_pop .layerpop .close {
+  background-position: -258px 1px;
+}
+
+.layerpop_warp.couponInput_pop .layerpop .layerpop_cont {
+  height: 266px !important;
+  padding: 30px 29px 25px 28px;
+  box-sizing: border-box;
+}
+
+.layerpop_warp.couponInput_pop .layerpop .layerpop_cont p {
+  display: block;
+  width: 100%;
+  font-size: 16px;
+  line-height: 24px;
+  color: #222;
+  text-align: center;
+}
+
+.layerpop_warp.couponInput_pop .layerpop .layerpop_cont p span {
+  color: #bfae90;
+}
+
+.layerpop_warp.couponInput_pop .layerpop .btn_wrap {
+  display: block;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.layerpop_warp.couponInput_pop .layerpop .btn_wrap:after {
+  display: block;
+  content: '';
+  clear: both;
+}
+
+.layerpop_warp.couponInput_pop .layerpop .btn_wrap li {
+  float: left;
+  width: 140px;
+  height: 48px;
+  margin-left: 6px;
+}
+
+.layerpop_warp.couponInput_pop .layerpop .btn_wrap li:first-child {
+  margin: 0;
+}
+
+.layerpop_warp.couponInput_pop .layerpop .btn_wrap li a {
+  display: block;
+  width: 100%;
+  max-widtj: 100%;
+  height: 100%;
+  line-height: 48px;
+}
+
+.layerpop_warp.couponInput_pop .layerpop .input_wrap {
+  display: block;
+  width: 100%;
+  padding-bottom: 16px;
+  border-bottom: 1px dashed #bcbcbc;
+}
+
+.layerpop_warp.couponInput_pop .layerpop .input_wrap:after {
+  display: block;
+  content: '';
+  clear: both;
+}
+
+.layerpop_warp.couponInput_pop .layerpop .input_wrap input[type='text'] {
+  float: left;
+  display: block;
+  width: 304px;
+  height: 48px;
+  line-height: 48px;
+  padding-left: 16px;
+  border: 1px solid #d9d9d9;
+}
+
+.layerpop_warp.couponInput_pop .layerpop .input_wrap .btn_couponEnrollent {
+  float: right;
+  display: inline-block;
+  width: 123px;
+  height: 48px;
+  line-height: 48px;
+  background: #bfae90;
+  font-size: 16px;
+  color: #fff;
+  text-align: center;
+}
+
+.layerpop_warp.couponInput_pop .layerpop .dot_list {
+  display: block;
+  width: 100%;
+  padding-top: 11px;
+}
+
+.layerpop_warp.couponInput_pop .layerpop .dot_list li {
+  position: relative;
+  display: block;
+  margin-top: 10px;
+  padding-left: 12px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #8f8f8f;
+  word-break: keep-all;
+  text-align: left;
+}
+
+.layerpop_warp.couponInput_pop .layerpop .dot_list li:before {
+  content: '';
+  position: absolute;
+  top: 9px;
+  left: 0;
+  width: 3px;
+  height: 3px;
+  background: url(/images/common/ico_comm_sp2.png) 0 -297px no-repeat;
+}
+
+.layerpop_warp.couponInput_pop .layerpop .dot_list li a {
+  color: #222;
+  text-decoration: underline;
+}
+
+.layerpop_warp.couponInput_pop .layerpop .dot_list li em {
+  color: #222;
+  text-decoration: underline;
+}
+
+.layerpop_warp.couponInput_pop .layerpop .dot_list li span {
+  color: #222;
+}
+
+/* 쿠폰코드 등록 팝업 */
+.layerpop_warp .layerpop.type_shop .layerpop_cont:after {
+  display: none;
+}
+
+.layerpop_warp.btn_couponEnrollent_pop .layerpop_form_inner {
+  margin: 0;
+}
+
+.layerpop_warp.btn_couponEnrollent_pop .layerpop_form .dashed_wrap {
+  margin: 0;
+  padding: 0;
+}
+
+.layerpop_warp.btn_couponEnrollent_pop .layerpop {
+  height: 316px;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+.layerpop_warp.btn_couponEnrollent_pop .layerpop .layerpop_head {
+  height: 50px;
+  padding: 16px 20px;
+  background: #bfae90;
+  box-sizing: border-box;
+}
+
+.layerpop_warp.btn_couponEnrollent_pop .layerpop .layerpop_head h1 {
+  font-size: 20px;
+  line-height: 1;
+  color: #fff;
+}
+
+.layerpop_warp.btn_couponEnrollent_pop .layerpop .close {
+  background-position: -258px 1px;
+}
+
+.layerpop_warp.btn_couponEnrollent_pop .layerpop .layerpop_cont {
+  height: 266px !important;
+  padding: 30px 29px 25px 28px;
+  box-sizing: border-box;
+}
+
+.layerpop_warp.btn_couponEnrollent_pop .layerpop .layerpop_cont p {
+  display: block;
+  width: 100%;
+  font-size: 16px;
+  line-height: 24px;
+  color: #222;
+  text-align: center;
+}
+
+.layerpop_warp.btn_couponEnrollent_pop .layerpop .layerpop_cont p span {
+  color: #bfae90;
+}
+
+.layerpop_warp.btn_couponEnrollent_pop .layerpop .btn_wrap {
+  display: block;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.layerpop_warp.btn_couponEnrollent_pop .layerpop .btn_wrap:after {
+  display: block;
+  content: '';
+  clear: both;
+}
+
+.layerpop_warp.btn_couponEnrollent_pop .layerpop .btn_wrap li {
+  float: left;
+  width: 140px;
+  height: 48px;
+  margin-left: 6px;
+}
+
+.layerpop_warp.btn_couponEnrollent_pop .layerpop .btn_wrap li:first-child {
+  margin: 0;
+}
+
+.layerpop_warp.btn_couponEnrollent_pop .layerpop .btn_wrap li a {
+  display: block;
+  width: 100%;
+  max-widtj: 100%;
+  height: 100%;
+  line-height: 48px;
+}
+
+.layerpop_warp.btn_couponEnrollent_pop .layerpop .input_wrap {
+  display: block;
+  width: 100%;
+  padding-bottom: 16px;
+}
+
+.layerpop_warp.btn_couponEnrollent_pop .layerpop .input_wrap:after {
+  display: block;
+  content: '';
+  clear: both;
+}
+
+.layerpop_warp.btn_couponEnrollent_pop .layerpop .input_wrap input[type='text'] {
+  float: left;
+  display: block;
+  width: 304px;
+  height: 48px;
+  line-height: 48px;
+  padding-left: 16px;
+  border: 1px solid #d9d9d9;
+}
+
+.layerpop_warp.btn_couponEnrollent_pop .layerpop .input_wrap .btn_couponEnrollent {
+  float: right;
+  display: inline-block;
+  width: 123px;
+  height: 48px;
+  line-height: 48px;
+  background: #bfae90;
+  font-size: 16px;
+  color: #fff;
+  text-align: center;
+}
+
+.layerpop_warp.btn_couponEnrollent_pop .layerpop .dot_list {
+  display: block;
+  width: 100%;
+  padding-top: 11px;
+}
+
+.layerpop_warp.btn_couponEnrollent_pop .layerpop .dot_list li {
+  position: relative;
+  display: block;
+  margin-top: 10px;
+  padding-left: 12px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #8f8f8f;
+  word-break: keep-all;
+  text-align: left;
+}
+
+.layerpop_warp.btn_couponEnrollent_pop .layerpop .dot_list li:before {
+  content: '';
+  position: absolute;
+  top: 9px;
+  left: 0;
+  width: 3px;
+  height: 3px;
+  background: url(/images/common/ico_comm_sp2.png) 0 -297px no-repeat;
+}
+
+.layerpop_warp.btn_couponEnrollent_pop .layerpop .dot_list li a {
+  color: #222;
+  text-decoration: underline;
+}
+
+.layerpop_warp.btn_couponEnrollent_pop .layerpop .dot_list li em {
+  color: #222;
+  text-decoration: underline;
+}
+
+.layerpop_warp.btn_couponEnrollent_pop .layerpop .dot_list li span {
+  color: #222;
+}
+
+/* 2018-10-26 수정 */
+.img_particle {
+  display: none;
+  width: 429px;
+  height: 290px;
+  position: absolute;
+  top: 100px;
+  left: -75px;
+  z-index: 104;
+}
+
+#container .img_halloween01 {
+  display: block;
+  width: 231px;
+  height: 261px;
+  position: absolute;
+  top: 700px;
+  left: 0;
+}
+
+#container .img_halloween02 {
+  display: block;
+  width: 181px;
+  height: 325px;
+  position: absolute;
+  top: 700px;
+  right: 136px;
+}
+
+/* 카카오싱크 팝업 */
+.layerpop_warp .layerpop .layerpop_cont.pd0 {
+  padding: 0;
+}
+
+.layerpop_warp .layerpop .pop_title {
+  display: block;
+  padding-top: 45px;
+  margin-bottom: 16px;
+  font-size: 22px;
+  line-height: 1.1;
+}
+
+.layerpop_warp .layerpop .pop_desc {
+  font-size: 16px;
+  line-height: 24px;
+  color: #8f8f8f;
+}
+
+.layerpop_warp .layerpop .pop_desc strong {
+  font-family: 'notokr-medium';
+}
+
+.layerpop_warp .layerpop .pd5 {
+  display: inline-block;
+  padding: 5px 0;
+}
+
+.layerpop_warp .layerpop .dot_line_top {
+  border-top: 1px dotted #d9d9d9;
+}
+
+.layerpop_warp .layerpop .pop_input_wrap {
+  position: relative;
+}
+
+.layerpop_warp .layerpop .pop_input_wrap .label_text {
+  display: inline-block;
+  padding-right: 20px;
+  font-size: 16px;
+  color: #bcbcbc;
+}
+
+.layerpop_warp .layerpop .fc_black {
+  color: #333;
+}

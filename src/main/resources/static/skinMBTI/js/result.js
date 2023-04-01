@@ -25,3 +25,21 @@ new Chart(ctx, {
 		}
 	}
 });
+
+function saveResult(){
+	
+	$.ajax({
+		url: '',
+		type: 'POST',
+		data: {
+			mbti : mbti
+		},
+		success: function(r){
+			
+		},
+		error: function(e){
+			console.log(e);
+		}
+		
+	});
+}

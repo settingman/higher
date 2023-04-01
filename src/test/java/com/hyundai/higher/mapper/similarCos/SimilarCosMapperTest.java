@@ -16,6 +16,7 @@ public class SimilarCosMapperTest {
 	@Autowired
 	private SimilarCosMapper mapper;
 	
+	// 성분유사템 추천
 	@Test
 	public void testCntList() {
 		
@@ -36,4 +37,30 @@ public class SimilarCosMapperTest {
 		log.info("result -> " + mapper.cntList(pcode, dept1no, dept2no, list));
 		 
 	}
+	
+	// 상품명 검색 조회 AJAX
+	@Test
+	public void testSearchProdList() {
+	
+		String keyword = "에센스";
+		
+		log.info(mapper.searchProdList(keyword));
+	}
+	
+	// 상품 검색
+	@Test
+	public void testSelectProdList() {
+		
+		String keyword = "에센스";
+		
+		log.info(mapper.selectProdList(keyword));
+	}
+	
+	// 인기 상품 목록
+	@Test
+	public void testBestProdList() {
+		
+		log.info(mapper.selectBestProdList());
+	}
+	
 }

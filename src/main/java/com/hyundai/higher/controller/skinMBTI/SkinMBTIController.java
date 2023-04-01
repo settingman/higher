@@ -39,27 +39,13 @@ public class SkinMBTIController {
 	@Autowired
 	private SkinMBTIService service;
 
+	// 메인
 	@GetMapping("/main")
 	public String skinMBTIMain(Model model) {
 		
 		model.addAttribute("categoryList", iService.categoryListAll());
 		
-		return "/skinMBTI/main";
-	}
-	
-	@GetMapping("/main2")
-	public String skinMBTIMain2(Model model) {
-		
-		model.addAttribute("categoryList", iService.categoryListAll());
-		
 		return "/skinMBTI/main2";
-	}
-	
-	@ResponseBody
-	@GetMapping("/getData")
-	public SkinMBTIDTO getSkinMBTIData(@RequestParam("stype") String stype) {
-				
-		return service.selectSkinMBTI(stype);
 	}
 	
 }

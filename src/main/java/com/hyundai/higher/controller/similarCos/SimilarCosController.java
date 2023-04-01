@@ -21,10 +21,11 @@ import lombok.extern.log4j.Log4j2;
  * <pre>
  * 	   수정일          수정자                수정내용
  * -------------   --------    ---------------------------
- * 2023. 03. 27.     신수진       
+ * 2023. 03. 27.    신수진    
+ * 2023. 03. 30.	신수진		상품 검색 기능 구현   
+ * 2023. 04. 01.	신수진		유사성분템 세부 페이지 기능 구현
  * </pre>
  */
-
 @Log4j2
 @RequestMapping("/similarCos")
 @Controller
@@ -41,8 +42,9 @@ public class SimilarCosController {
 	public String similarCosMain(Model model) {
 		
 		model.addAttribute("categoryList", iService.categoryListAll());
+		model.addAttribute("bestProdList", service.bestProdList());
 		
-		return "similarCos/main";
+		return "similarCos/findSimilar";
 	}
 	
 	// 유사성분템 세부
@@ -55,12 +57,5 @@ public class SimilarCosController {
 		return "similarCos/detail";
 	}
 	
-	// 유사성분템 검색 결과
-	@GetMapping("/search")
-	public String similarCosSearch() {
-		
-		
-		return "similarCos/searchResult";
-	}
 
 }

@@ -44,9 +44,18 @@
 				style="background-image: url(https://www.yunjac.com/public/2018/10/25/16/52/28/45b45153-8cfd-444d-b051-d1b639259256.jpg);">
 				<div class="inner">
 					<div id="search-wrap">
-						<div id="search-box">
-							<input type="text" id="search-input">
-							<button id="search-btn"></button>
+						<div id="search-box-list-wrap" class="search-box-list-wrap">
+							<div id="search-box">
+							<form action="/similarCos/search" method="GET">
+								<input type="text" id="search-input" name="keyword" autocomplete="off">
+								<input type="submit" id="search-btn" value="">
+							</form>
+							</div>
+							<div id="search-list">
+								<ul id="search-result">
+									
+								</ul>
+							</div>
 						</div>
 					</div>
 					<div class="text_wrap" style="bottom: 100px;">
@@ -66,8 +75,8 @@
 							<div class="content-top" style="height: 70px;">
 								<div class="content-top-box page-inner">
 									<div class="list-title font--kr" style="margin-top: 10px; font-size: 20px;">
-										<strong> <!-- 전체보기 예외 처리 --> BEST 성분템
-										</strong> <span class="JsCountCheck item_count">(21)</span>
+										<strong> <!-- 전체보기 예외 처리 --> 추천 성분템
+										</strong> <span class="JsCountCheck item_count"></span>
 									</div>
 								</div>
 							</div>

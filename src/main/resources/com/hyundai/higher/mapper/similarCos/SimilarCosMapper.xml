@@ -5,6 +5,7 @@
 
 <mapper namespace="com.hyundai.higher.mapper.similarCos.SimilarCosMapper">
 	
+	<!-- 성분유사템 추천 -->
 	<select id="cntList" resultType="com.hyundai.higher.domain.similarCos.SimilarCosDTO">
 		<![CDATA[
 		SELECT ROWNUM, pcode, total
@@ -25,6 +26,48 @@
 		WHERE ROWNUM <= 10
 		]]>
 	</select>
+
+	<!-- 인기 상품 목록 -->
+	<select id="selectBestProdList" resultMap="productMap">
+		<![CDATA[
+	    SELECT p.pcode, p.pname, p.pprice, p.bno, b.bname, dept1no, dept2no, itype, iloc, pvolume
+	    FROM (SELECT ROWNUM, pd.*
+	            FROM (
+	                SELECT * FROM product 
+	                WHERE dept1no=10) pd
+	            WHERE ROWNUM <= 12) p 
+	    LEFT JOIN brand b ON p.bno=b.bno
+	    LEFT JOIN (SELECT pcode, itype, iloc FROM IMG WHERE itype='thumb') i ON p.pcode=i.pcode
+		]]>
+	</select>
 	
+	<!-- 상품명 검색 조회 -->
+	<select id="selectProdList" resultMap="productMap">
+		SELECT p.pcode, p.pname, p.pprice, p.bno, b.bname, dept1no, dept2no, itype, iloc, pvolume
+		FROM (SELECT * FROM product WHERE pname LIKE '%'||#{keyword}||'%' AND dept1no=10) p 
+		LEFT JOIN brand b ON p.bno=b.bno
+		LEFT JOIN (SELECT pcode, itype, iloc FROM IMG WHERE itype='thumb') i ON p.pcode=i.pcode
+	</select>
+	
+
+	<resultMap
+		type="com.hyundai.higher.domain.product.ProductDTO" id="productMap">
+		<result property="pcode" column="pcode" />
+		<result property="pname" column="pname" />
+		<result property="pprice" column="pprice" />
+		<result property="bno" column="bno" />
+		<result property="bname" column="bname" />
+		<result property="dept1no" column="dept1no" />
+		<result property="dept2no" column="dept2no" />
+		<result property="pvolume" column="pvolume" />
+		<collection property="thumbImgList" resultMap="imgMap" />
+	</resultMap>
+
+	<resultMap type="com.hyundai.higher.domain.product.ImgDTO"
+		id="imgMap">
+		<result property="pcode" column="pcode" />
+		<result property="itype" column="itype" />
+		<result property="iloc" column="iloc" />
+	</resultMap>
 	
 </mapper>

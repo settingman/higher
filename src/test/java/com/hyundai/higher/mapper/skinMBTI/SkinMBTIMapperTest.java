@@ -25,11 +25,24 @@ public class SkinMBTIMapperTest {
 	@Autowired
 	private SkinMBTIMapper mapper;
 	
+	// 피부타입별 설명 조회
 	@Test
-	public void selectMBTITest() {
+	public void testSelectMBTI() {
 		
 		String stype = "DRNT";
 		
 		log.info(mapper.selectMBTI(stype));
 	}
+	
+	// 회원 피부타입 진단 결과 저장
+	@Test
+	public void testUpdateMBTI() {
+		
+		String mid = "angz";
+		String mbti = "DRNT";
+		
+		mapper.updateMBTI(mid, mbti);
+	}
+	
+	
 }

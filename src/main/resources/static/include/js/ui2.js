@@ -1,5 +1,5 @@
 $(function(){
-	$('header').addClass('fixed');
+	$('header').addClass('fixed up');
     includeLayout();
     gnbNew();    
     

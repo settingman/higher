@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hyundai.higher.domain.product.ProductDTO;
 import com.hyundai.higher.domain.product.ProductDetailDTO;
 import com.hyundai.higher.mapper.similarCos.SimilarCosMapper;
 import com.hyundai.higher.service.product.ProductService;
@@ -52,6 +53,27 @@ public class SimilarCosServiceImpl implements SimilarCosService {
 		
 		
 		return null;
+	}
+
+	// 상품명 검색 조회(AJAX)
+	@Override
+	public List<ProductDTO> prodNameList(String keyword) {
+
+		return mapper.searchProdList(keyword);
+	}
+
+	// 상품 조회
+	@Override
+	public List<ProductDTO> prodList(String keyword) {
+
+		return mapper.selectProdList(keyword);
+	}
+
+	// 인기 상품 목록
+	@Override
+	public List<ProductDTO> bestProdList() {
+
+		return mapper.selectBestProdList();
 	}
 
 }

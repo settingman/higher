@@ -11,5 +11,11 @@
 		FROM skinMBTI
 		WHERE stype=#{stype}
 	</select>
+	
+	<update id="updateMBTI">
+		UPDATE member
+		SET mbti=#{mbti}
+		WHERE mid=#{mid}
+	</update>
 
 </mapper>

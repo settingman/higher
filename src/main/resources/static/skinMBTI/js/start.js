@@ -3,6 +3,7 @@ const qna = document.querySelector("#qna");
 const result = document.querySelector("#result");
 const endPoint = 12;
 const resultScore = [0, 0, 0, 0];
+let mbti = '';
 
 function calResult(){
   for(var i=0; i<=3; i++){
@@ -54,9 +55,10 @@ function setResult(){
   const resultKeyword = document.querySelector(".resultKeyword");
   resultName.innerHTML = setWord[0];
   resultKeyword.innerHTML = setWord[1];
+  mbti = setWord[0];
   
   $.ajax({
-	url : '/skinMBTI/getData?stype=' + setWord[0],
+	url : '/skinMBTIRest/getData?stype=' + mbti,
 	type : 'get',
 	success : function(r){
 		$("#title").text('"' + r.stitle + '"');

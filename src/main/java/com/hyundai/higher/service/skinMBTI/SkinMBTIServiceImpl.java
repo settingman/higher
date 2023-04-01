@@ -12,10 +12,18 @@ public class SkinMBTIServiceImpl implements SkinMBTIService {
 	@Autowired
 	private SkinMBTIMapper mapper;
 	
+	// 피부 타입별 정보 선택
 	@Override
 	public SkinMBTIDTO selectSkinMBTI(String stype) {
 
 		return mapper.selectMBTI(stype);
+	}
+
+	// 피부타입 저장
+	@Override
+	public void updateMBTI(String mid, String mbti) {
+		
+		mapper.updateMBTI(mid, mbti);
 	}
 
 }
