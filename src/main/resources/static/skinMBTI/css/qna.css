@@ -10,7 +10,6 @@
 
 #qna-content-wrap{
 	background-color: #fff;
-    padding: 25px 50px 40px;
     border-radius: 70px;
 }
 
@@ -20,8 +19,10 @@
 }
 
 #progress-wrap ul{
-	overflow: hidden;
-	display: flex;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
 }
 
 .prog-box{
@@ -77,21 +78,20 @@
 }
 
 #camera-box{
-	margin-top: 40px;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 
 #camera-box div{
-	width: 450px;
+	width: 400px;
     margin: 0 auto;
     margin-top: 30px;
     margin-bottom: 20px;
 }
 
 #cameraview{
-/* 	border: 1px solid #776460; */
-	border-radius: 30px;
-	width: 450px;
+	border-radius: 20px;
+	width: 400px;
+    border: 6px solid #e9e9e9;
 }
 
 .q-box {
@@ -121,24 +121,34 @@
 
 .dir-wrap{
 	text-align: center;
-	margin-top: 20px;
-	margin-bottom: 5px;
+	margin-top: 30px;
+	margin-bottom: 40px;
 }
 
 .dir-wrap button{
-    border: 1px solid #776460;
-    color: #776460;
+position: relative;
+    display: inline-block;
+    min-width: 100px;
+    border: 1px solid #8f8f8f;
+    border-radius: 0;
+    -webkit-box-sizing: border-box;
     background-color: #fff;
-    border-radius: 12px;
-    padding: 10px 25px;
-    margin: 10px 5px;
-    font-size: 15px;
+    color: #666;
+    line-height: 38px;
+    text-align: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+    min-width: 140px;
+    line-height: 46px;
+    font-size: 16px;
+    border: 1px solid #bfae90 !important;
+    background-color: #bfae90 !important;
+    color: #fff;
 }
 
-.dir-wrap button:hover{
-	color: #fff;
-	background-color: #776460;
-	border: 1px solid #776460;
+#prev{
+	border: 1px solid #666 !important;
+    background-color: #666 !important;
 }
 
 video {
@@ -1362,6 +1372,7 @@ a:focus, a:active {
 	background: center url(../images/answerExOff.png) no-repeat;
 	background-size: 100%;
 	transition: all .3s ease-in-out;
+	cursor: pointer;
 }
 
 .survey__radio label div:hover {
@@ -1373,14 +1384,17 @@ a:focus, a:active {
 	width: 130px;
 	background: center url(../images/answerExOn.png) no-repeat;
 	background-size: 100%;
-	border: 4px solid pink;
+	border: 4px solid darkgray;
 	border-radius: 70px;
 }
 
 .survey__radio span {
-	color: #7f7f7f;
-	margin-top: 15px;
-	font-weight: 600;
+    color: darkslategray;
+    margin-top: 21px;
+    word-break: keep-all;
+    font-size: 15px;
+    font-family: 'notokr-demilight';
+    line-height: 20px;
 }
 
 .survey__radio input[type=radio]:checked+label span {
@@ -1422,15 +1436,8 @@ a:focus, a:active {
 	border: 1px solid #7f7f7f;
 	border-radius: 10px;
 	padding: 10px 30px;
-	margin-left: 10px;
 	font-size: medium;
 	transition: all .3s ease-in-out;
-}
-
-.survey__btn:hover {
-	background-color: #77c8d7;
-	color: white;
-	border: 0px;
 }
 
 .survey__chapter__items {
@@ -1480,9 +1487,10 @@ a:focus, a:active {
 
 .survey__form {
 	width: 820px;
-	height: 350px;
+	height: 320px;
 	position: relative;
 	overflow: hidden;
+	margin: 0 auto;
 }
 
 .question__all {

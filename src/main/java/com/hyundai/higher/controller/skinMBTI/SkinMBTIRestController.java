@@ -9,7 +9,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.hyundai.higher.domain.skinMBTI.SkinMBTIDTO;
 import com.hyundai.higher.service.skinMBTI.SkinMBTIService;
+import com.sun.tools.sjavac.Log;
 
+import lombok.extern.log4j.Log4j2;
+
+@Log4j2
 @RestController
 @RequestMapping("/skinMBTIRest")
 public class SkinMBTIRestController {
@@ -17,15 +21,8 @@ public class SkinMBTIRestController {
 	@Autowired
 	private SkinMBTIService service;
 	
-	// MBTI 설명
-	@GetMapping("/getData")
-	public SkinMBTIDTO getSkinMBTIData(@RequestParam("stype") String stype) {
-				
-		return service.selectSkinMBTI(stype);
-	}
-	
-	@PostMapping("/update")
+	@GetMapping("/saveMBTI")
 	public void updateMBTI(@RequestParam("mbti") String mbti) {
-		
+		service.updateMBTI("angz", mbti);
 	}
 }

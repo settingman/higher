@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="ko" class="js" xmlns:sec="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>더현대뷰티 - 현대백화점 공식 화장품 온라인몰</title>
+<link rel="shortcut icon" href="https://www.thehyundai.com/favicon.ico">
+<link rel="canonical" href="https://www.larocheposay.co.kr/main.do">
+<script
+	src="https://connect.facebook.net/signals/config/507474643422972?v=2.9.100&amp;r=stable"
+	async=""></script>
+<script async="" src="https://connect.facebook.net/en_US/fbevents.js"></script>
+<script async=""
+	src="//img-amc.tason.com/resources/js/et.v2.min.js?_t=1680284807734&amp;appKey=dce87c12e15a11e686ea"></script>
+<script
+	src="https://connect.facebook.net/signals/config/507474643422972?v=2.9.100&amp;r=stable"
+	async=""></script>
+<script async="" src="https://connect.facebook.net/en_US/fbevents.js"></script>
+<script async=""
+	src="//img-amc.tason.com/resources/js/et.v2.min.js?_t=1680284678141&amp;appKey=dce87c12e15a11e686ea"></script>
+<script type="text/javascript"
+	src="https://www.larocheposay.co.kr/js/libs/jquery.min.js?v=36201204202301"></script>
+<script type="text/javascript"
+	src="https://www.larocheposay.co.kr/js/libs/jquery-ui.min.js?v=36201204202301"></script>
+<script type="text/javascript"
+	src="https://www.larocheposay.co.kr/js/libs/jquery.form.min.js"
+	async=""></script>
+<script type="text/javascript"
+	src="https://www.larocheposay.co.kr/js/libs/jquery.validate.min.js"
+	async=""></script>
+<script type="text/javascript"
+	src="https://www.larocheposay.co.kr/js/libs/jquery.marquee.min.js"></script>
+<script type="text/javascript"
+	src="https://www.larocheposay.co.kr/js/libs/masonry.pkgd.min.js"></script>
+<script type="text/javascript"
+	src="https://www.larocheposay.co.kr/js/libs/jquery.bpopup.min.js"
+	async=""></script>
+<script type="text/javascript"
+	src="https://www.larocheposay.co.kr/js/moment.min.js" async=""></script>
+<script type="text/javascript"
+	src="https://www.larocheposay.co.kr/js/libs/util.jquery.extend.js"></script>
+<script type="text/javascript"
+	src="https://www.larocheposay.co.kr/js/libs/util.js"></script>
+<script type="text/javascript"
+	src="https://www.larocheposay.co.kr/js/libs/lib.js"></script>
+<link rel="stylesheet" type="text/css" href="/common/css/common.css">
+<link rel="stylesheet" type="text/css" href="/common/css/layout.css">
+<link rel="stylesheet" type="text/css" href="/common/css/content.css">
+<link rel="stylesheet" type="text/css"
+	href="/common/css/libs/ie9.swiper.css">
+<script type="text/javascript"
+	src="https://www.larocheposay.co.kr/js/libs/ie9.swiper.min.js"></script>
+<script type="text/javascript"
+	src="https://www.larocheposay.co.kr/js/libs/jquery.marquee.min.js"></script>
+<script type="text/javascript"
+	src="https://www.larocheposay.co.kr/js/libs/TweenMax.min.js"></script>
+<script type="text/javascript"
+	src="https://www.larocheposay.co.kr/js/common/popup.js?v=36201204202301"></script>
+<script type="text/javascript"
+	src="https://www.larocheposay.co.kr/js/common/common.js?v=36201204202301"></script>
+<script type="text/javascript"
+	src="https://www.larocheposay.co.kr/js/common/common_pc.js?v=36201204202301"></script>
+<script type="text/javascript"
+	src="https://www.larocheposay.co.kr/js/common/common_front.js?v=36201204202301"></script>
+<script type="text/javascript"
+	src="https://www.larocheposay.co.kr/js/common_dev.js?v=36201204202301"></script>
+<script type="text/javascript"
+	src="https://www.larocheposay.co.kr/js/libs/jquery.bxslider.min.js"></script>
+<script type="text/javascript"
+	src="https://www.larocheposay.co.kr/js/libs/flipclock.min.js"></script>
+<script async=""
+	src="https://www.larocheposay.co.kr//larocheposaycokr.api.useinsider.com/ins.js?id=10003736"></script>
+<link rel="stylesheet" type="text/css"
+	href="https://www.larocheposay.co.kr/css/libs/swiper_why.css">
+<script
+	src="https://www.larocheposay.co.kr/js/libs/babel.min.js?v=36201204202301"></script>
+<script
+	src="https://www.larocheposay.co.kr/js/libs/polyfill.min.js?v=36201204202301"></script>
+<script
+	src="https://www.larocheposay.co.kr/js/libs/core-js.min.js?v=36201204202301"></script>
+<script
+	src="https://www.larocheposay.co.kr/js/libs/base64.min.js?v=36201204202301"></script>
+<script
+	src="https://www.larocheposay.co.kr/js/libs/kakaosync.sdk.js?v=36201204202301"></script>
+<script type="text/javascript"
+	src="https://www.larocheposay.co.kr/js/main_pc.js?36201204202301"></script>
+<script type="text/javascript"
+	src="https://www.larocheposay.co.kr/js/libs/jquery.tmpl.min.js"></script>
+
+<!-- <link rel="stylesheet" href="/skinMBTI/css/default.css"> -->
+<!-- <link rel="stylesheet" href="/skinMBTI/css/main.css"> -->
+<link rel="stylesheet" href="/skinMBTI/css/qna.css">
+<link rel="stylesheet" href="/skinMBTI/css/animation.css">
+<link rel="stylesheet" href="/skinMBTI/css/result.css">
+</head>
+
+<body>
+	<div id="wrap">
+		<nav id="skip_navi">
+			<a href="#contents">본문 바로가기</a> <a href="#menu">메뉴 바로가기</a> <a
+				href="#footer">하단 정보 바로가기</a>
+		</nav>
+		<!-- header -->
+		<header id="header" th:insert="~{include/tmp_header}"></header>
+		<!-- /header -->
+
+		<section class="sub_visual_warp">
+			<div class="sub_visual">
+				<img src="/skinMBTI/img/skinMBTI-banner3.jpg"
+					style="width: 100%; height: 210px;">
+				<div class="sub_visual" style="top: -210px;">
+					<h1>
+						피부 <i style="font-family: 'locator-medium';">MBTI</i>
+					</h1>
+					<h2>
+						나의 피부타입에 맞는 제품은?<br> 더현대뷰티가 추천하는 피부 솔루션!
+					</h2>
+				</div>
+			</div>
+		</section>
+		<section id="container">
+			<section id="contents" class="survey_wrap">
+				<div class="first" id="main">
+					<h2>
+						나의 피부는 <span class="fc_blue">어떤 타입</span> 인가요?
+					</h2>
+					<p>더현대뷰티가 회원님만을 위한 맞춤 피부케어 정보를 알려드립니다!</p>
+					<div class="step">
+						<ul>
+							<li><strong>STEP <i>01</i></strong>
+								<p>
+									회원님의 <span class="fc_blue">피부 민감도 및 <br>피부 고민
+									</span>을 체크해 주세요.
+								</p></li>
+							<li><strong>STEP <i>02</i></strong>
+								<p>
+									자가진단 결과와 함께<br> <span class="fc_blue">더현대뷰티가 제안하는<br>
+										맞춤 피부케어 정보 &amp;<br> 추천제품
+									</span>을 확인하세요.
+								</p></li>
+							<li><strong>STEP <i>03</i></strong>
+								<p>
+									첫 참여해 주신 회원님께<br> <span class="fc_blue">20% 할인쿠폰
+										발급!</span><br> 내 피부타입에 맞는<br> 추천제품 알뜰하게 구매하세요.
+								</p></li>
+						</ul>
+						<div class="bottom_radio">
+							<p>
+								민감 정보 수집에 대한 동의 <span>(필수)</span><a href="#privacy_pop"
+									class="layer-pop">약관보기</a>
+							</p>
+							<div class="radio_wrap side">
+								<span class="radiocss"><input type="radio" name="group2"
+									id="radio2_1"><label for="radio2_1"><em>동의</em></label></span>
+								<span class="radiocss"><input type="radio" name="group2"
+									id="radio2_2"><label for="radio2_2"><em>미동의</em></label></span>
+							</div>
+							<!-- 비회원일 경우 -->
+							<!--  <a href="#survey_pop" class="arrow layer-pop">START</a> -->
+							<!-- 회원일 경우 -->
+							<a href="#" class="arrow" onclick="js:begin(); return false;">START</a>
+						</div>
+					</div>
+				</div>
+				<!-- 질문 -->
+				<div id="qna"
+					class="test2 sp-goal-504-1001-64-1645076803677 sp-goal-504-1000-64-1645076803677"
+					style="">
+					<div class="test_top">
+						<h3>기본 정보를 체크해 주세요</h3>
+						<ol class="step_num">
+							<li class="on">1 <span>유수분도</span></li>
+							<li class="">2 <span>민감도</span></li>
+							<li class="">3 <span>색소침착도</span></li>
+							<li>4 <span>주름형성도</span></li>
+							<li>5 <span>측정결과</span></li>
+						</ol>
+					</div>
+					<!-- boxWrap -->
+					<div class="boxWrap">
+
+						<section>
+							<div id="qna-wrap">
+								<div id="qna-content-wrap">
+									<div id="camera-box">
+										<div>
+											<video id="cameraview"></video>
+										</div>
+									</div>
+									<div class="" id="surveyList">
+										<div>
+											<div id="listfrm" class="survey__form">
+												<div class="question__all">
+													<div id="part1" class="question__slider">
+														<div class="part_chk" id="part1_1">
+															<div class="survey__container">
+																<div class="qTitAr">
+																	<p class="qTit">
+																		<span>Q1-1. </span>얼굴을 가까이 봤을 때 모공 수가 많고 크기가 커보이나요?
+																	</p>
+																</div>
+																<div class="survey__radio">
+																	<div class="survey__radio__answer4">
+																		<input style="display: none;" type="radio" id="1_1_1"
+																			name="1" value="1, 전혀 그렇지 않아요 , A1"> <label
+																			for="1_1_1">
+																			<div
+																				style="background: center/contain no-repeat url(/skinMBTI/img/1-1/1-1-1.png);"></div>
+																			<span>전혀 그렇지 않아요</span>
+																		</label>
+																	</div>
+																	<div class="survey__radio__answer4">
+																		<input style="display: none;" type="radio" id="1_1_2"
+																			name="1" value="2, 얼굴의 일부에만 작게 보여요 , A1"> <label
+																			for="1_1_2">
+																			<div
+																				style="background: center/contain no-repeat url(/skinMBTI/img/1-1/1-1-2.png);"></div>
+																			<span>얼굴의 일부에만 작게 보여요</span>
+																		</label>
+																	</div>
+																	<div class="survey__radio__answer4">
+																		<input style="display: none;" type="radio" id="1_1_3"
+																			name="1" value="3, 곳곳에 꽤 도드라져 보여요 , A1"> <label
+																			for="1_1_3">
+																			<div
+																				style="background: center/contain no-repeat url(/skinMBTI/img/1-1/1-1-3.png);"></div>
+																			<span>곳곳에 꽤 도드라져 보여요</span>
+																		</label>
+																	</div>
+																	<div class="survey__radio__answer4">
+																		<input style="display: none;" type="radio" id="1_1_4"
+																			name="1" value="4, 얼굴 전체에 큰 모공이 많아요 , A1"> <label
+																			for="1_1_4">
+																			<div
+																				style="background: center/contain no-repeat url(/skinMBTI/img/1-1/1-1-4.png);"></div>
+																			<span>얼굴 전체에 큰 모공이 많아요</span>
+																		</label>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="part_chk" id="part1_2">
+															<div class="survey__container">
+																<div class="qTitAr">
+																	<p class="qTit">
+																		<span>Q1-2. </span>평소 사진에서 보이는 내 피부는?
+																	</p>
+																</div>
+																<div class="survey__radio">
+																	<div class="survey__radio__answer4">
+																		<input style="display: none;" type="radio" id="1_2_1"
+																			name="2" value="1, 피부에서 빛이 나지 않는다 , A2"> <label
+																			for="1_2_1">
+																			<div
+																				style="background: center/contain no-repeat url(/skinMBTI/img/1-2/1-2-1.png);"></div>
+																			<span>피부에서 빛이 나지 않는다</span>
+																		</label>
+																	</div>
+																	<div class="survey__radio__answer4">
+																		<input style="display: none;" type="radio" id="1_2_2"
+																			name="2" value="2, 때때로 빛이 난다 , A2"> <label
+																			for="1_2_2">
+																			<div
+																				style="background: center/contain no-repeat url(/skinMBTI/img/1-2/1-2-2.png);"></div>
+																			<span>때때로 빛이 난다</span>
+																		</label>
+																	</div>
+																	<div class="survey__radio__answer4">
+																		<input style="display: none;" type="radio" id="1_2_3"
+																			name="2" value="3, 자주 빛이 난다 , A2"> <label
+																			for="1_2_3">
+																			<div
+																				style="background: center/contain no-repeat url(/skinMBTI/img/1-2/1-2-3.png);"></div>
+																			<span>자주 빛이 난다</span>
+																		</label>
+																	</div>
+																	<div class="survey__radio__answer4">
+																		<input style="display: none;" type="radio" id="1_2_4"
+																			name="2" value="4, 항상 빛이 난다 , A2"> <label
+																			for="1_2_4">
+																			<div
+																				style="background: center/contain no-repeat url(/skinMBTI/img/1-2/1-2-4.png);"></div>
+																			<span>항상 빛이 난다</span>
+																		</label>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="part_chk" id="part1_3">
+															<div class="survey__container">
+																<div class="qTitAr">
+																	<p class="qTit">
+																		<span>Q1-3. </span>T존(이마와 코)에 기름기는?
+																	</p>
+																</div>
+																<div class="survey__radio">
+																	<div class="survey__radio__answer4">
+																		<input style="display: none;" type="radio" id="1_3_1"
+																			name="3" value="1, 없다 , A3"> <label
+																			for="1_3_1">
+																			<div
+																				style="background: center/contain no-repeat url(/skinMBTI/img/1-3/1-3-1.png);"></div>
+																			<span>없다</span>
+																		</label>
+																	</div>
+																	<div class="survey__radio__answer4">
+																		<input style="display: none;" type="radio" id="1_3_2"
+																			name="3" value="2, 때때로 있다 , A3"> <label
+																			for="1_3_2">
+																			<div
+																				style="background: center/contain no-repeat url(/skinMBTI/img/1-3/1-3-2.png);"></div>
+																			<span>때때로 있다</span>
+																		</label>
+																	</div>
+																	<div class="survey__radio__answer4">
+																		<input style="display: none;" type="radio" id="1_3_3"
+																			name="3" value="3, 자주 있다 , A3"> <label
+																			for="1_3_3">
+																			<div
+																				style="background: center/contain no-repeat url(/skinMBTI/img/1-3/1-3-3.png);"></div>
+																			<span>자주 있다</span>
+																		</label>
+																	</div>
+																	<div class="survey__radio__answer4">
+																		<input style="display: none;" type="radio" id="1_3_4"
+																			name="3" value="4, 항상 있다 , A3"> <label
+																			for="1_3_4">
+																			<div
+																				style="background: center/contain no-repeat url(/skinMBTI/img/1-3/1-3-4.png);"></div>
+																			<span>항상 있다</span>
+																		</label>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div id="part2" class="question__slider">
+														<div class="part_chk" id="part2_1">
+															<div class="survey__container">
+																<div class="qTitAr">
+																	<p class="qTit">
+																		<span>Q2-1. </span>최근 2주 사이에 생긴 여드름이 얼마나 있었나요?
+																	</p>
+																</div>
+																<div class="survey__radio">
+																	<div class="survey__radio__answer4">
+																		<input style="display: none;" type="radio" id="2_1_1"
+																			name="4" value="1, 없었어요 , B1"> <label
+																			for="2_1_1">
+																			<div
+																				style="background: center/contain no-repeat url(/skinMBTI/img/2-1/2-1-1.png);"></div>
+																			<span>없었어요</span>
+																		</label>
+																	</div>
+																	<div class="survey__radio__answer4">
+																		<input style="display: none;" type="radio" id="2_1_2"
+																			name="4" value="2, 약간 있었어요(1~3개) , B1"> <label
+																			for="2_1_2">
+																			<div
+																				style="background: center/contain no-repeat url(/skinMBTI/img/2-1/2-1-2.png);"></div>
+																			<span>약간 있었어요(1~3개)</span>
+																		</label>
+																	</div>
+																	<div class="survey__radio__answer4">
+																		<input style="display: none;" type="radio" id="2_1_3"
+																			name="4" value="3, 꽤 있었어요(4~6개) , B1"> <label
+																			for="2_1_3">
+																			<div
+																				style="background: center/contain no-repeat url(/skinMBTI/img/2-1/2-1-3.png);"></div>
+																			<span>꽤 있었어요(4~6개)</span>
+																		</label>
+																	</div>
+																	<div class="survey__radio__answer4">
+																		<input style="display: none;" type="radio" id="2_1_4"
+																			name="4" value="4, 많았어요(7개 이상) , B1"> <label
+																			for="2_1_4">
+																			<div
+																				style="background: center/contain no-repeat url(/skinMBTI/img/2-1/2-1-4.png);"></div>
+																			<span>많았어요(7개 이상)</span>
+																		</label>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="part_chk" id="part2_2">
+															<div class="survey__container">
+																<div class="qTitAr">
+																	<p class="qTit">
+																		<span>Q2-2. </span>14캐럿 금이 아닌 보석을 착용할 경우 두드러기는?
+																	</p>
+																</div>
+																<div class="survey__radio">
+																	<div class="survey__radio__answer4">
+																		<input style="display: none;" type="radio" id="2_2_1"
+																			name="5" value="1, 없다 , B2"> <label
+																			for="2_2_1">
+																			<div
+																				style="background: center/contain no-repeat url(/skinMBTI/img/2-2/2-2-1.png);"></div>
+																			<span>없다</span>
+																		</label>
+																	</div>
+																	<div class="survey__radio__answer4">
+																		<input style="display: none;" type="radio" id="2_2_2"
+																			name="5" value="2, 거의 없다 , B2"> <label
+																			for="2_2_2">
+																			<div
+																				style="background: center/contain no-repeat url(/skinMBTI/img/2-2/2-2-2.png);"></div>
+																			<span>거의 없다</span>
+																		</label>
+																	</div>
+																	<div class="survey__radio__answer4">
+																		<input style="display: none;" type="radio" id="2_2_3"
+																			name="5" value="3, 종종 있다 , B2"> <label
+																			for="2_2_3">
+																			<div
+																				style="background: center/contain no-repeat url(/skinMBTI/img/2-2/2-2-3.png);"></div>
+																			<span>종종 있다</span>
+																		</label>
+																	</div>
+																	<div class="survey__radio__answer4">
+																		<input style="display: none;" type="radio" id="2_2_4"
+																			name="5" value="4, 항상 있다 , B2"> <label
+																			for="2_2_4">
+																			<div
+																				style="background: center/contain no-repeat url(/skinMBTI/img/2-2/2-2-4.png);"></div>
+																			<span>항상 있다</span>
+																		</label>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="part_chk" id="part2_3">
+															<div class="survey__container">
+																<div class="qTitAr">
+																	<p class="qTit">
+																		<span>Q2-3. </span>세안 직후 얼굴에 홍조나 붉은 기가 보이나요?
+																	</p>
+																</div>
+																<div class="survey__radio">
+																	<div class="survey__radio__answer4">
+																		<input style="display: none;" type="radio" id="2_3_1"
+																			name="6" value="1, 전혀 안 보여요 , B3"> <label
+																			for="2_3_1">
+																			<div
+																				style="background: center/contain no-repeat url(/skinMBTI/img/2-3/2-3-1.png);"></div>
+																			<span>전혀 안 보여요</span>
+																		</label>
+																	</div>
+																	<div class="survey__radio__answer4">
+																		<input style="display: none;" type="radio" id="2_3_2"
+																			name="6" value="2, 지금은 없지만 가끔 보여요 , B3"> <label
+																			for="2_3_2">
+																			<div
+																				style="background: center/contain no-repeat url(/skinMBTI/img/2-3/2-3-2.png);"></div>
+																			<span>지금은 없지만 가끔 보여요</span>
+																		</label>
+																	</div>
+																	<div class="survey__radio__answer4">
+																		<input style="display: none;" type="radio" id="2_3_3"
+																			name="6" value="3, 부분적으로 붉게 보여요 , B3"> <label
+																			for="2_3_3">
+																			<div
+																				style="background: center/contain no-repeat url(/skinMBTI/img/2-3/2-3-3.png);"></div>
+																			<span>부분적으로 붉게 보여요</span>
+																		</label>
+																	</div>
+																	<div class="survey__radio__answer4">
+																		<input style="display: none;" type="radio" id="2_3_4"
+																			name="6" value="4, 전체적으로 붉게 보여요 , B3"> <label
+																			for="2_3_4">
+																			<div
+																				style="background: center/contain no-repeat url(/skinMBTI/img/2-3/2-3-4.png);"></div>
+																			<span>전체적으로 붉게 보여요</span>
+																		</label>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div id="part3" class="question__slider">
+														<div class="part_chk" id="part3_1">
+															<div class="survey__container">
+																<div class="qTitAr">
+																	<p class="qTit">
+																		<span>Q3-1. </span>얼굴에 주근깨, 잡티, 기미가 두드러지게 보이나요?
+																	</p>
+																</div>
+																<div class="survey__radio">
+																	<div class="survey__radio__answer4">
+																		<input style="display: none;" type="radio" id="3_1_1"
+																			name="7" value="1, 전혀 안 보여요 , C1"> <label
+																			for="3_1_1">
+																			<div
+																				style="background: center/contain no-repeat url(/skinMBTI/img/3-1/3-1-1.png);"></div>
+																			<span>전혀 안 보여요</span>
+																		</label>
+																	</div>
+																	<div class="survey__radio__answer4">
+																		<input style="display: none;" type="radio" id="3_1_2"
+																			name="7" value="2, 거의 안 보여요 , C1"> <label
+																			for="3_1_2">
+																			<div
+																				style="background: center/contain no-repeat url(/skinMBTI/img/3-1/3-1-2.png);"></div>
+																			<span>거의 안 보여요</span>
+																		</label>
+																	</div>
+																	<div class="survey__radio__answer4">
+																		<input style="display: none;" type="radio" id="3_1_3"
+																			name="7" value="3, 약간 눈에 띄어요 , C1"> <label
+																			for="3_1_3">
+																			<div
+																				style="background: center/contain no-repeat url(/skinMBTI/img/3-1/3-1-3.png);"></div>
+																			<span>약간 눈에 띄어요</span>
+																		</label>
+																	</div>
+																	<div class="survey__radio__answer4">
+																		<input style="display: none;" type="radio" id="3_1_4"
+																			name="7" value="4, 곳곳에 많이 보여요 , C1"> <label
+																			for="3_1_4">
+																			<div
+																				style="background: center/contain no-repeat url(/skinMBTI/img/3-1/3-1-4.png);"></div>
+																			<span>곳곳에 많이 보여요</span>
+																		</label>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="part_chk" id="part3_2">
+															<div class="survey__container">
+																<div class="qTitAr">
+																	<p class="qTit">
+																		<span>Q3-2. </span>하루 중 몇 시간 정도 강한 햇빛에 노출되나요?
+																	</p>
+																</div>
+																<div class="survey__radio">
+																	<div class="survey__radio__answer4">
+																		<input style="display: none;" type="radio" id="3_2_1"
+																			name="8" value="1, 노출되지 않아요 , C2"> <label
+																			for="3_2_1">
+																			<div
+																				style="background: center/contain no-repeat url(/skinMBTI/img/3-2/3-2-1.png);"></div>
+																			<span>노출되지 않아요</span>
+																		</label>
+																	</div>
+																	<div class="survey__radio__answer4">
+																		<input style="display: none;" type="radio" id="3_2_2"
+																			name="8" value="2, 1시간 이내로 노출돼요 , C2"> <label
+																			for="3_2_2">
+																			<div
+																				style="background: center/contain no-repeat url(/skinMBTI/img/3-2/3-2-2.png);"></div>
+																			<span>1시간 이내로 노출돼요</span>
+																		</label>
+																	</div>
+																	<div class="survey__radio__answer4">
+																		<input style="display: none;" type="radio" id="3_2_3"
+																			name="8" value="3, 1~2시간 이상 노출돼요 , C2"> <label
+																			for="3_2_3">
+																			<div
+																				style="background: center/contain no-repeat url(/skinMBTI/img/3-2/3-2-3.png);"></div>
+																			<span>1~2시간 이상 노출돼요</span>
+																		</label>
+																	</div>
+																	<div class="survey__radio__answer4">
+																		<input style="display: none;" type="radio" id="3_2_4"
+																			name="8" value="4, 반나절 이상 노출돼요 , C2"> <label
+																			for="3_2_4">
+																			<div
+																				style="background: center/contain no-repeat url(/skinMBTI/img/3-2/3-2-4.png);"></div>
+																			<span>반나절 이상 노출돼요</span>
+																		</label>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="part_chk" id="part3_3">
+															<div class="survey__container">
+																<div class="qTitAr">
+																	<p class="qTit">
+																		<span>Q3-3. </span>여드름이나 트러블이 생겼던 곳에 흔적이 남아있나요?
+																	</p>
+																</div>
+																<div class="survey__radio">
+																	<div class="survey__radio__answer4">
+																		<input style="display: none;" type="radio" id="3_3_1"
+																			name="9" value="1, 흔적이 남지 않아요 , C3"> <label
+																			for="3_3_1">
+																			<div
+																				style="background: center/contain no-repeat url(/skinMBTI/img/3-3/3-3-1.png);"></div>
+																			<span>흔적이 남지 않아요</span>
+																		</label>
+																	</div>
+																	<div class="survey__radio__answer4">
+																		<input style="display: none;" type="radio" id="3_3_2"
+																			name="9" value="2, 연하게 흔적이 남지만 금방 사라져요 , C3">
+																		<label for="3_3_2">
+																			<div
+																				style="background: center/contain no-repeat url(/skinMBTI/img/3-3/3-3-2.png);"></div>
+																			<span>연하게 흔적이 남지만 금방 사라져요</span>
+																		</label>
+																	</div>
+																	<div class="survey__radio__answer4">
+																		<input style="display: none;" type="radio" id="3_3_3"
+																			name="9" value="3, 진한 흔적이 며칠간 지속돼요 , C3"> <label
+																			for="3_3_3">
+																			<div
+																				style="background: center/contain no-repeat url(/skinMBTI/img/3-3/3-3-3.png);"></div>
+																			<span>진한 흔적이 며칠간 지속돼요</span>
+																		</label>
+																	</div>
+																	<div class="survey__radio__answer4">
+																		<input style="display: none;" type="radio" id="3_3_4"
+																			name="9" value="4, 매우 진한 흔적이 일주일 넘게 지속돼요 , C3">
+																		<label for="3_3_4">
+																			<div
+																				style="background: center/contain no-repeat url(/skinMBTI/img/3-3/3-3-4.png);"></div>
+																			<span>매우 진한 흔적이 일주일 넘게 지속돼요</span>
+																		</label>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div id="part4" class="question__slider">
+														<div class="part_chk" id="part4_1">
+															<div class="survey__container">
+																<div class="qTitAr">
+																	<p class="qTit">
+																		<span>Q4-1. </span>입을 다물고 살짝 미소 지어보세요. 입 주변에 팔자주름이 생기나요?
+																	</p>
+																</div>
+																<div class="survey__radio">
+																	<div class="survey__radio__answer4">
+																		<input style="display: none;" type="radio" id="4_1_1"
+																			name="10" value="1, 전혀 생기지 않아요 , D1"> <label
+																			for="4_1_1">
+																			<div
+																				style="background: center/contain no-repeat url(/skinMBTI/img/4-1/4-1-1.png);"></div>
+																			<span>전혀 생기지 않아요</span>
+																		</label>
+																	</div>
+																	<div class="survey__radio__answer4">
+																		<input style="display: none;" type="radio" id="4_1_2"
+																			name="10" value="2, 미소 지을 때만 약간 생겨요 , D1"> <label
+																			for="4_1_2">
+																			<div
+																				style="background: center/contain no-repeat url(/skinMBTI/img/4-1/4-1-2.png);"></div>
+																			<span>미소 지을 때만 약간 생겨요</span>
+																		</label>
+																	</div>
+																	<div class="survey__radio__answer4">
+																		<input style="display: none;" type="radio" id="4_1_3"
+																			name="10" value="3, 미소 지을 때 진하게 생겨요 , D1"> <label
+																			for="4_1_3">
+																			<div
+																				style="background: center/contain no-repeat url(/skinMBTI/img/4-1/4-1-3.png);"></div>
+																			<span>미소 지을 때 진하게 생겨요</span>
+																		</label>
+																	</div>
+																	<div class="survey__radio__answer4">
+																		<input style="display: none;" type="radio" id="4_1_4"
+																			name="10" value="4, 미소 짓지 않아도 생겨요 , D1"> <label
+																			for="4_1_4">
+																			<div
+																				style="background: center/contain no-repeat url(/skinMBTI/img/4-1/4-1-4.png);"></div>
+																			<span>미소 짓지 않아도 생겨요</span>
+																		</label>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="part_chk" id="part4_2">
+															<div class="survey__container">
+																<div class="qTitAr">
+																	<p class="qTit">
+																		<span>Q4-2. </span>살면서 언제라도 1년에 2주 이하의 계절 태닝을 해본적은?
+																	</p>
+																</div>
+																<div class="survey__radio">
+																	<div class="survey__radio__answer4">
+																		<input style="display: none;" type="radio" id="4_2_1"
+																			name="11" value="1, 없다 , D2"> <label
+																			for="4_2_1">
+																			<div
+																				style="background: center/contain no-repeat url(/skinMBTI/img/4-2/4-2-1.png);"></div>
+																			<span>없다</span>
+																		</label>
+																	</div>
+																	<div class="survey__radio__answer4">
+																		<input style="display: none;" type="radio" id="4_2_2"
+																			name="11" value="2, 1~5년 동안 , D2"> <label
+																			for="4_2_2">
+																			<div
+																				style="background: center/contain no-repeat url(/skinMBTI/img/4-2/4-2-2.png);"></div>
+																			<span>1~5년 동안</span>
+																		</label>
+																	</div>
+																	<div class="survey__radio__answer4">
+																		<input style="display: none;" type="radio" id="4_2_3"
+																			name="11" value="3, 5~10년 동안 , D2"> <label
+																			for="4_2_3">
+																			<div
+																				style="background: center/contain no-repeat url(/skinMBTI/img/4-2/4-2-3.png);"></div>
+																			<span>5~10년 동안</span>
+																		</label>
+																	</div>
+																	<div class="survey__radio__answer4">
+																		<input style="display: none;" type="radio" id="4_2_4"
+																			name="11" value="4, 10년 이상 , D2"> <label
+																			for="4_2_4">
+																			<div
+																				style="background: center/contain no-repeat url(/skinMBTI/img/4-2/4-2-4.png);"></div>
+																			<span>10년 이상</span>
+																		</label>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="part_chk" id="part4_3">
+															<div class="survey__container">
+																<div class="qTitAr">
+																	<p class="qTit">
+																		<span>Q4-3. </span>평소 과일이나 채소를 얼마나 자주 먹나요?
+																	</p>
+																</div>
+																<div class="survey__radio">
+																	<div class="survey__radio__answer4">
+																		<input style="display: none;" type="radio" id="4_3_1"
+																			name="12" value="1, 하루에 세 번은 먹어요 , D3"> <label
+																			for="4_3_1">
+																			<div
+																				style="background: center/contain no-repeat url(/skinMBTI/img/4-3/4-3-1.png);"></div>
+																			<span>하루에 세 번은 먹어요</span>
+																		</label>
+																	</div>
+																	<div class="survey__radio__answer4">
+																		<input style="display: none;" type="radio" id="4_3_2"
+																			name="12" value="2, 하루에 한 번은 먹어요 , D3"> <label
+																			for="4_3_2">
+																			<div
+																				style="background: center/contain no-repeat url(/skinMBTI/img/4-3/4-3-2.png);"></div>
+																			<span>하루에 한 번은 먹어요</span>
+																		</label>
+																	</div>
+																	<div class="survey__radio__answer4">
+																		<input style="display: none;" type="radio" id="4_3_3"
+																			name="12" value="3, 어쩌다 가끔 먹어요 , D3"> <label
+																			for="4_3_3">
+																			<div
+																				style="background: center/contain no-repeat url(/skinMBTI/img/4-3/4-3-3.png);"></div>
+																			<span>어쩌다 가끔 먹어요</span>
+																		</label>
+																	</div>
+																	<div class="survey__radio__answer4">
+																		<input style="display: none;" type="radio" id="4_3_4"
+																			name="12" value="4, 전혀 안 먹어요 , D3"> <label
+																			for="4_3_4">
+																			<div
+																				style="background: center/contain no-repeat url(/skinMBTI/img/4-3/4-3-4.png);"></div>
+																			<span>전혀 안 먹어요</span>
+																		</label>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+									</div>
+									<div class="dir-wrap">
+										<button class="survey__btn prev" id="prev"
+											onclick="move('prev')">이전</button>
+										<button class="survey__btn next" id="next"
+											onclick="move('next')">다음</button>
+										<!-- <button class="survey__btn" id="finish" onclick="move('next')">결과보기</button> -->
+									</div>
+								</div>
+
+							</div>
+
+						</section>
+
+
+
+
+
+
+						<!-- //질문 -->
+						<!-- //자가진단 영역 -->
+					</div>
+					<!-- //boxWrap -->
+
+
+				</div>
+
+
+
+
+
+				<div class="tip_wrap">
+					<ul>
+						<li><strong>내 친구도 알고보면 민감성 피부? </strong>
+							<p>
+								민감성 피부로 고민하는 친구들이 있다면?<br> 라로슈포제 피부 민감도 자가진단을 공유해 주세요.
+							</p> <span class="share"> <a
+								href="javascript:shareFacebook();" class="facebook">facebook
+									공유</a> <a
+								href="javascript:copy_trackback('https://www.larocheposay.co.kr:443/skinlife/selfConsult.do');"
+								class="url">URL 공유</a>
+						</span></li>
+						<li><strong>추천제품 20% 할인받고 알뜰구매!</strong>
+							<p>
+								자가진단 참여 완료 시 [20% 할인] 쿠폰 발급!<br> 나의 피부타입에 맞는 추천제품 확인하고<br>
+								할인쿠폰으로 알뜰하게 구매하세요. <i>(참여 최초 1회에 한해 아이디 당 쿠폰 발급)</i>
+							</p> <a href="https://www.larocheposay.co.kr/member/auth.do"
+							class="btn_base move">회원가입</a></li>
+					</ul>
+				</div>
+			</section>
+			<!-- //contents -->
+		</section>
+		<form id="resultFrm" method="GET" action="/skinMBTI/result">
+			<input type="hidden" id="mbti" name="mbti">
+			<input type="hidden" id="score1" name="score1">
+			<input type="hidden" id="score2" name="score2">
+			<input type="hidden" id="score3" name="score3">
+			<input type="hidden" id="score4" name="score4">
+		</form>
+		
+		
+		<section id="survey_pop" class="layerpop_warp">
+			<div class="layerpop blue" style="width: 460px;">
+				<div class="layerpop_head">
+					<h1>로그인</h1>
+				</div>
+				<div class="layerpop_cont">
+					<div class="login_cont">
+						<p>
+							회원 로그인 후 참여 가능합니다.<br> <i class="fc_blue">첫 참여 완료 시,
+								[20% 할인]</i> 쿠폰이 발급됩니다.<br> <em
+								style="color: #8f8f8f; margin-top: 10px;">(발급된 쿠폰은 MY 혜택관리
+								&gt; 쿠폰 현황에서 확인가능)</em>
+						</p>
+						<div class="btn_wrap center mt30">
+							<button type="button" class="btn_base blue act"
+								onclick="location.href='/member/login.do';">로그인</button>
+							<button type="button" onclick="cancel_pop( $(this) );"
+								class="btn_base darkgray act">취소</button>
+						</div>
+					</div>
+				</div>
+				<button type="button" class="close">닫기</button>
+			</div>
+		</section>
+
+		<script src="/skinMBTI/js/video.js"></script>
+		<script>
+			mainInit();
+		</script>
+		<script src="/skinMBTI/js/start.js" charset="UTF-8"></script>
+		<script src="/skinMBTI/js/qna.js" charset="UTF-8"></script>
+
+		<!-- //container -->
+
+		<!-- footer -->
+		<div class="include-footer" th:insert="~{include/tmp_footer}"></div>
+		<!-- /footer -->
+	</div>
+</body>
+
+</html>

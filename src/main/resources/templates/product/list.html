@@ -1,420 +1,396 @@
 <!DOCTYPE html>
-<html lang="ko">
-<head>
-<title>The Hyundai Beauty - 더현대뷰티</title>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
-<link rel="stylesheet" href="/include/css/reset.css">
-<link rel="stylesheet" href="/include/css/style.css">
-<link rel="stylesheet" href="/include/css/swiper.min.css">
-<link rel="stylesheet" type="text/css"
-	href="https://www.tamburins.com/theme/tam/css/index.php?ver=1680007209">
-<link rel="stylesheet"
-	href="https://www.tamburins.com/src/assets/scss/main.min.css?ver=1680007209">
-<link rel="stylesheet"
-	href="https://www.tamburins.com/theme/tam/css/lib/choices.min.css">
-<script type="text/javascript" async=""
-	src="https://www.google-analytics.com/analytics.js"></script>
-<script async="" src="//www.googletagmanager.com/gtm.js?id=GTM-N2P448C"></script>
-<script src="/include/js/lib/jquery.min.js"></script>
-<script src="/include/js/lib/TweenMax.min.js"></script>
-<script src="/include/js/lib/swiper.min.js"></script>
-<script src="/include/js/ui.js"></script>
-<script src="/include/js/lib/jquery.form.min.js"></script>
-<script src="/include/js/lib/jquery.validate.min.js"></script>
-<script src="/include/js/lib/vue.min.js"></script>
-<script src="/include/js/lib/jquery.cookie.js"></script>
-<script src="/include/js/lib/moment.min.js"></script>
-<script src="/include/js/lib/moment-timezone-with-data.min.js"></script>
-<script src="/include/js/hanbang/app.js"></script>
-</head>
+<html lang="ko" class="js" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>더현대뷰티 - 현대백화점 공식 화장품 온라인몰</title>
+    <link rel="shortcut icon" href="https://www.thehyundai.com/favicon.ico">
+    <link rel="canonical" href="https://www.larocheposay.co.kr/main.do">
+    <script src="https://connect.facebook.net/signals/config/507474643422972?v=2.9.100&amp;r=stable" async=""></script>
+    <script async="" src="https://connect.facebook.net/en_US/fbevents.js"></script>
+    <script async=""
+      src="//img-amc.tason.com/resources/js/et.v2.min.js?_t=1680284807734&amp;appKey=dce87c12e15a11e686ea"></script>
+    <script src="https://connect.facebook.net/signals/config/507474643422972?v=2.9.100&amp;r=stable" async=""></script>
+    <script async="" src="https://connect.facebook.net/en_US/fbevents.js"></script>
+    <script async=""
+      src="//img-amc.tason.com/resources/js/et.v2.min.js?_t=1680284678141&amp;appKey=dce87c12e15a11e686ea"></script>
+    <script type="text/javascript" src="https://www.larocheposay.co.kr/js/libs/jquery.min.js?v=36201204202301"></script>
+    <script type="text/javascript"
+      src="https://www.larocheposay.co.kr/js/libs/jquery-ui.min.js?v=36201204202301"></script>
+    <script type="text/javascript" src="https://www.larocheposay.co.kr/js/libs/jquery.form.min.js" async=""></script>
+    <script type="text/javascript" src="https://www.larocheposay.co.kr/js/libs/jquery.validate.min.js" async=""></script>
+    <script type="text/javascript" src="https://www.larocheposay.co.kr/js/libs/jquery.marquee.min.js"></script>
+    <script type="text/javascript" src="https://www.larocheposay.co.kr/js/libs/masonry.pkgd.min.js"></script>
+    <script type="text/javascript" src="https://www.larocheposay.co.kr/js/libs/jquery.bpopup.min.js" async=""></script>
+    <script type="text/javascript" src="https://www.larocheposay.co.kr/js/moment.min.js" async=""></script>
+    <script type="text/javascript" src="https://www.larocheposay.co.kr/js/libs/util.jquery.extend.js"></script>
+    <script type="text/javascript" src="https://www.larocheposay.co.kr/js/libs/util.js"></script>
+    <script type="text/javascript" src="https://www.larocheposay.co.kr/js/libs/lib.js"></script>
+    <link rel="stylesheet" type="text/css" href="/common/css/common.css">
+    <link rel="stylesheet" type="text/css" href="/common/css/layout.css">
+    <link rel="stylesheet" type="text/css" href="/common/css/content.css">
+    <link rel="stylesheet" type="text/css" href="/common/css/libs/ie9.swiper.css">
+    <script type="text/javascript" src="https://www.larocheposay.co.kr/js/libs/ie9.swiper.min.js"></script>
+    <script type="text/javascript" src="https://www.larocheposay.co.kr/js/libs/jquery.marquee.min.js"></script>
+    <script type="text/javascript" src="https://www.larocheposay.co.kr/js/libs/TweenMax.min.js"></script>
+    <script type="text/javascript" src="https://www.larocheposay.co.kr/js/common/popup.js?v=36201204202301"></script>
+    <script type="text/javascript" src="https://www.larocheposay.co.kr/js/common/common.js?v=36201204202301"></script>
+    <script type="text/javascript" src="https://www.larocheposay.co.kr/js/common/common_pc.js?v=36201204202301"></script>
+    <script type="text/javascript"
+      src="https://www.larocheposay.co.kr/js/common/common_front.js?v=36201204202301"></script>
+    <script type="text/javascript" src="https://www.larocheposay.co.kr/js/common_dev.js?v=36201204202301"></script>
+    <script type="text/javascript" src="https://www.larocheposay.co.kr/js/libs/jquery.bxslider.min.js"></script>
+    <script type="text/javascript" src="https://www.larocheposay.co.kr/js/libs/flipclock.min.js"></script>
+    <script async=""
+      src="https://www.larocheposay.co.kr//larocheposaycokr.api.useinsider.com/ins.js?id=10003736"></script>
+    <link rel="stylesheet" type="text/css" href="https://www.larocheposay.co.kr/css/libs/swiper_why.css">
+    <script src="https://www.larocheposay.co.kr/js/libs/babel.min.js?v=36201204202301"></script>
+    <script src="https://www.larocheposay.co.kr/js/libs/polyfill.min.js?v=36201204202301"></script>
+    <script src="https://www.larocheposay.co.kr/js/libs/core-js.min.js?v=36201204202301"></script>
+    <script src="https://www.larocheposay.co.kr/js/libs/base64.min.js?v=36201204202301"></script>
+    <script src="https://www.larocheposay.co.kr/js/libs/kakaosync.sdk.js?v=36201204202301"></script>
+    <script type="text/javascript" src="https://www.larocheposay.co.kr/js/main_pc.js?36201204202301"></script>
+    <script type="text/javascript" src="https://www.larocheposay.co.kr/js/libs/jquery.tmpl.min.js"></script>
+  </head>
 <body>
+  <div id="wrap" class=" " data-mbr-join-ym="" data-user-level="">
+    <nav id="skip_navi">
+      <a href="#contents">본문 바로가기</a>
+      <a href="#menu">메뉴 바로가기</a>
+      <a href="#footer">하단 정보 바로가기</a>
+    </nav>
+    <!-- header -->
+   	<header id="header" th:insert="~{include/tmp_header}"></header>
+    <!-- /header -->
 
-	<div id="wrap">
-		<!-- header -->
-		<div th:insert="~{include/header}"></div>
-		<!-- /header -->
-
-		<div id="container" class="prd_list ctgryVue">
-			<div class="top_vis"
-				style="background-image: url(&quot;/img/faf8c338-a7f5-4efe-a71c-984e1e694c79.jpg&quot;);">
-				<div class="inner">
-					<div class="text_wrap">
-						<h4>Toners</h4>
-						<p></p>
-					</div>
-				</div>
-			</div>
-			<main id="main">
-				<!-- 상품 목록 시작 { -->
-				<div id="sct">
-					<div id="product">
-						<!-- Category -->
-						<div class="category jsCateWrap">
-							<input type="hidden" dataset="test ca_id" value="20">
-							<div
-								class="category__container jsCategory swiper-on swiper-container-initialized swiper-container-horizontal swiper-container-free-mode">
-								<ul class="category__list inline text-center swiper-wrapper"
-									style="transform: translate3d(0px, 0px, 0px);">
-									<!-- <li class="category__item relative  ">
-              <a href="" class="category__link">
-                  <span class="category__thumbnail">
-                      <img src="  " alt="" class="category__img">
-                  </span>
-                  <span class="category__name font-- font--11 font--bd">
-                                          </span>
+    <section class="h_link">
+      <nav>
+        <ol>
+          <li><a href="javascript:void(0);" onclick="location.href='/'"><i>HOME</i></a></li>
+          <li class="kor">
+            <a href=""><i>FACE</i></a>
+            <ul class="h_link_sub">
+              <li class="kor">
+                <a href="javascript:void(0)" onclick="location.href='/product/list.do?cate2=1130'">
+                  병원판매화장품</a>
+              </li>
+              <li class="on">
+                <a href="javascript:void(0)" onclick="location.href='/product/list.do?cate2=1004'">
+                  FACE</a>
+              </li>
+              <li>
+                <a href="javascript:void(0)" onclick="location.href='/product/list.do?cate2=1033'">
+                  BODY</a>
+              </li>
+              <li>
+                <a href="javascript:void(0)" onclick="location.href='/product/list.do?cate2=1009'">
+                  SUN CARE</a>
+              </li>
+            </ul>
+          </li>
+          <li class="kor">
+            <a href=""><i>제품 라인별</i></a>
+            <ul class="h_link_sub">
+              <li class="kor">
+                <a href="javascript:void(0)" onclick="location.href='/product/list.do?cate2=1004'">
+                  피부 고민별</a>
+              </li>
+              <li class="on kor">
+                <a href="javascript:void(0)" onclick="location.href='/product/list.do?cate2=1008'">
+                  제품 라인별</a>
+              </li>
+              <li class="kor">
+                <a href="javascript:void(0)" onclick="location.href='/product/list.do?cate2=1011'">
+                  사용 단계별</a>
+              </li>
+            </ul>
+          </li>
+          <li class="current kor">
+            <a href=""><i>전체</i></a>
+            <ul class="h_link_sub">
+              <li class="on kor">
+                <a href="javascript:void(0);" onclick="location.href='/product/list.do?cate2=1008'">전체보기</a>
+              </li>
+              <li class="kor">
+                <a href="javascript:void(0);" onclick="location.href='/product/list.do?cate3=1018'">에빠끌라</a>
+              </li>
+              <li class="kor">
+                <a href="javascript:void(0);" onclick="location.href='/product/list.do?cate3=1021'">시카플라스트</a>
+              </li>
+              <li class="kor">
+                <a href="javascript:void(0);" onclick="location.href='/product/list.do?cate3=1010'">똘러리앙</a>
+              </li>
+              <li class="kor">
+                <a href="javascript:void(0);" onclick="location.href='/product/list.do?cate3=1024'">히알루 B5</a>
+              </li>
+              <li class="kor">
+                <a href="javascript:void(0);" onclick="location.href='/product/list.do?cate3=1107'">유비데아</a>
+              </li>
+              <li class="kor">
+                <a href="javascript:void(0);" onclick="location.href='/product/list.do?cate3=1114'">퓨어비타민C10</a>
+              </li>
+              <li class="kor">
+                <a href="javascript:void(0);" onclick="location.href='/product/list.do?cate3=1025'">세로징크</a>
+              </li>
+              <li class="kor">
+                <a href="javascript:void(0);" onclick="location.href='/product/list.do?cate3=1022'">오 떼르말</a>
+              </li>
+              <li class="kor">
+                <a href="javascript:void(0);" onclick="location.href='/product/list.do?cate3=1023'">미셀라 클렌징 워터</a>
+              </li>
+              <li class="kor">
+                <a href="javascript:void(0);" onclick="location.href='/product/list.do?cate3=1139'">나이아신아마이드</a>
+              </li>
+            </ul>
+          </li>
+        </ol>
+      </nav>
+    </section>
+    <section id="container">
+      <section id="contents">
+        <!--  sideLeft Start -->
+        <div class="sideleft">
+          <h2 th:text="${#strings.equals(dept1no, '10') ? 'FACE' : 'MAKE UP'}">대분류</h2>
+          <nav>
+            <ul class="accordion">
+              <li>
+                <a href="https://www.larocheposay.co.kr/product/list.do?cate2=1004">피부 고민별</a>
+              </li>
+              <li class="open current">
+                <span>제품 라인별</span>
+                <ul class="submenu" style="display: block;">
+                  <li class="current"><a
+                      href="https://www.larocheposay.co.kr/product/list.do?cate2=1008"><i>전체보기</i></a></li>
+                  <li>
+                    <a href="https://www.larocheposay.co.kr/product/list.do?cate3=1018"><i>에빠끌라</i></a>
+                  </li>
+                  <li>
+                    <a href="https://www.larocheposay.co.kr/product/list.do?cate3=1021"><i>시카플라스트</i></a>
+                  </li>
+                  <li>
+                    <a href="https://www.larocheposay.co.kr/product/list.do?cate3=1010"><i>똘러리앙</i></a>
+                  </li>
+                  <li>
+                    <a href="https://www.larocheposay.co.kr/product/list.do?cate3=1024"><i>히알루 B5</i></a>
+                  </li>
+                  <li>
+                    <a href="https://www.larocheposay.co.kr/product/list.do?cate3=1107"><i>유비데아</i></a>
+                  </li>
+                  <li>
+                    <a href="https://www.larocheposay.co.kr/product/list.do?cate3=1114"><i>퓨어비타민C10</i></a>
+                  </li>
+                  <li>
+                    <a href="https://www.larocheposay.co.kr/product/list.do?cate3=1025"><i>세로징크</i></a>
+                  </li>
+                  <li>
+                    <a href="https://www.larocheposay.co.kr/product/list.do?cate3=1022"><i>오 떼르말</i></a>
+                  </li>
+                  <li>
+                    <a href="https://www.larocheposay.co.kr/product/list.do?cate3=1023"><i>미셀라 클렌징 워터</i></a>
+                  </li>
+                  <li>
+                    <a href="https://www.larocheposay.co.kr/product/list.do?cate3=1139"><i>나이아신아마이드</i></a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="https://www.larocheposay.co.kr/product/list.do?cate2=1011">사용 단계별</a>
+              </li>
+            </ul>
+          </nav>
+          <div>
+            <h2>FILTER</h2>
+            <button type="button" class="init" onclick="filterInit();"><span class="hide">FILTER 선택 초기화</span></button>
+          </div>
+          <form id="productView" action="/product/list.do?cate2=1008" method="post"><input type="hidden" value=""
+              name="prdtSeq">
+            <input type="hidden" value="1" name="pageIndex">
+            <input type="hidden" value="1001" name="cate1">
+            <input type="hidden" value="1008" name="cate2">
+            <input type="hidden" value="" name="cate3">
+            <input type="hidden" value="" name="searchStartPrice">
+            <input type="hidden" value="" name="searchEndPrice">
+            <input type="hidden" value="" name="orderBy">
+            <input type="hidden" value="FACE" name="cateNm1">
+            <input type="hidden" value="제품 라인별" name="cateNm2">
+            <input type="hidden" value="전체" name="cateNm3">
+          </form>
+          <form id="productForm" action="/product/list.do?cate2=1008" method="post"><input id="pageIndex"
+              name="pageIndex" type="hidden" value="1"><input id="cate1" name="cate1" type="hidden" value="1001"><input
+              id="cate2" name="cate2" type="hidden" value="1008"><input id="cate3" name="cate3" type="hidden"
+              value=""><input id="searchStartPrice" name="searchStartPrice" type="hidden" value=""><input
+              id="searchEndPrice" name="searchEndPrice" type="hidden" value=""><input id="orderBy" name="orderBy"
+              type="hidden" value=""><input type="hidden" value="9" name="RecordCountPerPage">
+            <input type="hidden" id="ordCnt" name="ordCnt" data-prdt-type="PT" data-prdt-seq="" value="1">
+            <nav>
+              <ul class="accordion filter">
+                <li class="open">
+                  <span class="link">피부 고민별</span>
+                  <div class="submenu" style="display: block;">
+                    <span class="checkcss"><input type="checkbox" value="1005" name="searchFilter1"
+                        id="filter1_1"><label for="filter1_1"><em>민감성 피부</em></label></span>
+                    <span class="checkcss"><input type="checkbox" value="1014" name="searchFilter1"
+                        id="filter1_2"><label for="filter1_2"><em>지성/트러블 피부</em></label></span>
+                    <span class="checkcss"><input type="checkbox" value="1016" name="searchFilter1"
+                        id="filter1_3"><label for="filter1_3"><em>외부 자극받은 피부</em></label></span>
+                    <span class="checkcss"><input type="checkbox" value="1006" name="searchFilter1"
+                        id="filter1_4"><label for="filter1_4"><em>건조한 피부</em></label></span>
+                    <span class="checkcss"><input type="checkbox" value="1101" name="searchFilter1"
+                        id="filter1_5"><label for="filter1_5"><em>UV 차단</em></label></span>
+                    <span class="checkcss"><input type="checkbox" value="1013" name="searchFilter1"
+                        id="filter1_6"><label for="filter1_6"><em>톤업/메이크업</em></label></span>
+                    <span class="checkcss"><input type="checkbox" value="1007" name="searchFilter1"
+                        id="filter1_7"><label for="filter1_7"><em>브라이트닝</em></label></span>
+                    <span class="checkcss"><input type="checkbox" value="1134" name="searchFilter1"
+                        id="filter1_8"><label for="filter1_8"><em>탄력/주름</em></label></span>
+                  </div>
+                </li>
+                <li class="open">
+                  <span class="link">사용 단계별</span>
+                  <div class="submenu" style="display: block;">
+                    <span class="checkcss"><input type="checkbox" value="1012" name="searchFilter2"
+                        id="filter3_1"><label for="filter3_1"><em>클렌징</em></label></span>
+                    <span class="checkcss"><input type="checkbox" value="1026" name="searchFilter2"
+                        id="filter3_2"><label for="filter3_2"><em>토너</em></label></span>
+                    <span class="checkcss"><input type="checkbox" value="1030" name="searchFilter2"
+                        id="filter3_3"><label for="filter3_3"><em>세럼/에센스</em></label></span>
+                    <span class="checkcss"><input type="checkbox" value="1027" name="searchFilter2"
+                        id="filter3_4"><label for="filter3_4"><em>로션/크림</em></label></span>
+                    <span class="checkcss"><input type="checkbox" value="1032" name="searchFilter2"
+                        id="filter3_5"><label for="filter3_5"><em>마스크/팩</em></label></span>
+                    <span class="checkcss"><input type="checkbox" value="1028" name="searchFilter2"
+                        id="filter3_6"><label for="filter3_6"><em>UV차단</em></label></span>
+                    <span class="checkcss"><input type="checkbox" value="1031" name="searchFilter2"
+                        id="filter3_7"><label for="filter3_7"><em>미스트</em></label></span>
+                  </div>
+                </li>
+                <li class="open">
+                  <span class="link">금액대 별</span>
+                  <div class="submenu" style="display: block;">
+                    <span class="radiocss"><input type="radio" name="price" id="price001" value="1"><label
+                        for="price001"><em>20,000원 미만</em></label></span>
+                    <span class="radiocss"><input type="radio" name="price" id="price002" value="2"><label
+                        for="price002"><em>20,000-30,000원</em></label></span>
+                    <span class="radiocss"><input type="radio" name="price" id="price003" value="3"><label
+                        for="price003"><em>30,000-50,000원</em></label></span>
+                    <span class="radiocss"><input type="radio" name="price" id="price004" value="4"><label
+                        for="price004"><em>50,000원 이상</em></label></span>
+                  </div>
+                </li>
+              </ul>
+            </nav>
+          </form>
+        </div>
+        <!--  sideLeft End -->
+        <!-- mainList Start -->
+        <div class="sideconts_warp sp-goal-504-1001-64-1645076803677 sp-goal-504-1000-64-1645076803677">
+          <h1>전체</h1>
+          <div class="sideconts">
+            <!-- 19.02.20 개릴라 이벤트 배너 테스트 -->
+            <!-- //19.02.20 개릴라 이벤트 배너 테스트 -->
+            <!-- 2019.04.08  에빠끌라  시작 -->
+            <!-- 2019.04.08  에빠끌라  끝 -->
+            <section class="product_wrap">
+              <div class="prd_term">
+                <span class="prd_cnt">전체 <em id="totalCount">48</em>개</span>
+                <span class="sort_list">
+                  <a href="javascript:sortEvent('1');">판매량 순</a>
+                  <a href="javascript:sortEvent('2');" class="on">최근 등록 순 </a>
+                  <a href="javascript:sortEvent('3');">리뷰 많은 순</a>
+                  <a href="javascript:sortEvent('4');">낮은 가격 순 </a>
+                  <a href="javascript:sortEvent('5');">높은 가격 순</a>
+                </span>
+              </div>
+              <!-- 신상, 단독구성 -->
+              <ul class="product_list ea03" id="listUl">
+                <li class="new" th:each="prod : ${productList}"> 
+                	<a th:href="'/product/detail?code=' + ${prod.pcode}"> 
+                		<img th:if="${prod.thumbImgList[0].iloc != null}" th:src="${prod.thumbImgList[0].iloc} + '_600.jpg'" th:alt="${prod.pname}"> 
+                		<img th:if="${prod.thumbImgList[0].iloc == null}" src="https://image.thehyundai.com/hdmall/images/pd/no_image_480x480.jpg" th:alt="${prod.pname}">
+                    	<span class="hash_tag">[[${prod.bname}]]</span> 
+                    	<span class="tit">[[${prod.pname}]]</span> 
+                    	<span class="kind">??? </span> 
+                    	<span class="rating">
+                      		<div class="star-rating small"> 
+                      			<span class="c00"><em class="hide">벌점 0개</em></span> 
+                      		</div>
+                      		<em>(511)</em>
+                    	</span> 
+                    	<span class="price">
+                    		<span class="after">[[${#numbers.formatInteger(prod.pprice, 3, 'COMMA')}]]<em>원</em></span> 
+                    	</span> 
+                   </a>
+                  <div class="over"> 
+                  <button class="detailview">자세히보기</button> 
+                  <button th:data-price="${prod.pprice}" th:data-linename="${prod.pname}" th:data-sapcode="${prod.pcode}"
+               		th:data-category="${dept1no}" class="addcart basket">장바구니 담기</button> 
+               		</div> 
+               		<span class="like" th:data-price="${prod.pprice}" th:data-linename="${prod.pname}" th:data-sapcode="${prod.pcode}" data-category="${dept1no}">
+               		<i class="hide">관심제품</i></span>
+                </li>
+              </ul>
+            </section>
+          </div>
+          <!-- //sideconts -->
+        </div>
+        <!-- mainList End -->
+      </section>
+    </section>
+    <!-- right 제품구매 플로팅 -->
+    <section class="flot_right_warp">
+      <div class="flot_price_btn">
+        <div class="flotmem"><a href="https://www.larocheposay.co.kr/member/login.do">로그인</a></div>
+        <div class="flotcart"><a href="https://www.larocheposay.co.kr/cart/cart.do"><span class="count">0</span><span
+              class="hide">장바구니 - 바로가기</span></a></div>
+        <div id="flotprd" class="swiper-container">
+          <div class="swiper-wrapper"
+            style="width: 336px; height: 79px; transform: translate3d(-56px, 0px, 0px); transition-duration: 0s;">
+            <div class="swiper-slide swiper-slide-duplicate" style="width: 56px; height: 79px;">
+              <a href="https://www.larocheposay.co.kr/product/view/3736.do">
+                <img src="https://www.larocheposay.co.kr/upload/product/main/2022/12/20221220_1654024_083_100x100.png"
+                  alt="H 아이소바이옴 울트라 수딩 클렌저 [병원판매 화장품]">
               </a>
-          </li> -->
-									<li
-										class="category__item relative swiper-slide swiper-slide-active">
-										<a href="https://www.tamburins.com/shop/list.php?ca_id=20"
-										class="category__link"> <span class="category__thumbnail">
-												<img
-												src="https://www.tamburins.com/data/item/category/category_viewall.png?img1=12"
-												alt="" class="category__img" title="">
-										</span> <!-- 2021-01-22 카테고리 라벨 --> <span
-											class="category__name font--kr "> <!-- 2021-01-22 카테고리 라벨 -->
-												전체보기
-										</span>
-									</a>
-									</li>
-									<li
-										class="category__item relative swiper-slide current swiper-slide-next">
-										<a
-										href="https://www.tamburins.com/shop/list.php?ca_id=20&amp;sub_ca_id=2010"
-										class="category__link"> <span class="category__thumbnail">
-												<img
-												src="https://www.tamburins.com/data/item/category/category_bestseller.png?img1=12"
-												alt="" class="category__img" title="">
-										</span> <!-- 2021-01-22 카테고리 라벨 --> <span
-											class="category__name font--kr "> <!-- 2021-01-22 카테고리 라벨 -->
-												베스트셀러
-										</span>
-									</a>
-									</li>
-									<li class="category__item relative swiper-slide"><a
-										href="https://www.tamburins.com/shop/list.php?ca_id=20&amp;sub_ca_id=2016"
-										class="category__link"> <span class="category__thumbnail">
-												<img
-												src="https://tamburins-resource.s3.ap-northeast-2.amazonaws.com/category/ctgry_bloomingcandle.png?img1=12"
-												alt="" class="category__img" title="">
-										</span> <!-- 2021-01-22 카테고리 라벨 --> <span
-											class="category__name font--kr "> <!-- 2021-01-22 카테고리 라벨 -->
-												향 오브젝트
-										</span>
-									</a></li>
-									<li class="category__item relative swiper-slide"><a
-										href="https://www.tamburins.com/shop/list.php?ca_id=20&amp;sub_ca_id=2095"
-										class="category__link"> <span class="category__thumbnail">
-												<img
-												src="https://www.tamburins.com/img/renew_dummy/category/ctgry_balm.png?img1=12"
-												alt="" class="category__img" title="">
-										</span> <!-- 2021-01-22 카테고리 라벨 --> <span
-											class="category__name font--kr "> <!-- 2021-01-22 카테고리 라벨 -->
-												퍼퓸 밤
-										</span>
-									</a></li>
-									<li class="category__item relative swiper-slide"><a
-										href="https://www.tamburins.com/shop/list.php?ca_id=20&amp;sub_ca_id=2094"
-										class="category__link"> <span class="category__thumbnail">
-												<img
-												src="https://www.tamburins.com/img/renew_dummy/category/ctgry_perfume.png?img1=12"
-												alt="" class="category__img" title="">
-										</span> <!-- 2021-01-22 카테고리 라벨 --> <span
-											class="category__name font--kr "> <!-- 2021-01-22 카테고리 라벨 -->
-												퍼퓸
-										</span>
-									</a></li>
-									<li class="category__item relative swiper-slide"><a
-										href="https://www.tamburins.com/shop/list.php?ca_id=20&amp;sub_ca_id=2092"
-										class="category__link"> <span class="category__thumbnail">
-												<img
-												src="https://www.tamburins.com/data/item/category/category_shwry.png?img1=12"
-												alt="" class="category__img" title="">
-										</span> <!-- 2021-01-22 카테고리 라벨 --> <span
-											class="category__name font--kr "> <!-- 2021-01-22 카테고리 라벨 -->
-												샤워리바디
-										</span>
-									</a></li>
-									<li class="category__item relative swiper-slide"><a
-										href="https://www.tamburins.com/shop/list.php?ca_id=20&amp;sub_ca_id=2018"
-										class="category__link"> <span class="category__thumbnail">
-												<img
-												src="https://www.tamburins.com/data/item/category/category_OAcandle.png?img1=12"
-												alt="" class="category__img" title="">
-										</span> <!-- 2021-01-22 카테고리 라벨 --> <span
-											class="category__name font--kr "> <!-- 2021-01-22 카테고리 라벨 -->
-												올팩티브 캔들
-										</span>
-									</a></li>
-									<li class="category__item relative swiper-slide"><a
-										href="https://www.tamburins.com/shop/list.php?ca_id=20&amp;sub_ca_id=2020"
-										class="category__link"> <span class="category__thumbnail">
-												<img
-												src="https://www.tamburins.com/img/renew_dummy/category/ctgry_shellX.png?img1=12"
-												alt="" class="category__img" title="">
-										</span> <!-- 2021-01-22 카테고리 라벨 --> <span
-											class="category__name font--kr "> <!-- 2021-01-22 카테고리 라벨 -->
-												퍼퓸 핸드
-										</span>
-									</a></li>
-									<li class="category__item relative swiper-slide"><a
-										href="https://www.tamburins.com/shop/list.php?ca_id=20&amp;sub_ca_id=2017"
-										class="category__link"> <span class="category__thumbnail">
-												<img
-												src="https://www.tamburins.com/data/item/category/category_tube-hand.png?img1=12"
-												alt="" class="category__img" title="">
-										</span> <!-- 2021-01-22 카테고리 라벨 --> <span
-											class="category__name font--kr "> <!-- 2021-01-22 카테고리 라벨 -->
-												튜브 핸드
-										</span>
-									</a></li>
-									<li class="category__item relative swiper-slide"><a
-										href="https://www.tamburins.com/shop/list.php?ca_id=20&amp;sub_ca_id=2050"
-										class="category__link"> <span class="category__thumbnail">
-												<img
-												src="https://www.tamburins.com/data/item/category/category_handbody.png?img1=12"
-												alt="" class="category__img" title="">
-										</span> <!-- 2021-01-22 카테고리 라벨 --> <span
-											class="category__name font--kr "> <!-- 2021-01-22 카테고리 라벨 -->
-												핸드앤바디
-										</span>
-									</a></li>
-									<li class="category__item relative swiper-slide"><a
-										href="https://www.tamburins.com/shop/list.php?ca_id=20&amp;sub_ca_id=2030"
-										class="category__link"> <span class="category__thumbnail">
-												<img
-												src="https://www.tamburins.com/data/item/category/category_chain-hand.png?img1=12"
-												alt="" class="category__img" title="">
-										</span> <!-- 2021-01-22 카테고리 라벨 --> <span
-											class="category__name font--kr "> <!-- 2021-01-22 카테고리 라벨 -->
-												체인 핸드
-										</span>
-									</a></li>
-									<li class="category__item relative swiper-slide"><a
-										href="https://www.tamburins.com/shop/list.php?ca_id=20&amp;sub_ca_id=2040"
-										class="category__link"> <span class="category__thumbnail">
-												<img
-												src="https://www.tamburins.com/data/item/category/category_sanitizer.png?img1=12"
-												alt="" class="category__img" title="">
-										</span> <!-- 2021-01-22 카테고리 라벨 --> <span
-											class="category__name font--kr "> <!-- 2021-01-22 카테고리 라벨 -->
-												손 소독제
-										</span>
-									</a></li>
-									<li class="category__item relative swiper-slide"><a
-										href="https://www.tamburins.com/shop/list.php?ca_id=20&amp;sub_ca_id=2080"
-										class="category__link"> <span class="category__thumbnail">
-												<img
-												src="https://www.tamburins.com/data/item/category/category_giftset.png?img1=12"
-												alt="" class="category__img" title="">
-										</span> <!-- 2021-01-22 카테고리 라벨 --> <span
-											class="category__name font--kr "> <!-- 2021-01-22 카테고리 라벨 -->
-												선물 추천
-										</span>
-									</a></li>
-									<li class="category__item relative swiper-slide"><a
-										href="https://www.tamburins.com/shop/list.php?ca_id=20&amp;sub_ca_id=2070"
-										class="category__link"> <span class="category__thumbnail">
-												<img
-												src="https://www.tamburins.com/data/item/category/category_sample-kit.png?img1=12"
-												alt="" class="category__img">
-										</span> <!-- 2021-01-22 카테고리 라벨 --> <span
-											class="category__name font--kr "> <!-- 2021-01-22 카테고리 라벨 -->
-												샘플 키트
-										</span>
-									</a></li>
-									<li class="category__item relative swiper-slide"><a
-										href="https://www.tamburins.com/shop/list.php?ca_id=20&amp;sub_ca_id=2015"
-										class="category__link"> <span class="category__thumbnail">
-												<img
-												src="https://www.tamburins.com/data/item/category/category_multi-fragrance.png?img1=12"
-												alt="" class="category__img">
-										</span> <!-- 2021-01-22 카테고리 라벨 --> <span
-											class="category__name font--kr "> <!-- 2021-01-22 카테고리 라벨 -->
-												멀티프래그런스
-										</span>
-									</a></li>
-								</ul>
-								<span class="swiper-notification" aria-live="assertive"
-									aria-atomic="true"></span><span class="swiper-notification"
-									aria-live="assertive" aria-atomic="true"></span>
-							</div>
-							<div class="catg__swiper swiper-button-next" tabindex="0"
-								role="button" aria-label="Next slide" aria-disabled="false"
-								style="display: block;"></div>
-							<div
-								class="catg__swiper swiper-button-prev swiper-button-disabled"
-								tabindex="0" role="button" aria-label="Previous slide"
-								aria-disabled="true" style="display: block;"></div>
-						</div>
-						<!--// Category -->
-						<!-- Title & Filter -->
-						<div class="content-top-dummy jsContDummy hide">
-							<div class="content-top">
-								<div class="content-top-box page-inner">
-									<div class="list-title font--kr">
-										<strong> <!-- 전체보기 예외 처리 --> 베스트셀러
-										</strong> <span class="JsCountCheck item_count">(21)</span>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!--// Title & Filter -->
-						<!-- product list -->
-						<!-- 카테고리별 리스트 S -->
-						<div class="prd-list prd-list__sub">
-							<div class="prd-list__inner page-inner">
-								<div class="prd-list__item product-box">
-									<input itemprop="sku" type="hidden" class="item_id"
-										name="it_id[1662465136]" value="1662465136"
-										content="1662465136">
-									<!-- 2021-01-22 로그인경로-->
-									<a
-										href="https://www.tamburins.com/shop/item.php?it_id=1662465136">
-										<!-- 썸네일 S-->
-										<div class="prd-list__thumbnail">
-											<img
-												src="https://tamburins-resource.s3.ap-northeast-2.amazonaws.com/item/1662465136/PLP_perfume_DISCOVERYSET.jpg?img1=121"
-												class="prd-list__img" title="">
-											<!-- 간략보기 이미지 -->
-											<img
-												src="https://tamburins-resource.s3.ap-northeast-2.amazonaws.com/item/1662465136/1663142431_7948_PLP_perfume_DISCOVERYSET.jpg?img1=12"
-												class="prd-list__img prd-list__img--second">
-										</div> <!-- 썸네일 E--> <!-- 상품 info S-->
-										<div class="prd-list__info">
-											<div class="item-desc">퍼퓸의 10가지 향</div>
-											<!-- 상품 name S -->
-											<div
-												class="item-name
-                              en_font size-en">
-												퍼퓸 디스커버리 세트</div>
-											<!-- 상품 name E -->
-											<div class="item-price dflex-center-between">
-												<span class="krw price_status"> 42,000 원 </span> <span
-													class="item-spec__brief">2mL*10ea</span>
-											</div>
-											<span class="item-size">+<strong>1</strong> Size
-											</span>
-										</div> <!-- 상품 name E -->
-									</a>
-								</div>
-								<div class="prd-list__item product-box">
-									<input itemprop="sku" type="hidden" class="item_id"
-										name="it_id[1666772156]" value="1666772156"
-										content="1666772156">
-									<!-- 2021-01-22 로그인경로-->
-									<a
-										href="https://www.tamburins.com/shop/item.php?it_id=1666772156">
-										<!-- 썸네일 S-->
-										<div class="prd-list__thumbnail">
-											<img
-												src="https://tamburins-resource.s3.ap-northeast-2.amazonaws.com/item/1666772156/PLP_balm_6g_chamo.jpg?img1=121"
-												class="prd-list__img" title="">
-											<!-- 간략보기 이미지 -->
-											<img
-												src="https://tamburins-resource.s3.ap-northeast-2.amazonaws.com/item/1666772156/1667896848_4078_PLP_balm_6g_chamo.jpg?img1=12"
-												class="prd-list__img prd-list__img--second">
-										</div> <!-- 썸네일 E--> <!-- 상품 info S-->
-										<div class="prd-list__info">
-											<div class="item-desc">진득한 카모마일 | 부드러운 나무결 | 머스크</div>
-											<!-- 상품 name S -->
-											<div
-												class="item-name
-                              en_font size-en">
-												퍼퓸 밤 카모</div>
-											<!-- 상품 name E -->
-											<div class="item-price dflex-center-between">
-												<span class="krw price_status"> 46,500 원 </span> <span
-													class="item-spec__brief">6.5g</span>
-											</div>
-											<span class="item-size">+<strong>1</strong> Size
-											</span>
-										</div> <!-- 상품 name E -->
-									</a>
-								</div>
-								<div class="prd-list__item product-box">
-									<input itemprop="sku" type="hidden" class="item_id"
-										name="it_id[1662462491]" value="1662462491"
-										content="1662462491">
-									<!-- 2021-01-22 로그인경로-->
-									<a
-										href="https://www.tamburins.com/shop/item.php?it_id=1662462491">
-										<!-- 썸네일 S-->
-										<div class="prd-list__thumbnail">
-											<img
-												src="https://tamburins-resource.s3.ap-northeast-2.amazonaws.com/item/1662462491/PLP_perfume_chamo_10ml.jpg?img1=121"
-												class="prd-list__img" title="">
-											<!-- 간략보기 이미지 -->
-											<img
-												src="https://tamburins-resource.s3.ap-northeast-2.amazonaws.com/item/1662462491/1663141064_8736_PLP_perfume_chamo_10ml.jpg?img1=12"
-												class="prd-list__img prd-list__img--second">
-										</div> <!-- 썸네일 E--> <!-- 상품 info S-->
-										<div class="prd-list__info">
-											<div class="item-desc">진득한 카모마일 | 부드러운 나무결 | 머스크</div>
-											<!-- 상품 name S -->
-											<div
-												class="item-name
-                              en_font size-en">
-												퍼퓸 카모</div>
-											<!-- 상품 name E -->
-											<div class="item-price dflex-center-between">
-												<span class="krw price_status"> 36,500 원 </span> <span
-													class="item-spec__brief">10mL</span>
-											</div>
-											<span class="item-size">+<strong>3</strong> Sizes
-											</span>
-										</div> <!-- 상품 name E -->
-									</a>
-								</div>
-								<div class="prd-list__item product-box">
-									<input itemprop="sku" type="hidden" class="item_id"
-										name="it_id[1666763525]" value="1666763525"
-										content="1666763525">
-									<!-- 2021-01-22 로그인경로-->
-									<a
-										href="https://www.tamburins.com/shop/item.php?it_id=1666763525">
-										<!-- 썸네일 S-->
-										<div class="prd-list__thumbnail">
-											<img
-												src="https://tamburins-resource.s3.ap-northeast-2.amazonaws.com/item/1666763525/PLP_shellX_30ml_chamo.jpg?img1=121"
-												class="prd-list__img" title="">
-											<!-- 간략보기 이미지 -->
-											<img
-												src="https://tamburins-resource.s3.ap-northeast-2.amazonaws.com/item/1666763525/1666931050_6013_PLP_shellX_30ml_chamo.jpg?img1=12"
-												class="prd-list__img prd-list__img--second">
-										</div> <!-- 썸네일 E--> <!-- 상품 info S-->
-										<div class="prd-list__info">
-											<div class="item-desc">진득한 카모마일 | 부드러운 나무결 | 머스크</div>
-											<!-- 상품 name S -->
-											<div
-												class="item-name
-                              en_font size-en">
-												퍼퓸 쉘 엑스 카모</div>
-											<!-- 상품 name E -->
-											<div class="item-price dflex-center-between">
-												<span class="krw price_status"> 32,000 원 </span> <span
-													class="item-spec__brief">30mL</span>
-											</div>
-											<span class="item-size">+<strong>1</strong> Size
-											</span>
-										</div> <!-- 상품 name E -->
-									</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- } 상품 목록 끝 -->
-			</main>
-
-		</div>
-
-		<!-- footer -->
-		<div th:insert="~{include/footer}"></div>
-		<!-- /footer -->
-	</div>
-	<div class="dim"></div>
+            </div>
+            <div class="swiper-slide swiper-slide-visible swiper-slide-active" style="width: 56px; height: 79px;">
+              <a href="https://www.larocheposay.co.kr/product/view/3860.do">
+                <img src="https://www.larocheposay.co.kr/upload/product/main/2021/05/20230130_1348040_707_100x100.png"
+                  alt="듀오[+] 에센스">
+              </a>
+            </div>
+            <div class="swiper-slide" style="width: 56px; height: 79px;">
+              <a href="https://www.larocheposay.co.kr/product/view/1111.do">
+                <img src="https://www.larocheposay.co.kr/upload/product/main/2021/10/20211019_1508052_441_100x100.png"
+                  alt="H 리밸런싱 하이드레이션 로션">
+              </a>
+            </div>
+            <div class="swiper-slide" style="width: 56px; height: 79px;">
+              <a href="https://www.larocheposay.co.kr/product/view/2815.do">
+                <img src="https://www.larocheposay.co.kr/upload/product/main/2021/11/20211125_1032016_004_100x100.png"
+                  alt="밤 AP+M 바디 크림 [병원판매 화장품]">
+              </a>
+            </div>
+            <div class="swiper-slide" style="width: 56px; height: 79px;">
+              <a href="https://www.larocheposay.co.kr/product/view/3736.do">
+                <img src="https://www.larocheposay.co.kr/upload/product/main/2022/12/20221220_1654024_083_100x100.png"
+                  alt="H 아이소바이옴 울트라 수딩 클렌저 [병원판매 화장품]">
+              </a>
+            </div>
+            <div class="swiper-slide swiper-slide-duplicate" style="width: 56px; height: 79px;">
+              <a href="https://www.larocheposay.co.kr/product/view/3860.do">
+                <img src="https://www.larocheposay.co.kr/upload/product/main/2021/05/20230130_1348040_707_100x100.png"
+                  alt="듀오[+] 에센스">
+              </a>
+            </div>
+          </div>
+          <button type="button" class="flotprd-prev" style="z-index:1000;"><span class="hide">이전</span></button>
+          <button type="button" class="flotprd-next" style="z-index:1000;"><span class="hide">다음</span></button>
+        </div>
+        <!-- //swiper-container -->
+        <button type="button" class="btn_top" title="상단 이동">top</button>
+      </div>
+    </section>
+    <!-- //right 제품구매 플로팅 -->
+    
+    <!-- footer -->
+	<div class="include-footer" th:insert="~{include/tmp_footer}"></div>
+	<!-- /footer -->
 </body>
 </html>

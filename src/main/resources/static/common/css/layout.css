@@ -1675,10 +1675,10 @@ html {
 /* header */
 #header h1 {
   position: absolute;
-  top: 40px;
+  top: 50px;
   left: 42%;
   z-index: 1;
-  margin-left: -112px;
+  margin-left: -112px; 
   width: 400px;
   height: 40px;
   font-size: 27.7px;
@@ -2819,7 +2819,7 @@ html {
 }
 
 .sub_visual_warp .sub_visual h2{
-    font-family: 'locator-medium';
+    font-family: 'notokr-demilight';
     font-size: 16px;
     line-height: 20px;
 }

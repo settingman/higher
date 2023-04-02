@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.hyundai.higher.domain.product.ProductDTO;
 import com.hyundai.higher.domain.product.ProductDetailDTO;
+import com.hyundai.higher.mapper.product.ProductMapper;
 import com.hyundai.higher.mapper.similarCos.SimilarCosMapper;
 import com.hyundai.higher.service.product.ProductService;
 
@@ -24,6 +25,7 @@ public class SimilarCosServiceImpl implements SimilarCosService {
 	@Autowired
 	private SimilarCosMapper mapper;
 	
+
 	// 유사성분템 제품 추천
 	@Override
 	public List<ProductDetailDTO> recogProducts(String pcode) {
@@ -75,5 +77,6 @@ public class SimilarCosServiceImpl implements SimilarCosService {
 
 		return mapper.selectBestProdList();
 	}
+
 
 }

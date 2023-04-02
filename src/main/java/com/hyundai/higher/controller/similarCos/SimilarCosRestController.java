@@ -37,6 +37,8 @@ public class SimilarCosRestController {
 	@GetMapping("/checkKeyword")
 	public List<ProductDTO> prodList(@RequestParam("keyword") String keyword){
 		
+		log.info(keyword);
+		log.info(service.prodNameList(keyword));
 		return service.prodNameList(keyword);
 	}
 	

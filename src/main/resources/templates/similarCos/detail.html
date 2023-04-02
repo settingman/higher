@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" class="js">
+<html lang="ko" class="js" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <title>더현대뷰티 - 현대백화점 공식 화장품 온라인몰</title>
@@ -161,7 +161,7 @@
                 <div class="detail_slider">
                   <div class="view">
                     <ul>
-                      <li style="background-image:url('https://image.thehyundai.com/static/5/9/9/33/A1/40A1339954_0_600.jpg');">1</li>
+                      <li th:style="'background-image:url('+ ${product.thumbImgList[0].iloc} +'_600.jpg);'">1</li>
                     </ul>
                   </div>
                 </div>
@@ -169,11 +169,11 @@
               </div>
               <!-- //left -->
               <div class="right" style="margin-top: 90px;">
-                <div class="datail_info_top">
-                 <p class="brand">크리니크</p>
+                <div class="datail_info_top" style="border: none;">
+                 <p class="brand">[[${product.productDTO.bname}]]</p>
                   <span class="tit" style="margin-top: 20px;">
-                    <strong>시카플라스트</strong>
-                    리페어 세럼 B5
+                    <strong>[[${product.productDTO.pname}]]</strong>
+                    <!-- 리페어 세럼 B5 -->
                   </span>
                   <span class="star">
                     <a href="#product_detail_review">
@@ -184,15 +184,24 @@
                     </a>
                     <em><a href="#product_detail_review" style="color:#8f8f8f;">(270)</a></em>
                   </span>
-                   <span class="hash">
-                    <a href="javascript:hashSearch('피부장벽강화')">#피부장벽강화</a>
-                    <a href="javascript:hashSearch('회복세럼')">#회복세럼</a>
-                    <a href="javascript:hashSearch('시카세럼')">#시카세럼</a>
-                    <a href="javascript:hashSearch('판테놀10%세럼')">#판테놀10%세럼</a>
-                  </span>
+                  <div id="ingredient_box">
+	                  <div id="iTit">주요성분</div>
+	                  <div>
+	                  	<ul>
+	                  		<li th:each="i : ${mainIngredient}">
+	                  			<img src="/similarCos/img/drop.png">[[${i}]]
+	                  		</li>
+	                  	</ul>              
+	                  </div>
+                  </div>
                 </div>
                 <div class="datail_info_data">
-                  
+                  <ul>
+                    
+                    <li class="total">
+                      <span class="pricetotal">[[${#numbers.formatInteger(product.productDTO.pprice, 3, 'COMMA')}]]<em>원</em></span>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </form>
@@ -214,6 +223,8 @@
             <li class=" new">
               <a href="#none;" onclick="prdtViewLink('3596','PT','Y', Number('1'))">
                 <span class="ico">1<em>BEST</em></span>
+                <div style="border: 4px solid #45675b; margin-bottom: 10px; height: fit-content; padding: 10px; font-size: 16px; font-family: 'notokr-medium'; width: 212px; text-align: center;">성분 유사도 <span style="display: contents; font-family: 'locator-medium'; font-size: 22px;">71%</span></div>
+                
                 <img src="https://www.larocheposay.co.kr/upload/product/main/2022/01/20220113_1136039_353_400x400.png"
                   alt="시카세럼30ml">
                 <span class="hash_tag">#피부장벽강화</span>
@@ -240,185 +251,97 @@
                 data-prdtname="리페어 세럼 B5" data-sapcode="MB451200" data-category="FACE>제품 라인별>시카플라스트"><i
                   class="hide">관심제품</i></span>
             </li>
-            <li class="">
-              <a href="#none;" onclick="prdtViewLink('3517','PT','Y', Number('2'))">
-                <span class="ico">2<em>BEST</em></span>
-                <img src="https://www.larocheposay.co.kr/upload/product/main/2021/09/20210930_0956037_067_400x400.png"
-                  alt="시카플라스트 B5 로션">
-                <span class="hash_tag">#시카에센스토너</span>
+            <li class=" new">
+              <a href="#none;" onclick="prdtViewLink('3596','PT','Y', Number('1'))">
+                <span class="ico">1<em>BEST</em></span>
+                <div style="border: 4px solid #45675b; margin-bottom: 10px; height: fit-content; padding: 10px; font-size: 16px; font-family: 'notokr-medium'; width: 212px; text-align: center;">성분 유사도 <span style="display: contents; font-family: 'locator-medium'; font-size: 22px;">71%</span></div>
+                
+                <img src="https://www.larocheposay.co.kr/upload/product/main/2022/01/20220113_1136039_353_400x400.png"
+                  alt="시카세럼30ml">
+                <span class="hash_tag">#피부장벽강화</span>
                 <span class="tit">시카플라스트</span>
-                <span class="kind">B5 로션</span>
+                <span class="kind">리페어 세럼 B5</span>
                 <span class="rating">
                   <div class="star-rating small">
                     <span class="c50">
                       <em class="hide">벌점 5.0개</em></span>
                   </div>
-                  <em>(333)</em>
+                  <em>(270)</em>
                 </span>
-                <span class="price">32,000<em>원</em></span>
+                <span class="price">48,000<em>원</em></span>
               </a>
               <div class="over">
                 <button type="button" class="detailview"
-                  onclick="prdtViewLink('3517','PT','Y', Number('2'))">자세히보기</button>
-                <button type="button" class="addcart listBasket" data-saleprice="32000" data-level="제한없음" data-cnt="10"
-                  data-value="3517" data-price="32000" data-linename="시카플라스트" data-prdtname="B5 로션"
-                  data-sapcode="MB408200" data-tag-names="#시카에센스토너,#약산성토너,#피부장벽강화,#판테놀5%,#시카플라스트" data-noingt-names=""
+                  onclick="prdtViewLink('3596','PT','Y', Number('1'))">자세히보기</button>
+                <button type="button" class="addcart listBasket" data-saleprice="48000" data-level="제한없음" data-cnt="142"
+                  data-value="3596" data-price="48000" data-linename="시카플라스트" data-prdtname="리페어 세럼 B5"
+                  data-sapcode="MB451200" data-tag-names="#피부장벽강화,# 회복세럼,# 시카세럼,# 판테놀10%세럼" data-noingt-names=""
                   data-category="FACE>제품 라인별>시카플라스트">장바구니 담기</button>
               </div>
-              <span class="like listLike" data-value="3517" data-price="32000" data-linename="시카플라스트"
-                data-prdtname="B5 로션" data-sapcode="MB408200" data-category="FACE>제품 라인별>시카플라스트"><i
+              <span class="like listLike" data-value="3596" data-price="48000" data-linename="시카플라스트"
+                data-prdtname="리페어 세럼 B5" data-sapcode="MB451200" data-category="FACE>제품 라인별>시카플라스트"><i
                   class="hide">관심제품</i></span>
             </li>
-            <li class="">
-              <a href="#none;" onclick="prdtViewLink('651','PT','Y', Number('3'))">
-                <span class="ico">3<em>BEST</em></span>
-                <img src="https://www.larocheposay.co.kr/upload/product/main/2020/09/20200910_1811011_756_400x400.png"
-                  alt="퓨리파잉 포밍 크림">
-                <span class="hash_tag">#미세미세클렌저</span>
-                <span class="tit">똘러리앙</span>
-                <span class="kind">퓨리파잉 포밍 크림</span>
-                <span class="rating">
-                  <div class="star-rating small">
-                    <span class="c45">
-                      <em class="hide">벌점 4.5개</em></span>
-                  </div>
-                  <em>(1890)</em>
-                </span>
-                <span class="price">28,000<em>원</em></span>
-              </a>
-              <div class="over">
-                <button type="button" class="detailview"
-                  onclick="prdtViewLink('651','PT','Y', Number('3'))">자세히보기</button>
-                <button type="button" class="addcart listBasket" data-saleprice="28000" data-level="제한없음" data-cnt="10"
-                  data-value="651" data-price="28000" data-linename="똘러리앙" data-prdtname="퓨리파잉 포밍 크림"
-                  data-sapcode="M9057101" data-tag-names="#미세미세클렌저,#저자극포밍크림,# 초미세먼지95%제거,# 피부진정클렌저,# 민감피부클렌저,# 똘러리앙"
-                  data-noingt-names="파라벤,인공색소,인공향" data-category="FACE>제품 라인별>똘러리앙">장바구니 담기</button>
-              </div>
-              <span class="like listLike" data-value="651" data-price="28000" data-linename="똘러리앙"
-                data-prdtname="퓨리파잉 포밍 크림" data-sapcode="M9057101" data-category="FACE>제품 라인별>똘러리앙"><i
-                  class="hide">관심제품</i></span>
-            </li>
-            <li class="">
-              <a href="#none;" onclick="prdtViewLink('3274','PT','Y', Number('4'))">
-                <span class="ico">4<em>BEST</em></span>
-                <img src="https://www.larocheposay.co.kr/upload/product/main/2021/09/20210916_1131046_239_400x400.png"
-                  alt="에빠끌라 클래리파잉 모이스춰라이징 로션 ">
-                <span class="hash_tag">#저자극 각질 케어토너</span>
-                <span class="tit">에빠끌라</span>
-                <span class="kind">K(+) 토너</span>
+            <li class=" new">
+              <a href="#none;" onclick="prdtViewLink('3596','PT','Y', Number('1'))">
+                <span class="ico">1<em>BEST</em></span>
+                <div style="border: 4px solid #45675b; margin-bottom: 10px; height: fit-content; padding: 10px; font-size: 16px; font-family: 'notokr-medium'; width: 212px; text-align: center;">성분 유사도 <span style="display: contents; font-family: 'locator-medium'; font-size: 22px;">71%</span></div>
+                
+                <img src="https://www.larocheposay.co.kr/upload/product/main/2022/01/20220113_1136039_353_400x400.png"
+                  alt="시카세럼30ml">
+                <span class="hash_tag">#피부장벽강화</span>
+                <span class="tit">시카플라스트</span>
+                <span class="kind">리페어 세럼 B5</span>
                 <span class="rating">
                   <div class="star-rating small">
                     <span class="c50">
                       <em class="hide">벌점 5.0개</em></span>
                   </div>
-                  <em>(543)</em>
+                  <em>(270)</em>
                 </span>
-                <span class="price">35,000<em>원</em></span>
+                <span class="price">48,000<em>원</em></span>
               </a>
               <div class="over">
                 <button type="button" class="detailview"
-                  onclick="prdtViewLink('3274','PT','Y', Number('4'))">자세히보기</button>
-                <button type="button" class="addcart listBasket" data-saleprice="35000" data-level="제한없음" data-cnt="10"
-                  data-value="3274" data-price="35000" data-linename="에빠끌라" data-prdtname="K(+) 토너"
-                  data-sapcode="MB277501" data-tag-names="#저자극 각질 케어토너,# 새로워진 에빠끌라 클래리파잉 토너,# 지성피부를위한"
-                  data-noingt-names="파라벤,인공색소,인공향,코메도제닉,인공향" data-category="FACE>제품 라인별>에빠끌라">장바구니 담기</button>
+                  onclick="prdtViewLink('3596','PT','Y', Number('1'))">자세히보기</button>
+                <button type="button" class="addcart listBasket" data-saleprice="48000" data-level="제한없음" data-cnt="142"
+                  data-value="3596" data-price="48000" data-linename="시카플라스트" data-prdtname="리페어 세럼 B5"
+                  data-sapcode="MB451200" data-tag-names="#피부장벽강화,# 회복세럼,# 시카세럼,# 판테놀10%세럼" data-noingt-names=""
+                  data-category="FACE>제품 라인별>시카플라스트">장바구니 담기</button>
               </div>
-              <span class="like listLike" data-value="3274" data-price="35000" data-linename="에빠끌라"
-                data-prdtname="K(+) 토너" data-sapcode="MB277501" data-category="FACE>제품 라인별>에빠끌라"><i
+              <span class="like listLike" data-value="3596" data-price="48000" data-linename="시카플라스트"
+                data-prdtname="리페어 세럼 B5" data-sapcode="MB451200" data-category="FACE>제품 라인별>시카플라스트"><i
                   class="hide">관심제품</i></span>
             </li>
-            <li class="">
-              <a href="#none;" onclick="prdtViewLink('3618','PT','Y', Number('5'))">
-                <span class="ico">5<em>BEST</em></span>
-                <img src="https://www.larocheposay.co.kr/upload/product/main/2021/12/20220124_1552005_141_400x400.png"
-                  alt="유비데아 XL 멜트인 크림">
-                <span class="hash_tag">#수분선크림</span>
-                <span class="tit">유비데아</span>
-                <span class="kind">안뗄리오스 멜트인 크림 [수분]</span>
+            <li class=" new">
+              <a href="#none;" onclick="prdtViewLink('3596','PT','Y', Number('1'))">
+                <span class="ico">1<em>BEST</em></span>
+                <div style="border: 4px solid #45675b; margin-bottom: 10px; height: fit-content; padding: 10px; font-size: 16px; font-family: 'notokr-medium'; width: 212px; text-align: center;">성분 유사도 <span style="display: contents; font-family: 'locator-medium'; font-size: 22px;">71%</span></div>
+                
+                <img src="https://www.larocheposay.co.kr/upload/product/main/2022/01/20220113_1136039_353_400x400.png"
+                  alt="시카세럼30ml">
+                <span class="hash_tag">#피부장벽강화</span>
+                <span class="tit">시카플라스트</span>
+                <span class="kind">리페어 세럼 B5</span>
                 <span class="rating">
                   <div class="star-rating small">
                     <span class="c50">
                       <em class="hide">벌점 5.0개</em></span>
                   </div>
-                  <em>(1318)</em>
+                  <em>(270)</em>
                 </span>
-                <span class="price">
-                  <span class="sale">3%</span>
-                  <span class="before">35,000<em>원</em></span>
-                  <span class="after">34,000<em>원</em></span>
-                </span>
-                <span class="gift">
-                  <i class="ico_sale">세일</i></span>
+                <span class="price">48,000<em>원</em></span>
               </a>
               <div class="over">
                 <button type="button" class="detailview"
-                  onclick="prdtViewLink('3618','PT','Y', Number('5'))">자세히보기</button>
-                <button type="button" class="addcart listBasket" data-saleprice="34000" data-level="제한없음" data-cnt="10"
-                  data-value="3618" data-price="35000" data-linename="유비데아" data-prdtname="안뗄리오스 멜트인 크림 [수분]"
-                  data-sapcode="M8308923" data-tag-names="#수분선크림,# 순둥이자차,# 촉촉하고윤기나게,# 푸석한피부를위한,# 수분통통,# 유비데아"
-                  data-noingt-names="파라벤,인공색소,인공향,코메도제닉,인공향,인공향" data-category="SUN CARE>제품 라인별>유비데아">장바구니 담기</button>
+                  onclick="prdtViewLink('3596','PT','Y', Number('1'))">자세히보기</button>
+                <button type="button" class="addcart listBasket" data-saleprice="48000" data-level="제한없음" data-cnt="142"
+                  data-value="3596" data-price="48000" data-linename="시카플라스트" data-prdtname="리페어 세럼 B5"
+                  data-sapcode="MB451200" data-tag-names="#피부장벽강화,# 회복세럼,# 시카세럼,# 판테놀10%세럼" data-noingt-names=""
+                  data-category="FACE>제품 라인별>시카플라스트">장바구니 담기</button>
               </div>
-              <span class="like listLike" data-value="3618" data-price="35000" data-linename="유비데아"
-                data-prdtname="안뗄리오스 멜트인 크림 [수분]" data-sapcode="M8308923" data-category="SUN CARE>제품 라인별>유비데아"><i
-                  class="hide">관심제품</i></span>
-            </li>
-            <li class="">
-              <a href="#none;" onclick="prdtViewLink('2815','PT','Y', Number('6'))">
-                <span class="ico">6<em>BEST</em></span>
-                <img src="https://www.larocheposay.co.kr/upload/product/main/2021/11/20211125_1032016_004_400x400.png"
-                  alt="New! 리피카 밤 AP+M 바디크림">
-                <span class="hash_tag">#온가족 저자극 바디 보습 밤</span>
-                <span class="tit">리피카</span>
-                <span class="kind">밤 AP+M 바디 크림 [병원판매 화장품]</span>
-                <span class="rating">
-                  <div class="star-rating small">
-                    <span class="c50">
-                      <em class="hide">벌점 5.0개</em></span>
-                  </div>
-                  <em>(571)</em>
-                </span>
-                <span class="price">32,000<em>원</em></span>
-              </a>
-              <div class="over">
-                <button type="button" class="detailview"
-                  onclick="prdtViewLink('2815','PT','Y', Number('6'))">자세히보기</button>
-                <button type="button" class="addcart listBasket" data-saleprice="32000" data-level="제한없음" data-cnt="10"
-                  data-value="2815" data-price="32000" data-linename="리피카" data-prdtname="밤 AP+M 바디 크림 [병원판매 화장품]"
-                  data-sapcode="MB236800" data-tag-names="#온가족 저자극 바디 보습 밤,#고보습바디크림,# 패밀리바디크림,# 온가족바디크림,# 리피카"
-                  data-noingt-names="" data-category="BODY>제품 라인별>리피카">장바구니 담기</button>
-              </div>
-              <span class="like listLike" data-value="2815" data-price="32000" data-linename="리피카"
-                data-prdtname="밤 AP+M 바디 크림 [병원판매 화장품]" data-sapcode="MB236800" data-category="BODY>제품 라인별>리피카"><i
-                  class="hide">관심제품</i></span>
-            </li>
-            <li class="">
-              <a href="#none;" onclick="prdtViewLink('1111','PT','Y', Number('7'))">
-                <span class="ico">7<em>BEST</em></span>
-                <img src="https://www.larocheposay.co.kr/upload/product/main/2021/10/20211019_1508052_441_400x400.png"
-                  alt="에빠끌라 H 리밸런싱 하이드레이션 로션">
-                <span class="hash_tag">#저자극각질케어토너</span>
-                <span class="tit">에빠끌라</span>
-                <span class="kind">H 리밸런싱 하이드레이션 로션</span>
-                <span class="rating">
-                  <div class="star-rating small">
-                    <span class="c50">
-                      <em class="hide">벌점 5.0개</em></span>
-                  </div>
-                  <em>(1312)</em>
-                </span>
-                <span class="price">27,000<em>원</em></span>
-              </a>
-              <div class="over">
-                <button type="button" class="detailview"
-                  onclick="prdtViewLink('1111','PT','Y', Number('7'))">자세히보기</button>
-                <button type="button" class="addcart listBasket" data-saleprice="27000" data-level="제한없음" data-cnt="10"
-                  data-value="1111" data-price="27000" data-linename="에빠끌라" data-prdtname="H 리밸런싱 하이드레이션 로션"
-                  data-sapcode="M0688803" data-tag-names="#저자극각질케어토너,# 수부지토너,# 24시간보습지속,# H토너,# 에빠끌라"
-                  data-noingt-names="파라벤,인공색소,인공향,코메도제닉,인공향,인공향,인공색소,인공향" data-category="FACE>제품 라인별>에빠끌라">장바구니
-                  담기</button>
-              </div>
-              <span class="like listLike" data-value="1111" data-price="27000" data-linename="에빠끌라"
-                data-prdtname="H 리밸런싱 하이드레이션 로션" data-sapcode="M0688803" data-category="FACE>제품 라인별>에빠끌라"><i
+              <span class="like listLike" data-value="3596" data-price="48000" data-linename="시카플라스트"
+                data-prdtname="리페어 세럼 B5" data-sapcode="MB451200" data-category="FACE>제품 라인별>시카플라스트"><i
                   class="hide">관심제품</i></span>
             </li>
           </ul>
@@ -471,11 +394,11 @@
       </div>
 
     </section>
-    <!-- //right 제품구매 플로팅 -->
 
-   	<!-- footer -->
-	<div class="include-footer" th:insert="~{include/tmp_footer}"></div>
-	<!-- /footer -->
+	   	<!-- footer -->
+		<div class="include-footer" th:insert="~{include/tmp_footer}"></div>
+		<!-- /footer -->
+	</div>
 </body>
 
 </html>

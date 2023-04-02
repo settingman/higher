@@ -1,15 +1,14 @@
 package com.hyundai.higher.controller.skinMBTI;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.hyundai.higher.domain.skinMBTI.SkinMBTIDTO;
 import com.hyundai.higher.service.include.IncludeService;
 import com.hyundai.higher.service.skinMBTI.SkinMBTIService;
 
@@ -38,14 +37,28 @@ public class SkinMBTIController {
 	
 	@Autowired
 	private SkinMBTIService service;
-
+	
 	// 메인
-	@GetMapping("/main")
+	@GetMapping("/selfConsult")
 	public String skinMBTIMain(Model model) {
 		
-		model.addAttribute("categoryList", iService.categoryListAll());
-		
-		return "/skinMBTI/main2";
+		return "/skinMBTI/selfConsult";
 	}
+	
+	// 결과
+	@GetMapping("/result")
+	public String skinMBTIResult(@RequestParam("mbti") String mbti, 
+			@RequestParam("score1") int score1, @RequestParam("score2") int score2, 
+			@RequestParam("score3") int score3, @RequestParam("score4") int score4, Model model) {
+
+		int[] scores = {score1, score2, score3, score4};
+		
+		model.addAttribute("mbti", service.selectSkinMBTI(mbti));
+		model.addAttribute("scores", scores);
+		
+		return "/skinMBTI/result";
+	}
+	
+	
 	
 }

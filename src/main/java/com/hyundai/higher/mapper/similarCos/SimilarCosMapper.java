@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.hyundai.higher.domain.product.ProductDTO;
+import com.hyundai.higher.domain.product.ProductDetailDTO;
 import com.hyundai.higher.domain.similarCos.SimilarCosDTO;
 
 /**
@@ -16,7 +17,8 @@ import com.hyundai.higher.domain.similarCos.SimilarCosDTO;
  *     <pre>
  *   수정일         수정자               수정내용
  * ----------      --------    ---------------------------
- * 2023. 3. 24.     신수진      DateBase Member Mapper Interface
+ * 2023. 03. 24.    신수진      DateBase Member Mapper Interface'
+ * 2023. 04. 01.	신수진
  *     </pre>
  */
 @Mapper

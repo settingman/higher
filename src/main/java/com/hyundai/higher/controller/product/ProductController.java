@@ -45,6 +45,7 @@ public class ProductController {
 	public String productList(@RequestParam("dept1") String dept1no, @RequestParam(value="dept2", required=false, defaultValue = "") String dept2no, Model model) {
 		
 		model.addAttribute("categoryList", iService.categoryListAll());
+		model.addAttribute("dept1no", dept1no);
 		model.addAttribute("categoryListSub", service.categoryListSub(dept1no));
 		model.addAttribute("productList", service.productList(dept1no, dept2no));
 		

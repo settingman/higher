@@ -11,4 +11,5 @@ public class SkinMBTIDTO {
 	private String spros;
 	private String scons;
 	private String ssolution;
+	private String stag;
 }

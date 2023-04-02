@@ -11,6 +11,8 @@ $(function(){
 	
 	$('#search-input').on('keyup', function(){
 		let keyword = $(this).val();
+		console.log(keyword);
+		
 		if(keyword == ''){
 			$('#search-result').html('');
 		}else{
@@ -27,7 +29,7 @@ $(function(){
 						tag = '';
 						for(let i=0; i<$result.length; i++){
 							let pname = $result[i].pname;
-							tag += '<li onclick="test(&quot;' + $result[i].pcode + '&quot;);">';
+							tag += '<li onclick="goDetail(&quot;' + $result[i].pcode + '&quot;);">';
 							tag += pname.replace(keyword, '<span style="color:red;">'+keyword+'</span>');
 							tag += '</li>';
 							if(i == 7) break;
@@ -128,6 +130,6 @@ function CommaFormat(x) {
 }
 
 
-function test(pcode){
-	alert(pcode);
+function goDetail(pcode){
+	window.location.href = "/similarCos/detail?pcode=" + pcode;
 }

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" class="js" xmlns:sec="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" class="js" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
 <title>더현대뷰티 - 현대백화점 공식 화장품 온라인몰</title>
@@ -167,7 +166,7 @@
 			                <img th:if="${prod.thumbImgList[0].iloc != null}" th:src="${prod.thumbImgList[0].iloc + '_600.jpg'}" th:alt="${prod.pname}">
 			                <span class="hash_tag">[[${prod.bname}]]</span>
 			                <span class="tit">[[${prod.pname}]]</span>
-			                <span class="kind">퓨리파잉 포밍 크림</span>
+			                <span class="kind">[[${prod.ptype}]]</span>
 			                <span class="rating">
 			                  <div class="star-rating small">
 			                    <span class="c45">
