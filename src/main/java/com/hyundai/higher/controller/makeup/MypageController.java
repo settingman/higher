@@ -1,5 +1,6 @@
 package com.hyundai.higher.controller.makeup;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,15 +50,11 @@ public class MypageController {
 	 
 	
 	@GetMapping("/mypage_reserv")
-	public void reserving(String mid, Model model) {
-		// String mid -> Principal principal 로 변경
-		/*
-		 * List<ReservVO> done = service.getReservdone(principal.getId());
-		 * List<ReservVO> ready = service.getReservReady(principal.getId());
-		 */
+	public void reserving(Principal principal, Model model) {
 		log.info("===== 마이페이지 예약관리 =====");
-		List<ReservVO> done = service.getReservdone("angz");
-		List<ReservVO> ready = service.getReservReady("angz");
+		log.info(principal);
+		List<ReservVO> done = service.getReservdone(principal.getName());
+		List<ReservVO> ready = service.getReservReady(principal.getName());
 		model.addAttribute("done", done);
 		model.addAttribute("ready", ready);
 	}
