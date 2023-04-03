@@ -44,8 +44,9 @@ public class MypageController {
 	@Autowired
 	private MypageService service;
 	
-	@Value("${com.demo.upload.path}")
-	private String uploadPath;
+	
+	@Value("${com.demo.upload.path}") private String uploadPath;
+	 
 	
 	@GetMapping("/mypage_reserv")
 	public void reserving(String mid, Model model) {
