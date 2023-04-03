@@ -87,7 +87,7 @@ public class MakeupController {
 	public void makeupFinish() {
 		log.info("====== 결과 전송 + 상담 완료 백오피스 창 =====");
 	}
-
+	
 	@PostMapping("/makeup_send")
 	public String ResultSend(@RequestParam("result_img") String result_img, @RequestParam("rid") String rid,
 			@RequestParam("lip") String lip, @RequestParam("lip_pcode") String lip_pcode,
@@ -115,7 +115,7 @@ public class MakeupController {
 
 		log.info(result);
 
-		return ("/makeup/makeup_finish");
+		return ("/rtc/room");
 	}
 
 	// 결과 DB 연동 코드 -> result 보내기
@@ -151,6 +151,7 @@ public class MakeupController {
 
 		return "/makeup/makeup_result";
 	}
+	
 
 	// ajax용 코드
 	// Flask api 연결 코드 -> 파이썬 세팅된 컴퓨터만 가능

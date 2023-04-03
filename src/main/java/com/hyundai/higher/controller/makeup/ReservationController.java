@@ -1,5 +1,7 @@
 package com.hyundai.higher.controller.makeup;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -64,29 +66,18 @@ public class ReservationController {
 	}
 	
 	@PostMapping("/reserv.do")
-	public String reservSend(@RequestParam("rimg") String rimg, @RequestParam("rdate") String rdate, @RequestParam("mid") String mid) {
+	public String reservSend(@RequestParam("rimg") String rimg, @RequestParam("rdate") String rdate, Principal principal) {
 
 		log.info("==== 예약 DB 처리중 ====");
 		ReservVO vo = new ReservVO();
-		vo.setMid(mid);
+		vo.setMid(principal.getName());
 		vo.setRdate(rdate);
 		vo.setRimg(rimg);
 		
 		service.reserv(vo);
+		log.info(vo);
 		
 		return "redirect:/mypage/mypage_reserv";
-	}
-	
-	// 날짜 별 예약이 풀인지 아닌지 체크
-	@GetMapping("/can_reserv.do")
-	public int getAvailableReserv(@RequestParam("rdate") String rdate) {
-		return  service.CountDate(rdate);
-	}
-	
-	// 날짜의 시간 별 예약이 가능/불가능 확인
-	@PostMapping("/can_reserv_time.do")
-	public int getAvailableTime(@RequestParam("rdate") String rdate) {
-		return service.CountTime(rdate);
 	}
 
 }
