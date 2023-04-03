@@ -1,0 +1,408 @@
+<!--
+ @Date : 2023. 3. 3.
+ @작성자 : 박성환
+ @설명 : 아이디 찾기 완료페이지.
+-->
+
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<title>회원가입 | 더한섬닷컴</title>
+
+<th:block th:replace="common/head :: headFragment"></th:block>
+
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0" />
+<title>더현대닷컴</title>
+
+<link rel="stylesheet" type="text/css" href="https://image.thehyundai.com/pc/cssssl/font.css" />
+
+<link rel="stylesheet" type="text/css" href="https://image.thehyundai.com/pc/cssssl/co.css?ver=21" />
+<link rel="stylesheet" type="text/css" href="https://image.thehyundai.com/pc/cssssl/wf.css" />
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+
+
+
+<script type="text/javascript" src="https://image.thehyundai.com/pc/js/hdmall/co/common.js?ver=030121"></script>
+
+
+
+
+<script src="https://image.thehyundai.com/pc/js/common.js?ver=030121"></script>
+<script type="text/javascript" src="https://image.thehyundai.com/pc/js/swiper.min.js?ver=030121"></script>
+
+
+
+<link rel="stylesheet" type="text/css" href="https://www.thehyundai.com/cssssl/dp.css?ver=21" />
+
+<style type="text/css">
+.fancybox-margin {
+	margin-right: 16px;
+}
+</style>
+<meta http-equiv="origin-trial"
+	content="A751Xsk4ZW3DVQ8WZng2Dk5s3YzAyqncTzgv+VaE6wavgTY0QHkDvUTET1o7HanhuJO8lgv1Vvc88Ij78W1FIAAAAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjgwNjUyNzk5LCJpc1RoaXJkUGFydHkiOnRydWV9"
+/>
+<meta http-equiv="origin-trial"
+	content="A751Xsk4ZW3DVQ8WZng2Dk5s3YzAyqncTzgv+VaE6wavgTY0QHkDvUTET1o7HanhuJO8lgv1Vvc88Ij78W1FIAAAAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjgwNjUyNzk5LCJpc1RoaXJkUGFydHkiOnRydWV9"
+/>
+
+<link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="//static.groobee.io/dist/g2/css/grb-recommend-list_v2.css" />
+</head>
+
+
+<body>
+	<!-- wrap -->
+	<div id="wrap" class="sub notgnb">
+		<!-- gnb -->
+
+		<script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/co/referCodes.js"></script>
+
+		<script type="text/javascript" src="https://www.thehyundai.com/static/gen/js/mainBnnrContents.js?ver=012146"></script>
+
+		<div id="skip-navigation">
+			<p>
+				<a href="#header-wrap">헤더영역 바로가기</a>
+			</p>
+			<p>
+				<a href="#header-gnb-area">GNB영역 바로가기</a>
+			</p>
+			<p>
+				<a href="#container">컨텐츠영역 바로가기</a>
+			</p>
+			<p>
+				<a href="#footer">푸터영역 바로가기</a>
+			</p>
+		</div>
+
+		<!-- header -->
+		<!-- 서브메뉴 -->
+
+		<!-- top banner -->
+		<div id="js-tpl-topBanner" style="display: none"></div>
+
+		<div class="top-wrap sub">
+			<div class="top-area-setting">
+				<div class="top-con">
+					<div class="top-con-logo">
+						<h1>
+							<a href="http://www.thehyundai.com/Home.html?MainpageGroup=Fix&amp;GroupbannerName=GNB_Logo"><span class="blind">The HYUNDAI</span></a>
+						</h1>
+					</div>
+
+					<div class="top-con-search">
+						<form name="formTopSearchPopup" id="formTopSearchPopup" method="get">
+							<input type="hidden" name="searchtype" id="js_searchtype" />
+							<input type="hidden" name="searchQuery" autocomplete="off" />
+							<div class="top-con-search-unit">
+								<input type="text" class="top-con-search-input" maxlength="30" id="cs-token-input" value="" onfocus="return dq_setTextbox(0,event);"
+									onmousedown="dq_setTextbox(1,event);" onkeydown="dq_setTextbox(1,event);" autocomplete="off"
+								/>
+								<button type="submit" class="top-con-search-btn" onclick="javascript:>
+									<span class="blind">검색</span>
+								</button>
+
+								<!-- 검색 -->
+								<div class="search-box" id="search_info_box" style="display: none" onmouseover="dq_info_setMouseon();" onmouseout="dq_info_setMouseoff();">
+									<!-- 최근검색어 -->
+									<div class="search-box-list" id="recent_rs_search">
+										<div class="search-box-tit">최근검색어</div>
+										<div class="search-box-cont">
+											<ul class="search-box-text">
+												<li>최근 검색어가 없습니다.</li>
+											</ul>
+										</div>
+									</div>
+
+									<!-- 인기검색어 -->
+									<div class="search-box-list" id="hot_rs_search">
+										<div class="search-box-tit">인기검색어</div>
+										<div class="search-box-cont">
+											<div class="search-box-best">
+												<ul class="search-box-bestnum left">
+													<li><a href="javascript:
+														class="lank"
+													>1. 명품</a><span class="status no"><span class="blind">no</span></span></li>
+													<li><a
+														href="javascript:
+														class="lank"
+													>2. COS퀼티드백</a><span class="status no"><span class="blind">no</span></span></li>
+													<li><a
+														href="javascript:
+														class="lank"
+													>3. COS 퀼티드</a><span class="status new">NEW</span></li>
+													<li><a
+														href="javascript:
+														class="lank"
+													>4. 오니츠카타이거</a><span class="status down"><span class="blind">down</span></span></li>
+													<li><a
+														href="javascript:
+														class="lank"
+													>5. 아크테릭스</a><span class="status down"><span class="blind">down</span></span></li>
+												</ul>
+												<ul class="search-box-bestnum right">
+													<li><a
+														href="javascript:
+														class="lank"
+													>6. 어그 울트라 미니</a><span class="status down"><span class="blind">down</span></span></li>
+													<li><a
+														href="javascript:
+														class="lank"
+													>7. 니트 가디건</a><span class="status no"><span class="blind">no</span></span></li>
+													<li><a href="javascript:
+														class="lank"
+													>8. 양말</a><span class="status no"><span class="blind">no</span></span></li>
+													<li><a
+														href="javascript:
+														class="lank"
+													>9. 현대식품관</a><span class="status new">NEW</span></li>
+													<li><a href="javascript:
+														class="lank"
+													>10. 슬리퍼</a><span class="status new">NEW</span></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="search-box" id="search_auto_box" style="display: none" onmouseover="dq_setMouseon();" onmouseout="dq_setMouseoff();">
+									<!-- 연관검색어 -->
+									<div class="search-box-list" id="relation_rs_search">
+										<div class="search-box-cont">
+											<ul class="search-box-text">
+												<li>연관 검색어가 없습니다.</li>
+											</ul>
+										</div>
+									</div>
+
+									<!-- 추천브랜드 -->
+									<div class="search-box-list" id="brand_rs_search">
+										<div class="search-box-tit">추천브랜드</div>
+										<div class="search-box-cont">
+											<ul class="search-box-brand">
+												<li>추천 브랜드가 없습니다.</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<!-- //검색 -->
+							</div>
+						</form>
+					</div>
+
+					<div class="top-con-quick">
+						<ul>
+							<li class="myshop-info">
+								<div class="top-con-quick-my">
+									<a href="javascript:>로그인/회원</a>
+								</div> <!-- 20190118 추가 레이어팝업 -->
+								<div class="myshop-info-layer logout">
+									<!-- logout:비 로그인 상태, login:로그인 상태 -->
+									<div class="myshop-cont">
+										<ul class="myshop-cont-top">
+											<li class="myshop-hyundai"><a onclick=
+												href="https://www.thehyundai.com/front/mpf/selectMyPageMain.thd?MainpageGroup=Util&amp;GroupbannerName=GNB_MyHyundai"
+											>마이현대</a></li>
+											<li><a onclick=
+												href="https://www.thehyundai.com/front/mpa/selectOrdDlvCrst.thd?MainpageGroup=Util&amp;GroupbannerName=GNB_Order"
+											>주문배송</a></li>
+											<li><a onclick=>나의 찜</a></li>
+											<li class="myshop-join"><a onclick=
+												href="https://www.thehyundai.com/front/cob/COBCertificationSelect.thd?MainpageGroup=util&amp;GroupbannerName=membership"
+											>회원가입</a></li>
+											<li class="myshop-logout"><a href="javascript:logOut();">로그아웃</a></li>
+										</ul>
+										<ul class="myshop-cont-body">
+											<li class="logout-only"><span class="tit">나의 쇼핑 혜택</span> <a href="javascript://"
+												onclick="javascript:
+											><span class="blind">자세히보기</span></a></li>
+											<li class="login-only"><span class="tit">등급</span> <span class="cont">혜택</span> <a href="javascript://"
+												onclick="javascript:
+											><span class="blind">자세히보기</span></a></li>
+											<li><span class="tit">쿠폰</span> <span class="cont login-only">0장</span> <a onclick=
+												href="https://www.thehyundai.com/front/mpe/selectCopnList.thd?MainpageGroup=util&amp;GroupbannerName=coupon"
+											><span class="blind">자세히보기</span></a></li>
+											<li><span class="tit">H.Point</span> <span class="cont login-only">0P</span> <a onclick="goHpoint()" href="#"><span class="blind">자세히보기</span></a></li>
+											<li><span class="tit">더머니</span> <span class="cont login-only">0원</span> <a onclick=
+												href="https://www.thehyundai.com/front/mpe/selectHPntTabPage.thd?MainpageGroup=util&amp;GroupbannerName=theMoney"
+											><span class="blind">자세히보기</span></a></li>
+										</ul>
+									</div>
+								</div> <!-- // 20190118 추가 레이어팝업 -->
+							</li>
+							<li><a onclick=
+								href="https://www.thehyundai.com/front/cca/main.thd?MainpageGroup=Util&amp;GroupbannerName=GNB_Center"
+							>고객센터</a></li>
+							<li>
+								<div class="top-con-quick-basket">
+									<a onclick=
+										href="https://www.thehyundai.com/front/odb/basktList.thd?MainpageGroup=Util&amp;GroupbannerName=GNB_Basket"
+									>장바구니</a><span class="basket-num" id="quick_baskt_num">0</span>
+								</div>
+							</li>
+							<!-- 20210830 바로접속 추가// -->
+							<li>
+								<div class="top-con-quick-onoff">
+									<a href="#">바로접속<span class="ic-onff">OFF</span></a>
+								</div>
+							</li>
+							<!-- //20210830 바로접속 추가 -->
+						</ul>
+					</div>
+				</div>
+				<div class="top-nav" id="header-gnb-area">
+					<!-- 20210518 gnb nav 수정// -->
+				</div>
+				<!-- // top-nav -->
+				<!-- //gnb-area -->
+
+
+
+				<script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/dp/dpo/dqAutoCompleteNewCommon.js?ver=030121"></script>
+				<script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/dp/dpo/dqAutoCompleteNew.js?ver=030121"></script>
+
+			</div>
+		</div>
+
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+			});
+		</script>
+
+		<!-- //gnb -->
+
+		<div class="content">
+
+			<!-- content-top -->
+			<div class="content-top">
+				<h2 class="subtitle">아이디찾기 결과</h2>
+				<div class="line"></div>
+			</div>
+			<!-- //content-top -->
+
+
+
+			<!-- perform-msg -->
+			<div class="perform-msg type2">
+				<p>
+					다음 정보로 가입된 아이디 <span class="text-point5 strong"></span>정보 입니다.
+				</p>
+				<div class="id-info" th:object="${findMember}">
+					<div class="dot_list_wrap">
+						<ul class="dot_list">
+							<li><span>성명: </span><span class="simple_name" th:text="*{mName}"></span></li>
+							<li><span>생년월일: </span><span class="simple_bday" th:text="*{mBirth}"></span></li>
+							<li><span>아이디: </span><span class="simple_id" th:text="*{mId}"></span></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!-- //perform-msg -->
+
+
+
+			<!-- btn-wrap -->
+			<div class="btn-wrap type">
+				<button class="btn size5 color2" type="button" onclick="location.href='/member/login';">로그인 하기</button>
+				<button class="btn size5 color3" type="button" onclick="location.href='/member/findPw';">비밀번호
+					찾기</button>
+			</div>
+			<!-- footer -->
+
+
+			<!-- footer -->
+			<div id="footer">
+				<h1 class="blind">푸터영역</h1>
+				<div class="top">
+					<div class="row">
+						<div class="hyundai-menu">
+							<span class="tit"> <a href="javascript:;"
+								onclick="javascript:
+							>현대백화점그룹</a>
+							</span>
+							<ul>
+								<li><a onclick=
+									href="http://www.thehyundai.com/front/ccb/noticeList.thd?MainpageGroup=Footer&amp;GroupbannerName=notice"
+								>공지사항</a></li>
+
+								<li><a href="javascript:;"
+									onclick="javascript:
+								>윤리경영</a></li>
+								<li><a href="javascript:;"
+									onclick="javascript:
+								>사회공헌</a></li>
+								<li><a onclick=
+									href="http://www.thehyundai.com/front/cua/viewPolicyPup.thd?view=1&amp;MainpageGroup=Footer&amp;GroupbannerName=agree" data-toggle="winpopup"
+									data-api="center,900,770,scrollbars" target="_blank"
+								>이용약관</a></li>
+								<li><a onclick=
+									href="http://www.thehyundai.com/front/cua/viewPolicyPup.thd?view=2&amp;MainpageGroup=Footer&amp;GroupbannerName=private"
+									data-toggle="winpopup" data-api="center,900,770,scrollbars" target="_blank"
+								><strong>개인정보 처리방침</strong></a></li>
+							</ul>
+						</div>
+
+						<!-- 2016-07-28// -->
+
+						<!-- //2016-07-28 -->
+					</div>
+				</div>
+				<div class="bottom">
+					<div class="row">
+						<div class="logo">
+							<a href="http://www.thehyundai.com/Home.html"><img src="https://image.thehyundai.com/hdmall/images/co/img_bottom_logo.png"
+								alt="THE HYUNDAI"
+							/></a>
+						</div>
+						<div class="info">
+							<!-- 171130 수정// -->
+							<p>주식회사 현대백화점 대표이사 : 김형종 외 2인 서울시 강남구 테헤란로98길 12</p>
+							<p>
+								사업자등록번호 : 211-87-21455 <a href="https://www.ftc.go.kr/bizCommPop.do?wrkr_no=2118721455" data-toggle="winpopup"
+									data-api="center,750,700,scrollbars" target="_blank"
+								>[사업자정보 확인]</a> 통신판매업신고 : 2010-서울강남-01882
+							</p>
+							<p>
+								홈페이지/앱 문의 : <a href="mailto:customerservice@thehyundai.com">customerservice@thehyundai.com</a> 고객센터 : <strong>1800-2233</strong>
+							</p>
+							<p>호스팅서비스 : (주)현대백화점</p>
+							<p class="copy">CopyrightⓒHyundai Department Store. All rights reserved.</p>
+							<!-- //171130 수정 -->
+						</div>
+
+					</div>
+					<div class="certi-wrap row">
+						<p class="certi">
+							<a href="http://www.kolsa.or.kr/neopress/index.php?mid=regular" target="_blank"><img
+								src="https://image.thehyundai.com/hdmall/images/co/img_footer_v2_certi_01.png" alt="사단법인 한국온라인 쇼핑협회 정회원사"
+							/></a> <span class="scol">|</span> <a href="http://www.kca.go.kr/wpge/m_210/ccm1100.do" target="_blank"><img
+								src="https://image.thehyundai.com/hdmall/images/co/img_footer_v2_certi_02.png" alt="공정거래위원회 CCm 인증 [소비자중심 경영우수기업]"
+							/></a> <span class="scol">|</span> <a target="_blank"><img src="https://image.thehyundai.com/hdmall/images/co/img_footer_certi_03.png"
+								alt="위해상품 차단 시스템 운영매장"
+							/></a> <span class="scol">|</span> <a target="_blank"><img src="https://image.thehyundai.com/hdmall/images/co/img_footer_certi_04.png"
+								alt="모바일 어워드 코리아 2016"
+							/></a>
+						</p>
+						<p class="checkguarantee">
+							<span> 고객님의 안전거래를 위해 현금결제시 우리은행과 채무지급보증계약을<br /> 체결하여 안전거래를 보장하고 있습니다.
+							</span>
+							<!--http://www.thehyundai.com/html/contents/-->
+							<a href="#" onclick="javascript:popover_ajax('https://www.thehyundai.com/html/contents/guarantee.html', 750);return false;">서비스 가입사실 확인</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- //wrap -->
+
+	</div>
+</body>
+</html>

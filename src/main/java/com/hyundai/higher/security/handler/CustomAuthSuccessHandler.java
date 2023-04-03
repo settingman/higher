@@ -51,7 +51,9 @@ public class CustomAuthSuccessHandler extends SimpleUrlAuthenticationSuccessHand
 		if (prevPage != null) {
 			request.getSession().removeAttribute("prevPage");
 		}
-		// 기본 URI
+		
+		// 로그인 성공시 기본 URI
+		// 팝업 로그인 시 팝업창 닫고 부모를 보낼 사이트로 리다이렉트 시킴
 		String uri = "/";
 
 		/**

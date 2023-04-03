@@ -1,4 +1,4 @@
-# higher
+# Higher
  Hyundai_FinalProject
   
   
@@ -43,7 +43,7 @@
  
  ```
  * 역할:    
- * E-mail: 
+ * E-mail: wls3147@gmail.com
  ```
 
 

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.hyundai.higher.mapper.beauty.BeautyMapper">
+
+
+	<select id="findReservation"
+		resultType="com.hyundai.higher.webRTC.dto.ReservationDTO">
+
+		SELECT r.RID, r.roomId, r.MID ,m.MNAME,r.RCHECK,
+		to_char(r.rDate,'yy-mm-dd')
+		as RDATE, to_char(r.rDate,'hh24:mm') as
+		RTIME, r.RIMG
+		FROM reservation
+		r , MEMBER m
+		where r.MID = m.MID
+	</select>
+
+
+	<update id="updateRoomID">
+		update reservation set ROOMID = #{roomID}, RCHECK = 1
+		where RID =#{rid} and MID =#{mid}
+	</update>
+
+
+
+	<select id="findProfile"
+		resultType="com.hyundai.higher.domain.beauty.Profile">
+
+		select m.mid, m.mname, m.mbti,
+		TRUNC(MONTHS_BETWEEN(SYSDATE, m.MBIRTH)/12)
+		AS AGE , r.rid, r.rimg
+		from
+		Member m, Reservation r
+		where r.RID =#{rid} and m.MID =#{mid}
+
+	</select>
+
+
+
+</mapper>

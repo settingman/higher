@@ -8,8 +8,7 @@
 
 	<select id="findById"
 		resultType="com.hyundai.higher.domain.member.Member">
-		SELECT MID, MPassword, MName, MPhone, MEmail, MZipCode,
-		MAddress1, MAddress2, MBirth, MGender, MRole
+		SELECT MID, MPassword, MName, MPhone, MEmail, MBirth, MRole
 		FROM MEMBER
 		where
 		MID=#{mId}
@@ -18,8 +17,7 @@
 
 	<select id="findByNameBirth"
 		resultType="com.hyundai.higher.domain.member.Member">
-		SELECT MID, MPassword, MName, MPhone, MEmail, MZipCode,
-		MAddress1, MAddress2, MBirth, MGender, MRole
+		SELECT MID, MPassword, MName, MPhone, MEmail, MBirth, MRole
 		FROM MEMBER
 		where
 		MName=#{mName} and MBirth=#{mBirth}
@@ -27,8 +25,7 @@
 
 	<select id="findByNameId"
 		resultType="com.hyundai.higher.domain.member.Member">
-		SELECT MID, MPassword, MName, MPhone, MEmail, MZipCode,
-		MAddress1, MAddress2, MBirth, MGender, MRole
+		SELECT MID, MPassword, MName, MPhone, MEmail, MBirth, MRole
 		FROM MEMBER
 		where
 		MName=#{mName} and MId=#{mId}
@@ -57,7 +54,8 @@
 		#{mRole},
 		0,
 		'백화점',
-		1
+		1,
+		null
 		)
 
 

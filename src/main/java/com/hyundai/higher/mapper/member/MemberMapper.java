@@ -2,6 +2,7 @@ package com.hyundai.higher.mapper.member;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.context.annotation.ComponentScan;
 
 import com.hyundai.higher.domain.member.Member;
 

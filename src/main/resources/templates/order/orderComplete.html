@@ -1,0 +1,483 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<title>주문완료 | 더한섬닷컴</title>
+<th:block th:replace="common/head :: headFragment"></th:block>
+
+<head>
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0" />
+
+<link rel="stylesheet" type="text/css" href="https://image.thehyundai.com/pc/cssssl/font.css" />
+
+
+<link rel="stylesheet" type="text/css" href="https://image.thehyundai.com/pc/cssssl/co.css?ver=14" />
+<link rel="stylesheet" type="text/css" href="https://image.thehyundai.com/pc/cssssl/wf.css" />
+<script src="https://image.thehyundai.com/pc/js/jquery-1.11.3.min.js"></script>
+<script src="https://image.thehyundai.com/pc/js/jquery-ui.min.js"></script>
+<script src="https://image.thehyundai.com/pc/js/jquery-migrate.min.js"></script>
+
+<script src="https://image.thehyundai.com/pc/js/plugin.js?ver=030614"></script>
+<script type="text/javascript" src="https://image.thehyundai.com/pc/js/hdmall/co/jquery.form.js"></script>
+<script type="text/javascript" src="https://image.thehyundai.com/pc/js/hdmall/co/default.js?ver=030614"></script>
+<script type="text/javascript" src="https://image.thehyundai.com/pc/js/hdmall/co/common.js?ver=030614"></script>
+<script src="https://image.thehyundai.com/pc/js/common.js?ver=030614"></script>
+<script type="text/javascript" src="https://image.thehyundai.com/pc/js/swiper.min.js?ver=030614"></script>
+
+<link rel="stylesheet" type="text/css" href="https://www.thehyundai.com/cssssl/jquery-ui.css?ver=14" />
+<link rel="stylesheet" type="text/css" href="https://www.thehyundai.com/cssssl/co.css?ver=14" />
+<link rel="stylesheet" type="text/css" href="https://www.thehyundai.com/cssssl/od_new.css?ver=14" />
+<link rel="stylesheet" type="text/css" href="https://www.thehyundai.com/cssssl/dp.css?ver=14" />
+
+
+<style type="text/css">
+.fancybox-margin {
+	margin-right: 16px;
+}
+</style>
+
+<script type="text/javascript" async=""
+	src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/879261918/?random=1678080685959&amp;cv=11&amp;fst=1678080685959&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;gtm=45be3310&amp;u_w=1707&amp;u_h=1067&amp;hn=www.googleadservices.com&amp;frm=0&amp;url=https%3A%2F%2Fwww.thehyundai.com%2Ffront%2Foda%2ForderComplete.thd&amp;ref=https%3A%2F%2Fwww.thehyundai.com%2Ffront%2Foda%2Forder.thd&amp;tiba=%EB%8D%94%ED%98%84%EB%8C%80%EB%8B%B7%EC%BB%B4&amp;auid=1634151386.1677462498&amp;uaa=x86&amp;uab=64&amp;uafvl=Chromium%3B110.0.5481.178%7CNot%2520A(Brand%3B24.0.0.0%7CGoogle%2520Chrome%3B110.0.5481.178&amp;uamb=0&amp;uap=Windows&amp;uapv=15.0.0&amp;uaw=0&amp;data=event%3Dgtag.config&amp;rfmt=3&amp;fmt=4"
+></script>
+<link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" />
+<script type="text/javascript" async=""
+	src="https://www.googleadservices.com/pagead/conversion/879261918/?random=1678080686784&amp;cv=11&amp;fst=1678080686784&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;gtm=45be3310&amp;u_w=1707&amp;u_h=1067&amp;label=DAtcCKWT6bYBEN7xoaMD&amp;hn=www.googleadservices.com&amp;frm=0&amp;url=https%3A%2F%2Fwww.thehyundai.com%2Ffront%2Foda%2ForderComplete.thd&amp;ref=https%3A%2F%2Fwww.thehyundai.com%2Ffront%2Foda%2Forder.thd&amp;tiba=%EB%8D%94%ED%98%84%EB%8C%80%EB%8B%B7%EC%BB%B4&amp;oid=23030600618040&amp;value=341000&amp;currency_code=KRW&amp;gtm_ee=1&amp;auid=1634151386.1677462498&amp;uaa=x86&amp;uab=64&amp;uafvl=Chromium%3B110.0.5481.178%7CNot%2520A(Brand%3B24.0.0.0%7CGoogle%2520Chrome%3B110.0.5481.178&amp;uamb=0&amp;uap=Windows&amp;uapv=15.0.0&amp;uaw=0&amp;data=event%3Dconversion&amp;rfmt=3&amp;fmt=4"
+></script>
+<script type="text/javascript" async=""
+	src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/879261918/?random=1678080686789&amp;cv=11&amp;fst=1678080686789&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;gtm=45be3310&amp;u_w=1707&amp;u_h=1067&amp;hn=www.googleadservices.com&amp;frm=0&amp;url=https%3A%2F%2Fwww.thehyundai.com%2Ffront%2Foda%2ForderComplete.thd&amp;ref=https%3A%2F%2Fwww.thehyundai.com%2Ffront%2Foda%2Forder.thd&amp;tiba=%EB%8D%94%ED%98%84%EB%8C%80%EB%8B%B7%EC%BB%B4&amp;oid=23030600618040&amp;value=341000&amp;currency_code=KRW&amp;auid=1634151386.1677462498&amp;uaa=x86&amp;uab=64&amp;uafvl=Chromium%3B110.0.5481.178%7CNot%2520A(Brand%3B24.0.0.0%7CGoogle%2520Chrome%3B110.0.5481.178&amp;uamb=0&amp;uap=Windows&amp;uapv=15.0.0&amp;uaw=0&amp;data=event%3Dpurchase%3Bid%3D40A1650970%2C40A1624448&amp;rfmt=3&amp;fmt=4"
+></script>
+<script type="text/javascript" async="" src="//tpc.googlesyndication.com/sodar/1s9mPOHO.js"></script>
+
+</head>
+<body>
+	<!-- wrap -->
+	<div id="wrap" class="sub notgnb simple-gnb">
+		<!-- gnb -->
+
+		<script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/co/referCodes.js"></script>
+		<script src="/js/sso/SsoHttpRequest.js"></script>
+		<script src="/js/sso/SsoAjax.js"></script>
+		<script src="/js/sso/SsoLogin.js"></script>
+
+		<script type="text/javascript" src="https://www.thehyundai.com/static/gen/js/mainBnnrContents.js?ver=061431"></script>
+
+
+
+		<!-- top banner -->
+		<div id="js-tpl-topBanner" style="display: none"></div>
+
+		<div class="top-wrap sub">
+			<div class="top-area-setting">
+				<div class="top-con">
+					<div class="top-con-logo">
+						<h1>
+							<a href="http://www.thehyundai.com/Home.html?MainpageGroup=Fix&amp;GroupbannerName=GNB_Logo"><span class="blind">The HYUNDAI</span></a>
+						</h1>
+					</div>
+
+
+					<div class="top-con-quick">
+						<ul>
+							<li class="myshop-info">
+								<div class="top-con-quick-my">박성환님</div> <!-- 20190118 추가 레이어팝업 -->
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<!-- // top-nav -->
+				<!-- //gnb-area -->
+
+
+				<script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/dp/dpo/dqAutoCompleteNewCommon.js?ver=030614"></script>
+				<script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/dp/dpo/dqAutoCompleteNew.js?ver=030614"></script>
+
+				<!-- //header -->
+
+
+			</div>
+		</div>
+
+		<script type="text/javascript" src="https://image.thehyundai.com/pc/js/hdmall/co/skyscraper.js?ver=030614"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+			});
+		</script>
+
+		<!-- //gnb -->
+
+		<!-- container -->
+		<div id="container">
+			<h1 class="blind">컨텐츠영역</h1>
+
+			<!-- content-wrap -->
+			<div class="content-wrap">
+				<!-- cart-head -->
+				<div class="cart-head">
+					<h2>주문완료</h2>
+					<div class="stepwrap">
+						<ul>
+							<li>
+								<div class="step-box cart-01">
+									<span class="mark"></span>
+									<p>STEP 01</p>
+									<p>장바구니</p>
+								</div>
+							</li>
+							<li><span class="step-mark"></span> <span class="step-box cart-02"> <i class="mark"></i> <em>STEP 02</em> <em>주문서작성</em>
+							</span></li>
+							<li><span class="step-mark"></span> <span class="step-box cart-03 current"> <i class="mark"></i> <em>STEP 03</em> <em>주문완료</em>
+							</span></li>
+						</ul>
+					</div>
+				</div>
+				<!-- //cart-head -->
+
+				<!-- order-complete -->
+				<div class="order-complete pt50" id="divOrderCompleteInf">
+					<!-- 20170512// -->
+
+					<!-- //20170512 -->
+					<p>더현대닷컴 쇼핑몰을 이용해 주셔서 감사합니다.</p>
+					<h3>
+						주문이 정상적으로 <strong class="text-point2">완료</strong>되었습니다.
+					</h3>
+					<h4 class="order-number">
+						주문번호 : <strong class="text-point5 underline"> [[${orderSheet.orderId}]]</strong>
+					</h4>
+
+					<!-- info-table -->
+					<div class="info-table">
+						<div class="table-wrap">
+							<table>
+								<colgroup>
+									<col style="width: 150px" />
+									<col style="width: 215px" />
+									<col style="width: 150px" />
+									<col style="width: 215px" />
+								</colgroup>
+								<tbody>
+									<tr>
+										<th scope="row">주문하신 분</th>
+									<td><span sec:authentication="principal.mName" class="od-name" type="text" title="이름" name="chgOrdCustNm" maxlength="10" /></td>
+									</tr>
+									<tr>
+										<th scope="row">휴대폰 번호</th>
+									<td><span id="mPhone" sec:authentication="principal.mPhone"></span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<!-- //info-table -->
+
+					<!-- ordersheet-box -->
+					<div class="ordersheet-box mt50">
+						<h4 class="oc-subtit">상품 및 배송지 정보</h4>
+
+						<!--cart-list-->
+						<div class="cart-list">
+							<div class="table-wrap coltype cart">
+								<div style="display: none">
+									<f1tgs name="f1_content_ids" desc="Product ID">40A1650970</f1tgs>
+									<f1tgs name="f1_products_price" desc="Product Price">68000</f1tgs>
+								</div>
+								<div style="display: none">
+									<f1tgs name="f1_content_ids" desc="Product ID">40A1624448</f1tgs>
+									<f1tgs name="f1_products_price" desc="Product Price">273000</f1tgs>
+								</div>
+								<table>
+									<caption></caption>
+									<colgroup>
+										<col style="width: *" />
+										<col style="width: 150px" />
+										<col style="width: 150px" />
+										<col style="width: 150px" />
+									</colgroup>
+									<thead>
+										<tr>
+											<th scope="col">상품정보/옵션정보</th>
+											<th scope="col">수량</th>
+											<th scope="col">주문금액</th>
+											<th scope="col">배송비</th>
+										</tr>
+									</thead>	
+									<tbody>
+										<tr th:each="item, stat : ${orderSheet.product_id}">
+										<td class="valign-top">
+											<div class="prod-info no-ctrl">
+												<div class="img" id="img-40A1650970">
+													<input type="hidden" th:value="${orderSheet.product_id[stat.index]}" />
+													<img src="${orderSheet.product_image[stat.index]}" onerror="noImage(this, 'https://image.thehyundai.com/hdmall/images/pd/no_image_100x100.jpg')" />
+													<div class="hover-info">
+														<a href="http://www.thehyundai.com/front/pda/itemPtc.thd?slitmCd=40A1650970&amp;sectId=102066" target="_blank" title="새창으로 보기">새창으로
+															보기</a><a href="javascript:sltdItemDone('40A1650970:00001','102066',event);return false;" title="찜하기"
+															onclick="javascript:popover_open(this , '#popover-layer-zzim');return false;"
+														>찜하기</a>
+													</div>
+												</div>
+												<div class="title">
+													<a href="http:	//www.thehyundai.com/front/pda/itemPtc.thd?slitmCd=40A1650970&amp;sectId=102066" target="_blank">[[${orderSheet.product_name[stat.index]}]]</a>
+												</div>
+												<div class="option-info">
+													<span class="tit">옵션 : 상품옵션 넣기</span>
+												</div>
+											</div>
+										</td>
+										<td class="prod-num">[[${orderSheet.product_Quntity[stat.index]}]]개</td>
+										
+										<td class="price-info">
+											<div class="o-price" th:text="${#numbers.formatInteger(orderSheet.product_price[stat.index]*orderSheet.product_Quntity[stat.index], 3, 'COMMA') + '원'}"></div>
+											<div class="tot-price" >
+												<span data-tcprate="1.0" data-luityn="N" data-stlmdcamt="0"
+													th:text="${#numbers.formatInteger(orderSheet.product_price[stat.index]*orderSheet.product_Quntity[stat.index], 3, 'COMMA') + '원'}"
+												></span>
+											</div>
+										</td>
+										<td  th:if="${stat.index == 0}")class="shipping" rowspan="2">
+											<div class="free">
+												<div class="free">무료배송</div>
+											</div>
+										</td>
+										
+										
+										
+										
+									</tr>
+									
+									</tbody>
+								</table>
+							</div>
+
+							<div class="table-wrap order-addinfo">
+								<table>
+									<colgroup>
+										<col style="width: 180px" />
+										<col style="width: 185px" />
+										<col style="width: 180px" />
+										<col />
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">배송방법</th>
+											<td colspan="3"><span class="text-point2">택배배송</span></td>
+										</tr>
+										<tr>
+											<th scope="row">받으시는 분</th>
+											<td colspan="3">[[${orderSheet.oReceiver}]]</td>
+										</tr>
+										<tr>
+											<th scope="row">휴대폰 번호</th>
+											<td colspan="3">[[${orderSheet.oTel}]]</td>
+										</tr>
+										<tr>
+											<th scope="row">배송지</th>
+											<td colspan="3">[[${orderSheet.oZipcode}]] - [[${orderSheet.oAddress1}]] [[${orderSheet.oAddress2}]]</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<!--//cart-list-->
+					</div>
+					<!-- //ordersheet-box -->
+
+					<div class="info-table">
+						<h4 class="oc-subtit">할인 및 결제정보</h4>
+
+						<div class="bill-summary-wrap">
+							<table class="bill-summary for-comp">
+								<tbody>
+									<tr>
+										<td>
+											<div class="title">주문금액</div>
+											<div class="price" th:text="${#numbers.formatInteger(orderSheet.oTotalPrice, 3, 'COMMA') + '원'}">
+											</div>
+										</td>
+										<td>
+											<div class="title">배송비</div>
+											<div class="price free">무료</div>
+										</td>
+										<td class="minus">
+											<div class="title">할인금액</div>
+											<div class="price">
+												0<span>원</span>
+											</div>
+										</td>
+										<td class="equal">
+											<div class="title">총 결제금액</div>
+											<div class="price sum" th:text="${#numbers.formatInteger(orderSheet.oTotalPrice, 3, 'COMMA') + '원'}">
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="btn-wrap">
+						<a href="/front/mpa/selectOrdPTCPup.thd?ordNo=23030600618040" class="btn size7 wide2 color2" onclick="javascript:">주문내역 확인<i
+							class="icon-arrow btn-ar"
+						></i></a> <a href="http://www.thehyundai.com/Home.html" class="btn size7 wide2 color3" onclick="javascript:">쇼핑 계속하기</a>
+					</div>
+
+
+					<div id="divOrdInf" style="display: none" data-ordno="23030600618040" data-allirefcd="800" data-linkyn="Y" data-totamt="341000" data-dlvamt="0">
+						<span id="spanOrdSlitmInf_40A1650970" data-slitmcd="40A1650970" data-sitmcd="A1650970" data-itmnm="설화수[3월][한정수량]자음수 150ml" data-acptqty="1"
+							data-sectid="102066" data-selluprc="68000"
+						></span> <span id="spanOrdSlitmInf_40A1624448" data-slitmcd="40A1624448" data-sitmcd="A1624448" data-itmnm="[아우구스티누스바더] 더 아이 크림 노마드 15ml"
+							data-acptqty="1" data-sectid="40059" data-selluprc="273000"
+						></span>
+					</div>
+
+					<script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/co/md5.js"></script>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- footer -->
+	<div id="footer">
+		<h1 class="blind">푸터영역</h1>
+		<div class="top">
+			<div class="row">
+				<div class="hyundai-menu">
+					<span class="tit"> <a href="javascript:;"
+						onclick="javascript: dummyLogCatch('http://www.ehyundai.com/newPortal/ir', 'Footer', 'group', 'blank', 'Y', null)"
+					>현대백화점그룹</a>
+					</span>
+					<ul>
+						<li><a onclick="" href="http://www.thehyundai.com/front/ccb/noticeList.thd?MainpageGroup=Footer&amp;GroupbannerName=notice">공지사항</a></li>
+
+						<li><a href="javascript:;"
+							onclick="javascript: dummyLogCatch('http://www.ehyundai.com/newPortal/ir/ETH/ETH000001.do?ir=3', 'Footer', 'legal', 'blank', 'Y', null)"
+						>윤리경영</a></li>
+						<li><a href="javascript:;"
+							onclick="javascript: dummyLogCatch('http://www.ehyundai.com/newPortal/csr/main.do', 'Footer', 'legal', 'blank', 'Y', null)"
+						>사회공헌</a></li>
+						<li><a onclick="" href="http://www.thehyundai.com/front/cua/viewPolicyPup.thd?view=1&amp;MainpageGroup=Footer&amp;GroupbannerName=agree"
+							data-toggle="winpopup" data-api="center,900,770,scrollbars" target="_blank"
+						>이용약관</a></li>
+						<li><a onclick="" href="http://www.thehyundai.com/front/cua/viewPolicyPup.thd?view=2&amp;MainpageGroup=Footer&amp;GroupbannerName=private"
+							data-toggle="winpopup" data-api="center,900,770,scrollbars" target="_blank"
+						><strong>개인정보 처리방침</strong></a></li>
+					</ul>
+				</div>
+
+				<!-- 2016-07-28// -->
+				<div class="family">
+					<a href="#" onclick="javascript:return false;">FAMILY SITE <i></i>
+					</a>
+					<div class="family-site">
+						<!-- <h4>쇼핑몰 site</h4> -->
+						<div class="scrollable">
+							<ul>
+								<li><a onclick="" href="http://tohome.thehyundai.com" target="_blank">현대식품관 투홈</a></li>
+								<li><a onclick="" href="https://www.hmall.com" target="_blank">현대Hmall</a></li>
+								<li><a onclick="" href="https://www.hddfs.com/shop/dm/main.do?ptnrChlCd=00003905" target="_blank">현대백화점 DUTY FREE</a></li>
+								<li><a onclick="" href="http://www.thehansome.com" target="_blank">더한섬닷컴</a></li>
+								<li><a onclick="" href="http://mall.hyundailivart.co.kr" target="_blank">현대리바트몰</a></li>
+								<li><a onclick="" href="http://www.hyundairentalcare.co.kr" target="_blank">현대렌탈케어</a></li>
+								<li><a onclick="" href="http://www.hfashionmall.com/sfmweb/" target="_blank">H패션몰</a></li>
+								<li><a onclick="" href="https://www.hmoka.org" target="_blank">현대어린이책미술관</a></li>
+								<li><a onclick="" href="https://www.greating.co.kr/" target="_blank">그리팅</a></li>
+								<li><a onclick="" href="https://www.eqlstore.com/main" target="_blank">한섬EQL</a></li>
+							</ul>
+						</div>
+
+						<h4>관계사 site</h4>
+						<div class="scrollable">
+							<ul>
+								<li><a onclick="" href="http://www.ehyundai.com/newPortal/ir" target="_blank">현대백화점 그룹</a></li>
+								<li><a onclick="" href="http://www.ehyundai.com" target="_blank">현대백화점</a></li>
+								<li><a onclick="" href="https://www.hmall.com" target="_blank">현대홈쇼핑</a></li>
+								<li><a onclick="" href="http://www.hyundaigreenfood.com" target="_blank">현대그린푸드</a></li>
+								<li><a onclick="" href="http://www.thehansome.com" target="_blank">한섬</a></li>
+								<li><a onclick="" href="http://www.hyundailivart.co.kr" target="_blank">현대리바트</a></li>
+								<li><a onclick="" href="https://zinus.co.kr/" target="_blank">지누스</a></li>
+								<li><a onclick="" href="https://www.hyundailnc.com/company" target="_blank">현대L&amp;C</a></li>
+								<li><a onclick="" href="http://www.hyundairentalcare.co.kr" target="_blank">현대렌탈케어</a></li>
+								<li><a onclick="" href="http://www.hyundaidreamtour.com" target="_blank">현대드림투어</a></li>
+								<li><a onclick="" href="http://www.everdigm.com" target="_blank">현대에버다임</a></li>
+								<li><a onclick="" href="http://www.cnsfoodsystem.co.kr" target="_blank">씨엔에스푸드시스템</a></li>
+								<li><a onclick="" href="http://www.hyundaicatering.co.kr" target="_blank">현대캐터링시스템</a></li>
+								<li><a onclick="" href="http://www.hyundai-ite.com/index.jsp" target="_blank">현대IT&amp;E</a></li>
+								<li><a onclick="" href="https://www.hyundaifuturenet.co.kr" target="_blank">현대퓨처넷</a></li>
+								<li><a onclick="" href="https://www.hyundaiezwel.com/renew/main.ez" target="_blank">현대이지웰</a></li>
+								<li><a onclick="" href="http://www.hyundaibioland.co.kr/main" target="_blank">현대바이오랜드</a></li>
+								<li><a onclick="" href="https://sikdae.com" target="_blank">벤디스</a></li>
+								<!-- 20230113 신규계열사 벤디스 추가-->
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- //2016-07-28 -->
+			</div>
+		</div>
+		<div class="bottom">
+			<div class="row">
+				<div class="logo">
+					<a href="http://www.thehyundai.com/Home.html"><img src="https://image.thehyundai.com/hdmall/images/co/img_bottom_logo.png" alt="THE HYUNDAI" /></a>
+				</div>
+				<div class="info">
+					<!-- 171130 수정// -->
+					<p>주식회사 현대백화점 대표이사 : 김형종 외 2인 서울시 강남구 테헤란로98길 12</p>
+					<p>
+						사업자등록번호 : 211-87-21455 <a href="https://www.ftc.go.kr/bizCommPop.do?wrkr_no=2118721455" data-toggle="winpopup"
+							data-api="center,750,700,scrollbars" target="_blank"
+						>[사업자정보 확인]</a> 통신판매업신고 : 2010-서울강남-01882
+					</p>
+					<p>
+						홈페이지/앱 문의 : <a href="mailto:customerservice@thehyundai.com">customerservice@thehyundai.com</a> 고객센터 : <strong>1800-2233</strong>
+					</p>
+					<p>호스팅서비스 : (주)현대백화점</p>
+					<p class="copy">CopyrightⓒHyundai Department Store. All rights reserved.</p>
+					<!-- //171130 수정 -->
+				</div>
+
+				<div class="sns-quickgo">
+					<ul>
+						<li><a href="javascript:;"
+							onclick="javascript: dummyLogCatch('https://www.facebook.com/eHYUNDAI/', 'Footer', 'facebook', 'blank', 'Y', null)"
+						><i class="facebook">facebook</i></a></li>
+						<li><a href="javascript:;"
+							onclick="javascript: dummyLogCatch('https://twitter.com/eHyundai_tweets/', 'Footer', 'twitter', 'blank', 'Y', null)"
+						><i class="twitter">트위터</i></a></li>
+						<li><a href="javascript:;"
+							onclick="javascript:dummyLogCatch('https://www.pinterest.com/hyundaidept/', 'Footer', 'pinterest', 'blank', 'Y', null)"
+						><i class=" pinterest">pinterest</i></a></li> -->
+						<!-- 2017-01-25 인스타그램 추가 -->
+						<li><a href="javascript:;"
+							onclick="javascript: dummyLogCatch('https://www.instagram.com/the_hyundai/', 'Footer', 'instagram', 'blank', 'Y', null)"
+						><i class="instagram">instagram</i></a></li>
+						<li><a href="javascript:;" onclick="javascript: dummyLogCatch('http://thehyundai.tistory.com/', 'Footer', 'blog', 'blank', 'Y', null)"><i
+								class="tistory"
+							>tistory</i></a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="certi-wrap row">
+				<p class="certi">
+					<a href="http://www.kolsa.or.kr/neopress/index.php?mid=regular" target="_blank"><img
+						src="https://image.thehyundai.com/hdmall/images/co/img_footer_v2_certi_01.png" alt="사단법인 한국온라인 쇼핑협회 정회원사"
+					/></a> <span class="scol">|</span> <a href="http://www.kca.go.kr/wpge/m_210/ccm1100.do" target="_blank"><img
+						src="https://image.thehyundai.com/hdmall/images/co/img_footer_v2_certi_02.png" alt="공정거래위원회 CCm 인증 [소비자중심 경영우수기업]"
+					/></a> <span class="scol">|</span> <a target="_blank"><img src="https://image.thehyundai.com/hdmall/images/co/img_footer_certi_03.png"
+						alt="위해상품 차단 시스템 운영매장"
+					/></a> <span class="scol">|</span> <a target="_blank"><img src="https://image.thehyundai.com/hdmall/images/co/img_footer_certi_04.png"
+						alt="모바일 어워드 코리아 2016"
+					/></a>
+				</p>
+				<p class="checkguarantee">
+					<span> 고객님의 안전거래를 위해 현금결제시 우리은행과 채무지급보증계약을<br /> 체결하여 안전거래를 보장하고 있습니다.
+					</span>
+					<!--http://www.thehyundai.com/html/contents/-->
+					<a href="#" onclick="javascript:popover_ajax('https://www.thehyundai.com/html/contents/guarantee.html', 750);return false;">서비스 가입사실 확인</a>
+				</p>
+			</div>
+		</div>
+	</div>
+	<!-- //footer -->
+
+</body>
+</html>

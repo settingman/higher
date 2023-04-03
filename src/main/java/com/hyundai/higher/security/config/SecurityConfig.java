@@ -47,15 +47,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
-		http.authorizeRequests().antMatchers("/member/**").permitAll() // 누구나 mypage 접근허용 - 02/03 mypage
+		http.csrf().disable().authorizeRequests().antMatchers("/member/**").permitAll() // 누구나 mypage 접근허용 - 02/03 mypage
 				.antMatchers("/mypage/**", "/cart/**", "/order/**").hasRole("USER") // USER, ADMIN만 접근 가능
 				.antMatchers("/admin").hasRole("ADMIN") // ADMIN만 접근 가능
-				.anyRequest().permitAll(); // 접근 제한을 수동으로 걸어주고 나머지는 접근 제한 OK
+				.anyRequest().permitAll()
+				; // 접근 제한을 수동으로 걸어주고 나머지는 접근 제한 OK
 		// .authenticated(); // 나머지 요청들은 권한의 종류에 상관 없이 권한이 있어야 접근
 
 		http.formLogin()// Form 로그인 인증 기능이 작동함
 				.loginPage("/member/login")// 사용자 정의 로그인 페이지
-				.defaultSuccessUrl("/")// 로그인 성공 후 이동 페이지
+				.defaultSuccessUrl("/test2")// 로그인 성공 후 이동 페이지
 				.failureUrl("/login.html?error=true")// 로그인 실패 후 이동 페이지
 				.usernameParameter("mId")// 아이디 파라미터명 설정
 				.passwordParameter("password")// 패스워드 파라미터명 설정

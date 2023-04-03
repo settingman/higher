@@ -33,10 +33,11 @@ public class SecurityMember extends User implements OAuth2User {
 
 	private String mId;
 	private String mName;
+	private String mPhone;
 	private String password;
 	private Map<String, Object> OA2_attr;
 
-	// 한섬 회원 구성자 설정
+	// 현대백화점 회원 구성자 설정
 	public SecurityMember(String username, String password, List<GrantedAuthority> authorities) {
 
 		super(username, password, authorities);

@@ -1,6 +1,7 @@
 package com.hyundai.higher.controller.member;
 
 import javax.servlet.http.HttpServletRequest;
+
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
@@ -8,6 +9,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hyundai.higher.domain.member.Member;
 import com.hyundai.higher.domain.member.MemberFormDto;
@@ -40,6 +43,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RequiredArgsConstructor
+@Transactional
 @RequestMapping("/member")
 @Controller
 public class MemberController {
@@ -60,7 +64,7 @@ public class MemberController {
 
 	// 회원가입 진행
 	@PostMapping(value = "joinform")
-	public String memberForm(@Valid MemberFormDto memberFormDto, BindingResult bindingResult, Model model) {
+	public String memberForm(@Valid MemberFormDto memberFormDto, BindingResult bindingResult, Model model, RedirectAttributes redirectAttributes) {
 		if (bindingResult.hasErrors()) {
 
 			for (ObjectError allError : bindingResult.getAllErrors()) {
@@ -82,7 +86,10 @@ public class MemberController {
 			return "member/joininfoform";
 		}
 
-		return "redirect:/";
+		
+		redirectAttributes.addFlashAttribute("memberID",memberFormDto.getMId());
+		
+		return "redirect:/member/joincomplete";
 	}
 
 	// 로그인
@@ -95,15 +102,25 @@ public class MemberController {
 		model.addAttribute("mId", mId);
 		model.addAttribute("error", error);
 		model.addAttribute("exception", exception);
-		return "/member/login";
+		
+		return "member/login";
+		
 
+	}
+
+	// 회원가입 완료
+	@GetMapping(value = "/joincomplete")
+	public String joincomplete(Model model) {
+		
+		
+		return "member/joincomplete";
 	}
 
 	// 로그인 에러페이지 접근
 	@GetMapping(value = "/login/error")
 	public String loginError(Model model) {
 		model.addAttribute("loginErrorMsg", "아이디 또는 비밀번호를 확인해주세요.");
-		return "/member/login";
+		return "member/login";
 	}
 
 	// Secuirty 로그아웃
@@ -114,17 +131,23 @@ public class MemberController {
 		return "redirect:/member/login";
 	}
 
-	// id, pw Page
-	@GetMapping(value = "/findIdPwPage")
-	public String findIdPwPage(Model model) {
+	// 아이디 찾기 페이지 요청
+	@GetMapping(value = "/findId")
+	public String findId(Model model) {
 
-		return "/member/findidpwpage";
+		return "member/findId";
 	}
 
-	// find id
-	@PostMapping(value = "/findIdPwPage")
-	public String findIdPwPage(@RequestParam("mName") String mName, @RequestParam("mBirth") Integer mBirth,
-			Model model) {
+	// 아이디 찾기 페이지 요청
+	@GetMapping(value = "/findPw")
+	public String findPw(Model model) {
+
+		return "member/findPw";
+	}
+
+	// find id - 아이디 찾기 기능
+	@PostMapping(value = "/findId")
+	public String findId(@RequestParam("mName") String mName, @RequestParam("mBirth") Integer mBirth, Model model) {
 
 		log.info(mName);
 		log.info(mBirth.toString());
@@ -133,7 +156,7 @@ public class MemberController {
 
 		if (findMember == null) {
 			log.info("fail");
-			return "/member/findidpwpage";
+			return "member/findId";
 		}
 
 		String mId = findMember.getMId();
@@ -142,7 +165,7 @@ public class MemberController {
 
 		model.addAttribute("findMember", findMember);
 
-		return "/member/searchEasyId";
+		return "member/findIdComplete";
 	}
 
 }

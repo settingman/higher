@@ -1,0 +1,1155 @@
+<!--
+ @Date : 2023. 3. 6.
+ @작성자 : 박성환
+ @설명 : 오더 페이지
+-->
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<title>주문 | 더한섬닷컴</title>
+
+<th:block th:replace="common/head :: headFragment"></th:block>
+
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0" />
+<link rel="stylesheet" type="text/css" href="https://image.thehyundai.com/pc/cssssl/font.css" />
+<link rel="stylesheet" type="text/css" href="https://image.thehyundai.com/pc/cssssl/co.css?ver=14" />
+<link rel="stylesheet" type="text/css" href="https://image.thehyundai.com/pc/cssssl/wf.css" />
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="https://js.tosspayments.com/v1"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://image.thehyundai.com/pc/js/jquery-ui.min.js"></script>
+<script src="https://image.thehyundai.com/pc/js/jquery-migrate.min.js"></script>
+<script type="text/javascript" src="https://image.thehyundai.com/pc/js/hdmall/co/jquery.form.js"></script>
+<script type="text/javascript" src="https://image.thehyundai.com/pc/js/hdmall/co/default.js?ver=030316"></script>
+<script type="text/javascript" src="https://image.thehyundai.com/pc/js/hdmall/co/common.js?ver=030316"></script>
+<script type="text/javascript" src="https://image.thehyundai.com/pc/js/swiper.min.js?ver=030316"></script>
+<link rel="stylesheet" type="text/css" href="https://www.thehyundai.com/cssssl/jquery-ui.css?ver=14" />
+<link rel="stylesheet" type="text/css" href="https://www.thehyundai.com/cssssl/co.css?ver=14" />
+<link rel="stylesheet" type="text/css" href="https://www.thehyundai.com/cssssl/od_new.css?ver=14" />
+<link rel="stylesheet" type="text/css" href="https://www.thehyundai.com/cssssl/dp.css?ver=14" />
+<script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/co/jquery.slidy.min.js"></script>
+<script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/co/json2.js"></script>
+<style type="text/css">
+.fancybox-margin {
+	margin-right: 16px;
+}
+</style>
+
+</script>
+<link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" />
+</head>
+<body>
+	<!-- wrap -->
+	<div id="wrap" class="sub notgnb simple-gnb">
+		<!-- gnb -->
+		<div id="skip-navigation">
+			<p>
+				<a href="#header-wrap">헤더영역 바로가기</a>
+			</p>
+			<p>
+				<a href="#header-gnb-area">GNB영역 바로가기</a>
+			</p>
+			<p>
+				<a href="#container">컨텐츠영역 바로가기</a>
+			</p>
+			<p>
+				<a href="#footer">푸터영역 바로가기</a>
+			</p>
+		</div>
+
+		<div id="js-tpl-topBanner" style="display: none"></div>
+		<div class="top-wrap sub">
+			<div class="top-area-setting">
+				<div class="top-con">
+					<div class="top-con-logo">
+						<h1>
+							<a href="http://www.thehyundai.com/Home.html?MainpageGroup=Fix&amp;GroupbannerName=GNB_Logo"><span class="blind">The HYUNDAI</span></a>
+						</h1>
+					</div>
+
+					<div class="top-con-quick">
+						<ul>
+							<li class="myshop-info">
+								<div class="top-con-quick-my">박성환님</div> <!-- 20190118 추가 레이어팝업 -->
+								<div class="myshop-info-layer login">
+									<!-- logout:비 로그인 상태, login:로그인 상태 -->
+									<div class="myshop-cont">
+										<ul class="myshop-cont-top">
+											<li class="myshop-hyundai"><a onclick=href=
+												"https://www.thehyundai.com/front/mpf/selectMyPageMain.thd?MainpageGroup=Util&amp;GroupbannerName=GNB_MyHyundai
+											">마이현대</a></li>
+											<li><a onclick=href= "https://www.thehyundai.com/front/mpa/selectOrdDlvCrst.thd?MainpageGroup=Util&amp;GroupbannerName=GNB_Order">주문배송</a></li>
+											<li><a onclick>나의 찜</a></li>
+											<li class="myshop-join"><a onclick=href=
+												"https://www.thehyundai.com/front/cob/COBCertificationSelect.thd?MainpageGroup=util&amp;GroupbannerName=membership
+											">회원가입</a></li>
+											<li class="myshop-logout"><a href="javascript:logOut();">로그아웃</a></li>
+										</ul>
+										<ul class="myshop-cont-body">
+											<li class="logout-only"><span class="tit">나의 쇼핑 혜택</span><a href="javascript://" onclick="javascript:return false;"><span
+													class="blind"
+												>자세히보기</span></a></li>
+											<li class="login-only"><span class="tit">일반등급</span><span class="cont">혜택</span><a href="javascript://"
+												onclick="javascript:return false;"
+											><span class="blind">자세히보기</span></a></li>
+											<li><span class="tit">쿠폰</span><span class="cont login-only">0장</span><a onclick=href=
+												"https://www.thehyundai.com/front/mpe/selectCopnList.thd?MainpageGroup=util&amp;GroupbannerName=coupon
+											"><span class="blind">자세히보기</span></a></li>
+											<li><span class="tit">H.Point</span><span class="cont login-only">-P</span><a onclick="goHpoint()" href="#"><span class="blind">자세히보기</span></a></li>
+											<li><span class="tit">더머니</span><span class="cont login-only">0원</span><a onclick=href=
+												"https://www.thehyundai.com/front/mpe/selectHPntTabPage.thd?MainpageGroup=util&amp;GroupbannerName=theMoney
+											"><span class="blind">자세히보기</span></a></li>
+										</ul>
+									</div>
+								</div> <!-- // 20190118 추가 레이어팝업 -->
+							</li>
+							<li><a onclick=href= "https://www.thehyundai.com/front/cca/main.thd?MainpageGroup=Util&amp;GroupbannerName=GNB_Center">고객센터</a></li>
+							<li>
+								<div class="top-con-quick-basket">
+									<a onclick=href= "https://www.thehyundai.com/front/odb/basktList.thd?MainpageGroup=Util&amp;GroupbannerName=GNB_Basket">장바구니</a><span
+										class="basket-num" id="quick_baskt_num"
+									>2</span>
+								</div>
+							</li>
+							<!-- 20210830 바로접속 추가// -->
+							<li>
+								<div class="top-con-quick-onoff">
+									<a href="#">바로접속<span class="ic-onff on">ON</span></a>
+								</div>
+							</li>
+							<!-- //20210830 바로접속 추가 -->
+						</ul>
+					</div>
+				</div>
+				<div class="sky-left sub" id="leftBanner_skyScrpr"></div>
+				<div class="sky-left main">
+					<!-- 비주얼 -->
+					<div class="main-sign">
+						<ul class="main-sign-bn" id="js-tpl-leftSkyBanner">
+						</ul>
+						<div class="main-sign-name">
+							<div class="prev">
+								<a href="#"><span class="blind">이전</span></a>
+							</div>
+							<ul class="sign-name-list" id="js-tpl-leftSkyBannerTitle">
+							</ul>
+							<div class="next">
+								<a href="#"><span class="blind">다음</span></a>
+							</div>
+						</div>
+					</div>
+					<!-- 롤링배너 -->
+					<div class="left-bn-rolling">
+						<ul class="rolling-bn swiper-wrapper" id="js-tpl-leftSkyBanner1Column">
+						</ul>
+						<div class="prev">
+							<span class="blind">이전</span>
+						</div>
+						<div class="next">
+							<span class="blind">다음</span>
+						</div>
+					</div>
+					<!-- 4블럭 배너 -->
+					<div class="left-bn-icon column4">
+						<!-- class:타입, column4:배너4개, column3:배너3개(기본) -->
+						<ul class="icon-bn" id="js-tpl-leftSkyBanner4Column">
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+        $(document).ready(function () {});
+      </script>
+		<!-- //gnb -->
+		<!-- container -->
+		<div id="container">
+			<h1 class="blind">컨텐츠영역</h1>
+			<!-- content-wrap -->
+			<div class="content-wrap">
+				<!-- cart-head -->
+				<div class="cart-head">
+					<h2>주문서 작성</h2>
+					<div class="stepwrap">
+						<ul>
+							<li><a href="/front/odb/basktList.thd" class="step-box cart-01"><i class="mark"></i><i class="mark-hover"></i><em>STEP 01</em><em>장바구니</em></a>
+							</li>
+							<li><span class="step-mark"></span><span class="step-box cart-02 current"><i class="mark"></i><em>STEP 02</em><em>주문서작성</em></span></li>
+							<li><span class="step-mark"></span><span class="step-box cart-03"><i class="mark"></i><em>STEP 03</em><em>주문완료</em></span></li>
+						</ul>
+					</div>
+				</div>
+				<!-- //cart-head -->
+				<!-- ordersheet-box -->
+				<div class="ordersheet-box">
+					<div class="ordersheet-title">
+						<!-- 기프티콘 연동 2017.02.21 -->
+						<!-- 일반배송 일때 주문고객 영역 제거, 다시 살림(21.01.15) -->
+						<h3>주문고객</h3>
+						<span class="comment">※ E-mail, 연락처 정보는 마이현대 &gt; 회원정보에서 변경 가능합니다.</span>
+					</div>
+					<input type="hidden" id="isNonemember" value="N" />
+					<!--  주문고객 영역 -->
+					<!-- 일반배송 일때 주문고객 영역 제거, 이메일 없는 고객일때는 노출, 다시 살림(21.01.15) -->
+					<!-- buyer-info-box -->
+					<div class="buyer-info-box">
+						<table>
+							<colgroup>
+								<col style="width: 6%" />
+								<col style="width: 11.25%" />
+								<col style="width: 10.89%" />
+								<col style="" />
+								<col style="width: 9.73%" />
+								<col style="width: 37.68%" />
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>이름</th>
+									<td><span sec:authentication="principal.mName" class="od-name" type="text" title="이름" name="chgOrdCustNm" maxlength="10" /></td>
+									<!-- 20181227 수정 -->
+									<th>전화번호</th>
+									<td><span id="mPhone" sec:authentication="principal.mPhone"></span></td>
+									<th>이메일</th>
+									<td><span sec:authentication="principal.mId	">95tjdghks@gmail.com</span> <input type="hidden" name="isExistsMemberMail" value="Y" /></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- ordersheet-box -->
+				<div class="ordersheet-box type-normal" id="divDlvInfo" style="display: block">
+					<input type="hidden" name="tabTypeName" id="tabTypeName" value="" />
+					<div class="ordersheet-title">
+						<h3>배송지 정보</h3>
+					</div>
+					<!-- delivery-address -->
+					<div class="delivery-address">
+						<input type="hidden" id="isNewDstnRegist" value="N" />
+						<!-- delivery-tab -->
+						<div class="delivery-tab">
+							<div class="tab-block">
+								<ul class="nav nav-tabs" data-toggle="tabs">
+								</ul>
+								<div class="right-area mt10">
+									<!-- 배송방법 선택 -->
+									<div class="selectric-wrapper" style="width: 111px">
+										<div class="selectric-hide-select">
+											<select name="delivery-type" onchange="javascript:changeDlvType(this.value, 'N', 'N', 'N', 'N');" tabindex="0" style="display: none">
+												<option value="1" selected="selected">택배배송</option>
+											</select>
+										</div>
+										<div class="selectric">
+											<p class="label">택배배송</p>
+											<b class="button">▾</b>
+										</div>
+										<div class="selectric-items" tabindex="-1">
+											<div class="selectric-scroll">
+												<ul>
+													<li data-index="0" class="selected last">택배배송</li>
+												</ul>
+											</div>
+										</div>
+										<input class="selectric-input" tabindex="0" />
+									</div>
+									<!-- //배송방법 선택 -->
+								</div>
+							</div>
+						</div>
+						<!-- // delivery-tab -->
+						<!-- delivery-tab-content -->
+						<div class="delivery-tab-content">
+							<div class="table-wrap type-ordersheet" id="js-delivery-addr-basic-renw">
+								<span class="blind" style="white-space: normal"><input type="radio" name="dstnSeq" id="dstnSeq_0000000001" value="0000000001"
+										checked="checked" class="gencrinputstyle"
+									/><span class="cr-radio checked" id="gencrinputstyle-dstnSeq_0000000001"
+									style="cursor: pointer; margin-left: -16px; margin-top: -7.5px; margin-right: 0px;"
+								></span> </span>
+								<table>
+									<caption></caption>
+									<colgroup>
+										<col width="155px" />
+										<col width="*" />
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">받는분</th>
+											<td><input type="text" name="addressee_name" value="" id="order_addressee_name" class="form_input" isplaceholderinited="true" /></td>
+											<input type="hidden" name="rcvCustNm" value="박성환" />
+										</tr>
+										<tr>
+											<th scope="row">휴대폰번호</th>
+											<td><input type="text" name="addressee_phone" id="addressee_phone" class="form_input remove_dash" isplaceholderinited="true" /></td>
+										</tr>
+										<tr>
+											<th scope="row">배송지</th>
+											<td class="address">
+												<p class="zip">
+													<input type="text" name="addressee_zip" value="" id="order_addressee_zip" class="form_input input_zipcode" readonly=""
+														onclick="zipSearch('ordFrm','addressee_zip','addressee_addr1','addressee_addr2')" isplaceholderinited="true"
+													/>
+													<span class="box_btn white"><a href="javascript:;" onclick="findAddr()"> 우편번호 찾기</a></span>
+												</p>
+												<p>
+													<input type="text" id="addressee_addr1" name="addressee_addr1" value="" class="form_input" readonly=""
+														onclick="zipSearch('ordFrm','addressee_zip','addressee_addr1','addressee_addr2')" isplaceholderinited="true"
+													/>
+													<input type="text" id="addressee_addr2" name="addressee_addr2" value="" class="form_input" isplaceholderinited="true" />
+												</p>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+
+						</div>
+					</div>
+				</div>
+				<!-- ordersheet-box -->
+				<div class="ordersheet-box">
+					<div class="ordersheet-title">
+						<h3>주문상품</h3>
+						<div class="right-area best-sale" style="white-space: normal">
+							<input type="checkbox" id="order-product-chk" class="gencrinputstyle" />
+							<span class="cr-checkbox checked" id="gencrinputstyle-order-product-chk"
+								style="cursor: pointer; margin-left: -17px; margin-top: -0.5px; margin-right: 0px;"
+							></span><span>최적 쿠폰 할인 적용</span>
+						</div>
+					</div>
+					<!--cart-list-->
+					<div class="cart-list">
+						<div class="table-wrap coltype cart">
+							<table>
+								<caption></caption>
+								<colgroup>
+									<col style="" />
+									<col style="width: 100px" />
+									<col style="width: 133px" />
+									<col style="width: 133px" />
+									<col style="width: 133px" />
+								</colgroup>
+								<thead>
+									<tr>
+										<th scope="col">상품정보/옵션정보</th>
+										<th scope="col">수량</th>
+										<th scope="col">상품금액</th>
+										<th scope="col">할인금액</th>
+										<th scope="col">배송정보</th>
+									</tr>
+								</thead>
+								<tbody>
+
+									<tr th:each="orderItem, stat : ${orderItems}">
+										<td class="valign-top">
+											<div class="prod-info no-ctrl">
+												<div class="img" id="img-40A1650970">
+													<input type="hidden" th:value="${orderItem.pcode}" />
+													<img src="${orderItem.IMAGE_PATH}" onerror="noImage(this, 'https://image.thehyundai.com/hdmall/images/pd/no_image_100x100.jpg')" />
+													<div class="hover-info">
+														<a href="http://www.thehyundai.com/front/pda/itemPtc.thd?slitmCd=40A1650970&amp;sectId=102066" target="_blank" title="새창으로 보기">새창으로
+															보기</a><a href="javascript:sltdItemDone('40A1650970:00001','102066',event);return false;" title="찜하기"
+															onclick="javascript:popover_open(this , '#popover-layer-zzim');return false;"
+														>찜하기</a>
+													</div>
+												</div>
+												<div class="title">
+													<a href="http:	//www.thehyundai.com/front/pda/itemPtc.thd?slitmCd=40A1650970&amp;sectId=102066" target="_blank">[[${orderItem.pname}]]</a>
+												</div>
+												<div class="option-info">
+													<span class="tit">[[${orderItem.poption}]]</span>
+												</div>
+											</div>
+										</td>
+										<td class="prod-num">[[${orderItem.pamount}]]개</td>
+										<td class="price-info">
+											<input type="hidden" class="total-price" th:value="${orderItem.pprice*orderItem.pamount}"/>
+											<div class="o-price" th:text="${#numbers.formatInteger(orderItem.pprice, 3, 'COMMA') + '원'}"></div>
+											<div class="tot-price" >
+												<span data-tcprate="1.0" data-luityn="N" data-stlmdcamt="0"
+													th:text="${#numbers.formatInteger(orderItem.pprice*orderItem.pamount, 3, 'COMMA') + '원'}"
+												></span>
+											</div>
+										</td>
+										<td class="sale-info">
+											<div class="sale-price">
+												<span id="sale-price-40A1650970-00001">0원<br /></span><a class="btn size0 color1" href="#"
+													onclick="javascript:showUsableCopnPup(this);return false;"
+												>쿠폰변경</a>
+											</div>
+										</td>
+										
+										
+										<td  th:if="${stat.count == 1}")class="shipping" rowspan="2">
+											<div class="free">
+												<div class="free">무료배송</div>
+											</div>
+										</td>
+									</tr>
+									
+									
+
+
+								</tbody>
+							</table>
+							<!-- // 20181227 수정 -->
+						</div>
+					</div>
+					<!--//cart-list-->
+				</div>
+				<!-- // ordersheet-box -->
+				<div class="ordersheet-box mb0" style="display: none" id="divMultiDlvSlitmInf">
+					<!--cart-list-->
+					<div class="ordersheet-title">
+						<h3>복수배송 상품</h3>
+						<div class="right-ctrl">
+							<!-- <button type="button" class="btn size2 color1 wide1"
+                    onclick="javascript:showMultiDlvLayer();">복수배송 수정</button> -->
+							<button type="button" class="btn size2 color1 wide1" onclick="javascript:cancelMultiDlv();">여러곳으로 배송 취소</button>
+						</div>
+					</div>
+					<div class="multiple-result">
+						<div class="table-wrap coltype cart">
+							<table>
+								<caption></caption>
+								<colgroup>
+									<col style="width: 120px" />
+									<col style="width: 350px" />
+									<col style="width: *" />
+									<col style="width: 150px" />
+								</colgroup>
+								<thead>
+									<tr>
+										<th scope="col">받으시는 분</th>
+										<th scope="col">주소</th>
+										<th scope="col">선택 상품</th>
+										<th scope="col">주문수량</th>
+									</tr>
+								</thead>
+								<tbody id="tbodyMultiDlvSlitm">
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<!-- ordersheet-box -->
+				<div class="ordersheet-box mb30">
+					<div class="ordersheet-title">
+						<h3>할인 및 적립</h3>
+					</div>
+					<div class="disct-wrap">
+						<!-- 세로 정렬로 인해 table로 작성 -->
+						<table>
+							<colgroup>
+								<col style="width: 870px" />
+								<col />
+							</colgroup>
+							<tbody>
+								<tr>
+									<!-- 20181227 수정 -->
+									<td class="disct-wrap-body">
+										<ul class="disct-element-wrap">
+											<li>
+												<div class="discount-element">
+													<div class="tit">
+														<div>
+															즉시할인 <a href="#tooltip-discount-01" class="tooltip"><i class="icon help">정보</i></a>
+															<div class="tooltip-cont" id="tooltip-discount-01" data-placement="bottom" data-width="250">
+																<h5>즉시할인</h5>
+																<div class="body">주문시점에 적용되는 할인입니다.</div>
+															</div>
+														</div>
+													</div>
+													<div class="cont">
+														<div class="price">
+															<input type="text" name="totPrmoDcAmt" value="0" class="readonly at-once" readonly="" />
+															<span class="unit">원</span>
+														</div>
+														<!-- 20181227 수정 -->
+													</div>
+												</div> <input type="hidden" name="couponAplyAmt" id="couponAplyAmt" value="0" class="readonly" readonly="" />
+												<div class="discount-element">
+													<div class="tit">
+														<div>
+															결제수단 할인
+															<input type="hidden" name="iStlmWayGbcd" id="iStlmWayGbcd" value="" />
+															<a href="#tooltip-discount-07" class="tooltip"><i class="icon help">정보</i></a>
+															<div class="tooltip-cont" id="tooltip-discount-07" data-placement="bottom" data-width="250">
+																<h5>해당 결제수단 선택시 추가 할인</h5>
+																<div class="body">
+																	<ul class="dash">
+																		<li><strong>신용카드(현대백화점)</strong> 결제 시 최대<span class="text-point5"> <!-- 결제 선할인 기본 값 노출 --> <!-- 결제 선할인 노출 --> 7 % 할인 <!--7% 할인-->
+																		</span></li>
+																	</ul>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="cont">
+														<div class="opt">
+															<div class="selectric-wrapper selectric-fix">
+																<div class="selectric-hide-select">
+																	<select name="stlmWayDcPrmo" class="fix" onchange="javascript:changeStlmWayDcPrmo(this);" tabindex="0" style="display: none">
+																		<option value="">선택하세요</option>
+																		<!-- 결제 선할인 기본 값 노출 -->
+																		<!-- 결제 선할인 노출 -->
+																		<option value="P202303036893" bsicslitmamt="0" stlmwaygbcd="K">신용카드(현대백화점) 최대 7 % 할인</option>
+																	</select>
+																</div>
+																<div class="selectric">
+																	<p class="label">선택하세요</p>
+																	<b class="button">▾</b>
+																</div>
+																<div class="selectric-items" tabindex="-1">
+																	<div class="selectric-scroll">
+																		<ul>
+																			<li data-index="0" class="selected">선택하세요</li>
+																			<li data-index="1" class="last">신용카드(현대백화점) 최대 7 % 할인</li>
+																		</ul>
+																	</div>
+																</div>
+																<input class="selectric-input" tabindex="0" />
+															</div>
+														</div>
+														<div class="price">
+															<input type="text" id="stlmWayPrmoDcAmt" value="0" class="readonly" readonly="" />
+															<span class="unit">원</span>
+														</div>
+													</div>
+												</div> <!-- 2020 카드즉시할인 임천재 2020.04.17 : 카드즉시할인 금액 표시  -->
+												<div id="crdImdtDcElement" class="discount-element none"></div>
+											</li>
+											<li>
+												<div class="discount-element">
+													<div class="tit">
+														<div>
+															H.Point <strong class="point" id="upointCurAmt"></strong><a href="#tooltip-discount-hpoint" class="tooltip"><i class="icon help">정보</i></a>
+															<a href="#none" id="hPointSearchBtn" class="btn size1 color7 ml5" onclick="javascript:selectHpoint(this);return false;"
+																style="display: none"
+															>포인트 조회</a> <a href="javascript:void(window.open('https://www.h-point.co.kr/pe/preppoint/prepPayRequest.shd','_blank'))"
+																class="btn size2 color16 ml5" onclick="javascript:"
+															><span>포인트 충전</span><i class="icon-arrow more3 ml10"></i></a>
+															<div class="tooltip-cont bottom" id="tooltip-discount-hpoint" data-placement="bottom" data-width="530"
+																style="width: 530px; top: 40.3333px; left: -192.479px; display: none;"
+															>
+																<h5>H.Point</h5>
+																<div class="body">
+																	<ul class="dash">
+																		<li>전국 H.Point 제휴사와 제휴가맹점 이용시 포인트를 쌓고 사용할 수 있는 적립형 포인트 입니다.</li>
+																		<li>최소 결제 금액은 100포인트이며, 1포인트 단위로 사용하실 수 있습니다.</li>
+																	</ul>
+																</div>
+																<span class="tooltip-arrow"></span>
+															</div>
+														</div>
+													</div>
+													<div class="cont">
+														<div class="fieldset discount">
+															<label style="white-space: normal"><input type="checkbox" name="uPointUseAllYn" id="uPointUseAllYn" value="Y"
+																	onclick="javascript:useUPoint(this);" class="gencrinputstyle" disabled=""
+																/><span class="cr-checkbox disabled" id="gencrinputstyle-uPointUseAllYn"
+																style="cursor: pointer; margin-left: -21px; margin-top: -0.5px; margin-right: 4px;"
+															></span> 모두사용 </label>
+															<input type="hidden" name="uPoint" value="20" />
+															<input type="text" value="0" name="useUPoint" id="useUPoint" class="onlyNumberInput" style="ime-mode: disabled" onpaste="return false;"
+																onkeyup="javascript:directInsertUPoint(this);" onblur="javascript:focusOutUPoint(this);" disabled=""
+															/>
+															<span class="unit">P</span>
+														</div>
+													</div>
+												</div>
+												<div class="discount-element">
+													<div class="tit">
+														<div>
+															더머니 <strong class="point">(0원)</strong><a href="#tooltip-discount-04" class="tooltip"><i class="icon help">정보</i></a>
+															<div class="tooltip-cont" id="tooltip-discount-04" data-placement="bottom" data-width="250">
+																<h5>더머니</h5>
+																<div class="body">
+																	최소 결제 금액은 1,000원 이상입니다.<br /> 1회 사용 금액은 1,000P 부터 입니다.
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="cont">
+														<div class="fieldset discount">
+															<label style="white-space: normal"><input type="checkbox" name="hPointUseAllYn" id="hPointUseAllYn" value="Y"
+																	onclick="javascript:useHPoint(this);" class="gencrinputstyle" disabled=""
+																/><span class="cr-checkbox disabled" id="gencrinputstyle-hPointUseAllYn"
+																style="cursor: pointer; margin-left: -21px; margin-top: -0.5px; margin-right: 4px;"
+															></span> 모두사용 </label>
+															<input type="hidden" name="hPoint" value="0" />
+															<input type="text" value="0" name="useHPoint" id="useHPoint" class="onlyNumberInput" style="ime-mode: disabled" onpaste="return false;"
+																onkeyup="javascript:directInsertHPoint(this);" onblur="javascript:focusOutHPoint(this);" disabled=""
+															/>
+															<span class="unit">원</span>
+														</div>
+													</div>
+												</div>
+												<div class="discount-element">
+													<div class="tit">
+														<div>
+															예치금 <strong class="point">(0원)</strong><a href="#tooltip-discount-09" class="tooltip"><i class="icon help">정보</i></a>
+															<div class="tooltip-cont" id="tooltip-discount-09" data-placement="bottom" data-width="250">
+																<h5>예치금</h5>
+																<div class="body">예치금 사용 기본 단위는 10원 이며, 1회 사용 금액은 제한이 없습니다.</div>
+															</div>
+														</div>
+													</div>
+													<div class="cont">
+														<div class="fieldset discount">
+															<label style="white-space: normal"><input type="checkbox" name="depositUseAllYn" id="depositUseAllYn" value="Y"
+																	onclick="javascript:useDeposit(this);" class="gencrinputstyle" disabled=""
+																/><span class="cr-checkbox disabled" id="gencrinputstyle-depositUseAllYn"
+																style="cursor: pointer; margin-left: -21px; margin-top: -0.5px; margin-right: 4px;"
+															></span> 모두사용 </label>
+															<input type="hidden" name="deposit" value="0" />
+															<input type="text" value="0" name="useDeposit" id="useDeposit" class="onlyNumberInput" style="ime-mode: disabled"
+																onpaste="return false;" onkeyup="javascript:directInsertDeposit(this);" onblur="javascript:focusOutDeposit(this);" disabled=""
+															/>
+															<span class="unit">원</span>
+														</div>
+													</div>
+												</div> <!-- 컬처랜드 --> <!-- 컬쳐랜드 서비스 종료 2020.03.27 -->
+											</li>
+											<li>
+												<div class="discount-element" id="h-point-view-area" style="display: none">
+													<div class="tit">
+														<div>H.Point 적립</div>
+													</div>
+													<div class="cont">
+														<div class="fieldset discount">
+															<span id="pSvmtUPointInfo"></span>
+														</div>
+													</div>
+												</div> <!-- H.Point 선불 충전 안내 추가 2021.02.02 -->
+												<div class="discount-element type-sub-message" id="h-point-view-area-prepay-info" style="display: none">
+													<div class="tit">
+														<div>포인트 충전 사용 금액은 적립 제외</div>
+													</div>
+												</div>
+												<div id="fash-svmt-info" class="discount-element" style="display: none">
+													<div class="tit">
+														<div>패션&amp;라이프 마일리지 적립</div>
+													</div>
+													<div class="cont">
+														<div class="fieldset discount">
+															<span id="sumFashTcpSvmt">적립예정 <strong>341점</strong></span>
+														</div>
+													</div>
+												</div> <!-- 2022.12.05 DEP01WORK-24256 TCP 이원화 END by msoh  -->
+											</li>
+										</ul>
+									</td>
+									<td class="info-result">
+										<div class="info-result-body">
+											<div class="price-wrap first">
+												<div class="top">
+													<p class="tit">주문금액</p>
+												</div>
+												<p class="price" id="divTotPrdtAmt">
+													341,000 <em>원</em>
+												</p>
+												<div class="bottom">
+													<p class="shipping">
+														상품 금액 <span id="divTotPrdtAmt1"><em>원</em></span>
+													</p>
+													<p class="shipping">
+														배송비 <span id="divTotDlvCost">무료</span>
+													</p>
+												</div>
+											</div>
+											<div class="price-wrap disct">
+												<div class="top">
+													<p class="tit">할인 및 적립금액</p>
+												</div>
+												<p class="price" id="divTotDcAmt2">
+													-0<em>원</em>
+												</p>
+											</div>
+										</div>
+										<div class="info-result-footer">
+											<div class="price-wrap sum">
+												<div class="top">
+													<p class="tit">
+														결제금액 <span id="discount-percent"></span>
+													</p>
+												</div>
+												<p class="price" id="divTotPrdtAmt3">
+													<em>원</em>
+												</p>
+											</div>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- 20190117 추가 -->
+				<div class="warranty-info">
+					<div class="head">
+						채무지급 보증안내 <a href="#" onclick="javascript:servicePopupOpen(); return false;" class="btn size1">서비스 가입사실 확인</a>
+						<!-- 2016-08-16 -->
+					</div>
+					<div class="body">고객님의 안전거래를 위해 현금 결제시 우리은행과 채무지급보증 계약을 체결하여 안전거래를 보장하고 있습니다.</div>
+				</div>
+				<!-- 20190117 추가 -->
+				<div class="ordersheet-box order-payment-ctrl">
+					<div class="agree text-center">
+						<div class="in-area">
+							<label for="ordAgreeChk"> <!-- <input type="checkbox" name="ordAgreeChk" id="ordAgreeChk"> --> <strong>주문하실 상품의 상품명, 가격, 배송정보를
+									확인하였으며, 이에 동의합니다.</strong>
+							</label>
+							<!-- 주문 동의 로직 제거 2022.05.02 -->
+						</div>
+					</div>
+					<p class="ctrl">
+						<button id="payment-button" class="btn color2 size7">
+							<span id="divTotPrdtAmt4">341,000 원&nbsp;&nbsp;</span>결제하기
+						</button>
+					</p>
+				</div>
+			</div>
+			<!-- //content-wrap -->
+		</div>
+		<!-- //container -->
+	</div>
+
+	</form>
+	</div>
+	<!-- remote 용, 반복사용 툴팁은 wrap 밖에 두어야 offset 이 제대로 계산됨. -->
+	<div class="tooltip-cont" id="tooltip-discount" data-placement="bottom" data-width="300">
+		<div class="body"></div>
+	</div>
+	<!-- popover-wrap -->
+	<div class="popover-wrap w500" id="divNoneCertGuide">
+		<!-- pop-header -->
+		<div class="pop-header">
+			<h1 style="overflow-wrap: break-word; white-space: normal">공인인증서가 없는 경우</h1>
+			<a href="#popover-open-id" class="popover-close">닫기</a>
+		</div>
+		<!-- //pop-header -->
+		<!-- pop-content -->
+		<div class="pop-content">
+			<div class="guide-msg-box">
+				<p>2014년 5월 20일부터 30만 원 이상 결제 시 공인인증서 의무 사용이 면제 되었으나, 각 카드사별로 면제에 대한 시행일정이 다르게 계획되고 있습니다.</p>
+				<p>카드사별 시행이 되면 30만 원 이상 결제 시 각 카드사에서 제공하고 있는 인증 방법을 이용하시면 됩니다.</p>
+				<p>단, 30만 원 이하 결제 시는 공인인증서 없이 결제가 가능합니다.</p>
+			</div>
+		</div>
+		<!-- //pop-content -->
+		<!-- btn-wrap -->
+		<div class="btn-wrap">
+			<a href="#" onclick="javascript:$.fancybox.close();return false;" class="btn size3 color2">확인</a>
+		</div>
+		<!-- //btn-wrap -->
+	</div>
+	<!-- //popover-wrap -->
+	<!-- popover-wrap -->
+	<div class="popover-wrap w500" id="divReliefClickGuide">
+		<!-- pop-header -->
+		<div class="pop-header">
+			<h1 style="overflow-wrap: break-word; white-space: normal">안심클릭 이용안내</h1>
+			<a href="#popover-open-id" class="popover-close">닫기</a>
+		</div>
+		<!-- //pop-header -->
+		<!-- pop-content -->
+		<div class="pop-content">
+			<div class="guide-msg-box">
+				<p>인터넷 쇼핑시, 고객님이 소유하신 카드에 미리 설정해둔 전자상거래 용의 별도 비밀번호를 입력하여 카드 사용자 본인을 확인하는 서비스를 말합니다. 이를 통해 온라인상에서 카드 무단 도용을 방지하게 됩니다.</p>
+			</div>
+		</div>
+		<!-- //pop-content -->
+		<!-- btn-wrap -->
+		<div class="btn-wrap">
+			<a href="#" onclick="javascript:$.fancybox.close();return false;" class="btn size3 color2">확인</a>
+		</div>
+		<!-- //btn-wrap -->
+	</div>
+	<!-- //popover-wrap -->
+	<!-- popover-wrap -->
+	<div class="popover-wrap w500" id="divISPGuide">
+		<!-- pop-header -->
+		<div class="pop-header">
+			<h1 style="overflow-wrap: break-word; white-space: normal">안전결제(ISP) 이용안내</h1>
+			<a href="#popover-open-id" class="popover-close">닫기</a>
+		</div>
+		<!-- //pop-header -->
+		<!-- pop-content -->
+		<div class="pop-content">
+			<div class="guide-msg-box">
+				<p>인터넷 안전결제(ISP)는 BC/국민/우리카드 등으로 결제할 때 카드번호를 직접 입력하지 않고 카드사에서 발급하는 가상의 인터넷 안전결제(ISP) 비밀번호만으로 안전한 전자상거래를 하실 수 있는 서비스입니다.</p>
+				<div class="guide-list">
+					<div class="title">이용방법</div>
+					<div class="cont">
+						<ul>
+							<li><span class="mark">1.</span> 결제 수단 선택에서 사용하고자 하는 신용카드 선택</li>
+							<li><span class="mark">2.</span> 자동으로 뜨는 플러그인 창에서 ISP 인증번호 입력: 사전에 ISP 서비스 등록이 되어 있지 않는 경우, 플러그인 창에서 카드번호와 이메일 입력을 통해 바로 ISP서비스를 등록
+								가능합니다.(해당 카드사 홈페이지에서도 등록 가능)</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- //pop-content -->
+		<!-- btn-wrap -->
+		<div class="btn-wrap">
+			<a href="#" onclick="javascript:$.fancybox.close();return false;" class="btn size3 color2">확인</a>
+		</div>
+		<!-- //btn-wrap -->
+
+
+
+
+		<form class="orderForm" id="OrderSheet" action="/shop/oredercomplete" method="post">
+
+
+			<input type="hidden" name="orderId" id="orderId" value="1">
+			<input type="hidden" name="oName" id="oName" value="1">
+
+			<input type="hidden" name="oDate" id="oDate" value="1">
+
+			<input type="hidden" name="oZipcode" id="oZipcode" value="1">
+			<input type="hidden" name="oAddress1" id="oAddress1" value="1">
+			<input type="hidden" name="oAddress2" id="oAddress2" value="1">
+
+			<input type="hidden" name="oReceiver" id="oReceiver" value="1">
+			<input type="hidden" name="oTel" id="oTel" value="1">
+			<input type="hidden" name="oPayment" id=oPayment value="카드">
+
+			<input type="hidden" name="oTotalPrice" id="oTotalPrice" value="1">
+
+			<div th:each="orderItem, stat : ${orderItems}">
+
+				<input type="hidden" name="product_id" id=product_id th:value="${orderItem.pcode}">
+
+				<input type="hidden" name="product_Quntity" id="product_Quntity" th:value="${orderItem.pamount}">
+				
+				<input type="hidden" name="product_name" id="product_name" th:value="${orderItem.pname}">
+				<input type="hidden" name="product_image" id="product_image" th:value="${orderItem.IMAGE_PATH}">
+				
+				<input type="hidden" name="product_price" id="product_price" th:value="${orderItem.pprice}">
+				
+				
+
+			</div>
+
+
+
+
+
+
+
+		</form>
+
+
+
+
+	</div>
+
+	<script>
+	
+	
+	
+	function total_price(){
+	    let sum = 0;
+	    $('input.total-price').each(function(){
+	        // type으로 시작하는 input을 순차적으로 loop
+	        if(!isNaN($(this).val())){
+	            // CASE 값에 문자가 없는 경우 (숫자인 경우만 합산)
+	            sum += parseInt($(this).val());
+	        }
+	    });
+	    
+	    console.log(sum);
+	    
+	    
+	    
+	    $('#divTotPrdtAmt').text(intToWon(sum));
+	    $('#divTotPrdtAmt1').text(intToWon(sum));
+	    $('#divTotPrdtAmt2').text(intToWon(sum));
+	    $('#divTotPrdtAmt3').text(intToWon(sum));
+	    $('#divTotPrdtAmt4').text(intToWon(sum));
+	    
+	
+	}
+	
+	
+	total_price();
+	
+	
+	
+    var clientKey = 'test_ck_ODnyRpQWGrNMgvmawLVKwv1M9ENj'
+    var tossPayments = TossPayments(clientKey)
+    var button = document.getElementById('payment-button') // 결제하기 버튼
+    
+    var totalPrice = wonToInt($('#divTotPrdtAmt').text());
+    
+    var orderName = '상품 리스트 보고 정하기';
+    
+    
+    
+    button.addEventListener('click', function () {
+    	
+    	$('#OrderSheet').find('#orderId').val(
+				$('#order_addressee_name').val());
+    	
+    	$('#OrderSheet').find('#oName').val(orderName);
+    	
+    	
+    	$('#OrderSheet').find('#oZipcode').val(
+				$('#order_addressee_zip').val());
+    	
+    	$('#OrderSheet').find('#oAddress1').val(
+				$('#addressee_addr1').val());
+    	
+    	$('#OrderSheet').find('#oAddress2').val(
+				$('#addressee_addr2').val());
+    	
+    	$('#OrderSheet').find('#oReceiver').val(
+				$('#order_addressee_name').val());
+    	
+    	$('#OrderSheet').find('#oTel').val(
+				$('#addressee_phone').val());
+    	
+    	$('#OrderSheet').find('#oTotalPrice').val(totalPrice);
+    	
+    	
+    	
+    	
+    	
+    	$.ajax({
+            url: "/toss/order",
+            type: "GET",
+            dataType : "json",
+            data: $("#OrderSheet").serialize(),
+            success: function (data) {
+            	
+            	console.log(encodeURI(JSON.stringify(data)));
+            	
+            	
+            	tossPayments.requestPayment('카드', {
+                    amount: data.oTotalPrice,
+                    orderId: data.orderId,
+                    orderName: data.oName,
+                    customerName: data.oReceiver,
+                    successUrl: 'https://'+ window.location.host +'/toss/success?orderInfo='+encodeURI(JSON.stringify(data)),
+                    failUrl: 'https://'+ window.location.host +'/toss/fail',
+                })
+            }
+          });
+        })
+        
+        
+        
+        
+        function wonToInt(s) {
+			return parseInt(s.substr(0, s.length - 1).replaceAll(',', ''));
+		}
+    
+    
+    function intToWon(s) {
+		return s.toLocaleString() + '원';
+	}
+    
+</script>
+
+	</div>
+	<script type="text/javascript" defer="defer">
+		$(document).ready(function() {
+			total_price_calc();
+		});
+		function intToWon(s) {
+			return s.toLocaleString() + '원';
+		}
+		function wonToInt(s) {
+			return parseInt(s.substr(0, s.length - 1).replaceAll(',', ''));
+		}
+		function total_price_calc() {
+			let final_price = 0; // 최종적으로 결제해야하는 가격 
+			let deliveryfee = 0; // 배송비
+			let og_price = 0;
+			var checkArr = new Array();
+			var PriceNum = new Array();
+			$("td[id^=itemPrice]").each(function(index, item) {
+				let origin = wonToInt($("#itemPrice" + (index + 1)).text());
+				final_price += parseInt(origin);
+				console.log(final_price);
+			});
+			/* 최종 가격 */
+			//배송비
+			let delivery = 0;
+			if (final_price < 150000) {
+				$(".before_price").text(final_price.toLocaleString());
+				delivery = 4000;
+				final_price += delivery;
+				$(".delivery_prc2").text(delivery.toLocaleString());
+				$(".order_info_sale_prc").text(final_price.toLocaleString());
+				$('.orderForm').find('#items_price').val(delivery);
+				$('.orderForm').find('#deliver_price').val(final_price);
+			} else {
+				$(".before_price").text(final_price.toLocaleString());
+				$(".delivery_prc2").text(0);
+				$(".order_info_sale_prc").text(final_price.toLocaleString());
+				$('.orderForm').find('#items_price').val(final_price);
+				$('.orderForm').find('#deliver_price').val(delivery);
+			}
+			console.log(final_price);
+		}
+		function findAddr() {
+			new daum.Postcode(
+					{
+						oncomplete : function(data) {
+							console.log(data);
+							// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+							// 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+							// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+							var roadAddr = data.roadAddress; // 도로명 주소 변수
+							var jibunAddr = data.jibunAddress; // 지번 주소 변수
+							console.log(roadAddr);
+							console.log(jibunAddr);
+							// 우편번호와 주소 정보를 해당 필드에 넣는다.
+							document.getElementById('order_addressee_zip').value = data.zonecode;
+							if (roadAddr !== '') {
+								document.getElementById("addressee_addr1").value = roadAddr;
+							} else if (jibunAddr !== '') {
+								document.getElementById("addressee_addr1").value = jibunAddr;
+							}
+						}
+					}).open();
+		}
+	</script>
+
+	<div id="footer">
+		<h1 class="blind">푸터영역</h1>
+		<div class="top">
+			<div class="row">
+				<div class="hyundai-menu">
+					<span class="tit"><a href="javascript:;"
+						onclick="javascript: dummyLogCatch('http://www.ehyundai.com/newPortal/ir', 'Footer', 'group', 'blank', 'Y', null)"
+					>현대백화점그룹</a> </span>
+					<ul>
+						<li><a onclick=href= "http://www.thehyundai.com/front/ccb/noticeList.thd?MainpageGroup=Footer&amp;GroupbannerName=notice">공지사항</a></li>
+						<li><a href="javascript:;"
+							onclick="javascript: dummyLogCatch('http://www.ehyundai.com/newPortal/ir/ETH/ETH000001.do?ir=3', 'Footer', 'legal', 'blank', 'Y', null)"
+						>윤리경영</a></li>
+						<li><a href="javascript:;"
+							onclick="javascript: dummyLogCatch('http://www.ehyundai.com/newPortal/csr/main.do', 'Footer', 'legal', 'blank', 'Y', null)"
+						>사회공헌</a></li>
+						<li><a onclick=href= "http://www.thehyundai.com/front/cua/viewPolicyPup.thd?view=1&amp;MainpageGroup=Footer&amp;GroupbannerName=agree
+							" data-toggle="winpopup" data-api="center,900,770,scrollbars" target="_blank"
+						>이용약관</a></li>
+						<li><a onclick=href= "http://www.thehyundai.com/front/cua/viewPolicyPup.thd?view=2&amp;MainpageGroup=Footer&amp;GroupbannerName=private
+							" data-toggle="winpopup" data-api="center,900,770,scrollbars" target="_blank"
+						><strong>개인정보 처리방침</strong></a></li>
+					</ul>
+				</div>
+				<!-- 2016-07-28// -->
+				<div class="family">
+					<a href="#" onclick="javascript:return false;">FAMILY SITE <i></i>
+					</a>
+					<div class="family-site">
+						<!-- <h4>쇼핑몰 site</h4> -->
+						<div class="scrollable">
+							<ul>
+								<li><a onclick>현대식품관 투홈</a></li>
+								<li><a onclick>현대Hmall</a></li>
+								<li><a onclick=target="_blank">현대백화점 DUTY FREE</a></li>
+								<li><a onclick>더한섬닷컴</a></li>
+								<li><a onclick>현대리바트몰</a></li>
+								<li><a onclick>현대렌탈케어</a></li>
+								<li><a onclick>H패션몰</a></li>
+								<li><a onclick>현대어린이책미술관</a></li>
+								<li><a onclick>그리팅</a></li>
+								<li><a onclick>한섬EQL</a></li>
+							</ul>
+						</div>
+						<h4>관계사 site</h4>
+						<div class="scrollable">
+							<ul>
+								<li><a onclick>현대백화점 그룹</a></li>
+								<li><a onclick>현대백화점</a></li>
+								<li><a onclick>현대홈쇼핑</a></li>
+								<li><a onclick>현대그린푸드</a></li>
+								<li><a onclick>한섬</a></li>
+								<li><a onclick>현대리바트</a></li>
+								<li><a onclick>지누스</a></li>
+								<li><a onclick>현대L&amp;C</a></li>
+								<li><a onclick>현대렌탈케어</a></li>
+								<li><a onclick>현대드림투어</a></li>
+								<li><a onclick>현대에버다임</a></li>
+								<li><a onclick>씨엔에스푸드시스템</a></li>
+								<li><a onclick>현대캐터링시스템</a></li>
+								<li><a onclick>현대IT&amp;E</a></li>
+								<li><a onclick>현대퓨처넷</a></li>
+								<li><a onclick>현대이지웰</a></li>
+								<li><a onclick>현대바이오랜드</a></li>
+								<li><a onclick>벤디스</a></li>
+								<!-- 20230113 신규계열사 벤디스 추가-->
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- //2016-07-28 -->
+			</div>
+		</div>
+		<div class="bottom">
+			<div class="row">
+				<div class="logo">
+					<a href="http://www.thehyundai.com/Home.html"><img src="https://image.thehyundai.com/hdmall/images/co/img_bottom_logo.png" alt="THE HYUNDAI" /></a>
+				</div>
+				<div class="info">
+					<!-- 171130 수정// -->
+					<p>주식회사 현대백화점 대표이사 : 김형종 외 2인 서울시 강남구 테헤란로98길 12</p>
+					<p>
+						사업자등록번호 : 211-87-21455 <a href="https://www.ftc.go.kr/bizCommPop.do?wrkr_no=2118721455" data-toggle="winpopup"
+							data-api="center,750,700,scrollbars" target="_blank"
+						>[사업자정보 확인]</a> 통신판매업신고 : 2010-서울강남-01882
+					</p>
+					<p>
+						홈페이지/앱 문의 : <a href="mailto:customerservice@thehyundai.com">customerservice@thehyundai.com</a> 고객센터 : <strong>1800-2233</strong>
+					</p>
+					<p>호스팅서비스 : (주)현대백화점</p>
+					<p class="copy">CopyrightⓒHyundai Department Store. All rights reserved.</p>
+					<!-- //171130 수정 -->
+				</div>
+				<div class="sns-quickgo">
+					<ul>
+						<li><a href="javascript:;"
+							onclick="javascript:dummyLogCatch('https://www.facebook.com/eHYUNDAI/', 'Footer', 'facebook', 'blank', 'Y', null)"
+						><i class="facebook">facebook</i></a></li>
+						<li><a href="javascript:;"
+							onclick="javascript:dummyLogCatch('https://twitter.com/eHyundai_tweets/', 'Footer', 'twitter', 'blank', 'Y', null)"
+						><i class="twitter">트위터</i></a></li>
+
+						<li><a href="javascript:;"
+							onclick="javascript:dummyLogCatch('https://www.instagram.com/the_hyundai/', 'Footer', 'instagram', 'blank', 'Y', null)"
+						><i class="instagram">instagram</i></a></li>
+						<li><a href="javascript:;" onclick="javascript:dummyLogCatch('http://thehyundai.tistory.com/', 'Footer', 'blog', 'blank', 'Y', null)"><i
+								class="tistory"
+							>tistory</i></a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="certi-wrap row">
+				<p class="certi">
+					<a href="http://www.kolsa.or.kr/neopress/index.php?mid=regular" target="_blank"><img
+						src="https://image.thehyundai.com/hdmall/images/co/img_footer_v2_certi_01.png" alt="사단법인 한국온라인 쇼핑협회 정회원사"
+					/></a><span class="scol">|</span><a href="http://www.kca.go.kr/wpge/m_210/ccm1100.do" target="_blank"><img
+						src="https://image.thehyundai.com/hdmall/images/co/img_footer_v2_certi_02.png" alt="공정거래위원회 CCm 인증 [소비자중심 경영우수기업]"
+					/></a><span class="scol">|</span><a target="_blank"><img src="https://image.thehyundai.com/hdmall/images/co/img_footer_certi_03.png"
+						alt="위해상품 차단 시스템 운영매장"
+					/></a><span class="scol">|</span><a target="_blank"><img src="https://image.thehyundai.com/hdmall/images/co/img_footer_certi_04.png"
+						alt="모바일 어워드 코리아 2016"
+					/></a>
+				</p>
+				<p class="checkguarantee">
+					<span> 고객님의 안전거래를 위해 현금결제시 우리은행과 채무지급보증계약을<br /> 체결하여 안전거래를 보장하고 있습니다.
+					</span>
+					<!--http://www.thehyundai.com/html/contents/-->
+					<a href="#" onclick="javascript:popover_ajax('https://www.thehyundai.com/html/contents/guarantee.html', 750);return false;">서비스 가입사실 확인</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
