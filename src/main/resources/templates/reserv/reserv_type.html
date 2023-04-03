@@ -495,14 +495,26 @@
             <h2 style="
     text-align: center;
     margin: 30px;
-">Make ON</h2>
+    margin-bottom: 50px;
+">Make ON 예약하기</h2>
           </div>
-          <div class="makeupwrap" style="position: relative;overflow: hidden;">
-  <div class="makeup-main" style="text-align: center;filter: brightness(0.5);opacity: 0.9;position: relative;height: 550px;">
-      <img src="https://www.nzbeautyschool.co.nz/wp-content/uploads/sites/3/elementor/thumbs/Makeup-artist-p90z132n1ve21ly7zncn4i4yufqys2uzha85tbd1mw.jpg" style="
-      min-width: 1360px;
-      max-width: 1360px;
-      padding: 0 40px;
+          <div class="reser-grid" style="
+    max-width: 1360px;
+    min-width: 1360;
+    margin: 0 auto;
+">
+          <div class="reser-wrap" style="
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    place-items: center;
+">
+          <div class="makeupwrap1" style="position: relative;overflow: hidden;width: 550px;">
+  <div class="makeup-main" style="text-align: center;filter: brightness(0.5);opacity: 0.9;position: relative;height: 450px;">
+      <img src="https://necteltechnologies.com/site/wp-content/uploads/it-consulting.jpeg" style="
+      min-width: 600;
+      max-width: 600;
+      max-height: 450px;
+      min-height: 450px;
   ">
   </div>
   <div class="makeupmaintext" style="
@@ -510,265 +522,125 @@
     top: 50%;
     left: 50%;
     transform: translate( -50%, -50% );
-    text-align: center;
+    text-align: left;
     color: white;
 ">
     <h2 style="
     color: white;
-    font-size: 30;
-    font-weight: bold;
-">Make ON</h2>
-    <p class="text=02" style="
-    margin: 50;
-    font-size: 16;
-    font-weight: 100;
-">메이크업 아티스트와 일대일로 진행되는 퍼스널 컨설팅 서비스</p>
+    font-size: 25;
+    margin-bottom: 40px;
+    text-align: center;
+">온라인 프로그램</h2>
+    
     
     <p class="text=02" style="
-    margin: 10;
     font-size: 16;
     font-weight: 100;
-">전문 메이크업 아티스트가 색상을 추천해주고 </p>
+    margin-bottom: 20;
+">⊙ &nbsp;&nbsp;전문 메이크업 아티스트와 1:1 상담</p>
     <p class="text=02" style="
-    margin: 10;
     font-size: 16;
     font-weight: 100;
-">직접 색상을 선택하며 의견을 공유하고 나만의 색을 찾을 수 있습니다.</p>
+    margin-bottom: 20;
+">⊙ &nbsp;&nbsp;퍼스널 메이크업 컨설팅</p>
     <p class="text=02" style="
-    margin: 10;
     font-size: 16;
     font-weight: 100;
-">현대백화점만의 메이크업 브랜드 제품으로 나만의 제품을 찾아보세요.</p>
-    
-    <p class="text=02" style="
-    margin: 50;
-    font-size: 16;
-    font-weight: 100;
-">지금 바로 만나보세요</p>
-    
+    margin-bottom: 20;
+">⊙ &nbsp;&nbsp;어울리는 색조 추천</p>
+<p class="text=02" style="font-size: 16;font-weight: 100;margin-bottom: 20;">⊙ &nbsp;&nbsp;제품 추천 목록 전송 및 할인</p>
+<p class="text=02" style="font-size: 16;font-weight: 100;margin-bottom: 80;">⊙ &nbsp;&nbsp;가상 메이크업 서비스</p>    
   </div>
   <div class="makeupbtn1" style="
     position: absolute;
-    top: 85%;
+    top: 79%;
     left: 50%;
     transform: translate( -50%, 0 );
     text-align: center;
 ">
     <div class="btn_green" style="
     float: left;
-    margin-right: 50;
     color: white;
     background: #45675B;
-    height: 40;
-    width: 150;
+    height: 50;
+    width: 200;
 ">
 <p style="
-    margin-top: 10px;
+    margin-top: 15px;
     font-weight: 100;
     font-size: 16;
-    cursor: pointer;
-" th:onclick="|location.href='@{/makeup/reserv_type}'|">예약하기</p></div>
-    <div class="btn_gray" style="float: right;color: white;background: slategray;height: 40px;width: 150;"><p style="
-    margin-top: 10px;
-    font-size: 16;
-    font-weight: 100;
-">예약 확인</p></div>
+     cursor: pointer;
+" th:onclick="|location.href='@{/reserv/reserv_online}'|">온라인 서비스 예약</p></div>
+    
   </div>
 </div>
-  </div>
-  <!-- Code injected by live-server -->
-  <script>
-      // <![CDATA[  <-- For SVG support
-      if ('WebSocket' in window) {
-          (function () {
-              function refreshCSS() {
-                  var sheets = [].slice.call(document.getElementsByTagName("link"));
-                  var head = document.getElementsByTagName("head")[0];
-                  for (var i = 0; i < sheets.length; ++i) {
-                      var elem = sheets[i];
-                      var parent = elem.parentElement || head;
-                      parent.removeChild(elem);
-                      var rel = elem.rel;
-                      if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
-                          var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
-                          elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
-                      }
-                      parent.appendChild(elem);
-                  }
-              }
-              var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
-              var address = protocol + window.location.host + window.location.pathname + '/ws';
-              var socket = new WebSocket(address);
-              socket.onmessage = function (msg) {
-                  if (msg.data == 'reload') window.location.reload();
-                  else if (msg.data == 'refreshcss') refreshCSS();
-              };
-              if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
-                  console.log('Live reload enabled.');
-                  sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
-              }
-          })();
-      }
-      else {
-          console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
-      }
-      // ]]>
-  </script>
-  
-  
-  <!-- Code injected by live-server -->
-<script>
-	// <![CDATA[  <-- For SVG support
-	if ('WebSocket' in window) {
-		(function () {
-			function refreshCSS() {
-				var sheets = [].slice.call(document.getElementsByTagName("link"));
-				var head = document.getElementsByTagName("head")[0];
-				for (var i = 0; i < sheets.length; ++i) {
-					var elem = sheets[i];
-					var parent = elem.parentElement || head;
-					parent.removeChild(elem);
-					var rel = elem.rel;
-					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
-						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
-						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
-					}
-					parent.appendChild(elem);
-				}
-			}
-			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
-			var address = protocol + window.location.host + window.location.pathname + '/ws';
-			var socket = new WebSocket(address);
-			socket.onmessage = function (msg) {
-				if (msg.data == 'reload') window.location.reload();
-				else if (msg.data == 'refreshcss') refreshCSS();
-			};
-			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
-				console.log('Live reload enabled.');
-				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
-			}
-		})();
-	}
-	else {
-		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
-	}
-	// ]]>
-</script>
-<!-- Code injected by live-server -->
-<script>
-	// <![CDATA[  <-- For SVG support
-	if ('WebSocket' in window) {
-		(function () {
-			function refreshCSS() {
-				var sheets = [].slice.call(document.getElementsByTagName("link"));
-				var head = document.getElementsByTagName("head")[0];
-				for (var i = 0; i < sheets.length; ++i) {
-					var elem = sheets[i];
-					var parent = elem.parentElement || head;
-					parent.removeChild(elem);
-					var rel = elem.rel;
-					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
-						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
-						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
-					}
-					parent.appendChild(elem);
-				}
-			}
-			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
-			var address = protocol + window.location.host + window.location.pathname + '/ws';
-			var socket = new WebSocket(address);
-			socket.onmessage = function (msg) {
-				if (msg.data == 'reload') window.location.reload();
-				else if (msg.data == 'refreshcss') refreshCSS();
-			};
-			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
-				console.log('Live reload enabled.');
-				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
-			}
-		})();
-	}
-	else {
-		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
-	}
-	// ]]>
-</script>
-<!-- Code injected by live-server -->
-<script>
-	// <![CDATA[  <-- For SVG support
-	if ('WebSocket' in window) {
-		(function () {
-			function refreshCSS() {
-				var sheets = [].slice.call(document.getElementsByTagName("link"));
-				var head = document.getElementsByTagName("head")[0];
-				for (var i = 0; i < sheets.length; ++i) {
-					var elem = sheets[i];
-					var parent = elem.parentElement || head;
-					parent.removeChild(elem);
-					var rel = elem.rel;
-					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
-						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
-						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
-					}
-					parent.appendChild(elem);
-				}
-			}
-			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
-			var address = protocol + window.location.host + window.location.pathname + '/ws';
-			var socket = new WebSocket(address);
-			socket.onmessage = function (msg) {
-				if (msg.data == 'reload') window.location.reload();
-				else if (msg.data == 'refreshcss') refreshCSS();
-			};
-			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
-				console.log('Live reload enabled.');
-				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
-			}
-		})();
-	}
-	else {
-		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
-	}
-	// ]]>
-</script>
-<!-- Code injected by live-server -->
-<script>
-	// <![CDATA[  <-- For SVG support
-	if ('WebSocket' in window) {
-		(function () {
-			function refreshCSS() {
-				var sheets = [].slice.call(document.getElementsByTagName("link"));
-				var head = document.getElementsByTagName("head")[0];
-				for (var i = 0; i < sheets.length; ++i) {
-					var elem = sheets[i];
-					var parent = elem.parentElement || head;
-					parent.removeChild(elem);
-					var rel = elem.rel;
-					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
-						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
-						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
-					}
-					parent.appendChild(elem);
-				}
-			}
-			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
-			var address = protocol + window.location.host + window.location.pathname + '/ws';
-			var socket = new WebSocket(address);
-			socket.onmessage = function (msg) {
-				if (msg.data == 'reload') window.location.reload();
-				else if (msg.data == 'refreshcss') refreshCSS();
-			};
-			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
-				console.log('Live reload enabled.');
-				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
-			}
-		})();
-	}
-	else {
-		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
-	}
-	// ]]>
-</script>
-</body>
+<div class="makeupwrap1" style="position: relative;overflow: hidden;width: 550px;">
+    <div class="makeup-main" style="text-align: center;filter: brightness(0.5);opacity: 0.9;position: relative;height: 450px;">
+        <img src="https://carminacristina.com/beta-1/wp-content/uploads/2020/10/MG_1173-Edit-1024x683.jpg" style="
+        min-width: 600;
+        max-width: 600;
+        max-height: 450px;
+        min-height: 450px;
+    ">
+    </div>
+    <div class="makeupmaintext" style="
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate( -50%, -50% );
+      text-align: left;
+      color: white;
+  ">
+      <h2 style="
+      color: white;
+      font-size: 25;
+      margin-bottom: 40px;
+      text-align: center;
+  ">오프라인 프로그램</h2>
+      
+      
+      <p class="text=02" style="
+      margin-bottom: 20;
+      font-size: 16;
+      font-weight: 100;
+  ">⊙ &nbsp;&nbsp;전문 메이크업 아티스트와 1:1 상담</p>
+      <p class="text=02" style="
+      margin-bottom: 20;
+      font-size: 16;
+      font-weight: 100;
+  ">⊙ &nbsp;&nbsp;퍼스널 메이크업 컨설팅</p>
+      <p class="text=02" style="
+      margin-bottom: 20;
+      font-size: 16;
+      font-weight: 100;
+  ">⊙ &nbsp;&nbsp;어울리는 색조 추천</p>
+  <p class="text=02" style="margin-bottom: 20;font-size: 16;font-weight: 100;">⊙ &nbsp;&nbsp;제품 추천 목록 전송 및 할인</p>
+  <p class="text=02" style="font-size: 16;font-weight: 100;margin-bottom: 80;">⊙ &nbsp;&nbsp;직접 방문 및 실사용 가능</p>    
+    </div>
+    <div class="makeupbtn1" style="
+      position: absolute;
+      top: 79%;
+      left: 50%;
+      transform: translate( -50%, 0 );
+      text-align: center;
+  ">
+      <div class="btn_green" style="
+      float: left;
+      color: white;
+      background: #45675B;
+      height: 50;
+      width: 200;
+  ">
+  <p style="
+      margin-top: 15px;
+      font-weight: 100;
+      font-size: 16; cursor: pointer;"
+       th:onclick="|location.href='@{/reserv/reserv_offline}'|">오프라인 서비스 예약</p></div>
+       </div>
+       </div>
+       </div>
+       </div>
+       </div>
 <footer>
     <div id="footer">
         <h1 class="blind">푸터영역</h1>
@@ -776,99 +648,65 @@
           <div class="row">
             <div class="hyundai-menu">
               <span class="tit">
-                <a href="javascript:;"
-                  onclick="javascript:GA_Event('PC_공통','푸터_메뉴','현대백화점그룹'); dummyLogCatch('http://www.ehyundai.com/newPortal/ir', 'Footer', 'group', 'blank', 'Y', null)">현대백화점그룹</a>
+                <a href="javascript:;" onclick="javascript:GA_Event('PC_공통','푸터_메뉴','현대백화점그룹'); dummyLogCatch('http://www.ehyundai.com/newPortal/ir', 'Footer', 'group', 'blank', 'Y', null)">현대백화점그룹</a>
               </span>
               <ul>
-                <li><a onclick="GA_Event('PC_공통','푸터_메뉴','공지사항');"
-                    href="http://www.thehyundai.com/front/ccb/noticeList.thd?MainpageGroup=Footer&amp;GroupbannerName=notice">공지사항</a>
+                <li><a onclick="GA_Event('PC_공통','푸터_메뉴','공지사항');" href="http://www.thehyundai.com/front/ccb/noticeList.thd?MainpageGroup=Footer&amp;GroupbannerName=notice">공지사항</a>
                 </li>
       
-                <li><a href="javascript:;"
-                    onclick="javascript:GA_Event('PC_공통','푸터_메뉴','윤리경영'); dummyLogCatch('http://www.ehyundai.com/newPortal/ir/ETH/ETH000001.do?ir=3', 'Footer', 'legal', 'blank', 'Y', null)">윤리경영</a>
+                <li><a href="javascript:;" onclick="javascript:GA_Event('PC_공통','푸터_메뉴','윤리경영'); dummyLogCatch('http://www.ehyundai.com/newPortal/ir/ETH/ETH000001.do?ir=3', 'Footer', 'legal', 'blank', 'Y', null)">윤리경영</a>
                 </li>
-                <li><a href="javascript:;"
-                    onclick="javascript:GA_Event('PC_공통','푸터_메뉴','사회공헌'); dummyLogCatch('http://www.ehyundai.com/newPortal/csr/main.do', 'Footer', 'legal', 'blank', 'Y', null)">사회공헌</a>
+                <li><a href="javascript:;" onclick="javascript:GA_Event('PC_공통','푸터_메뉴','사회공헌'); dummyLogCatch('http://www.ehyundai.com/newPortal/csr/main.do', 'Footer', 'legal', 'blank', 'Y', null)">사회공헌</a>
                 </li>
-                <li><a onclick="GA_Event('PC_공통','푸터_메뉴','이용약관');"
-                    href="http://www.thehyundai.com/front/cua/viewPolicyPup.thd?view=1&amp;MainpageGroup=Footer&amp;GroupbannerName=agree"
-                    data-toggle="winpopup" data-api="center,900,770,scrollbars" target="_blank">이용약관</a></li>
-                <li><a onclick="GA_Event('PC_공통','푸터_메뉴','개인정보 처리방침');"
-                    href="http://www.thehyundai.com/front/cua/viewPolicyPup.thd?view=2&amp;MainpageGroup=Footer&amp;GroupbannerName=private"
-                    data-toggle="winpopup" data-api="center,900,770,scrollbars" target="_blank"><strong>개인정보 처리방침</strong></a>
+                <li><a onclick="GA_Event('PC_공통','푸터_메뉴','이용약관');" href="http://www.thehyundai.com/front/cua/viewPolicyPup.thd?view=1&amp;MainpageGroup=Footer&amp;GroupbannerName=agree" data-toggle="winpopup" data-api="center,900,770,scrollbars" target="_blank">이용약관</a></li>
+                <li><a onclick="GA_Event('PC_공통','푸터_메뉴','개인정보 처리방침');" href="http://www.thehyundai.com/front/cua/viewPolicyPup.thd?view=2&amp;MainpageGroup=Footer&amp;GroupbannerName=private" data-toggle="winpopup" data-api="center,900,770,scrollbars" target="_blank"><strong>개인정보 처리방침</strong></a>
                 </li>
               </ul>
             </div>
             <!-- 2016-07-28// -->
             <div class="family">
-              <a href="#"
-                onclick="javascript:GA_Event('PC_공통','푸터_메뉴','FAMILY SITE'); $(this).parents('.family').toggleClass('current');return false;">FAMILY
+              <a href="#" onclick="javascript:GA_Event('PC_공통','푸터_메뉴','FAMILY SITE'); $(this).parents('.family').toggleClass('current');return false;">FAMILY
                 SITE <i></i></a>
               <div class="family-site">
                 <!-- <h4>쇼핑몰 site</h4> -->
                 <div class="scrollable">
                   <ul>
-                    <li><a onclick="GA_Event('PC_공통','패밀리사이트','현대식품관 투홈');" href="http://tohome.thehyundai.com"
-                        target="_blank">현대식품관 투홈</a></li>
-                    <li><a onclick="GA_Event('PC_공통','패밀리사이트','현대Hmall');" href="https://www.hmall.com"
-                        target="_blank">현대Hmall</a></li>
-                    <li><a onclick="GA_Event('PC_공통','패밀리사이트','현대백화점 DUTY FREE');"
-                        href="https://www.hddfs.com/shop/dm/main.do?ptnrChlCd=00003905" target="_blank">현대백화점 DUTY FREE</a>
+                    <li><a onclick="GA_Event('PC_공통','패밀리사이트','현대식품관 투홈');" href="http://tohome.thehyundai.com" target="_blank">현대식품관 투홈</a></li>
+                    <li><a onclick="GA_Event('PC_공통','패밀리사이트','현대Hmall');" href="https://www.hmall.com" target="_blank">현대Hmall</a></li>
+                    <li><a onclick="GA_Event('PC_공통','패밀리사이트','현대백화점 DUTY FREE');" href="https://www.hddfs.com/shop/dm/main.do?ptnrChlCd=00003905" target="_blank">현대백화점 DUTY FREE</a>
                     </li>
-                    <li><a onclick="GA_Event('PC_공통','패밀리사이트','더한섬닷컴');" href="http://www.thehansome.com"
-                        target="_blank">더한섬닷컴</a></li>
-                    <li><a onclick="GA_Event('PC_공통','패밀리사이트','현대리바트몰');" href="http://mall.hyundailivart.co.kr"
-                        target="_blank">현대리바트몰</a></li>
-                    <li><a onclick="GA_Event('PC_공통','패밀리사이트','현대렌탈케어');" href="http://www.hyundairentalcare.co.kr"
-                        target="_blank">현대렌탈케어</a></li>
-                    <li><a onclick="GA_Event('PC_공통','패밀리사이트','H패션몰');" href="http://www.hfashionmall.com/sfmweb/"
-                        target="_blank">H패션몰</a></li>
-                    <li><a onclick="GA_Event('PC_공통','패밀리사이트','현대어린이책미술관');" href="https://www.hmoka.org"
-                        target="_blank">현대어린이책미술관</a></li>
-                    <li><a onclick="GA_Event('PC_공통','패밀리사이트','그리팅');" href="https://www.greating.co.kr/"
-                        target="_blank">그리팅</a></li>
-                    <li><a onclick="GA_Event('PC_공통','패밀리사이트','한섬EQL');" href="https://www.eqlstore.com/main"
-                        target="_blank">한섬EQL</a></li>
+                    <li><a onclick="GA_Event('PC_공통','패밀리사이트','더한섬닷컴');" href="http://www.thehansome.com" target="_blank">더한섬닷컴</a></li>
+                    <li><a onclick="GA_Event('PC_공통','패밀리사이트','현대리바트몰');" href="http://mall.hyundailivart.co.kr" target="_blank">현대리바트몰</a></li>
+                    <li><a onclick="GA_Event('PC_공통','패밀리사이트','현대렌탈케어');" href="http://www.hyundairentalcare.co.kr" target="_blank">현대렌탈케어</a></li>
+                    <li><a onclick="GA_Event('PC_공통','패밀리사이트','H패션몰');" href="http://www.hfashionmall.com/sfmweb/" target="_blank">H패션몰</a></li>
+                    <li><a onclick="GA_Event('PC_공통','패밀리사이트','현대어린이책미술관');" href="https://www.hmoka.org" target="_blank">현대어린이책미술관</a></li>
+                    <li><a onclick="GA_Event('PC_공통','패밀리사이트','그리팅');" href="https://www.greating.co.kr/" target="_blank">그리팅</a></li>
+                    <li><a onclick="GA_Event('PC_공통','패밀리사이트','한섬EQL');" href="https://www.eqlstore.com/main" target="_blank">한섬EQL</a></li>
                   </ul>
                 </div>
       
                 <h4>관계사 site</h4>
                 <div class="scrollable">
                   <ul>
-                    <li><a onclick="GA_Event('PC_공통','패밀리사이트','현대백화점 그룹');" href="http://www.ehyundai.com/newPortal/ir"
-                        target="_blank">현대백화점 그룹</a></li>
-                    <li><a onclick="GA_Event('PC_공통','패밀리사이트','현대백화점');" href="http://www.ehyundai.com"
-                        target="_blank">현대백화점</a></li>
-                    <li><a onclick="GA_Event('PC_공통','패밀리사이트','현대홈쇼핑');" href="https://www.hmall.com"
-                        target="_blank">현대홈쇼핑</a></li>
-                    <li><a onclick="GA_Event('PC_공통','패밀리사이트','현대그린푸드');" href="http://www.hyundaigreenfood.com"
-                        target="_blank">현대그린푸드</a></li>
+                    <li><a onclick="GA_Event('PC_공통','패밀리사이트','현대백화점 그룹');" href="http://www.ehyundai.com/newPortal/ir" target="_blank">현대백화점 그룹</a></li>
+                    <li><a onclick="GA_Event('PC_공통','패밀리사이트','현대백화점');" href="http://www.ehyundai.com" target="_blank">현대백화점</a></li>
+                    <li><a onclick="GA_Event('PC_공통','패밀리사이트','현대홈쇼핑');" href="https://www.hmall.com" target="_blank">현대홈쇼핑</a></li>
+                    <li><a onclick="GA_Event('PC_공통','패밀리사이트','현대그린푸드');" href="http://www.hyundaigreenfood.com" target="_blank">현대그린푸드</a></li>
                     <li><a onclick="GA_Event('PC_공통','패밀리사이트','한섬');" href="http://www.thehansome.com" target="_blank">한섬</a>
                     </li>
-                    <li><a onclick="GA_Event('PC_공통','패밀리사이트','현대리바트');" href="http://www.hyundailivart.co.kr"
-                        target="_blank">현대리바트</a></li>
+                    <li><a onclick="GA_Event('PC_공통','패밀리사이트','현대리바트');" href="http://www.hyundailivart.co.kr" target="_blank">현대리바트</a></li>
                     <li><a onclick="GA_Event('PC_공통','패밀리사이트','지누스');" href="https://zinus.co.kr/" target="_blank">지누스</a>
                     </li>
-                    <li><a onclick="GA_Event('PC_공통','패밀리사이트','현대L&amp;C');" href="https://www.hyundailnc.com/company"
-                        target="_blank">현대L&amp;C</a></li>
-                    <li><a onclick="GA_Event('PC_공통','패밀리사이트','현대렌탈케어');" href="http://www.hyundairentalcare.co.kr"
-                        target="_blank">현대렌탈케어</a></li>
-                    <li><a onclick="GA_Event('PC_공통','패밀리사이트','현대드림투어');" href="http://www.hyundaidreamtour.com"
-                        target="_blank">현대드림투어</a></li>
-                    <li><a onclick="GA_Event('PC_공통','패밀리사이트','현대에버다임');" href="http://www.everdigm.com"
-                        target="_blank">현대에버다임</a></li>
-                    <li><a onclick="GA_Event('PC_공통','패밀리사이트','씨엔에스푸드시스템');" href="http://www.cnsfoodsystem.co.kr"
-                        target="_blank">씨엔에스푸드시스템</a></li>
-                    <li><a onclick="GA_Event('PC_공통','패밀리사이트','현대캐터링시스템');" href="http://www.hyundaicatering.co.kr"
-                        target="_blank">현대캐터링시스템</a></li>
-                    <li><a onclick="GA_Event('PC_공통','패밀리사이트','현대IT&amp;E');" href="http://www.hyundai-ite.com/index.jsp"
-                        target="_blank">현대IT&amp;E</a></li>
-                    <li><a onclick="GA_Event('PC_공통','패밀리사이트','현대퓨처넷');" href="https://www.hyundaifuturenet.co.kr"
-                        target="_blank">현대퓨처넷</a></li>
-                    <li><a onclick="GA_Event('PC_공통','패밀리사이트','현대이지웰');" href="https://www.hyundaiezwel.com/renew/main.ez"
-                        target="_blank">현대이지웰</a></li>
-                    <li><a onclick="GA_Event('PC_공통','패밀리사이트','현대바이오랜드');" href="http://www.hyundaibioland.co.kr/main"
-                        target="_blank">현대바이오랜드</a></li>
+                    <li><a onclick="GA_Event('PC_공통','패밀리사이트','현대L&amp;C');" href="https://www.hyundailnc.com/company" target="_blank">현대L&amp;C</a></li>
+                    <li><a onclick="GA_Event('PC_공통','패밀리사이트','현대렌탈케어');" href="http://www.hyundairentalcare.co.kr" target="_blank">현대렌탈케어</a></li>
+                    <li><a onclick="GA_Event('PC_공통','패밀리사이트','현대드림투어');" href="http://www.hyundaidreamtour.com" target="_blank">현대드림투어</a></li>
+                    <li><a onclick="GA_Event('PC_공통','패밀리사이트','현대에버다임');" href="http://www.everdigm.com" target="_blank">현대에버다임</a></li>
+                    <li><a onclick="GA_Event('PC_공통','패밀리사이트','씨엔에스푸드시스템');" href="http://www.cnsfoodsystem.co.kr" target="_blank">씨엔에스푸드시스템</a></li>
+                    <li><a onclick="GA_Event('PC_공통','패밀리사이트','현대캐터링시스템');" href="http://www.hyundaicatering.co.kr" target="_blank">현대캐터링시스템</a></li>
+                    <li><a onclick="GA_Event('PC_공통','패밀리사이트','현대IT&amp;E');" href="http://www.hyundai-ite.com/index.jsp" target="_blank">현대IT&amp;E</a></li>
+                    <li><a onclick="GA_Event('PC_공통','패밀리사이트','현대퓨처넷');" href="https://www.hyundaifuturenet.co.kr" target="_blank">현대퓨처넷</a></li>
+                    <li><a onclick="GA_Event('PC_공통','패밀리사이트','현대이지웰');" href="https://www.hyundaiezwel.com/renew/main.ez" target="_blank">현대이지웰</a></li>
+                    <li><a onclick="GA_Event('PC_공통','패밀리사이트','현대바이오랜드');" href="http://www.hyundaibioland.co.kr/main" target="_blank">현대바이오랜드</a></li>
                     <li><a onclick="GA_Event('PC_공통','패밀리사이트','벤디스');" href="https://sikdae.com" target="_blank">벤디스</a></li>
                     <!-- 20230113 신규계열사 벤디스 추가-->
                   </ul>
@@ -881,14 +719,12 @@
         <div class="bottom">
           <div class="row">
             <div class="logo">
-              <a href="http://www.thehyundai.com/Home.html"><img
-                  src="https://image.thehyundai.com/hdmall/images/co/img_bottom_logo.png" alt="THE HYUNDAI"></a>
+              <a href="http://www.thehyundai.com/Home.html"><img src="https://image.thehyundai.com/hdmall/images/co/img_bottom_logo.png" alt="THE HYUNDAI"></a>
             </div>
             <div class="info">
               <!-- 171130 수정// -->
               <p>주식회사 현대백화점 대표이사 : 김형종 외 2인 서울시 강남구 테헤란로98길 12</p>
-              <p>사업자등록번호 : 211-87-21455 <a href="https://www.ftc.go.kr/bizCommPop.do?wrkr_no=2118721455"
-                  data-toggle="winpopup" data-api="center,750,700,scrollbars" target="_blank">[사업자정보 확인]</a> 통신판매업신고 :
+              <p>사업자등록번호 : 211-87-21455 <a href="https://www.ftc.go.kr/bizCommPop.do?wrkr_no=2118721455" data-toggle="winpopup" data-api="center,750,700,scrollbars" target="_blank">[사업자정보 확인]</a> 통신판매업신고 :
                 2010-서울강남-01882</p>
               <p>홈페이지/앱 문의 : <a href="mailto:customerservice@thehyundai.com">customerservice@thehyundai.com</a>
                 고객센터 : <strong>1800-2233</strong></p>
@@ -900,40 +736,26 @@
       
             <div class="sns-quickgo">
               <ul>
-                <li><a href="javascript:;"
-                    onclick="javascript:GA_Event('PC_공통','패밀리사이트','FACEBOOK'); dummyLogCatch('https://www.facebook.com/eHYUNDAI/', 'Footer', 'facebook', 'blank', 'Y', null)"><i
-                      class=" facebook">facebook</i></a></li>
-                <li><a href="javascript:;"
-                    onclick="javascript:GA_Event('PC_공통','패밀리사이트','TWITTER'); dummyLogCatch('https://twitter.com/eHyundai_tweets/', 'Footer', 'twitter', 'blank', 'Y', null)"><i
-                      class=" twitter">트위터</i></a></li>
+                <li><a href="javascript:;" onclick="javascript:GA_Event('PC_공통','패밀리사이트','FACEBOOK'); dummyLogCatch('https://www.facebook.com/eHYUNDAI/', 'Footer', 'facebook', 'blank', 'Y', null)"><i class=" facebook">facebook</i></a></li>
+                <li><a href="javascript:;" onclick="javascript:GA_Event('PC_공통','패밀리사이트','TWITTER'); dummyLogCatch('https://twitter.com/eHyundai_tweets/', 'Footer', 'twitter', 'blank', 'Y', null)"><i class=" twitter">트위터</i></a></li>
                 <!-- 2017-01-25 핀터레스트 제거
                     <li><a href="javascript:;" onclick="javascript:dummyLogCatch('https://www.pinterest.com/hyundaidept/', 'Footer', 'pinterest', 'blank', 'Y', null)"><i class=" pinterest">pinterest</i></a></li>
                     -->
                 <!-- 2017-01-25 인스타그램 추가 -->
-                <li><a href="javascript:;"
-                    onclick="javascript:GA_Event('PC_공통','패밀리사이트','INSTAGRAM'); dummyLogCatch('https://www.instagram.com/the_hyundai/', 'Footer', 'instagram', 'blank', 'Y', null)"><i
-                      class=" instagram">instagram</i></a></li>
-                <li><a href="javascript:;"
-                    onclick="javascript:GA_Event('PC_공통','패밀리사이트','TISTORY'); dummyLogCatch('http://thehyundai.tistory.com/', 'Footer', 'blog', 'blank', 'Y', null)"><i
-                      class=" tistory">tistory</i></a></li>
+                <li><a href="javascript:;" onclick="javascript:GA_Event('PC_공통','패밀리사이트','INSTAGRAM'); dummyLogCatch('https://www.instagram.com/the_hyundai/', 'Footer', 'instagram', 'blank', 'Y', null)"><i class=" instagram">instagram</i></a></li>
+                <li><a href="javascript:;" onclick="javascript:GA_Event('PC_공통','패밀리사이트','TISTORY'); dummyLogCatch('http://thehyundai.tistory.com/', 'Footer', 'blog', 'blank', 'Y', null)"><i class=" tistory">tistory</i></a></li>
               </ul>
             </div>
           </div>
           <div class="certi-wrap row">
             <p class="certi">
-              <a href="http://www.kolsa.or.kr/neopress/index.php?mid=regular" target="_blank"><img
-                  src="https://image.thehyundai.com/hdmall/images/co/img_footer_v2_certi_01.png"
-                  alt="사단법인 한국온라인 쇼핑협회 정회원사"></a>
+              <a href="http://www.kolsa.or.kr/neopress/index.php?mid=regular" target="_blank"><img src="https://image.thehyundai.com/hdmall/images/co/img_footer_v2_certi_01.png" alt="사단법인 한국온라인 쇼핑협회 정회원사"></a>
               <span class="scol">|</span>
-              <a href="http://www.kca.go.kr/wpge/m_210/ccm1100.do" target="_blank"><img
-                  src="https://image.thehyundai.com/hdmall/images/co/img_footer_v2_certi_02.png"
-                  alt="공정거래위원회 CCm 인증 [소비자중심 경영우수기업]"></a>
+              <a href="http://www.kca.go.kr/wpge/m_210/ccm1100.do" target="_blank"><img src="https://image.thehyundai.com/hdmall/images/co/img_footer_v2_certi_02.png" alt="공정거래위원회 CCm 인증 [소비자중심 경영우수기업]"></a>
               <span class="scol">|</span>
-              <a target="_blank"><img src="https://image.thehyundai.com/hdmall/images/co/img_footer_certi_03.png"
-                  alt="위해상품 차단 시스템 운영매장"></a>
+              <a target="_blank"><img src="https://image.thehyundai.com/hdmall/images/co/img_footer_certi_03.png" alt="위해상품 차단 시스템 운영매장"></a>
               <span class="scol">|</span>
-              <a target="_blank"><img src="https://image.thehyundai.com/hdmall/images/co/img_footer_certi_04.png"
-                  alt="모바일 어워드 코리아 2016"></a>
+              <a target="_blank"><img src="https://image.thehyundai.com/hdmall/images/co/img_footer_certi_04.png" alt="모바일 어워드 코리아 2016"></a>
             </p>
             <p class="checkguarantee">
               <span>
@@ -941,11 +763,11 @@
                 체결하여 안전거래를 보장하고 있습니다.
               </span>
               <!--http://www.thehyundai.com/html/contents/-->
-              <a href="#"
-                onclick="javascript:popover_ajax('https://www.thehyundai.com/html/contents/guarantee.html', 750);return false;">서비스
+              <a href="#" onclick="javascript:popover_ajax('https://www.thehyundai.com/html/contents/guarantee.html', 750);return false;">서비스
                 가입사실 확인</a>
             </p>
           </div>
         </div>
       </div>
-</footer></html>
+</footer>
+</body></html>

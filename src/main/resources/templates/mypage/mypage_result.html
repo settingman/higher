@@ -1,0 +1,644 @@
+<html
+  xmlns:sec="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,maximum-scale=1.0"
+    />
+    <title>더현대닷컴</title>
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://image.thehyundai.com/pc/cssssl/font.css"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://image.thehyundai.com/pc/cssssl/co.css?ver=13"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://image.thehyundai.com/pc/cssssl/wf.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../static/css/makeup_result.css"
+    />
+    <script src="https://image.thehyundai.com/pc/js/jquery-1.11.3.min.js"></script>
+    <script src="https://image.thehyundai.com/pc/js/jquery-ui.min.js"></script>
+    <script src="https://image.thehyundai.com/pc/js/jquery-migrate.min.js"></script>
+
+    <script type="text/javascript">
+      document.domain = "thehyundai.com";
+      var locationHref = document.location.href;
+      var imageServer = "https://image.thehyundai.com";
+      var serverHost = "http://www.thehyundai.com";
+      var serverHostForSSL = "https://www.thehyundai.com";
+
+      var switch_serverHost;
+      var contextPath = "/front";
+
+      if (locationHref.indexOf("https") > -1) {
+        switch_serverHost = serverHostForSSL;
+      } else if (locationHref.indexOf("http") > -1) {
+        switch_serverHost = serverHost;
+      }
+
+      var _timer;
+      $(document).ready(function () {
+        var interval = 1801000;
+        var ChkSTDtm = new Date();
+        var expireDtm = new Date();
+        ChkSTDtm.setMinutes(ChkSTDtm.getMinutes() + 30);
+        expireDtm.setDate(expireDtm.getDate() + 1);
+        document.cookie =
+          "ChkSTDtm=" +
+          ChkSTDtm.getTime() +
+          "; path=/; expires=" +
+          expireDtm.toUTCString() +
+          "; path=/";
+        _timer = setTimeout("timeOutLogOutCookie()", interval);
+      });
+
+      function timeOutLogOut() {
+        try {
+          gfnSsoDscdToknReq(dscdCallback2);
+        } catch (exception) {
+          console.log(exception);
+        } finally {
+          location.href = "https://www.thehyundai.com/front/cob/logout.thd";
+        }
+      }
+    </script>
+
+    <script src="https://image.thehyundai.com/pc/js/plugin.js?ver=040213"></script>
+    <script
+      type="text/javascript"
+      src="https://image.thehyundai.com/pc/js/hdmall/co/jquery.form.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://image.thehyundai.com/pc/js/hdmall/co/default.js?ver=040213"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://image.thehyundai.com/pc/js/hdmall/co/common.js?ver=040213"
+    ></script>
+    <script src="https://image.thehyundai.com/pc/js/common.js?ver=040213"></script>
+    <script
+      type="text/javascript"
+      src="https://image.thehyundai.com/pc/js/swiper.min.js?ver=040213"
+    ></script>
+    <style type="text/css">
+      .fancybox-margin {
+        margin-right: 17px;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css"
+    />
+    <style type="text/css">
+      .fancybox-margin {
+        margin-right: 0px;
+      }
+    </style>
+    <style type="text/css">
+      .fancybox-margin {
+        margin-right: 21px;
+      }
+    </style>
+  </head>
+
+  <body
+    oncontextmenu="return false"
+    ondragstart="return false"
+    onselectstart="return false"
+  >
+    <!-- wrap -->
+    <div id="wrap" class="sub">
+      <!-- gnb -->
+
+      <script
+        type="text/javascript"
+        src="https://www.thehyundai.com/js/hdmall/co/referCodes.js"
+      ></script>
+
+      <!-- top banner -->
+      <div id="js-tpl-topBanner" style="display: none"></div>
+
+      <div class="top-wrap sub">
+        <div class="top-area-setting">
+          <script
+            type="text/javascript"
+            src="https://www.thehyundai.com/js/hdmall/dp/dpo/dqSearch.js?ver=040213"
+          ></script>
+
+          <script
+            type="text/javascript"
+            src="https://www.thehyundai.com/js/hdmall/dp/dpo/dqAutoCompleteNewCommon.js?ver=040213"
+          ></script>
+          <script
+            type="text/javascript"
+            src="https://www.thehyundai.com/js/hdmall/dp/dpo/dqAutoCompleteNew.js?ver=040213"
+          ></script>
+
+          <!-- //header -->
+        </div>
+      </div>
+
+      <!-- container -->
+      <div id="container">
+        <!-- content-wrap -->
+        <div class="content-wrap hasleft myhyundai">
+          <!-- left contents -->
+
+          <div class="leftarea">
+            <h2>
+              <a href="/front/mpf/selectMyPageMain.thd"
+                >마이현대<span>MY HYUNDAI</span></a
+              >
+            </h2>
+            <div class="line"></div>
+
+            <!-- leftmenu -->
+            <ul class="leftmenu">
+              <li class="">
+                <a class="not">Make-On</a>
+                <ul>
+                  <li class="">
+                    <a th:onclick="|location.href='@{/mypage/mypage_reserv}'|">예약 관리</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="">
+                <a class="not">주문현황</a>
+                <ul>
+                  <li class="">
+                    <a
+                      href="/front/mpa/selectOrdDlvCrst.thd"
+                      onclick="javascript:GA_Event('PC_마이페이지', 'LNB', '주문현황_주문확인/배송조회');"
+                      >주문확인/배송조회</a
+                    >
+                  </li>
+                  <li class="">
+                    <a
+                      href="/front/mpa/selectOrdCnclCrst.thd"
+                      onclick="javascript:GA_Event('PC_마이페이지', 'LNB', '주문현황_취소/반품/교환');"
+                      >취소/반품/교환</a
+                    >
+                  </li>
+                </ul>
+              </li>
+
+              <li class="">
+                <a class="not">나의 정보</a>
+                <ul>
+                  <li class="">
+                    <a
+                      href="/front/mpd/changeMemberInfoForm.thd"
+                      onclick="javascript:GA_Event('PC_마이페이지', 'LNB', '나의정보_회원정보변경');"
+                      >회원정보변경</a
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <!-- //leftmenu -->
+          </div>
+          <!-- //leftarea -->
+          <!-- // left contents -->
+
+          <!-- content -->
+          <div class="content">
+            <div class="myhyundai-head"></div>
+            <div class="myhyundai-main" style="margin: 40px 0">
+              <h3>Make-On 예약 관리</h3>
+            </div>
+            <!-- cart-list -->
+            <div class="myhyundai-main" style="margin: 40px 0">
+              <h2>예약 결과</h2>
+            </div>
+            <div>
+              <div class="makeupwrapper" style="margin-bottom: 100px">
+                <div class="numbering" style="margin: 40px 0">
+                  <p style="display: inline">예약번호 :</p>
+                  <p style="display: inline" th:text="${info.rid}"></p>
+                </div>
+                <div
+                  class="makeupwrapper"
+                  style="grid-template-columns: 30% 20% 50%; display: grid"
+                >
+                  <div class="wrapper1" style="margin-right: 20px">
+                    <p
+                      style="
+                        margin-top: 0;
+                        font-weight: bold;
+                        margin-bottom: 20px;
+                      "
+                    >
+                      고객 정보
+                    </p>
+                    <div>
+                      <p style="display: inline; margin-bottom: 10px">
+                        상담자 :
+                      </p>
+                      <p style="display: inline" th:text="${info.mid}"></p>
+                    </div>
+                    <div>
+                      <p style="display: inline"><br />메이크업 아티스트 :</p>
+                      <p style="display: inline">MARY</p>
+                    </div>
+                    <p style="display: inline"><br />상담 일자 :</p>
+                    <p style="display: inline" th:text="${info.rdate}"></p>
+                    <div>
+                      <!-- 기초 진단 정보 그래프로 나타나는 js 데려와서 해보는거 추후 논의-->
+                      <p style="display: inline"><br />기초 진단 정보 :</p>
+                      <p style="display: inline">NBTI</p>
+                    </div>
+                    <div>
+                      <!-- 상담 내용 checkbox나 라디오 버튼 만들어서 상담 내역 관리 가능하게도 가능 (추후 논의 후 수정) -->
+                      <p style="display: inline"><br />요청 사항 :</p>
+                      <p style="display: inline">
+                        촉촉한 피부 마감 선호, 립 브랜드 베네피트 선호
+                      </p>
+                    </div>
+                  </div>
+                  <div class="wrapper2" style="">
+                    <p
+                      style="
+                        margin-top: 0;
+                        font-weight: bold;
+                        margin-bottom: 20px;
+                      "
+                    >
+                      상담결과
+                    </p>
+                    <div>
+                      <p style="display: inline">Lip :</p>
+                      <p style="display: inline" th:text="${result.lip}"></p>
+                    </div>
+                    <div>
+                      <p style="display: inline"><br />Blush :</p>
+                      <p style="display: inline" th:text="${result.blush}"></p>
+                    </div>
+                    <div>
+                      <p style="display: inline"><br />Foundation :</p>
+                      <p style="display: inline" th:text="${result.face}"></p>
+                    </div>
+                  </div>
+                  <div class="makeupwrapper" style="">
+                    <div
+                      class="numbering"
+                      style="text-align: center; margin-bottom: 20px"
+                    >
+                      <p
+                        style="
+                          text-align: center;
+                          margin-top: 0;
+                          font-weight: bold;
+                        "
+                      >
+                        결과 사진
+                      </p>
+                    </div>
+                    <div
+                      class="wrapper3"
+                      style="
+                        grid-template-columns: repeat(2, 1fr);
+                        display: grid;
+                        place-items: center;
+                      "
+                    >
+                      <div class="faceupload" style="float: left">
+                        <img
+                          class="face"
+                          th:src="${reserv.rimg}"
+                          style="
+                            max-width: 150px;
+                            margin: 0 20 20 20;
+                            float: right;
+                          "
+                        />
+                      </div>
+                      <div class="faceupload" style="float: left">
+                        <img
+                          class="face"
+                          th:src="${result.result_img}"
+                          style="max-width: 150px; margin: 0 20 20 20"
+                        />
+                      </div>
+                      <div style="text-align: center">
+                        <span>BEFORE</span>
+                      </div>
+                      <div style="text-align: center">
+                        <span>AFTER</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="selectprod">
+                  <div
+                    class="numbering"
+                    style="margin: 20px 0; text-align: center"
+                  >
+                    <p style="text-align: center; font-weight: bold">
+                      ARTIST's PICK
+                    </p>
+                  </div>
+                  <form
+                    method="post"
+                    enctype="multipart/form-data"
+                    action="/makeup/makeup_send"
+                  >
+                    <div class="lip_prod">
+                      <div
+                        class="product-list-wrap1"
+                        style="width: fit-content"
+                      >
+                        <div class="select-list" style="width: auto">
+                          <div style="margin-bottom: 10px">
+                            <p>Lip</p>
+                          </div>
+                          <div style="margin-bottom: 10px">
+                            <p>Blush</p>
+                          </div>
+                          <div style="margin-bottom: 10px">
+                            <p>Foundation</p>
+                          </div>
+                          <div class="lipclone">
+                            <div class="clonepart">
+                              <div class="img">
+                                <a
+                                  ><img
+                                   th:src="${lipresult.iloc} + '_600.jpg'" th:alt="${lipresult.pname}" /><span
+                                    class="bg"
+                                  ></span
+                                ></a>
+                              </div>
+                              <div class="info">
+                                <input
+                                  type="hidden"
+                                  name="lip_pcode"
+                                  class="lip_pcode"
+                                  th:value="${lipresult.pcode}"
+                                />
+                                <input
+                                  type="hidden"
+                                  name="lip_opt"
+                                  class="lip_opt"
+                                  th:value="${lipresult.optname}"
+                                />
+                                <div class="price-info single">
+                                  <span th:text="${#numbers.formatInteger(lipresult.pprice, 3, 'COMMA')}"></span>
+                                </div>
+                                <div>
+                                  <a th:text="${lipresult.pname}"></a>
+                                </div>
+                                <a th:text="${lipresult.optname}"></a>
+                              </div>
+                              <div class="btn_red" style="">
+                                <p class="pickbtn">장바구니 담기</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="blushclone">
+                            <div class="clonepart">
+                              <div class="img">
+                                <a
+                                  ><img
+                                    th:src="${blushresult.iloc} + '_600.jpg'" th:alt="${blushresult.pname}"/><span
+                                    class="bg"
+                                  ></span
+                                ></a>
+                              </div>
+                              <div class="info">
+                                <input
+                                  type="hidden"
+                                  name="blush_pcode"
+                                  class="blush_pcode"
+                                  th:value="${blushresult.pcode}"
+                                />
+                                <input
+                                  type="hidden"
+                                  name="blush_opt"
+                                  class="blush_opt"
+                                  th:value="${blushresult.optname}"
+                                />
+                                <div class="price-info single">
+                                  <span th:text="${#numbers.formatInteger(blushresult.pprice, 3, 'COMMA')}"></span>
+                                </div>
+                                <div>
+                                  <a th:text="${blushresult.pname}"></a
+                                  >
+                                </div>
+                                <a th:text="${blushresult.optname}"></a>
+                              </div>
+                              <div class="btn_red" style="">
+                                <p class="pickbtn">장바구니 담기</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="faceclone">
+                            <div class="clonepart">
+                              <div class="img">
+                                <a
+                                  ><img th:src="${faceresult.iloc} + '_600.jpg'" th:alt="${faceresult.pname}"/><span
+                                    class="bg"
+                                  ></span
+                                ></a>
+                              </div>
+                              <div class="info">
+                                <input
+                                  type="hidden"
+                                  name="face_pcode"
+                                  class="face_pcode"
+                                  th:value="${faceresult.pcode}"
+                                />
+                                <input
+                                  type="hidden"
+                                  name="face_opt"
+                                  class="face_opt"
+                                  th:value="${faceresult.optname}"
+                                />
+                                <div class="price-info single">
+                                  <span th:text="${#numbers.formatInteger(faceresult.pprice, 3, 'COMMA')}"></span>
+                                </div>
+                                <div>
+                                  <a th:text="${faceresult.pname}"></a
+                                  >
+                                </div>
+                                <a th:text="${faceresult.optname}"></a>
+                              </div>
+                              <div class="btn_red" style="">
+                                <p class="pickbtn">장바구니 담기</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="btn_green"
+                          style="text-align: center; margin-top: 10px"
+                        >
+                          <p class="pickbtn" style="line-height: 30px">
+                            전체 장바구니 담기
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <!-- //cart-list -->
+
+            <!-- //입장-->
+          </div>
+          <!-- //content -->
+        </div>
+        <!-- //content-wrap -->
+      </div>
+    </div>
+    <!-- //wrap -->
+
+    <style>
+      .btn_red {
+        text-align: center;
+        background: #e35c61;
+        height: 50px;
+        color: white;
+        line-height: 30px;
+        margin: 20px 0;
+      }
+      .price-info.single {
+  margin-bottom: 10px;
+}
+.prod {
+  width: 100%;
+  margin: 10px;
+}
+
+.prod-unit .img img {
+  display: block;
+  width: 256px;
+  height: 256px;
+}
+.prod-unit .img .bg {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  background: url(https://image.thehyundai.com/hdmall/images/co/bg_produnit_hover.png);
+}
+.prod-unit .info {
+  padding-top: 20px;
+  width: 256px;
+  margin-left: 20px;
+}
+
+.product-list {
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  overflow-x: scroll;
+  grid-auto-flow: column;
+  height: 100%;
+}
+
+ul {
+  list-style: none;
+}
+.product-list-wrap {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  overflow: auto;
+}
+.btn_green {
+  color: white;
+  background: #45675b;
+  height: 50px;
+}
+.btn_gray {
+  color: white;
+  background: slategray;
+  height: 50px;
+}
+p.pickbtn {
+  margin-top: 10px;
+  font-weight: 100;
+  font-size: 16;
+  cursor: pointer;
+  height: 50px;
+  display: inline-grid;
+  vertical-align: middle;
+}
+.lip_pick {
+  width: 255px;
+  margin: 20 auto;
+  text-align: center;
+}
+.blush_pick {
+  width: 150px;
+  margin: 20 auto;
+  text-align: center;
+}
+.foundation_pick {
+  width: 150px;
+  margin: 20 auto;
+  text-align: center;
+}
+.select-list {
+  grid-template-columns: repeat(3, 1fr);
+  display: grid;
+  place-items: center;
+  width: 70%;
+  height: 440px;
+  margin: 0 auto;
+}
+.type_pick {
+  width: 255px;
+  text-align: center;
+  margin: 0 20px;
+}
+.select-list1 {
+  grid-template-columns: repeat(3, 1fr);
+  display: grid;
+  place-items: center;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.clonepart .img img {
+  display: block;
+  width: 256px;
+  height: 256px;
+}
+
+.empty {
+  width: 250;
+  height: 330;
+  border-radius: 10%;
+  border-style: dashed;
+  border-color: darkgray;
+  margin: 0 10px;
+}
+      
+    </style>
+  </body>
+</html>

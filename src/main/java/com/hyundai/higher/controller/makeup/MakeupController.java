@@ -1,8 +1,10 @@
 package com.hyundai.higher.controller.makeup;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -22,6 +24,11 @@ import org.springframework.web.client.RestTemplate;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.hyundai.higher.domain.makeup.BlushVO;
+import com.hyundai.higher.domain.makeup.FoundationVO;
+import com.hyundai.higher.domain.makeup.LipVO;
+import com.hyundai.higher.domain.makeup.ResultVO;
+import com.hyundai.higher.service.makeup.MakeupService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -39,6 +46,8 @@ import lombok.extern.log4j.Log4j2;
  * 2023. 3. 21.     이세아       html 연결 및 makeup api 연동
  * 2023. 3. 23.		이세아	   makeup api 색상 선택별로 변경 가능하게 함
  * 2023. 3. 25.		이세아	   ajax를 위한 json 타입으로 return 변경, ajax done
+ * 2023. 3. 26. 	이세아	   makeup result를 위한 controller 추가
+ * 2023. 3. 27.		이세아	   makeup service을 통한 결과값 불러오기 완료
  *     </pre>
  */
 
@@ -47,27 +56,83 @@ import lombok.extern.log4j.Log4j2;
 @RequestMapping("/makeup")
 @Controller
 public class MakeupController {
-	
-	@GetMapping("/reserv_main")
-	public void reserv_main() {
-		log.info("==== Make-on 메인 페이지====");
+
+	@Autowired
+	private MakeupService service;
+
+	@GetMapping("/makeup_form")
+	public void makeupForm() {
+		log.info("====== 플라스크 연동 메이크업 시연 ======");
 	}
 
-	@GetMapping("/reserv_type")
-	public void reserv_type() {
-		log.info("==== Make-on 메인 페이지====");
-	}
-	
-	@GetMapping("/reserv_offline")
-	public void reserv_offline() {
-		log.info("==== 예약 디테일 입력 페이지 : 오프라인 전용 ====");
+	@GetMapping("/makeup_finish")
+	public void makeupFinish() {
+		log.info("====== 결과 전송 + 상담 완료 백오피스 창 =====");
 	}
 
-	@GetMapping("/reserv_online")
-	public void reserv_online() {
-		log.info("==== 예약 디테일 입력 페이지 : 온라인 전용 ====");
+	@PostMapping("/makeup_send")
+	public String ResultSend(@RequestParam("result_img") String result_img, @RequestParam("rid") String rid,
+			@RequestParam("lip") String lip, @RequestParam("lip_pcode") String lip_pcode, @RequestParam("lip_opt") String lip_opt, 
+			@RequestParam("blush") String blush, @RequestParam("blush_pcode") String blush_pcode, @RequestParam("blush_opt") String blush_opt,
+			@RequestParam("face") String face, @RequestParam("face_pcode") String face_pcode, @RequestParam("face_opt") String face_opt, Model model) {
+		
+		log.info("======== 결과 DB로 넘어갔습니다 =======");
+		
+		ResultVO result = new ResultVO();
+		result.setRid(rid);
+		result.setResult_img(result_img);
+		result.setLip(lip);
+		result.setLip_pcode(lip_pcode);
+		result.setLip_opt(lip_opt);
+		result.setBlush(blush);
+		result.setBlush_pcode(blush_pcode);
+		result.setBlush_opt(blush_opt);
+		result.setFace(face);
+		result.setFace_pcode(face_pcode);
+		result.setFace_opt(face_opt);
+		
+		service.insertResult(result);
+		
+		log.info(result);
+		
+		return ("/makeup/makeup_finish");
 	}
 
+	// 결과 DB 연동 코드 -> result 보내기
+	// Flask api 연결 코드 -> 파이썬 세팅된 컴퓨터만 가능
+	@PostMapping("/makeup_result")
+	public String MakeupResult(@RequestParam("filePath") String filePath, @RequestParam("lips") String lips,
+			@RequestParam("blush") String blush, @RequestParam("foundation") String foundation,
+			@RequestParam("output_filepath") String output_filepath, @RequestParam("rid") String rid, Model model)
+			throws IOException {
+
+		log.info("선택한 입술 색상 : " + lips);
+		log.info("선택된 블러쉬 색상 : " + blush);
+		log.info("선택된 파운데이션 색상 : " + foundation);
+		log.info("원본 파일 경로 : " + filePath);
+		log.info("결과 이미지 : " + output_filepath);
+
+		List<LipVO> liplist = service.pickLip(lips);
+		List<BlushVO> blushlist = service.pickBlush(blush);
+		List<FoundationVO> foundationlist = service.pickFoundation(foundation);
+
+		model.addAttribute("liplist", liplist);
+		model.addAttribute("blushlist", blushlist);
+		model.addAttribute("foundationlist", foundationlist);
+		model.addAttribute("lips", lips);
+		model.addAttribute("blush", blush);
+		model.addAttribute("foundation", foundation);
+		model.addAttribute("output_filepath", output_filepath);
+		model.addAttribute("rid", rid);
+
+		log.info(liplist);
+		log.info(blushlist);
+		log.info(foundationlist);
+
+		return "/makeup/makeup_result";
+	}
+
+	// ajax용 코드
 	// Flask api 연결 코드 -> 파이썬 세팅된 컴퓨터만 가능
 	@PostMapping("/makeup.api")
 	@ResponseBody
@@ -105,6 +170,7 @@ public class MakeupController {
 
 		log.info(responseData);
 
+		// ajax 처리를 위한 json 추가
 		try {
 			String json = mapper.writeValueAsString(responseData);
 			return ResponseEntity.ok(json);

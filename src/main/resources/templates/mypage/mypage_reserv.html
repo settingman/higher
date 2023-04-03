@@ -1,0 +1,365 @@
+<html class="">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,maximum-scale=1.0"
+    />
+    <title>더현대닷컴</title>
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://image.thehyundai.com/pc/cssssl/font.css"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://image.thehyundai.com/pc/cssssl/co.css?ver=13"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://image.thehyundai.com/pc/cssssl/wf.css"
+    />
+    <script src="https://image.thehyundai.com/pc/js/jquery-1.11.3.min.js"></script>
+    <script src="https://image.thehyundai.com/pc/js/jquery-ui.min.js"></script>
+    <script src="https://image.thehyundai.com/pc/js/jquery-migrate.min.js"></script>
+
+    <script type="text/javascript">
+      document.domain = "thehyundai.com";
+      var locationHref = document.location.href;
+      var imageServer = "https://image.thehyundai.com";
+      var serverHost = "http://www.thehyundai.com";
+      var serverHostForSSL = "https://www.thehyundai.com";
+
+      var switch_serverHost;
+      var contextPath = "/front";
+
+      if (locationHref.indexOf("https") > -1) {
+        switch_serverHost = serverHostForSSL;
+      } else if (locationHref.indexOf("http") > -1) {
+        switch_serverHost = serverHost;
+      }
+
+      var _timer;
+      $(document).ready(function () {
+        var interval = 1801000;
+        var ChkSTDtm = new Date();
+        var expireDtm = new Date();
+        ChkSTDtm.setMinutes(ChkSTDtm.getMinutes() + 30);
+        expireDtm.setDate(expireDtm.getDate() + 1);
+        document.cookie =
+          "ChkSTDtm=" +
+          ChkSTDtm.getTime() +
+          "; path=/; expires=" +
+          expireDtm.toUTCString() +
+          "; path=/";
+        _timer = setTimeout("timeOutLogOutCookie()", interval);
+      });
+
+      function timeOutLogOut() {
+        try {
+          gfnSsoDscdToknReq(dscdCallback2);
+        } catch (exception) {
+          console.log(exception);
+        } finally {
+          location.href = "https://www.thehyundai.com/front/cob/logout.thd";
+        }
+      }
+    </script>
+
+    <script src="https://image.thehyundai.com/pc/js/plugin.js?ver=040213"></script>
+    <script
+      type="text/javascript"
+      src="https://image.thehyundai.com/pc/js/hdmall/co/jquery.form.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://image.thehyundai.com/pc/js/hdmall/co/default.js?ver=040213"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://image.thehyundai.com/pc/js/hdmall/co/common.js?ver=040213"
+    ></script>
+    <script src="https://image.thehyundai.com/pc/js/common.js?ver=040213"></script>
+    <script
+      type="text/javascript"
+      src="https://image.thehyundai.com/pc/js/swiper.min.js?ver=040213"
+    ></script>
+    <style type="text/css">
+      .fancybox-margin {
+        margin-right: 17px;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css"
+    />
+  </head>
+
+  <body
+    oncontextmenu="return false"
+    ondragstart="return false"
+    onselectstart="return false"
+  >
+    <!-- wrap -->
+    <div id="wrap" class="sub">
+      <!-- gnb -->
+
+      <script
+        type="text/javascript"
+        src="https://www.thehyundai.com/js/hdmall/co/referCodes.js"
+      ></script>
+      <script src="/js/sso/SsoHttpRequest.js"></script>
+      <script src="/js/sso/SsoAjax.js"></script>
+      <script src="/js/sso/SsoLogin.js"></script>
+      <!-- SSO 로그인 js 공통 처리 2021.02.17-->
+
+      <script
+        type="text/javascript"
+        src="https://www.thehyundai.com/static/gen/js/mainBnnrContents.js?ver=021318"
+      ></script>
+      <!-- top banner -->
+      <div id="js-tpl-topBanner" style="display: none"></div>
+
+      <div class="top-wrap sub">
+        <div class="top-area-setting">
+          <script
+            type="text/javascript"
+            src="https://www.thehyundai.com/js/hdmall/dp/dpo/dqSearch.js?ver=040213"
+          ></script>
+
+          <script
+            type="text/javascript"
+            src="https://www.thehyundai.com/js/hdmall/dp/dpo/dqAutoCompleteNewCommon.js?ver=040213"
+          ></script>
+          <script
+            type="text/javascript"
+            src="https://www.thehyundai.com/js/hdmall/dp/dpo/dqAutoCompleteNew.js?ver=040213"
+          ></script>
+
+          <!-- //header -->
+        </div>
+      </div>
+
+      <!-- container -->
+      <div id="container">
+        <!-- content-wrap -->
+        <div class="content-wrap hasleft myhyundai">
+          <!-- left contents -->
+
+          <div class="leftarea">
+            <h2>
+              <a href="/front/mpf/selectMyPageMain.thd"
+                >마이현대<span>MY HYUNDAI</span></a
+              >
+            </h2>
+            <div class="line"></div>
+
+            <!-- leftmenu -->
+            <ul class="leftmenu">
+              <li class="">
+                <a class="not">Make-On</a>
+                <ul>
+                  <li class="">
+                    <a>예약 관리</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="">
+                <a class="not">주문현황</a>
+                <ul>
+                  <li class="">
+                    <a
+                      href="/front/mpa/selectOrdDlvCrst.thd"
+                      onclick="javascript:GA_Event('PC_마이페이지', 'LNB', '주문현황_주문확인/배송조회');"
+                      >주문확인/배송조회</a
+                    >
+                  </li>
+                  <li class="">
+                    <a
+                      href="/front/mpa/selectOrdCnclCrst.thd"
+                      onclick="javascript:GA_Event('PC_마이페이지', 'LNB', '주문현황_취소/반품/교환');"
+                      >취소/반품/교환</a
+                    >
+                  </li>
+                </ul>
+              </li>
+
+              <li class="">
+                <a class="not">나의 정보</a>
+                <ul>
+                  <li class="">
+                    <a
+                      href="/front/mpd/changeMemberInfoForm.thd"
+                      onclick="javascript:GA_Event('PC_마이페이지', 'LNB', '나의정보_회원정보변경');"
+                      >회원정보변경</a
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <!-- //leftmenu -->
+          </div>
+          <!-- //leftarea -->
+          <!-- // left contents -->
+
+          <!-- content -->
+          <div class="content">
+            <div class="myhyundai-head"></div>
+            <div class="myhyundai-main" style="margin: 40px 0">
+              <h3>Make-On 예약 관리</h3>
+            </div>
+            <!-- cart-list -->
+            <div class="myhyundai-main" style="margin: 40px 0">
+              <h2>예약 결과</h2>
+            </div>
+            <div class="cart-list">
+              <h4 class="blind">주문/배송 내역</h4>
+              <!-- table-wrap -->
+              <div class="table-wrap coltype cart no-border-top">
+                <table>
+                  <caption></caption>
+                  <colgroup>
+                    <col style="width: 130px" />
+                    <col style="width: 100px" />
+                    <col style="width: 120px" />
+                    <col style="width: 120px" />
+                    <col style="width: 100px" />
+                  </colgroup>
+                  <thead>
+                    <tr>
+                      <th scope="col">예약번호</th>
+                      <th scope="col" style="width: 100px">날짜</th>
+                      <th scope="col" style="">시간</th>
+                      <th scope="col" style="">예약상태</th>
+                      <th scope="col">결과</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!--
+                    <tr>
+                      <td height="120" colspan="5">예약 내역이 없습니다.</td>
+                    </tr>
+                    -->
+
+                    <tr th:each="done : ${done}">
+                      <td class="valign-top" rowspan="1">
+                        <div class="od-info">
+                          <p
+                            class="strong text-point2"
+                            th:text="${done.rid}"
+                          ></p>
+                          <p class="where">온라인</p>
+                        </div>
+                      </td>
+
+                      <td class="price-info" style="">
+                        <div
+                          class="tot-price"
+                          th:text="${#strings.substring(done.rdate, 0, 10)}"
+                        ></div>
+                      </td>
+                      <td class="price-info">
+                        <div
+                          class="tot-price"
+                          th:text="${#strings.substring(done.rdate, 11, 16)}"
+                        ></div>
+                      </td>
+                      <td class="shipping">
+                        <div class="order-status">상담 완료</div>
+                      </td>
+                      <td class="ctrl">
+                        <p class="v-btn-wrap">
+                          <a
+                            th:href="'/mypage/mypage_result?rid=' + ${done.rid}"
+                            onclick="javascript:GA_Event('PC_마이페이지', '최근_주문_배송내역', '상세내역');"
+                            class="btn color4 size1"
+                            >결과 확인</a
+                          >
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- //cart-list -->
+            <div class="myhyundai-main" style="margin: 40px 0">
+              <h2>예약 진행중</h2>
+            </div>
+            <div class="table-wrap coltype cart no-border-top">
+              <table>
+                <caption></caption>
+                <colgroup>
+                  <col style="width: 130px" />
+                  <col style="width: 100px" />
+                  <col style="width: 120px" />
+                  <col style="width: 120px" />
+                  <col style="width: 100px" />
+                </colgroup>
+                <thead>
+                  <tr>
+                    <th scope="col">예약번호</th>
+                    <th scope="col" style="width: 100px">날짜</th>
+                    <th scope="col" style="">시간</th>
+                    <th scope="col" style="">예약상태</th>
+                    <th scope="col">입장</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!--
+                    <tr>
+                      <td height="120" colspan="5">예약 내역이 없습니다.</td>
+                    </tr>
+                    -->
+
+                  <tr th:each="ready : ${ready}">
+                    <td class="valign-top" rowspan="1">
+                      <div class="od-info">
+                        <p
+                          class="strong text-point2"
+                          th:text="${ready.rid}"
+                        ></p>
+                        <p class="where">온라인</p>
+                      </div>
+                    </td>
+
+                    <td class="price-info" style="">
+                      <div
+                        class="tot-price"
+                        th:text="${#strings.substring(ready.rdate, 0, 10)}"
+                      ></div>
+                    </td>
+                    <td class="price-info">
+                      <div
+                        class="tot-price"
+                        th:text="${#strings.substring(ready.rdate, 11, 16)}"
+                      ></div>
+                    </td>
+                    <td class="shipping">
+                      <div class="order-status">상담 전</div>
+                    </td>
+                    <td class="ctrl">
+                      <p class="v-btn-wrap">
+                        <a>입장 대기</a>
+                      </p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- //입장-->
+          </div>
+          <!-- //content -->
+        </div>
+        <!-- //content-wrap -->
+      </div>
+    </div>
+    <!-- //wrap -->
+  </body>
+</html>
