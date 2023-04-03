@@ -1,13 +1,13 @@
 package com.hyundai.higher.domain.cart;
 
-import java.sql.Date;
+import java.util.List;
 
-import com.hyundai.higher.domain.member.MemberRole;
+import com.hyundai.higher.domain.product.OptionDTO;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 /**
  * @since : 2023. 3. 23.
@@ -19,14 +19,14 @@ import lombok.Setter;
  *   수정일         수정자               수정내용
  * ----------      --------    ---------------------------
  * 2023. 3. 23.     박성환      	최초 생성
- * 2023. 3. 28. 	박성환			lombok 오류로 2번째 글자가 대문자일 때 
- * 									매칭안되는 오류로 인한 속성값 변경
+ * 2023. 3. 28.		박서현		mid 추가
+ * 2323. 3. 30.		박서현		optionList 추가
  *     </pre>
  */
 @NoArgsConstructor
 @Getter
 @Setter
-@AllArgsConstructor
+@ToString
 public class CartItem {
 
 	private String pcode;
@@ -37,5 +37,23 @@ public class CartItem {
 	private Integer pamount;
 	private String poption;
 	private String IMAGE_PATH;
+	private String mid;
+	
+	private List<OptionDTO> optionList;
+	
+	public CartItem(String pcode, String pname, Integer pprice, String brand, String color, Integer pamount,
+			String poption, String iMAGE_PATH, String mid) {
+		this.pcode = pcode;
+		this.pname = pname;
+		this.pprice = pprice;
+		this.brand = brand;
+		this.color = color;
+		this.pamount = pamount;
+		this.poption = poption;
+		this.IMAGE_PATH = iMAGE_PATH;
+		this.mid = mid;
+	}
+
+	
 
 }

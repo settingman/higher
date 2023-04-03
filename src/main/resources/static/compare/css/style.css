@@ -1,0 +1,116 @@
+	
+    swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+			height: 480px;
+    }
+
+    swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    swiper-container {
+      width: 95%;
+      height: 490px;
+      margin: 20px auto;
+    }
+
+		:root {
+			--swiper-theme-color: rgb(66, 31, 0);
+		}
+
+		.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    margin: 0px 5px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.1s;
+    width:120px;
+    cursor: pointer;
+    border-radius: 4px;
+		height: 40px;
+		font-weight: 700;
+
+}
+
+.button5{
+    background-color: #806A53;
+		margin-left: 0px;
+    color: #FFFEF2;
+		float: left;
+		line-height: 3;
+}
+
+.button5:hover {
+    background-color: #FFFFFF;
+    color: #806A53;
+    border: 1.5px solid #806A53;
+}
+.button4{
+		background-color: #FFFFFF;
+    color: #806A53;
+    border: 1.5px solid #806A53;
+		float: right;
+		margin-left: 0px;
+		line-height: 3;
+}
+
+.button4:hover {
+	background-color: #806A53;
+    color: #FFFEF2;
+
+}
+
+.prod-unit .title {
+	font-size: 18px !important;
+	line-height: 40px !important;
+	margin-top: 0px !important;
+}
+	
+	.card_choice .bn_box a[data-v-4ade122e] {
+		width:130px;
+	}
+	.compare {
+		background-color: #806A53;
+    height: 40px;
+    width: 120px;
+    line-height: 40px;
+    margin: 0 5px;
+    font-size: 13px;
+    color: #FFFEF2;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    border-radius: 4px;
+    display: inline-block;
+
+	}
+	.detailB {
+    background-color: #FFF;
+    height: 40px;
+    width: 120px;
+    line-height: 40px;
+    margin: 0 5px;
+    margin-top: 0px;
+    font-size: 13px;
+    color: #333333;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    border-radius: 4px;
+    display: inline-block;
+    border: 1px solid #806A53;
+	}
+	.product-list.type1 li {
+		padding-top: 0px;
+	}

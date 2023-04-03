@@ -8,4 +8,5 @@ public class OptionDTO {
 	private String pcode;
 	private String optname;
 	private String optcolor;
+	
 }
