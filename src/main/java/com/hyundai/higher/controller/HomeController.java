@@ -32,7 +32,7 @@ public class HomeController {
 
 		log.info("main");
 
-		return "test";
+		return "main";
 	}
 
 	@GetMapping(value = "/test")

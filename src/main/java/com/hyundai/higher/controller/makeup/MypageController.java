@@ -1,5 +1,6 @@
 package com.hyundai.higher.controller.makeup;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,8 @@ import com.hyundai.higher.domain.makeup.FoundationVO;
 import com.hyundai.higher.domain.makeup.LipVO;
 import com.hyundai.higher.domain.makeup.ReservVO;
 import com.hyundai.higher.domain.makeup.ResultVO;
+import com.hyundai.higher.domain.member.Member;
+import com.hyundai.higher.service.makeup.MakeupService;
 import com.hyundai.higher.service.makeup.MypageService;
 
 import lombok.RequiredArgsConstructor;
@@ -44,20 +47,19 @@ public class MypageController {
 	@Autowired
 	private MypageService service;
 	
+	@Autowired
+	private MakeupService makeup;
+	
 	
 	@Value("${com.demo.upload.path}") private String uploadPath;
 	 
 	
 	@GetMapping("/mypage_reserv")
-	public void reserving(String mid, Model model) {
-		// String mid -> Principal principal 로 변경
-		/*
-		 * List<ReservVO> done = service.getReservdone(principal.getId());
-		 * List<ReservVO> ready = service.getReservReady(principal.getId());
-		 */
+	public void reserving(Principal principal, Model model) {
 		log.info("===== 마이페이지 예약관리 =====");
-		List<ReservVO> done = service.getReservdone("angz");
-		List<ReservVO> ready = service.getReservReady("angz");
+		log.info(principal);
+		List<ReservVO> done = service.getReservdone(principal.getName());
+		List<ReservVO> ready = service.getReservReady(principal.getName());
 		model.addAttribute("done", done);
 		model.addAttribute("ready", ready);
 	}
@@ -66,10 +68,17 @@ public class MypageController {
 	// memberVO 정보 가져와야함
 	public void mypageresult(@RequestParam("rid") String rid, Model model) {
 		log.info("==== 마이페이지 예약 결과 창 ====");
+		
 		ReservVO info = service.getReservInfo(rid);
+		String rrid = info.getMid();
+		Member mem = new Member();
+		mem = makeup.MemInfo(rrid);
+		
 		ResultVO result = service.getResultInfo(rid);
+		
 		log.info(info);
 		log.info(result);
+		log.info(mem.getMName());
 		
 		LipVO lipresult = new LipVO();
 		BlushVO blushresult = new BlushVO();
@@ -92,6 +101,7 @@ public class MypageController {
 		faceresult = service.getFaceResult(faceopt, facepcode);
 		log.info("가져온 파운데이션 정보 : " + faceresult);
 		
+		model.addAttribute("mem", mem);
 		model.addAttribute("info", info);
 		model.addAttribute("result", result);
 		model.addAttribute("lipresult", lipresult);
