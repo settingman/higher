@@ -15,8 +15,8 @@
 			<div class="wrapper1">
 				<div class="faceupload"
 					style="width: 600px; height: 800px; background: darkgray; float: left;">
-					<img class="face" id="output-filepath" name="output_filepath"
-						src="" value="output-filepath">
+					<img class="output_filepath" id="output_filepath" name="output_filepath"
+						src="" value="">
 				</div>
 			</div>
 			<div class="wrapper2">
@@ -99,6 +99,10 @@
 
 				<input type="hidden" name="filePath" class="filePath"
 					value="C:\shin.jpg">
+				<input type="hidden" name="rid" class="rid"
+					value="3">
+				<input type="hidden" name="output_filepath" class="output_filepath"
+					value="">
 				<p style="text-align: center;">
 					<button type="submit">확인</button>
 				</p>
@@ -135,8 +139,8 @@
 							console.log(response);
 							var responseData = JSON.parse(response);
 							var outputFilePath = responseData.output_filepath;
-							$('#output-filepath').attr('src', outputFilePath);
-							$('#output-filepath').attr('val', outputFilePath);
+							$('#output_filepath').attr('src', outputFilePath);
+							$('.output_filepath').attr('value', outputFilePath);
 						},
 						error : function(error) {
 							console.log(error);

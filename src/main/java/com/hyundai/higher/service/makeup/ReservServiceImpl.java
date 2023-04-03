@@ -13,13 +13,18 @@ public class ReservServiceImpl implements ReservService {
 	private ReservMapper mapper;
 
 	@Override
-	public ReservVO reserv(String rimg, String rdate, String mid) {	
-		return mapper.reserv(rimg, rdate, mid);
+	public void reserv(ReservVO vo) {	
+		mapper.reserv(vo);
 	}
 
 	@Override
 	public int CountDate(String rdate) {
 		return mapper.CountDate(rdate);
+	}
+
+	@Override
+	public int CountTime(String rdate) {
+		return mapper.CountTime(rdate);
 	}
 
 }

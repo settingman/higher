@@ -14,6 +14,7 @@ import com.hyundai.higher.TestConfig;
 import com.hyundai.higher.domain.makeup.BlushVO;
 import com.hyundai.higher.domain.makeup.FoundationVO;
 import com.hyundai.higher.domain.makeup.LipVO;
+import com.hyundai.higher.domain.makeup.ResultVO;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -46,5 +47,25 @@ public class MakeupMapperTest {
 		founlist = mapper.PickFoundation("warmbeige");
 		log.info(founlist);
 	}
+	
+	@Test
+	public void insertResult() {
+		ResultVO vo = new ResultVO();
+		vo.setRid("1");
+		vo.setResult_img("aa.jpg");
+		vo.setLip("red");
+		vo.setLip_pcode("A0473095");
+		vo.setLip_opt("레드 스퀘어");
+		vo.setBlush("coral");
+		vo.setBlush_pcode("A1645007");
+		vo.setBlush_opt("블러쉬드 코랄");
+		vo.setFace("warmbeige");
+		vo.setFace_pcode("A0960175");
+		vo.setFace_opt("웜 베이지");
+		log.info(vo);
+		mapper.insertResult(vo);
+	}
+	
+	
 
 }

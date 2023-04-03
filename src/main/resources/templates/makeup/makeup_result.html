@@ -7,11 +7,11 @@
 	content="width=device-width,initial-scale=1,maximum-scale=1.0" />
 <title>상담결과 시스템</title>
 <link rel="stylesheet" type="text/css"
-	href="../../static/makeup/css/makeup_result.css" />
+	href="../../static/css/makeup_result.css" />
 </head>
 <body style="margin: 50px 100px; min-width: 1300px">
 <script>
-function cloneDiv(el) {
+function cloneLip(el) {
 	var empty = document.querySelector(".lipclone .empty");
     if (empty) {
          empty.remove();
@@ -23,9 +23,33 @@ function cloneDiv(el) {
     var clone = el.parentNode.querySelector(".clonepart").cloneNode(true);
     document.querySelector(".lipclone").appendChild(clone);
 }
+function cloneBlush(el) {
+	var empty = document.querySelector(".blushclone .empty");
+    if (empty) {
+         empty.remove();
+    }
+    var prevClone = document.querySelector(".blushclone .clonepart");
+    if (prevClone) {
+         prevClone.remove();
+     }
+    var clone = el.parentNode.querySelector(".clonepart").cloneNode(true);
+    document.querySelector(".blushclone").appendChild(clone);
+}
+function cloneFace(el) {
+	var empty = document.querySelector(".faceclone .empty");
+    if (empty) {
+         empty.remove();
+    }
+    var prevClone = document.querySelector(".faceclone .clonepart");
+    if (prevClone) {
+         prevClone.remove();
+     }
+    var clone = el.parentNode.querySelector(".clonepart").cloneNode(true);
+    document.querySelector(".faceclone").appendChild(clone);
+}
 </script>
 	<div class="logo" style="text-align: center; margin: 50">
-		<img class="output" src="../../static/makeup/img/logo.png"
+		<img class="output" src="../../img/logo.png"
 			style="max-width: 30%" />
 	</div>
 	<div>
@@ -94,7 +118,7 @@ function cloneDiv(el) {
 					<div class="wrapper3"
 						style="grid-template-columns: repeat(2, 1fr); display: grid; place-items: center;">
 						<div class="faceupload" style="float: left">
-							<img class="face" th:src="@{${filePath}}"
+							<img class="face" src="../../img/shin.jpg"
 								style="max-width: 200px; margin: 0 20 20 20; float: right" />
 						</div>
 						<div class="faceupload" style="float: left">
@@ -114,7 +138,7 @@ function cloneDiv(el) {
 				<div class="numbering" style="text-align: center">
 					<p style="text-align: center; font-weight: bold">ARTIST's PICK</p>
 				</div>
-				<form method="post" enctype="multipart/form-data" th:action="@{/makeup/makeupresult}">
+				<form method="post" enctype="multipart/form-data" th:action="@{/makeup/makeup_send}">
 				<div class="lip_prod">
 					<div class="product-list-wrap1">
 						<div class="select-list">
@@ -133,11 +157,16 @@ function cloneDiv(el) {
 							<div class="blushclone">
                                 <div class="empty"></div>    
                             </div>
-							<div class="foundationclone">
+							<div class="faceclone">
                                 <div class="empty"></div>    
                             </div>
 						</div>
 					</div>
+					<input type="hidden" name="rid" class="rid" value="3">
+					<input type="hidden" name="result_img" class="result_img" th:value="${output_filepath}">				
+					<input type="hidden" name="lip" class="lip" th:value="${lips}">				
+					<input type="hidden" name="blush" class="blush" th:value="${blush}">				
+					<input type="hidden" name="face" class="face" th:value="${foundation}">				
 					<div class="lip_pick">
 						<p style="text-align: center;">
                 			<button type="submit">결과 전송</button>
@@ -163,6 +192,8 @@ function cloneDiv(el) {
 												class="bg"></span></a>
 										</div>
 										<div class="info">
+											<input type="hidden" name="lip_pcode" class="lip_pcode" th:value="${liplist.pcode}">
+											<input type="hidden" name="lip_opt" class="lip_opt" th:value="${liplist.optname}">											
 											<div class="price-info single">
 												<span
 													th:text="${#numbers.formatInteger(liplist.pprice, 3, 'COMMA')}"><i>원</i></span>
@@ -170,13 +201,13 @@ function cloneDiv(el) {
 											<div><a th:text="${liplist.pname}"></a></div>
 											 <a th:text="${liplist.optname}"></a>
 										</div>
-										 <div class="lip_pick" onclick="cloneDiv(this)">
+									</div>
+										 <div class="lip_pick" onclick="cloneLip(this)">
                                             <div class="btn_green">
                                                 <p class="pickbtn">PICK</p>
                                             </div>
                                         </div>
                                     </div>
-									</div>
 								</div>
 								<!-- 단일 상품 -->
 							</div>
@@ -203,6 +234,8 @@ function cloneDiv(el) {
 											class="bg"></span></a>
 									</div>
 									<div class="info">
+									<input type="hidden" name="blush_pcode" class="blush_pcode" th:value="${blushlist.pcode}">
+									<input type="hidden" name="blush_opt" class="blush_opt" th:value="${blushlist.optname}">	
 										<div class="price-info single">
 											<span
 												th:text="${#numbers.formatInteger(blushlist.pprice, 3, 'COMMA')}"><i>원</i></span>
@@ -211,7 +244,7 @@ function cloneDiv(el) {
 											th:text="${blushlist.optname}"></a>
 									</div>
 								</div>
-									<div class="blush_pick">
+									<div class="blush_pick" onclick="cloneBlush(this)">
 										<div class="btn_green">
 											<p class="pickbtn">PICK</p>
 										</div>
@@ -261,6 +294,8 @@ function cloneDiv(el) {
 											class="bg"></span></a>
 									</div>
 									<div class="info">
+									<input type="hidden" name="face_pcode" class="face_pcode" th:value="${foundationlist.pcode}">
+									<input type="hidden" name="face_opt" class="face_opt" th:value="${foundationlist.optname}">
 										<div class="price-info single">
 											<span
 												th:text="${#numbers.formatInteger(foundationlist.pprice, 3, 'COMMA')}"><i>원</i></span>
@@ -269,7 +304,7 @@ function cloneDiv(el) {
 											th:text="${foundationlist.optname}"></a>
 									</div>
 									</div>
-									<div class="foundation_pick">
+									<div class="foundation_pick" onclick="cloneFace(this)">
 										<div class="btn_green">
 											<p class="pickbtn">PICK</p>
 										</div>
@@ -286,5 +321,126 @@ function cloneDiv(el) {
 	</div>
 	</div>
 	</div>
+<style>
+.price-info.single {
+  margin-bottom: 10px;
+}
+.prod {
+  width: 100%;
+  margin: 10px;
+}
+
+.clonepart .img img {
+  display: block;
+  width: 256px;
+  height: 256px;
+}
+.clonepart .img .bg {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  background: url(https://image.thehyundai.com/hdmall/images/co/bg_produnit_hover.png);
+}
+.clonepart .info {
+  padding-top: 20px;
+  width: 256px;
+  margin-left: 20px;
+}
+
+.product-list {
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  overflow-x: scroll;
+  grid-auto-flow: column;
+  height: 100%;
+}
+
+ul {
+  list-style: none;
+}
+.product-list-wrap {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  overflow: auto;
+}
+.btn_green {
+  color: white;
+  background: #45675b;
+  height: 50px;
+}
+.btn_gray {
+  color: white;
+  background: slategray;
+  height: 50px;
+}
+p.pickbtn {
+  margin-top: 10px;
+  font-weight: 100;
+  font-size: 16;
+  cursor: pointer;
+  height: 50px;
+  display: inline-grid;
+  vertical-align: middle;
+}
+.lip_pick {
+  width: 255px;
+  margin: 20 auto;
+  text-align: center;
+}
+.blush_pick {
+  width: 255px;
+  margin: 20 auto;
+  text-align: center;
+}
+.foundation_pick {
+  width: 255px;
+  margin: 20 auto;
+  text-align: center;
+}
+.select-list {
+  grid-template-columns: repeat(3, 1fr);
+  display: grid;
+  place-items: center;
+  width: 70%;
+  height: 440px;
+  margin: 0 auto;
+}
+.type_pick {
+  width: 255px;
+  text-align: center;
+  margin: 0 20px;
+}
+.select-list1 {
+  grid-template-columns: repeat(3, 1fr);
+  display: grid;
+  place-items: center;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.clonepart .img img {
+  display: block;
+  width: 256px;
+  height: 256px;
+}
+
+.empty {
+  width: 250;
+  height: 330;
+  border-radius: 10%;
+  border-style: dashed;
+  border-color: darkgray;
+  margin: 0 10px;
+}
+
+</style>
 </body>
 </html>

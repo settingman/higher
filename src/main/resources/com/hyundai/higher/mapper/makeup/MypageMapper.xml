@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        
+<mapper namespace="com.hyundai.higher.mapper.makeup.MypageMapper">
+
+	<!-- 끝난 예약 보여주기 -->
+	<select id="getReservdone"
+		resultType="com.hyundai.higher.domain.makeup.ReservVO">
+		select * from reservation where mid=#{mid} and rcheck=1
+	</select>
+
+	<!-- 안끝난 예약 보여주기 -->
+	<select id="getReservReady"
+		resultType="com.hyundai.higher.domain.makeup.ReservVO">
+		select * from reservation where mid=#{mid} and rcheck=0
+	</select>
+
+	<!-- rid로 예약 결과 가져와서 result -->
+	<select id="getLipResult"
+		resultType="com.hyundai.higher.domain.makeup.LipVO">
+		select a.pcode, pname, pprice, dept2no, optcolor, optname,
+		iloc, itype
+		from product a, poption b, img c
+		where a.pcode=b.pcode and
+		a.pcode=c.pcode and dept2no=22
+		and itype='thumb' and iloc like '%0' and
+		optname=#{optname}
+	</select>
+	<select id="getBlushResult"
+		resultType="com.hyundai.higher.domain.makeup.BlushVO">
+		select a.pcode, pname, pprice, dept2no, optcolor, optname,
+		iloc, itype
+		from product a, poption b, img c
+		where a.pcode=b.pcode and
+		a.pcode=c.pcode and dept2no=24
+		and itype='thumb' and iloc like '%0' and
+		optname=#{optname}
+	</select>
+	<select id="getFaceResult"
+		resultType="com.hyundai.higher.domain.makeup.FoundationVO">
+		select a.pcode, pname, pprice, dept2no, optcolor, optname,
+		iloc, itype
+		from product a, poption b, img c
+		where a.pcode=b.pcode and
+		a.pcode=c.pcode and dept2no=21
+		and itype='thumb' and iloc like '%0' and a.pcode=#{pcode} and
+		optname=#{optname}
+	</select>
+	<select id="getReservInfo"
+		resultType="com.hyundai.higher.domain.makeup.ReservVO">
+		select * from reservation where rid=#{rid}
+	</select>
+	<select id="getResultInfo"
+		resultType="com.hyundai.higher.domain.makeup.ResultVO">
+		select * from result where rid=#{rid}
+	</select>
+</mapper>

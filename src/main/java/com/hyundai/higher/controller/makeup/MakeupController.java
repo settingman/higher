@@ -27,6 +27,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hyundai.higher.domain.makeup.BlushVO;
 import com.hyundai.higher.domain.makeup.FoundationVO;
 import com.hyundai.higher.domain.makeup.LipVO;
+import com.hyundai.higher.domain.makeup.ResultVO;
 import com.hyundai.higher.service.makeup.MakeupService;
 
 import lombok.RequiredArgsConstructor;
@@ -64,14 +65,36 @@ public class MakeupController {
 		log.info("====== 플라스크 연동 메이크업 시연 ======");
 	}
 
-	@GetMapping("/finish")
+	@GetMapping("/makeup_finish")
 	public void makeupFinish() {
 		log.info("====== 결과 전송 + 상담 완료 백오피스 창 =====");
 	}
 
-	@PostMapping("/makeup_finish")
-	public String ResultSend(@RequestParam("lippcode") String lippcode, @RequestParam("lipopt") String lipopt) {
-
+	@PostMapping("/makeup_send")
+	public String ResultSend(@RequestParam("result_img") String result_img, @RequestParam("rid") String rid,
+			@RequestParam("lip") String lip, @RequestParam("lip_pcode") String lip_pcode, @RequestParam("lip_opt") String lip_opt, 
+			@RequestParam("blush") String blush, @RequestParam("blush_pcode") String blush_pcode, @RequestParam("blush_opt") String blush_opt,
+			@RequestParam("face") String face, @RequestParam("face_pcode") String face_pcode, @RequestParam("face_opt") String face_opt, Model model) {
+		
+		log.info("======== 결과 DB로 넘어갔습니다 =======");
+		
+		ResultVO result = new ResultVO();
+		result.setRid(rid);
+		result.setResult_img(result_img);
+		result.setLip(lip);
+		result.setLip_pcode(lip_pcode);
+		result.setLip_opt(lip_opt);
+		result.setBlush(blush);
+		result.setBlush_pcode(blush_pcode);
+		result.setBlush_opt(blush_opt);
+		result.setFace(face);
+		result.setFace_pcode(face_pcode);
+		result.setFace_opt(face_opt);
+		
+		service.insertResult(result);
+		
+		log.info(result);
+		
 		return ("/makeup/makeup_finish");
 	}
 
@@ -80,7 +103,8 @@ public class MakeupController {
 	@PostMapping("/makeup_result")
 	public String MakeupResult(@RequestParam("filePath") String filePath, @RequestParam("lips") String lips,
 			@RequestParam("blush") String blush, @RequestParam("foundation") String foundation,
-			@RequestParam("output_filepath") String output_filepath, Model model) throws IOException {
+			@RequestParam("output_filepath") String output_filepath, @RequestParam("rid") String rid, Model model)
+			throws IOException {
 
 		log.info("선택한 입술 색상 : " + lips);
 		log.info("선택된 블러쉬 색상 : " + blush);
@@ -95,6 +119,11 @@ public class MakeupController {
 		model.addAttribute("liplist", liplist);
 		model.addAttribute("blushlist", blushlist);
 		model.addAttribute("foundationlist", foundationlist);
+		model.addAttribute("lips", lips);
+		model.addAttribute("blush", blush);
+		model.addAttribute("foundation", foundation);
+		model.addAttribute("output_filepath", output_filepath);
+		model.addAttribute("rid", rid);
 
 		log.info(liplist);
 		log.info(blushlist);

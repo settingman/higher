@@ -1,7 +1,5 @@
 package com.hyundai.higher.service.makeup;
 
-import org.apache.ibatis.annotations.Param;
-
 import com.hyundai.higher.domain.makeup.ReservVO;
 
 /**
@@ -19,9 +17,13 @@ import com.hyundai.higher.domain.makeup.ReservVO;
 public interface ReservService {
 	
 	//예약 insert
-	public ReservVO reserv(@Param("rimg") String rimg, @Param("rdate") String rdate, @Param("mid") String mid);
+	public void reserv(ReservVO vo);
 
 	//날짜 별 예약 시간 남아있는지 조회 위함
 	public int CountDate(String rdate);
+	
+	//시간 별 매진 확인
+	public int CountTime(String rdate);
+
 
 }

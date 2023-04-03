@@ -5,6 +5,7 @@ import java.util.List;
 import com.hyundai.higher.domain.makeup.BlushVO;
 import com.hyundai.higher.domain.makeup.FoundationVO;
 import com.hyundai.higher.domain.makeup.LipVO;
+import com.hyundai.higher.domain.makeup.ResultVO;
 
 /**
  * @since : 2023. 3. 26.
@@ -28,5 +29,8 @@ public interface MakeupService {
 
 	// Foundation 제품 선정
 	public List<FoundationVO> pickFoundation(String optcolor);
+
+	// 아티스트가 선정한 제품 예약 결과 내역에 저장
+	public void insertResult(ResultVO result);
 
 }

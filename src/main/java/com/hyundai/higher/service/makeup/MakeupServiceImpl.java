@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.hyundai.higher.domain.makeup.BlushVO;
 import com.hyundai.higher.domain.makeup.FoundationVO;
 import com.hyundai.higher.domain.makeup.LipVO;
+import com.hyundai.higher.domain.makeup.ResultVO;
 import com.hyundai.higher.mapper.makeup.MakeupMapper;
 
 @Service
@@ -29,6 +30,11 @@ public class MakeupServiceImpl implements MakeupService{
 	@Override
 	public List<FoundationVO> pickFoundation(String optcolor) {
 		return mapper.PickFoundation(optcolor);
+	}
+
+	@Override
+	public void insertResult(ResultVO result) {
+		mapper.insertResult(result);
 	}
 
 }

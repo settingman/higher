@@ -79,7 +79,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 			<exclusions>
-			<!-- 이세아 : json 중복 제외 -->
+				<!-- 이세아 : json 중복 제외 -->
 				<exclusion>
 					<groupId>com.vaadin.external.google</groupId>
 					<artifactId>android-json</artifactId>
@@ -141,8 +141,12 @@
 			<version>4.1.51.Final</version>
 		</dependency>
 
-
-
+		<!-- 이세아 : 예약 첨부파일 썸네일레이터 -->
+		<dependency>
+			<groupId>net.coobird</groupId>
+			<artifactId>thumbnailator</artifactId>
+			<version>0.4.8</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>

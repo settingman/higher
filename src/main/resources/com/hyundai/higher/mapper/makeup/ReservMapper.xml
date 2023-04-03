@@ -8,12 +8,17 @@
 		parameterType="com.hyundai.higher.domain.makeup.ReservVO">
 		insert into reservation(rid, rcheck, rimg, rdate, mid)
 		values
-		(seq_rid.nextval, 0, #{rimg}, #{rdate}, #{mid})
+		(seq_rid.nextval, 0, #{rimg}, to_date(#{rdate},'YYYY-MM-DD HH24:MI:SS'), #{mid})
 	</insert>
 
 	<select id="CountDate" resultType="java.lang.Integer">
 		select count(*) from
-		reservation where rdate=to_date(#{rdate}, 'YYYY-MM-DD HH24:MI:SS')
+		reservation where rdate=to_date(#{rdate}, 'YYYY-MM-DD')
+	</select>
+	
+	<select id="CountTime" resultType="java.lang.Integer">
+		select count(*) from
+		reservation where rdate=to_date(#{date}, 'YYYY-MM-DD HH24:MI:SS')
 	</select>
 
 </mapper>

@@ -8,23 +8,6 @@ import time
 import json
 import boto3
 
-#
- # @since : 2023. 3. 13.
- # @FileName: app.py
- # @author : 이세아
- # @설명 : 색조 화장기능 실행 파이썬
- # 
- # 수정일           수정자               수정내용
- # ----------      --------    ---------------------------
- # 2023. 3. 13.     이세아      create
- # 2023. 3. 14.     이세아      flask 및 기본 세팅
- # 2023. 3. 15.     이세아      메이크업 기능 작동 확인
- # 2023. 3. 19.     이세아      Spring boot와 연동 완료
- # 2023. 3. 23.     이세아      색상 변경 확인 및 구체화 완료
- # 2023. 3. 24.     이세아      AWS s3와 연동 완료
-# 
-
-
 app = Flask(__name__)
 CORS(app)
 
@@ -50,7 +33,7 @@ def s3_connection():
         
 s3 = s3_connection()
 
-@app.route('/makeup/apply-makeup/', methods=['POST'])
+@app.route('/apply-makeup/', methods=['POST'])
 def try_makeup():
     lips = request.form['lips']
     blush = request.form['blush']
@@ -58,30 +41,30 @@ def try_makeup():
     filePath = request.form['filePath']
     
     # 색상별 BGR값 부여 -> lips
-    if lips=='red': color=(0,0,255)
-    elif lips=='orange': color=(0,127,255)
-    elif lips=='purple': color=(102,000,153)
-    elif lips=='lightpurple' : color=(130,0,75)
-    elif lips=='pink': color=(255,0,255)
-    elif lips=='coral' : color=(0,102,255)
-    elif lips=='beige' : color=(0,153,204)
-    elif lips=='rose' : color=(0,0,102)
-    elif lips=='darkrose' : color=(000,000,102)
-    elif lips=='salmon' : color=(000,000,204)
-    elif lips=='none' : color=()
+    if lips=='red': lip_color=(0,0,255)
+    elif lips=='orange': lip_color=(0,127,255)
+    elif lips=='purple': lip_color=(102,000,153)
+    elif lips=='lightpurple' : lip_color=(130,0,75)
+    elif lips=='pink': lip_color=(255,0,255)
+    elif lips=='coral' : lip_color=(0,102,255)
+    elif lips=='beige' : lip_color=(0,153,204)
+    elif lips=='rose' : lip_color=(0,0,102)
+    elif lips=='darkrose' : lip_color=(000,000,102)
+    elif lips=='salmon' : lip_color=(000,000,204)
+    else : lip_color=()
     
      # 색상별 BGR값 부여 -> blush
-    if blush=='red': color=(0,0,255)
-    elif blush=='orange': color=(0,127,255)
-    elif blush=='purple': color=(102,000,153)
-    elif blush=='lightpurple' : color=(130,0,75)
-    elif blush=='pink': color=(255,0,255)
-    elif blush=='coral' : color=(0,102,255)
-    elif blush=='beige' : color=(0,153,204)
-    elif blush=='rose' : color=(0,0,102)
-    elif blush=='darkrose' : color=(000,000,102)
-    elif blush=='salmon' : color=(000,000,204)
-    elif blush=='none' : color=()
+    if blush=='red': blush_color=(0,0,255)
+    elif blush=='orange': blush_color=(0,127,255)
+    elif blush=='purple': blush_color=(102,000,153)
+    elif blush=='lightpurple' : blush_color=(130,0,75)
+    elif blush=='pink': blush_color=(255,0,255)
+    elif blush=='coral' : blush_color=(0,102,255)
+    elif blush=='beige' : blush_color=(0,153,204)
+    elif blush=='rose' : blush_color=(0,0,102)
+    elif blush=='darkrose' : blush_color=(000,000,102)
+    elif blush=='salmon' : blush_color=(000,000,204)
+    else : blush_color=()
     
      # 색상별 BGR값 부여 -> foundation
     if foundation=='none': gamma=1
@@ -95,11 +78,11 @@ def try_makeup():
     print(filePath)
     
     # 각 부위 별 색상 넣기
-    output_lip = apply_makeup(image, False, 'lips', color, 1, False)
-    output_blush = apply_makeup(image, False, 'blush', color, 1,False)
+    output_lip = apply_makeup(image, False, 'lips', lip_color, 1, False)
+    output_blush = apply_makeup(image, False, 'blush', blush_color, 1,False)
     output_foundation = apply_makeup(image, False, 'foundation',(0,0,0), gamma, False)
     
-    # 혼합
+    # Blend the three output images together
     alpha1 = 0.5 
     alpha2 = 0.3  
     alpha3 = 0.2  
@@ -109,12 +92,11 @@ def try_makeup():
     
     # output 저장 -> 뒤에 시간에 따른 uuid 붙음
     output_filename = f"output_{int(time.time())}_{uuid.uuid4()}.jpg"
-    output_filepath_local= f"../img/{output_filename}"
+    output_filepath_local= f"./img/{output_filename}"
     cv2.imwrite(output_filepath_local, blend)
     print(output_filepath_local)
     print(output_filename)
     
-    # s3에 저장
     output_filepath= f"https://s3.ap-northeast-2.amazonaws.com/hbeauty.bucket/{output_filename}"
     
     try:
