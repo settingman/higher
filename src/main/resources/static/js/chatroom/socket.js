@@ -235,6 +235,7 @@ function uploadFile(){
     // 1. 먼저 upload 로 파일 업로드를 요청한다.
     // 2. upload 가 성공적으로 완료되면 data 에 upload 객체를 받고,
     // 이를 이용해 chatMessage 를 작성한다.
+    
     $.ajax({
         type : 'POST',
         url : '/s3/upload',

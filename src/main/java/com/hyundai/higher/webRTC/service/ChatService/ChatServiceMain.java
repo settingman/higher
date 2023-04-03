@@ -53,7 +53,7 @@ public class ChatServiceMain {
     }
 
     // roomName 로 채팅방 만들기
-    public ChatRoomDto createChatRoom(String roomName, String roomPwd, boolean secretChk, int maxUserCnt, String chatType){
+    public ChatRoomDto createChatRoom(String roomName, String roomPwd, boolean secretChk, int maxUserCnt, String chatType ){
 
         ChatRoomDto room;
 
@@ -63,6 +63,8 @@ public class ChatServiceMain {
         }else{
             room = rtcChatService.createChatRoom(roomName, roomPwd, secretChk, maxUserCnt);
         }
+        
+        
 
         return room;
     }

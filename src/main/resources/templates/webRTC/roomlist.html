@@ -1,583 +1,3280 @@
 <!DOCTYPE html>
-<html lagn="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+		
 <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0">
+	<meta http-equiv="Cache-Control" content="no-cache">
+	<meta http-equiv="Expires" content="0">
+	<meta http-equiv="Pragma" content="no-cache">
+	<title>더현대닷컴</title>
+	
+	<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script> -->
 
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="">
-<meta name="author" content="">
+	<link rel="stylesheet" type="text/css" href="https://image.thehyundai.com/pc/cssssl/co.css?ver=23">
+	<link rel="stylesheet" type="text/css" href="https://image.thehyundai.com/pc/cssssl/wf.css">
+	<script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=UA-69960332-7&amp;l=dataLayer&amp;cx=c"></script><script src="https://image.thehyundai.com/pc/js/jquery-1.11.3.min.js"></script>
+	<script src="https://image.thehyundai.com/pc/js/jquery-ui.min.js"></script>
+	<script src="https://image.thehyundai.com/pc/js/jquery-migrate.min.js"></script>
 
-<title>SB Admin 2 - Dashboard</title>
+<script type="text/javascript">
+document.domain = "thehyundai.com";
+var locationHref = document.location.href;
+var imageServer = "https://image.thehyundai.com";
+var serverHost = "http://www.thehyundai.com";
+var serverHostForSSL = "https://www.thehyundai.com";
 
-<!-- Custom fonts for this template-->
-<link href="admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+var switch_serverHost;
+var contextPath = "/front";
 
-<!-- Custom styles for this template-->
-<link href="admin/css/sb-admin-2.min.css" rel="stylesheet">
+if (locationHref.indexOf("https") > -1) {
+	switch_serverHost = serverHostForSSL;
 
-</head>
+} else if (locationHref.indexOf("http") > -1) {
+	switch_serverHost = serverHost;
 
-
-<body id="page-top">
-
-	<!-- Page Wrapper -->
-	<div id="wrapper">
-
-		<th:block th:replace="admin/fragments/sidebar :: sidebarFragment"></th:block>
-
-		<!-- Content Wrapper -->
-		<div id="content-wrapper" class="d-flex flex-column">
-
-			<!-- Main Content -->
-			<div id="content">
-
-				<th:block th:replace="admin/fragments/header :: headerFragment"></th:block>
-
-				<!-- Begin Page Content -->
-				<div class="container-fluid">
+}
 
 
-					<th:block th:replace="common/head :: headFragment"></th:block>
-					<head>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"
->
-<!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"
-></script>
+var _timer;
+$(document).ready(function(){
+    var interval = 1801000;
+    var ChkSTDtm = new Date();
+    var expireDtm = new Date();
+    ChkSTDtm.setMinutes(ChkSTDtm.getMinutes()+30);
+    expireDtm.setDate(expireDtm.getDate()+1);
+    document.cookie = "ChkSTDtm=" + ChkSTDtm.getTime() + "; path=/; expires="+ expireDtm.toUTCString() + "; path=/";
+    _timer = setTimeout('timeOutLogOutCookie()',interval);
+});
 
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
-	integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous"
->
-<script src="/js/roomlist/bootstrap-show-password.min.js"></script>
-<script th:inline="javascript">
-	let roomId;
 
-	$(function() {
-		let $maxChk = $("#maxChk");
-		let $maxUserCnt = $("#maxUserCnt");
-		let $rtcType = $("#rtcType");
-		let $msgType = $("#msgType");
-
-		// 모달창 열릴 때 이벤트 처리 => roomId 가져오기
-		$("#enterRoomModal").on("show.bs.modal", function(event) {
-			roomId = $(event.relatedTarget).data('id');
-			// console.log("roomId: " + roomId);
-
-		});
-
-		$("#confirmPwdModal").on("show.bs.modal", function(e) {
-			roomId = $(e.relatedTarget).data('id');
-			// console.log("roomId: " + roomId);
-
-		});
-
-		// 채팅방 설정 시 비밀번호 확인
-		confirmPWD();
-
-		// // 기본은 유저 설정 칸 미활성화
-		// $maxUserCnt.hide();
-
-		// // 체크박스 체크에 따라 인원 설정칸 활성화 여부
-		// $maxChk.change(function(){
-		//     if($maxChk.is(':checked')){
-		//         $maxUserCnt.val('');
-		//         $maxUserCnt.show();
-		//     }else{
-		//         $maxUserCnt.hide();
-		//     }
-		// })
-
-		// 화상 채팅 시 1:1 임으로 2명 고정
-		$rtcType.change(function() {
-			if ($rtcType.is(':checked')) {
-				let number = 2;
-
-				$("#maxUserCnt").val(parseInt(2));
-				// $("#maxUserCnt").attr('value', 2)
-				$("#maxUserCnt").attr('disabled', true);
-			}
-		})
-
-		// 문자 채팅 누를 시 disabled 풀림
-		$msgType.change(function() {
-			if ($msgType.is(':checked')) {
-				$maxUserCnt.attr('disabled', false);
-			}
-		})
-	})
-
-	// 채팅방 설정 시 비밀번호 확인 - keyup 펑션 활용
-	function confirmPWD() {
-		$("#confirmPwd")
-				.on(
-						"keyup",
-						function() {
-							let $confirmPwd = $("#confirmPwd").val();
-							const $configRoomBtn = $("#configRoomBtn");
-							let $confirmLabel = $("#confirmLabel");
-
-							$
-									.ajax({
-										type : "get",
-										url : "/chat/confirmPwd/" + roomId,
-										data : {
-											"roomPwd" : $confirmPwd
-										},
-										success : function(result) {
-											// console.log("동작완료")
-
-											// result 의 결과에 따라서 아래 내용 실행
-											if (result) { // true 일때는
-												// $configRoomBtn 를 활성화 상태로 만들고 비밀번호 확인 완료를 출력
-												$configRoomBtn.attr("class",
-														"btn btn-primary");
-												$configRoomBtn.attr(
-														"aria-disabled", false);
-
-												$confirmLabel
-														.html("<span id='confirm'>비밀번호 확인 완료</span>");
-												$("#confirm").css({
-													"color" : "#0D6EFD",
-													"font-weight" : "bold",
-												});
-
-											} else { // false 일때는
-												// $configRoomBtn 를 비활성화 상태로 만들고 비밀번호가 틀립니다 문구를 출력
-												$configRoomBtn
-														.attr("class",
-																"btn btn-primary disabled");
-												$configRoomBtn.attr(
-														"aria-disabled", true);
-
-												$confirmLabel
-														.html("<span id='confirm'>비밀번호가 틀립니다</span>");
-												$("#confirm").css({
-													"color" : "#FA3E3E",
-													"font-weight" : "bold",
-												});
-
-											}
-										}
-									})
-						})
+function timeOutLogOut(){
+	try{
+		gfnSsoDscdToknReq(dscdCallback2);
+	}catch(exception){
+		console.log(exception);
+	}finally{
+		location.href="https://www.thehyundai.com/front/cob/logout.thd";
 	}
+}
 
-	// 채팅 인원 숫자만 정규식 체크
-	function numberChk() {
-		let check = /^[0-9]+$/;
-		if (!check.test($("#maxUserCnt").val())) {
-			alert("채팅 인원에는 숫자만 입력 가능합니다!!")
-			return false;
-		}
-		return true;
+// 로그아웃 스크립트 2021.02.15 추가
+// 1.주문서는 타임아웃 자동로그아웃 제외
+// 2.다중 탭 열린 상태에서 한 탭 타임아웃 시 타임아웃 안된 다른 탭 남아있으면 로그아웃 방지
+function timeOutLogOutCookie(){
+    if(top.location.href.indexOf('order.thd')<0)
+    {
+        var currentDtm = new Date();
+        var ChkSTDtmVal = "";
+        var ca = document.cookie.split(';');
+        for (var i=0;i<ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf('ChkSTDtm=') == 0) ChkSTDtmVal = c.substring('ChkSTDtm='.length,c.length);
+        }
+        if (currentDtm.getTime() > ChkSTDtmVal)
+        {
+        	timeOutLogOut();
+        }
+    }
+}
+
+function dscdCallback2(data){
+	//console.log("data.rtnMsg:"+data.rtnMsg);
+	if(data.succYn == "Y"){
+		console.log("토큰 만료처리");
+
+	}else{
+		console.log("토큰 미존재");
+
 	}
+	//location.href="https://www.thehyundai.com/front/cob/logout.thd";
+}
 
-	// 채팅방 생성
-	function createRoom() {
 
-		let name = $("#roomName").val();
-		let pwd = $("#roomPwd").val();
-		let secret = $("#secret").is(':checked');
-		let secretChk = $("#secretChk");
 
-		// console.log("name : " + name);
-		// console.log("pwd : " + pwd);
-
-		if (name === "") {
-			alert("방 이름은 필수입니다")
-			return false;
-		}
-		if ($("#" + name).length > 0) {
-			alert("이미 존재하는 방입니다")
-			return false;
-		}
-		if (pwd === "") {
-			alert("비밀번호는 필수입니다")
-			return false;
-		}
-
-		// 최소 방 인원 수는 2, 최대 100명
-		if ($("#maxUserCnt").val() <= 1) {
-			alert("채팅은 최소 2명 이상!!");
-			return false;
-		} else if ($("#maxUserCnt").val() > 100) {
-			alert("100명 이상은 서버가 못 버텨요ㅠ.ㅠ");
-			return false;
-		}
-
-		// 채팅 타입 필수
-		if ($('input[name=chatType]:checked').val() == null) {
-			alert("채팅 타입은 필수입니다")
-			return false;
-		}
-
-		if (secret) {
-			secretChk.attr('value', true);
-		} else {
-			secretChk.attr('value', false);
-		}
-
-		if (!numberChk()) {
-			return false;
-		}
-
-		return true;
-	}
-
-	// 채팅방 입장 시 비밀번호 확인
-	function enterRoom() {
-		let $enterPwd = $("#enterPwd").val();
-
-		$.ajax({
-			type : "get",
-			url : "/chat/confirmPwd/" + roomId,
-			async : false,
-			data : {
-				"roomPwd" : $enterPwd
-			},
-			success : function(result) {
-				// console.log("동작완료")
-				// console.log("확인 : "+chkRoomUserCnt(roomId))
-
-				if (result) {
-					if (chkRoomUserCnt(roomId)) {
-						location.href = "/chat/room?roomId=" + roomId;
-					}
-				} else {
-					alert("비밀번호가 틀립니다. \n 비밀번호를 확인해주세요")
-				}
-			}
-		})
-	}
-
-	// 채팅방 삭제
-	function delRoom() {
-		location.href = "/chat/delRoom/" + roomId;
-	}
-
-	// 채팅방 입장 시 인원 수에 따라서 입장 여부 결정
-	function chkRoomUserCnt(roomId) {
-		let chk;
-
-		// 비동기 처리 설정 false 로 변경 => ajax 통신이 완료된 후 return 문 실행
-		// 기본설정 async = true 인 경우에는 ajax 통신 후 결과가 나올 때까지 기다리지 않고 먼저 return 문이 실행되서
-		// 제대로된 값 - 원하는 값 - 이 return 되지 않아서 문제가 발생한다.
-		$.ajax({
-			type : "GET",
-			url : "/chat/chkUserCnt/" + roomId,
-			async : false,
-			success : function(result) {
-
-				// console.log("여기가 먼저")
-				if (!result) {
-					alert("채팅방이 꽉 차서 입장 할 수 없습니다");
-				}
-
-				chk = result;
-			}
-		})
-		return chk;
-	}
 </script>
-<style>
-a {
-	text-decoration: none;
+
+<script src="https://image.thehyundai.com/pc/js/plugin.js?ver=030123"></script>
+<script type="text/javascript" src="https://image.thehyundai.com/pc/js/hdmall/co/jquery.form.js"></script>
+<script type="text/javascript" src="https://image.thehyundai.com/pc/js/hdmall/co/default.js?ver=030123"></script>
+<script type="text/javascript" src="https://image.thehyundai.com/pc/js/hdmall/co/common.js?ver=030123"></script>
+<script src="https://image.thehyundai.com/pc/js/common.js?ver=030123"></script>
+<script type="text/javascript" src="https://image.thehyundai.com/pc/js/swiper.min.js?ver=030123"></script>
+
+<!-- 그루비(MA) 솔루션 스크립트 삽입 -->
+<script src="/js/hdmall/co/groobeeAnalyticsBuilder.js"></script> 
+
+ 
+<script type="text/javascript">
+(function(a,i,u,e,o){
+a[u]=a[u]||function(){(a[u].q=a[u].q||[]).push(arguments)};
+})(window, document, "groobee");
+if(window.location.host.indexOf('dev') != -1 || window.location.host.indexOf('stg') != -1){
+	groobee("serviceKey","6ab0c3cdd6c9458ab02dec4fc6c0cccd");
+}else{
+	groobee("serviceKey","4dd20a40cca8449988053b600a926c57");
+}
+groobee("siteType","custom");
+</script>
+<script charset="utf-8" src="./더현대닷컴_files/groobee.init.min.js.다운로드"></script>
+ 
+<meta property="groobee:member_id" content="202303037565">
+<meta property="groobee:member_grade" content="패밀리">
+<meta property="groobee:member_gender" content="W">
+<meta property="groobee:member_type" content="통합-일반">
+<meta property="groobee:member_age" content="24">
+
+<script type="text/javascript"> 
+
+var custNoMa = '';
+var itntGrdMa = '';
+var sexGbcdMa = '';
+var upntCustMa = '';
+var birthMa = '';
+if(pageViewObj2.custNo != null) custNoMa = pageViewObj2.custNo;
+if(pageViewObj2.itntGrd != null) itntGrdMa = pageViewObj2.itntGrd;
+if(pageViewObj2.sexGbcd != null) sexGbcdMa = pageViewObj2.sexGbcd;
+if(pageViewObj2.upntCustYn != null) upntCustMa = pageViewObj2.upntCustYn;
+if(pageViewObj2.birthday != null) birthMa = pageViewObj2.birthday;
+
+
+$('meta[property="groobee:member_id"]').attr('content',custNoMa);
+$('meta[property="groobee:member_grade"]').attr('content',itntGrdMa);
+$('meta[property="groobee:member_gender"]').attr('content',sexGbcdMa);
+$('meta[property="groobee:member_type"]').attr('content',upntCustMa);
+$('meta[property="groobee:member_age"]').attr('content',birthMa);
+
+</script>
+    
+
+	<link rel="stylesheet" type="text/css" href="https://www.thehyundai.com/cssssl/jquery-ui.css?ver=23">
+	<link rel="stylesheet" type="text/css" href="https://www.thehyundai.com/cssssl/od.css?ver=23">
+	<link rel="stylesheet" type="text/css" href="https://www.thehyundai.com/cssssl/dp.css?ver=23">
+<!-- 	<script src="https://www.thehyundai.com/js/cart.js?ver=030123"></script>
+ -->	<script src="/js/cart/cart.js"></script>
+ 	
+ <script type="text/javascript">
+	var _gaPageTitle = "장바구니";
+	    
+		$(function(){
+			$(".cart-list-wrap input[name='checkbox_all']").iCheck("check");
+			
+	        // 2020 카드즉시할인 icheck 뒤로가기시 이벤트 오류 항상체크로 변경
+            window.onpageshow = function(e){
+	        	// 2023.01.13 DEP01WORK-25674 장바구니 버그 수정 
+	        	var checkedList = $('div.icheckbox'); // onpageshow 이벤트 발생전, icheck event 발생가능하여, 사전 체크된 데이터 확인
+	        	$('input.type-green').attr('checked', false); // 기존 체크된거 disable처리.
+                $('input.type-green').prop('checked', false);
+	        	$.each(checkedList, function(i, obj){
+	        		// 체크 된것만 체크 처리
+	        		if($(obj).hasClass('checked')){
+	        			$(obj).children('input.type-green').attr('checked', true); 
+	        			$(obj).children('input.type-green').prop('checked', true);
+	        		}
+	        	});
+	        	calcSellPrc();
+            };
+
+			// 체크박스 변경시 결제금액 재계산 처리
+			$(".cart-list-wrap div.icheckbox").on("ifChanged", function() {
+				// 결제금액 계산
+				calcSellPrc();
+			});
+
+			$(document).on("click", ".opt-select-box:not(.opened) .opt-select-value a", function(e) {
+				e.preventDefault();
+				// 옵션 선택창 활성화
+				$(this).parents(".opt-select-box").toggleClass("current");
+				// 옵션 첫번째 단계활성화
+				$(this).parents(".opt-select-box").find(".opt-select-layer li:first-child").addClass("current");
+				// class="current"
+
+				return false;
+			});
+
+			$(document).on("click", ".opt-select-layer a.depth-menu", function(e) {
+				e.preventDefault();
+				$index = $(this).parent("li").index();
+
+				// 선행 옵션을 선택하지 않으면 선택할수 없다.
+				if( $(this).parent().prev().length > 0 && !$(this).parent().prev().find(".depth-menu").hasClass("selected") ) {
+					alert("위의 정보를 먼저 선택해주세요!");
+					return false;
+				}
+
+				$(this).parents(".opt-select-layer").children("li").each(function(idx,elm) {
+					if(idx >= $index) {
+						$(this).removeClass("selected")
+						.siblings(".depth-opt-list li").removeClass(".current")
+						.end().find("input[name=uitmSeq]").val("")
+						.end().find(".depth-menu").removeClass("selected")
+						.end().find(".selected-opt").text("");
+						if(idx > 0){
+							$(this).find(".depth-opt-list").children("li").each(function(){
+								$(this).remove();
+							});
+						}
+					}
+				});
+
+				// 아니면 다른 단계의 선택을 모두 제거하고 해당 단계부터 옵션을 다시 선택한다.
+				$(this).parent().siblings("li").removeClass("current").end().addClass("current");
+
+				return false;
+			});
+
+			
+			$(document).on("click", ".depth-opt-list a.selectUitmAttrType2", function(e) {
+				e.preventDefault();
+				// 상품속성코드 클리어
+		    	$("#productModifyForm input[name=newUitmCd]").val("");
+
+				// 선택된 옵션의 이름
+				$val = $(this).find(".opt-name").text();
+
+				// 해당 옵션 부모에 선택된 값 넣기.
+				$(this).parents(".depth-opt-list").siblings(".depth-menu").find(".selected-opt").text($val)
+					.end().addClass("selected").parent("li").removeClass("current")
+					.next().addClass("current");
+
+				$("#productModifyForm input[name=newUitmCd]").val($(this).attr("value"));
+
+				var last_opt_value = "";
+				$(this).parents(".opt-select-layer").find(".depth-menu").each(function(){
+					if(last_opt_value.length > 0){
+						last_opt_value += " / "
+					}
+					last_opt_value += $(this).find(".selected-opt").text();
+
+				});
+
+				last_opt_value += '<i class="icon-arrow opt-toggle"></i>';
+				$(this).parents(".opt-select-box").find(".opt-select-value a").html(last_opt_value);
+				// 옵션 모두 선택됨. 초기화
+				option_reset($(this).parents(".opt-select-layer"));
+
+				return false;
+			});
+
+
+			
+			$(document).on("click", ".depth-opt-list a.selectUitmAttrType", function(e) {
+				e.preventDefault();
+				$("#productModifyForm input[name=newUitmCd]").val("");
+
+				// 선택된 옵션의 이름
+				$val = $(this).find(".opt-name").text();
+
+				$currIndex = $(this).parents(".depth-opt-list").parent("li").index();
+		        $lastidx = $(this).parents(".opt-select-layer").children("li").length;
+
+		        var slitmCd = $("#productModifyForm input[name='slitmCd']").val();
+		        var bsitmCd = $("#productModifyForm input[name='bsitmCd']").val();
+		        var uitmAttrTypeSeq = $(this).parents(".opt-select-layer").find("input[name='uitmAttrTypeSeq']:eq(" + (Number($currIndex) + 1) + ")").val();
+
+		        if(uitmAttrTypeSeq == undefined || uitmAttrTypeSeq == "undefined"){
+		        	uitmAttrTypeSeq = $(this).parents(".opt-select-layer").find("input[name='uitmAttrTypeSeq']:eq(" + Number($currIndex) + ")").val();
+		        }
+
+				// 해당 옵션 부모에 선택된 값 넣기.
+				$(this).parents(".depth-opt-list").siblings("input[name=uitmSeq]").val($(this).attr("value"));
+				$(this).parents(".depth-opt-list").siblings(".depth-menu").find(".selected-opt").text($val)
+					.end().addClass("selected").parent("li").removeClass("current")
+					.next().addClass("current");
+
+				$(this).parents(".opt-select-layer").children("li").each(function(idx,elm) {
+					if(idx > $currIndex) {
+						$(this).removeClass("selected")
+						.siblings(".depth-opt-list li").removeClass(".current")
+						.end().find("input[name=uitmSeq]").val("")
+						.end().find(".depth-menu").removeClass("selected")
+						.end().find(".selected-opt").text("");
+					}
+				});
+
+				var last_opt_value = "";
+				var uitmSeqArrParam = new Array();
+				$(this).parents(".opt-select-layer").find(".depth-menu").each(function(){
+					if(last_opt_value.length > 0){
+						last_opt_value += " / "
+					}
+					last_opt_value += $(this).find(".selected-opt").text();
+					uitmSeqArrParam.push($(this).siblings("input[name=uitmSeq]").val());
+				});
+
+				if($currIndex == $lastidx-1) {
+
+					last_opt_value += '<i class="icon-arrow opt-toggle"></i>';
+					$(this).parents(".opt-select-box").find(".opt-select-value a").html(last_opt_value);
+
+			        // 상품속성코드 조회
+		        	$.ajax({
+		                type: "post"
+		                , url: "/front/mpa/selectUitmCd.thd?uitmSeqArr=" + uitmSeqArrParam.join("&uitmSeqArr=")
+		                , dataType: "json"
+		                , data : {slitmCd : slitmCd, bsitmCd : bsitmCd, uitmAttrTypeSeq : uitmAttrTypeSeq}
+		                ,success : function(data) {
+		                    $("#productModifyForm input[name=newUitmCd]").val(data.newUitmCd);
+		                }
+		                , error: function(data) {
+		                	alert("시스템 오류입니다. 다시 시도해주세요.");
+		                }
+		            });
+
+					// 옵션 모두 선택됨. 초기화
+					option_reset($(this).parents(".opt-select-layer"));
+
+					return;
+				}
+
+				/*
+		       	* 선택한 속성에 따른 다음 속성 값 조회 후 select 셋팅
+		       	*/
+		       	$.ajax({
+		            type: "post"
+		            , url: "/front/pda/selectUitmAttrListForChangeSelect.thd?uitmSeqArr=" + uitmSeqArrParam.join("&uitmSeqArr=")
+		            , dataType: "json"
+		            , data : {slitmCd : slitmCd, bsitmCd : bsitmCd, uitmAttrTypeSeq : uitmAttrTypeSeq}
+		            ,success : function(data) {
+		                if(data.uitmList) {
+                    		var prevUitmSeq = "";
+		                    for(var i in data.uitmList) {
+		                    	if(data.uitmList[i].uitmAttrTypeSeq == uitmAttrTypeSeq){
+		                    		if(prevUitmSeq != data.uitmList[i].uitmSeq){
+		                    			prevUitmSeq = data.uitmList[i].uitmSeq;
+		                    			$(".opt-select-layer").find(".depth-opt-list:eq(" + (Number($currIndex)+1) + ")").append('<li><a href="#" value="'+data.uitmList[i].uitmSeq+'" class="selectUitmAttrType"><span class="opt-name">'+data.uitmList[i].uitmAttrNm+'</span></a></li>');
+		                    		}
+		                    	}
+		                    }
+		                }
+		            }
+		            , error: function(data) {
+	                	alert("시스템 오류입니다. 다시 시도해주세요.");
+		            }
+		        });
+
+		       	return false;
+
+			});
+
+			
+		});
+
+		function option_reset(obj)
+		{
+			$(obj).children("li").each(function(idx,elm) {
+				$(this).find(".depth-menu").removeClass("selected")
+					.end().siblings(".depth-opt-list li").removeClass(".current")
+					.end().find(".selected-opt").text("");
+
+				if(idx > 0){
+					$(this).find(".depth-opt-list").children("li").each(function(){
+						$(this).remove();
+					});
+				}
+
+			});
+			$(obj).parents(".opt-select-box").toggleClass("current");
+			if($(obj).parents(".opt-select-box").hasClass("fixed")) $(obj).parents(".opt-select-box").find(".opt-select-layer").children("li").first().addClass("current");
+		}
+
+		function initCartBody(){
+			/* 장바구니에서 가격 변경 박스 닫기 버튼 동작*/
+			$(".change-infobox a.close").on("click",  function(e) {
+				/* 동작요청에 따라 remove or hide */
+				$(this).parents("tr").removeClass("has-change-infobox");
+				$(this).parents(".change-infobox-wrap").remove();
+				return false
+			});
+
+			// 장바구니 좌측 체크박스 스타일링 & 클릭 영역 확장
+			$(".cart-list-wrap input").iCheck({increaseArea: '40%'});
+
+			$(".cart-list-wrap input[name='checkbox_all']").on("ifChanged", function() {
+				//https://github.com/fronteed/iCheck 레퍼런스는 여기로
+				if($(this).prop("checked") ) $(".cart-list-wrap input[name='"+$(this).val()+"']").iCheck("check");
+				else $(".cart-list-wrap input[name='"+$(this).val()+"']").iCheck("uncheck");
+			});
+
+			$('select[name="select_date"]').on('selectric-change', function(element){
+				change_date($(this));
+			});
+
+			// 체크박스 변경시 결제금액 재계산 처리
+			$(".cart-list-wrap div.icheckbox").on("ifChanged", function() {
+				// 결제금액 계산
+				cal();
+				calcSellPrc();
+			});
+
+			/**
+		     * 숫자만 입력가능
+		     */
+		    $("input.onlyNumberInput").keydown(function(event) {
+		        // Allow: backspace, delete, tab, escape, enter and .
+		        if ( $.inArray(event.keyCode,[46,8,9,27,13,190]) !== -1 ||
+		             // Allow: Ctrl+A
+		            (event.keyCode == 65 && event.ctrlKey === true) ||
+		             // Allow: home, end, left, right
+		            (event.keyCode >= 35 && event.keyCode <= 39)) {
+		                 // let it happen, don't do  anything
+		                 return;
+		        }
+		        else {
+		            // Ensure that it is a number and stop the keypress
+		            if (event.shiftKey || (event.keyCode < 48 || (event.keyCode > 57 && event.keyCode < 96) || event.keyCode > 105 )) {
+		                event.preventDefault();
+		            }
+		        }
+		    });
+		}
+		$(document).ready(function() {
+			calcSellPrc();
+		});
+
+
+		// 탭 변경
+		function changeTab(basktTypeGbcd){
+
+			if($("div.tab-block") != undefined && ("div.tab-block") != "undefined"){
+
+            	$("div.tab-block").find("li").each(function() {
+                    if($(this).attr("tabid") == basktTypeGbcd){
+                    	$(this).addClass("active");
+                    }
+                    else {
+                    	$(this).removeClass("active");
+                    }
+                });
+            }
+
+			var targetId = "cart-tab-"+basktTypeGbcd;
+			$(document).find(".cart-list-wrap").each(function() {
+                if($(this).attr("id") == targetId){
+                	$(this).addClass("active");
+                }
+                else {
+                	$(this).removeClass("active");
+
+                	$(".cart-list-wrap input[name='checkbox_all']").each(function(){
+                		if("checkbox"+basktTypeGbcd != $(this).val()){
+                    		$(this).iCheck("check");
+                		}
+                	});
+
+                	$("div.cart-cont-wrap").find("li").each(function(){
+                    	if($(this).attr("tabid") == basktTypeGbcd){
+		                    // 체크박스처리
+		                    if($("div.cart-list-wrap.active h4.blind")){
+			    				var cart_list = $("div.cart-list-wrap.active h4.blind").parent();
+			    				$(cart_list).find("div.cart-list-cont").each(function() {
+			    					$(this).find("input[name='checkbox"+basktTypeGbcd+"']").iCheck("check");
+			    				});
+			    			}
+	                    }
+                    });
+                }
+            });
+			fnAside_scroll();
+			calcSellPrc();
+		}
+
+		
+		function calcSellPrc(){
+			var hpoint = 0;
+			var deposit = 0;
+			var totProdPrc = 0;
+			var totBbprcPrc = 0;
+			var totDlvCost = 0;
+			var basktBndlList = new Array();
+			var basktEmptyBndlList = new Array();
+
+			if($("div.cart-list-wrap.active").attr("id") != null){
+				var typeGb = $("div.cart-list-wrap.active").attr("id").substring(9);
+				if($("div.cart-list-wrap.active h4.blind")){
+					var cart_list = $("div.cart-list-wrap.active h4.blind").parent();
+					var tempBndlKey = "";
+					var idx = -1;
+					$(cart_list).find("div.cart-list-cont").each(function() {
+						if($(this).find("input[name='checkbox"+typeGb+"']").prop("checked")){
+							if(!isNaN(Number($(this).find("input[name='prodPrc']").val()))){
+								totProdPrc += Number($(this).find("input[name='prodPrc']").val());
+							}
+							if(!isNaN(Number($(this).find("input[name='bbprcPrc']").val()))){
+								totBbprcPrc += Number($(this).find("input[name='bbprcPrc']").val());
+							}
+							var prodPrc = $(this).find("input[name='prodPrc']").val();
+							var dlvcPayGbcd = $(this).find("input[name='dlvcPayGbcd']").val();
+							var prpyDlvCost = $(this).find("input[name='prpyDlvCost']").val();
+							var sdlvcMinStlmAmt = $(this).find("input[name='sdlvcMinStlmAmt']").val();
+							var sdlvcDlvCost = $(this).find("input[name='sdlvcDlvCost']").val();
+							var dptsDlvMinStlmAmt = $(this).find("input[name='dptsDlvMinStlmAmt']").val();
+							var baseDlvCost = $(this).find("input[name='baseDlvCost']").val();
+							var basktBndlInfo = {prodPrc:prodPrc, dlvcPayGbcd:dlvcPayGbcd, prpyDlvCost:prpyDlvCost, sdlvcMinStlmAmt:sdlvcMinStlmAmt, sdlvcDlvCost:sdlvcDlvCost, dptsDlvMinStlmAmt:dptsDlvMinStlmAmt, baseDlvCost:baseDlvCost};
+							var basktBndlKey = $(this).find("input[name='basktBndlKey']").val();
+							if(basktBndlKey != null && basktBndlKey != ""){
+								if(tempBndlKey != basktBndlKey){
+									idx++;
+									tempBndlKey = basktBndlKey;
+									basktBndlList[idx]={basktBndlKey:basktBndlKey, basktBndlArr:new Array()};
+								}
+								basktBndlList[idx].basktBndlArr[basktBndlList[idx].basktBndlArr.length] = basktBndlInfo;
+							}
+							else {
+								basktEmptyBndlList[basktEmptyBndlList.length] = basktBndlInfo;
+							}
+						}
+					});
+
+					if(basktEmptyBndlList.length > 0){
+						for(var i = 0; i < basktEmptyBndlList.length; i++) {
+							idx++;
+							basktBndlList[idx]={basktBndlKey:'', basktBndlArr:new Array()};
+							basktBndlList[idx].basktBndlArr[basktBndlList[idx].basktBndlArr.length] = basktEmptyBndlList[i];
+						}
+					}
+				}
+
+				// 배송비 계산
+				if(typeGb != "02"){ // 스토어픽상품이 아닌 경우만 배송비 계산
+					if(basktBndlList.length > 0){
+						for(var i = 0; i < basktBndlList.length; i++) {
+	                        var dlvCost = 0;            // 배송비
+	                        var totItemAmt = 0;         // 총상품 금액
+	                        var freeDlvYn = false;  // 무료배송상품 포함여부
+	                        var arpayYn = false;    // 착불배송 포함여부
+	                        var dptsDlvMinStlmAmt;
+	                        var baseDlvCost;
+	                        var minStlmAmt;
+	                        var venDlvCost;
+							for(var idx=0; idx < basktBndlList[i].basktBndlArr.length; idx++){
+								var prodPrc = basktBndlList[i].basktBndlArr[idx].prodPrc;
+								var dlvcPayGbcd = basktBndlList[i].basktBndlArr[idx].dlvcPayGbcd;
+								var sdlvcDlvCost =isNaN(Number(basktBndlList[i].basktBndlArr[idx].sdlvcDlvCost))?0:Number(basktBndlList[i].basktBndlArr[idx].sdlvcDlvCost);
+								venDlvCost = sdlvcDlvCost;
+								minStlmAmt =basktBndlList[i].basktBndlArr[idx].sdlvcMinStlmAmt;
+								dptsDlvMinStlmAmt = basktBndlList[i].basktBndlArr[idx].dptsDlvMinStlmAmt;
+								baseDlvCost = basktBndlList[i].basktBndlArr[idx].baseDlvCost;
+
+								totItemAmt += Number(prodPrc);
+								//배송비 계산
+	                            var freeDlvItemYn = false;
+	                            if(!arpayYn) {
+	                                // 1순위 : 착불배송
+	                                if(dlvcPayGbcd == "20" || dlvcPayGbcd == "30") {
+	                                    arpayYn = true;
+	                                }
+	                            }
+
+	                            if(dlvcPayGbcd == "00") {    // 무료배송 상품
+	                                freeDlvYn = true;
+	                                freeDlvItemYn = true;
+	                                dlvCost = 0;
+	                            } else {
+	                                var prpyDlvCost = isNaN(Number(basktBndlList[i].basktBndlArr[idx].prpyDlvCost))?0:Number(basktBndlList[i].basktBndlArr[idx].prpyDlvCost);
+	                                if(dlvCost == 0) {
+	                                	dlvCost = prpyDlvCost;  // 배송비 셋팅
+	                                } else if(dlvCost < prpyDlvCost) {  // 더 큰 배송비 적용
+	                                    dlvCost = prpyDlvCost;
+	                                }
+	                            }
+
+	                            var bsicItemAmt = 0;
+	                            if(!freeDlvItemYn) {
+	                                // 2순위 : 협력사 소액배송비 조회(장바구니가 배송 기준으로 묶여 있기때문에 묶음의 판매상품코드 중 하나로 조회가능함)
+	                                if(basktBndlList[i].basktBndlArr[idx].sdlvcMinStlmAmt != null && basktBndlList[i].basktBndlArr[idx].sdlvcMinStlmAmt != "") {
+	                                	bsicItemAmt = Number(basktBndlList[i].basktBndlArr[idx].sdlvcMinStlmAmt);  // 기준금액
+	                                    if(Number(prodPrc) < bsicItemAmt) {
+	                                        if(sdlvcDlvCost == 0) {
+	                                            dlvCost = dlvCost == 0 ? Number(baseDlvCost) : dlvCost;
+	                                        } else {
+	                                            if(dlvCost < sdlvcDlvCost) {
+	                                                dlvCost = sdlvcDlvCost;
+	                                            }
+	                                        }
+	                                    } else {
+	                                        dlvCost = 0;
+	                                        freeDlvYn = true;
+	                                        freeDlvItemYn = true;
+	                                    }
+	                                } else {
+	                                    // 3순위 (3만원미만 2,500원)
+	                                	bsicItemAmt = Number(dptsDlvMinStlmAmt);
+	                                    if(Number(prodPrc)  < bsicItemAmt) {
+	                                        dlvCost = (dlvCost == 0 || dlvCost < Number(baseDlvCost)) ? Number(baseDlvCost) : dlvCost;
+	                                    } else {
+	                                        freeDlvYn = true;
+	                                        freeDlvItemYn = true;
+	                                        dlvCost = 0;
+	                                    }
+	                                }
+								}
+							}
+							var sdlvcVenDtl;
+							if(minStlmAmt != null && minStlmAmt != ""){
+								sdlvcVenDtl = {minStlmAmt:minStlmAmt, dlvCost:venDlvCost};
+							}
+
+							// 배송비 계산
+	                        var bsicAmt = 0;    // 기준금액
+	                        if(!freeDlvYn) {
+	                            // 2순위 : 협력사 소액배송비 조회(장바구니가 배송 기준으로 묶여 있기때문에 묶음의 판매상품코드 중 하나로 조회가능함)
+	                            if(sdlvcVenDtl != null) {
+	                                bsicAmt = Number(sdlvcVenDtl.minStlmAmt);  // 기준금액
+	                                if(totItemAmt < bsicAmt) {
+	                                    if(sdlvcVenDtl.dlvCost > 0) {
+	                                        if(dlvCost < sdlvcVenDtl.dlvCost) {
+	                                            dlvCost = sdlvcVenDtl.dlvCost;
+	                                        }
+	                                    } else {
+	                                        dlvCost = (dlvCost == 0 ||  dlvCost < Number(baseDlvCost))? Number(baseDlvCost) : dlvCost;
+	                                    }
+	                                } else {
+	                                    dlvCost = 0;
+	                                    freeDlvYn = true;
+	                                }
+	                            } else {
+	                                // 3순위 : (3만원 미만 2,500원)
+	                                bsicAmt = Number(dptsDlvMinStlmAmt);
+	                                if(totItemAmt < bsicAmt) {
+	                                    dlvCost = (dlvCost == 0 || dlvCost < Number(baseDlvCost)) ? Number(baseDlvCost) : dlvCost;
+	                                } else {
+	                                    freeDlvYn = true;
+	                                    dlvCost = 0;
+	                                }
+	                            }
+	                        }
+
+	                        if(freeDlvYn || arpayYn) {
+	                        	dlvCost = 0;
+	                        }
+	                        //배송비 계산
+	                        totDlvCost += dlvCost;
+						}
+					}
+				}
+
+				if(!isNaN(Number($("input[name='hpoint']").val()))){
+					hpoint = Number($("input[name='hpoint']").val());
+				}
+
+				if(!isNaN(Number($("input[name='deposit']").val()))){
+					deposit = Number($("input[name='deposit']").val());
+				}
+
+				$("#totOrdPrc").text(gfn_appendComma(totProdPrc + totDlvCost));
+
+				$("#totProdPrc").text(gfn_appendComma(totProdPrc));
+
+				if(totDlvCost > 0){
+					$("#totDlvCost").text(gfn_appendComma(totDlvCost) + " 원");
+				}
+				else {
+					$("#totDlvCost").text("무료");
+				}
+
+				$("#totDiscntPrc").text(gfn_appendComma(totBbprcPrc));
+				$("#totbbprcPrc").text(gfn_appendComma(totBbprcPrc));
+
+				var totPayPrc = totProdPrc + totDlvCost - totBbprcPrc;
+				$("#payPrc").text(gfn_appendComma(totPayPrc));
+
+
+				var payHpoint = 0;
+				var payDeposit = 0;
+
+				if(totPayPrc > hpoint ){
+					if(hpoint > 0){
+						payHpoint = hpoint;
+						if( (totPayPrc - hpoint) <= deposit){
+							payDeposit = (totPayPrc - hpoint);
+						}
+						else {
+							payDeposit = deposit;
+						}
+					}
+					else {
+						if(totPayPrc <= deposit){
+							payDeposit = totPayPrc;
+						}
+						else {
+							payDeposit = deposit;
+						}
+					}
+				}
+				else {
+
+					payHpoint = totPayPrc;
+				}
+			}
+
+			var totPayPrc = totPayPrc - payHpoint - payDeposit;
+
+			$("#totPayPrc").text(gfn_appendComma(totPayPrc));
+		}
+
+		
+		// function checkOrdQty(obj, limitCnt, slitmCd, uitmCd, basktTypeGbcd) {
+		//     var input = $(obj);
+
+		//     if($(input).val() == ""){
+		//     	$(input).val("1");
+		//     }
+
+		//     var ordQty = Number($(input).val());
+
+		//     if(isEmpty(limitCnt) || limitCnt > 99) {
+		//         limitCnt = 99;
+		//     }
+
+		//     if(ordQty > limitCnt) {
+		//     	alert("여러 고객님들에게 구매 기회를 드리기 위해 동일 상품은 일일 "+limitCnt+"개로 구매가 제한됩니다. 고객 여러분들의 양해 부탁드립니다.");
+		//         input.val(limitCnt);
+		//         return;
+		//     }
+
+		//     modifyOrdQty(slitmCd, uitmCd, basktTypeGbcd, $(input).val(), ordQty, obj);
+		// }
+
+		
+		function plusOrdQty(obj, pcode, poption, cindex) {
+
+			
+		    var input = $(obj).siblings("input[name='cnt']");
+		    var ordQty = Number($(input).val());
+
+		    var limitCnt = 99;
+		    
+		    if(ordQty >= limitCnt) {
+		    	alert("여러 고객님들에게 구매 기회를 드리기 위해 동일 상품은 일일 "+limitCnt+"개로 구매가 제한됩니다. 고객 여러분들의 양해 부탁드립니다.");
+		        return;
+		    }
+
+		    $(input).val(ordQty + 1);
+
+				var requestData = JSON.stringify({
+							pcode : pcode,
+							poption : poption,
+							pamount : $(input).val()
+					});
+					
+					console.log("---"+requestData);
+
+					$.ajax({
+						url: '/restcart/modifyAmount',
+						type: 'post',
+						data: requestData,
+						contentType: "application/json",
+						success	: function(result){
+							console.log("장바구니 수량 변경 success");
+
+							var bbprc = parseFloat($("#" + cindex + " input[name='bbprc']").val());
+							console.log(bbprc+"-----------");
+							var new_price = bbprc * $(input).val();
+							$("#" + cindex + " .o-price").text(new_price.toLocaleString() + "원");
+							$("#" + cindex + " input[name='prodPrc']").val(new_price);
+							$("#" + cindex + " .tot-price").text(new_price.toLocaleString() + "원");	
+							cal();
+							loadingBar.stop();
+								
+						},
+						error :function(request, status, error) {
+							console.log(error);
+						}
+					}); 
+
+		    //modifyOrdQty(slitmCd, uitmCd, basktTypeGbcd, $(input).val(), ordQty, obj);
+		}
+
+		
+		function minusOrdQty(obj, pcode, poption, cindex) {
+			// loadingBar.start();
+			
+		    var input = $(obj).siblings("input[name='cnt']");
+		    var ordQty = Number($(input).val());
+
+		    if(ordQty <= 1) {
+		        return;
+		    }
+
+		    $(input).val(ordQty - 1);
+
+				var requestData = JSON.stringify({
+							pcode : pcode,
+							poption : poption,
+							pamount : $(input).val()
+					});
+					
+					console.log("---"+requestData);
+
+					$.ajax({
+						url: '/restcart/modifyAmount',
+						type: 'post',
+						data: requestData,
+						contentType: "application/json",
+						success	: function(result){
+							console.log("장바구니 수량 변경 success");
+
+							var bbprc = parseFloat($("#" + cindex + " input[name='bbprc']").val());
+							console.log(bbprc+"-----------");
+							var new_price = bbprc * $(input).val();
+							$("#" + cindex + " .o-price").text(new_price.toLocaleString() + "원");
+							$("#" + cindex + " input[name='prodPrc']").val(new_price);
+							$("#" + cindex + " .tot-price").text(new_price.toLocaleString() + "원");	
+							cal();
+							loadingBar.stop();
+								
+						},
+						error :function(request, status, error) {
+							console.log(error);
+						}
+					}); 
+
+		    //modifyOrdQty(slitmCd, uitmCd, basktTypeGbcd, $(input).val(), ordQty, obj);
+		}
+
+		function cal() {
+			let liList = document.querySelectorAll(".cart-list-unit");
+			let totOrdPrc = 0;
+			let totProdPrc = 0;
+			let payPrc = 0;
+			for (let i = 0; i < liList.length; i++) {
+				if ($(liList[i]).find('.icheckbox').hasClass('checked')) {
+				
+				var prodPrc = $(liList[i]).find("input[name='prodPrc']").val();
+				// let prodPrc = parseInt(liList[i].querySelector(".prodPrc"));
+				console.log(prodPrc+"----");
+				totOrdPrc += parseInt(prodPrc);
+				totProdPrc += parseInt(prodPrc);
+				}
+			}
+			payPrc = totProdPrc; 
+			// let totO = document.getElementById("totOrdPrc");
+  		// totO.textContent = payPrc.toLocaleString();
+			// let totP = document.getElementById("totProdPrc");
+  		// totP.textContent = payPrc.toLocaleString();
+			// let spanElement = document.getElementById("payPrc");
+  		// spanElement.textContent = payPrc.toLocaleString();
+
+			console.log(`totOrdPrc: ${totOrdPrc}원, totProdPrc: ${totProdPrc}원, payPrc: ${payPrc}원`);
+
+			// let first = document.getElementById("totOrdprc");
+			// first.innerText = payPrc.toLocaleString;
+			// let second = document.getElementById("totOrdprc");
+			// second.innerText = payPrc.toLocaleString;
+			// let third = document.getElementById("totOrdprc");
+			// third.innerText = payPrc.toLocaleString;
+			$("#totOrdPrc").text(gfn_appendComma(payPrc));
+			$("#totProdPrc").text(gfn_appendComma(payPrc));
+			$("#payPrc").text(gfn_appendComma(payPrc));
+			
+			// document.getElementById("totOrdPrc").innerText = payPrc.toLocaleString();
+			// document.getElementById("totProdPrc").innerText = payPrc.toLocaleString();
+			// document.getElementById("payPrc").innerText = payPrc.toLocaleString();
+
+		}
+
+
+
+		
+		// function modifyOrdQty(slitmCd, uitmCd, basktTypeGbcd, ordQty, oldOrdQty, obj) {
+		// 	console.log("상품 수량 변경");
+		// 	loadingBar.start();
+
+		
+		// 	}
+
+		
+		function deleteBaskt(obj, targetObj, delType) { 
+			
+			//버튼이 눌렸을 때
+		let liList = document.querySelectorAll(".cart-list-unit");
+			console.log("-------");
+			let pcodeTest = $("#c0").find(".check-group").children("#pcode").val();
+			console.log(pcodeTest);
+		var arr = new Array();
+		var checked = new Array();
+	
+  
+	for (let i = 0; i < liList.length; i++) {
+ 	console.log("-----------");
+	
+ 	if ($(liList[i]).find('.icheckbox').hasClass('checked')) {
+ 	    const pcode = $(liList[i]).find('#pcode').val();
+ 	    console.log(pcode);
+ 	  	const poption = $(liList[i]).find('.cnt-opt').text();
+			console.log("option"+poption);
+        arr.push({ pcode: pcode, poption: poption });
+			checked.push("c"+i);
+		}
+
+	}
+	
+ 	$.ajax({
+ 	    url: '/restcart/deleteCarts', // 서버 측에서 정의한 URL 주소
+	    type: 'post',
+	    data: JSON.stringify(arr),
+	    contentType: "application/json",
+
+	    success: function (result) {
+	        console.log("장바구니 선택 삭제 success");
+
+	        for (let i = 0; i < checked.length; i++) {
+	        	const li = document.getElementById(checked[i]);
+						li.remove();
+						cal();
+	         	if ($(liList[i]).find('.icheckbox').hasClass('checked')) {
+	         	    
+	        		}
+
+	        	}
+	    },
+	    error: function(request, status, error) {
+	        console.log(error);
+	        // 처리 중 에러가 발생한 경우에 실행할 코드 작성
+	    }
+	});
+	    /* 	    success: function (result) {
+							console.log("장바구니 선택 삭제 success");
+							
+							// const li = document.getElementById(cindex);
+
+							// li.remove();
+							// cal();
+								
+						},
+						error :function(request, status, error) {
+							console.log(error);
+						}
+					});   */
+
+		
+		}
+
+		
+		function deleteBasktItem(pcode, poption, cindex) {
+		    if(!confirm("삭제하시겠습니까?")) {
+	            return false;
+	        }
+
+					var requestData = JSON.stringify({
+							pcode : pcode,
+							poption : poption,
+					});
+					
+					console.log("---"+requestData);
+
+					$.ajax({
+						url: '/restcart/deleteCart',
+						type: 'post',
+						data: requestData,
+						contentType: "application/json",
+						success	: function(result){
+							console.log("장바구니 삭제 success");
+							
+							const li = document.getElementById(cindex);
+
+							li.remove();
+							cal();
+								
+						},
+						error :function(request, status, error) {
+							console.log(error);
+						}
+					}); 
+
+		    
+		    // var slitmInfList = new Array();
+        // 	if($(obj).parent().parent().parent().find("input[name='slitmInf']").val() != null){
+				// slitmInfList.push($(obj).parent().parent().parent().find("input[name='slitmInf']").val());
+        // 	}
+		    
+			// adbayCheck = 1;
+			// updateAdbayItem(basktInf, adbayCheck);
+			//loadingBar.start();
+			// $.ajax({
+		  //       type: "post"
+		  //       , url: "/front/odb/deleteBaskt.thd"
+		  //       , dataType: "json"
+		  //       , data : {basktInf : basktInf}
+		  //       ,success : function(data) {
+		  //           if(!isEmpty(data.errorMessages)) {
+		  //           	loadingBar.stop();
+		  //               alert(data.errorMessages);
+		  //           } else {
+		            	
+		  //           	if(slitmInfList.length > 0){
+		  //           		ecommerceSetDeleteItem(slitmInfList);
+		  //           	}
+
+		  //           	var basktInfArr = new Array();
+		  //   			var typeGb = $("div.cart-list-wrap.active").attr("id").substring(9);
+		  //           	var checkAllYn = false;
+		  //           	$(".cart-list-wrap input[name='checkbox_all']").each(function(){
+		  //           		if($(this).prop("checked")){
+		  //           			if($(this).val() == "checkbox"+typeGb){
+		  //           				checkAllYn = true;
+		  //           			}
+		  //           		}
+		  //           	});
+		  //   			if($("div.cart-list-wrap.active h4.blind")){
+		  //   				var cart_list = $("div.cart-list-wrap.active h4.blind").parent();
+		  //   				$(cart_list).find("div.cart-list-cont").each(function() {
+		  //   					if($(this).find("input[name='checkbox"+typeGb+"']").prop("checked")){
+		  //   						//basktInfArr.push($(this).find("input[name='checkbox"+typeGb+"']").index("input[name='checkbox"+typeGb+"']"));
+		  //   						basktInfArr.push($(this).find("input[name='checkbox"+typeGb+"']").val());
+		  //   					}
+		  //   				});
+		  //   			}
+		  //           	$.post("/front/odb/basktList.thd", {isAjax:"true"}, function(data) {
+		  //           		if(data.indexOf("loginError") > -1){
+		  //           			loadingBar.stop();
+		  //           			alert("로그인이 필요합니다. 로그인 후 다시 시도해 주세요.");
+		  //           			var rtUrl = "/front/cob/loginForm.thd?redirectUrl=/front/odb/basktList.thd";
+		  //           			try {
+		  //           				window.location(rtUrl);
+		  //           			}catch(e) {}
+		  //           		}
+		  //           		else {
+			//                     $("#divCartInfo").html(data);
+			//                     initSelectbox();
+			//                     initCartBody();
+
+			// 	            	$(".cart-list-wrap input[name='checkbox_all']").each(function(){
+			// 	            		if("checkbox"+typeGb == $(this).val()){
+			// 	            			if(checkAllYn){
+			// 	            				$(this).iCheck("check");
+			// 	            			}
+			// 	            			else {
+			// 	            				$(this).iCheck("uncheck");
+			// 	            			}
+			//                     	}
+			//                     	else {
+			//                     		$(this).iCheck("check");
+			//                     	}
+			// 	            	});
+
+			//                     $("div.cart-cont-wrap").find("li").each(function(){
+			//                     	if($(this).attr("tabid") == typeGb){
+			// 		                    changeTab(typeGb);
+			// 	                    }
+			//                     });
+
+			//                     // 체크박스처리
+			//                     if($("div.cart-list-wrap.active h4.blind")){
+			// 	    				var cart_list = $("div.cart-list-wrap.active h4.blind").parent();
+			// 	    				$(cart_list).find("div.cart-list-cont").each(function() {
+
+			//     						var checkVal = $(this).find("input[name='checkbox"+typeGb+"']").val();
+			//     						var bCheck = false;
+			// 	    					for(var i = 0; i < basktInfArr.length; i++) {
+			// 		                    	if(basktInfArr[i] == checkVal){
+			// 		                    		bCheck = true;
+			// 		                    		break;
+			// 		                    	}
+			// 		                    }
+			// 	    					if(!bCheck){
+			// 	    						$(this).find("input[name='checkbox"+typeGb+"']").iCheck("uncheck");
+			// 	    					}
+			// 	    				});
+			// 	    			}
+
+			//         			calcSellPrc();
+
+			//         			loadingBar.stop();
+		  //           		}
+		  //           	});
+		  //               //window.location.reload();
+
+		  //           }
+		  //         //장바구니개수
+		  //   	  $("#quick_baskt_num").html(fnSelectBasktCount());
+		  //       }
+		  //       , error: function(data) {
+		  //       	loadingBar.stop();
+			// 		alert("시스템 오류입니다. 다시 시도해주세요.");
+		  //       }
+		  //   });
+			
+			// -------------------------위에 내 ajax 넣고 밑의 줄 주석해제하기
+			//loadingBar.stop();
+
+		}
+
+		
+        
+        function imdtCrdDcChk(obj) {
+        	var typeGb = $("div.cart-list-wrap.active").attr("id").substring(9);
+        	var cart_list = $("div.cart-list-wrap.active h4.blind").parent();
+        	var chkOrderCnt = 0;
+        	var imdtCrdDcZero = 0;
+
+        	var basktInfArr = new Array();
+            var ordAgreeInfArr = new Array();
+            var imdtCrdDcSetArr = new Array();
+            var ordAgreeImg = new Array();
+            var imdtCrdDcArr = new Array();
+
+            var equalCrdDcBoolean = true;
+
+        	//체크된 상품 각각 0, 즉 비대상인 경우에 카운트 체크
+        	$(cart_list).find("input[name='checkbox"+typeGb+"']:checked").each(function(index, subObj) {
+        		   chkOrderCnt++; //체크된 상품 카운트
+        		if($(subObj).parent().parent().parent().find("input[name='imdtCrdDcCnt']").val() == "0") {
+        			imdtCrdDcZero++;
+        		}
+
+        		basktInfArr.push($(subObj).val());
+                ordAgreeInfArr.push($(subObj).parent().parent().parent().find("input[name='ordAgreeInf']").val());
+                ordAgreeImg.push($(subObj).parent().parent().parent().find("div.prod-info div.img img").attr("src"));
+
+                //할인카드 셋팅
+                $(subObj).parent().parent().parent().find("input[name='imdtCrdDcSet']").each(function(idx, value){
+                    imdtCrdDcSetArr.push($(this).val());
+                });
+        	});
+
+        	//할인카드 중복값 제거
+            if(imdtCrdDcSetArr.length > 0){
+                $.each(imdtCrdDcSetArr, function(idx, value){
+                    if($.inArray(value, imdtCrdDcArr) == -1){
+                        imdtCrdDcArr.push(value);
+                    }
+                });
+            }
+
+            if(imdtCrdDcArr.length > 0){
+                for(var i = 0; i < imdtCrdDcArr.length; i++) {
+                    var imdtCrdDcSetInf = imdtCrdDcArr[i].split('|');
+                    var equalCrdDcCnt = 0;
+                    $.each(imdtCrdDcArr, function(idx, value){
+                        if(value.indexOf(imdtCrdDcSetInf[6]) != -1 ){
+                            equalCrdDcCnt++;
+                        }
+                    });
+
+                    if(equalCrdDcCnt != chkOrderCnt){
+                        equalCrdDcBoolean = false;
+                        break;
+                    }
+                }
+            }else {
+                equalCrdDcBoolean = true;
+            }
+
+        	//비대상이 없는 경우에 주문하기로 이동
+        	if(imdtCrdDcZero == 0 && equalCrdDcBoolean == true) {
+        		orderReq();
+        	}else if(chkOrderCnt == imdtCrdDcZero && equalCrdDcBoolean == true) { //전부 비대상 상품일 경우
+        		orderReq();
+            }else {
+                var ordCnt = 0;
+                var prmoCrdDcInfo = "";
+                for(var i = 0; i < ordAgreeInfArr.length; i++) {
+                    var ordAgreeInf = ordAgreeInfArr[i].split('|');
+                    ordCnt++;
+                    prmoCrdDcInfo += '<li>';
+                    prmoCrdDcInfo += '<div class="thum"><a href="#"><img src="'+ordAgreeImg[i]+'"></a></div>';
+                    prmoCrdDcInfo += '<div class="cont">';
+                    prmoCrdDcInfo += '<p>'+ordAgreeInf[2]+'</p>';
+                    prmoCrdDcInfo += '</div>';
+                    prmoCrdDcInfo += '<div class="card-msg">';
+                    var cardDcCnt = 0;
+                    for(var j= 0; j < imdtCrdDcArr.length; j++){
+                        var imdtCrdDcSetInf = imdtCrdDcArr[j].split('|');
+                        var dcTotPrice = Number(imdtCrdDcSetInf[4]);
+                        var dcStrtPrice = Number(imdtCrdDcSetInf[5]);
+                        if(ordAgreeInf[4] == imdtCrdDcSetInf[0]) {
+                        	//if(dcTotPrice >= dcStrtPrice){
+                            prmoCrdDcInfo += '<p> ['+ imdtCrdDcSetInf[2] +'] ';
+
+                            if(imdtCrdDcSetInf[1] == '08'){
+                                prmoCrdDcInfo += '청구할인';
+                            }
+                            else {
+                                prmoCrdDcInfo += '즉시할인';
+                            }
+
+                            prmoCrdDcInfo += imdtCrdDcSetInf[3] +'%</p>';
+                            cardDcCnt++;
+                        	//}
+                        }
+
+                        if(j == (imdtCrdDcArr.length -1)){
+                        	if(cardDcCnt == 0){
+                        		prmoCrdDcInfo += '<p class="not-card">할인 적용 카드 없음</p>';
+                        	}
+                        }
+                     }
+
+                    prmoCrdDcInfo += '</div>';
+                    prmoCrdDcInfo += '</li>';
+                }
+
+                $("#popover-layer-cardDiscount div.pop-content ul.card-discount-list").html("");
+        		$("#popover-layer-cardDiscount div.pop-content ul.card-discount-list").html(prmoCrdDcInfo);
+        		popover_open(obj , '#popover-layer-cardDiscount');
+        	}
+        }
+
+		
+		function orderChkItem(obj) {
+			if($("div.cart-list-wrap.active").attr("id") != null){
+				var typeGb = $("div.cart-list-wrap.active").attr("id").substring(9);
+
+				
+				var chkOrderCnt = 0;
+                var imdtCrdDcZero = 0;
+
+                var imdtCrdDcSetArr = new Array();
+                var imdtCrdDcArr = new Array();
+
+                var equalCrdDcBoolean = true;
+
+				if($("div.cart-list-wrap.active h4.blind")){
+					var cart_list = $("div.cart-list-wrap.active h4.blind").parent();
+
+				    var basktInfArr = new Array();
+				    var ordAgreeInfArr = new Array();
+				    var ordAgreeImg = new Array();
+				    var isStorePickBuy = true;
+				    var isSampleProduct = false;
+				    
+				    var slitmNmArr = new Array();
+
+				    var slitmInfList = new Array();
+				    
+				    $(cart_list).find("input[name='checkbox"+typeGb+"']:checked").each(function(index, subObj) {
+				        basktInfArr.push($(subObj).val());
+				        ordAgreeInfArr.push($(subObj).parent().parent().parent().find("input[name='ordAgreeInf']").val());
+						ordAgreeImg.push($(subObj).parent().parent().parent().find("div.prod-info div.img img").attr("src"));
+						
+						slitmNmArr.push($(subObj).parent().parent().parent().find("input[name='slitmNmInf']").val());
+						slitmInfList.push($(subObj).parent().parent().parent().find("input[name='slitmInf']").val());
+
+						if($(subObj).parent().parent().parent().find("div.tot-price").text() == '0원'){
+				        	isSampleProduct = true;
+				        }
+				        if(typeGb == "02"){
+				        	var selectPickupDt =  $(subObj).parent().parent().parent().find("select[name='selectPickupDt'] option:selected").text();
+							var selectRcvnPlce = $(subObj).parent().parent().parent().find("select[name='selectRcvnPlce'] option:selected").text();
+							if(selectPickupDt.indexOf("불가") > -1 || selectPickupDt.indexOf("휴점") > -1 || selectRcvnPlce.indexOf("불가") > -1){
+								isStorePickBuy = false;
+							}
+				        }
+
+				        
+                        chkOrderCnt++;
+				        if($(subObj).parent().parent().parent().find("input[name='imdtCrdDcCnt']").val() == "0") {
+		                    imdtCrdDcZero++;
+		                }
+
+				        //할인카드 셋팅
+		                $(subObj).parent().parent().parent().find("input[name='imdtCrdDcSet']").each(function(idx, value){
+		                    imdtCrdDcSetArr.push($(this).val());
+		                });
+				    });
+				    
+				    var slitmNmList = '';
+				    for(var i = 0; i < slitmNmArr.length; i++){
+				    	slitmNmList += slitmNmArr[i];
+				    	if(i != slitmNmArr.length-1){
+				    		slitmNmList += ' / ';
+				    	}
+				    }
+				    GA_Event('PC_장바구니', '주문하기', slitmNmList);
+
+				    //할인카드 중복값 제거
+		            if(imdtCrdDcSetArr.length > 0){
+		                $.each(imdtCrdDcSetArr, function(idx, value){
+		                    if($.inArray(value, imdtCrdDcArr) == -1){
+		                        imdtCrdDcArr.push(value);
+		                    }
+		                });
+		            }
+
+				    if(imdtCrdDcArr.length > 0){
+		                for(var i = 0; i < imdtCrdDcArr.length; i++) {
+		                    var imdtCrdDcSetInf = imdtCrdDcArr[i].split('|');
+		                    var equalCrdDcCnt = 0;
+		                    $.each(imdtCrdDcArr, function(idx, value){
+		                        if(value.indexOf(imdtCrdDcSetInf[6]) != -1 ){
+		                            equalCrdDcCnt++;
+		                        }
+		                    });
+
+		                    if(equalCrdDcCnt != chkOrderCnt){
+		                        equalCrdDcBoolean = false;
+		                        break;
+		                    }
+		                }
+		            }else {
+		                equalCrdDcBoolean = true;
+		            }
+
+				    if(basktInfArr.length == 0) {
+				        alert("선택한 상품이 없습니다.");
+				        return false;
+				    }
+
+				    if(!isStorePickBuy){
+				    	alert("선택하신 상품 중 매장과 픽업일이 경과된 상품이 있습니다. 재 설정을 해주세요.");
+				    	return false;
+				    }
+
+				    if(isSampleProduct){
+				    	alert("선택하신 상품 중 구매가 불가능 한 샘플 상품(0원)이 있습니다. 주문 목록에서 삭제 후 주문해 주세요.");
+				    	return false;
+				    }
+
+				    $("#tmpBasktForm").html("");
+					for(var i=0; i<basktInfArr.length; i++){
+						$("#tmpBasktForm").append('<input type="hidden" name="basktInf" value="' + basktInfArr[i] + '"/>');
+					}
+					for(var i=0; i<slitmInfList.length; i++){
+						$("#tmpBasktForm").append('<input type="hidden" name="slitmInf" value="' + slitmInfList[i] + '"/>');
+					}
+					
+					var myMap = new Map();
+					for(var i=0; i<basktInfArr.length; i++){
+						var sameItmQty = 0 ;
+						var basktInfArr2 = basktInfArr[i].split('|'); //40A1436790|00002|01|3|175000|상품명|구매제한수량'
+						if(myMap.size > 0 && myMap.get(basktInfArr2[0]) != null){
+			            	sameItmQty = parseInt(myMap.get(basktInfArr2[0]));
+						}
+						
+						 if(parseInt(basktInfArr2[3]) + parseInt(sameItmQty) > basktInfArr2[7]) {
+							 alert("여러 고객님들에게 구매 기회를 드리기 위해, "+basktInfArr2[6]+ "상품은 일일 "+ basktInfArr2[7] + "개로 구매가 제한됩니다. 고객 여러분들의 양해 부탁드립니다.");
+							 return false;
+						 }
+						myMap.set(basktInfArr2[0], parseInt(sameItmQty)+parseInt(basktInfArr2[3]));
+					}
+
+					var ordMakeCnt = 0;
+					var packOpenRtpNdmtCnt = 0;
+					var ordCnt = 0;
+					var ordBasktInfo = "";
+				    for(var i = 0; i < ordAgreeInfArr.length; i++) {
+				    	var ordAgreeInf = ordAgreeInfArr[i].split('|');
+						var ordMakeYn= ordAgreeInf[0]==null?"":ordAgreeInf[0]; // 주문제작
+						var packOpenRtpNdmtYn= ordAgreeInf[1]==null?"":ordAgreeInf[1]; // 박스포장
+					    if(ordMakeYn == "Y" || packOpenRtpNdmtYn == "Y"){
+				    		ordCnt++;
+				    		ordBasktInfo += '<li>';
+				    		ordBasktInfo += '<div class="thum"><a href="#"><img src="'+ordAgreeImg[i]+'"></a></div>';
+				    		ordBasktInfo += '<div class="cont">';
+				    		ordBasktInfo += '<p class="t1">'+ordAgreeInf[2]+'</p>';
+				    		// ordBasktInfo += '<p class="t1">더현대</p>';
+				    		// ordBasktInfo += '<p class="t2">(5기획) NEW 헤라 에이지리버스 쿠션세트</p>';
+				    		ordBasktInfo += '</div>';
+				    		ordBasktInfo += '</li>';
+				    	}
+				    }
+
+				    if(ordCnt > 0){
+				    	$("#popover-layer-buycheck div.pop-content ul.cart-confirm-wrap").html("");
+			    		$("#popover-layer-buycheck div.pop-content ul.cart-confirm-wrap").html(ordBasktInfo);
+			    		popover_open(obj , '#popover-layer-buycheck');
+				    }else if(imdtCrdDcZero != 0 && equalCrdDcBoolean == false) {
+                        imdtCrdDcChk(obj);
+                    }else if(chkOrderCnt != imdtCrdDcZero && equalCrdDcBoolean == false) { //전부 비대상 상품일 경우
+                        imdtCrdDcChk(obj);
+                    }else {
+				    	orderReq();
+				    }
+				}
+			}
+		}
+
+		
+		function buyDirect(obj, targetObj) {
+			
+			var slitmInf = $(obj).parent().parent().parent().parent().find("input[name='slitmInf']").val();
+			
+		    var basktInf = $(obj).parent().parent().parent().parent().find("input[name='"+targetObj+"']").val();
+		    var ordAgreeInf = $(obj).parent().parent().parent().parent().find("input[name='ordAgreeInf']").val();
+		    if($(obj).parent().parent().parent().parent().find("div.tot-price").text() == '0원'){
+		    	alert("선택하신 상품 중 구매가 불가능 한 샘플 상품(0원)이 있습니다. 주문 목록에서 삭제 후 주문해 주세요.");
+		    	return;
+	        }
+
+		    var basktInfArr = basktInf.split('|');
+			if(basktInfArr[2]!= null && basktInfArr[2] == "02"){
+				var selectPickupDt =  $(obj).parent().parent().parent().parent().find("select[name='selectPickupDt'] option:selected").text();
+				var selectRcvnPlce = $(obj).parent().parent().parent().parent().find("select[name='selectRcvnPlce'] option:selected").text();
+				if(selectPickupDt.indexOf("불가") > -1 || selectPickupDt.indexOf("휴점") > -1 || selectRcvnPlce.indexOf("불가") > -1){
+					alert("매장 및 픽업일을 재 선택 해주세요.");
+					return;
+				}
+			}
+			
+			if(parseInt(basktInfArr[3]) > basktInfArr[7]) {
+				 alert("여러 고객님들에게 구매 기회를 드리기 위해, "+basktInfArr[6]+ "상품은 일일 "+ basktInfArr[7] + "개로 구매가 제한됩니다. 고객 여러분들의 양해 부탁드립니다.");
+				 return false;
+			 }
+
+		    $("#tmpBasktForm").html("");
+			$("#tmpBasktForm").append('<input type="hidden" name="basktInf" value="' + basktInf + '"/>');
+			$("#tmpBasktForm").append('<input type="hidden" name="slitmInf" value="' + slitmInf + '"/>');
+
+			var ordAgreeInfArr = ordAgreeInf.split('|');
+			var ordMakeYn= ordAgreeInfArr[0]==null?"":ordAgreeInfArr[0]; // 주문제작
+			var packOpenRtpNdmtYn= ordAgreeInfArr[1]==null?"":ordAgreeInfArr[1]; // 박스포장
+
+	    	$("#popover-layer-directbuy div.pop-content").html("");
+		    if(ordMakeYn == "Y" && packOpenRtpNdmtYn == "Y"){
+		    	// 주문제작 및 박스포장 상품 주의사항 안내레이어
+	    		var msg  = '<div class="perform-msg2">';
+    				msg += '<p>해당상품은 <strong>주문제작 및 박스포장 상품</strong>으로<strong><br>취소/교환/반품이 불가</strong>합니다.</p>';
+    				msg += '<small>(단, 상품가치 하락 없이 재화 등의 내용을 확인하기 위해 포장 등을 훼손한 경우 및 제품 하자 시 제외)</small>';
+	    			msg += '</div>';
+	    		$("#popover-layer-directbuy div.pop-content").html(msg);
+	    		popover_open(obj , '#popover-layer-directbuy');
+		    }
+		    else if(ordMakeYn == "Y"){
+		    	// 주문제작 상품 주의사항 안내레이어
+	    		var msg  = '<div class="perform-msg2">';
+    				msg += '<p>해당상품은 <strong>주문제작 상품</strong>으로 <strong>취소/교환/반품이 불가</strong>합니다.</p>';
+    				msg += '<small>(상품 하자 시 제외)</small>';
+	    			msg += '</div>';
+	    		$("#popover-layer-directbuy div.pop-content").html(msg);
+	    		popover_open(obj , '#popover-layer-directbuy');
+		    }
+		    else if(packOpenRtpNdmtYn == "Y"){
+		    	// 박스포장 상품 주의사항 안내레이어
+	    		var msg  = '<div class="perform-msg2">';
+    				msg += '<p>해당상품은 <strong>박스포장 상품</strong>으로 <strong>개봉으로 인한 상품가치 하락 시<br>교환/반품이 불가</strong>합니다.<br>';
+    				msg += '<small>(단, 상품가치 하락 없이 재화 등의 내용을 확인하기 위해 포장 등을 훼손한 경우는 제외)</small>';
+	    			msg += '</div>';
+	    		$("#popover-layer-directbuy div.pop-content").html(msg);
+	    		popover_open(obj , '#popover-layer-directbuy');
+		    }
+		    else {
+		    	orderReq();
+		    }
+		}
+
+		
+		function orderReq() {
+		    var basktInfArr = new Array();
+		    
+		    $("#tmpBasktForm").find("input[name='basktInf']").each(function() {
+			    basktInfArr.push($(this).val().replace(/,/gi , ' '));
+		    });
+		    //basktInfArr.push($("#tmpBasktForm").find("input[name='basktInf']").val());
+		    
+		    $.ajax({
+		        type: "post"
+	            , url: "/front/oda/buyDirectForBaskt.thd?basktInf=" + basktInfArr.join("&basktInf=")
+	            , dataType: "json"
+	            , success : function(data) {
+	                if(!isEmpty(data.errorMessages)) {
+	                    alert(data.errorMessages);
+	                } else {
+	                	var slitmInfList = new Array();
+	                    $("#tmpBasktForm").find("input[name='slitmInf']").each(function() {
+	        		    	slitmInfList.push($(this).val());
+	        		    });
+	                    if(slitmInfList.length > 0){
+		                    ecommerceSetBuyDirect(slitmInfList);
+	                    }
+	                	
+	                	$("#orderForm").html("");
+	                    for(var i = 0; i < basktInfArr.length; i++) {
+	                        $("#orderForm").append("<input type='hidden' name='basktInf' value='" + basktInfArr[i] + "'/>");
+	                    }
+
+	                	$html = "<iframe src='about:blank' style='display:none' border='0' width='0' height='0' name='ordertargetiframe' id='ordertargetiframe'></iframe>";
+	                	$("body").append($html);
+
+	                	$("#orderForm").attr("target","ordertargetiframe");
+	                    $("#orderForm").submit();
+	                }
+	            }
+		        , error: function(data) {
+		        	loadingBar.stop();
+					alert("시스템 오류입니다. 다시 시도해주세요.");
+		        }
+		    });
+		}
+
+
+		
+		function showChgUitmPup(obj, slitmCd, uitmCd, slitmNm, uitmTotNm, sellPrc, bsitmCd, basktTypeGbcd, ordQty, dluMaxBuyQty) {
+			var uitemPopContent = $("#popover-layer-change div.pop-content");
+		    $(uitemPopContent).html("");
+		    $("#productModifyForm").html("");
+		    $("#productModifyForm").append('<input type="hidden" name="slitmCd" value="' + slitmCd + '"/>');
+		    $("#productModifyForm").append('<input type="hidden" name="bsitmCd" value="' + bsitmCd + '"/>');
+		    $("#productModifyForm").append('<input type="hidden" name="oldUitmCd" value="' + uitmCd + '"/>');
+		    $("#productModifyForm").append('<input type="hidden" name="basktTypeGbcd" value="' + basktTypeGbcd + '"/>');
+		    $("#productModifyForm").append('<input type="hidden" name="ordQty" value="' + ordQty + '"/>');
+		    $("#productModifyForm").append('<input type="hidden" name="dluMaxBuyQty" value="' + dluMaxBuyQty + '"/>');
+		    $("#productModifyForm").append('<input type="hidden" name="newUitmCd" value="' + uitmCd + '"/>');
+
+			//  $.ajax({
+		  //       type: "post"
+		  //       , url: "/front/odb/getBakstItemUitmInf.thd"
+		  //       , dataType: "json"
+		  //       , data : {slitmCd : slitmCd, uitmCd : uitmCd, bsitmCd : bsitmCd, basktTypeGbcd : basktTypeGbcd}
+		  //       , success : function(data) {
+		  //           if(!isEmpty(data.errorMessages)) {
+		  //               alert(data.errorMessages);
+		  //           } else {
+		            	
+		  //           	if(isEmpty(data.uitmAttrTypeList) && isEmpty(data.bsicUitmList)){
+		  //           		// 2023.01.11 DEP01WORK-25674 주문 방어로직 추가 (사이즈/색상/기본옵션 정보 없을 경우 판매 가능한 상품 없다고 ALERT 노출)
+		  //           	    alert('판매가 중지된 상품입니다.');
+		  //           		return;
+		  //           	}
+		            	
+		  //           	// 조합형 옵션
+		  //           	if(data.uitmAttrTypeList != null && data.uitmAttrTypeList.length > 0) {
+		  //               	var divOpt = $('<div class="pop-option-box uitmDiv"></div>');
+		  //               	$(divOpt).append('<div class="pop-option-title"><p><span class="tit">상품 : </span>'+slitmNm+'</p></div>');
+
+		  //               	var divOptSelect = $('<div class="opt-select-box"></div>');
+		  //               	$(divOptSelect).append('<div class="opt-select-value"><a id="aTagId" href="#">'+uitmTotNm+'<i class="icon-arrow opt-toggle"></i></a></div>');
+		  //               	var divSelect = $('<ul class="opt-select-layer"></ul>');
+		  //                   for(var i in data.uitmAttrTypeList) {
+		  //                   	var currentStr = "";
+		  //                   	var guideHtml = "";
+		  //                   	if(i > 0){
+		  //                   		guideHtml = '<span class="guide">위의 정보를 먼저 선택해주세요.</span>';
+		  //                   	}
+		  //                   	if(i == 0 ){
+		  //                   		currentStr = ' class="current"';
+		  //                   	}
+
+		  //                   	var li = $('<li'+currentStr+'></li>');
+		  //                   	$(li).append('<input type="hidden" name="uitmAttrTypeSeq" value="'+data.uitmAttrTypeList[i].uitmAttrTypeSeq+'"/>');
+		  //                   	$(li).append('<input type="hidden" name="uitmSeq" value=""/>');
+		  //                   	$(li).append('<a href="#" class="depth-menu ellipsis"><strong>'+data.uitmAttrTypeList[i].uitmAttrTypeNm+'</strong> <span class="selected-opt"></span><span class="guide">'+guideHtml+'</span></a>');
+		  //                   	var ulStr = '';
+		  //                   	ulStr += '<ul class="depth-opt-list">';
+		  //                   	var prevUitmSeq = "";
+		  //                   	for(var j in data.uitmAttrTypeList[i].uitmAttrMstList) {
+		  //                   		if(prevUitmSeq != data.uitmAttrTypeList[i].uitmAttrMstList[j].uitmSeq){
+		  //                   			prevUitmSeq = data.uitmAttrTypeList[i].uitmAttrMstList[j].uitmSeq;
+		  //                   			ulStr += '<li><a href="#" value="'+data.uitmAttrTypeList[i].uitmAttrMstList[j].uitmSeq+'" class="selectUitmAttrType"><span class="opt-name">'+data.uitmAttrTypeList[i].uitmAttrMstList[j].uitmAttrNm+'</span></a></li>';
+		  //                   		}
+		  //                       }
+		  //                   	ulStr += '</ul>';
+
+		  //                   	$(li).append(ulStr);
+
+		  //                   	$(divSelect).append(li);
+		  //                   }
+
+		  //               	$(divOptSelect).append(divSelect);
+		  //               	$(divOpt).append(divOptSelect);
+		  //               	$(uitemPopContent).append(divOpt);
+		  //               }
+
+		  //           	// 기본형
+		  //           	if(data.bsicUitmList != null && data.bsicUitmList.length > 0) {
+		  //               	// 기본옵션
+		  //               	var divOpt = $('<div class="pop-option-box uitmDiv"></div>');
+		  //               	$(divOpt).append('<div class="pop-option-title"><p><span class="tit">상품 : </span>'+slitmNm+'</p></div>');
+		  //               	var divOptSelect = $('<div class="opt-select-box"></div>');
+		  //               	$(divOptSelect).append('<div class="opt-select-value"><a id="aTagId" href="#">'+uitmTotNm+'<i class="icon-arrow opt-toggle"></i></a></div>');
+		  //               	var divSelect = $('<ul class="opt-select-layer"></ul>');
+		  //               	var li = $('<li class="current"></li>');
+		  //               	$(li).append('<a href="#" class="depth-menu ellipsis"><strong>색상/속성</strong> <span class="selected-opt">선택하세요</span></a>');
+	    //                 	var ulStr = '';
+	    //                 	ulStr += '<ul class="depth-opt-list">';
+		  //               	for(var i in data.bsicUitmList) {
+		  //               		if(data.bsicUitmList[i].stockCount > 0){
+			//                 		ulStr += '<li><a href="#" value="' + data.bsicUitmList[i].uitmCd + '" class="selectUitmAttrType2"><span class="opt-name">' + data.bsicUitmList[i].uitmTotNm + '</span></a></li>';
+		  //               		}
+		  //                   }
+	    //                 	ulStr += '</ul>';
+	    //                 	$(li).append(ulStr);
+	    //                 	$(divSelect).append(li);
+	    //                 	$(divOptSelect).append(divSelect);
+	    //                 	$(divOpt).append(divOptSelect);
+		  //               	$(uitemPopContent).append(divOpt);
+		  //               }
+
+		  //           	// 기본구성
+		  //               if(data.baseSlitmCmpsMstList != null && data.baseSlitmCmpsMstList.length > 0) {
+		  //                   for(var i in data.baseSlitmCmpsMstList) {
+		  //                   	var cmpsSeq = 0;
+		  //                   	var cmpsItemSeq = 0;
+		  //                   	var cmpsOrdQty = 0;
+		  //                   	if(data.basktBaseCmpsDtlList != null && data.basktBaseCmpsDtlList.length > 0) {
+		  //                   		for(var k in data.basktBaseCmpsDtlList) {
+		  //                   			if(data.basktBaseCmpsDtlList[k].cmpsSeq ==  data.baseSlitmCmpsMstList[i].cmpsSeq){
+		  //                   				cmpsSeq = data.basktBaseCmpsDtlList[k].cmpsSeq;
+		  //                   				cmpsItemSeq = data.basktBaseCmpsDtlList[k].cmpsItemSeq;
+		  //                   				cmpsOrdQty = data.basktBaseCmpsDtlList[k].cmpsOrdQty;
+		  //                   			}
+		  //                   		}
+	    //                     	}
+
+		  //                   	var divOpt = $('<div class="pop-option-box baseCmps"></div>');
+			//                 	$(divOpt).append('<div class="pop-option-title"><p><span class="tit">기본구성 : </span>'+data.baseSlitmCmpsMstList[i].cmpsNm+'</p></div>');
+			//                 	var divBaseCmps = $('<div class="inner"></div>');
+
+		  //                       var select = $("<select class='baseCmpsSelect'></select>");
+		  //                       $(select).append('<option value="">선택하세요</option>');
+
+		  //                       for(var j in data.baseSlitmCmpsMstList[i].slitmCmpsDtlList) {
+		  //                       	var cmpsSelect = '';
+		  //                       	if(cmpsSeq > 0 && cmpsItemSeq > 0 && cmpsSeq == data.baseSlitmCmpsMstList[i].cmpsSeq && cmpsItemSeq == data.baseSlitmCmpsMstList[i].slitmCmpsDtlList[j].cmpsItemSeq){
+		  //                       		cmpsSelect = ' selected';
+		  //                       	}
+
+		  //                           $(select).append('<option value="' + data.baseSlitmCmpsMstList[i].slitmCmpsDtlList[j].cmpsSeq + '|' + data.baseSlitmCmpsMstList[i].slitmCmpsDtlList[j].cmpsItemSeq + '"'+ cmpsSelect+'>' + data.baseSlitmCmpsMstList[i].slitmCmpsDtlList[j].cmpsItemDispNm + '</option>');
+		  //                       }
+		  //                       $(divBaseCmps).append(select);
+		  //                       var ulStr = '';
+		  //                       ulStr += '<div class="cnt-ctrl">';
+		  //                       ulStr += '<a href="#" onclick="javascript:return false;" class="cnt-up">－</a>';
+		  //                       ulStr += '<input type="text" name="cmpsOty" title="inputarea" value="'+ordQty+'" readonly="readonly">';
+		  //                       ulStr += '<a href="#" onclick="javascript:return false;" class="cnt-down">＋</a>';
+		  //                       ulStr += '</div>';
+		  //                       $(divBaseCmps).append(ulStr);
+		  //                       $(divOpt).append(divBaseCmps);
+		  //                       $(uitemPopContent).append(divOpt);
+		  //                   }
+		  //               }
+
+		  //               // 추가구성
+		  //               if(data.addSlitmCmpsMstList != null && data.addSlitmCmpsMstList.length > 0) {
+		  //                   for(var i in data.addSlitmCmpsMstList) {
+		  //                   	var cmpsSeq = 0;
+		  //                   	var cmpsItemSeq = 0;
+		  //                   	var cmpsOrdQty = 0;
+
+		  //                   	if(data.basktAddCmpsDtlList != null && data.basktAddCmpsDtlList.length > 0) {
+		  //                   		for(var k in data.basktAddCmpsDtlList) {
+		  //                   			if(data.basktAddCmpsDtlList[k].cmpsSeq ==  data.addSlitmCmpsMstList[i].cmpsSeq){
+		  //                   				cmpsSeq = data.basktAddCmpsDtlList[k].cmpsSeq;
+		  //                   				cmpsItemSeq = data.basktAddCmpsDtlList[k].cmpsItemSeq;
+		  //                   				cmpsOrdQty = data.basktAddCmpsDtlList[k].cmpsOrdQty;
+		  //                   			}
+		  //                   		}
+	    //                     	}
+
+		  //                   	var divOpt = $('<div class="pop-option-box addCmps"></div>');
+			//                 	$(divOpt).append('<div class="pop-option-title"><p><span class="tit">추가구성 : </span>'+data.addSlitmCmpsMstList[i].cmpsNm+'</p></div>');
+			//                 	var divAddCmps = $('<div class="inner"></div>');
+
+			//                 	var select = $("<select class='addCmpsSelect'></select>");
+		  //                       $(select).append('<option value="">선택하세요</option>');
+
+		  //                       for(var j in data.addSlitmCmpsMstList[i].slitmCmpsDtlList) {
+		  //                       	var cmpsSelect = '';
+		  //                       	if(cmpsSeq > 0 && cmpsItemSeq > 0 && cmpsSeq == data.addSlitmCmpsMstList[i].cmpsSeq && cmpsItemSeq == data.addSlitmCmpsMstList[i].slitmCmpsDtlList[j].cmpsItemSeq){
+		  //                       		cmpsSelect = ' selected';
+		  //                       	}
+		  //                           $(select).append('<option value="' + data.addSlitmCmpsMstList[i].cmpsSeq + '|' + data.addSlitmCmpsMstList[i].slitmCmpsDtlList[j].cmpsItemSeq + '"'+cmpsSelect+'>' + data.addSlitmCmpsMstList[i].slitmCmpsDtlList[j].cmpsItemDispNm + '</option>');
+		  //                       }
+
+		  //                       $(divAddCmps).append(select);
+		  //                       var checkModify = "";
+		  //                       if(data.addSlitmCmpsMstList[i].plAddBuyNdmtYn=="Y"){
+		  //                       	checkModify=" readonly=readonly";
+		  //                       }
+		  //                       var ulStr = '';
+		  //                       ulStr += '<div class="cnt-ctrl">';
+		  //                   	ulStr += '<a href="#" dluMaxBuyQty ="'+dluMaxBuyQty+'" plAddBuyNdmtYn ="'+data.addSlitmCmpsMstList[i].plAddBuyNdmtYn+'" onclick="javascript:minusCmpsOrdQty(this); return false;" class="cnt-up">－</a>';
+		  //                       ulStr += '<input type="text" dluMaxBuyQty ="'+dluMaxBuyQty+'"plAddBuyNdmtYn ="N"  class="onlyNumberInput" name="cmpsOty" title="inputarea" value="'+cmpsOrdQty+'" style="ime-mode:disabled;" onclick="this.focus();" onblur="checkCmpsOrdQty(this); return false;" maxlength="2"'+checkModify+'>';
+		  //                       ulStr += '<a href="#" dluMaxBuyQty ="'+dluMaxBuyQty+'"plAddBuyNdmtYn ="'+data.addSlitmCmpsMstList[i].plAddBuyNdmtYn+'"  onclick="javascript:plusCmpsOrdQty(this); return false;" class="cnt-down">＋</a>';
+		  //                       ulStr += '</div>';
+		  //                       $(divAddCmps).append(ulStr);
+		  //                       $(divOpt).append(divAddCmps);
+		  //                       $(uitemPopContent).append(divOpt);
+		  //                   }
+		  //               }
+
+		  //               //주문추가요청내역 (각인)
+		  //               if(data.basktAddReqnMpngDtlList != null && data.basktAddReqnMpngDtlList.length > 0) {
+
+		  //               	var divOpt = $('<div class="selected-uitm-write"></div>');
+		  //               	var ul = $('<ul class="selected-uitm-info-list"></ul>');
+		  //               	$(divOpt).append(ul);
+
+		  //               	for(var i in data.basktAddReqnMpngDtlList) {
+		  //               		var ulStr = '';
+		  //               		var addReqnInsrCntn = data.basktAddReqnMpngDtlList[i].addReqnInsrCntn;
+		  //               		if(addReqnInsrCntn == null){
+		  //               			addReqnInsrCntn = "";
+		  //               		}
+		  //               		var addReqnEx = data.basktAddReqnMpngDtlList[i].addReqnEx;
+		  //               		if(addReqnEx == null || addReqnEx ==""){
+		  //               			addReqnEx = "입력 해 주세요";
+		  //               		}
+		  //                       ulStr += '<li>';
+		  //                   	ulStr += '	<dl class="selected-uitm-info-unit">';
+		  //                       ulStr += '		<dt>'+data.basktAddReqnMpngDtlList[i].addReqnTitl+'</dt>';
+		  //                       ulStr += '		<dd>';
+		  //                       ulStr += '			<input type="text" class="selected-uitm-info-input" placeholder="'+addReqnEx+'" name="addReqnInsrCntn" value="'+addReqnInsrCntn+'" data-checklength="100" maxlength="100">';
+		  //                       ulStr += '			<input type="hidden" name="addReqnSeq" value="'+data.basktAddReqnMpngDtlList[i].addReqnSeq+'"/>';
+		  //                       ulStr += '		</dd>';
+		  //                       ulStr += '		</dd>';
+		  //                       ulStr += '	</dl>';
+		  //                       ulStr += '</li>';
+		  //                       $(ul).append(ulStr);
+		  //                       $(divOpt).append(ul);
+		  //               	}
+		  //               	$(uitemPopContent).append(divOpt);
+
+		  //               }
+
+		  //               popover_open(obj , '#popover-layer-change');
+		  //           }
+		  //       }
+		  //       , error: function(data) {
+			// 		alert("시스템 오류입니다. 다시 시도해주세요.");
+		  //       }
+		  //   });
+		
+		
+			}
+
+		
+		function checkCmpsOrdQty(obj) {
+			var limitCnt = isNaN(Number($(obj).attr("dluMaxBuyQty")))?0:Number($(obj).attr("dluMaxBuyQty"));
+			var qtyChgPossYn = $(obj).attr("plAddBuyNdmtYn");
+
+			// 상품 수랭 변경 불가
+			if(qtyChgPossYn == "Y"){
+				return;
+			}
+
+		    var input = $(obj);
+
+		    if($(input).val() == ""){
+		    	$(input).val("0");
+		    }
+
+		    var ordQty = Number($(input).val());
+
+		    if(isEmpty(limitCnt) || limitCnt > 99) {
+		        limitCnt = 99;
+		    }
+
+		    if(ordQty > limitCnt) {
+		    	alert("여러 고객님들에게 구매 기회를 드리기 위해 동일 상품은 일일 "+limitCnt+"개로 구매가 제한됩니다. 고객 여러분들의 양해 부탁드립니다.");
+		        input.val(limitCnt);
+		        return;
+		    }
+		}
+
+		
+		function plusCmpsOrdQty(obj) {
+			var limitCnt = isNaN(Number($(obj).attr("dluMaxBuyQty")))?0:Number($(obj).attr("dluMaxBuyQty"));
+			var qtyChgPossYn = $(obj).attr("plAddBuyNdmtYn");
+
+			// 상품 수랭 변경 불가
+			if(qtyChgPossYn == "Y"){
+				return;
+			}
+
+		    var input = $(obj).siblings("input[name='cmpsOty']");
+		    var ordQty = Number($(input).val());
+
+		    if(isEmpty(limitCnt) || limitCnt > 99) {
+		        limitCnt = 99;
+		    }
+
+		    if(ordQty >= limitCnt) {
+		    	alert("여러 고객님들에게 구매 기회를 드리기 위해 동일 상품은 일일 "+limitCnt+"개로 구매가 제한됩니다. 고객 여러분들의 양해 부탁드립니다.");
+		        return;
+		    }
+
+		    $(input).val(ordQty + 1);
+		}
+
+		
+		function minusCmpsOrdQty(obj) {
+			var limitCnt = isNaN(Number($(obj).attr("dluMaxBuyQty")))?0:Number($(obj).attr("dluMaxBuyQty"));
+			var qtyChgPossYn = $(obj).attr("plAddBuyNdmtYn");
+
+			// 상품 수량 변경 불가
+			if(qtyChgPossYn == "Y"){
+				return;
+			}
+		    var input = $(obj).siblings("input[name='cmpsOty']");
+		    var ordQty = Number($(input).val());
+
+		    if(ordQty <= 0) {
+		        return;
+		    }
+
+		    $(input).val(ordQty - 1);
+		}
+
+		
+		function changeBasktItemUitmInf() {
+
+			// 선택정보 초기화
+			$("#productModifyForm input[name='uitmCdInf'], #productModifyForm input[name='baseCmpsInf'], #productModifyForm input[name='addCmpsInf']").remove();
+
+			var uitemPopContent = $("#popover-layer-change div.pop-content");
+		    var slitmCd = $("#productModifyForm input[name='slitmCd']").val();
+		    var oldUitmCd = $("#productModifyForm input[name='oldUitmCd']").val();
+		    var basktTypeGbcd = $("#productModifyForm input[name='basktTypeGbcd']").val();
+			var uitmCd = $("#productModifyForm input[name=newUitmCd]").val();
+
+
+			// 1. 유효성 체크
+			if(isEmpty(uitmCd)){
+				alert("상품속성을 선택해주세요.");
+				return;
+			}
+			var flag = true;
+			// 기본구성품
+			$("#popover-layer-change div.pop-option-box.baseCmps").each(function() {
+				$(this).find("select.baseCmpsSelect").each(function() {
+                	var ordQty = $(this).parents(".inner").find("input[name=cmpsOty]").val();    // 수량
+                	if(!isEmpty(ordQty) && Number(ordQty) > 0) {
+						if(isEmpty($(this).val())){
+							alert("기본구성을 선택하세요.");
+							$(this).parents(".inner").find(".selectric-wrapper").addClass("selectric-open");
+							flag = false;
+							return;
+						}
+                    }
+                });
+			});
+
+			// 추가구성품
+			$("#popover-layer-change div.pop-option-box.addCmps").each(function() {
+				$(this).find("select.addCmpsSelect").each(function() {
+                	var ordQty = $(this).parents(".inner").find("input[name=cmpsOty]").val();    // 수량
+                	if(!isEmpty(ordQty) && Number(ordQty) > 0) {
+						if(isEmpty($(this).val())){
+							alert("추가구성을 선택하세요.");
+							$(this).parents(".inner").find(".selectric-wrapper").addClass("selectric-open");
+							flag = false;
+							return;
+						}
+                    }
+                });
+            });
+
+			if(!flag){
+				return;
+			}
+
+			// 옵션 변경 정보 셋팅
+            var index = -1;
+            $("#popover-layer-change div.pop-option-box").each(function() {
+                if($(this).hasClass("uitmDiv")) {   // 속성 셋팅
+                    index++;
+                    var ordQty = $("#productModifyForm input[name=ordQty]").val();    // 속성 수량
+                    if($(this).find(".depth-opt-list a.selectUitmAttrType2").length > 0) {
+                    	// 기본형
+                        var input = $("<input type='hidden' name='uitmCdInf'/>");
+                        $(input).val(index + "^" + uitmCd + "|" + ordQty);
+                        $("#productModifyForm").append(input);
+                    }
+                    else {
+                    	// 조합형
+                    	var uitmSeqArr = new Array();
+                        $(this).find(".opt-select-layer input[name=uitmSeq]").each(function() {
+                        	if(!isEmpty($(this).val())){
+                                uitmSeqArr.push($(this).val());
+                        	}
+                        });
+
+                        if(uitmSeqArr.length > 0) {
+                        	var input = $("<input type='hidden' name='uitmInf'/>");
+                            $(input).val(index + "^" + uitmSeqArr.join("|") + "|" + ordQty);
+                            $("#productModifyForm").append(input);
+                        }
+                        else {
+                        	 var input = $("<input type='hidden' name='uitmCdInf'/>");
+                        	 $(input).val(index + "^" + uitmCd + "|" + ordQty);
+                             $("#productModifyForm").append(input);
+                        }
+                    }
+                } else if($(this).hasClass("baseCmps")) {   // 기본구성품 셋팅
+                	// 기본구성품 셋팅
+                    $(this).find("select.baseCmpsSelect").each(function() {
+                    	var ordQty = $(this).parents(".inner").find("input[name=cmpsOty]").val();    // 수량
+                    	if(!isEmpty(ordQty) && Number(ordQty) > 0) {
+	                        var input = $("<input type='hidden' name='baseCmpsInf'/>");
+	                        $(input).val(index + "^" + $(this).val() + "|" + ordQty);
+	                        $("#productModifyForm").append(input);
+                        }
+                    });
+                } else {
+                    // 추가구성품 셋팅
+                   	$(this).find("select.addCmpsSelect").each(function() {
+                    	var ordQty = $(this).parents(".inner").find("input[name=cmpsOty]").val();    // 수량
+                    	if(!isEmpty(ordQty) && Number(ordQty) > 0) {
+	                        var input = $("<input type='hidden' name='addCmpsInf'/>");
+	                        $(input).val(index + "^" + $(this).val() + "|" + ordQty);
+	                        $("#productModifyForm").append(input);
+                        }
+                    });
+                }
+            });
+
+            //주문추가요청내역 (각인)
+            $("#popover-layer-change").find("input.selected-uitm-info-input").each(function() {
+            	var input = $("<input type='hidden' name='addReqnInsrCntnArr'/>");
+                $(input).val($(this).val());
+                $("#productModifyForm").append(input);
+
+                input = $("<input type='hidden' name='addReqnSeqArr'/>");
+                $(input).val($(this).parent().find("input[name=addReqnSeq]").val());
+                $("#productModifyForm").append(input);
+            });
+            loadingBar.start();
+		    $("#productModifyForm").ajaxSubmit({
+		        url: "/front/odb/checkExstUitmInfForChangeUitmCd.thd"
+		        , dataType: "json"
+		        , success: function(data) {
+	                // 2.동일옵션 확인
+	                if(!isEmpty(data.exstUitmNm)) {
+	                	loadingBar.stop();
+	                	alert("선택하신 '" + data.exstUitmNm + "'는 이미 주문하실 상품 목록에 있는 상품입니다.");
+	                    return;
+	                }
+
+		            // 3. 변경
+		            changeBasktInf();
+		        }
+		        , error: function(xhr, status, error) {
+		        	loadingBar.stop();
+					alert("시스템 오류입니다. 다시 시도해주세요.");
+		        }
+		    });
+		}
+
+		function changeBasktInf() {
+		    $("#productModifyForm").ajaxSubmit({
+		        url: "/front/odb/changeBasktItemUitmInf.thd"
+		        , dataType: "json"
+		        , success: function(data) {
+		            if(!isEmpty(data.errorMessages)) {
+		            	loadingBar.stop();
+		                alert(data.errorMessages);
+		            } else {
+		            	var basktInfArr = new Array();
+		    			var typeGb = $("div.cart-list-wrap.active").attr("id").substring(9);
+		            	var checkAllYn = false;
+		            	$(".cart-list-wrap input[name='checkbox_all']").each(function(){
+		            		if($(this).prop("checked")){
+		            			if($(this).val() == "checkbox"+typeGb){
+		            				checkAllYn = true;
+		            			}
+		            		}
+		            	});
+		    			if($("div.cart-list-wrap.active h4.blind")){
+		    				var cart_list = $("div.cart-list-wrap.active h4.blind").parent();
+		    				$(cart_list).find("div.cart-list-cont").each(function() {
+		    					if($(this).find("input[name='checkbox"+typeGb+"']").prop("checked")){
+		    						basktInfArr.push($(this).find("input[name='checkbox"+typeGb+"']").index("input[name='checkbox"+typeGb+"']"));
+		    					}
+		    				});
+		    			}
+		                $.post("/front/odb/basktList.thd", {isAjax:"true"}, function(data) {
+		                	if(data.indexOf("loginError") > -1){
+		                		loadingBar.stop();
+		            			alert("로그인이 필요합니다. 로그인 후 다시 시도해 주세요.");
+		            			var rtUrl = "/front/cob/loginForm.thd?redirectUrl=/front/odb/basktList.thd";
+		            			try {
+		            				window.location(rtUrl);
+		            			}catch(e) {}
+		            		}
+		            		else {
+			                    $("#divCartInfo").html(data);
+			                    initSelectbox();
+			                    initCartBody();
+
+				            	$(".cart-list-wrap input[name='checkbox_all']").each(function(){
+				            		if("checkbox"+typeGb == $(this).val()){
+				            			if(checkAllYn){
+				            				$(this).iCheck("check");
+				            			}
+				            			else {
+				            				$(this).iCheck("uncheck");
+				            			}
+			                    	}
+			                    	else {
+			                    		$(this).iCheck("check");
+			                    	}
+				            	});
+
+			                    $("div.cart-cont-wrap").find("li").each(function(){
+			                    	if($(this).attr("tabid") == typeGb){
+					                    changeTab(typeGb);
+				                    }
+			                    });
+
+			                    // 체크박스처리
+			                    if($("div.cart-list-wrap.active h4.blind")){
+				    				var cart_list = $("div.cart-list-wrap.active h4.blind").parent();
+				    				$(cart_list).find("div.cart-list-cont").each(function() {
+
+			    						var idx = $(this).find("input[name='checkbox"+typeGb+"']").index("input[name='checkbox"+typeGb+"']");
+			    						var bCheck = false;
+				    					for(var i = 0; i < basktInfArr.length; i++) {
+					                    	if(basktInfArr[i] == idx){
+					                    		bCheck = true;
+					                    		break;
+					                    	}
+					                    }
+				    					if(!bCheck){
+				    						$(this).find("input[name='checkbox"+typeGb+"']").iCheck("uncheck");
+				    					}
+				    				});
+				    			}
+
+			        			calcSellPrc();
+
+				            	// 레이어 팝업 닫기
+								$backtarget = $("#popover-layer-change").data('backtarget');
+								if($backtarget) {
+									$($backtarget).focus();
+								}
+
+								$.fancybox.close();
+
+								loadingBar.stop();
+		            		}
+		            	});
+		                // window.location.reload();
+		            }
+		        }
+		        , error: function(xhr, status, error) {
+		        	loadingBar.stop();
+					alert("시스템 오류입니다. 다시 시도해주세요.");
+		        }
+		    });
+		}
+
+		
+		function changeRcvnPlce(obj, slitmCd, uitmCd, basktTypeGbcd){
+			var rcvnPlceInfo = $(obj).parent().parent().parent();
+			var oldRcvnPlce = $(rcvnPlceInfo).find("input[name='oldRcvnPlce']").val();
+
+			if($(rcvnPlceInfo).find("select[name='selectRcvnPlce'] option:selected").attr("class") != undefined
+				&& $(rcvnPlceInfo).find("select[name='selectRcvnPlce'] option:selected").attr("class") != "undefined"
+				&& $(rcvnPlceInfo).find("select[name='selectRcvnPlce'] option:selected").attr("class") != ""){
+				 $(rcvnPlceInfo).find("select[name='selectRcvnPlce']").val(oldRcvnPlce);
+				 var text = "";
+				 $(rcvnPlceInfo).find("select[name='selectRcvnPlce'] option").each(function() {
+					 if($(this).attr("value") == oldRcvnPlce){
+						 text = $(this).html();
+					 }
+				 });
+				 $(rcvnPlceInfo).find("div.selectric p.label").html(text);
+				return;
+			}
+
+			var rcvnPlceGbcd = $(obj).val();
+			loadingBar.start();
+			$.ajax({
+		        type: "post"
+		        , url: "/front/odb/updateBasktRcvnPlce.thd"
+		        , dataType: "json"
+		        , data : {slitmCd:slitmCd, uitmCd:uitmCd, basktTypeGbcd:basktTypeGbcd, rcvnPlceGbcd:rcvnPlceGbcd}
+		        , success : function(data) {
+		        	loadingBar.stop();
+		            if(!isEmpty(data.errorMessages)) {
+		                alert(data.errorMessages);
+		                $(obj).val(oldRcvnPlce);
+		            }
+		            else {
+		            	$(rcvnPlceInfo).find("input[name='oldRcvnPlce']").val(rcvnPlceGbcd);
+		            }
+		        }
+		        , error: function(data) {
+		        	loadingBar.stop();
+					alert("시스템 오류입니다. 다시 시도해주세요.");
+		        }
+		    });
+		}
+
+
+		function updateBasktBbprcPrc(obj, slitmCd, uitmCd, basktTypeGbcd, bbprcPrc){
+			loadingBar.start();
+			$.ajax({
+		        type: "post"
+		        , url: "/front/odb/updateBasktBbprcPrc.thd"
+			    , dataType: "json"
+				, data : {slitmCd:slitmCd, uitmCd:uitmCd, basktTypeGbcd:basktTypeGbcd, bbprcPrc:bbprcPrc}
+		        , success : function(data) {
+		        	loadingBar.stop();
+		            if(!isEmpty(data.errorMessages)) {
+		                alert(data.errorMessages);
+		            } else {
+		            	$(obj).parents("li").removeClass("has-change-infobox");
+			    		$(obj).parents(".option-change").remove();
+		            }
+		        }
+		        , error: function(data) {
+		        	loadingBar.stop();
+					alert("시스템 오류입니다. 다시 시도해주세요.");
+		        }
+			});
+		}
+
+		function ecommerceSetDeleteItem(slitmInfList){
+			
+			var Products = new Array();
+			var actionList = new Object();
+			var dimension = new Object();
+			
+			dimension.category = 'Ecommerce';
+			dimension.action = 'Remove from Cart';
+			
+			for(var i=0; i<slitmInfList.length; i++){
+				var Product = new Object();
+				var slitmInf = slitmInfList[i].split('|');
+				Product.id = slitmInf[0];
+				Product.name = slitmInf[1];
+				Product.brand = slitmInf[2];
+				Product.category = slitmInf[3];
+				Product.dimension37 = slitmInf[6];
+				Product.dimension38 = slitmInf[7];
+				Product.dimension39 = slitmInf[8];
+				Product.dimension40 = slitmInf[9];
+				
+				Products.push(Product);
+			}
+			
+			actionList.action = 'remove';
+			var E_step = 'remove';
+			
+			actionList.currency = 'KRW';
+			EcommerceSet(E_step, Products, actionList, dimension);
+		}
+		
+		function ecommerceSetBuyDirect(slitmInfList){
+			
+			var Products = new Array();
+			var actionList = new Object();
+			var dimension = new Object();
+			
+			dimension.category = 'Ecommerce';
+			dimension.action = 'Checkout';
+			dimension.label = '장바구니';
+			
+			for(var i=0; i<slitmInfList.length; i++){
+				var Product = new Object();
+				var slitmInf = slitmInfList[i].split('|');
+				Product.id = slitmInf[0];
+				Product.name = slitmInf[1];
+				Product.brand = slitmInf[2];
+				Product.category = slitmInf[3];
+				Product.variant = slitmInf[4];
+				Product.quantity = slitmInf[5];
+				Product.dimension37 = slitmInf[6];
+				Product.dimension38 = slitmInf[7];
+				Product.dimension39 = slitmInf[8];
+				Product.dimension40 = slitmInf[9];
+				
+				Products.push(Product);
+			}
+			
+			actionList.action = 'checkout';
+			var E_step = 'checkout';
+			
+			actionList.currency = 'KRW';
+			actionList.step = 1;
+			
+			EcommerceSet(E_step, Products, actionList, dimension);
+		}
+	
+	
+	  function checkOrderItemType(obj){
+	      
+	      if($("div.cart-list-wrap.active").attr("id") != null){
+	          var typeGb = $("div.cart-list-wrap.active").attr("id").substring(9);
+	          
+	          if(!isEmpty(typeGb)){
+	              var cart_item_list = $('input[name="checkbox'+typeGb+'"]:checked');
+	              if(cart_item_list.length == 1){
+	                  orderChkItem(obj);
+	              }else{
+	            	  //2022.12.12 DEP01WORK-24256 TCP 이원화 - 명품 상품 선 파악후 ALERT 확인 (명품은 o4o, 폐쇄몰, 방문수령,일반등의 상품으로 운영 될 수 있다.)
+                      var luitCheckResult = checkLuitYn(typeGb);
+	            	
+	            	  if(luitCheckResult){
+	            		  var typeInfList = [];
+	            		  cart_item_list = $('input[name="checkbox'+typeGb+'"]:checked');
+                          
+                          var typeInfMap = new Map(); // type, itmNmList
+                          
+	                      $(cart_item_list).each(function(index, subObj) {
+	                          // 체크된 상품들중 폐쇄몰, o4o상품 여부 확인.
+	                          var itemGbcd = $(subObj).attr('data-itemgbcd');
+	                          var itemTypeGbcd = $(subObj).attr('data-itemtypegbcd');
+	                          var nftCombItemYn = $(subObj).attr('data-nftCombItemYn');
+	                          var qrStlmItemYn = $(subObj).attr('data-qrstlmitemyn');
+	                          var vstRcvnItemYn = $(subObj).attr('data-vstRcvnItemYn');
+	                          var itemTypeInf = '';
+	                          var slitmNm = $(subObj).parent().parent().parent().find("input[name='slitmNmInf']").val();
+	                          
+	                          if(nftCombItemYn == 'Y'){
+	                        	  itemTypeInf = 'nft';
+	                          }else if(qrStlmItemYn == 'Y'){
+	                              itemTypeInf = 'o4o';
+	                          }else if(itemGbcd == '01' && itemTypeGbcd == '00'){
+	                              itemTypeInf = 'clsr';
+	                          }else if(vstRcvnItemYn == 'Y'){
+	                              itemTypeInf = 'vst';
+	                          } else{
+	                              itemTypeInf = 'etc';
+	                          }
+	                          
+	                          if(itemTypeInf != 'etc'){
+	                        	  var itmNmList = typeInfMap.get(itemTypeInf);
+	                        	  if(isEmpty(itmNmList)){
+	                        		  itmNmList = [];
+	                        		  typeInfMap.set(itemTypeInf, itmNmList);
+	                        	  }
+	                        	  itmNmList.push(slitmNm);
+	                          }
+	                          typeInfList.push(itemTypeInf);
+	                      });
+	                      
+	                      if(typeInfList.indexOf('nft') == -1 && typeInfList.indexOf('o4o') == -1 && typeInfList.indexOf('clsr') == -1 && typeInfList.indexOf('vst') == -1){
+	                          orderChkItem(obj);
+	                          return;
+	                      }else{
+	                          var confirmStr = '';
+	                          var type = '';
+	                          if(typeInfList.indexOf('nft') != -1){
+	                        	  type = 'nft';
+	                              if(typeInfList.indexOf('o4o') != -1 || typeInfList.indexOf('clsr') != -1 || typeInfList.indexOf('vst') != -1 || typeInfList.indexOf('etc') != -1){
+	                            	  confirmStr = 'NFT상품은 일반상품과 동시주문이 불가합니다.\r\nNFT상품 주문페이지로 이동합니다\r\n';
+	                              }
+	                          }else if(typeInfList.indexOf('o4o') != -1){
+	                              type = 'o4o';
+	                              if(typeInfList.indexOf('clsr') != -1 || typeInfList.indexOf('vst') != -1 || typeInfList.indexOf('etc') != -1){
+	                            	  confirmStr = 'O4O쇼룸 상품은 일반상품과 동시주문이 불가합니다.\r\nO4O쇼룸 상품 주문페이지로 이동합니다\r\n';
+	                              }
+	                          }else if(typeInfList.indexOf('clsr') != -1){
+	                              type = 'clsr';
+	                              if(typeInfList.indexOf('vst') != -1 || typeInfList.indexOf('etc') != -1){
+	                            	  confirmStr = '폐쇄몰 상품은 일반상품과 동시주문이 불가합니다.\r\n폐쇄몰 상품 주문페이지로 이동합니다\r\n';
+	                              }
+	                          } else if(typeInfList.indexOf('vst') != -1){
+	                              type = 'vst';
+	                              if(typeInfList.indexOf('etc') != -1){
+	                                  confirmStr = '방문수령 상품은 일반상품과 동시주문이 불가합니다.\r\n방문수령 상품 주문페이지로 이동합니다.\r\n';
+	                              }
+	                          }
+	                          
+	                          if(!isEmpty(confirmStr)){
+	                        	  var itmNmList = typeInfMap.get(type);
+	                              if(!isEmpty(itmNmList)){
+	                                  $.each(itmNmList , function(i, itmNm){
+	                                      confirmStr += '\r\n' +itmNm;
+	                                  });
+	                              }
+	                          }
+	                          
+	                          if(!isEmpty(confirmStr) && !confirm(confirmStr)) return false;
+	                          
+	                          // type에 해당하는 상품만 체크 처리 
+	                          var cart_list = $("div.cart-list-wrap.active h4.blind").parent();
+	                          $(cart_list).find("input[name='checkbox"+typeGb+"']:checked").each(function(index, subObj) {
+	                              
+	                          	  if(type == 'nft'){
+	                          		  if($(subObj).attr('data-nftCombItemYn') != 'Y'){
+	                                      $(subObj).iCheck('uncheck');
+	                                  }
+	                          	  }else if(type == 'vst') {
+	                                  if($(subObj).attr('data-vstRcvnItemYn') != 'Y'){
+	                                      $(subObj).iCheck('uncheck');
+	                                  }
+	                              }else if(type == 'o4o'){
+	                                  if($(subObj).attr('data-qrstlmitemyn') != 'Y'){
+	                                      $(subObj).iCheck('uncheck');
+	                                  }
+	                              }else{
+	                                  if($(subObj).attr('data-itemgbcd') != '01'){ // 폐쇄몰
+	                                      $(subObj).iCheck('uncheck');
+	                                  }
+	                              }
+	                          });
+	                          orderChkItem(obj);
+	                      }
+	            	  } // end of checkLuitYn()
+	                  
+	              }
+	          } //end of isEmpty(typeGb)
+	      }
+	  }
+	  
+	  
+	 function checkLuitYn(typeGb){
+	     var result = false;
+	     
+	     var cart_item_list = $('input[name="checkbox'+typeGb+'"]:checked');
+	     
+	     var luitNmList = [];
+	     var luitYnList = [];
+	     
+	     $.each(cart_item_list , function(i, obj){
+	         var luitYn = $(obj).attr('data-luityn');
+	         
+	         if(luitYn == 'Y'){
+	             luitNmList.push($(obj).parent().parent().parent().find("input[name='slitmNmInf']").val());
+	         }
+	         luitYnList.push(luitYn);
+	     });
+	     
+	     if(luitYnList.indexOf('N') != -1 && luitYnList.indexOf('Y') != -1){
+	         // 명품 이외 상품 존재, 사용자에게 명품상품만 구매 가능하다는 ALERT 노출 후 구매로직 수행.
+	         var confirmStr = '아래 명품브랜드 상품은 일반상품과 동시주문이 불가합니다.\r\n명품브랜드 상품 주문페이지로 이동합니다.\r\n';
+	         
+	         $.each(luitNmList, function(i, slitmNm){
+	             confirmStr += '\r\n' + slitmNm 
+	         });
+	         
+	         if(!isEmpty(confirmStr) && !confirm(confirmStr)){
+	             return result;
+	         }
+	         
+	         var cart_list = $("div.cart-list-wrap.active h4.blind").parent();
+	         $(cart_list).find("input[name='checkbox"+typeGb+"']:checked").each(function(index, obj) {
+	             
+	             var luitYn = $(obj).attr('data-luityn');
+	             
+	             if(luitYn != 'Y'){
+	                 $(obj).iCheck('uncheck');
+	             } //명품 아닌 상품 체크 해제
+	             result = true;
+	         });     
+	     }else{
+	    	 result = true;
+	     }
+	     return result;
+	 }
+	</script>
+<meta http-equiv="origin-trial" content="A9+ldib+sKhGj2FcIjq5GnvBZFuIiXID0+NkE6k7cEk71MhaHFGqo3wUlUFmZ6d9w0KPwx9UxGiCTYWtRnTGDQkAAACAeyJvcmlnaW4iOiJodHRwczovL2NyaXRlby5uZXQ6NDQzIiwiZmVhdHVyZSI6IlByaXZhY3lTYW5kYm94QWRzQVBJcyIsImV4cGlyeSI6MTY4MDY1Mjc5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=">
+<meta http-equiv="origin-trial" content="AzLNuh8GFzfIOcwvhEg7Ymr7YCzlYVTKeD7i2iETABbRf+sL2FAx+r+HlTtxSi1zgUFxBlJVoxgLjuhqiwTjAw4AAACAeyJvcmlnaW4iOiJodHRwczovL2NyaXRlby5jb206NDQzIiwiZmVhdHVyZSI6IlByaXZhY3lTYW5kYm94QWRzQVBJcyIsImV4cGlyeSI6MTY4MDY1Mjc5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=">
+<style type="text/css">.fancybox-margin{margin-right:16px;}</style>
+<meta http-equiv="origin-trial" content="A751Xsk4ZW3DVQ8WZng2Dk5s3YzAyqncTzgv+VaE6wavgTY0QHkDvUTET1o7HanhuJO8lgv1Vvc88Ij78W1FIAAAAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjgwNjUyNzk5LCJpc1RoaXJkUGFydHkiOnRydWV9">
+<meta http-equiv="origin-trial" content="A751Xsk4ZW3DVQ8WZng2Dk5s3YzAyqncTzgv+VaE6wavgTY0QHkDvUTET1o7HanhuJO8lgv1Vvc88Ij78W1FIAAAAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjgwNjUyNzk5LCJpc1RoaXJkUGFydHkiOnRydWV9">
+<script type="text/javascript" async="" src="./더현대닷컴_files/f.txt"></script>
+<link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+<link rel="styeleshet" type="text/css" href="//static.groobee.io/dist/g2/css/grb-recommend-list_v2.css">
+<meta http-equiv="origin-trial" content="A9+ldib+sKhGj2FcIjq5GnvBZFuIiXID0+NkE6k7cEk71MhaHFGqo3wUlUFmZ6d9w0KPwx9UxGiCTYWtRnTGDQkAAACAeyJvcmlnaW4iOiJodHRwczovL2NyaXRlby5uZXQ6NDQzIiwiZmVhdHVyZSI6IlByaXZhY3lTYW5kYm94QWRzQVBJcyIsImV4cGlyeSI6MTY4MDY1Mjc5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0="><meta http-equiv="origin-trial" content="AzLNuh8GFzfIOcwvhEg7Ymr7YCzlYVTKeD7i2iETABbRf+sL2FAx+r+HlTtxSi1zgUFxBlJVoxgLjuhqiwTjAw4AAACAeyJvcmlnaW4iOiJodHRwczovL2NyaXRlby5jb206NDQzIiwiZmVhdHVyZSI6IlByaXZhY3lTYW5kYm94QWRzQVBJcyIsImV4cGlyeSI6MTY4MDY1Mjc5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0="><style type="text/css">.fancybox-margin{margin-right:13px;}</style><meta http-equiv="origin-trial" content="A727AcAeLCei/ZogJHBlJUS63SxP6AeIROo7qXrkjrxkoxBu0eSSmypAHmGYwk4HjBMQp5nxCFODzfVnUIe31AQAAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjg4MDgzMTk5LCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A727AcAeLCei/ZogJHBlJUS63SxP6AeIROo7qXrkjrxkoxBu0eSSmypAHmGYwk4HjBMQp5nxCFODzfVnUIe31AQAAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjg4MDgzMTk5LCJpc1RoaXJkUGFydHkiOnRydWV9"><script type="text/javascript" async="" src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/879261918/?random=1679898029293&amp;cv=11&amp;fst=1679898029293&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;gtm=45be33m0&amp;u_w=1707&amp;u_h=1067&amp;url=http%3A%2F%2F192.168.137.247%3A5500%2F%25EB%258D%2594%25ED%2598%2584%25EB%258C%2580%25EB%258B%25B7%25EC%25BB%25B4.html&amp;ref=http%3A%2F%2F192.168.137.247%3A5500%2F%25EB%258D%2594%25ED%2598%2584%25EB%258C%2580%25EB%258B%25B7%25EC%25BB%25B4.html&amp;hn=www.googleadservices.com&amp;frm=0&amp;tiba=%EB%8D%94%ED%98%84%EB%8C%80%EB%8B%B7%EC%BB%B4&amp;auid=1184932784.1678862774&amp;data=event%3Dgtag.config&amp;rfmt=3&amp;fmt=4"></script></head>
+<body>
+<form id="orderForm" action="https://www.thehyundai.com/front/oda/orderRedirect.thd" method="post">
+</form>
+<form action="https://www.thehyundai.com/front/odb/basktList.thd#" name="tmpBasktForm" id="tmpBasktForm" method="post">
+</form>
+<form action="https://www.thehyundai.com/front/odb/basktList.thd#" name="productModifyForm" id="productModifyForm" method="post">
+</form>
+
+<form action="https://www.thehyundai.com/front/odb/basktList.thd#" name="itemRishpAlrimForm" id="itemRishpAlrimForm" method="post">
+<input type="hidden" name="slitmCd">
+<input type="hidden" name="uitmCd">
+<input type="hidden" name="emailAdr">
+<input type="hidden" name="emailRcvHopeYn">
+<input type="hidden" name="smsRcvHopeYn">
+<input type="hidden" name="smsHpIdntNo">
+<input type="hidden" name="smsHpIntmNo">
+<input type="hidden" name="smsHpBckNo">
+<input type="hidden" name="rcvHopeStrtTime">
+<input type="hidden" name="rcvHopeEndTime">
+<input type="hidden" name="rcvHopeTermGbcd">
+</form>
+<!-- wrap -->
+<div id="wrap" class="sub notgnb simple-gnb">
+    <!-- gnb -->
+    
+
+
+
+
+		<script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/co/referCodes.js"></script>
+		<script src="/js/sso/SsoHttpRequest.js"></script>
+		<script src="/js/sso/SsoAjax.js"></script>
+		<script src="/js/sso/SsoLogin.js"></script> <!-- SSO 로그인 js 공통 처리 2021.02.17-->
+		
+		<script type="text/javascript" src="https://www.thehyundai.com/static/gen/js/mainBnnrContents.js?ver=012332"></script>
+		
+
+<!-- skip-navigation -->
+
+<script type="text/javascript">
+$(document).ready(function() {
+	//check ReferCode
+	if(isDirectVisit()){
+		$('.ic-onff').removeClass('off');
+		$('.ic-onff').addClass('on');
+		$('.ic-onff').html('ON');
+	}
+	/*전환가입 체크용도*/
+	 var reloadYn = "";
+	try{
+		reloadYn = getCookie("reloadYn");
+	}catch(e){
+		reloadYn = "";
+	}
+	//alert("reloadYn>>"+reloadYn);
+	if(reloadYn =="Y"){
+		goReloadSession();
+	}
+});
+
+function isDirectVisit() {
+	try{
+		var visitReferCode = getCookie('EHReferCode');
+		if(REFER_CODES.indexOf(visitReferCode) > -1) {
+			return true;
+		}
+		return false;
+	}catch(e){
+		return false;
+	}
+
 }
 
-#table {
-	margin-top: 40px;
+function getCookie(cookieName) {
+	var i, key, value;
+	var cookieList = document.cookie.split(";");
+	//console.log(cookieList);
+	for(i = 0; i < cookieList.length; i++) {
+		key = cookieList[i].substr(0, cookieList[i].indexOf("="));
+		key = key.replace(" ","");
+		value = cookieList[i].substr(cookieList[i].indexOf("=")+1);
+		key = key.replace(/^s+|s+$/g,"");
+		if( key == cookieName) {
+			return unescape(value);
+		}
+	}
 }
 
-h2 {
-	margin-top: 40px;
+function dummy(){
+		// 와이즈로그 수집위해 빈 URL 호출
+		$.ajax({
+			type: "post"
+			, url: "/front/dpl/dummyLogParam.thd?MainpageGroup=Menu&GroupbannerName=handsome"
+			, dataType: "json"
+			, success : function(data) {
+				window.open('http://www.thehandsome.com/ko/?ref=thehyundai.com','_blank');
+			}
+			, error : function(e) {
+				window.open('http://www.thehandsome.com/ko/?ref=thehyundai.com','_blank');
+			}
+
+		});
+	}
+function dummyGnb(){
+	// 와이즈로그 수집위해 빈 URL 호출
+	$.ajax({
+		type: "post"
+		, url: "/front/dpl/dummyLogParam.thd?MainpageGroup=Fix&GroupbannerName=GNB_handsome"
+		, dataType: "json"
+		, success : function(data) {
+			window.open('http://www.thehandsome.com/ko/?ref=thehyundai.com','_blank');
+		}
+		, error : function(e) {
+			window.open('http://www.thehandsome.com/ko/?ref=thehyundai.com','_blank');
+		}
+
+	});
+}
+function logOut(){
+	try{
+		//gfnSsoDscdToknReqAjax(dscdCallback);
+		gfnSsoDscdToknReq(dscdCallback);
+	}catch(exception){
+		console.log(exception);
+
+		//location.href="https://www.thehyundai.com/front/cob/logout.thd";
+	}finally{
+		location.href="https://www.thehyundai.com/front/cob/logout.thd";
+	}
+
+
+}
+function deleteCookie(cookieName){
+    var expireDate = new Date();
+    expireDate.setDate(expireDate.getDate() - 1);
+    //alert(cookieName + "= " + "; expires=" + expireDate.toGMTString());
+    document.cookie = cookieName + "= " + "; expires=" + expireDate.toGMTString()+";path=/;";
+}
+//토큰만료 콜백
+function dscdCallback(data){
+	//console.log("data.rtnMsg:"+data.rtnMsg);
+	if(data.succYn == "Y"){
+		console.log("토큰 만료처리");
+
+	}else{
+		console.log("토큰 미존재");
+
+	}
+	//location.href="https://www.thehyundai.com/front/cob/logout.thd";
+}
+ function goReloadSession() {
+
+	showLoadingBar("180px", "150px");
+	$.ajax({
+		url: "https://www.thehyundai.com/front/sessionReload.thd"
+		, type: "post"
+		, dataType : "json"
+		, data : { "id" : "ttol6354" }
+		, success: function(responseData) {
+			  hideBlockLoadingBar();
+			  //alert(responseData.resultType);
+			 if(responseData.resultType == "A"){
+				 //alert(responseData.authKey);
+				 //alert(responseData.authSsoCd);
+	               gfnReqSSoToknIssuHttp(responseData.authKey, responseData.authSsoCd, fnCallback03);
+
+	         }
+			 deleteCookie("reloadYn"); // 처리가 되었으므로 쿠키를 제거해 토큰재발급을 막는다.
+			 hideBlockLoadingBar();
+		}
+		, error: function(e) {
+			  hideBlockLoadingBar();
+		}
+
+	});
+
+}
+function fnCallback03(data){
+	//alert("테스트용 토큰발급 성공여부::"+data.succYn);
 }
 
-input#maxUserCnt {
-	width: 160px;
+function goHpoint(){
+	GA_Event('PC_공통','헤더_메뉴','H.Point');
+	if(confirm('H.Point의 사용/적립현황은 H.Point 사이트에서 확인할 수 있습니다.\nH.Point 사이트로 이동하시겠습니까?')){
+		
+		$.get('/front/coe/goHpoint.thd', function(data){
+			window.open(data,'','');
+		});
+	}
+
 }
+</script>
 
-span.input-group-text.input-password-hide {
-	height: 40px;
-}
+<!-- //skip-navigation -->
 
-span.input-group-text.input-password-show {
-	height: 40px;
-}
-</style>
-					</head>
-					<body>
-						<div class="container">
-							<div class="container">
-								<h2>예약 관리</h2>
-								<table class="table table-hover" id="table">
-									<tr>
-										<th scope="col">고객명</th>
-										<th scope="col">고객 아이디</th>
-										<th scope="col">예약 날짜</th>
-										<th scope="col">시 간</th>
-										<th scope="col">방 생성 여부</th>
-										<th scope="col">입장 하기</th>
-									</tr>
-									<th:block th:fragment="content">
+<!-- header -->
+<!-- 서브메뉴 -->
 
-										<tr th:each="res : ${reservations}">
-											<td class="fw-normal visible">[[${res.memberName}]]</td>
-											<td class="fw-normal visible">[[${res.memberId}]]</td>
-											<td class="fw-normal visible">[[${res.resDate}]]</td>
-											<td class="fw-normal visible">[[${res.resTime}]]</td>
-											<td th:if="${res.roomChk}"><span class="col-sm-2 align-self-auto"> 생성 완료 </span></td>
-											<td th:if="${!res.roomChk}"><span class="col-sm-2 align-self-auto"> 생성 대기중 </span></td>
-											<td class="fw-normal visible"><a th:href="@{/chat/room(roomId=${res.roomId})}" th:roomId="${res.roomId}"
-												onclick="return chkRoomUserCnt(this.getAttribute('roomId'));"
-											>방 입장</a></td>
-										</tr>
-									</th:block>
-
-								</table>
-
-								<div class="col">
-									<h2>
-										채팅방 리스트
-										<button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#roomModal">방 생성</button>
-									</h2>
-								</div>
+<!-- top banner -->
+<div id="js-tpl-topBanner" style="display: none;"></div>
 
 
-								<table class="table table-hover" id="table">
-									<tr>
-										<th scope="col">채팅방명</th>
-										<th scope="col">잠금 여부</th>
-										<th scope="col">참여 인원</th>
-										<th scope="col">채팅 종류</th>
-										<th scope="col">채팅방 설정</th>
-									</tr>
-									<th:block th:fragment="content">
+<script type="text/javascript" src="https://image.thehyundai.com/pc/js/hdmall/co/skyscraper.js?ver=030123"></script>
 
-										<tr th:each="room : ${list}">
-											<span class="hidden" th:id="${room.roomName}"></span>
-											<td th:if="${room.secretChk}"><a href="#enterRoomModal" data-bs-toggle="modal" data-target="#enterRoomModal"
-												th:data-id="${room.roomId}"
-											>[[${room.roomName}]]</a></td>
-											<td th:if="${!room.secretChk}">
-												<!-- thymeleaf 의 변수를 onclick 에 넣는 방법 --> <a th:href="@{/chat/room(roomId=${room.roomId})}" th:roomId="${room.roomId}"
-												onclick="return chkRoomUserCnt(this.getAttribute('roomId'));"
-											>[[${room.roomName}]]</a>
-											</td>
-											<td><span th:if="${room.secretChk}"> 🔒︎ </span></td>
-											<td><span class="badge bg-primary rounded-pill">[[${room.userCount}]]/[[${room.maxUserCnt}]]</span></td>
-											<td><span th:if="${#strings.equals(room.chatType, 'MSG')}">일반 채팅</span> <span th:unless="${#strings.equals(room.chatType, 'MSG')}">화상
-													채팅</span></td>
-											<td>
-												<button class="btn btn-primary btn-sm" id="configRoom" data-bs-toggle="modal" data-bs-target="#confirmPwdModal"
-													th:data-id="${room.roomId}"
-												>채팅방 설정</button>
-											</td>
-										</tr>
-									</th:block>
+	<!-- //gnb -->
+	<!-- container -->
+	<div id="container">
+		<h1 class="blind">컨텐츠영역</h1>
 
-								</table>
+		<!-- content-wrap -->
+		<div class="content-wrap">
 
+			<!-- cart-head -->
+			<div class="cart-head">
+				<h2>장바구니</h2>
 
+				<div class="stepwrap">
+					<ul>
+						<li>
+							<div class="step-box cart-01 current">
+								<span class="mark"></span>
+								<p>STEP 01</p>
+								<p>장바구니</p>
 							</div>
-						</div>
+						</li>
+						<li>
+							<span class="step-mark"></span>
+							<div class="step-box cart-02">
+								<span class="mark"></span>
+								<p>STEP 02</p>
+								<p>주문서작성</p>
+							</div>
+						</li>
+						<li>
+							<span class="step-mark"></span>
+							<div class="step-box cart-03">
+								<span class="mark"></span>
+								<p>STEP 03</p>
+								<p>주문완료</p>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!-- //cart-head -->
 
-						<div class="modal fade" id="roomModal" tabindex="-1" aria-labelledby="roomModalLabel" aria-hidden="true">
-							<div class="modal-dialog">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title">채팅방 생성</h5>
-										<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			<!-- cart-body -->
+			<div class="cart-body" id="divCartInfo" style="min-height: 863px;">
+
+				<!-- cart-cont-wrap -->
+				<div class="cart-cont-wrap">
+	
+					<!-- cart-tab cart-list-wrap -->
+					<div class="cart-list-wrap tab-pane active" id="cart-tab-01">
+						<h3 class="blind">일반상품 </h3>
+
+			<!-- cart-list -->
+			
+			<!-- //cart-list -->
+			
+				<h4 class="blind">정상상품</h4>
+				<!-- cart-list-check -->
+				<div class="cart-list-check">
+					<label class="">
+						<div class="icheckbox checked type-green" style="position: relative;">
+							<input class="type-green notCRinput" type="checkbox" name="checkbox_all" value="checkbox01" style="position: absolute; top: -40%; left: -40%; display: block; width: 180%; height: 180%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;" checked="checked">
+						</div>
+						전체선택
+					</label>
+					<div class="cart-list-check-del"><a href="javascript:void(0);" onclick="deleteBaskt(this, 'checkbox01', 'SEL');return false;">선택삭제</a></div>
+				</div>
+				<!-- //cart-list-check -->
+
+				<!-- cart-list-area -->
+				<div class="cart-list-area">
+					<ul class="cart-list-group">
+						<li class="cart-list-unit" th:each="carts, state : ${carts}" th:id="c+${state.index}">
+								<div class="cart-list-cont">
+									<!-- 체크영역 -->
+									<div class="check-group">
+										<div class="icheckbox checked type-green" style="position: relative;">
+											<input class="type-green notCRinput" type="checkbox" name="checkbox01" title="선택" data-itemgbcd="00" data-itemtypegbcd="00" data-qrstlmitemyn="N" data-vstrcvnitemyn="" data-luityn="N" data-nftcombitemyn="" value="40A1580453|00011|01|1|131000||[겔랑] 빠뤼르 골드 스킨 파운데이션 세트|300" style="position: absolute; top: -40%; left: -40%; display: block; width: 180%; height: 180%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;" checked="checked">
+											<ins class="iCheck-helper" style="position: absolute; top: -40%; left: -40%; display: block; width: 180%; height: 180%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
+										</div>
+										<!-- 여기에 보낼 거 넣기 -->
+										<input type="hidden" name="ordAgreeInf" value="N|N|[겔랑] 빠뤼르 골드 스킨 파운데이션 세트|매트/00C|40A1580453|40A1580453_0_100.jpg|N">
+                           				<input type="hidden" name="sectId" value="50019">
+                           				<input type="hidden" name="dlvcPayGbcd" value="10">
+                           				<input type="hidden" name="prpyDlvCost" value="">
+                           				<input type="hidden" name="sdlvcMinStlmAmt" value="">
+                           				<input type="hidden" name="sdlvcDlvCost" value="">
+                           				<input type="hidden" name="dptsDlvMinStlmAmt" value="30000">
+                           				<input type="hidden" name="baseDlvCost" value="3000">
+                           				<input type="hidden" name="basktBndlKey" value="004503|">
+                           				<input type="hidden" name="slitmNmInf" value="[겔랑] 빠뤼르 골드 스킨 파운데이션 세트">
+                           				<input type="hidden" name="slitmInf" value="40A1580453|[겔랑] 빠뤼르 골드 스킨 파운데이션 세트|겔랑|화장품/메이크업/페이스/파운데이션_컨실러|매트/00C|1|000042|50019|013368_판교점|수입화장품(1001)">
+										<input type="hidden" name="brndCd" value="000042">                           				                 				
+                   	<input type="hidden" name="imdtCrdDcCnt" value="0">
+										<input type="hidden" id="pcode" th:value="${carts.pcode}">
+
+										<button class="btn-list-delete" th:onclick='deleteBasktItem([[${carts.pcode}]],[[${carts.poption}]],"c[[${state.index}]]");'><img src="https://image.thehyundai.com/hdmall/images/co/icon_delete.png" alt="삭제"></button>
 									</div>
-									<form method="post" action="/chat/createroom" onsubmit="return createRoom()">
-										<!-- <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"> -->
-										<div class="modal-body">
-											<div class="mb-3">
-												<label for="roomName" class="col-form-label">방 이름</label>
-												<input type="text" class="form-control" id="roomName" name="roomName">
-											</div>
-											<div class="mb-3">
-												<label for="roomPwd" class="col-form-label">방 설정 번호(방 삭제시 필요합니다)</label>
-												<div class="input-group">
-													<input type="password" name="roomPwd" id="roomPwd" class="form-control" data-toggle="password">
-													<div class="input-group-append">
-														<span class="input-group-text"><i class="fa fa-eye"></i></span>
-													</div>
+
+									<!-- 이미지영역 -->
+									<div class="image-group">
+										<div class="prod-info">
+											<div class="img">
+												<a th:href="'/product/detail?code=' + ${carts.pcode}">
+												<img th:src="${carts.IMAGE_PATH} + '_600.jpg'" onerror="noImage(this, 'https://image.thehyundai.com/hdmall/images/pd/no_image_300x300.jpg')">
+												</a>
+												<div class="hover-info">
+													
 												</div>
 											</div>
-											<div class="mb-3">
-												<div class="form-check">
-													<input class="form-check-input" type="radio" name="chatType" id="msgType" value="msgChat">
-													<label class="form-check-label" for="msgType"> 일반 채팅(최대 100명) </label>
-												</div>
-												<div class="form-check">
-													<input class="form-check-input" type="radio" name="chatType" id="rtcType" value="rtcChat">
-													<label class="form-check-label" for="rtcType"> 화상 채팅(1:1 Only) </label>
-												</div>
-											</div>
-											<div class="mb-3">
-												<label for="maxUserCnt" class="col-form-label">채팅방 인원 설정 <!--<input class="form-check-input" type="checkbox" id="maxChk">--></label>
-												<input type="text" class="form-control" id="maxUserCnt" name="maxUserCnt">
-											</div>
-											<div class="form-check">
-												<input class="form-check-input" type="checkbox" id="secret">
-												<input type="hidden" name="secretChk" id="secretChk" value="">
-												<label class="form-check-label" for="secret"> 채팅방 잠금 </label>
-											</div>
 										</div>
-										<div class="modal-footer">
-											<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-											<input type="submit" class="btn btn-primary" value="방 생성하기">
-										</div>
-									</form>
-								</div>
-							</div>
-						</div>
+									</div>
 
-						<div class="modal fade" id="enterRoomModal" tabindex="-1" aria-labelledby="enterRoomModalLabel" aria-hidden="true">
-							<div class="modal-dialog">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title">채팅방 비밀번호를 입력해주세요</h5>
-										<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-									</div>
-									<div class="modal-body">
-										<div class="mb-3">
-											<label for="roomName" class="col-form-label">방 비밀번호</label>
-											<div class="input-group">
-												<input type="password" name="roomPwd" id="enterPwd" class="form-control" data-toggle="password">
-												<div class="input-group-append">
-													<span class="input-group-text"><i class="fa fa-eye"></i></span>
-												</div>
+									<!-- 상품내용 -->
+									<div class="cont-group">
+
+										<!-- 상품명 -->
+										<div class="title">
+											<a th:href="'/product/detail?code=' + ${carts.pcode}" th:text="${carts.pname}"></a>
+										</div>
+
+										<!-- 각인  -->
+										<div class="option-stamp">
+											
+										</div>
+
+										<!-- 상품옵션 -->
+										<div class="option-info">
+											<p class="cnt-ctrl">
+												<a href="javascript:void(0);" class="cnt-up" th:onclick='minusOrdQty(this,[[${carts.pcode}]],[[${carts.poption}]],"c[[${state.index}]]" );'>－</a>
+												<input type="text" class="onlyNumberInput" name="cnt" title="inputarea" th:value="${carts.pamount}" style="ime-mode:disabled;" onclick="this.focus();" maxlength="2">
+												<a href="javascript:void(0);" class="cnt-down" th:onclick='plusOrdQty(this, [[${carts.pcode}]],[[${carts.poption}]],"c[[${state.index}]]" );'>＋</a>
+											</p>
+											
+												<p class="cnt-opt">[[${carts.poption}]]</p>
+
+												<select class="form-select form-select-sm" aria-label=".form-select-sm example">
+													<option value="${carts.poption}" th:text="${carts.poption}" selected=""></option>
+													<option th:each="options, oState : ${carts.optionList}" th:unless="${options.optname} == ${carts.poption}" th:text="${options.optname}"></option>
+													<!-- <option selected="">Open this select menu</option>
+													<option value="1">One</option>
+													<option value="2">Two</option>
+													<option value="3">Three</option> -->
+												</select>
+												
+											<!-- 기본구성 / 추가구성 정보 -->
+																				
+												<p class="cnt-deliver">
+													<span class="deliver">	30,000원 이상 무료배송						                                    		                             
+						              <input type="hidden" name="dlvCost" value="0">
+													</span>
+												</p>
+											
+											<!-- //픽업날짜 변경 pickup-date -->
+										</div>
+
+										<!-- 상품가격 및 버튼 -->
+										<div class="option-price">
+											<div class="price-info">
+												<div class="tot-price" th:text="${#numbers.formatInteger(carts.pprice * carts.pamount,3,'COMMA')} + 원"></div>
+												<div class="o-price" th:text="${#numbers.formatInteger(carts.pprice* carts.pamount,3,'COMMA')}+원"></div>
+												<input type="hidden" name="bbprc" th:value="${carts.pprice}">
+				                <input type="hidden" name="prodPrc" th:value="${carts.pprice* carts.pamount}">
+				                <input type="hidden" name="bbprcPrc" value="0">
+											</div>
+
+											<div class="btn-area">
+												
+												<button class="btn size4 color15" type="button" onclick="javascript:showChgUitmPup(this, '40A1580453', '00011', '[겔랑] 빠뤼르 골드 스킨 파운데이션 세트', '매트/00C', 131000, '40A1580453','01', 1, 300);return false;">옵션변경</button>
+												
+												<button class="btn size4 color4" type="button" onclick="javascript:buyDirect(this, 'checkbox01');GA_Event('PC_장바구니', '바로주문', '[겔랑] 빠뤼르 골드 스킨 파운데이션 세트');return false;">바로주문</button>
 											</div>
 										</div>
-										<div class="modal-footer">
-											<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-											<button type="button" class="btn btn-primary" onclick="enterRoom()">입장하기</button>
-										</div>
-										</form>
 									</div>
-								</div>
-							</div>
-						</div>
+								</div> 
+							</li>
 
-
-
-						<div class="modal fade" id="confirmPwdModal" aria-hidden="true" aria-labelledby="ModalToggleLabel" tabindex="-1">
-							<div class="modal-dialog modal-dialog-centered">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title">채팅방 설정을 위한 패스워드 확인</h5>
-										<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-									</div>
-									<div class="modal-body">
-										<label for="confirmPwd" class="col-form-label" id="confirmLabel">비밀번호 확인</label>
-										<div class="input-group">
-											<input type="password" name="confirmPwd" id="confirmPwd" class="form-control" data-toggle="password">
-											<div class="input-group-append">
-												<span class="input-group-text"><i class="fa fa-eye"></i></span>
-											</div>
-										</div>
-									</div>
-									<div class="modal-footer">
-										<button id="configRoomBtn" class="btn btn-primary disabled" data-bs-target="#configRoomModal" data-bs-toggle="modal" aria-disabled="true">채팅방
-											설정하기</button>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="modal fade" id="configRoomModal" tabindex="-1" aria-labelledby="roomModalLabel" aria-hidden="true">
-							<div class="modal-dialog">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title">채팅방 설정</h5>
-										<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-									</div>
-									<div class="modal-body">
-										<div class="mb-3">
-											<label for="chPwd" class="col-form-label">비밀번호 변경</label>
-											<div class="input-group">
-												<input type="password" name="confirmPwd" id="chPwd" class="form-control" data-toggle="password">
-												<div class="input-group-append">
-													<span class="input-group-text"><i class="fa fa-eye"></i></span>
-												</div>
-											</div>
-										</div>
-										<div class="mb-3">
-											<label for="chRoomName" class="col-form-label">채팅방 이름 변경</label>
-											<input type="text" class="form-control" id="chRoomName" name="chRoomName">
-										</div>
-										<div class="mb-3">
-											<label for="chRoomUserCnt" class="col-form-label">채팅방 인원 변경</label>
-											<input type="text" class="form-control" id="chRoomUserCnt" name="chUserCnt">
-										</div>
-										<div class="form-check">
-											<input class="form-check-input" type="checkbox" id="chSecret">
-											<input type="hidden" name="secretChk" id="chSecretChk" value="">
-											<label class="form-check-label" for="secret"> 채팅방 잠금 </label>
-										</div>
-										<div class="mb-3">
-											<button type="button" class="btn btn-primary" onclick="delRoom()">방 삭제</button>
-										</div>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-									</div>
-								</div>
-							</div>
-						</div>
-					</body>
+					</ul>
+				</div>
+					</div>
+					<!-- //cart-tab cart-list-wrap -->
+	
 
 				</div>
-				<!-- /.container-fluid -->
+				<!-- //cart-cont-wrap -->
+				<!-- cart-aside-wrap -->
+				<div class="cart-aside-wrap">
 
-			</div>
-			<!-- End of Page Wrapper -->
+					<!-- billprice-wrap -->
+					<div class="billprice-wrap">
+						<h3>결제금액</h3>
+						<!-- billprice -->
+						<ul class="billprice">
+							<li>
+								<div>
+									<h4>총 주문금액</h4>
+									<p><strong><span id="totOrdPrc" ></span></strong> 원</p>
+								</div>
+								<ul class="sub plus">
+									<li>
+										<h5>상품금액</h5>
+										<p><span id="totProdPrc">321,000</span> 원</p>
+									</li>
+									<li>
+										<h5>배송비</h5>
+										<p><span id="totDlvCost">무료</span></p>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<div>
+									<h4>총 할인금액</h4>
+									<p><strong><span id="totDiscntPrc">0</span></strong> 원</p>
+								</div>
+								<ul class="sub">
+									<li>
+										<h5>혜택할인가</h5>
+										<p>-<span id="totbbprcPrc">0</span> 원</p>
+									</li>
+								</ul>
+							</li>
 
-			<!-- Scroll to Top Button-->
-			<a class="scroll-to-top rounded" href="#page-top"> <i class="fas fa-angle-up"></i>
-			</a>
-
-			<!-- Logout Modal-->
-			<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-							<button class="close" type="button" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true">×</span>
-							</button>
-						</div>
-						<div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-						<div class="modal-footer">
-							<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-							<a class="btn btn-primary" href="login.html">Logout</a>
+							<li class="total">
+								<div>
+									<h4>결제 예정 금액</h4>
+									<p><strong><span id="payPrc">321,000</span></strong> 원</p>
+								</div>
+								
+							</li>
+						</ul>
+						<!-- //billprice -->
+						<p class="attention">
+							* 실제 결제 금액은 할인 및 추가혜택에 따라 달라질 수 있습니다.
+						</p>
+						<div class="btn-wrap">
+							<a href="javascript:void(0);" class="btn size7 color9 full" onclick="javascript:checkOrderItemType(this);return false;">주문하기</a>
 						</div>
 					</div>
+					<!-- //billprice-wrap -->
+
+					<!-- operation-guide -->
+					<div class="operation-guide">
+						<h4>장바구니 이용안내</h4>
+						<ul>
+							<li>로그인 시 장바구니에 담긴 상품은 <strong>30일</strong>간 보관됩니다.</li>
+							<li>상품은 최대 <strong>100개</strong>까지 담을 수 있습니다.</li>
+						</ul>
+					</div>
+					<!-- //operation-guide -->
+
 				</div>
+				<!-- //cart-aside-wrap -->
+	
+
+
+
+
+<script type="text/javascript" src="./더현대닷컴_files/ld.js.다운로드" async="true"></script>
+<script type="text/javascript" src="./더현대닷컴_files/md5.js.다운로드"></script>
+<script type="text/javascript">
+//2018.08.27 크리테오 트래커
+
+	var item = [];
+	var goods = []; // 2022.09.22 DEP01WORK-20595 MA 솔루션 도입
+	
+	
+	
+	var buyObj = new Object();
+	buyObj.id = "40A1580453";
+	buyObj.price = 131000;
+	buyObj.quantity = 1;
+
+	item.push(buyObj);
+    
+	var maGoods = {
+		    name    : "[겔랑] 빠뤼르 골드 스킨 파운데이션 세트", 
+		    code    : "40A1580453",
+		    amt     : "131000", 
+		    prc     : "131000", 
+		    salePrc : "131000", 
+		    cnt     : "1", 
+		    cat     : "R5010303", 
+		    cateNm  : "파운데이션/BB/CC", 
+		    catL    : "R5", 
+		    cateLNm : "이미용", 
+		    catM    : "R501", 
+		    cateMNm : "화장품/프레그넌스", 
+		    catS    : "R50103", 
+		    cateSNm : "메이크업(여성용)", 
+		    catD    : "R5010303", 
+		    cateDNm : "파운데이션/BB/CC", 
+		    brand   : "000042", 
+		    brandNm : "겔랑" 
+		};
+	goods.push(maGoods);
+	
+	var buyObj = new Object();
+	buyObj.id = "60A1630727";
+	buyObj.price = 190000;
+	buyObj.quantity = 1;
+
+	item.push(buyObj);
+    
+	var maGoods = {
+		    name    : "[디올] NEW 디올쇼 10 꿀뢰르 팔레트 - 미차 리미티드 에디션", 
+		    code    : "60A1630727",
+		    amt     : "190000", 
+		    prc     : "190000", 
+		    salePrc : "190000", 
+		    cnt     : "1", 
+		    cat     : "R5010306", 
+		    cateNm  : "아이섀도우", 
+		    catL    : "R5", 
+		    cateLNm : "이미용", 
+		    catM    : "R501", 
+		    cateMNm : "화장품/프레그넌스", 
+		    catS    : "R50103", 
+		    cateSNm : "메이크업(여성용)", 
+		    catD    : "R5010306", 
+		    cateDNm : "아이섀도우", 
+		    brand   : "002267", 
+		    brandNm : "디올" 
+		};
+	goods.push(maGoods);
+	
+	
+	
+	
+	groobee('VC',{goods:goods});
+	
+	window.criteo_q = window.criteo_q || [];
+
+	var stateLogin = isLogin(); // 로그인 유무
+
+	if(stateLogin == 'true') { // 로그인
+		var criteoCustNo = '202303037565';
+		var hashedCustNo = hex_md5(criteoCustNo);
+
+		window.criteo_q.push(
+		        { event: "setAccount", account: 52201 },
+		        { event: "setCustomerId", id: hashedCustNo},
+		        { event: "setSiteType", type: "d" },		// 일반웹페이지는 d, 모바일 m
+		        { event: "viewBasket",  item: item}
+		        );
+	} else {
+		window.criteo_q.push(
+		        { event: "setAccount", account: 52201 },
+		        { event: "setSiteType", type: "d" },		// 일반웹페이지는 d, 모바일 m
+		        { event: "viewBasket",  item: item}
+		        );
+	}
+
+	$(document).ready(function(){
+		$("input.type-green").parent().addClass("type-green");
+	});
+
+
+</script>
+
+
+			</div>
+			<!-- //cart-body -->
+
+		</div>
+		<!-- //content-wrap -->
+
+	</div>
+	<!-- //container -->
+
+	<!-- popover-wrap popover-layer-zzim -->
+	<div class="popover-wrap w500" id="popover-layer-zzim">
+
+		<!-- pop-header -->
+		<div class="pop-header">
+			<h1 style="overflow-wrap: break-word; white-space: normal;">찜하기</h1>
+			<a href="https://www.thehyundai.com/front/odb/basktList.thd#popover-btn-zzim" class="popover-close">닫기</a>
+		</div>
+		<!-- //pop-header -->
+
+		<!-- pop-content -->
+		<div class="pop-content">
+
+			<div class="perform-msg">
+				<p>해당 상품이 찜 되었습니다.</p>
 			</div>
 
-			<!-- Bootstrap core JavaScript-->
-			<script src="admin/vendor/jquery/jquery.min.js"></script>
-			<script src="admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+		</div>
+		<!-- //pop-content -->
 
-			<!-- Core plugin JavaScript-->
-			<script src="admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+		<!-- btn-wrap -->
+		<div class="btn-wrap">
+			<a href="http://www.thehyundai.com/Home.html" class="btn size3 color2 popover-close">쇼핑 계속하기</a>
+			<a href="http://www.thehyundai.com/front/mpc/sltdItemList.thd" class="btn size3 color3">찜 바로가기</a>
+		</div>
+		<!-- //btn-wrap -->
 
-			<!-- Custom scripts for all pages-->
-			<script src="admin/js/sb-admin-2.min.js"></script>
+	</div>
+	<!-- //popover-wrap popover-layer-zzim-->
 
-			<!-- Page level plugins -->
-			<script src="admin/vendor/chart.js/Chart.min.js"></script>
+	<!-- popover-wrap popover-layer-change -->
+	<div class="popover-wrap w500 overview" id="popover-layer-change">
 
-			<!-- Page level custom scripts -->
-			<script src="admin/js/demo/chart-area-demo.js"></script>
-			<script src="admin/js/demo/chart-pie-demo.js"></script>
+		<!-- pop-header -->
+		<div class="pop-header">
+			<h1 style="overflow-wrap: break-word; white-space: normal;">옵션 선택 변경</h1>
+			<a href="https://www.thehyundai.com/front/odb/basktList.thd#" class="popover-close">닫기</a>
+		</div>
+		<!-- //pop-header -->
+
+		<!-- pop-content -->
+		<div class="pop-content">
+
+		</div>
+		<!-- //pop-content -->
+
+		<!-- btn-wrap -->
+		<div class="btn-wrap">
+			<a href="https://www.thehyundai.com/front/odb/basktList.thd#" class="btn size3 color2" onclick="javascript:changeBasktItemUitmInf();">선택상품 저장</a>
+			<a href="https://www.thehyundai.com/front/odb/basktList.thd#" class="btn size3 color3 popover-close">취소</a>
+		</div>
+		<!-- //btn-wrap -->
+	</div>
+	<!-- //popover-wrap popover-layer-change -->
+
+    <!-- //20200506 신용카드 할인 적용 안내 레이어 -->
+
+</div>
+
+
+<!-- 전환페이지 설정 -->
+<script type="text/javascript" src="./더현대닷컴_files/wcslog.js.다운로드"></script>
+<script type="text/javascript">
+	var visitReferCode = getCookie('EHReferCode');
+	if(visitReferCode == '441' || visitReferCode == '190'){
+		var _nasa={};
+		_nasa["cnv"] = wcs.cnv("3","1"); // 장바구니 전환유형 변수값 = "3", 전환가치 = 1
+	}
+</script>
+
+<script>
+//2022.02 GB GA구축 로직 추가
+if($("div.cart-list-wrap.active h4.blind")){
+	var cart_list = $("div.cart-list-wrap.active h4.blind").parent();
+	var _gaAosBrndCd = "";
+	var _gaTotBrndCd = "";
+	var _gaCosBrndCd = "";
+	var _gaArkBrndCd = "";
+	
+	$(cart_list).find("div.cart-list-cont").each(function(index) {
+		var brndCd = $(this).find('.check-group').find("input[name='brndCd']").val();
+		
+		if(brndCd == "A001804"){ //앤아더
+			 _gaAosBrndCd = "A001804";
+		}else if(brndCd == "A012747"){ //토템
+			 _gaTotBrndCd = "A012747";
+		}else if(brndCd == "A001803"){//코스
+			 _gaCosBrndCd = "A001803";
+		}else if(brndCd == "A012746"){//아르켓
+			 _gaArkBrndCd = "A012746";
+		}
+	});
+}
+</script>
+
+<!-- //wrap -->
+	<!-- footer -->
+	
+	<!-- footer -->
+
+	<!-- //footer -->
+
+	<script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/co/makePCookie.js"></script>
+
+<!-- 베네피아 iframe 중복 스크롤 방지 script-->
+<script language="Javascript" type="text/javascript">
+	var visitReferCodeFooter = getCookie('EHReferCode');
+	if(visitReferCodeFooter == 'B11'){
+		function resizeBenepiaFrame(){
+			var h = document.documentElement.scrollHeight;
+			var w = document.documentElement.scrollWidth;
+			if (parent.frames["beneFrame"] != undefined) {
+				parent.frames["beneFrame"].resizeTo(w,h);
+			}
+		}
+		resizeBenepiaFrame();
+	}
+
+</script>
+
+<!-- 공통 적용 스크립트 , 모든 페이지에 노출되도록 설치. 단 전환페이지 설정값보다 항상 하단에 위치해야함 -->
+<script type="text/javascript" src="./더현대닷컴_files/wcslog.js.다운로드"></script>
+<script type="text/javascript">
+	var visitReferCode = getCookie('EHReferCode');
+	if(visitReferCode == '441' || visitReferCode == '190'){
+		if (!wcs_add) var wcs_add={};
+		wcs_add["wa"] = "s_1999141c8036";
+		if (!_nasa) var _nasa={};
+		wcs.inflow();
+		wcs_do(_nasa);
+ 	}
+ </script>
+
+<!-- NABUS 공통 SCRIPT -->
+<script type="text/javascript" src="./더현대닷컴_files/E5455.js.다운로드"></script><div id="criteo-tags-div" style="display: none;"></div>
+
+<!-- GA 구축 프로젝트 공통 js 추가, 21.12.09 -->
+<script src="./더현대닷컴_files/googleAnalyticsBuilder.js.다운로드"></script>
+
+<div id="criteo-tags-div" style="display: none;"></div><!-- SSO 회원화 전환가입 팝업 호출, 22.02.13 -->
+<script type="text/javascript">
+$(function(){
+	if(typeof isLogin != "undefined"){      //로그인 체크 함수가 존재할 경우
+        if(isLogin() == 'false' && $.cookie('conversionSignupOpened') == 'Y'){
+            _setCookieAt00('conversionSignupOpened', 'N', 1);       //로그아웃할때 쿠키 날릴 것  -> 비로그인 상태일때 'N'으로 쿠키 설정
+        }
+    }
+    
+        
+            if(typeof callConversionSignupPopup != "undefined"){
+                callConversionSignupPopup();
+            }
+        
+    
+});
+</script>
+
+<!-- 구글 전환스크립트 -->
+<!-- Global site tag (gtag.js) - Google Ads: 879261918 -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-879261918"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-879261918');
+  gtag('config', 'UA-69960332-7');
+</script>
+
+	<!-- //footer -->
+
+
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+<!-- <script>
+	window.onload = function() {
+		let total = 0; // 총 금액을 저장할 변수
+
+		// ul 요소 가져오기
+		const ul = document.querySelector('.cart-list-group');
+
+		// 모든 prodPrc 값에 대해 반복문 실행
+		ul.querySelectorAll('input[name="prodPrc"]').forEach(input => {
+			total += parseInt(input.value); // 총 금액에 현재 상품 가격 더하기
+		});
+
+		console.log(`총 금액: ${total}원`);
+	}
+
+</script> -->
+<!-- <script>
+window.onload = function() {
+  let liList = document.querySelectorAll(".cart-list-unit");
+  let totOrdPrc = 0;
+  let totProdPrc = 0;
+  let payPrc = 0;
+  for (let i = 0; i < liList.length; i++) {
+    let prodPrc = parseInt(liList[i].querySelector(".prod-price").innerText.replace(/[^0-9]/g, ""));
+    totOrdPrc += prodPrc;
+    totProdPrc += prodPrc;
+  }
+  payPrc = totProdPrc; 
+  console.log(`totOrdPrc: ${totOrdPrc}원, totProdPrc: ${totProdPrc}원, payPrc: ${payPrc}원`);
+};
+
+</script> -->
+<div class="fancybox-wrap fancybox-desktop fancybox-type-html fancybox_overview fancybox-opened" tabindex="-1" style="display:none;width: 500px; height: auto; position: fixed; top: 465px; left: 314px; opacity: 1; overflow: visible;">
+	<div class="fancybox-skin" style="padding: 0px; width: auto; height: auto;">
+		<div class="fancybox-outer">
+			<div class="fancybox-inner" style="overflow: hidden; width: 500px; height: auto;">
+				<div class="popover-wrap w500 overview" id="popover-layer-change" style="left: 0px; display: block;">
+
+	<!-- pop-header -->
+	<div class="pop-header">
+		<h1 style="overflow-wrap: break-word; white-space: normal;">옵션 선택 변경</h1>
+		<a href="#" class="popover-close">닫기</a>
+	</div>
+	<!-- //pop-header -->
+
+	<!-- pop-content -->
+	<div class="pop-content"><div class="pop-option-box uitmDiv"><div class="pop-option-title"><p><span class="tit">상품 : </span>[데코르테] AQ 아우라 리플렉터 세트</p></div><div class="opt-select-box"><div class="opt-select-value"><a id="aTagId" href="#">01 크리스탈 라벤더<i class="icon-arrow opt-toggle"></i></a></div><ul class="opt-select-layer"><li class="current"><a href="#" class="depth-menu ellipsis"><strong>색상/속성</strong> <span class="selected-opt">선택하세요</span></a><ul class="depth-opt-list"><li><a href="#" value="00001" class="selectUitmAttrType2"><span class="opt-name">01 크리스탈 라벤더</span></a></li><li><a href="#" value="00002" class="selectUitmAttrType2"><span class="opt-name">02 라이트 믹스</span></a></li><li><a href="#" value="00003" class="selectUitmAttrType2"><span class="opt-name">03 사쿠라 베이지</span></a></li></ul></li></ul></div></div></div>
+	<!-- //pop-content -->
+
+	<!-- btn-wrap -->
+	<div class="btn-wrap">
+		<a href="#" class="btn size3 color2" onclick="javascript:changeBasktItemUitmInf();">선택상품 저장</a>
+		<a href="#" class="btn size3 color3 popover-close">취소</a>
+	</div>
+	<!-- //btn-wrap -->
+</div></div></div></div></div>
+<script>
+$("select.form-select").on("change", function() {
+  var selectedOption = $(this).children("option:selected").val();
+	// var pcode = $(this).siblings("#pcode").val();
+	const pcode = this.closest('.cart-list-unit').querySelector('#pcode').value;
+  console.log(selectedOption);
+	console.log(pcode);
+
+	var requestData = JSON.stringify({
+							pcode : pcode,
+							poption : selectedOption,
+					});
+					
+					console.log("---"+requestData);
+
+					$.ajax({
+						url: '/restcart/modifyOption',
+						type: 'post',
+						data: requestData,
+						contentType: "application/json",
+						success	: function(result){
+							console.log("장바구니 옵션 변경 success");
+
+							// var bbprc = parseFloat($("#" + cindex + " input[name='bbprc']").val());
+							// console.log(bbprc+"-----------");
+							// var new_price = bbprc * $(input).val();
+							// $("#" + cindex + " .o-price").text(new_price.toLocaleString() + "원");
+							// $("#" + cindex + " input[name='prodPrc']").val(new_price);
+							// $("#" + cindex + " .tot-price").text(new_price.toLocaleString() + "원");	
+							// cal();
+							
+							loadingBar.stop();
+								
+						},
+						error :function(request, status, error) {
+							console.log(error);
+						}
+					}); 
+
+});
+
+</script>
+<script>
+// 	$('.icheckbox').click(function(){
+// $(this).removeClass('checked');
+// });
+
+$('input[name="checkbox_all"]').change(function(){
+if ($(this).is(':checked')) {
+$('.cart-list-group li .icheckbox').addClass('checked');
+cal();
+} else {
+$('.cart-list-group li .icheckbox').removeClass('checked');
+cal();
+}
+});
+
+$('.icheckbox').click(function(){
+if ($(this).hasClass('checked')) {
+$(this).removeClass('checked');
+cal();
+
+} else {
+$(this).addClass('checked');
+cal();
+
+}
+});
+</script>
+<iframe id="groobeeBox" name="groobeeBox" style="display: none;"></iframe><iframe height="0" width="0" title="Criteo DIS iframe" style="display: none;"></iframe>
 </body>
-
 </html>

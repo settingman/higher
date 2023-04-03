@@ -1,6 +1,7 @@
 package com.hyundai.higher.controller.member;
 
 import javax.servlet.http.HttpServletRequest;
+
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
@@ -8,6 +9,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
@@ -41,6 +43,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RequiredArgsConstructor
+@Transactional
 @RequestMapping("/member")
 @Controller
 public class MemberController {
@@ -56,7 +59,7 @@ public class MemberController {
 
 		model.addAttribute("memberFormDto", new MemberFormDto());
 
-		return "/member/joinform";
+		return "member/joinform";
 	}
 
 	// 회원가입 진행
@@ -108,14 +111,16 @@ public class MemberController {
 	// 회원가입 완료
 	@GetMapping(value = "/joincomplete")
 	public String joincomplete(Model model) {
-		return "/member/joincomplete";
+		
+		
+		return "member/joincomplete";
 	}
 
 	// 로그인 에러페이지 접근
 	@GetMapping(value = "/login/error")
 	public String loginError(Model model) {
 		model.addAttribute("loginErrorMsg", "아이디 또는 비밀번호를 확인해주세요.");
-		return "/member/login";
+		return "member/login";
 	}
 
 	// Secuirty 로그아웃
@@ -130,14 +135,14 @@ public class MemberController {
 	@GetMapping(value = "/findId")
 	public String findId(Model model) {
 
-		return "/member/findId";
+		return "member/findId";
 	}
 
 	// 아이디 찾기 페이지 요청
 	@GetMapping(value = "/findPw")
 	public String findPw(Model model) {
 
-		return "/member/findPw";
+		return "member/findPw";
 	}
 
 	// find id - 아이디 찾기 기능
@@ -151,7 +156,7 @@ public class MemberController {
 
 		if (findMember == null) {
 			log.info("fail");
-			return "/member/findId";
+			return "member/findId";
 		}
 
 		String mId = findMember.getMId();
@@ -160,7 +165,7 @@ public class MemberController {
 
 		model.addAttribute("findMember", findMember);
 
-		return "/member/findIdComplete";
+		return "member/findIdComplete";
 	}
 
 }

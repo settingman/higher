@@ -1,18 +1,13 @@
 package com.hyundai.higher.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 
-import java.util.Arrays;
-
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.client.RestTemplate;
+
+import com.hyundai.higher.domain.cart.CartItem;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -32,12 +27,12 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 public class HomeController {
 
-	@GetMapping(value = "/main")
+	@GetMapping(value = "/")
 	public String memberForm(Model model) {
 
 		log.info("main");
 
-		return "main";
+		return "test";
 	}
 
 	@GetMapping(value = "/test")
@@ -45,21 +40,36 @@ public class HomeController {
 
 		log.info("main");
 
-		return "test";
+		return "order/orderComplete";
 	}
 
-	
 	@GetMapping(value = "/test3")
 	public String test2(Model model) {
+		
+		
+		 log.info("장바구니 이동");
+	      
+	      List<CartItem> carts = new ArrayList<>();
+	      
+	      CartItem cart = new CartItem("A1504419", "테스트", 10000, "Brand", "Color", 3,"option", "img_path");
+			
+			CartItem cart2 = new CartItem("A1643072", "테스트2", 20000, "Brand", "Color", 2,"option", "img_path");
+			
+			carts.add(cart);
+			carts.add(cart2);
+	      
+	      model.addAttribute("carts", carts);
+
+		
+		
+		
 
 
-		return "admin/layout/default_layout";
+		return "test3";
 	}
-	
 
 	@GetMapping(value = "/test4")
 	public String test4(Model model) {
-
 
 		return "test4";
 	}

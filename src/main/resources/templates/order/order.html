@@ -4,15 +4,15 @@
  @설명 : 오더 페이지
 -->
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <title>주문 | 더한섬닷컴</title>
+
 <th:block th:replace="common/head :: headFragment"></th:block>
+
 <head>
 <meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0" />
-<title>더현대닷컴</title>
 <link rel="stylesheet" type="text/css" href="https://image.thehyundai.com/pc/cssssl/font.css" />
-<!--<![endif]-->
 <link rel="stylesheet" type="text/css" href="https://image.thehyundai.com/pc/cssssl/co.css?ver=14" />
 <link rel="stylesheet" type="text/css" href="https://image.thehyundai.com/pc/cssssl/wf.css" />
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -27,7 +27,6 @@
 <link rel="stylesheet" type="text/css" href="https://www.thehyundai.com/cssssl/jquery-ui.css?ver=14" />
 <link rel="stylesheet" type="text/css" href="https://www.thehyundai.com/cssssl/co.css?ver=14" />
 <link rel="stylesheet" type="text/css" href="https://www.thehyundai.com/cssssl/od_new.css?ver=14" />
-<!-- 2019.02.14 주문서 리뉴얼 신규 CSS -->
 <link rel="stylesheet" type="text/css" href="https://www.thehyundai.com/cssssl/dp.css?ver=14" />
 <script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/co/jquery.slidy.min.js"></script>
 <script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/co/json2.js"></script>
@@ -36,12 +35,7 @@
 	margin-right: 16px;
 }
 </style>
-<meta http-equiv="origin-trial"
-	content="A751Xsk4ZW3DVQ8WZng2Dk5s3YzAyqncTzgv+VaE6wavgTY0QHkDvUTET1o7HanhuJO8lgv1Vvc88Ij78W1FIAAAAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjgwNjUyNzk5LCJpc1RoaXJkUGFydHkiOnRydWV9"
-/>
-<meta http-equiv="origin-trial"
-	content="A751Xsk4ZW3DVQ8WZng2Dk5s3YzAyqncTzgv+VaE6wavgTY0QHkDvUTET1o7HanhuJO8lgv1Vvc88Ij78W1FIAAAAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjgwNjUyNzk5LCJpc1RoaXJkUGFydHkiOnRydWV9"
-/>
+
 </script>
 <link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" />
 </head>
@@ -215,7 +209,7 @@
 									<td><span sec:authentication="principal.mName" class="od-name" type="text" title="이름" name="chgOrdCustNm" maxlength="10" /></td>
 									<!-- 20181227 수정 -->
 									<th>전화번호</th>
-									<td><span sec:authentication="principal.mPhone">010-2927-0550</span></td>
+									<td><span id="mPhone" sec:authentication="principal.mPhone"></span></td>
 									<th>이메일</th>
 									<td><span sec:authentication="principal.mId	">95tjdghks@gmail.com</span> <input type="hidden" name="isExistsMemberMail" value="Y" /></td>
 								</tr>
@@ -344,13 +338,13 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
+
+									<tr th:each="orderItem, stat : ${orderItems}">
 										<td class="valign-top">
 											<div class="prod-info no-ctrl">
 												<div class="img" id="img-40A1650970">
-													<img src="https://image.thehyundai.com/static/7/9/0/65/A1/40A1650970_0_100.jpg"
-														onerror="noImage(this, 'https://image.thehyundai.com/hdmall/images/pd/no_image_100x100.jpg')"
-													/>
+													<input type="hidden" th:value="${orderItem.pcode}" />
+													<img src="${orderItem.IMAGE_PATH}" onerror="noImage(this, 'https://image.thehyundai.com/hdmall/images/pd/no_image_100x100.jpg')" />
 													<div class="hover-info">
 														<a href="http://www.thehyundai.com/front/pda/itemPtc.thd?slitmCd=40A1650970&amp;sectId=102066" target="_blank" title="새창으로 보기">새창으로
 															보기</a><a href="javascript:sltdItemDone('40A1650970:00001','102066',event);return false;" title="찜하기"
@@ -359,18 +353,21 @@
 													</div>
 												</div>
 												<div class="title">
-													<a href="http://www.thehyundai.com/front/pda/itemPtc.thd?slitmCd=40A1650970&amp;sectId=102066" target="_blank">설화수[3월][한정수량]자음수 150ml</a>
+													<a href="http:	//www.thehyundai.com/front/pda/itemPtc.thd?slitmCd=40A1650970&amp;sectId=102066" target="_blank">[[${orderItem.pname}]]</a>
+												</div>
+												<div class="option-info">
+													<span class="tit">[[${orderItem.poption}]]</span>
 												</div>
 											</div>
 										</td>
-										<td class="prod-num">1개</td>
+										<td class="prod-num">[[${orderItem.pamount}]]개</td>
 										<td class="price-info">
-											<div class="o-price">
-												68,000원
-												<input type="hidden" name="prod-price-info" data-uitmcd="00001" value="40A1650970" />
-											</div>
-											<div class="tot-price" id="tot-price-40A1650970-00001" data-tot-prc="68000">
-												<span id="tot-price-txt-40A1650970-00001" data-tcprate="1.0" data-luityn="N" data-stlmdcamt="0">68,000원</span>
+											<input type="hidden" class="total-price" th:value="${orderItem.pprice*orderItem.pamount}"/>
+											<div class="o-price" th:text="${#numbers.formatInteger(orderItem.pprice, 3, 'COMMA') + '원'}"></div>
+											<div class="tot-price" >
+												<span data-tcprate="1.0" data-luityn="N" data-stlmdcamt="0"
+													th:text="${#numbers.formatInteger(orderItem.pprice*orderItem.pamount, 3, 'COMMA') + '원'}"
+												></span>
 											</div>
 										</td>
 										<td class="sale-info">
@@ -380,54 +377,18 @@
 												>쿠폰변경</a>
 											</div>
 										</td>
-										<td class="shipping" rowspan="2">
+										
+										
+										<td  th:if="${stat.count == 1}")class="shipping" rowspan="2">
 											<div class="free">
-												<div>묶음구매</div>
 												<div class="free">무료배송</div>
 											</div>
 										</td>
 									</tr>
-									<tr>
-										<td class="valign-top">
-											<div class="prod-info no-ctrl">
-												<div class="img" id="img-40A1624448">
-													<img src="https://image.thehyundai.com/static/4/4/4/62/A1/40A1624448_0_100.jpg"
-														onerror="noImage(this, 'https://image.thehyundai.com/hdmall/images/pd/no_image_100x100.jpg')"
-													/>
-													<div class="hover-info">
-														<a href="http://www.thehyundai.com/front/pda/itemPtc.thd?slitmCd=40A1624448&amp;sectId=40059" target="_blank" title="새창으로 보기">새창으로
-															보기</a><a href="javascript:sltdItemDone('40A1624448:00001','40059',event);return false;" title="찜하기"
-															onclick="javascript:popover_open(this , '#popover-layer-zzim');return false;"
-														>찜하기</a>
-													</div>
-												</div>
-												<div class="title">
-													<a href="http://www.thehyundai.com/front/pda/itemPtc.thd?slitmCd=40A1624448&amp;sectId=40059" target="_blank">[아우구스티누스바더] 더 아이 크림 노마드
-														15ml</a>
-												</div>
-												<div class="option-info">
-													<span class="tit">옵션 : 더 아이 크림 노마드 15ml</span>
-												</div>
-											</div>
-										</td>
-										<td class="prod-num">1개</td>
-										<td class="price-info">
-											<div class="o-price">
-												273,000원
-												<input type="hidden" name="prod-price-info" data-uitmcd="00001" value="40A1624448" />
-											</div>
-											<div class="tot-price" id="tot-price-40A1624448-00001" data-tot-prc="273000">
-												<span id="tot-price-txt-40A1624448-00001" data-tcprate="1.0" data-luityn="N" data-stlmdcamt="0">273,000원</span>
-											</div>
-										</td>
-										<td class="sale-info">
-											<div class="sale-price">
-												<span id="sale-price-40A1624448-00001">0원<br /></span><a class="btn size0 color1" href="#"
-													onclick="javascript:showUsableCopnPup(this);return false;"
-												>쿠폰변경</a>
-											</div>
-										</td>
-									</tr>
+									
+									
+
+
 								</tbody>
 							</table>
 							<!-- // 20181227 수정 -->
@@ -684,12 +645,12 @@
 												<div class="top">
 													<p class="tit">주문금액</p>
 												</div>
-												<p class="price">
+												<p class="price" id="divTotPrdtAmt">
 													341,000 <em>원</em>
 												</p>
 												<div class="bottom">
 													<p class="shipping">
-														상품 금액 <span>341,000<em>원</em></span>
+														상품 금액 <span id="divTotPrdtAmt1"><em>원</em></span>
 													</p>
 													<p class="shipping">
 														배송비 <span id="divTotDlvCost">무료</span>
@@ -700,7 +661,7 @@
 												<div class="top">
 													<p class="tit">할인 및 적립금액</p>
 												</div>
-												<p class="price" id="divTotDcAmt">
+												<p class="price" id="divTotDcAmt2">
 													-0<em>원</em>
 												</p>
 											</div>
@@ -712,8 +673,8 @@
 														결제금액 <span id="discount-percent"></span>
 													</p>
 												</div>
-												<p class="price" id="divTotPrdtAmt">
-													341,000<em>원</em>
+												<p class="price" id="divTotPrdtAmt3">
+													<em>원</em>
 												</p>
 											</div>
 										</div>
@@ -743,7 +704,7 @@
 					</div>
 					<p class="ctrl">
 						<button id="payment-button" class="btn color2 size7">
-							<span id="odr-tot-prc">341,000 원&nbsp;&nbsp;</span>결제하기
+							<span id="divTotPrdtAmt4">341,000 원&nbsp;&nbsp;</span>결제하기
 						</button>
 					</p>
 				</div>
@@ -835,62 +796,163 @@
 			<a href="#" onclick="javascript:$.fancybox.close();return false;" class="btn size3 color2">확인</a>
 		</div>
 		<!-- //btn-wrap -->
+
+
+
+
+		<form class="orderForm" id="OrderSheet" action="/shop/oredercomplete" method="post">
+
+
+			<input type="hidden" name="orderId" id="orderId" value="1">
+			<input type="hidden" name="oName" id="oName" value="1">
+
+			<input type="hidden" name="oDate" id="oDate" value="1">
+
+			<input type="hidden" name="oZipcode" id="oZipcode" value="1">
+			<input type="hidden" name="oAddress1" id="oAddress1" value="1">
+			<input type="hidden" name="oAddress2" id="oAddress2" value="1">
+
+			<input type="hidden" name="oReceiver" id="oReceiver" value="1">
+			<input type="hidden" name="oTel" id="oTel" value="1">
+			<input type="hidden" name="oPayment" id=oPayment value="카드">
+
+			<input type="hidden" name="oTotalPrice" id="oTotalPrice" value="1">
+
+			<div th:each="orderItem, stat : ${orderItems}">
+
+				<input type="hidden" name="product_id" id=product_id th:value="${orderItem.pcode}">
+
+				<input type="hidden" name="product_Quntity" id="product_Quntity" th:value="${orderItem.pamount}">
+				
+				<input type="hidden" name="product_name" id="product_name" th:value="${orderItem.pname}">
+				<input type="hidden" name="product_image" id="product_image" th:value="${orderItem.IMAGE_PATH}">
+				
+				<input type="hidden" name="product_price" id="product_price" th:value="${orderItem.pprice}">
+				
+				
+
+			</div>
+
+
+
+
+
+
+
+		</form>
+
+
+
+
 	</div>
 
 	<script>
+	
+	
+	
+	function total_price(){
+	    let sum = 0;
+	    $('input.total-price').each(function(){
+	        // type으로 시작하는 input을 순차적으로 loop
+	        if(!isNaN($(this).val())){
+	            // CASE 값에 문자가 없는 경우 (숫자인 경우만 합산)
+	            sum += parseInt($(this).val());
+	        }
+	    });
+	    
+	    console.log(sum);
+	    
+	    
+	    
+	    $('#divTotPrdtAmt').text(intToWon(sum));
+	    $('#divTotPrdtAmt1').text(intToWon(sum));
+	    $('#divTotPrdtAmt2').text(intToWon(sum));
+	    $('#divTotPrdtAmt3').text(intToWon(sum));
+	    $('#divTotPrdtAmt4').text(intToWon(sum));
+	    
+	
+	}
+	
+	
+	total_price();
+	
+	
+	
     var clientKey = 'test_ck_ODnyRpQWGrNMgvmawLVKwv1M9ENj'
     var tossPayments = TossPayments(clientKey)
     var button = document.getElementById('payment-button') // 결제하기 버튼
+    
+    var totalPrice = wonToInt($('#divTotPrdtAmt').text());
+    
+    var orderName = '상품 리스트 보고 정하기';
+    
+    
+    
     button.addEventListener('click', function () {
+    	
+    	$('#OrderSheet').find('#orderId').val(
+				$('#order_addressee_name').val());
+    	
+    	$('#OrderSheet').find('#oName').val(orderName);
+    	
+    	
+    	$('#OrderSheet').find('#oZipcode').val(
+				$('#order_addressee_zip').val());
+    	
+    	$('#OrderSheet').find('#oAddress1').val(
+				$('#addressee_addr1').val());
+    	
+    	$('#OrderSheet').find('#oAddress2').val(
+				$('#addressee_addr2').val());
+    	
+    	$('#OrderSheet').find('#oReceiver').val(
+				$('#order_addressee_name').val());
+    	
+    	$('#OrderSheet').find('#oTel').val(
+				$('#addressee_phone').val());
+    	
+    	$('#OrderSheet').find('#oTotalPrice').val(totalPrice);
+    	
+    	
+    	
+    	
+    	
     	$.ajax({
             url: "/toss/order",
             type: "GET",
             dataType : "json",
-            data: {
-              amount: 1500,
-              orderName: 'test',
-            },
+            data: $("#OrderSheet").serialize(),
             success: function (data) {
+            	
+            	console.log(encodeURI(JSON.stringify(data)));
+            	
+            	
             	tossPayments.requestPayment('카드', {
-                    amount: data.amount,
+                    amount: data.oTotalPrice,
                     orderId: data.orderId,
-                    orderName: data.orderName,
-                    customerName: data.customerName,
-                    successUrl: 'https://'+ window.location.host +'/toss/success',
+                    orderName: data.oName,
+                    customerName: data.oReceiver,
+                    successUrl: 'https://'+ window.location.host +'/toss/success?orderInfo='+encodeURI(JSON.stringify(data)),
                     failUrl: 'https://'+ window.location.host +'/toss/fail',
                 })
             }
           });
         })
+        
+        
+        
+        
+        function wonToInt(s) {
+			return parseInt(s.substr(0, s.length - 1).replaceAll(',', ''));
+		}
+    
+    
+    function intToWon(s) {
+		return s.toLocaleString() + '원';
+	}
+    
 </script>
-	<script type="text/javascript">
-			// 인기검색어 폰트사이즈 제어
-			$(document).ready(function() {
-			function orderComplete() {
-				console.log($('#order_addressee_name').val());
-				console.log($('#addressee_cell').val());
-				console.log($('#order_addressee_zip').val());
-				console.log($('#addressee_addr1').val());
-				console.log($('#addressee_addr2').val());
-				console.log($('#order_dlv_memo').val());
-				console.log($('input[name="pay_type"]:checked').val());
-				$('.orderForm').find('#order_name').val(
-						$('#order_addressee_name').val());
-				$('.orderForm').find('#ORDER_PHONE').val(
-						$('#addressee_cell').val());
-				$('.orderForm').find('#order_postnum').val(
-						$('#order_addressee_zip').val());
-				$('.orderForm').find('#order_adress1').val(
-						$('#addressee_addr1').val());
-				$('.orderForm').find('#order_adress2').val(
-						$('#addressee_addr2').val());
-				$('.orderForm').find('#order_ask').val(
-						$('#order_dlv_memo').val());
-				$('.orderForm').find('#order_payment').val(
-						$('input[name="pay_type"]:checked').val());
-				$('.orderForm').submit();
-			}
-		</script>
+
 	</div>
 	<script type="text/javascript" defer="defer">
 		$(document).ready(function() {
