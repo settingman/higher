@@ -1,8 +1,27 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lagn="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
-<th:block th:replace="common/head :: headFragment"></th:block>
 <head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>온라인 뷰티 예약 관리</title>
+
+<!-- Custom fonts for this template-->
+<link href="/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+<!-- Custom styles for this template-->
+<link href="/admin/css/sb-admin-2.min.css" rel="stylesheet">
+
+</head>
+
+<head>
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -17,6 +36,14 @@
 	integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous"
 >
 <script src="/js/roomlist/bootstrap-show-password.min.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></script>
+
 <script th:inline="javascript">
 	let roomId;
 
@@ -273,225 +300,458 @@ span.input-group-text.input-password-show {
 }
 </style>
 </head>
-<body>
-	<div class="container">
-		<div class="container">
-			<h2>채팅방 리스트</h2>
-			<table class="table table-hover" id="table">
-				<tr>
-					<th scope="col">고객명</th>
-					<th scope="col">예약 날짜</th>
-					<th scope="col">시 간</th>
-					<th scope="col">방 생성</th>
-					<th scope="col">입장 하기</th>
-				</tr>
-				<th:block th:fragment="content">
 
-					<tr th:each="res : ${reservations}">
-						<span class="hidden" th:id="${res.memberId}"></span>
-						<td>
-							<!-- thymeleaf 의 변수를 onclick 에 넣는 방법 --> <a th:href="@{/chat/room(roomId=${res.roomId})}" th:roomId="${res.roomId}"
-							onclick="return chkRoomUserCnt(this.getAttribute('roomId'));"
-						>[[${res.memberName}]]</a>
-						</td>
-						<td><span class="badge bg-primary rounded-pill">[[${res.resDate}]]</span></td>
-						<td><span class="badge bg-primary rounded-pill">[[${res.resTime}]]</span></td>
-						<td><button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#roomModal">방 생성</button></td>
-						<td><a th:href="@{/chat/room(roomId=${res.roomId})}" th:roomId="${res.roomId}"
-							onclick="return chkRoomUserCnt(this.getAttribute('roomId'));"
-						>방 입장</a></td>
-					</tr>
-				</th:block>
 
-			</table>
+<body id="page-top">
 
-			<div th:if="${user == null}" class="row">
-				<div class="col">
-					<a href="/chatlogin"><button type="button" class="btn btn-primary">로그인하기</button></a>
+	<!-- Page Wrapper -->
+	<div id="wrapper">
 
-				</div>
+		<th:block th:replace="admin/fragments/sidebar :: sidebarFragment"></th:block>
 
-			</div>
+		<!-- Content Wrapper -->
+		<div id="content-wrapper" class="d-flex flex-column">
 
-			<table class="table table-hover" id="table">
-				<tr>
-					<th scope="col">채팅방명</th>
-					<th scope="col">잠금 여부</th>
-					<th scope="col">참여 인원</th>
-					<th scope="col">채팅 종류</th>
-					<th scope="col">채팅방 설정</th>
-				</tr>
-				<th:block th:fragment="content">
+			<!-- Main Content -->
+			<div id="content">
 
-					<tr th:each="room : ${list}">
-						<span class="hidden" th:id="${room.roomName}"></span>
-						<td th:if="${room.secretChk}"><a href="#enterRoomModal" data-bs-toggle="modal" data-target="#enterRoomModal" th:data-id="${room.roomId}">[[${room.roomName}]]</a>
-						</td>
-						<td th:if="${!room.secretChk}">
-							<!-- thymeleaf 의 변수를 onclick 에 넣는 방법 --> <a th:href="@{/chat/room(roomId=${room.roomId})}" th:roomId="${room.roomId}"
-							onclick="return chkRoomUserCnt(this.getAttribute('roomId'));"
-						>[[${room.roomName}]]</a>
-						</td>
-						<td><span th:if="${room.secretChk}"> 🔒︎ </span></td>
-						<td><span class="badge bg-primary rounded-pill">[[${room.userCount}]]/[[${room.maxUserCnt}]]</span></td>
-						<td><span th:if="${#strings.equals(room.chatType, 'MSG')}">일반 채팅</span> <span th:unless="${#strings.equals(room.chatType, 'MSG')}">화상
-								채팅</span></td>
-						<td>
-							<button class="btn btn-primary btn-sm" id="configRoom" data-bs-toggle="modal" data-bs-target="#confirmPwdModal" th:data-id="${room.roomId}">채팅방
-								설정</button>
-						</td>
-					</tr>
-				</th:block>
+				<th:block th:replace="admin/fragments/header :: headerFragment"></th:block>
 
-			</table>
-			<button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#roomModal">방 생성</button>
+				<!-- Begin Page Content -->
+				<div class="container-fluid">
 
-		</div>
-	</div>
 
-	<div class="modal fade" id="roomModal" tabindex="-1" aria-labelledby="roomModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title">채팅방 생성</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-				<form method="post" action="/chat/createroom" onsubmit="return createRoom()">
-					<!-- <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"> -->
-					<div class="modal-body">
-						<div class="mb-3">
-							<label for="roomName" class="col-form-label">방 이름</label>
-							<input type="text" class="form-control" id="roomName" name="roomName">
+					<th:block th:replace="common/head :: headFragment"></th:block>
+
+					<body>
+						<div class="container">
+							<div class="container">
+								<h2>예약 내역</h2>
+								<table class="table table-hover" id="table">
+									<tr align="center">
+										<th scope="col">고객명</th>
+										<th scope="col">고객 아이디</th>
+										<th scope="col">예약 날짜</th>
+										<th scope="col">시 간</th>
+										<th scope="col">회원 정보</th>
+										<th scope="col">방 생성</th>
+										<th scope="col">입장 하기</th>
+									</tr>
+									<th:block th:fragment="content" id="block">
+
+										<tr align="center" th:each="res : ${reservations}">
+											<td class="fw-normal visible mname">[[${res.MNAME}]]</td>
+											<td class="fw-normal visible mid">[[${res.MID}]]</td>
+											<td class="fw-normal visible rdare">[[${res.RDATE}]]</td>
+											<td class="fw-normal visible rtime">[[${res.RTIME}]]</td>
+											<td class="fw-normal visible rmakeup"><button type="button" class="btn btn-primary btn-sm open" data-bs-toggle="modal"
+													data-bs-target="#profileModal" th:onclick="profileOpen([[${res.MID}]],[[${res.RID}]])"
+												>정보 확인</button></td>
+											<td class="rcheck" th:if="${res.RCHECK}"><span class="col-sm-2 align-self-auto"> 생성 완료 </span></td>
+											<td class="rcheck2" th:if="${!res.RCHECK}"><span class="col-sm-2 align-self-auto">
+													<button type="button" class="btn btn-primary btn-sm open" data-bs-toggle="modal" data-bs-target="#roomModal"
+														th:onclick="modalOpen([[${res.MNAME}]],[[${res.MID}]],[[${res.RID}]])"
+													>방 생성</button>
+											</span></td>
+											<td class="fw-normal visible roomURL"><a th:href="@{/chat/room(roomId=${res.roomId})}" th:roomId="${res.roomId}"
+												onclick="return chkRoomUserCnt(this.getAttribute('roomId'));"
+											>방 입장</a></td>
+										</tr>
+									</th:block>
+
+								</table>
+
+								<div class="col">
+									<h2>
+										온라인 상담 내역
+										<button type="button" class="btn btn-primary btn-sm open" data-bs-toggle="modal" data-bs-target="#roomModal">방 생성</button>
+									</h2>
+								</div>
+
+
+								<table class="table table-hover" id="table">
+									<tr align="center">
+										<th scope="col">온라인 상담</th>
+										<th scope="col">잠금 여부</th>
+										<th scope="col">참여 인원</th>
+										<th scope="col">채팅 종류</th>
+										<th scope="col">채팅방 설정</th>
+									</tr>
+									<th:block th:fragment="content">
+
+										<tr align="center" th:each="room : ${list}">
+											<span class="hidden" th:id="${room.roomName}"></span>
+											<td th:if="${room.secretChk}"><a href="#enterRoomModal" data-bs-toggle="modal" data-target="#enterRoomModal"
+												th:data-id="${room.roomId}"
+											>[[${room.roomName}]]</a></td>
+											<td th:if="${!room.secretChk}">
+												<!-- thymeleaf 의 변수를 onclick 에 넣는 방법 --> <a th:href="@{/chat/room(roomId=${room.roomId})}" th:roomId="${room.roomId}"
+												onclick="return chkRoomUserCnt(this.getAttribute('roomId'));"
+											>[[${room.roomName}]]</a>
+											</td>
+											<td><span th:if="${room.secretChk}"> 🔒︎ </span></td>
+											<td><span class="badge bg-primary rounded-pill">[[${room.userCount}]]/[[${room.maxUserCnt}]]</span></td>
+											<td><span th:if="${#strings.equals(room.chatType, 'MSG')}">일반 채팅</span> <span th:unless="${#strings.equals(room.chatType, 'MSG')}">화상
+													채팅</span></td>
+											<td>
+												<button class="btn btn-primary btn-sm" id="configRoom" data-bs-toggle="modal" data-bs-target="#confirmPwdModal"
+													th:data-id="${room.roomId}"
+												>채팅방 설정</button>
+											</td>
+										</tr>
+									</th:block>
+
+								</table>
+
+
+							</div>
 						</div>
-						<div class="mb-3">
-							<label for="roomPwd" class="col-form-label">방 설정 번호(방 삭제시 필요합니다)</label>
-							<div class="input-group">
-								<input type="password" name="roomPwd" id="roomPwd" class="form-control" data-toggle="password">
-								<div class="input-group-append">
-									<span class="input-group-text"><i class="fa fa-eye"></i></span>
+
+						<div class="modal fade" id="roomModal" tabindex="-1" aria-labelledby="roomModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title">채팅방 생성</h5>
+										<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+									</div>
+									<form method="post" action="/chat/createroom" onsubmit="return createRoom()">
+										<!-- <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"> -->
+										<div class="modal-body">
+											<div class="mb-3">
+												<label for="roomName" class="col-form-label">방 이름</label>
+												<input type="text" class="form-control" id="roomName" name="roomName">
+											</div>
+											<div class="mb-3">
+												<label for="roomName" class="col-form-label">회원 아이디</label>
+												<input type="text" class="form-control" id="customerID" name="customerID" readonly>
+												<input type="hidden" id="reservationID" name="reservationID" />
+											</div>
+											<div class="mb-3">
+												<label for="roomPwd" class="col-form-label">방 설정 번호</label>
+												<div class="input-group">
+													<input type="password" name="roomPwd" id="roomPwd" class="form-control" data-toggle="password">
+													<div class="input-group-append">
+														<span class="input-group-text"><i class="fa fa-eye"></i></span>
+													</div>
+												</div>
+											</div>
+											<div class="mb-3">
+												<div class="form-check">
+													<input class="form-check-input" type="radio" name="chatType" id="msgType" value="msgChat">
+													<label class="form-check-label" for="msgType"> 일반 채팅 </label>
+												</div>
+												<div class="form-check">
+													<input class="form-check-input" type="radio" name="chatType" id="rtcType" value="rtcChat">
+													<label class="form-check-label" for="rtcType"> 화상 채팅 </label>
+												</div>
+											</div>
+											<div class="mb-3">
+												<label for="maxUserCnt" class="col-form-label">채팅방 인원 설정 <!--<input class="form-check-input" type="checkbox" id="maxChk">--></label>
+												<input type="text" class="form-control" id="maxUserCnt" name="maxUserCnt">
+											</div>
+											<div class="form-check">
+												<input class="form-check-input" type="checkbox" id="secret">
+												<input type="hidden" name="secretChk" id="secretChk" value="">
+												<label class="form-check-label" for="secret"> 채팅방 잠금 </label>
+											</div>
+										</div>
+
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+											<input type="submit" class="btn btn-primary" value="방 생성하기">
+										</div>
+									</form>
 								</div>
 							</div>
 						</div>
-						<div class="mb-3">
-							<div class="form-check">
-								<input class="form-check-input" type="radio" name="chatType" id="msgType" value="msgChat">
-								<label class="form-check-label" for="msgType"> 일반 채팅(최대 100명) </label>
-							</div>
-							<div class="form-check">
-								<input class="form-check-input" type="radio" name="chatType" id="rtcType" value="rtcChat">
-								<label class="form-check-label" for="rtcType"> 화상 채팅(1:1 Only) </label>
-							</div>
-						</div>
-						<div class="mb-3">
-							<label for="maxUserCnt" class="col-form-label">채팅방 인원 설정 <!--<input class="form-check-input" type="checkbox" id="maxChk">--></label>
-							<input type="text" class="form-control" id="maxUserCnt" name="maxUserCnt">
-						</div>
-						<div class="form-check">
-							<input class="form-check-input" type="checkbox" id="secret">
-							<input type="hidden" name="secretChk" id="secretChk" value="">
-							<label class="form-check-label" for="secret"> 채팅방 잠금 </label>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-						<input type="submit" class="btn btn-primary" value="방 생성하기">
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
 
-	<div class="modal fade" id="enterRoomModal" tabindex="-1" aria-labelledby="enterRoomModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title">채팅방 비밀번호를 입력해주세요</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-					<div class="mb-3">
-						<label for="roomName" class="col-form-label">방 비밀번호</label>
-						<div class="input-group">
-							<input type="password" name="roomPwd" id="enterPwd" class="form-control" data-toggle="password">
-							<div class="input-group-append">
-								<span class="input-group-text"><i class="fa fa-eye"></i></span>
+						<div class="modal fade" id="enterRoomModal" tabindex="-1" aria-labelledby="enterRoomModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title">채팅방 비밀번호를 입력해주세요</h5>
+										<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+									</div>
+									<div class="modal-body">
+										<div class="mb-3">
+											<label for="roomName" class="col-form-label">방 비밀번호</label>
+											<div class="input-group">
+												<input type="password" name="roomPwd" id="enterPwd" class="form-control" data-toggle="password">
+												<div class="input-group-append">
+													<span class="input-group-text"><i class="fa fa-eye"></i></span>
+												</div>
+											</div>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+											<button type="button" class="btn btn-primary" onclick="enterRoom()">입장하기</button>
+										</div>
+										</form>
+									</div>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary" onclick="enterRoom()">입장하기</button>
-					</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
 
 
 
-	<div class="modal fade" id="confirmPwdModal" aria-hidden="true" aria-labelledby="ModalToggleLabel" tabindex="-1">
-		<div class="modal-dialog modal-dialog-centered">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title">채팅방 설정을 위한 패스워드 확인</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-					<label for="confirmPwd" class="col-form-label" id="confirmLabel">비밀번호 확인</label>
-					<div class="input-group">
-						<input type="password" name="confirmPwd" id="confirmPwd" class="form-control" data-toggle="password">
-						<div class="input-group-append">
-							<span class="input-group-text"><i class="fa fa-eye"></i></span>
+						<div class="modal fade" id="confirmPwdModal" aria-hidden="true" aria-labelledby="ModalToggleLabel" tabindex="-1">
+							<div class="modal-dialog modal-dialog-centered">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title">채팅방 설정을 위한 패스워드 확인</h5>
+										<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+									</div>
+									<div class="modal-body">
+										<label for="confirmPwd" class="col-form-label" id="confirmLabel">비밀번호 확인</label>
+										<div class="input-group">
+											<input type="password" name="confirmPwd" id="confirmPwd" class="form-control" data-toggle="password">
+											<div class="input-group-append">
+												<span class="input-group-text"><i class="fa fa-eye"></i></span>
+											</div>
+										</div>
+									</div>
+									<div class="modal-footer">
+										<button id="configRoomBtn" class="btn btn-primary disabled" data-bs-target="#configRoomModal" data-bs-toggle="modal" aria-disabled="true">채팅방
+											설정하기</button>
+									</div>
+								</div>
+							</div>
 						</div>
-					</div>
+						<div class="modal fade" id="configRoomModal" tabindex="-1" aria-labelledby="roomModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title">채팅방 설정</h5>
+										<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+									</div>
+									<div class="modal-body">
+										<div class="mb-3">
+											<label for="chPwd" class="col-form-label">비밀번호 변경</label>
+											<div class="input-group">
+												<input type="password" name="confirmPwd" id="chPwd" class="form-control" data-toggle="password">
+												<div class="input-group-append">
+													<span class="input-group-text"><i class="fa fa-eye"></i></span>
+												</div>
+											</div>
+										</div>
+										<div class="mb-3">
+											<label for="chRoomName" class="col-form-label">채팅방 이름 변경</label>
+											<input type="text" class="form-control" id="chRoomName" name="chRoomName">
+										</div>
+										<div class="mb-3">
+											<label for="chRoomUserCnt" class="col-form-label">채팅방 인원 변경</label>
+											<input type="text" class="form-control" id="chRoomUserCnt" name="chUserCnt">
+										</div>
+										<div class="form-check">
+											<input class="form-check-input" typve="checkbox" id="chSecret">
+											<input type="hidden" name="secretChk" id="chSecretChk" value="">
+											<label class="form-check-label" for="secret"> 채팅방 잠금 </label>
+										</div>
+										<div class="mb-3">
+											<button type="button" class="btn btn-primary" onclick="delRoom()">방 삭제</button>
+										</div>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</body>
+
 				</div>
-				<div class="modal-footer">
-					<button id="configRoomBtn" class="btn btn-primary disabled" data-bs-target="#configRoomModal" data-bs-toggle="modal" aria-disabled="true">채팅방
-						설정하기</button>
-				</div>
+				<!-- /.container-fluid -->
+
 			</div>
-		</div>
-	</div>
-	<div class="modal fade" id="configRoomModal" tabindex="-1" aria-labelledby="roomModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title">채팅방 설정</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-					<div class="mb-3">
-						<label for="chPwd" class="col-form-label">비밀번호 변경</label>
-						<div class="input-group">
-							<input type="password" name="confirmPwd" id="chPwd" class="form-control" data-toggle="password">
-							<div class="input-group-append">
-								<span class="input-group-text"><i class="fa fa-eye"></i></span>
+			<!-- End of Page Wrapper -->
+
+
+
+
+			<div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLbel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
+							<div class="card p-4">
+								<div class=" image d-flex flex-column justify-content-center align-items-center">
+									<button class="btn btn-secondary">
+										<img th:id="profileIMG" src="https://i.imgur.com/wvxPV9S.png" height="200" width="200" />
+									</button>
+									<span class="name mt-3" th:id="profileName">Eleanor Pena</span> <span class="idd" th:id="profileMBTI">@eleanorpena</span>
+									<div>
+										<span class="name mt-3" th:id="profileAge"> </span>
+									</div>
+									
+									<div class=" px-2 rounded mt-4 date ">
+										<span class="join">엠비티아이 설명과 추천 어쩌구 저쩌구 입니다 .
+										회원정보 어쩌구 저쩌구 ㅁㄴ어만어ㅏㅁ </span>
+									</div>
+									
+									<div class=" d-flex mt-2">
+										<br>
+										<br>
+									</div>
+									
+			
+									<div class=" d-flex mt-2">
+										<button class="btn btn-primary btn-sm open" id="profileMakeup" th:onclick="MakeUp(this)" data-makeup="123123">가상 메이크업</button>
+									</div>
+
+						
+									
+								</div>
 							</div>
 						</div>
 					</div>
-					<div class="mb-3">
-						<label for="chRoomName" class="col-form-label">채팅방 이름 변경</label>
-						<input type="text" class="form-control" id="chRoomName" name="chRoomName">
-					</div>
-					<div class="mb-3">
-						<label for="chRoomUserCnt" class="col-form-label">채팅방 인원 변경</label>
-						<input type="text" class="form-control" id="chRoomUserCnt" name="chUserCnt">
-					</div>
-					<div class="form-check">
-						<input class="form-check-input" type="checkbox" id="chSecret">
-						<input type="hidden" name="secretChk" id="chSecretChk" value="">
-						<label class="form-check-label" for="secret"> 채팅방 잠금 </label>
-					</div>
-					<div class="mb-3">
-						<button type="button" class="btn btn-primary" onclick="delRoom()">방 삭제</button>
-					</div>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 				</div>
 			</div>
+
+
+
+
+
+
+
+
+
+
+
+
 		</div>
-	</div>
+
+
+		<script>
+			function MakeUp(e) {
+
+				var a = $(e).data('makeup');
+
+				console.log(a);
+
+				window.open(a);
+
+			}
+
+			function modalOpen(mName, mid, rid) {
+
+				$('#roomName').val(mName + "님 온라인 뷰티 ");
+				$('#customerID').val(mid);
+				$('#reservationID').val(rid);
+
+			}
+
+			function profileOpen(mid, rid) {
+
+				$.ajax({
+					type : "get",
+					url : "/beauty/profile",
+					data : {
+						"mid" : mid,
+						"rid" : rid
+					},
+					success : function(profile) {
+
+						console.log(profile);
+
+						$('#profileMBTI').text("@ " + profile.mbti);
+
+						$('#profileName').text(profile.mname+"  " +profile.age + "살");
+
+						$('#profileIMG').attr("src", profile.rimg);
+
+						$('#profileMakeup').attr('data-makeup',
+								'/beauty/makeup?rid=' + rid);
+
+					}
+				})
+
+			}
+		</script>
+
+		<!-- Bootstrap core JavaScript-->
+		<script src="/admin/vendor/jquery/jquery.min.js"></script>
+		<script src="/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+		<!-- Core plugin JavaScript-->
+		<script src="/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+		<!-- Custom scripts for all pages-->
+		<script src="/admin/js/sb-admin-2.min.js"></script>
+
+		<!-- Page level plugins -->
+		<script src="/admin/vendor/chart.js/Chart.min.js"></script>
+
+		<!-- Page level custom scripts -->
+		<script src="/admin/js/demo/chart-area-demo.js"></script>
+		<script src="/admin/js/demo/chart-pie-demo.js"></script>
 </body>
+
+<style>
+
+/*프로필 카드 */
+* {
+	margin: 0;
+	padding: 0
+}
+
+body {
+	background-color: #000
+}
+
+.card {
+	width: 350px;
+	background-color: #efefef;
+	border: none;
+	cursor: pointer;
+	transition: all 0.5s;
+}
+
+.image img {
+	transition: all 0.5s
+}
+
+.card:hover .image img {
+	transform: scale(1.5)
+}
+
+.name {
+	font-size: 22px;
+	font-weight: bold
+}
+
+.idd {
+	font-size: 19px;
+	font-weight: 600
+}
+
+.idd1 {
+	font-size: 12px
+}
+
+.number {
+	font-size: 22px;
+	font-weight: bold
+}
+
+.follow {
+	font-size: 12px;
+	font-weight: 500;
+	color: #444444
+}
+
+.text span {
+	font-size: 13px;
+	color: #545454;
+	font-weight: 500
+}
+
+hr .new1 {
+	border: 1px solid
+}
+
+
+.date {
+	background-color: #ccc
+}
+</style>
+
 </html>
