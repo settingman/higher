@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyundai.higher.mapper.match.MatchMapper">
+
+	<resultMap type="com.hyundai.higher.domain.match.MatchProductDTO" id="mbtiMap">
+		<result property="pcode" column="pcode"/>
+		<result property="pname" column="pname"/>
+		<result property="dept1no" column="dept1no"/>
+		<result property="dept2no" column="dept2no"/>
+		<result property="pmbti" column="pmbti"/>
+		<result property="pmbti" column="pmbti"/>
+		<result property="iloc" column="iloc"/>
+	</resultMap>
+
+	<select id="mbtiProduct" resultMap="mbtiMap">
+	select pi.pcode, pi.pname, pi.dept1no, pi.dept2no, pi.pmbti, pi.iloc
+	from(
+	    select p.pcode, p.pname, p.dept1no,p.dept2no,p.pmbti, i.iloc, 
+	          row_number() over
+	          (partition by p.pcode order by i.iloc desc) as rn 
+	    from img i right join product p on p.pcode=i.pcode
+	    where i.itype='thumb' and p.pmbti=#{pmbti}
+	    ) pi right join product p on pi.pcode = p.pcode
+	    where pi.rn =1
+	</select>
+	
+	<select id="getMbtiInfo" resultType="com.hyundai.higher.domain.match.MatchMbtiDTO">
+		select * from skinmbti where stype = #{pmbti}
+	</select>
+	
+	<select id="searchProduct" resultMap="mbtiMap">
+		select pi.pcode, pi.pname, pi.dept1no, pi.dept2no, pi.pmbti, pi.iloc
+	from(
+	    select p.pcode, p.pname, p.dept1no,p.dept2no,p.pmbti, i.iloc, 
+	          row_number() over
+	          (partition by p.pcode order by i.iloc desc) as rn 
+	    from img i right join product p on p.pcode=i.pcode
+	    where i.itype='thumb' and p.dept1no=10 and p.pname like  '%'||#{keyword}||'%'
+	    ) pi right join product p on pi.pcode = p.pcode
+	    where pi.rn =1
+	</select>
+	
+</mapper>

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1">
+    <title>Match It!</title>
+
+    <!-- 스와이퍼 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+
+    <!-- 스와이퍼 end -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        .back {
+            background-color: #FFFEF2;
+            width: 1120px;
+            margin:auto;
+        }
+
+        .content {
+            background-color: #FFFFFF;
+            width: 950px;
+            margin: auto;
+            border: solid 1px;
+            padding-bottom: 30px;
+            
+        }
+        
+        /* 스와이퍼 */
+        swiper-container {
+      width: 100%;
+      height: 100%;
+    }
+
+    swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    :root {
+      --swiper-theme-color: #461805;
+    }
+    .product {
+      height: 220px;
+    }
+    .brand {
+      margin-top: 10px;
+    }
+    .mbti {
+      font-size: 25px;
+      text-align: center;
+      margin-bottom: 5px;
+    }
+    .itemheader {
+      border-bottom: 2.5px solid black;
+      margin: 50px 50px 20px 50px;
+    }
+    .typebtns {
+      text-align: center;
+      width: 840px;
+      margin: auto;
+    }
+
+    #typebtn {
+      width: 150px;
+      margin: 0 5px;
+    }
+
+    .matchbtn {
+      display: flex;
+      justify-content: center; 
+      width:230px;
+      text-align: center;
+      background-color: #9E8A76;
+      border:none;
+      height: 40px;
+      line-height: 40px;
+      margin: 0 5px;
+      color: #FFFEF2;
+      font-weight: 500;
+      letter-spacing: 0px;
+      border-radius: 12px;
+      font-size: 17px;
+    }
+    .price-info{
+      margin-bottom: 15px;
+    }
+
+    .pMbti {
+    font-size: 16px;
+    border: 1px solid black;
+    padding: 5px;
+    width: 70px;
+    text-align: center;
+    background-color: #333;
+    color: #fffef2;
+    height: 27px;
+    }
+
+    </style>  
+
+<link rel="stylesheet" type="text/css" href="https://image.thehyundai.com/pc/cssssl/font.css">
+
+<!-- Google Tag Manager -->
+<script gtm="GTM-TKDB5QC" type="text/javascript" async="" src="https://www.google-analytics.com/gtm/optimize.js?id=GTM-5XFV937"></script><script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=UA-69960332-7&amp;l=dataLayer&amp;cx=c"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=AW-879261918&amp;l=dataLayer&amp;cx=c"></script><script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-TKDB5QC"></script><script gtm="GTM-TKDB5QC" type="text/javascript" async="" src="https://www.google-analytics.com/gtm/optimize.js?id=GTM-5XFV937"></script><script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-QLPPKE4D8W&amp;l=dataLayer&amp;cx=c"></script><script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-TKDB5QC"></script><script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-0PNKMQ6SKX&amp;l=dataLayer&amp;cx=c"></script><script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=UA-69960332-7&amp;l=dataLayer&amp;cx=c"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=AW-879261918&amp;l=dataLayer&amp;cx=c"></script><script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-NLTHFJM"></script><script gtm="GTM-TKDB5QC" type="text/javascript" async="" src="https://www.google-analytics.com/gtm/optimize.js?id=GTM-5XFV937"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-QLPPKE4D8W&amp;l=dataLayer&amp;cx=c"></script><script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-TKDB5QC"></script><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TKDB5QC');</script>
+<!-- End Google Tag Manager -->
+
+<link rel="stylesheet" type="text/css" href="https://image.thehyundai.com/pc/cssssl/co.css?ver=14">
+<link rel="stylesheet" type="text/css" href="https://image.thehyundai.com/pc/cssssl/wf.css">
+<script src="https://image.thehyundai.com/pc/js/jquery-1.11.3.min.js"></script>
+<script src="https://image.thehyundai.com/pc/js/jquery-ui.min.js"></script>
+<script src="https://image.thehyundai.com/pc/js/jquery-migrate.min.js"></script>
+
+<script type="text/javascript">
+document.domain = "thehyundai.com";
+var locationHref = document.location.href;
+var imageServer = "https://image.thehyundai.com";
+var serverHost = "https://www.thehyundai.com";
+var serverHostForSSL = "https://www.thehyundai.com";
+
+var switch_serverHost;
+var contextPath = "/front";
+
+if (locationHref.indexOf("https") > -1) {
+	switch_serverHost = serverHostForSSL;
+
+} else if (locationHref.indexOf("http") > -1) {
+	switch_serverHost = serverHost;
+
+}
+
+</script>
+
+<script src="https://image.thehyundai.com/pc/js/plugin.js?ver=030314"></script>
+<script type="text/javascript" src="https://image.thehyundai.com/pc/js/hdmall/co/jquery.form.js"></script>
+<script type="text/javascript" src="https://image.thehyundai.com/pc/js/hdmall/co/default.js?ver=030314"></script>
+<script type="text/javascript" src="https://image.thehyundai.com/pc/js/hdmall/co/common.js?ver=030314"></script>
+<script src="https://image.thehyundai.com/pc/js/common.js?ver=030314"></script>
+<script type="text/javascript" src="https://image.thehyundai.com/pc/js/swiper.min.js?ver=030314"></script>
+
+<!-- 그루비(MA) 솔루션 스크립트 삽입 -->
+<script src="/js/hdmall/co/groobeeAnalyticsBuilder.js"></script> 
+
+ 
+<script type="text/javascript">
+(function(a,i,u,e,o){
+a[u]=a[u]||function(){(a[u].q=a[u].q||[]).push(arguments)};
+})(window, document, "groobee");
+if(window.location.host.indexOf('dev') != -1 || window.location.host.indexOf('stg') != -1){
+	groobee("serviceKey","6ab0c3cdd6c9458ab02dec4fc6c0cccd");
+}else{
+	groobee("serviceKey","4dd20a40cca8449988053b600a926c57");
+}
+groobee("siteType","custom");
+</script>
+<script charset="utf-8" src="//static.groobee.io/dist/g2/groobee.init.min.js"></script>
+ 
+<meta property="groobee:member_id" content="">
+<meta property="groobee:member_grade" content="">
+<meta property="groobee:member_gender" content="">
+<meta property="groobee:member_type" content="">
+<meta property="groobee:member_age" content="">
+
+<script type="text/javascript"> 
+
+var custNoMa = '';
+var itntGrdMa = '';
+var sexGbcdMa = '';
+var upntCustMa = '';
+var birthMa = '';
+if(pageViewObj2.custNo != null) custNoMa = pageViewObj2.custNo;
+if(pageViewObj2.itntGrd != null) itntGrdMa = pageViewObj2.itntGrd;
+if(pageViewObj2.sexGbcd != null) sexGbcdMa = pageViewObj2.sexGbcd;
+if(pageViewObj2.upntCustYn != null) upntCustMa = pageViewObj2.upntCustYn;
+if(pageViewObj2.birthday != null) birthMa = pageViewObj2.birthday;
+
+
+$('meta[property="groobee:member_id"]').attr('content',custNoMa);
+$('meta[property="groobee:member_grade"]').attr('content',itntGrdMa);
+$('meta[property="groobee:member_gender"]').attr('content',sexGbcdMa);
+$('meta[property="groobee:member_type"]').attr('content',upntCustMa);
+$('meta[property="groobee:member_age"]').attr('content',birthMa);
+
+</script>
+
+	<link rel="stylesheet" href="https://www.thehyundai.com/cssssl/cc.css">
+	<link rel="stylesheet" type="text/css" href="https://www.thehyundai.com/cssssl/dp.css?ver=14">
+<script>
+$(document).ready(function() {
+
+	setGnb();
+
+	var availableTags = ['겔랑','구찌뷰티','끌레드뽀보떼','나스','논픽션','닥터제코리','더 문','더바디샵','더샘','더히스토리오브후','데코르테','디올','라메르','라프레리','랑콤','러쉬','록시땅','루나','르샤트라','메이크업포에버','명품화장품 바이레도','명품화장품 아워글래스','바비브라운','발몽','버츠비','베네피트','불리','브이디엘','비건슈퍼(비클린)','비오템','빌리프','사봉','샤넬','샹테카이','설화수','세렌디뷰티','숨37˚','시바산(미입)','시세이도','시슬리','시카고','아모레퍼시픽','아베다','아비브','아이소이','앤아더스토리즈','에든버러스킨케어','에르메스','에스케이투','에스티로더','에이솔루션','에이지투웨니스','엘리자베스아덴','오에라','오휘','이솝','정샘물','지방시뷰티','코이','쿠오카','크리니크','클라랑스','톰포드 화장품','티퍼런스','폴앤조','프레쉬','프리메라','헤라','CNP RX','V&A'];
+
+	/*
+		상품리스트 유형 B 슬라이더 , 해당 슬라이더가 나올때 호출해주시면됩니다. 함수로 만들어놓고 해당 페이지에서 호출하시는게 어떨런지.
+		한페이지에 해당 유형이 여러개 나올 경우 pagerCustom 의 ID값으로 인해 각각 고유의 pager 가 지정될 수 있도록 slider 와 pager에 고유한 ID를 부여하신뒤에 슬라이더를 실행시키셔야 합니다.
+
+	*/
+	$(".product-list-slider > ul ").bxSlider({
+		pagerCustom: "#product-list-slider-pager",
+		auto:true,
+		pause:4000,
+		autoHover:true,
+		controls:false
+	});
+
+	$(".banner-area").bxSlider({
+		controls			:	false,
+		auto				:	true,
+		autoHover			:	true,
+		autoControls		:	true,
+		pagerCustom: '.category-banner .brand-list'
+	});
+
+	// 메인이미지가 없는 경우 부모 element의 margin값 제거
+	if($("div.category-top.type4 img").length == 0){
+		$("div.category-top.type4").css("margin-bottom", "5px");
+	}
+	
+});
+
+function setGnb() {
+	$.ajax({
+		type : "get",
+		url : "/front/coa/getGnb.thd?exeFunc=false",
+		cache : false,
+		data : "",
+		dataType : "html",
+		success : function(data, textStatus, jqXHR) {
+			$("#header-wrap").remove();
+			$("#aside").remove();
+			$("#aside-left").remove();
+			$("#container").before(data);
+			set_searchbar();
+			set_slider();
+			$("#quick_baskt_num").html(fnSelectBasktCount());	// 2019.05.14 장바구니 갯수
+		    rcntItemsRearange();
+		    setOpenGnb();
+		},
+		error : function(jqXHR, textStatus, errorThrown) {
+		}
+	});
+}
+
+</script>
+
+<script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/co/md5.js"></script>
+
+</head>
+<body>
+  
+  <div id="wrap" class="sub">
+    <div id="content-wrap">
+
+        <div class="back" style="padding-bottom: 50px;padding-top: 30px;">
+              
+            <!-- 검색창 -->
+            
+            <div class="searching" style="width:550px; margin: auto;">
+              <form id="searchform" action="searchProduct" method="get" style="margin-top: 15px;margin-bottom: 25px;">
+                <div class="searchbox" style="border-top: 1.47px solid black; border-bottom: 1.47px solid black;">
+                  <input type="text" class="search-input" name="keyword" th:placeholder="${param.keyword}" maxlength="30" style="width: 500px; height: 50px; border: none; background-color: #FFFEF2; text-align: center; font-size: 18px;">
+                  <button type="submit" class="search-btn" style="margin-left:10px;width:30px;height:30px;background: url(./img/arrow.png);background-size: cover;border: none;"></button>
+                </div>
+              </form>
+            </div>
+          
+            
+            <!-- 검색창 end -->
+
+            <div class="content">
+                
+                <!-- MBTI 인기 아이템 출력 -->
+                <div class="item">
+                  <div class="itemheader">
+                    <h4 class="searchtitle" style="font-size: 30px;margin-bottom: 10px;margin-left: 20px;">검색 결과</h4>
+                  </div>
+                  <div class="itemlist">
+                    <!-- <div class="typebtns">
+                      <button type="button" class="btn btn-outline-dark active" onclick="" id="typebtn">전체</button>
+                      <button type="button" class="btn btn-outline-dark" onclick="" id="typebtn">스킨/토너</button>
+                      <button type="button" class="btn btn-outline-dark" onclick="" id="typebtn">패드</button>
+                      <button type="button" class="btn btn-outline-dark" onclick="" id="typebtn">에센스/앰플/세럼</button>
+                      <button type="button" class="btn btn-outline-dark" onclick="" id="typebtn">로션/크림</button>
+                    </div> -->
+
+                    <div class="product-list-wrap">
+                      <ul class="product-list type1" id="product-list" style="display: flex; flex-wrap: wrap;justify-content: center;" >
+                        <li th:each="product : ${product}" style="padding-top:0px;">
+                          <div class="prod-unit">
+                            <div class="img" data-slitmcd="40A0497086:40003" th:data-info="${product.pcode}">
+                                <img th:src="${product.iloc}+ '_600.jpg'" th:alt="${product.pname}" onerror="noImage(this, 'https://image.thehyundai.com/hdmall/images/pd/no_image_480x480.jpg')">
+                                <span class="bg"></span>
+                            </div>
+                            <div class="info">
+                              <div>
+                                <h5 class="pMbti" th:text="${product.pmbti}"></h5>
+                              </div>
+                              <div class="price-info single">
+                                <span style="font-size: 20px;" th:text="${product.pname}"></span>
+                              </div>
+                              <!-- 브랜드 이름 상품에 다 포함되어 있으면 삭제하기
+                              <a href="#" class="title ellipsis" onclick="javascript:untdItemDetailView('40003','40A0497086', 'N','00','');return false;">브랜드이름</a> -->
+                            </div>
+                            <button type="button" class="matchbtn">매칭하기</button>
+  
+                          </div>
+                        </li>
+
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <script>
+    var searchform = $("#searchform");
+
+    $("#searchForm button").on("click", function(e){
+      console.log("검색 실행");
+      e.preventDefault();
+      searchform.submit();
+    });
+
+  </script>
+</body>
+</html>
