@@ -208,7 +208,7 @@
 											<div class="prod-info no-ctrl">
 												<div class="img" id="img-40A1650970">
 													<input type="hidden" th:value="${orderSheet.product_id[stat.index]}" />
-													<img src="${orderSheet.product_image[stat.index]}" onerror="noImage(this, 'https://image.thehyundai.com/hdmall/images/pd/no_image_100x100.jpg')" />
+													<img th:src="${orderSheet.product_image[stat.index]} + '_600.jpg'" onerror="noImage(this, 'https://image.thehyundai.com/hdmall/images/pd/no_image_100x100.jpg')" />
 													<div class="hover-info">
 														<a href="http://www.thehyundai.com/front/pda/itemPtc.thd?slitmCd=40A1650970&amp;sectId=102066" target="_blank" title="새창으로 보기">새창으로
 															보기</a><a href="javascript:sltdItemDone('40A1650970:00001','102066',event);return false;" title="찜하기"
@@ -220,14 +220,14 @@
 													<a href="http:	//www.thehyundai.com/front/pda/itemPtc.thd?slitmCd=40A1650970&amp;sectId=102066" target="_blank">[[${orderSheet.product_name[stat.index]}]]</a>
 												</div>
 												<div class="option-info">
-													<span class="tit">옵션 : 상품옵션 넣기</span>
+													<span class="tit">옵션 : [[${orderSheet.product_poption[stat.index]}]]</span>
 												</div>
 											</div>
 										</td>
 										<td class="prod-num">[[${orderSheet.product_Quntity[stat.index]}]]개</td>
 										
 										<td class="price-info">
-											<div class="o-price" th:text="${#numbers.formatInteger(orderSheet.product_price[stat.index]*orderSheet.product_Quntity[stat.index], 3, 'COMMA') + '원'}"></div>
+											<div class="o-price" th:text="${#numbers.formatInteger(orderSheet.product_price[stat.index], 3, 'COMMA') + '원'}"></div>
 											<div class="tot-price" >
 												<span data-tcprate="1.0" data-luityn="N" data-stlmdcamt="0"
 													th:text="${#numbers.formatInteger(orderSheet.product_price[stat.index]*orderSheet.product_Quntity[stat.index], 3, 'COMMA') + '원'}"

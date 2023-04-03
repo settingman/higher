@@ -44,7 +44,7 @@
 		
 		SELECT p.pcode, p.pname, p.pprice,b.bname as brand, o.OPTCOLOR as color,c.pamount,c.OPTNAME as poption,i.iloc as Image_path 
 		FROM CART c, PRODUCT p,IMG i, POPTION o , Brand b
-		where c.pcode=#{pCode} and c.MID = #{mId} and c.pcode =p.pcode and p.pcode=i.pcode and i.itype ='thumb' and o.pcode=c.pcode and p.BNO = b.BNO
+		where c.pcode=#{pCode} and c.MID = #{mId} and c.pcode =p.pcode and p.pcode=i.pcode and i.itype ='thumb' and o.pcode=c.pcode and p.BNO = b.BNO and rownum=1
         
  
 	</select>

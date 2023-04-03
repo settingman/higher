@@ -37,7 +37,7 @@ public class BillingRestController {
 		log.info(orderSheet.toString());
 
 		UUID uuid = UUID.randomUUID();
-		String orderId = uuid.toString();
+		String orderId = uuid.toString().substring(0,17);
 		String customerName = principal.getName();
 
 		orderSheet.setOrderId(orderId);
