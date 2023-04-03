@@ -1535,11 +1535,9 @@
 <script>
 $("select.form-select").on("change", function() {
   var selectedOption = $(this).children("option:selected").val();
-	// var pcode = $(this).siblings("#pcode").val();
+
 	const pcode = this.closest('.cart-list-unit').querySelector('#pcode').value;
-  console.log(selectedOption);
-	console.log(pcode);
-    console.log(this);
+    var cnt = $(this).closest(".option-info").children('.cnt-opt');   
 
 	var requestData = JSON.stringify({
 							pcode : pcode,
@@ -1555,11 +1553,8 @@ $("select.form-select").on("change", function() {
 						contentType: "application/json",
 						success	: function(result){
 							console.log("장바구니 옵션 변경 success"+ selectedOption);
-							//$(this).find('.cnt-opt').text() = selectedOption ;
-                            
-                            let cntOptElement = $(this).closest('.cart-list-unit').find('.cnt-opt');
-                            cntOptElement.text(selectedOption);
 
+                            cnt.text(selectedOption);
 
 							loadingBar.stop();
 								
