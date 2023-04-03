@@ -1557,9 +1557,9 @@ $("select.form-select").on("change", function() {
 							console.log("장바구니 옵션 변경 success"+ selectedOption);
 							//$(this).find('.cnt-opt').text() = selectedOption ;
                             
-                            let cartListUnit = $(this).closest('.cart-list-unit');  // 가장 가까운 .cart-list-unit 클래스를 가진 요소를 찾음
-                             let cntOptElement = cartListUnit.find('.cnt-opt');  // .cart-list-unit 내부에서 .cnt-opt 클래스를 가진 요소를 찾음
-                             cntOptElement.text(selectedOption);
+                            let cntOptElement = $(this).closest('.cart-list-unit').find('.cnt-opt');
+                            cntOptElement.text(selectedOption);
+
 
 							loadingBar.stop();
 								
