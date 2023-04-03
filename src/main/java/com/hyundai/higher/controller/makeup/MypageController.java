@@ -16,6 +16,8 @@ import com.hyundai.higher.domain.makeup.FoundationVO;
 import com.hyundai.higher.domain.makeup.LipVO;
 import com.hyundai.higher.domain.makeup.ReservVO;
 import com.hyundai.higher.domain.makeup.ResultVO;
+import com.hyundai.higher.domain.member.Member;
+import com.hyundai.higher.service.makeup.MakeupService;
 import com.hyundai.higher.service.makeup.MypageService;
 
 import lombok.RequiredArgsConstructor;
@@ -45,6 +47,9 @@ public class MypageController {
 	@Autowired
 	private MypageService service;
 	
+	@Autowired
+	private MakeupService makeup;
+	
 	
 	@Value("${com.demo.upload.path}") private String uploadPath;
 	 
@@ -63,10 +68,17 @@ public class MypageController {
 	// memberVO 정보 가져와야함
 	public void mypageresult(@RequestParam("rid") String rid, Model model) {
 		log.info("==== 마이페이지 예약 결과 창 ====");
+		
 		ReservVO info = service.getReservInfo(rid);
+		String rrid = info.getMid();
+		Member mem = new Member();
+		mem = makeup.MemInfo(rrid);
+		
 		ResultVO result = service.getResultInfo(rid);
+		
 		log.info(info);
 		log.info(result);
+		log.info(mem.getMName());
 		
 		LipVO lipresult = new LipVO();
 		BlushVO blushresult = new BlushVO();
@@ -89,6 +101,7 @@ public class MypageController {
 		faceresult = service.getFaceResult(faceopt, facepcode);
 		log.info("가져온 파운데이션 정보 : " + faceresult);
 		
+		model.addAttribute("mem", mem);
 		model.addAttribute("info", info);
 		model.addAttribute("result", result);
 		model.addAttribute("lipresult", lipresult);

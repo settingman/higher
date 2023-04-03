@@ -252,7 +252,7 @@
                       <p style="display: inline; margin-bottom: 10px">
                         상담자 :
                       </p>
-                      <p style="display: inline" th:text="${info.mid}"></p>
+                      <p style="display: inline" th:text="${mem.mName}"></p>
                     </div>
                     <div>
                       <p style="display: inline"><br />메이크업 아티스트 :</p>
@@ -263,7 +263,8 @@
                     <div>
                       <!-- 기초 진단 정보 그래프로 나타나는 js 데려와서 해보는거 추후 논의-->
                       <p style="display: inline"><br />기초 진단 정보 :</p>
-                      <p style="display: inline">NBTI</p>
+                      <!-- <p style="display: inline" th:text="${mem.mbti}"></p> -->
+                      <!-- mem에 mbti 넣어줘 성환 -->
                     </div>
                     <div>
                       <!-- 상담 내용 checkbox나 라디오 버튼 만들어서 상담 내역 관리 가능하게도 가능 (추후 논의 후 수정) -->

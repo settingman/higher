@@ -27,8 +27,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hyundai.higher.domain.makeup.BlushVO;
 import com.hyundai.higher.domain.makeup.FoundationVO;
 import com.hyundai.higher.domain.makeup.LipVO;
+import com.hyundai.higher.domain.makeup.ReservVO;
 import com.hyundai.higher.domain.makeup.ResultVO;
+import com.hyundai.higher.domain.member.Member;
 import com.hyundai.higher.service.makeup.MakeupService;
+import com.hyundai.higher.service.makeup.MypageService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -60,10 +63,25 @@ public class MakeupController {
 	@Autowired
 	private MakeupService service;
 
+	@Autowired
+	private MypageService mypage;
+
+	// 입장하기에서 rid 가져오는걸로 변경
 	@GetMapping("/makeup_form")
 	public void makeupForm() {
 		log.info("====== 플라스크 연동 메이크업 시연 ======");
 	}
+
+	/*
+	 * @GetMapping("/makeup_form") public void makeupForm(@RequestParam("rid")
+	 * String rid, Model model) { log.info("====== 플라스크 연동 메이크업 시연 ======");
+	 * ReservVO res = new ReservVO(); res = mypage.getReservInfo(rid); String rrid =
+	 * res.getMid();
+	 * 
+	 * Member mem = new Member(); mem = service.MemInfo(rrid);
+	 * 
+	 * model.addAttribute("mem", mem); model.addAttribute("res", res); }
+	 */
 
 	@GetMapping("/makeup_finish")
 	public void makeupFinish() {
@@ -72,12 +90,14 @@ public class MakeupController {
 
 	@PostMapping("/makeup_send")
 	public String ResultSend(@RequestParam("result_img") String result_img, @RequestParam("rid") String rid,
-			@RequestParam("lip") String lip, @RequestParam("lip_pcode") String lip_pcode, @RequestParam("lip_opt") String lip_opt, 
-			@RequestParam("blush") String blush, @RequestParam("blush_pcode") String blush_pcode, @RequestParam("blush_opt") String blush_opt,
-			@RequestParam("face") String face, @RequestParam("face_pcode") String face_pcode, @RequestParam("face_opt") String face_opt, Model model) {
-		
+			@RequestParam("lip") String lip, @RequestParam("lip_pcode") String lip_pcode,
+			@RequestParam("lip_opt") String lip_opt, @RequestParam("blush") String blush,
+			@RequestParam("blush_pcode") String blush_pcode, @RequestParam("blush_opt") String blush_opt,
+			@RequestParam("face") String face, @RequestParam("face_pcode") String face_pcode,
+			@RequestParam("face_opt") String face_opt, Model model) {
+
 		log.info("======== 결과 DB로 넘어갔습니다 =======");
-		
+
 		ResultVO result = new ResultVO();
 		result.setRid(rid);
 		result.setResult_img(result_img);
@@ -90,11 +110,11 @@ public class MakeupController {
 		result.setFace(face);
 		result.setFace_pcode(face_pcode);
 		result.setFace_opt(face_opt);
-		
+
 		service.insertResult(result);
-		
+
 		log.info(result);
-		
+
 		return ("/makeup/makeup_finish");
 	}
 

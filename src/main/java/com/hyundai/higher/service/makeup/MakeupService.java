@@ -6,6 +6,7 @@ import com.hyundai.higher.domain.makeup.BlushVO;
 import com.hyundai.higher.domain.makeup.FoundationVO;
 import com.hyundai.higher.domain.makeup.LipVO;
 import com.hyundai.higher.domain.makeup.ResultVO;
+import com.hyundai.higher.domain.member.Member;
 
 /**
  * @since : 2023. 3. 26.
@@ -32,5 +33,8 @@ public interface MakeupService {
 
 	// 아티스트가 선정한 제품 예약 결과 내역에 저장
 	public void insertResult(ResultVO result);
+
+	// 고객 정보
+	public Member MemInfo(String rid);
 
 }
