@@ -288,7 +288,7 @@
 													<input type="text" name="addressee_zip" value="" id="order_addressee_zip" class="form_input input_zipcode" readonly=""
 														onclick="zipSearch('ordFrm','addressee_zip','addressee_addr1','addressee_addr2')" isplaceholderinited="true"
 													/>
-													<span class="box_btn white"><a href="javascript:;" onclick="findAddr()"> 우편번호 찾기</a></span>
+													<span class="box_btn white"><a href="javascript:;" onclick="findAddr()"> &nbsp; 우편번호 찾기</a></span>
 												</p>
 												<p>
 													<input type="text" id="addressee_addr1" name="addressee_addr1" value="" class="form_input" readonly=""
@@ -344,7 +344,7 @@
 											<div class="prod-info no-ctrl">
 												<div class="img" id="img-40A1650970">
 													<input type="hidden" th:value="${orderItem.pcode}" />
-													<img src="${orderItem.IMAGE_PATH}" onerror="noImage(this, 'https://image.thehyundai.com/hdmall/images/pd/no_image_100x100.jpg')" />
+													<img th:src="${orderItem.IMAGE_PATH} + '_600.jpg'" onerror="noImage(this, 'https://image.thehyundai.com/hdmall/images/pd/no_image_100x100.jpg')" />
 													<div class="hover-info">
 														<a href="http://www.thehyundai.com/front/pda/itemPtc.thd?slitmCd=40A1650970&amp;sectId=102066" target="_blank" title="새창으로 보기">새창으로
 															보기</a><a href="javascript:sltdItemDone('40A1650970:00001','102066',event);return false;" title="찜하기"
@@ -826,6 +826,7 @@
 				
 				<input type="hidden" name="product_name" id="product_name" th:value="${orderItem.pname}">
 				<input type="hidden" name="product_image" id="product_image" th:value="${orderItem.IMAGE_PATH}">
+				<input type="hidden" name="product_poption" id="product_poption" th:value="${orderItem.poption}">
 				
 				<input type="hidden" name="product_price" id="product_price" th:value="${orderItem.pprice}">
 				

@@ -50,6 +50,7 @@ public class OrderSheet {
 	private List<Integer> product_Quntity;
 	private List<String> product_name;
 	private List<String> product_image;
+	private List<String> product_poption;
 	private List<Integer> product_price;
 	
 	

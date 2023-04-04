@@ -47,6 +47,7 @@ public class CustomAuthSuccessHandler extends SimpleUrlAuthenticationSuccessHand
 		 * prevPage가 존재하는 경우 = 사용자가 직접 /auth/login 경로로 로그인 요청 기존 Session의 prevPage
 		 * attribute 제거
 		 */
+			
 		String prevPage = (String) request.getSession().getAttribute("prevPage");
 		if (prevPage != null) {
 			request.getSession().removeAttribute("prevPage");

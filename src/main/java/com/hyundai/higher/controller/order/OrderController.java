@@ -65,16 +65,10 @@ public class OrderController {
 		
 		
 
-		OrderItem cart = new OrderItem("test", "테스트", 10000, "Brand", "Color", 3,"option", "img_path");
-		
-		OrderItem cart2 = new OrderItem("test2", "테스트2", 20000, "Brand", "Color", 2,"option", "img_path");
-
 		// cartService.cartToOrder(pIdList,principal.getName());
 		// 장바구니에서 선택된 상품의 id 값을 리스트로 받은 뒤 상품id와 회원 id를 통하여 장바구니 정보를 가져와 담아준다.
 
 		
-		orderItems.add(cart);
-		orderItems.add(cart2);
 		// 장바구니에서 상품id를 넘겨받아서 그걸 사용해서 카트테이블 조회해서 카트 객체 받아서 뿌림.
 		model.addAttribute("orderItems", orderItems);
 		// 장바구니 객체를 리스트로 담아 넘긴다.

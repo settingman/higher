@@ -1,8 +1,9 @@
 package com.hyundai.higher.controller.member;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,13 +17,16 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.hyundai.higher.domain.member.Member;
 import com.hyundai.higher.domain.member.MemberFormDto;
 import com.hyundai.higher.mapper.member.MemberMapper;
 import com.hyundai.higher.service.member.MailServiceImpl;
+import com.hyundai.higher.service.member.MemberOauthService;
 import com.hyundai.higher.service.member.MemberService;
 
 import lombok.RequiredArgsConstructor;
@@ -49,6 +53,7 @@ import lombok.extern.slf4j.Slf4j;
 public class MemberController {
 
 	private final MemberService memberService;
+	private final MemberOauthService memberOauthService;
 	private final MemberMapper memberMapper;
 	private final PasswordEncoder passwordEncoder;
 	private final MailServiceImpl mailService;
@@ -167,5 +172,41 @@ public class MemberController {
 
 		return "member/findIdComplete";
 	}
+	
+
+	// kakao Accesstoken 요청
+	@RequestMapping(value = "/oauth2/code/kakao", method = RequestMethod.GET)
+	public String kakaoCallback(@RequestParam String code, HttpServletResponse res,HttpSession session) {
+		
+
+		
+		log.info(code);
+		String access_token =null;
+		
+		try {
+			access_token=memberOauthService.getAccessToken(code);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+			
+		
+		log.info("토큰");
+		log.info(access_token);
+		
+		Cookie cookie = new Cookie("Authorization",access_token);
+		res.addCookie(cookie);
+		
+		res.setHeader("Authorization", "Bearer "+access_token);
+		session.setAttribute("Authorization",access_token);
+		
+		log.info("엑세스 토큰");
+		
+		
+		return "test3";
+	}
+	
 
 }
