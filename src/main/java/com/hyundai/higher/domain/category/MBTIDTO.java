@@ -5,5 +5,5 @@ import lombok.Data;
 @Data
 public class MBTIDTO {
 
-	private String mbti;
+	private String stype;
 }

@@ -42,11 +42,7 @@ public class SkinMBTIMapperTests {
 		String mbti = "DRNT";
 		String mbti_scores = "9,9,9,9";
 		
-<<<<<<< HEAD:src/test/java/com/hyundai/higher/mapper/skinMBTI/SkinMBTIMapperTests.java
 		mapper.updateMBTI(mid, mbti, mbti_scores);
-=======
-		/* mapper.updateMBTI(mid, mbti); */
->>>>>>> 71b06187c7dd27efabaa418055c13015cddcbe2f:src/test/java/com/hyundai/higher/mapper/skinMBTI/SkinMBTIMapperTest.java
 	}
 	
 	

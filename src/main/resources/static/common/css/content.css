@@ -32,6 +32,13 @@
   margin-right: 15px;
 }
 
+#compare-btn{
+	width: 99%;
+    margin-top: 10px;
+    background-color: #45675b;
+    border: 1px solid #45675b;
+}
+
 .review_warp .review_top .right .search_faq input {
   padding: 8px 10px;
   border-width: 0 0 1px 0;
@@ -983,6 +990,16 @@
   background-size: cover;
 }
 
+.product_detail .top .right .datail_info_data>ul>li.option{
+	height: 40px;
+    line-height: 40px;
+    margin-top: 17px;
+    padding: 14px 0 14px 139px;
+    border-top: #e9e9e9 solid 1px;
+    margin-bottom: -15px;
+}
+
+
 .product_detail .top .right .datail_info_data>ul>li.amount {
   height: 40px;
   line-height: 40px;
@@ -992,7 +1009,8 @@
   border-bottom: #bcbcbc solid 1px;
 }
 
-.product_detail .top .right .datail_info_data>ul>li.amount>strong {
+.product_detail .top .right .datail_info_data>ul>li.amount>strong,
+.product_detail .top .right .datail_info_data>ul>li.option>strong {
   top: 15px;
 }
 
@@ -1092,7 +1110,7 @@
 
 .product_detail .top .right .datail_info_btn button,
 .product_detail .top .right .datail_info_btn a {
-  width: 220px;
+  width: 49%;
   height: 58px;
   margin-left: 5px;
   line-height: 58px;
@@ -2037,7 +2055,7 @@
 
 .flot_right_warp .price_sidebox .price_side {
   width: 274px;
-  height: 332px;
+  height: fit-content;
   padding: 30px;
   background: #fff;
   border: #bcbcbc solid 1px;
@@ -2206,8 +2224,9 @@
 
 .flot_right_warp .price_sidebox .price_side .datail_info_btn .like {
   color: #222;
-  border-color: #bcbcbc;
+  border-color: #45675b;
   margin-left: 0;
+  background-color: #45675b;
 }
 
 .flot_right_warp .price_sidebox .price_side .datail_info_btn .like:after {
@@ -2218,8 +2237,9 @@
   margin: -12px 0 0 -14px;
   width: 28px;
   height: 25px;
-  background: url('https://www.larocheposay.co.kr/images/common/ico_comm_sp.png') no-repeat -213px 0;
-  background-size: 300px 300px;
+  background-image: url(/common/image/add.png);
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .flot_right_warp .price_sidebox .price_side .datail_info_btn .like.on:after {

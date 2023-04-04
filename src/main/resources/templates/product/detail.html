@@ -4,6 +4,19 @@
 <head>
 <head th:insert="~{include/head}"></head>
 </head>
+<script>
+$(function(){
+	$(".opt").change(function(){
+		var value = $('.option option:selected').val();
+		$('.option select').val(value).prop("selected",true);
+	});
+	
+	$(".opt2").change(function(){
+		var value = $('.opt2 option:selected').val();
+		$('.option select').val(value).prop("selected",true);
+	});
+});
+</script>
 <body>
   <div id="wrap" class="right_type" data-fbq-content-id="3596" data-fbq-value="48000">
     <nav id="skip_navi">
@@ -103,27 +116,14 @@
       <section id="contents" class="template_wrap">
         <div class="product_detail mt60">
           <div class="top">
-            <!-- 실서버 -->
-            <!-- 현재기준 시작일-->
-            <!-- 다음 달 시작일 -->
-            <!-- 개발기 -->
-            <!-- 노출 되는 달 -->
             <form id="orderForm" name="orderForm">
-              <input type="hidden" value="145" name="prdtCnt" id="prdtCnt">
-              <input type="hidden" value="48000" name="salePrice" id="salePrice">
+            	<input type="hidden" value="10000" name="prdtCnt" id="prdtCnt">
+              <input type="hidden" th:value="${product.productDTO.pprice}" name="salePrice" id="salePrice">
               <input type="hidden" name="prdtType" value="PT">
               <input type="hidden" name="prdtSeq" value="3596">
               <input type="hidden" name="ordCnt" value="1" data-prdt-seq="3596" data-seq="3596" data-prdt-type="PT">
-              <input type="hidden" name="adPrdtName" value="시카플라스트리페어 세럼 B5">
-              <input type="hidden" name="cateNm" value="FACE">
-              <input type="hidden" name="cateNm2" value="제품 라인별">
-              <input type="hidden" name="cateNm3" value="시카플라스트">
-              <input type="hidden" name="fullCateNm" value="FACE>제품 라인별>시카플라스트">
-              <input type="hidden" name="prdtName" value="리페어 세럼 B5">
-              <input type="hidden" name="tag" value="#피부장벽강화,# 회복세럼,# 시카세럼,# 판테놀10%세럼">
-              <input type="hidden" name="noIngt" value="">
-              <input type="hidden" name="giftNames" value="">
-
+              <input type="hidden" name="adPrdtName" th:value="${product.productDTO.pname}">
+              <input type="hidden" name="prdtName" th:value="${product.productDTO.pname}">
               <div class="left">
                 <div class="detail_slider">
                   <div class="view">
@@ -178,6 +178,12 @@
                     <li><strong>배송비</strong>
                       무료배송
                     </li>
+                    <li th:if="${!#lists.isEmpty(product.optList) and #lists.size(product.optList)>1}" class="option"><strong>옵션</strong>
+                      <select style="width: 75%;" class="opt">
+                      	<option>선택</option>
+                      	<option th:each="opt, optStat : ${product.optList}">[[${opt.optname}]]</option>
+                      </select>
+                    </li>
                     <li class="amount"><strong>수량</strong>
                       <div class="count">
                         <button type="button">-</button>
@@ -185,23 +191,24 @@
                         <button type="button">+</button>
                       </div>
                     </li>
-                    <li class="subscription_text">나의 피부타입과 매칭해보세요.<a href="#" class="btn_move">피부 MBTI와 매칭하러 가기</a></li>
+                    <li th:if="${dept1no == 10}" class="subscription_text">나의 피부타입과 매칭해보세요.<a href="#" class="btn_move">피부 MBTI와 매칭하러 가기</a></li>
                     <li class="total"><strong>총 구매금액</strong>
                       <span class="pricetotal">[[${#numbers.formatInteger(product.productDTO.pprice, 3,'COMMA')}]]<em>원</em></span>
                     </li>
                   </ul>
                 </div>
                 <div class="datail_info_btn">
-                 <button type="button" class="btn_base darkgray basket" data-level="N" data-level-name="제한없음"
-                      data-value="3596" data-price="48000" data-linename="시카플라스트" data-prdtname="리페어 세럼 B5"
-                      data-sapcode="MB451200" data-buy-level="N" data-mbr-join-ym="202303" style="width:160px;" onclick="put()"><span>비교함에 담기</span></button>
+                 
                   <span class="instock">
                     <button type="button" class="btn_base darkgray basket" data-level="N" data-level-name="제한없음"
                       data-value="3596" data-price="48000" data-linename="시카플라스트" data-prdtname="리페어 세럼 B5"
-                      data-sapcode="MB451200" data-buy-level="N" data-mbr-join-ym="202303" style="width:160px;" onclick="addCart()"><span>장바구니</span></button>
+                      data-sapcode="MB451200" data-buy-level="N" data-mbr-join-ym="202303" onclick="addCart()"><span>장바구니</span></button>
                     <button type="button" class="btn_base blue nowBuy" data-level="N" data-level-name="제한없음"
                       data-user-level="MBR001" data-value="3596" data-price="48000" data-linename="시카플라스트"
-                      data-prdtname="리페어 세럼 B5" data-buy-level="N" data-mbr-join-ym="202303" style="width:160px;"><span>구매하기</span></button>
+                      data-prdtname="리페어 세럼 B5" data-buy-level="N" data-mbr-join-ym="202303"><span>구매하기</span></button>
+                  	<button id="compare-btn" type="button" class="btn_base darkgray basket" data-level="N" data-level-name="제한없음"
+                      data-value="3596" data-price="48000" data-linename="시카플라스트" data-prdtname="리페어 세럼 B5"
+                      data-sapcode="MB451200" data-buy-level="N" data-mbr-join-ym="202303" onclick="put()"><span style="font-family: 'notokr-demilight';"><img src="/common/image/add.png" style="width: 22px; margin-right: 6px; margin-bottom: 3px;">비교함 담기</span></button>
                   </span>
 
                 </div>
@@ -241,213 +248,8 @@
               max-height: none;
             }
           </style>
-          <script type="text/javascript" src="https://www.larocheposay.co.kr/js/libs/imagesloaded.pkgd.min.js"></script>
-          <script type="text/javascript" src="https://www.larocheposay.co.kr/js/libs/jquery.tmpl.js"></script>
-          <script type="text/template" id="listTemp">
-<li class="{{= classTag }}">
-  <a href="#review_list001" class="layer-pop" data-type="link" data-url="/review/view/{{= brdSeq}}.do?prdtView=Y" >
-      {{if brdCate == 'BRA001' }}
-      <span class="img"><img src="{{= reviewImgUrl }} " alt="{{= title }}"></span>
-      {{/if}}
-      <span class="rating">
-          <fieldset class="star_rating">
-              <input type="radio" id="list{{= brdSeq}}_star5" name="list{{= brdSeq}}_rating" value="5" {{if grade == '5'}} checked {{else}} disabled {{/if}} ><label for="list{{= brdSeq}}_star5">5스타</label>
-              <input type="radio" id="list{{= brdSeq}}_star4" name="list{{= brdSeq}}_rating" value="4" {{if grade == '4'}} checked {{else}} disabled {{/if}} ><label for="list{{= brdSeq}}_star4">4스타</label>
-              <input type="radio" id="list{{= brdSeq}}_star3" name="list{{= brdSeq}}_rating" value="3" {{if grade == '3'}} checked {{else}} disabled {{/if}} ><label for="list{{= brdSeq}}_star3">3스타</label>
-              <input type="radio" id="list{{= brdSeq}}_star2" name="list{{= brdSeq}}_rating" value="2" {{if grade == '2'}} checked {{else}} disabled {{/if}} ><label for="list{{= brdSeq}}_star2">2스타</label>
-              <input type="radio" id="list{{= brdSeq}}_star1" name="list{{= brdSeq}}_rating" value="1" {{if grade == '1'}} checked {{else}} disabled {{/if}} ><label for="list{{= brdSeq}}_star1">1스타</label>
-          </fieldset>
-      </span>
-      <span class="replyhead">{{= title }}</span>
-      <span class="reply">{{= content }}</span>
-      <span class="data">
-          <span class="userid">{{= regId}}</span>
-          <span class="day">{{= regDt}}</span>
-      </span>
-  </a>
-</li>
-</script>
-          <script type="text/template" id="tmplPagination">
-  {{if totalPageCount > pageSize && firstPageNoOnPageList > pageSize}}
-      <a href="#n" class="pre_link" onClick="pageMove({{= firstPageNoOnPageList-1}})" title="이전페이지로 가기"><span class="hide">이전페이지로 가기</span></a>
-  {{/if}}
-  <span class="paginate-list">
-  {{for(var i=firstPageNoOnPageList; i <= lastPageNoOnPageList; i++)}}
-      {{if (currentPageNo == i)}}
-          <a href="#n" onClick="pageMove({{= i}})" class="current" title="현재페이지">{{= i}}</a>
-      {{else}}
-          <a href="#n" onClick="pageMove({{= i}})"  title="{{= i}}페이지로 가기">{{= i}}</a>
-      {{/if}}
-  {{/for}}
-  </span>
-  {{if totalPageCount > pageSize && lastPageNoOnPageList < totalPageCount}}
-      <a href="#n" class="next_link" title="다음 페이지로 가기" onClick="pageMove({{= firstPageNoOnPageList+pageSize}})"><span class="hide">다음 페이지로 가기</span></a>
-  {{/if}}
-</script>
-          <script type="text/javascript">
-            /** 리뷰 스크립트 **/
-            var review = review || {};
-            review = (function ($) {
-              var $form;
-              var init = function (formId) {
-                $form = $("#" + formId);
-                //제품 리뷰
-                $grid = $(".review_conts .list").masonry({
-                  columnWidth: 'li',
-                  itemSelector: 'li',
-                  gutterWidth: 10,
-                  horizontalOrder: true,
-                  isAnimated: true
-                });
-              },
-                data = function (cb) {
-                  $.ajax({
-                    type: 'post',
-                    url: '/review/listData.do',
-                    data: $form.serialize(),
-                    dataType: 'json',
-                    success: function (data) {
-                      cb(data);
-                    }, error: function () {
-                      alert("데이터 통신 중 에러가 발생되었습니다. 다시 시도 해주세요...");
-                    }
-                  });
-                }
-              return {
-                init: init,
-                data: data
-              }
-            }(jQuery));
-            var $grid, paginationInfo;
-            $(document).ready(function () {
-              review.init("reviewForm");
-              load();
-            });
-            function load() {
-              review.data(function (result) {
-                if (result.result == "OK") {
-                  paginationInfo = result.paginationInfo;
-                  $("#reviewPageing").children().remove();
-                  $("#tmplPagination").tmpl(paginationInfo).appendTo("#reviewPageing");
-                  list(result.data);
-                  $("#totalReviewCount").html(result.totalCount);
-                  $("#photoReviewCount").html(result.photoCount);
-                  $("#textReviewCount").html(result.textCount).focus();
 
-                }
-              });
-            }
-            function list(data) {
-              $(data).each(function () {
-                // 클래스
-                this.classTag = (this.brdCate == "BRA001") ? "photo" : "text";
 
-                // 마스킹
-                if (this.regId != null) {
-                  var pattern = /.{3}$/; // 정규식
-                  this.regId = this.regId.replace(pattern, "***");
-                }
-                // 해쉬
-                if (this.hashTag != null) {
-                  var hash = this.hashTag.trim().split(",");
-                  this.hash = hash[0];
-                }
-                // 날짜
-                this.regDt = formatDate(this.regDt);
-                // 내용
-                if (this.content != null) {
-                  this.content = this.content.trim().replace(/(<([^>]+)>)/ig, "");
-                  if (this.content.trim().length >= 120) {
-                    this.content = this.content.substr(0, 120) + "...";
-                  } else {
-                    this.content = this.content;
-                  }
-                }
-              });
-
-              $grid.masonry('destroy');
-              $("#reviewList").children().remove();
-              $("#reviewList").append('<li class="btn_review"><a href="javascript:reviewWrite();"><span>리얼리뷰 쓰기</span><em>포토리뷰 500M <i></i> 한줄리뷰 50M<br>첫 리뷰 더블적립</em></a></li>');
-
-              var listFrom = $("#listTemp").tmpl(data);
-              /*
-              $(listFrom).each(function () {
-                  var $this = this;
-                  var $item = $grid.append( this );
-                  $item.imagesLoaded( function() {
-                      $item.masonry('appended', $this);
-                  });
-              });
-              */
-              $(listFrom).each(function () {
-                $grid.masonry().append(this).masonry('appended', this).masonry();
-              });
-
-              $(document).off('click', '.layer-pop');
-              UI.init();
-              /*
-              $(".review_conts .list").imagesLoaded( function() {
-                  $grid.masonry();
-              });
-              */
-              $grid.masonry();
-            }
-            function reviewWrite() {
-              if (loginFlag == "") {
-                if (confirm("로그인이 필요한 서비스입니다. 로그인 하시겠습니까?")) {
-                  location.href = "/member/login.do";
-                  return false;
-                } else {
-                  return false;
-                }
-              } else {
-                location.href = '/myPage/myPrdtReviewList.do';
-              }
-            }
-            function cscenter() {
-              if (loginFlag == "") {
-                if (confirm("로그인이 필요한 서비스입니다. 로그인 하시겠습니까?")) {
-                  location.href = "/member/login.do";
-                  return false;
-                } else {
-                  return false;
-                }
-              } else {
-                location.href = "/cscenter/consultingForm.do";
-              }
-            }
-            function pageMove(page) {
-              $("#reviewForm").find("input[name=pageIndex]").val(page);
-              $(".product_detail_tab").children().children().eq(1).children().click();
-              load();
-            }
-            function reviewList_photo() {
-              var $this = $(event.target);
-              $("#reviewForm").find("input[name=brdCate]").val("BRA001");
-              $this.parent().addClass('on').siblings('li').removeClass('on');
-              load();
-            }
-            function reviewList_text() {
-              var $this = $(event.target);
-              $("#reviewForm").find("input[name=brdCate]").val("BRA002");
-              $this.parent().addClass('on').siblings('li').removeClass('on');
-              load();
-            }
-            function reviewList_all() {
-              var $this = $(event.target);
-              $("#reviewForm").find("input[name=brdCate]").val("");
-              $this.parent().addClass('on').siblings('li').removeClass('on');
-              load();
-            }
-          </script>
-
-          <form id="reviewForm">
-            <input type="hidden" value="1" name="pageIndex">
-            <input type="hidden" value="" name="orderby">
-            <input type="hidden" value="" name="brdCate">
-            <input type="hidden" value="8" name="recordCountPerPage">
-            <input type="hidden" value="CicaSerum" name="ph4PrdtCd">
-          </form>
           <div id="product_detail_review">
             <h3>리얼리뷰</h3>
             <!-- <div class="detail_review_top">
@@ -885,6 +687,12 @@
           <span class="tit">
             <strong>[[${product.productDTO.pname}]]</strong>
           </span>
+          <div th:if="${!#lists.isEmpty(product.optList)}" class="option">
+          	<select style="width: 100%; margin-bottom: 10px;" class="opt2">
+          		<option>선택</option>
+          		<option th:each="opt : ${product.optList}">[[${opt.optname}]]</option>
+          	</select>
+          </div>
           <div class="count amount">
             <button type="button">-</button>
             <input type="text" value="1" readonly="" id="orderCnt">
@@ -907,7 +715,6 @@
             </span>
           </div>
         </div>
-        <button type="button" class="zoom">축소/확대</button>
       </div>
     </section>
     <div th:if="${#authentication.getPrincipal() != null}">
@@ -1051,6 +858,529 @@
 		}
     }
 
+  </script>
+  <script>
+  $(document).ready(
+
+	        function() {
+	            /** ****************** 상세 정보 이벤트 ******************* */
+	            // 수량 이벤트
+	            $(".amount").find("button").on(
+	                    "click",
+	                    function() {
+	                        var orderCnt = parseInt($('#orderForm').find("input[name=ordCnt]").val()), prdtCnt = parseInt($('#orderForm').find("input[name=prdtCnt]").val()), prdtType = $('#orderForm')
+	                                .find("input[name=prdtType]").val();
+	                        if ($(this).index() == 0) { // -
+	                            if (orderCnt > 1) {
+	                                $('#orderForm').find("input[name=ordCnt]").val(orderCnt - 1);
+	                            }
+	                        } else { // +
+	                            if (orderCnt < prdtCnt) {
+	                                $('#orderForm').find("input[name=ordCnt]").val(orderCnt + 1);
+	                            } else {
+	                                if (prdtType == "PT") {
+	                                    if (prdtCnt == 0) {
+	                                        alert("품절된 제품입니다. 재입고 알림 신청을 하시면, 입고 시 안내드립니다.");
+	                                    } else {
+	                                        // alert("재고가 부족합니다. " + prdtCnt + "개까지
+	                                        // 장바구니에 담을 수 있습니다.");
+	                                        // alert("재고가 부족하거나 구매제한수량이 있는
+	                                        // 제품입니다.\n"+prdtCnt+"개까지 장바구니에 담을 수
+	                                        // 있습니다.");
+	                                        alert("구매 제한 수량이 있는 제품입니다.\n최대 " + prdtCnt + "개까지 장바구니에 담을 수 있습니다.");
+	                                    }
+	                                } else {
+	                                    
+	                                }
+	                            }
+	                        }
+	                        var count = parseInt($('#orderForm').find("input[name=ordCnt]").val());
+	                        $(".amount").find("input[type=text]").val(count);
+	                        $('#orderForm').find("input[name=ordCnt]").val(count);
+	                        calculation();
+	                    });
+	            // 상단 상세 및 간단 레이어 팝업 개수 동일화.
+	            $(".amount").find("input[type=text]").val(1);
+
+	            // 바로 구매 하기
+	            $('.nowBuy').on('click', function() {
+	                var $this = $(this);
+	                var value = $this.data('value');
+	                var price = $this.data('price');
+	                var lineNm = $this.data('linename');
+	                var prdtNm = $this.data('prdtname');
+	                var sapCode = $this.data('sapCode');
+	                var level = $this.data('level');
+	                var buyLevel = $this.data('buy-level');
+	                var mbrJoinYm = $this.data('mbr-join-ym');
+	                var userLevel = $this.data('user-level');
+	                var levelName = $this.data('level-name');
+
+	                var prdtSeq = $('#orderForm').find('input[name="prdtSeq"]').val();
+
+	                if (buyLevel == 'N') {
+
+	                    LARO.GA4TagManager.buyNow(prdtNm,prdtSeq);
+
+	                    $('#orderForm').attr('method', 'POST');
+	                    $('#orderForm').attr('action', '/order/orderBuyNowMemberChk.do').submit();
+	                } else {
+	                    if (buyLevel == 'A') {
+	                        if (userLevel != '') {
+
+	                            LARO.GA4TagManager.buyNow(prdtNm,prdtSeq);
+
+	                            $('#orderForm').attr('method', 'POST');
+	                            $('#orderForm').attr('action', '/order/orderBuyNowMemberChk.do').submit();
+	                        } else {
+	                            alert('회원만 구입 가능한 제품입니다. 로그인 후 구입해주세요.');
+	                        }
+	                    } else if (buyLevel == 'M') {
+	                        var today = new Date();
+	                        var yyyy = today.getFullYear().toString();
+	                        var mm = (today.getMonth() + 1) < 10 ? '0' + (today.getMonth() + 1) : (today.getMonth() + 1).toString();
+	                        var todayYm = yyyy + mm;
+
+	                        if (mbrJoinYm == todayYm) {
+
+	                            LARO.GA4TagManager.buyNow(prdtNm,prdtSeq);
+
+	                            $('#orderForm').attr('method', 'POST');
+	                            $('#orderForm').attr('action', '/order/orderBuyNowMemberChk.do').submit();
+	                        } else {
+	                            alert(today.getMonth() + 1 + '월 신규회원만 구입 가능한 제품입니다.');
+	                        }
+	                    } else if (buyLevel == 'L') {
+	                        var today = new Date();
+	                        var yyyy = today.getFullYear().toString();
+	                        var mm = (today.getMonth() + 1) < 10 ? '0' + (today.getMonth() + 1) : (today.getMonth() + 1).toString();
+	                        var todayYm = yyyy + mm;
+
+	                        if (mbrJoinYm != todayYm) {
+
+	                            LARO.GA4TagManager.buyNow(prdtNm,prdtSeq);
+
+	                            $('#orderForm').attr('method', 'POST');
+	                            $('#orderForm').attr('action', '/order/orderBuyNowMemberChk.do').submit();
+	                        } else {
+	                            alert(today.getMonth() + 1 + '월 이전 가입 회원만 구입 가능한 제품입니다.');
+	                        }
+	                    } else {
+	                        if (buyLevel != userLevel) {
+	                            alert(levelName + ' 등급만 구매하실 수 있는 제품입니다.');
+	                        } else {
+
+	                            LARO.GA4TagManager.buyNow(prdtNm,prdtSeq);
+
+	                            $('#orderForm').attr('method', 'POST');
+	                            $('#orderForm').attr('action', '/order/orderBuyNowMemberChk.do').submit();
+	                        }
+	                    }
+	                }
+	            });
+
+	            // 장바구니 이벤트
+	            $(".basket").on("click", function() {
+	            	var $this = $(this);
+	                var value = $this.data("value");
+	                var price = $this.data("price");
+	                var lineNm = $this.data("linename");
+	                var prdtNm = $this.data("prdtname");
+	                var sapCode = $this.data("sapCode");
+	                var buyLevel = $this.data("buy-level");
+	                var mbrJoinYm = $this.data('mbr-join-ym');
+	                var userLevel = $this.data('user-level');
+	                var levelName = $this.data('level-name');
+
+	                var today = new Date();
+	                var yyyy = today.getFullYear().toString();
+	                var mm = (today.getMonth() + 1) < 10 ? "0" + (today.getMonth() + 1) : (today.getMonth() + 1).toString();
+	                var todayYm = yyyy + mm;
+
+	                // 회원전용(등급전체) 구매 가능 여부 체크
+	                if ('A' == buyLevel) {
+	                    var message = '회원만 신청 가능한 제품입니다.\n로그인 후 진행해주세요.';
+	                    if (mbrJoinYm == null || mbrJoinYm == '' || mbrJoinYm == 'undefined') {
+	                        alert(message);
+	                        return;
+	                    }
+	                }
+
+	                // 신규회원(당월) 구매 가능 여부 체크
+	                if ('M' == buyLevel) {
+	                    if (todayYm != mbrJoinYm) {
+	                        alert(today.getMonth() + 1 + "월 신규회원만 구입 가능한 제품입니다.");
+	                        return;
+	                    }
+	                }
+
+	                // 기존회원(당월이전) 구매 가능 여부 체크
+	                if ('L' == buyLevel) {
+	                    if (todayYm == mbrJoinYm || (mbrJoinYm == null || mbrJoinYm == '' || mbrJoinYm == 'undefined')) {
+	                        alert(today.getMonth() + 1 + "월 이전 가입한 회원만 구입 가능한 제품입니다.");
+	                        return;
+	                    }
+	                }
+
+	                if ('MBR001' == buyLevel || 'MBR002' == buyLevel || 'MBR003' == buyLevel || 'MBR004' == buyLevel || 'MBR005' == buyLevel) {
+	                    if (buyLevel != userLevel) {
+	                        alert(levelName + ' 등급만 구매하실 수 있는 제품입니다.');
+	                        return;
+	                    }
+	                }
+
+	                CART.save($('#orderForm'), function(data) {
+	                    if (data.result == "OK") {
+	                        // 토스트 팝업 처리.
+	                        setTimeout(function() {
+	                            $('.layer_alert_wrap').hide().find('span').hide();
+	                        }, 1500);
+	                        $('.layer_alert_wrap').css('display', 'block').find('.layer_alert3').css('display', 'block');
+	                        /* TAS 관련 스크립트 : 장바구니 제품 담기 */
+	                        var _tasz = [];
+	                        _tasz.push({
+	                            productName : lineNm + prdtNm,
+	                            productCode : value,
+	                            productPrice : price,
+	                            sapCode : sapCode
+	                        });
+	                        LARO.TAS.et("cartAdd", _tasz);
+
+	                        var item = new Array(lineNm, prdtNm, value, price);
+	                        LARO.FBQ.cart(item);
+
+	                        // 태그 매니처 호출
+	                        var prdtSeq = $('#orderForm').find('input[name="prdtSeq"]').val();
+	                        var orderCnt = parseInt($('#orderForm').find('input[name="ordCnt"]').val());
+	                        var cateNm = $('#orderForm').find('input[name="cateNm"]').val();
+	                        var cateNm2 = $('#orderForm').find('input[name="cateNm2"]').val();
+	                        var cateNm3 = $('#orderForm').find('input[name="cateNm3"]').val();
+	                        var category = $('#orderForm').find('input[name="fullCateNm"]').val();
+	                        var salePrice = parseInt($('#orderForm').find("input[name=salePrice]").val());
+
+	                        category = (category ? category.replace(/>/gi, '/') : undefined);
+
+	                        var tag = $('#orderForm').find('input[name="tag"]').val();
+	                        var noIngt = $('#orderForm').find('input[name="noIngt"]').val();
+	                        var giftNames = $('#orderForm').find('input[name="giftNames"]').val();
+
+	                        var tagItem = new Array((lineNm + ' ' + prdtNm), prdtSeq, Number(price), lineNm, category, orderCnt, tag, noIngt, giftNames);
+	                        LARO.TagManager.addToCart(tagItem);
+	                        LARO.GA4TagManager.addToCart(tagItem);
+	                    } else {
+	                        setTimeout(function() {
+	                            if ("[LEVEL] 등급만 구매하실 수 있는 제품입니다." == data.message) {
+	                                if ($this.data("level") == undefined) {
+	                                    alert("등급이 맞지 않아 구매 하실수 없는 제품입니다.");
+	                                } else {
+	                                    alert(data.message.replace("[LEVEL]", $this.data("level-name")));
+	                                }
+	                            } else {
+	                                alert(data.message);
+	                            }
+	                        }, 300);
+	                    }
+	                });
+	            });
+
+	            // 찜 이벤트
+	            $(".like").on("click", function() {
+	            	var $this = $(this);
+	                var value = $this.data("value");
+	                var price = $this.data("price");
+	                var lineNm = $this.data("linename");
+	                var prdtNm = $this.data("prdtname");
+	                var sapCode = $this.data("sapCode");
+
+	                var category = $('#orderForm').find('input[name="fullCateNm"]').val();
+	                category = (category ? category.replace(/>/gi, '/') : undefined);
+
+	                if (loginFlag == "") {
+	                    if (confirm("로그인이 필요한 서비스입니다. 로그인 하시겠습니까?")) {
+	                        location.href = "/member/login.do";
+	                        return false;
+	                    } else {
+	                        return false;
+	                    }
+	                } else {
+	                    var $likeThis = $(this);
+	                    PRDT.likeEvent($likeThis.data("value"), function(data) {
+	                        if (data.result == "OK") {
+	                            setTimeout(function() {
+	                                $('.layer_alert_wrap').hide().find('span').hide();
+	                            }, 1500);
+
+	                            /* TAS 관련 스크립트 : 장바구니 제품 담기 */
+	                            var _tasz = [];
+	                            _tasz.push({
+	                                productName : lineNm + prdtNm,
+	                                productCode : value,
+	                                productPrice : price,
+	                                sapCode : sapCode
+	                            });
+	                            LARO.TAS.et("wishlist", _tasz);
+
+	                            var tagItem = new Array(value,prdtNm,price,lineNm,category);
+
+	                            //LARO.TagManager.addToWishlist(tagItem);
+	                            LARO.GA4TagManager.addToWishlist(tagItem);
+
+	                            if (data.message != "") {
+	                                $('.layer_alert_wrap').css('display', 'block').find('.layer_alert1').css('display', 'block');
+	                            } else {
+	                                $likeThis.addClass("on");
+	                                $('.layer_alert_wrap').css('display', 'block').find('.layer_alert2').css('display', 'block');
+	                            }
+	                        } else {
+	                            alert("처리 도중 데이터 에러가 발생되었습니다.");
+	                            console.log(data.message);
+	                        }
+	                    });
+	                }
+	            });
+
+	            /** ****************** 추천 및 라인 목록 이벤트 ******************* */
+	            // 체크 제품 일괄 장바구니 이벤트
+	            $(".recomBasket").on("click", function() {
+	                var soldOutFlag = false;
+	                for (var i = 0; i < $("input.recomPrdtSeq:checked").length; i++) {
+	                    if ($("input.recomPrdtSeq:checked").eq(i).data("cnt") == 0) {
+	                        soldOutFlag = true;
+	                        $("input.recomPrdtSeq:checked").eq(i).prop("checked", false);
+	                    }
+	                }
+	                if ($("input.recomPrdtSeq:checked").length > 0) {
+	                    CART.saveArr("PT", function(data) {
+	                        if (data.result == "OK") {
+	                            if (soldOutFlag) {
+	                                alert("일시품절 제품을 제외하고 장바구니에 담깁니다.");
+	                            } else {
+	                                // 토스트 팝업 처리.
+	                                setTimeout(function() {
+	                                    $('.layer_alert_wrap').hide().find('span').hide();
+	                                }, 1500);
+	                                $('.layer_alert_wrap').css('display', 'block').find('.layer_alert3').css('display', 'block');
+	                            }
+	                        } else {
+	                            alert(data.message);
+	                        }
+	                    }, "input.recomPrdtSeq:checked");
+	                } else {
+	                    alert("장바구니에 담을 제품을 선택해주세요.");
+	                    return false;
+	                }
+	            });
+
+	            $(".lineBasket").on("click", function() {
+
+	                var $this = $(this);
+	                var value = $this.data("value");
+	                var price = $this.data("price");
+	                var lineNm = $this.data("linename");
+	                var prdtNm = $this.data("prdtname");
+	                var sapCode = $this.data("sapCode");
+
+	                var soldOutFlag = false;
+	                for (var i = 0; i < $("input.linePrdtSeq:checked").length; i++) {
+	                    if ($("input.linePrdtSeq:checked").eq(i).data("cnt") == 0) {
+	                        soldOutFlag = true;
+	                        $("input.linePrdtSeq:checked").eq(i).prop("checked", false);
+	                    }
+	                }
+	                if ($("input.linePrdtSeq:checked").length > 0) {
+	                    CART.saveArr("PT", function(data) {
+	                        if (data.result == "OK") {
+	                            if (soldOutFlag) {
+	                                alert("임시품절 제품 제외하고 장바구니에 담았습니다.");
+	                            } else {
+	                                // 토스트 팝업 처리.
+	                                setTimeout(function() {
+	                                    $('.layer_alert_wrap').hide().find('span').hide();
+	                                }, 1500);
+	                                $('.layer_alert_wrap').css('display', 'block').find('.layer_alert3').css('display', 'block');
+
+	                                /* TAS 관련 스크립트 : 장바구니 제품 담기 */
+	                                var _tasz = [];
+	                                _tasz.push({
+	                                    productName : lineNm + prdtNm,
+	                                    productCode : value,
+	                                    productPrice : price,
+	                                    sapCode : sapCode
+	                                });
+	                                LARO.TAS.et("cartAdd", _tasz);
+	                            }
+	                        } else {
+	                            alert(data.message);
+	                        }
+	                    }, "input.linePrdtSeq:checked");
+	                } else {
+	                    alert("장바구니에 담을 제품을 선택해주세요.");
+	                    return false;
+	                }
+	            });
+	            $(".listBasket").on("click", function() {
+	                if ($(this).data("cnt") > 0) {
+	                    var $this = $(this);
+	                    $("#productForm").find("input[name=ordCnt]").data("prdt-seq", $this.data("value"));
+	                    var value = $this.data("value");
+	                    var price = $this.data("price");
+	                    var lineNm = $this.data("linename");
+	                    var prdtNm = $this.data("prdtname");
+	                    var sapCode = $this.data("sapCode");
+	                    var buyLevel = $this.data("buy-level");
+	                    var mbrJoinYm = $this.data('mbr-join-ym');
+	                    var userLevel = $this.data('user-level');
+	                    var levelName = $this.data('level-name');
+
+	                    var today = new Date();
+	                    var yyyy = today.getFullYear().toString();
+	                    var mm = (today.getMonth() + 1) < 10 ? "0" + (today.getMonth() + 1) : (today.getMonth() + 1).toString();
+	                    var todayYm = yyyy + mm;
+
+	                    // 회원전용(등급전체) 구매 가능 여부 체크
+	                    if ('A' == buyLevel) {
+	                        var message = '회원만 신청 가능한 제품입니다.\n로그인 후 진행해주세요.';
+	                        if (mbrJoinYm == null || mbrJoinYm == '' || mbrJoinYm == 'undefined') {
+	                            alert(message);
+	                            return;
+	                        }
+	                    }
+
+	                    // 신규회원(당월) 구매 가능 여부 체크
+	                    if ('M' == buyLevel) {
+	                        if (todayYm != mbrJoinYm) {
+	                            alert(today.getMonth() + 1 + "월 신규회원만 구입 가능한 제품입니다.");
+	                            return;
+	                        }
+	                    }
+
+	                    // 기존회원(당월이전) 구매 가능 여부 체크
+	                    if ('L' == buyLevel) {
+	                        if (todayYm == mbrJoinYm || (mbrJoinYm == null || mbrJoinYm == '' || mbrJoinYm == 'undefined')) {
+	                            alert(today.getMonth() + 1 + "월 이전 가입한 회원만 구입 가능한 제품입니다.");
+	                            return;
+	                        }
+	                    }
+
+	                    if ('MBR001' == buyLevel || 'MBR002' == buyLevel || 'MBR003' == buyLevel || 'MBR004' == buyLevel || 'MBR005' == buyLevel) {
+	                        if (buyLevel != userLevel) {
+	                            alert(levelName + ' 등급만 구매하실 수 있는 제품입니다.');
+	                            return;
+	                        }
+	                    }
+
+	                    CART.save($("#productForm"), function(data) {
+	                        if (data.result == "OK") {
+	                            // 토스트 팝업 처리.
+	                            setTimeout(function() {
+	                                $('.layer_alert_wrap').hide().find('span').hide();
+	                            }, 1500);
+	                            $('.layer_alert_wrap').css('display', 'block').find('.layer_alert3').css('display', 'block');
+	                            /* TAS 관련 스크립트 : 장바구니 제품 담기 */
+	                            var _tasz = [];
+	                            _tasz.push({
+	                                productName : lineNm + prdtNm,
+	                                productCode : value,
+	                                productPrice : price,
+	                                sapCode : sapCode
+	                            });
+	                            LARO.TAS.et("cartAdd", _tasz);
+	                        } else {
+	                            if ("[LEVEL] 등급만 구매하실 수 있는 제품입니다." == data.message) {
+	                                if ($this.data("level") == undefined) {
+	                                    alert("등급이 맞지 않아 구매 하실수 없는 제품입니다.");
+	                                } else {
+	                                    alert(data.message.replace("[LEVEL]", $this.data("level")));
+	                                }
+	                            } else {
+	                                alert(data.message);
+	                            }
+	                        }
+	                    });
+	                } else {
+	                    alert("품절된 제품입니다.");
+	                }
+	            });
+
+	            $(".listView").on("click", function() {
+	                location.href = "/product/view/" + $(this).data("value") + ".do";
+	            });
+	        });
+
+	// 계산 출력.
+	function calculation() {
+	    var totalPrice = 0, salePrice = parseInt($('#orderForm').find("input[name=salePrice]").val()), orderCount = parseInt($('#orderForm').find("input[name=ordCnt]").val()), prdtType = $('#orderForm')
+	            .find("input[name=prdtType]").val();
+	    ;
+	    // 총 구매 금액
+	    $(".pricetotal").html(comma(salePrice * orderCount) + '<em>' + (prdtType == "PT" ? '원' : 'M') + '</em>');
+	}
+
+	// 콤마 처리
+	function comma(num) {
+	    var len, point, str;
+
+	    num = num + "";
+	    point = num.length % 3;
+	    len = num.length;
+
+	    str = num.substring(0, point);
+	    while (point < len) {
+	        if (str != "")
+	            str += ",";
+	        str += num.substring(point, point + 3);
+	        point += 3;
+	    }
+	    return str;
+	}
+
+	// 링크 URL 복사
+	function copy_trackback(trb) {
+	    var IE = (document.all) ? true : false;
+	    if (IE) {
+	        if (confirm("Ctrl+C 를 눌러 클립보드로 복사하세요.")) {
+	            window.clipboardData.setData("Text", trb);
+	        }
+	    } else {
+	        temp = prompt("Ctrl+C 를 눌러 클립보드로 복사하세요.", trb);
+	    }
+	}
+
+	// 페이스북
+	function shareFacebook() {
+
+	    LARO.GA4TagManager.socialInteraction(location.href);
+
+	    window.open("http://m.facebook.com/sharer/sharer.php?u=" + location.href, "facebook", "width=550,height=500,scrolls=no").focus();
+	}
+
+	function submitProductAlarm(prdtSeq) {
+	    $.ajax({
+	        type : 'post',
+	        url : '/product/alarm.do',
+	        data : {
+	            prdtSeq : prdtSeq
+	        },
+	        dataType : 'json',
+	        success : function (data) {
+	            if (data.result == 'OK') {
+	                alert('재입고 알림 신청 되었습니다.');
+
+	                var prdtName = $('#orderForm').find('input[name="prdtName"]').val();
+	                var prdtSeq = $('#orderForm').find('input[name="prdtSeq"]').val();
+
+	                LARO.GA4TagManager.notifyMe(prdtName, prdtSeq);
+
+	            } else if (data.result == 'STAND') {
+	                alert('이미 재입고 알림 신청된 제품입니다.');
+	            }
+	            $('#alarmCloseBtn').trigger('click');
+	        },
+	        error : function () {
+	            memberLogin();
+	        }
+	    });
+	}
   </script>
 
     <!-- footer -->
