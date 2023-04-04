@@ -1,643 +1,525 @@
-<!DOCTYPE html>
-<html xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0">
-  <title>더현대닷컴 - 현대백화점 공식 온라인몰</title>
-  <meta name="description" content="현대백화점, 현대백화점 공식 온라인몰. 의류, 화장품, 잡화, 가전 등 판매">
-  <link rel="shortcut icon" href="https://www.thehyundai.com/favicon.ico">
-  <link rel="stylesheet" href="https://image.thehyundai.com/pc/cssssl/co.css?ver=20230206">
-  <link rel="stylesheet" media="screen" href="https://image.thehyundai.com/pc/cssssl/main_new.css?ver=20230206">
-  <link rel="stylesheet" href="https://image.thehyundai.com/pc/cssssl/dp.css">
-  <link rel="stylesheet" href="https://image.thehyundai.com/pc/cssssl/font.css">
-  <link rel="stylesheet" href="https://image.thehyundai.com/pc/cssssl/animate.min.css">
-  <link rel="stylesheet" href="https://image.thehyundai.com/pc/cssssl/swiper.min.css">
-  <link rel="stylesheet" href="https://image.thehyundai.com/pc/cssssl/swiper-8.4.5.min.css">
-  <!-- <script src="https://image.thehyundai.com/pc/js/jquery-1.11.3.min.js"></script> -->
-  <script src="/js/header.js"></script>
-  <script src="https://image.thehyundai.com/pc/js/jquery-ui.min.js"></script>
-  <script src="https://image.thehyundai.com/pc/js/jquery-migrate.min.js"></script>
-  <script src="https://image.thehyundai.com/pc/js/plugin.js"></script>
-  <script src="https://image.thehyundai.com/pc/js/swiper-8.4.5.min.js"></script>
-  <script src="https://image.thehyundai.com/pc/js/swiper-animation.umd.min.js"></script>
-  <script src="https://image.thehyundai.com/pc/js/hdmall/co/jquery.form.js"></script>
-  <script src="https://image.thehyundai.com/pc/js/hdmall/co/default.js"></script>
-  <script src="https://image.thehyundai.com/pc/js/hdmall/co/common.js"></script>
-  <script src="https://image.thehyundai.com/pc/js/common.js"></script>
-  <script src="https://image.thehyundai.com/pc/js/sso/SsoHttpRequest.js"></script>
-  <script src="https://image.thehyundai.com/pc/js/sso/SsoAjax.js"></script>
-  <script src="https://image.thehyundai.com/pc/js/hdmall/dp/main_data_new_tmpl.js?ver=20230206"></script>
-  <script src="https://image.thehyundai.com/pc/js/main_util.js"></script>
-   
-   
-   
-<body>
-<!-- wrap -->
-<div id="wrap" class="main">
-
-<div class="top-wrap main type-new-2023">
-	<div class="top-area-setting">
-		<div class="top-con">
-			<div class="top-con-logo">
-				<h1><a href="http://www.thehyundai.com/Home.html?MainpageGroup=Fix&amp;GroupbannerName=GNB_Logo"><span
-							class="blind">The HYUNDAI</span></a><button class="gf-dropdown-btn"><span>메뉴열기</span></button></h1>
-				<div class="gf-dropdown-layer">
-					<ul>
-						<li><a href="https://www.ehyundai.com/newPortal/index.do"
-								onclick="GA_Event('PC_공통','로고','현대백화점'); dummyLogCatch(null, 'shortcut_Top_ehyundai', '', null, 'Y', null);"><span>현대백화점</span></a>
-						</li>
-						<li><a href="https://www.thehyundai.com/Home.html"
-								onclick="GA_Event('PC_공통','로고','더현대닷컴'); dummyLogCatch(null, 'shortcut_Top_thehyundai', '', null, 'Y', null);"><span>더현대닷컴</span></a>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<div class="top-con-search">
-				<form name="formTopSearchPopup" id="formTopSearchPopup" method="get"
-					action="https://www.thehyundai.com/front/dpo/hdSearch.thd">
-					<input type="hidden" name="searchtype" id="js_searchtype">
-					<input type="hidden" name="searchQuery" autocomplete="off">
-					<div class="top-con-search-unit">
-						<input type="text" class="top-con-search-input" maxlength="30" id="cs-token-input" value=""
-							onfocus="return dq_setTextbox(0,event);" onmousedown="dq_setTextbox(1,event);"
-							onkeydown="dq_setTextbox(1,event);" autocomplete="off">
-						<button type="submit" class="top-con-search-btn"
-							onclick="javascript:GA_Event('PC_공통','헤더_검색','검색'); goTopSearch(); return false;"><span
-								class="blind">검색</span></button>
-						<!-- 검색 -->
-						<div class="search-box" id="search_info_box" style="display: none;" onmouseover="dq_info_setMouseon();"
-							onmouseout="dq_info_setMouseoff();">
-							<!-- 최근검색어 -->
-							<div class="search-box-list" id="recent_rs_search">
-								<div class="search-box-tit">최근검색어</div>
-								<div class="search-box-cont">
-									<ul class="search-box-text">
-										<li> <a
-												href="javascript:GA_Event('PC_검색창','최근검색어','[지방시] 스킨 리소스 수딩 모이스처라이징 로션 200'); goDirectSearchRecentGnb('[지방시] 스킨 리소스 수딩 모이스처라이징 로션 200', 'recent_search', '[지방시] 스킨 리소스 수딩 모이스처라이징 로션 200');"
-												title="[지방시] 스킨 리소스 수딩 모이스처라이징 로션 200" class="btn-input"> <span class="text">[지방시] 스킨 리소스 수딩
-													모이스처라이징 로션 200</span> <span class="date">03.05</span> </a> <a
-												href="javascript:GA_Event('PC_검색창','최근검색어_삭제','삭제_[지방시] 스킨 리소스 수딩 모이스처라이징 로션 200'); goDeleteCookieNew('0','hdmallSearch','top');"
-												class="btn-del"><span class="blind">삭제</span></a></li>
-									</ul>
-								</div>
-							</div>
-							<!-- 인기검색어 -->
-							<div class="search-box-list" id="hot_rs_search">
-								<div class="search-box-tit">인기검색어</div>
-								<div class="search-box-cont">
-									<div class="search-box-best">
-										<ul class="search-box-bestnum left">
-											<li><a
-													href="javascript:GA_Event('PC_검색창','인기검색어','명품'); goDirectSearchGnb('명품', 'top', 'search_favoriteKeyword', '명품', '1');"
-													class="lank">1. 명품</a><span class="status no"><span class="blind">no</span></span></li>
-											<li><a
-													href="javascript:GA_Event('PC_검색창','인기검색어','COS퀼티드백'); goDirectSearchGnb('COS퀼티드백', 'top', 'search_favoriteKeyword', 'COS퀼티드백', '2');"
-													class="lank">2. COS퀼티드백</a><span class="status up"><span class="blind">up</span></span></li>
-											<li><a
-													href="javascript:GA_Event('PC_검색창','인기검색어','아크테릭스'); goDirectSearchGnb('아크테릭스', 'top', 'search_favoriteKeyword', '아크테릭스', '3');"
-													class="lank">3. 아크테릭스</a><span class="status up"><span class="blind">up</span></span></li>
-											<li><a
-													href="javascript:GA_Event('PC_검색창','인기검색어','어그 울트라 미니'); goDirectSearchGnb('어그 울트라 미니', 'top', 'search_favoriteKeyword', '어그 울트라 미니', '4');"
-													class="lank">4. 어그 울트라 미니</a><span class="status up"><span class="blind">up</span></span></li>
-											<li><a
-													href="javascript:GA_Event('PC_검색창','인기검색어','오니츠카타이거'); goDirectSearchGnb('오니츠카타이거', 'top', 'search_favoriteKeyword', '오니츠카타이거', '5');"
-													class="lank">5. 오니츠카타이거</a><span class="status up"><span class="blind">up</span></span></li>
-										</ul>
-										<ul class="search-box-bestnum right">
-											<li><a
-													href="javascript:GA_Event('PC_검색창','인기검색어','스카프'); goDirectSearchGnb('스카프', 'top', 'search_favoriteKeyword', '스카프', '6');"
-													class="lank">6. 스카프</a><span class="status up"><span class="blind">up</span></span></li>
-											<li><a
-													href="javascript:GA_Event('PC_검색창','인기검색어','니트 가디건'); goDirectSearchGnb('니트 가디건', 'top', 'search_favoriteKeyword', '니트 가디건', '7');"
-													class="lank">7. 니트 가디건</a><span class="status up"><span class="blind">up</span></span></li>
-											<li><a
-													href="javascript:GA_Event('PC_검색창','인기검색어','양말'); goDirectSearchGnb('양말', 'top', 'search_favoriteKeyword', '양말', '8');"
-													class="lank">8. 양말</a><span class="status up"><span class="blind">up</span></span></li>
-											<li><a
-													href="javascript:GA_Event('PC_검색창','인기검색어','손수건'); goDirectSearchGnb('손수건', 'top', 'search_favoriteKeyword', '손수건', '9');"
-													class="lank">9. 손수건</a><span class="status new">NEW</span></li>
-											<li><a
-													href="javascript:GA_Event('PC_검색창','인기검색어','남성 티셔츠'); goDirectSearchGnb('남성 티셔츠', 'top', 'search_favoriteKeyword', '남성 티셔츠', '10');"
-													class="lank">10. 남성 티셔츠</a><span class="status new">NEW</span></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="search-box" id="search_auto_box" style="display: none;" onmouseover="dq_setMouseon();"
-							onmouseout="dq_setMouseoff();">
-							<!-- 연관검색어 -->
-							<div class="search-box-list" id="relation_rs_search">
-								<div class="search-box-cont">
-									<ul class="search-box-text">
-										<li>연관 검색어가 없습니다.</li>
-									</ul>
-								</div>
-							</div>
-							<!-- 추천브랜드 -->
-							<div class="search-box-list" id="brand_rs_search">
-								<div class="search-box-tit">추천브랜드</div>
-								<div class="search-box-cont">
-									<ul class="search-box-brand">
-										<li>추천 브랜드가 없습니다.</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<!-- //검색 -->
-					</div>
-				</form>
-			</div>
-			<div class="top-con-quick">
-				<ul>
-					<li class="myshop-info">
-						<div class="top-con-quick-my">
-							<a href="javascript:GA_Event('PC_공통','헤더_메뉴','로그인/회원'); openLoginPopup();">로그인/회원</a>
-						</div>
-						<!-- 20190118 추가 레이어팝업 -->
-						<div class="myshop-info-layer logout"> <!-- logout:비 로그인 상태, login:로그인 상태 -->
-							<div class="myshop-cont">
-								<ul class="myshop-cont-top">
-									<li class="myshop-hyundai"><a onclick="GA_Event('PC_공통','헤더_메뉴','마이현대');"
-											href="https://www.thehyundai.com/front/mpf/selectMyPageMain.thd?MainpageGroup=Util&amp;GroupbannerName=GNB_MyHyundai">마이현대</a>
-									</li>
-									<li><a onclick="GA_Event('PC_공통','헤더_메뉴','주문배송');"
-											href="https://www.thehyundai.com/front/mpa/selectOrdDlvCrst.thd?MainpageGroup=Util&amp;GroupbannerName=GNB_Order">주문배송</a>
-									</li>
-									<li><a onclick="GA_Event('PC_공통','헤더_메뉴','나의찜');"
-											href="https://www.thehyundai.com/front/mpc/sltdItemList.thd">나의 찜</a></li>
-									<li class="myshop-join"><a onclick="GA_Event('PC_공통','헤더_메뉴','회원가입');"
-											href="https://www.thehyundai.com/front/cob/COBCertificationSelect.thd?MainpageGroup=util&amp;GroupbannerName=membership">회원가입</a>
-									</li>
-									<li class="myshop-logout"><a href="javascript:logOut();">로그아웃</a></li>
-								</ul>
-								<ul class="myshop-cont-body">
-									<li class="logout-only">
-										<span class="tit">나의 쇼핑 혜택</span>
-										<a href="javascript://"
-											onclick="javascript:GA_Event('PC_공통','헤더_메뉴','나의 쇼핑 혜택'); buyGradePup(event);return false;"><span
-												class="blind">자세히보기</span></a>
-									</li>
-									<li class="login-only">
-										<span class="tit">등급</span>
-										<span class="cont">혜택</span>
-										<a href="javascript://"
-											onclick="javascript:GA_Event('PC_공통','헤더_메뉴','나의 쇼핑 혜택'); buyGradePup(event, 'MainpageGroup=util&amp;GroupbannerName=memberLevel_notice');return false;"><span
-												class="blind">자세히보기</span></a>
-									</li>
-									<li>
-										<span class="tit">쿠폰</span>
-										<span class="cont login-only">0장</span>
-										<a onclick="GA_Event('PC_공통','헤더_메뉴','쿠폰');"
-											href="https://www.thehyundai.com/front/mpe/selectCopnList.thd?MainpageGroup=util&amp;GroupbannerName=coupon"><span
-												class="blind">자세히보기</span></a>
-									</li>
-									<li>
-										<span class="tit">H.Point</span>
-										<span class="cont login-only">0P</span>
-										<a onclick="goHpoint()" href="#"><span class="blind">자세히보기</span></a>
-									</li>
-									<li>
-										<span class="tit">더머니</span>
-										<span class="cont login-only">0원</span>
-										<a onclick="GA_Event('PC_공통','헤더_메뉴','더머니');"
-											href="https://www.thehyundai.com/front/mpe/selectHPntTabPage.thd?MainpageGroup=util&amp;GroupbannerName=theMoney"><span
-												class="blind">자세히보기</span></a>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<!-- // 20190118 추가 레이어팝업 -->
-					</li>
-					<li>
-						<a onclick="GA_Event('PC_공통','헤더_메뉴', '고객센터');"
-							href="https://www.thehyundai.com/front/cca/main.thd?MainpageGroup=Util&amp;GroupbannerName=GNB_Center">고객센터</a>
-					</li>
-					<li>
-						<div class="top-con-quick-basket"><a onclick="GA_Event('PC_공통','헤더_메뉴', '장바구니');"
-								href="https://www.thehyundai.com/front/odb/basktList.thd?MainpageGroup=Util&amp;GroupbannerName=GNB_Basket">장바구니</a><span
-								class="basket-num" id="quick_baskt_num">0</span></div>
-					</li>
-					<!-- 20210830 바로접속 추가// -->
-					<li>
-						<div class="top-con-quick-onoff"><a href="#">바로접속<span class="ic-onff">OFF</span></a></div>
-					</li>
-					<!-- //20210830 바로접속 추가 -->
-				</ul>
-			</div>
-		</div>
-		<div class="top-nav" id="header-gnb-area">
-			<!-- 20210518 gnb nav 수정// -->
-			<script>
-				$(function () {
-					gnbNavSet(); // gnb 네비 셋팅
-				});
-			</script>
-			<!--
-      기존 top-nav-area 위치에 dom 수정
-    -->
-			<div class="top-nav-area2">
-				<ul>
-					<!-- 카테고리 -->
-					<li>
-						<a href="#">
-							<!-- 20210830 아이콘 추가로 클래스 추가 -->
-							<span class="ico-category">카테고리</span>
-						</a>
-						<!-- 카테고리 타입 type-category 클래스 추가// -->
-						<div class="in-depth-area type-category" style="display: none;">
-							<ul>
-								<!-- 24 : 0 : 0 : 0 -->
-								<!-- 화장품 -->
-								<li th:each="category : ${categoryList}">
-									<a th:href="'/product/list?dept1=' + ${category.dept1no}" th:text="${category.dept1name}">대분류</a>
-									<div class="in-cate-area"><!--asis : category-area-->
-										<!-- 서브 카테고리 -->
-										<div class="menu">
-											<ul>
-												<li th:each="dept2 : ${category.dept2List}">
-													<a th:href="'/product/list?dept1=' + ${dept2.dept1no} + '&dept2=' + ${dept2.dept2no}" th:text="${dept2.dept2name}">중분류</a>
-												</li>
-											</ul>
-										</div>
-										<!-- 브랜드 -->
-										<div class="brand">
-											<ul>
-												<li><a onclick="GA_Event('PC_공통','GNB_3DEPTH','카테고리_화장품_&amp; Other Stories');"
-														href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=128574&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic">&amp;
-														Other Stories</a></li>
-												<li><a onclick="GA_Event('PC_공통','GNB_3DEPTH','카테고리_화장품_CHANEL BEAUTY');"
-														href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=122594&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic">CHANEL
-														BEAUTY</a></li>
-												<li><a onclick="GA_Event('PC_공통','GNB_3DEPTH','카테고리_화장품_Dior');"
-														href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=192169&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic">Dior</a>
-												</li>
-												<li><a onclick="GA_Event('PC_공통','GNB_3DEPTH','카테고리_화장품_아모레퍼시픽');"
-														href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=147919&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic">아모레퍼시픽</a>
-												</li>
-												<li><a onclick="GA_Event('PC_공통','GNB_3DEPTH','카테고리_화장품_SISLEY');"
-														href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=152723&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic">SISLEY</a>
-												</li>
-												<li><a onclick="GA_Event('PC_공통','GNB_3DEPTH','카테고리_화장품_L\'OCCITANE ');"
-														href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167943&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic">L'OCCITANE
-													</a></li>
-												<li><a onclick="GA_Event('PC_공통','GNB_3DEPTH','카테고리_화장품_CREED');"
-														href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167938&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic">CREED</a>
-												</li>
-												<li><a onclick="GA_Event('PC_공통','GNB_3DEPTH','카테고리_화장품_Hermès');"
-														href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=166511&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic">Hermès</a>
-												</li>
-												<li><a onclick="GA_Event('PC_공통','GNB_3DEPTH','카테고리_화장품_TOM FORD BEAUTY');"
-														href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=141184&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic">TOM
-														FORD BEAUTY</a></li>
-												<li><a onclick="GA_Event('PC_공통','GNB_3DEPTH','카테고리_화장품_GUCCI BEAUTY');"
-														href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=158973&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic">GUCCI
-														BEAUTY</a></li>
-												<li><a onclick="GA_Event('PC_공통','GNB_3DEPTH','카테고리_화장품_LANCOME');"
-														href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167780&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic">LANCOME</a>
-												</li>
-												<li><a onclick="GA_Event('PC_공통','GNB_3DEPTH','카테고리_화장품_GUERLAIN');"
-														href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167975&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic">GUERLAIN</a>
-												</li>
-												<li><a onclick="GA_Event('PC_공통','GNB_3DEPTH','카테고리_화장품_Augustinus Bader');"
-														href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=204965&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic">Augustinus
-														Bader</a></li>
-												<li><a onclick="GA_Event('PC_공통','GNB_3DEPTH','카테고리_화장품_GIVENCHY');"
-														href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167919&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic">GIVENCHY</a>
-												</li>
-												<li><a onclick="GA_Event('PC_공통','GNB_3DEPTH','카테고리_화장품_CLARINS');"
-														href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167982&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic">CLARINS</a>
-												</li>
-												<li><a onclick="GA_Event('PC_공통','GNB_3DEPTH','카테고리_화장품_LA MER');"
-														href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=167785&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic">LA
-														MER</a></li>
-												<li><a onclick="GA_Event('PC_공통','GNB_3DEPTH','카테고리_화장품_LA PRAIRIE');"
-														href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=172317&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic">LA
-														PRAIRIE</a></li>
-												<li><a onclick="GA_Event('PC_공통','GNB_3DEPTH','카테고리_화장품_VALMONT');"
-														href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=173509&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic">VALMONT</a>
-												</li>
-												<li><a onclick="GA_Event('PC_공통','GNB_3DEPTH','카테고리_화장품_Be CLEAN');"
-														href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=179371&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic">Be
-														CLEAN</a></li>
-												<li><a onclick="GA_Event('PC_공통','GNB_3DEPTH','카테고리_화장품_Oera');"
-														href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=185785&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic">Oera</a>
-												</li>
-												<li><a onclick="GA_Event('PC_공통','GNB_3DEPTH','카테고리_화장품_SK-Ⅱ');"
-														href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=172320&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic">SK-Ⅱ</a>
-												</li>
-												<li><a onclick="GA_Event('PC_공통','GNB_3DEPTH','카테고리_화장품_NARS ');"
-														href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=173309&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic">NARS
-													</a></li>
-												<li><a onclick="GA_Event('PC_공통','GNB_3DEPTH','카테고리_화장품_메종 마르지엘라');"
-														href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=196882&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic">메종
-														마르지엘라</a></li>
-												<li><a onclick="GA_Event('PC_공통','GNB_3DEPTH','카테고리_화장품_리바이리');"
-														href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?sectId=175364&amp;MainpageGroup=Category&amp;GroupbannerName=cosmetic">리바이리</a>
-												</li>
-											</ul>
-										</div>
-										<!-- 배너 -->
-										<div class="banner">
-											<div class="img"><img src="https://image.thehyundai.com/HM/HM011/20230306/093453/qqqee.jpg"
-													alt="아우구스티누스 바더"></div>
-											<div class="txt-main">아우구스티누스 바더</div>
-											<div class="txt-sub">독일 프리미엄 이노베이션 뷰티</div>
-											<a onclick="GA_Event('PC_공통','GNB_기획전','아우구스티누스 바더');" class="body-con-link"
-												href="https://www.thehyundai.com/front/dpa/searchSpexSectItem.thd?sectId=204794&amp;MainpageGroup=CategoryBig&amp;GroupbannerName=CateCosmetic01"><span
-													class="blind">자세히 보기</span></a>
-										</div>
-										<!-- // 배너 -->
-									</div><!--in-cate-area / asis : category-area-->
-								</li>
-							</ul>
-						</div><!--<div class="in-depth-area type-category"> -->
-						<!-- //카테고리 타입-->
-					</li>
-					<li>
-						<a href="#">
-							<span>베스트</span>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<span>신상품</span>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<span>리뷰</span>
-						</a>
-					</li>
-					<li>
-						<a href="/skinMBTI/main">
-							<span>SkinMBTI</span>
-						</a>
-					</li>
-					<li>
-
-                        <a href="#">
-                            <span>Make On</span>
-                        </a>
-                    </li>	
-					<li>
-						<a href="/compare/main">
-							<span>비교하기</span>
-						</a>
-					</li>
-
-
-				</ul>
-			</div>
-			<!-- //20210518 gnb nav 수정 -->
-		</div><!-- // top-nav -->
-		<!-- //gnb-area -->
-		<script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/dp/dpo/dqSearch.js?ver=030611"></script>
-		<script type="text/javascript"
-			src="https://www.thehyundai.com/js/hdmall/dp/dpo/dqAutoCompleteNewCommon.js?ver=030611"></script>
-		<script type="text/javascript"
-			src="https://www.thehyundai.com/js/hdmall/dp/dpo/dqAutoCompleteNew.js?ver=030611"></script>
-		<!-- //header -->
-		<!-- skyscraper -->
-		<!-- skyscraper - left --> <!-- 20190121 추가 -->
-		<div class="sky-left sub" id="leftBanner_skyScrpr">
-		</div>
-		<div class="sky-left main">
-			<!-- 비주얼 -->
-			<div class="main-sign">
-				<ul class="main-sign-bn" id="js-tpl-leftSkyBanner">
-				</ul>
-				<div class="main-sign-name">
-					<div class="prev"><a href="#"><span class="blind">이전</span></a></div>
-					<ul class="sign-name-list" id="js-tpl-leftSkyBannerTitle">
-					</ul>
-					<div class="next"><a href="#"><span class="blind">다음</span></a></div>
-				</div>
-			</div>
-			<!-- 롤링배너 -->
-			<div class="left-bn-rolling">
-				<ul class="rolling-bn swiper-wrapper" id="js-tpl-leftSkyBanner1Column">
-				</ul>
-				<div class="prev"><span class="blind">이전</span></div>
-				<div class="next"><span class="blind">다음</span></div>
-			</div>
-			<!-- 4블럭 배너 -->
-			<div class="left-bn-icon column4"> <!-- class:타입, column4:배너4개, column3:배너3개(기본) -->
-				<ul class="icon-bn" id="js-tpl-leftSkyBanner4Column">
-				</ul>
-			</div>
-		</div>
-		<!-- skyscraper - right -->
-		<div class="sky-right">
-			<div class="right-top" style="">
-				<div class="right-top-quick"><a
-						href="https://www.thehyundai.com/CS/eva/directAccess.thd?MainpageGroup=Fix&amp;GroupbannerName=GNB_On">바로접속<span
-							class="ic-onff">OFF</span></a></div>
-				<div class="right-top-customer"><a
-						href="https://www.thehyundai.com/CS/eva/evntBnftPageDivide.thd?MainpageGroup=Util&amp;GroupbannerName=GNB_Event&amp;tabNo=1">이벤트/혜택</a>
-				</div>
-			</div>
-			<div class="sky-right-auto">
-				<!-- 단일 배너 -->
-				<div id="topBanner_skyScrpr">
-				</div>
-				<!-- 롤링 배너 -->
-				<div id="rightBanner_skyScrpr" class="right-bnarea">
-				</div>
-				<!-- 최근 본 상품 -->
-				<div id="rcntImgs_skyScrpr" class="right-view">
-					<script>
-						//(JIRA : DEP01WORK-14658 GA 구축 프로젝트)
-						$(document).on('click', '.right-view-image a', function () {
-							var dimension = new Object();
-							var Product = new Object();
-							var actionList = new Object();
-							var Products = new Array();
-							// data_slitmCd = 상품코드:매장번호
-							// data_info = 브랜드코드:지점코드:지점명:담당MD코드:담당MD명
-							var data_slitmCd = $(this).parents('.right-view-image').attr('data-slitmcd');
-							var data_info = $(this).parents('.right-view-image').attr('data-info');
-							dimension.category = 'Ecommerce';
-							dimension.action = 'Click';
-							var E_step = 'click';
-							Product.id = data_slitmCd.split(':')[0];                                                 // 상품코드
-							Product.name = $(this).parents('.right-view-image').find('img').attr('alt');             // 상품명
-							Product.dimension37 = data_info.split(':')[0];                                           // 브랜드코드
-							Product.dimension38 = data_slitmCd.split(':')[1];                                        // 매장번호
-							Product.dimension39 = data_info.split(':')[1] + "_" + data_info.split(':')[2];               // 점포코드_점포명
-							//Product.position = $('.right-view-image').parent('li:not(.bx-clone)').children('span').index($(this).parents('.right-view-image')) + 1;     // 제품 위치 - 기획서 변경으로 제외
-							Product.dimension40 = data_info.split(':')[4] + "(" + data_info.split(':')[3] + ")";     // 담당MD명(담당MD코드)
-							actionList.action = 'click';
-							actionList.currency = 'KRW';
-							actionList.list = '최근본상품';
-							Products.push(Product);
-							EcommerceSet(E_step, Products, actionList, dimension);
-							// GA 이벤트 전송
-							GA_Event('PC_공통', '최근본상품_배너', Product.name);
-						});
-					</script>
-					<!-- 최근 본 상품 -->
-					<div class="bx-wrapper" style="max-width: 100%; margin: 0px auto;">
-						<div class="bx-viewport" style="width: 100%; overflow: hidden; position: relative; height: 100px;">
-							<ul class="swiper-wrapper"
-								style="width: 715%; position: relative; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
-								<li class="swiper-slide bx-clone"
-									style="float: left; list-style: none; position: relative; width: 100px;">
-									<span class="right-view-image" data-slitmcd="H60A1543982:167937"
-										data-info="A003642:004503:신촌점:1001:수입화장품">
-										<a href="#"
-											onclick="itemDetailViewParam('167937', '60A1543982', 'N', '', '&amp;MainpageGroup=Sky&amp;GroupbannerName=Resentitem' ); return false;">
-											<img src="https://image.thehyundai.com/static/8/9/3/54/A1/60A1543982_0_170.jpg"
-												alt="[지방시] 스킨 리소스 수딩 모이스처라이징 로션 200ML" id="recent8"
-												onerror="noImage(this, 'https://image.thehyundai.com/hdmall/images/pd/no_image_170x170.jpg')">
-										</a>
-									</span>
-								</li>
-								<li class="swiper-slide" style="float: left; list-style: none; position: relative; width: 100px;">
-									<span class="right-view-image" data-slitmcd="H60A1144104:50028"
-										data-info="000729:013368:판교점:1013:국내화장품,색조,향수 외">
-										<a href="#"
-											onclick="itemDetailViewParam('50028', '60A1144104', 'N', '', '&amp;MainpageGroup=Sky&amp;GroupbannerName=Resentitem' ); return false;">
-											<img src="https://image.thehyundai.com/static/0/1/4/14/A1/60A1144104_0_170.jpg"
-												alt="[메이크업포에버] 아쿠아 레지스트 스모키 쉐도우" id="recent0"
-												onerror="noImage(this, 'https://image.thehyundai.com/hdmall/images/pd/no_image_170x170.jpg')">
-										</a>
-									</span>
-									<span class="right-view-image" data-slitmcd="H40A0761091:50022"
-										data-info="005537:013368:판교점:1001:수입화장품">
-										<a href="#"
-											onclick="itemDetailViewParam('50022', '40A0761091', 'N', '', '&amp;MainpageGroup=Sky&amp;GroupbannerName=Resentitem' ); return false;">
-											<img src="https://image.thehyundai.com/static/9/0/1/76/A0/40A0761091_0_170.jpg"
-												alt="록시땅 립 밤 컬렉션 (택1)" id="recent1"
-												onerror="noImage(this, 'https://image.thehyundai.com/hdmall/images/pd/no_image_170x170.jpg')">
-										</a>
-									</span>
-								</li>
-								<li class="swiper-slide" style="float: left; list-style: none; position: relative; width: 100px;">
-									<span class="right-view-image" data-slitmcd="H60A1340994:50017"
-										data-info="014136:013368:판교점:1013:국내화장품,색조,향수 외">
-										<a href="#"
-											onclick="itemDetailViewParam('50017', '60A1340994', 'N', '', '&amp;MainpageGroup=Sky&amp;GroupbannerName=Resentitem' ); return false;">
-											<img src="https://image.thehyundai.com/static/9/9/0/34/A1/60A1340994_0_170.jpg"
-												alt="[베네피트][태연 Pick]베네피트 틴트 6종 중 택1" id="recent2"
-												onerror="noImage(this, 'https://image.thehyundai.com/hdmall/images/pd/no_image_170x170.jpg')">
-										</a>
-									</span>
-									<span class="right-view-image" data-slitmcd="H40A1145359:50018"
-										data-info="A002018:013368:판교점:1001:수입화장품">
-										<a href="#"
-											onclick="itemDetailViewParam('50018', '40A1145359', 'N', '', '&amp;MainpageGroup=Sky&amp;GroupbannerName=Resentitem' ); return false;">
-											<img src="https://image.thehyundai.com/static/5/3/5/14/A1/40A1145359_0_170.jpg"
-												alt="샤넬 르 블랑 브라이트닝 메이크업 베이스" id="recent3"
-												onerror="noImage(this, 'https://image.thehyundai.com/hdmall/images/pd/no_image_170x170.jpg')">
-										</a>
-									</span>
-								</li>
-								<li class="swiper-slide" style="float: left; list-style: none; position: relative; width: 100px;">
-									<span class="right-view-image" data-slitmcd="H40A0992205:50019"
-										data-info="119461:004506:중동점:1013:국내화장품,색조,향수 외">
-										<a href="#"
-											onclick="itemDetailViewParam('50019', '40A0992205', 'N', '', '&amp;MainpageGroup=Sky&amp;GroupbannerName=Resentitem' ); return false;">
-											<img src="https://image.thehyundai.com/static/0/2/2/99/A0/40A0992205_0_170.jpg"
-												alt="정샘물 에센셜 스킨 누더 쿠션(리필 포함)(글로우베이스5ml+앰플선5ml+수정 화장패드1매)" id="recent4"
-												onerror="noImage(this, 'https://image.thehyundai.com/hdmall/images/pd/no_image_170x170.jpg')">
-										</a>
-									</span>
-									<span class="right-view-image" data-slitmcd="H40A1541938:50017"
-										data-info="001357:004504:무역센터점:1001:수입화장품">
-										<a href="#"
-											onclick="itemDetailViewParam('50017', '40A1541938', 'N', '', '&amp;MainpageGroup=Sky&amp;GroupbannerName=Resentitem' ); return false;">
-											<img src="https://image.thehyundai.com/static/3/9/1/54/A1/40A1541938_0_170.jpg"
-												alt="[시세이도] UV 프로텍티브 컴팩트 파운데이션(리필+케이스) SPF35/PA+++ 12g" id="recent5"
-												onerror="noImage(this, 'https://image.thehyundai.com/hdmall/images/pd/no_image_170x170.jpg')">
-										</a>
-									</span>
-								</li>
-								<li class="swiper-slide" style="float: left; list-style: none; position: relative; width: 100px;">
-									<span class="right-view-image" data-slitmcd="H40A1407313:40008"
-										data-info="017892:003766:미아점:1013:국내화장품,색조,향수 외">
-										<a href="#"
-											onclick="itemDetailViewParam('40008', '40A1407313', 'N', '', '&amp;MainpageGroup=Sky&amp;GroupbannerName=Resentitem' ); return false;">
-											<img src="https://image.thehyundai.com/static/1/3/7/40/A1/40A1407313_0_170.jpg"
-												alt="프리메라 [기획] 페이셜 마일드 필링 150ml 세트" id="recent6"
-												onerror="noImage(this, 'https://image.thehyundai.com/hdmall/images/pd/no_image_170x170.jpg')">
-										</a>
-									</span>
-									<span class="right-view-image" data-slitmcd="H40A1005175:40006"
-										data-info="002276:013368:판교점:1001:수입화장품">
-										<a href="#"
-											onclick="itemDetailViewParam('40006', '40A1005175', 'N', '', '&amp;MainpageGroup=Sky&amp;GroupbannerName=Resentitem' ); return false;">
-											<img src="https://image.thehyundai.com/static/7/1/5/00/A1/40A1005175_0_170.jpg"
-												alt="[클라랑스] 엑스트라 퍼밍 나이트 크림 50ml" id="recent7"
-												onerror="noImage(this, 'https://image.thehyundai.com/hdmall/images/pd/no_image_170x170.jpg')">
-										</a>
-									</span>
-								</li>
-								<li class="swiper-slide" style="float: left; list-style: none; position: relative; width: 100px;">
-									<span class="right-view-image" data-slitmcd="H60A1543982:167937"
-										data-info="A003642:004503:신촌점:1001:수입화장품">
-										<a href="#"
-											onclick="itemDetailViewParam('167937', '60A1543982', 'N', '', '&amp;MainpageGroup=Sky&amp;GroupbannerName=Resentitem' ); return false;">
-											<img src="https://image.thehyundai.com/static/8/9/3/54/A1/60A1543982_0_170.jpg"
-												alt="[지방시] 스킨 리소스 수딩 모이스처라이징 로션 200ML" id="recent8"
-												onerror="noImage(this, 'https://image.thehyundai.com/hdmall/images/pd/no_image_170x170.jpg')">
-										</a>
-									</span>
-								</li>
-								<li class="swiper-slide bx-clone"
-									style="float: left; list-style: none; position: relative; width: 100px;">
-									<span class="right-view-image" data-slitmcd="H60A1144104:50028"
-										data-info="000729:013368:판교점:1013:국내화장품,색조,향수 외">
-										<a href="#"
-											onclick="itemDetailViewParam('50028', '60A1144104', 'N', '', '&amp;MainpageGroup=Sky&amp;GroupbannerName=Resentitem' ); return false;">
-											<img src="https://image.thehyundai.com/static/0/1/4/14/A1/60A1144104_0_170.jpg"
-												alt="[메이크업포에버] 아쿠아 레지스트 스모키 쉐도우" id="recent0"
-												onerror="noImage(this, 'https://image.thehyundai.com/hdmall/images/pd/no_image_170x170.jpg')">
-										</a>
-									</span>
-									<span class="right-view-image" data-slitmcd="H40A0761091:50022"
-										data-info="005537:013368:판교점:1001:수입화장품">
-										<a href="#"
-											onclick="itemDetailViewParam('50022', '40A0761091', 'N', '', '&amp;MainpageGroup=Sky&amp;GroupbannerName=Resentitem' ); return false;">
-											<img src="https://image.thehyundai.com/static/9/0/1/76/A0/40A0761091_0_170.jpg"
-												alt="록시땅 립 밤 컬렉션 (택1)" id="recent1"
-												onerror="noImage(this, 'https://image.thehyundai.com/hdmall/images/pd/no_image_170x170.jpg')">
-										</a>
-									</span>
-								</li>
-							</ul>
-						</div>
-					</div>
-					<div class="right-paging">
-						<div class="prev"><a href="#"><img src="https://image.thehyundai.com/hdmall/images/main/btn_bn_left.jpg"
-									alt=""></a></div>
-						<div class="page">1/5</div>
-						<div class="next"><a href="#"><img src="https://image.thehyundai.com/hdmall/images/main/btn_bn_right.jpg"
-									alt=""></a></div>
-					</div>
-					<!-- 기타 배너 -->
-				</div>
-				<!-- 기타 배너 -->
-				<div class="right-other">
-					<a onclick="GA_Event('PC_공통','점별매장_배너', '점별매장');"
-						href="https://www.thehyundai.com/front/dpa/searchSectItem.thd?venCd=013368&amp;MainpageGroup=Sky&amp;GroupbannerName=Department"><img
-							src="https://image.thehyundai.com/hdmall/images/co/img_bn_other01.jpg" alt=""></a>
-				</div>
-				<div class="right-other">
-					<a href="#" onclick="javascript:GA_Event('PC_공통','더한섬닷컴_바로가기', '더한섬닷컴'); dummy();"><img
-							src="https://image.thehyundai.com/hdmall/images/co/img_bn_other02.jpg" alt=""></a>
-				</div>
-				<!-- top 버튼 -->
-				<div class="right-top-moving">
-					<a href="#"
-						onclick="GA_Event('PC_공통','TOP','TOP'); $('html, body').stop().animate({scrollTop:0}, 400); return false;"><span
-							class="blind">최상단으로 이동</span></a>
-				</div>
-			</div>
-		</div>
-		<!-- //skyscraper -->
-		<div class="theme-flag-box"><img src="https://image.thehyundai.com/HM/HM006/20230223/180341/pc_plag.gif"
-				alt="[3/4~12] 시작을 꽃피우다"></div>
-	</div>
-</div>
+<script>
+$(function(){
+	
+	
+	
+});
+</script>
+  <h1 onclick="location.href='/';">The Hyundai Beauty</h1>
+  <section class="top_nav">
+    <nav>
+      <ul>
+        <!-- 로그인 전 -->
+        <li><a href="https://www.larocheposay.co.kr/member/login.do">로그인</a></li>
+        <li><a href="https://www.larocheposay.co.kr/member/auth.do">회원가입</a></li>
+        <li><a href="https://www.larocheposay.co.kr/myPage/shopping/list.do">주문/배송조회</a></li>
+        <li><a href="https://www.larocheposay.co.kr/cscenter/csHome.do">고객케어센터</a></li>
+      </ul>
+      <!-- //로그인 후 -->
+    </nav>
+  </section>
+  <section class="cf_side">
+    <div class="campain">
+      <a href="#campain_banner" class="btn_campain">민감성 피부의 삶을 바꾸는 라로슈포제</a>
+      <!-- 캠페인 배너  -->
+      <div id="campain_banner">
+        <ul>
+          <li><a href="https://www.larocheposay.co.kr/noDev/lrpBrandStory.do"><img
+                src="https://www.larocheposay.co.kr/images/main/campain_banner_v2_1.jpg"
+                alt="더 나은 삶을 위한 민감성 피부의 선택 라로슈포제 - 바로가기"></a></li>
+          <li><a href="https://www.larocheposay.co.kr/noDev/lrpFoundation.do"><img
+                src="https://www.larocheposay.co.kr/images/main/campain_banner_v2_2.jpg"
+                alt="전 세계 피부 전문가가 선택한 민감 피부 솔루션 - 바로가기"></a></li>
+          <li><a href="https://www.larocheposay.co.kr/noDev/lrpThermalWater.do"><img
+                src="https://www.larocheposay.co.kr/images/main/campain_banner_v2_3.jpg"
+                alt="민감한 피부를 개선하는 프랑스 NO.1* 온천 과학 센터의 연구 - 바로가기"></a></li>
+          <li><a href="https://www.larocheposay.co.kr/noDev/lrpPromise.do"><img
+                src="https://www.larocheposay.co.kr/images/main/campain_banner_v2_4.jpg"
+                alt="민감한 피부에도 사용 가능한 저자극 포뮬라 알러지 테스트 완료 - 바로가기"></a></li>
+          <li><a href="https://www.larocheposay.co.kr/noDev/spotscan.do"><img
+                src="https://www.larocheposay.co.kr/images/main/campain_banner_v2_5.jpg?1"
+                alt="라로슈포제만의 개인 맞춤형 피부관리 솔루션 추천 - 바로가기"></a></li>
+        </ul>
+        <p>* CNETH (Conseil National des exploitants Thermaux, 2010)</p>
+      </div>
+      <!-- //캠페인 배너  -->
+    </div>
+    <script type="text/javascript">
+      function topSearchEvent() {
+        if ($('input[name="topSearchKeyword"]').val() == '') {
+          if ($('#headerSearchForm').find("input[name=seq]").val() == '') {
+            alert("검색어를 입력해 주세요.");
+            return false;
+          } else {
+            $.ajax({
+              type: 'post',
+              url: '/inc/hitUpdate.do',
+              dataType: 'json',
+              data: $('#headerSearchForm').serialize(),
+              success: function (data) {
+                if (data.result != 'OK') {
+                  console.log(data.message);
+                }
+                location.href = 'https://www.larocheposay.co.kr/event/eventView/473.do';
+              }
+            });
+          }
+        } else {
+          $('#headerSearchForm').attr({
+            'action': '/product/search.do',
+            'method': 'get'
+          }).submit();
+        }
+      }
+      function goKey(keyWd) {
+        $('input[name="topSearchKeyword"]').val(keyWd);
+        topSearchEvent();
+      }
+      $(document).ready(function () {
+        $('input[name="topSearchKeyword"]').on("keydown", function (event) {
+          if (event.keyCode == 13) {
+            event.preventDefault();
+            topSearchEvent();
+          } else {
+            if ($(this).val().length > 20) {
+              $(this).val($(this).val().substring(0, 20));
+            }
+          }
+        });
+      });
+    </script>
+    <div class="fastinfo">
+      <form id="headerSearchForm">
+        <div class="search_cart">
+          <div class="search_faq">
+            <input type="hidden" value="182" name="seq">
+            <input type="hidden" value="SHA001" name="hitType">
+            <input type="search" title="검색 입력창" name="topSearchKeyword" placeholder="유비데아로 촉촉하게 톤업" maxlength="20">
+            <button type="button" onclick="topSearchEvent();"><span>검색</span></button>
+          </div>
+          <a href="https://www.larocheposay.co.kr/cart/cart.do" class="btn-cart"><span class="hide">장바구니</span><span
+              class="count">0</span></a>
+        </div>
+      </form>
+      <div class="hashtag" style="display: block-inline; width: 308px; height: 20px; overflow: hidden;">
+        <div style="float: left; white-space: nowrap; padding: 0px 308px;">
+          <div style="float: left; white-space: nowrap; padding: 0px 308px;">
+            <div style="float: left; white-space: nowrap; padding: 0px 308px;">
+              <div style="float: left; white-space: nowrap; padding: 0px 308px;">
+                <a href="#none" onclick="goKey('전 품목 20% OFF!'); return false;">#전 품목 20% OFF!</a>
+                <a href="#none" onclick="goKey('신제품 무료 체험 이벤트✨'); return false;">#신제품 무료 체험 이벤트✨</a>
+                <a href="#none" onclick="goKey('세트 구매 시 추가 증정🎁'); return false;">#세트 구매 시 추가 증정🎁</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="gnb_nav">
+    <nav>
+      <ul class="left">
+        <li class="">
+          <a href="https://www.larocheposay.co.kr/product/hotItem/best.do" onclick="LARO.TagManager.menu(this);"
+            data-menu-name="공식몰 단독혜택" data-depth="1"><span>공식몰 단독혜택</span><em>공식몰 단독혜택</em></a>
+          <div class="sub_contain" style="opacity: 1; display: none;">
+            <div class="menu">
+              <ul>
+                <li><a href="https://www.larocheposay.co.kr/product/hotItem/best.do"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="베스트" data-depth="2">베스트</a></li>
+                <li><a href="https://www.larocheposay.co.kr/product/hotItem/single.do"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="단독구성" data-depth="2">단독구성</a></li>
+                <li><a href="https://www.larocheposay.co.kr/product/hotItem/new.do" class=""
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="신규회원첫혜택" data-depth="2">신규회원첫혜택</a></li>
+                <li><a href="https://www.larocheposay.co.kr/skinlife/selfConsult.do"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="피부민감도 자가진단" data-depth="2">피부민감도 자가진단</a>
+                </li>
+              </ul>
+            </div>
+            <div class="sub_contain_banner">
+              <a href="https://www.larocheposay.co.kr/product/view/3479.do" onclick="LARO.TagManager.menu(this);"
+                data-menu-name="인기샘플키트" data-depth="2">
+                <img src="https://www.larocheposay.co.kr/images/main/gnb_banner.jpg?v=36201204202301" alt="인기샘플키트">
+              </a>
+            </div>
+          </div>
+          <!-- //sub_contain -->
+        </li>
+        <li class="">
+          <a href="https://www.larocheposay.co.kr/product/list.do?cate2=1130" onclick="LARO.TagManager.menu(this);"
+            data-menu-name="병원판매화장품" data-depth="1">
+            <span>???</span>
+            <em>???</em>
+          </a>
+          <div class="sub_contain" style="opacity: 1; display: none;">
+            <div class="submenu">
+              <dl>
+                <dt>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate2=1130"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="케어 고민별" data-depth="2">
+                    케어 고민별</a>
+                </dt>
+                <dd>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate2=1130"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="전체" data-depth="2">전체</a>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate3=1131"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="스킨케어" data-depth="2">스킨케어</a>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate3=1132"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="바디케어" data-depth="2">바디케어</a>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate3=1133"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="헤어케어" data-depth="2">헤어케어</a>
+                </dd>
+              </dl>
+            </div>
+            <div class="sub_contain_button">
+              <button type="button" class="btn_base move" onclick="location.href='/product/allList.do';">전체 제품
+                보기</button>
+              <button type="button" class="btn_base move" onclick="location.href='/skinlife/selfConsult.do';">피부 민감도
+                자가진단</button>
+            </div>
+            <div class="sub_contain_banner">
+              <a href="javascript:bannerLink('1238', '/product/view/3738.do', '_self');">
+                <span class="product_banner">
+                  <img src="https://www.larocheposay.co.kr/upload/product/main/2022/12/20221220_1654046_085_210x210.png"
+                    alt="에빠끌라 에이치 아이소 바이옴 크림 썸네일">
+                  <span class="tit">에빠끌라</span>
+                  <span class="kind">H 아이소바이옴 울트라 수딩 하이드레이팅 크림 [병원판매 화장품]</span>
+                  <span class="price">
+                    <span class="after">29,000<em>원</em></span>
+                  </span>
+                </span>
+              </a>
+            </div>
+          </div>
+        </li>
+        <li class="">
+          <a href="/product/list?dept1=10" data-menu-name="스킨케어" data-depth="1">
+            <span>스킨케어</span>
+            <em>FACE</em>
+          </a>
+          <div class="sub_contain" style="opacity: 1; display: none;">
+            <div class="submenu">
+              <dl>
+                <dt>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate2=1004" data-depth="2">
+                    피부 MBTI별</a>
+                </dt>
+                <dd>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate2=1004"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="전체" data-depth="2">전체</a>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate3=1005"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="민감성 피부" data-depth="2">민감성 피부</a>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate3=1014"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="지성/트러블 피부" data-depth="2">지성/트러블 피부</a>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate3=1016"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="외부 자극받은 피부" data-depth="2">외부 자극받은 피부</a>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate3=1006"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="건조한 피부" data-depth="2">건조한 피부</a>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate3=1101"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="UV 차단" data-depth="2">UV 차단</a>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate3=1013"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="톤업/메이크업" data-depth="2">톤업/메이크업</a>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate3=1007"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="브라이트닝" data-depth="2">브라이트닝</a>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate3=1134"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="탄력/주름" data-depth="2">탄력/주름</a>
+                </dd>
+              </dl>
+            </div>
+           
+            <div class="submenu">
+              <dl>
+                <dt>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate2=1011"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="사용 단계별" data-depth="2">
+                    사용 단계별</a>
+                </dt>
+                <dd>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate2=1011"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="전체" data-depth="2">전체</a>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate3=1012"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="클렌징" data-depth="2">클렌징</a>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate3=1026"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="토너" data-depth="2">토너</a>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate3=1030"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="세럼/에센스" data-depth="2">세럼/에센스</a>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate3=1027"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="로션/크림" data-depth="2">로션/크림</a>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate3=1032"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="마스크/팩" data-depth="2">마스크/팩</a>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate3=1028"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="UV차단" data-depth="2">UV차단</a>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate3=1031"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="미스트" data-depth="2">미스트</a>
+                </dd>
+              </dl>
+            </div>
+             <div class="submenu">
+              <dl>
+                <dt>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate2=1008" data-depth="2">
+                    브랜드별</a>
+                </dt>
+                <dd>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate2=1008"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="전체" data-depth="2">전체</a>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate3=1018"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="에빠끌라" data-depth="2">에빠끌라</a>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate3=1021"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="시카플라스트" data-depth="2">시카플라스트</a>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate3=1010"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="똘러리앙" data-depth="2">똘러리앙</a>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate3=1024"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="히알루 B5" data-depth="2">히알루 B5</a>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate3=1107"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="유비데아" data-depth="2">유비데아</a>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate3=1114"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="퓨어비타민C10" data-depth="2">퓨어비타민C10</a>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate3=1025"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="세로징크" data-depth="2">세로징크</a>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate3=1022"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="오 떼르말" data-depth="2">오 떼르말</a>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate3=1023"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="미셀라 클렌징 워터" data-depth="2">미셀라 클렌징 워터</a>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate3=1139"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="나이아신아마이드" data-depth="2">나이아신아마이드</a>
+                </dd>
+              </dl>
+            </div>
+            <div class="sub_contain_button">
+              <button type="button" class="btn_base move" onclick="location.href='/product/list?dept1=10';">전체 제품 보기</button>
+              <button type="button" class="btn_base move" onclick="location.href='/skinMBTI/selfConsult';">피부 MBTI 진단하기</button>
+            </div>
+            <div class="sub_contain_banner">
+              <a href="javascript:bannerLink('1239', '/product/view/3862.do', '_self');">
+                <span class="product_banner">
+                  <img src="https://www.larocheposay.co.kr/upload/product/main/2021/10/20230130_1351020_733_210x210.png"
+                    alt="에빠끌라 딥 클렌징 포밍 크림">
+                  <span class="tit">에빠끌라</span>
+                  <span class="kind">딥 클렌징 포밍 크림</span>
+                  <span class="price">
+                    <span class="after">28,000<em>원</em></span>
+                  </span>
+                </span>
+              </a>
+            </div>
+          </div>
+        </li>
+        <li class="">
+          <a href="/product/list?dept1=20">
+            <span>메이크업</span>
+            <em>MAKE UP</em>
+          </a>
+          <div class="sub_contain" style="opacity: 1; display: none;">
+            <div class="submenu">
+              <dl>
+                <dt>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate2=1033"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="피부 고민별" data-depth="2">
+                    피부 고민별</a>
+                </dt>
+                <dd>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate2=1033"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="전체" data-depth="2">전체</a>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate3=1037"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="외부 자극받은 피부" data-depth="2">외부 자극받은 피부</a>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate3=1036"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="건조한 피부" data-depth="2">건조한 피부</a>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate3=1038"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="두피 모발 강화" data-depth="2">두피 모발 강화</a>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate3=1135"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="온가족사용가능" data-depth="2">온가족사용가능</a>
+                </dd>
+              </dl>
+            </div>
+            <div class="submenu">
+              <dl>
+                <dt>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate2=1034"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="제품 라인별" data-depth="2">
+                    제품 라인별</a>
+                </dt>
+                <dd>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate2=1034"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="전체" data-depth="2">전체</a>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate3=1039"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="리피카" data-depth="2">리피카</a>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate3=1041"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="시카플라스트" data-depth="2">시카플라스트</a>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate3=1040"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="키리움" data-depth="2">키리움</a>
+                </dd>
+              </dl>
+            </div>
+            <div class="submenu">
+              <dl>
+                <dt>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate2=1035" data-depth="2">
+                    브랜드별</a>
+                </dt>
+                <dd>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate2=1035"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="전체" data-depth="2">전체</a>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate3=1043"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="바디 케어" data-depth="2">바디 케어</a>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate3=1045"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="헤어 케어" data-depth="2">헤어 케어</a>
+                </dd>
+              </dl>
+            </div>
+            <div class="sub_contain_button">
+              <button type="button" class="btn_base move" onclick="location.href='/product/list?dept1=20';">전체 제품 보기</button>
+              <button type="button" class="btn_base move" onclick="location.href='#';">메이크업 상담 예약</button>
+            </div>
+            <div class="sub_contain_banner">
+              <a href="javascript:bannerLink('1240', '/product/view/3714.do', '_self');">
+                <span class="product_banner">
+                  <img src="https://www.larocheposay.co.kr/upload/product/main/2022/10/20221012_1026026_754_210x210.png"
+                    alt="리피카 윌 라방 (저자극 바디 오일 클렌저)">
+                  <span class="tit">리피카</span>
+                  <span class="kind">바디 오일 클렌저 대용량 세트</span>
+                  <span class="price">
+                    <span class="after">53,000<em>원</em></span>
+                  </span>
+                </span>
+              </a>
+            </div>
+          </div>
+        </li>
+        <li class="">
+          <a href="/similarCos/main">
+            <span>유사성분템</span>
+            <em>SIMILAR COSMETICS</em>
+          </a>
+          <div class="sub_contain" style="opacity: 1; display: none;">
+            <div class="submenu">
+              <dl>
+                <dt>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate2=1009"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="피부고민별" data-depth="2">
+                    피부고민별</a>
+                </dt>
+                <dd>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate2=1009"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="전체" data-depth="2">전체</a>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate3=1136"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="수분UV케어" data-depth="2">수분UV케어</a>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate3=1137"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="톤업UV케어" data-depth="2">톤업UV케어</a>
+                </dd>
+              </dl>
+            </div>
+            <div class="submenu">
+              <dl>
+                <dt>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate2=1046"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="제품 라인별" data-depth="2">
+                    제품 라인별</a>
+                </dt>
+                <dd>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate2=1046"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="전체" data-depth="2">전체</a>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate3=1054"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="유비데아" data-depth="2">유비데아</a>
+                </dd>
+              </dl>
+            </div>
+            <div class="submenu">
+              <dl>
+                <dt>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate2=1047"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="사용 단계별" data-depth="2">
+                    사용 단계별</a>
+                </dt>
+                <dd>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate2=1047"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="전체" data-depth="2">전체</a>
+                  <a href="https://www.larocheposay.co.kr/product/list.do?cate3=1056"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="UV차단" data-depth="2">UV차단</a>
+                </dd>
+              </dl>
+            </div>
+            <div class="sub_contain_button">
+              <button type="button" class="btn_base move" onclick="location.href='/product/allList.do';">전체 제품
+                보기</button>
+              <button type="button" class="btn_base move" onclick="location.href='/skinlife/selfConsult.do';">피부 민감도
+                자가진단</button>
+            </div>
+            <div class="sub_contain_banner">
+              <a href="javascript:bannerLink('1241', '/product/view/3619.do', '_self');">
+                <span class="product_banner">
+                  <img src="https://www.larocheposay.co.kr/upload/product/main/2020/06/20220124_1552013_147_210x210.png"
+                    alt="유비데아 XL 틴티드 크림 [톤보정]">
+                  <span class="tit">유비데아</span>
+                  <span class="kind">안뗄리오스 멜트인 틴티드 크림 [톤보정]</span>
+                  <span class="price">
+                    <span class="sale">3%</span>
+                    <span class="before">35,000<em>원</em></span>
+                    <span class="after">34,000<em>원</em></span>
+                  </span>
+                </span>
+              </a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <a href="https://www.larocheposay.co.kr/review/list.do" onclick="LARO.TagManager.menu(this);"
+            data-menu-name="리얼리뷰" data-depth="1"><span>리얼리뷰</span><em>REVIEW</em></a>
+        </li>
+      </ul>
+      <ul class="right">
+        <li class="">
+          <a href="/skinMBTI/selfConsult"><i class="ico_new">NEW</i>피부 MBTI</a>
+          <div class="sub_contain" style="opacity: 1; display: none;">
+            <div class="menu">
+              <ul>
+                <li><a href="/skinMBTI/selfConsult" data-depth="2">진단하기</a></li>
+                <li><a href="/skinMBTI/result?mbti=OSPW" data-depth="2">결과보기</a></li>
+              </ul>
+            </div>
+          </div>
+          <!-- //sub_contain -->
+        </li>
+        <li class="">
+          <a href="https://www.larocheposay.co.kr/event/eventList.do" onclick="LARO.TagManager.menu(this);"
+            data-menu-name="이벤트" data-depth="1"><span>이벤트</span><em>EVENT</em></a>
+          <div class="sub_contain" style="opacity: 1; display: none;">
+            <div class="menu">
+              <ul>
+                <li><a href="https://www.larocheposay.co.kr/event/eventList.do" onclick="LARO.TagManager.menu(this);"
+                    data-menu-name="진행중 이벤트" data-depth="2">진행중 이벤트</a></li>
+                <li><a href="https://www.larocheposay.co.kr/event/eventWinList.do" onclick="LARO.TagManager.menu(this);"
+                    data-menu-name="당첨자 발표" data-depth="2">당첨자 발표</a></li>
+                <li><a href="https://www.larocheposay.co.kr/event/eventEndList.do" onclick="LARO.TagManager.menu(this);"
+                    data-menu-name="종료된 이벤트" data-depth="2">종료된 이벤트</a></li>
+              </ul>
+            </div>
+          </div>
+          <!-- //sub_contain -->
+        </li>
+        <li class="">
+          <a href="https://www.larocheposay.co.kr/memberShip/guide.do" onclick="LARO.TagManager.menu(this);"
+            data-menu-name="쿠폰/멤버십" data-depth="1" class="sp-goal-457-c65-35-1627285161700"><span><i
+                class="ico"></i>쿠폰/멤버십</span><em>MEMBERSHIP</em></a>
+          <div class="sub_contain" style="opacity: 1; display: none;">
+            <div class="menu">
+              <ul>
+                <li><a href="https://www.larocheposay.co.kr/memberShip/guide.do" onclick="LARO.TagManager.menu(this);"
+                    data-menu-name="라로슈포제 멤버십" data-depth="2">라로슈포제 멤버십</a>
+                </li>
+                <li><a href="https://www.larocheposay.co.kr/memberShip/giftShop.do"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="마일리지 기프트샵" data-depth="2">마일리지 기프트샵</a>
+                </li>
+                <li><a href="https://www.larocheposay.co.kr/memberShip/couponZone.do"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="쿠폰존" data-depth="2"
+                    class="sp-goal-457-c65-39-1627366488428">쿠폰존</a></li>
+                <li><a href="https://www.larocheposay.co.kr/memberShip/CouponCode.do"
+                    onclick="LARO.TagManager.menu(this);" data-menu-name="제휴 쿠폰존" data-depth="2">제휴 쿠폰존</a></li>
+              </ul>
+            </div>
+          </div>
+          <!-- //sub_contain -->
+        </li>
+      </ul>
+    </nav>
+  </section>

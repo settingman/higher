@@ -1,4 +1,4 @@
-package com.hyundai.higher.domain.product;
+package com.hyundai.higher.domain.category;
 
 import java.util.List;
 

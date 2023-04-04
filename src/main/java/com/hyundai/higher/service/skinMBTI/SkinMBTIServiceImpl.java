@@ -21,9 +21,9 @@ public class SkinMBTIServiceImpl implements SkinMBTIService {
 
 	// 피부타입 저장
 	@Override
-	public void updateMBTI(String mid, String mbti) {
+	public void updateMBTI(String mid, String mbti, String mbti_scores) {
 		
-		mapper.updateMBTI(mid, mbti);
+		mapper.updateMBTI(mid, mbti, mbti_scores);
 	}
 
 }

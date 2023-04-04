@@ -1384,7 +1384,7 @@ a:focus, a:active {
 	width: 130px;
 	background: center url(../images/answerExOn.png) no-repeat;
 	background-size: 100%;
-	border: 4px solid darkgray;
+	border: 4px solid #bfae90;
 	border-radius: 70px;
 }
 

@@ -1,7 +1,5 @@
 package com.hyundai.higher.controller.skinMBTI;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.hyundai.higher.service.include.IncludeService;
 import com.hyundai.higher.service.skinMBTI.SkinMBTIService;
 
 import lombok.extern.log4j.Log4j2;
@@ -32,9 +29,6 @@ import lombok.extern.log4j.Log4j2;
 @Controller
 public class SkinMBTIController {
 
-	@Autowired(required=true)
-	private IncludeService iService;
-	
 	@Autowired
 	private SkinMBTIService service;
 	
@@ -42,7 +36,7 @@ public class SkinMBTIController {
 	@GetMapping("/selfConsult")
 	public String skinMBTIMain(Model model) {
 		
-		return "/skinMBTI/selfConsult";
+		return "skinMBTI/selfConsult";
 	}
 	
 	// 결과
@@ -56,7 +50,7 @@ public class SkinMBTIController {
 		model.addAttribute("mbti", service.selectSkinMBTI(mbti));
 		model.addAttribute("scores", scores);
 		
-		return "/skinMBTI/result";
+		return "skinMBTI/result";
 	}
 	
 	

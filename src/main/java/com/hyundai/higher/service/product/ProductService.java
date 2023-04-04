@@ -2,7 +2,7 @@ package com.hyundai.higher.service.product;
 
 import java.util.List;
 
-import com.hyundai.higher.domain.product.CategoryDTO;
+import com.hyundai.higher.domain.category.CategoryDTO;
 import com.hyundai.higher.domain.product.ProductDTO;
 import com.hyundai.higher.domain.product.ProductDetailDTO;
 
@@ -19,9 +19,6 @@ import com.hyundai.higher.domain.product.ProductDetailDTO;
  *     </pre>
  */
 public interface ProductService {
-
-	// 카테고리 하위 목록
-	public List<CategoryDTO> categoryListSub(String dept1no);
 	
 	// 상품 목록
 	public List<ProductDTO> productList(String dept1no, String dept2no);

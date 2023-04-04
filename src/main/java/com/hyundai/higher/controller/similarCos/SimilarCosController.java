@@ -33,9 +33,6 @@ import lombok.extern.log4j.Log4j2;
 @Controller
 public class SimilarCosController {
 	
-	@Autowired(required=true)
-	private IncludeService iService;
-	
 	@Autowired
 	private ProductService pService;
 	
@@ -46,7 +43,6 @@ public class SimilarCosController {
 	@GetMapping("/main")
 	public String similarCosMain(Model model) {
 		
-		model.addAttribute("categoryList", iService.categoryListAll());
 		model.addAttribute("bestProdList", service.bestProdList());
 		
 		return "similarCos/findSimilar";
@@ -59,7 +55,7 @@ public class SimilarCosController {
 		
 		ProductDetailDTO product = pService.productDetail(pcode);
 		String ingredient = product.getProductDTO().getPingredient();
-		ingredient = ingredient.replaceAll(",", " ");
+		ingredient = ingredient.replaceAll(",", " ").replaceAll("\\s+", " ");;
 		String[] iList = ingredient.split(" ");
 		String[] mainIngredient = new String[6];
 		

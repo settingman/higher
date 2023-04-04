@@ -1,7 +1,9 @@
 package com.hyundai.higher.controller.skinMBTI;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,8 +20,13 @@ public class SkinMBTIRestController {
 	@Autowired
 	private SkinMBTIService service;
 	
-	@GetMapping("/saveMBTI")
-	public void updateMBTI(@RequestParam("mbti") String mbti) {
-		service.updateMBTI("angz", mbti);
+	@PostMapping("/saveMBTI")
+	public void updateMBTI(@RequestParam("mbti") String mbti, @RequestParam("mbti_scores") String mbti_scores, Principal prin) {
+		String mid = prin.getName();
+		
+		log.info(mid);
+		log.info(mbti_scores);
+		
+		service.updateMBTI(mid, mbti, mbti_scores);
 	}
 }
