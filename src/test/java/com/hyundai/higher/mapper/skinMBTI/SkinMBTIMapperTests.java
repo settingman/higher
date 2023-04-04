@@ -20,7 +20,7 @@ import lombok.extern.log4j.Log4j2;
  */
 @Log4j2
 @SpringBootTest
-public class SkinMBTIMapperTest {
+public class SkinMBTIMapperTests {
 
 	@Autowired
 	private SkinMBTIMapper mapper;
@@ -40,8 +40,9 @@ public class SkinMBTIMapperTest {
 		
 		String mid = "angz";
 		String mbti = "DRNT";
+		String mbti_scores = "9,9,9,9";
 		
-		mapper.updateMBTI(mid, mbti);
+		mapper.updateMBTI(mid, mbti, mbti_scores);
 	}
 	
 	

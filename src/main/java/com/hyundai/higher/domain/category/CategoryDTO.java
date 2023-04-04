@@ -1,7 +1,5 @@
 package com.hyundai.higher.domain.category;
 
-import java.util.List;
-
 import lombok.Data;
 
 /**
@@ -20,7 +18,6 @@ import lombok.Data;
 public class CategoryDTO {
 
 	private String dept1no;
-	private String dept1name;
-	private List<CategoryDept2DTO> dept2List;
-	
+	private String dept2name;
+	private String dept2no;
 }

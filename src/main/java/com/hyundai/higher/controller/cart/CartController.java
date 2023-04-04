@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hyundai.higher.domain.cart.CartItem;
 import com.hyundai.higher.service.cart.CartService;
-import com.hyundai.higher.service.include.IncludeService;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -34,9 +33,6 @@ import lombok.extern.log4j.Log4j2;
 public class CartController {
 
 	@Autowired(required=true)
-	private IncludeService iService;
-	
-	@Autowired(required=true)
 	private CartService cService;
 	
 	
@@ -45,7 +41,6 @@ public class CartController {
 	@GetMapping("/mycart")
 	public String cart(Model model, Principal principal) {
 		log.info("장바구니 이동");
-		model.addAttribute("categoryList", iService.categoryListAll());
 		String mid = principal.getName();
 		List<CartItem> carts = cService.getCart(mid);
 		
