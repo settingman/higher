@@ -33,9 +33,6 @@ import lombok.extern.log4j.Log4j2;
 @Controller
 public class ProductController {
 	
-	@Autowired(required=true)
-	private IncludeService iService;
-	
 	@Autowired
 	private ProductService service;
 	
@@ -43,31 +40,16 @@ public class ProductController {
 	@GetMapping("/list")
 	public String productList(@RequestParam("dept1") String dept1no, @RequestParam(value="dept2", required=false, defaultValue = "") String dept2no, Model model) {
 		
-		model.addAttribute("categoryList", iService.categoryListAll());
 		model.addAttribute("dept1no", dept1no);
-		model.addAttribute("categoryListSub", service.categoryListSub(dept1no));
 		model.addAttribute("productList", service.productList(dept1no, dept2no));
 		
 		return "product/list";
 	}
 	
-	// 상품 목록 페이지
-	@GetMapping("/list2")
-	public String productList2(@RequestParam("dept1") String dept1no, @RequestParam(value="dept2", required=false, defaultValue = "") String dept2no, Model model) {
-		
-		model.addAttribute("categoryList", iService.categoryListAll());
-		model.addAttribute("categoryListSub", service.categoryListSub(dept1no));
-		model.addAttribute("productList", service.productList(dept1no, dept2no));
-		
-		return "product/list2";
-	}
-	
 	// 상품 세부 페이지
 	@GetMapping("/detail")
 	public String productDetail(@RequestParam("code") String pcode, Model model) {
-		
-		model.addAttribute("categoryList", iService.categoryListAll());
-		
+				
 		ProductDetailDTO dto = new ProductDetailDTO();
 		dto = service.productDetail(pcode);
 		

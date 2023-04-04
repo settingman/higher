@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.hyundai.higher.domain.product.CategoryDTO;
+import com.hyundai.higher.domain.category.CategoryDTO;
 
 /**
  * @since : 2023. 3. 15.

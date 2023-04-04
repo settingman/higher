@@ -4405,6 +4405,7 @@ html {
 .layerpop_warp .layerpop.blue .layerpop_cont {
   text-align: left;
   padding: 30px 40px;
+  overflow: hidden;
 }
 
 .layerpop_warp .layerpop.blue .close {

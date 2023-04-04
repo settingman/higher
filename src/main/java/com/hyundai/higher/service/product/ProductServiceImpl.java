@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
-import com.hyundai.higher.domain.product.CategoryDTO;
 import com.hyundai.higher.domain.product.ImgDTO;
 import com.hyundai.higher.domain.product.OptionDTO;
 import com.hyundai.higher.domain.product.ProductDTO;
@@ -17,13 +17,6 @@ public class ProductServiceImpl implements ProductService {
 
 	@Autowired
 	private ProductMapper mapper;
-	
-	// 상품 카테고리 리스트(하위)
-	@Override
-	public List<CategoryDTO> categoryListSub(String dept1no) {
-		
-		return mapper.categoryListSub(dept1no);
-	}
 
 	// 상품 목록
 	@Override

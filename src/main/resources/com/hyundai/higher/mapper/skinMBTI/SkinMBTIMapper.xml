@@ -14,7 +14,7 @@
 	
 	<update id="updateMBTI">
 		UPDATE member
-		SET mbti=#{mbti}
+		SET mbti=#{mbti}, mbti_scores=#{mbti_scores}
 		WHERE mid=#{mid}
 	</update>
 
