@@ -53,4 +53,19 @@ public class MypageServiceImpl implements MypageService{
 		return mapper.getResultInfo(rid);
 	}
 
+	@Override
+	public LipVO SimLip(String optcolor, String pcode) {
+		return mapper.SimLip(optcolor, pcode);
+	}
+
+	@Override
+	public BlushVO SimBlush(String optcolor, String pcode) {
+		return mapper.SimBlush(optcolor, pcode);
+	}
+
+	@Override
+	public FoundationVO SimFace(String optcolor, String pcode) {
+		return mapper.SimFace(optcolor, pcode);
+	}
+
 }

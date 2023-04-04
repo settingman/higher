@@ -65,7 +65,6 @@ public class MypageController {
 	}
 	
 	@GetMapping("/mypage_result")
-	// memberVO 정보 가져와야함
 	public void mypageresult(@RequestParam("rid") String rid, Model model) {
 		log.info("==== 마이페이지 예약 결과 창 ====");
 		
@@ -101,12 +100,34 @@ public class MypageController {
 		faceresult = service.getFaceResult(faceopt, facepcode);
 		log.info("가져온 파운데이션 정보 : " + faceresult);
 		
+		LipVO simlip = new LipVO();
+		BlushVO simblush = new BlushVO();
+		FoundationVO simface = new FoundationVO();
+		
+		String simlipcolor = lipresult.getOptcolor();
+		String simlippcode = lipresult.getPcode();
+		simlip = service.SimLip(simlipcolor, simlippcode);
+		log.info(simlip);
+
+		String simblushcolor = blushresult.getOptcolor();
+		String simblushpcode = blushresult.getPcode();
+		simblush = service.SimBlush(simblushcolor, simblushpcode);
+		log.info(simblush);
+
+		String simfacecolor = faceresult.getOptcolor();
+		String simfacepcode = faceresult.getPcode();
+		simface = service.SimFace(simfacecolor, simfacepcode);
+		log.info(simface);
+		
 		model.addAttribute("mem", mem);
 		model.addAttribute("info", info);
 		model.addAttribute("result", result);
 		model.addAttribute("lipresult", lipresult);
 		model.addAttribute("blushresult", blushresult);
 		model.addAttribute("faceresult", faceresult);	
+		model.addAttribute("simlip", simlip);
+		model.addAttribute("simblush", simblush);
+		model.addAttribute("simface", simface);
 	}
 	
 }

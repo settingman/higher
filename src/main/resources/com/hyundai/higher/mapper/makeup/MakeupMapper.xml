@@ -13,7 +13,7 @@
 		where a.pcode=b.pcode and
 		a.pcode=c.pcode and dept2no=22
 		and itype='thumb' and iloc like '%0' and
-		optcolor=#{optcolor} and rownum<![CDATA[ <= ]]>15
+		optcolor=#{optcolor} and rownum<![CDATA[ <= ]]>10
 	</select>
 
 	<select id="PickBlush"
@@ -23,7 +23,7 @@
 		where a.pcode=b.pcode and
 		a.pcode=c.pcode and dept2no=24
 		and itype='thumb' and iloc like '%0' and
-		optcolor=#{optcolor} and rownum<![CDATA[ <= ]]>15
+		optcolor=#{optcolor} and rownum<![CDATA[ <= ]]>10
 	</select>
 
 	<select id="PickFoundation"
@@ -35,7 +35,7 @@
 		a.pcode=c.pcode and dept2no=21
 		and itype='thumb'
 		and
-		optcolor=#{optcolor} and rownum<![CDATA[ <= ]]>15
+		optcolor=#{optcolor} and rownum<![CDATA[ <= ]]>10
 	</select>
 
 	<insert id="insertResult"
