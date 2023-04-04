@@ -91,7 +91,6 @@ public class MemberOauthService extends DefaultOAuth2UserService {
 		log.info(clienName);
 		log.info(provider);
 		
-		log.info(userRequest.getAccessToken().toString());
 
 		// 인증 제공자 출력
 		log.info("clienName " + clienName);
