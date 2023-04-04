@@ -45,11 +45,17 @@ public class CartController {
 	@GetMapping("/mycart")
 	public String cart(Model model, Principal principal) {
 		log.info("장바구니 이동");
-		model.addAttribute("categoryList", iService.categoryListAll());
+		//model.addAttribute("categoryList", iService.categoryListAll());
 		String mid = principal.getName();
+		log.info("-----");
 		List<CartItem> carts = cService.getCart(mid);
-		
-		model.addAttribute("carts", carts);
+		log.info("-------"+carts.isEmpty());
+		if(!carts.isEmpty()) {
+			model.addAttribute("carts", carts);
+			
+		}
+		log.info(carts);
+
 			
 	return "cart/mycart";
 	}
