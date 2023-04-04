@@ -11,10 +11,6 @@ import com.hyundai.higher.mapper.beauty.BeautyMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-
-
-
-
 @Slf4j
 @RequiredArgsConstructor
 @RequestMapping("/beauty")
@@ -23,22 +19,15 @@ public class BeautyRestController {
 
 	private final BeautyMapper beautyMapper;
 
-
 	// 회원가입 아이디 중복 체크 AJAX
 	@GetMapping("/profile")
-	
-	public Profile getProfile(@RequestParam("mid") String mid,@RequestParam("rid") String rid ) {
-		
-		
+
+	public Profile getProfile(@RequestParam("mid") String mid, @RequestParam("rid") String rid) {
+
 		Profile profile = beautyMapper.findProfile(mid, rid);
-		
-		
+
 		return profile;
 
 	}
 
-
-	
-	
-	
 }
