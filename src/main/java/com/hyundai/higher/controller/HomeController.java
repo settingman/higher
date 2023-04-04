@@ -47,9 +47,7 @@ public class HomeController {
 	public String test2(Model model) {
 		
 		
-		 log.info("장바구니 이동");
-	      
-	      List<CartItem> carts = new ArrayList<>();
+	
 	      
 			/*
 			 * CartItem cart = new CartItem("A1504419", "테스트", 10000, "Brand", "Color",
@@ -63,7 +61,7 @@ public class HomeController {
 			 * carts.add(cart); carts.add(cart2);
 			 */
 	      
-	      model.addAttribute("carts", carts);
+	  
 
 		
 		
