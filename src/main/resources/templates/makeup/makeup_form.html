@@ -16,7 +16,8 @@
 				<div class="faceupload"
 					style="width: 600px; height: 800px; background: darkgray; float: left;">
 					<img class="output_filepath" id="output_filepath" name="output_filepath"
-						src="" value="">
+						th:src="'/reserv/display?fileName=' + ${res.rimg}"
+						style="width: 100%; height: 100%;">
 				</div>
 			</div>
 			<div class="wrapper2">
@@ -98,11 +99,9 @@
 				</div>
 
 				<input type="hidden" name="filePath" class="filePath"
-					value="C:\shin.jpg">
-				<input type="hidden" name="rid" class="rid"
-					value="3">
-				<input type="hidden" name="output_filepath" class="output_filepath"
-					value="">
+					value="C:\park1.jpg"> <input type="hidden" name="rid"
+					class="rid" th:value="${res.rid}"> <input type="hidden"
+					name="output_filepath" class="output_filepath" value="">
 				<p style="text-align: center;">
 					<button type="submit">확인</button>
 				</p>
@@ -112,44 +111,71 @@
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script>
-		$(document).ready(function() {
-			$('input[type="radio"]').click(function() {
-				var filePath = $(".filePath").val();
-				var lips = $("input[name=lips]:checked").val();
-				var blush = $("input[name=blush]:checked").val();
-				var foundation = $("input[name=foundation]:checked").val();
+		$(document)
+				.ready(
+						function() {
+							$('input[type="radio"]')
+									.click(
+											function() {
+												var filePath = $(".filePath")
+														.val();
+												var lips = $(
+														"input[name=lips]:checked")
+														.val();
+												var blush = $(
+														"input[name=blush]:checked")
+														.val();
+												var foundation = $(
+														"input[name=foundation]:checked")
+														.val();
 
-				console.log("filePath: " + filePath);
-				console.log("lips: " + lips);
-				console.log("blush: " + blush);
-				console.log("foundation: " + foundation);
+												console.log("filePath: "
+														+ filePath);
+												console.log("lips: " + lips);
+												console.log("blush: " + blush);
+												console.log("foundation: "
+														+ foundation);
 
-				if ($(this).is(':checked')) {
+												if ($(this).is(':checked')) {
 
-					$.ajax({
-						url : "/makeup/makeup.api",
-						type : "POST",
-						data : {
-							filePath : filePath,
-							lips : lips,
-							blush : blush,
-							foundation : foundation
-						},
-						success : function(response) {
-							console.log(response);
-							var responseData = JSON.parse(response);
-							var outputFilePath = responseData.output_filepath;
-							$('#output_filepath').attr('src', outputFilePath);
-							$('.output_filepath').attr('value', outputFilePath);
-						},
-						error : function(error) {
-							console.log(error);
-						}
-					});
-				}
-				;
-			});
-		});
+													$
+															.ajax({
+																url : "/makeup/makeup.api",
+																type : "POST",
+																data : {
+																	filePath : filePath,
+																	lips : lips,
+																	blush : blush,
+																	foundation : foundation
+																},
+																success : function(
+																		response) {
+																	console
+																			.log(response);
+																	var responseData = JSON
+																			.parse(response);
+																	var outputFilePath = responseData.output_filepath;
+																	$(
+																			'#output_filepath')
+																			.attr(
+																					'src',
+																					outputFilePath);
+																	$(
+																			'.output_filepath')
+																			.attr(
+																					'value',
+																					outputFilePath);
+																},
+																error : function(
+																		error) {
+																	console
+																			.log(error);
+																}
+															});
+												}
+												;
+											});
+						});
 	</script>
 	<style>
 .lips input[type=radio] {

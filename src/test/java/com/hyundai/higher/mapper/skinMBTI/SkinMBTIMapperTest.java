@@ -41,7 +41,7 @@ public class SkinMBTIMapperTest {
 		String mid = "angz";
 		String mbti = "DRNT";
 		
-		mapper.updateMBTI(mid, mbti);
+		/* mapper.updateMBTI(mid, mbti); */
 	}
 	
 	

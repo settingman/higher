@@ -454,7 +454,7 @@
 											<p style="display: inline" th:text="${foundation}"></p>
 										</div>
 									</div>
-									<div class="makeupwrapper" style="margin: 0 70">
+									<div class="makeupwrapper">
 										<div class="numbering"
 											style="text-align: center; margin-top: 30px;">
 											<p
@@ -464,7 +464,7 @@
 										<div class="wrapper3"
 											style="grid-template-columns: repeat(2, 1fr); display: grid; place-items: center;">
 											<div class="faceupload" style="float: left">
-												<img class="face" src="@{${output_filepath}}"
+												<img class="face" th:src="@{${output_filepath}}"
 													style="max-width: 200px; margin: 0 20 20 20; float: right;" />
 											</div>
 											<div class="faceupload" style="float: left">
@@ -664,7 +664,7 @@
 										<div class="faceclone">
 											<div class="empty"></div>
 										</div>
-										<input type="hidden" name="rid" class="rid" value="3">
+										<input type="hidden" name="rid" class="rid" th:value="${rid}">
 										<input type="hidden" name="result_img" class="result_img"
 											th:value="${output_filepath}"> <input type="hidden"
 											name="lip" class="lip" th:value="${lips}"> <input

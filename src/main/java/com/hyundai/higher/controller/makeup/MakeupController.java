@@ -66,28 +66,25 @@ public class MakeupController {
 	@Autowired
 	private MypageService mypage;
 
-	// 입장하기에서 rid 가져오는걸로 변경
 	@GetMapping("/makeup_form")
-	public void makeupForm() {
+	public void makeupForm(@RequestParam("rid") String rid, Model model) {
 		log.info("====== 플라스크 연동 메이크업 시연 ======");
-	}
+		ReservVO res = new ReservVO();
+		res = mypage.getReservInfo(rid);
+		String rrid = res.getMid();
 
-	/*
-	 * @GetMapping("/makeup_form") public void makeupForm(@RequestParam("rid")
-	 * String rid, Model model) { log.info("====== 플라스크 연동 메이크업 시연 ======");
-	 * ReservVO res = new ReservVO(); res = mypage.getReservInfo(rid); String rrid =
-	 * res.getMid();
-	 * 
-	 * Member mem = new Member(); mem = service.MemInfo(rrid);
-	 * 
-	 * model.addAttribute("mem", mem); model.addAttribute("res", res); }
-	 */
+		Member mem = new Member();
+		mem = service.MemInfo(rrid);
+
+		model.addAttribute("mem", mem);
+		model.addAttribute("res", res);
+	}
 
 	@GetMapping("/makeup_finish")
 	public void makeupFinish() {
 		log.info("====== 결과 전송 + 상담 완료 백오피스 창 =====");
 	}
-	
+
 	@PostMapping("/makeup_send")
 	public String ResultSend(@RequestParam("result_img") String result_img, @RequestParam("rid") String rid,
 			@RequestParam("lip") String lip, @RequestParam("lip_pcode") String lip_pcode,
@@ -115,7 +112,7 @@ public class MakeupController {
 
 		log.info(result);
 
-		return ("/rtc/room");
+		return ("/makeup/makeup_finish");
 	}
 
 	// 결과 DB 연동 코드 -> result 보내기
@@ -151,7 +148,6 @@ public class MakeupController {
 
 		return "/makeup/makeup_result";
 	}
-	
 
 	// ajax용 코드
 	// Flask api 연결 코드 -> 파이썬 세팅된 컴퓨터만 가능
