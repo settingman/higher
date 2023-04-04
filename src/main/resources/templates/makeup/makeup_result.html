@@ -394,7 +394,8 @@
      -->
 
 					<div class="container">
-						<div class="container" style="float: left; display: inline-flex; font-size: 12px;">
+						<div class="container"
+							style="float: left; display: inline-flex; font-size: 12px;">
 							<div class="makeupwrapper">
 								<h2 style="margin-top: 30px;">상담 결과</h2>
 								<div class="numbering" style="margin: 40px 50px">
@@ -454,7 +455,8 @@
 										</div>
 									</div>
 									<div class="makeupwrapper" style="margin: 0 70">
-										<div class="numbering" style="text-align: center">
+										<div class="numbering"
+											style="text-align: center; margin-top: 30px;">
 											<p
 												style="text-align: center; margin-top: 0; font-weight: bold;">
 												결과 사진</p>
@@ -478,69 +480,48 @@
 										</div>
 									</div>
 								</div>
-								<div class="selectprod">
-									<div class="numbering" style="text-align: center">
-										<p style="text-align: center; font-weight: bold">ARTIST's
-											PICK</p>
+
+								<!-- lip wrap-->
+								<div class="lip_wrap">
+									<div class="numbering"
+										style="text-align: center; margin-top: 30px;">
+										<p style="text-align: center; font-weight: bold">LIP PICK
+										</p>
 									</div>
-									<form method="post" enctype="multipart/form-data"
-										th:action="@{/makeup/makeup_send}">
-										<div class="lip_prod">
-											<input type="hidden" name="rid" class="rid" value="3" /> <input
-												type="hidden" name="result_img" class="result_img"
-												th:value="${output_filepath}" /> <input type="hidden"
-												name="lip" class="lip" th:value="${lips}" /> <input
-												type="hidden" name="blush" class="blush" th:value="${blush}" />
-											<input type="hidden" name="face" class="face"
-												th:value="${foundation}" />
-											<div class="lip_pick">
-												<p style="text-align: center">
-													<button type="submit">결과 전송</button>
-												</p>
-											</div>
-										</div>
-									</form>
-									<!-- lip wrap-->
-									<div class="lip_wrap">
-										<div class="numbering" style="text-align: center">
-											<p style="text-align: center; font-weight: bold">LIP PICK
-											</p>
-										</div>
-										<div class="lip_prod">
-											<div class="product-list-wrap">
-												<div class="product-list type1" id="product-list">
-													<!-- 단일 상품 -->
-													<div class="prod" th:each="liplist : ${liplist}">
-														<div class="prod-unit">
-															<div class="clonepart">
-																<div class="img">
-																	<a><img th:src="${liplist.iloc} + '_600.jpg'"
-																		th:alt="${liplist.pname}" /><span class="bg"></span></a>
-																</div>
-																<div class="info">
-																	<input type="hidden" name="lip_pcode" class="lip_pcode"
-																		th:value="${liplist.pcode}" /> <input type="hidden"
-																		name="lip_opt" class="lip_opt"
-																		th:value="${liplist.optname}" />
-																	<div class="price-info single">
-																		<span
-																			th:text="${#numbers.formatInteger(liplist.pprice, 3, 'COMMA')}"><i>원</i></span>
-																	</div>
-																	<div>
-																		<a th:text="${liplist.pname}"></a>
-																	</div>
-																	<a th:text="${liplist.optname}"></a>
-																</div>
+									<div class="lip_prod">
+										<div class="product-list-wrap">
+											<div class="product-list type1" id="product-list">
+												<!-- 단일 상품 -->
+												<div class="prod" th:each="liplist : ${liplist}">
+													<div class="prod-unit">
+														<div class="clonepart">
+															<div class="img">
+																<a><img th:src="${liplist.iloc} + '_600.jpg'"
+																	th:alt="${liplist.pname}" /><span class="bg"></span></a>
 															</div>
-															<div class="lip_pick" onclick="cloneLip(this)">
-																<div class="btn_green">
-																	<p class="pickbtn">PICK</p>
+															<div class="info">
+																<input type="hidden" name="lip_pcode" class="lip_pcode"
+																	th:value="${liplist.pcode}" /> <input type="hidden"
+																	name="lip_opt" class="lip_opt"
+																	th:value="${liplist.optname}" />
+																<div class="price-info single">
+																	<span
+																		th:text="${#numbers.formatInteger(liplist.pprice, 3, 'COMMA')}"><i>원</i></span>
 																</div>
+																<div>
+																	<a th:text="${liplist.pname}"></a>
+																</div>
+																<a th:text="${liplist.optname}"></a>
+															</div>
+														</div>
+														<div class="lip_pick" onclick="cloneLip(this)">
+															<div class="btn_green">
+																<p class="pickbtn">PICK</p>
 															</div>
 														</div>
 													</div>
-													<!-- 단일 상품 -->
 												</div>
+												<!-- 단일 상품 -->
 											</div>
 										</div>
 									</div>
@@ -548,7 +529,8 @@
 								<!-- /lip wrap-->
 								<!-- blush wrap-->
 								<div class="blush_wrap">
-									<div class="numbering" style="text-align: center">
+									<div class="numbering"
+										style="text-align: center; margin-top: 30px;">
 										<p style="text-align: center; font-weight: bold">BLUSH
 											PICK</p>
 									</div>
@@ -593,7 +575,8 @@
 								<!-- /blush wrap-->
 								<!-- foundation wrap-->
 								<div class="foundation_wrap">
-									<div class="numbering" style="text-align: center">
+									<div class="numbering"
+										style="text-align: center; margin-top: 30px;">
 										<p style="text-align: center; font-weight: bold">
 											FOUNDATION PICK</p>
 									</div>
@@ -669,65 +652,64 @@
 										<div class="lipclone" style="">
 											<div class="empty"></div>
 										</div>
-										<div class="blushclone" style="">
-											<div class="empty"></div>
-										</div>
-										<div class="faceclone" style="">
-											<div class="empty"></div>
-										</div>
 										<div>
 											<p>Blush</p>
 										</div>
-										<div class="lipclone" style="">
-											<div class="empty"></div>
-										</div>
 										<div class="blushclone">
-											<div class="empty"></div>
-										</div>
-										<div class="faceclone">
 											<div class="empty"></div>
 										</div>
 										<div>
 											<p>Foundation</p>
 										</div>
-										<div class="lipclone">
-											<div class="empty"></div>
-										</div>
-										<div class="blushclone">
-											<div class="empty"></div>
-										</div>
 										<div class="faceclone">
 											<div class="empty"></div>
+										</div>
+										<input type="hidden" name="rid" class="rid" value="3">
+										<input type="hidden" name="result_img" class="result_img"
+											th:value="${output_filepath}"> <input type="hidden"
+											name="lip" class="lip" th:value="${lips}"> <input
+											type="hidden" name="blush" class="blush" th:value="${blush}">
+										<input type="hidden" name="face" class="face"
+											th:value="${foundation}">
+										<div class="lip_pick">
+											<p style="text-align: center;">
+												<button type="submit">결과 전송</button>
+											</p>
 										</div>
 									</div>
 								</form>
 							</div>
+
+
+
 						</div>
+
 					</div>
 				</div>
-				<!-- /.container-fluid -->
 			</div>
-			<!-- End of Page Wrapper -->
+			<!-- /.container-fluid -->
 		</div>
+		<!-- End of Page Wrapper -->
+	</div>
 
-		<!-- Bootstrap core JavaScript-->
-		<script src="/admin/vendor/jquery/jquery.min.js"></script>
-		<script src="/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- Bootstrap core JavaScript-->
+	<script src="/admin/vendor/jquery/jquery.min.js"></script>
+	<script src="/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-		<!-- Core plugin JavaScript-->
-		<script src="/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+	<!-- Core plugin JavaScript-->
+	<script src="/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-		<!-- Custom scripts for all pages-->
-		<script src="/admin/js/sb-admin-2.min.js"></script>
+	<!-- Custom scripts for all pages-->
+	<script src="/admin/js/sb-admin-2.min.js"></script>
 
-		<!-- Page level plugins -->
-		<script src="/admin/vendor/chart.js/Chart.min.js"></script>
+	<!-- Page level plugins -->
+	<script src="/admin/vendor/chart.js/Chart.min.js"></script>
 
-		<!-- Page level custom scripts -->
-		<script src="/admin/js/demo/chart-area-demo.js"></script>
-		<script src="/admin/js/demo/chart-pie-demo.js"></script>
+	<!-- Page level custom scripts -->
+	<script src="/admin/js/demo/chart-area-demo.js"></script>
+	<script src="/admin/js/demo/chart-pie-demo.js"></script>
 
-		<style>
+	<style>
 .price-info.single {
 	margin-bottom: 10px;
 }
