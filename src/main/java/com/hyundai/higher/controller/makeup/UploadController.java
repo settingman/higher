@@ -1,15 +1,11 @@
 package com.hyundai.higher.controller.makeup;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URLDecoder;
 import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
@@ -19,6 +15,7 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -28,11 +25,8 @@ import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.ObjectMetadata;
-import com.amazonaws.services.s3.model.PutObjectRequest;
-import com.hyundai.higher.domain.makeup.UploadResultDTO;
 
 import lombok.extern.log4j.Log4j2;
-import net.coobird.thumbnailator.Thumbnailator;
 
 @Log4j2
 @RestController
@@ -70,44 +64,55 @@ public class UploadController {
 		return folderPath;
 	}
 
+	/*
+	 * @PostMapping("/upload.do") public ResponseEntity<List<UploadResultDTO>>
+	 * uploadFile(MultipartFile[] uploadFiles) { List<UploadResultDTO> resultDTOList
+	 * = new ArrayList<>();
+	 * 
+	 * for (MultipartFile i : uploadFiles) { if
+	 * (i.getContentType().startsWith("image") == false) {
+	 * log.warn("this file is not image type"); return new
+	 * ResponseEntity<>(HttpStatus.FORBIDDEN); }
+	 * 
+	 * String originalName = i.getOriginalFilename(); log.info("fileName :" +
+	 * originalName); String folderPath = makeFolder(); log.info(folderPath); String
+	 * uuid = UUID.randomUUID().toString(); String saveName = uploadPath +
+	 * File.separator + folderPath + File.separator + uuid + "_" + originalName;
+	 * log.info(saveName); Path savePath = Paths.get(saveName); try {
+	 * i.transferTo(savePath);
+	 * 
+	 * PutObjectRequest putRequest = new PutObjectRequest(bucketName, saveName,
+	 * i.getInputStream(), new ObjectMetadata()); s3client.putObject(putRequest);
+	 * 
+	 * String thumnailSaveName = uploadPath + File.separator + folderPath +
+	 * File.separator + "s_" + uuid + "_" + originalName; File thumbailFile = new
+	 * File(thumnailSaveName); Thumbnailator.createThumbnail(savePath.toFile(),
+	 * thumbailFile, 300, 400); PutObjectRequest putThumbnailRequest = new
+	 * PutObjectRequest(bucketName, thumnailSaveName, thumbailFile);
+	 * s3client.putObject(putThumbnailRequest);
+	 * 
+	 * resultDTOList.add(new UploadResultDTO(originalName, uuid, folderPath)); }
+	 * catch (Exception e) { e.printStackTrace(); } } log.info(resultDTOList);
+	 * return new ResponseEntity<>(resultDTOList, HttpStatus.OK); }
+	 */
+	
 	@PostMapping("/upload.do")
-	public ResponseEntity<List<UploadResultDTO>> uploadFile(MultipartFile[] uploadFiles) {
-	    List<UploadResultDTO> resultDTOList = new ArrayList<>();
+	public String uploadFile(@RequestParam("file") MultipartFile file) throws IOException {
+	    String folderName = uploadPath;
+	    String fileName = folderName + "/" + file.getOriginalFilename();
 
-	    for (MultipartFile i : uploadFiles) {
-	        if (i.getContentType().startsWith("image") == false) {
-	            log.warn("this file is not image type");
-	            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
-	        }
+	    BasicAWSCredentials credentials = new BasicAWSCredentials("your-access-key", "your-secret-key");
+	    AmazonS3 s3client = AmazonS3ClientBuilder.standard()
+	            .withCredentials(new AWSStaticCredentialsProvider(credentials))
+	            .withRegion(Regions.AP_NORTHEAST_2)
+	            .build();
 
-	        String originalName = i.getOriginalFilename();
-	        log.info("fileName :" + originalName);
-	        String folderPath = makeFolder();
-	        log.info(folderPath);
-	        String uuid = UUID.randomUUID().toString();
-	        String saveName = uploadPath + File.separator + folderPath + File.separator + uuid + "_" + originalName;
-	        log.info(saveName);
-			Path savePath = Paths.get(saveName);
-	        try {
-				i.transferTo(savePath);
+	    ObjectMetadata metadata = new ObjectMetadata();
+	    metadata.setContentType(file.getContentType());
 
-	            PutObjectRequest putRequest = new PutObjectRequest(bucketName, saveName, i.getInputStream(), new ObjectMetadata());
-	            s3client.putObject(putRequest);
-	            
-	            String thumnailSaveName = uploadPath + File.separator + folderPath + File.separator + "s_" + uuid + "_"
-						+ originalName;
-	            File thumbailFile = new File(thumnailSaveName);
-				Thumbnailator.createThumbnail(savePath.toFile(), thumbailFile, 300, 400);
-	            PutObjectRequest putThumbnailRequest = new PutObjectRequest(bucketName, thumnailSaveName, thumbailFile);
-	            s3client.putObject(putThumbnailRequest);
+	    s3client.putObject(bucketName, fileName, file.getInputStream(), metadata);
 
-	            resultDTOList.add(new UploadResultDTO(originalName, uuid, folderPath));
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	        }
-	    }
-	    log.info(resultDTOList);
-	    return new ResponseEntity<>(resultDTOList, HttpStatus.OK);
+	    return "https://" + bucketName + ".s3.ap-northeast-2.amazonaws.com/" + fileName;
 	}
 	
 	@GetMapping("/display")
