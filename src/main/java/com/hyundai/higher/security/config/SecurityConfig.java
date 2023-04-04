@@ -113,7 +113,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 					Authentication authentication) throws IOException, ServletException {
 				log.info("------------------------");
 				log.info("onAuthenticationSuccess");
-				response.sendRedirect("/");
+				response.sendRedirect("/test2");
 			}
 		});
 

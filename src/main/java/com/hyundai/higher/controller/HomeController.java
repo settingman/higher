@@ -43,7 +43,7 @@ public class HomeController {
 		return "order/orderComplete";
 	}
 
-	@GetMapping(value = "/test3")
+	@GetMapping(value = "/test2")
 	public String test2(Model model) {
 		
 		
@@ -68,7 +68,7 @@ public class HomeController {
 		
 
 
-		return "test3";
+		return "test2";
 	}
 
 	@GetMapping(value = "/test4")
@@ -76,6 +76,7 @@ public class HomeController {
 
 		return "test4";
 	}
+
 	/*
 	 * @GetMapping("/success") public String requestFinalPayments(@RequestParam
 	 * String paymentKey, @RequestParam String orderId,

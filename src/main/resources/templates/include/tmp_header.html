@@ -4,7 +4,7 @@
     <nav>
       <ul>
         <!-- 로그인 전 -->
-        <li><a href="https://www.larocheposay.co.kr/member/login.do">로그인</a></li>
+        <li><a href="#" onclick=openPopup()>로그인</a></li>
         <li><a href="https://www.larocheposay.co.kr/member/auth.do">회원가입</a></li>
         <li><a href="https://www.larocheposay.co.kr/myPage/shopping/list.do">주문/배송조회</a></li>
         <li><a href="https://www.larocheposay.co.kr/cscenter/csHome.do">고객케어센터</a></li>
@@ -81,6 +81,27 @@
           }
         });
       });
+      
+      
+      
+      function openPopup() {
+    	  
+    	    var _width = 1000;
+    	    var _height = 1000;
+    	 
+    	    // 팝업을 가운데 위치시키기 위해 아래와 같이 값 구하기
+    	    var _left = Math.ceil(( window.screen.width - _width )/2);
+    	    var _top = Math.ceil(( window.screen.height - _height )/2); 
+    	 
+    	    window.open('member/login', '로그인창', 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top );
+    	 
+    	}
+      
+      
+      
+      
+      
+      
     </script>
     <div class="fastinfo">
       <form id="headerSearchForm">
