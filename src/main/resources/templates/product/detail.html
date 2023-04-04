@@ -149,11 +149,12 @@
                   <span class="tit">
                     <strong>[[${product.productDTO.pname}]]</strong>
                   </span>
+                  <input type="hidden" class="pcode" th:value="${product.productDTO.pcode}">
                   <span class="star">
                     <a href="#product_detail_review">
                       <div class="star-rating bic">
                         <span class="c00">
-                          <em class="hide">벌점 0개</em></span>
+                          <em class="hide">별점 0개</em></span>
                       </div>
                     </a>
                     <em><a href="#product_detail_review" style="color:#8f8f8f;">(270)</a></em>
@@ -180,7 +181,7 @@
                     <li class="amount"><strong>수량</strong>
                       <div class="count">
                         <button type="button">-</button>
-                        <input type="text" value="1" readonly="">
+                        <input type="text" name="pamount" value="1" readonly="">
                         <button type="button">+</button>
                       </div>
                     </li>
@@ -191,15 +192,16 @@
                   </ul>
                 </div>
                 <div class="datail_info_btn">
-                  <button type="button" data-linename="시카플라스트" data-price="48000" data-prdtname="리페어 세럼 B5"
-                    data-value="3596" class="like">좋아요</button> <!-- 선택완료 class on -->
+                 <button type="button" class="btn_base darkgray basket" data-level="N" data-level-name="제한없음"
+                      data-value="3596" data-price="48000" data-linename="시카플라스트" data-prdtname="리페어 세럼 B5"
+                      data-sapcode="MB451200" data-buy-level="N" data-mbr-join-ym="202303" style="width:160px;" onclick="put()"><span>비교함에 담기</span></button>
                   <span class="instock">
                     <button type="button" class="btn_base darkgray basket" data-level="N" data-level-name="제한없음"
                       data-value="3596" data-price="48000" data-linename="시카플라스트" data-prdtname="리페어 세럼 B5"
-                      data-sapcode="MB451200" data-buy-level="N" data-mbr-join-ym="202303"><span>장바구니</span></button>
+                      data-sapcode="MB451200" data-buy-level="N" data-mbr-join-ym="202303" style="width:160px;" onclick="addCart()"><span>장바구니</span></button>
                     <button type="button" class="btn_base blue nowBuy" data-level="N" data-level-name="제한없음"
                       data-user-level="MBR001" data-value="3596" data-price="48000" data-linename="시카플라스트"
-                      data-prdtname="리페어 세럼 B5" data-buy-level="N" data-mbr-join-ym="202303"><span>구매하기</span></button>
+                      data-prdtname="리페어 세럼 B5" data-buy-level="N" data-mbr-join-ym="202303" style="width:160px;"><span>구매하기</span></button>
                   </span>
 
                 </div>
@@ -816,21 +818,58 @@
         <div id="flotprd" class="swiper-container">
           <div class="swiper-wrapper"
             style="width: 168px; height: 79px; transform: translate3d(-56px, 0px, 0px); transition-duration: 0s;">
-            <div class="swiper-slide" style="width: 56px; height: 79px;">
-              <a href="https://www.larocheposay.co.kr/product/view/3596.do">
-                <img src="https://www.larocheposay.co.kr/upload/product/main/2022/01/20220113_1136039_353_100x100.png" alt="리페어 세럼 B5">
-              </a>
+            
+            <div class="swiper-slide swiper-slide-visible swiper-slide-active" style="width: 56px; height: 79px;" id="s0">
+              <!-- <a href="https://www.larocheposay.co.kr/product/view/3596.do">
+                <img src="https://image.thehyundai.com/static/6/3/2/77/A0/40A0772361_0_600.jpg" alt="리페어 세럼 B5">
+              </a> -->
             </div>
-            <div class="swiper-slide swiper-slide-visible swiper-slide-active" style="width: 56px; height: 79px;">
-              <a href="https://www.larocheposay.co.kr/product/view/3596.do">
+            <div class="swiper-slide" style="width: 56px; height: 79px;" id="s1">
+              <!-- <a href="https://www.larocheposay.co.kr/product/view/3596.do">
                 <img src="https://www.larocheposay.co.kr/upload/product/main/2022/01/20220113_1136039_353_100x100.png" alt="리페어 세럼 B5">
-              </a>
+              </a> -->
             </div>
-            <div class="swiper-slide" style="width: 56px; height: 79px;">
-              <a href="https://www.larocheposay.co.kr/product/view/3596.do">
+            <div class="swiper-slide" style="width: 56px; height: 79px;" id="s2">
+              <!-- <a href="https://www.larocheposay.co.kr/product/view/3596.do">
                 <img src="https://www.larocheposay.co.kr/upload/product/main/2022/01/20220113_1136039_353_100x100.png" alt="리페어 세럼 B5">
-              </a>
+              </a> -->
             </div>
+            <div class="swiper-slide" style="width: 56px; height: 79px;" id="s3">
+              <!-- <a href="https://www.larocheposay.co.kr/product/view/3596.do">
+                <img src="https://www.larocheposay.co.kr/upload/product/main/2022/01/20220113_1136039_353_100x100.png" alt="리페어 세럼 B5">
+              </a> -->
+            </div>
+            <div class="swiper-slide" style="width: 56px; height: 79px;" id="s4">
+              <!-- <a href="https://www.larocheposay.co.kr/product/view/3596.do">
+                <img src="https://image.thehyundai.com/static/6/0/5/56/A1/40A1565069_0_600.jpg" alt="리페어 세럼 B5">
+              </a> -->
+            </div>
+            <div class="swiper-slide" style="width: 56px; height: 79px;" id="s5">
+              <!-- <a href="https://www.larocheposay.co.kr/product/view/3596.do">
+                <img src="https://www.larocheposay.co.kr/upload/product/main/2022/01/20220113_1136039_353_100x100.png" alt="리페어 세럼 B5">
+              </a> -->
+            </div>
+            <div class="swiper-slide" style="width: 56px; height: 79px;" id="s6">
+              <!-- <a href="https://www.larocheposay.co.kr/product/view/3596.do">
+                <img src="https://www.larocheposay.co.kr/upload/product/main/2022/01/20220113_1136039_353_100x100.png" alt="리페어 세럼 B5">
+              </a> -->
+            </div>
+            <div class="swiper-slide" style="width: 56px; height: 79px;" id="s7">
+              <!-- <a href="https://www.larocheposay.co.kr/product/view/3596.do">
+                <img src="https://www.larocheposay.co.kr/upload/product/main/2022/01/20220113_1136039_353_100x100.png" alt="리페어 세럼 B5">
+              </a> -->
+            </div>
+            <div class="swiper-slide" style="width: 56px; height: 79px;" id="s8">
+              <!-- <a href="https://www.larocheposay.co.kr/product/view/3596.do">
+                <img src="https://www.larocheposay.co.kr/upload/product/main/2022/01/20220113_1136039_353_100x100.png" alt="리페어 세럼 B5">
+              </a> -->
+            </div>
+            <div class="swiper-slide" style="width: 56px; height: 79px;" id="s9">
+              <!-- <a href="https://www.larocheposay.co.kr/product/view/3596.do">
+                <img src="https://image.thehyundai.com/static/0/7/9/61/A0/40A0619700_0_600.jpg" alt="리페어 세럼 B5">
+              </a> -->
+            </div>
+
           </div>
           <button type="button" class="flotprd-prev" style="z-index:1000;"><span class="hide">이전</span></button>
           <button type="button" class="flotprd-next" style="z-index:1000;"><span class="hide">다음</span></button>
@@ -871,6 +910,148 @@
         <button type="button" class="zoom">축소/확대</button>
       </div>
     </section>
+    <div th:if="${#authentication.getPrincipal() != null}">
+      <input type="hidden" id="mid" th:value="${#authentication.getName()}">
+    </div>
+    <div th:unless="${#authentication.getPrincipal() != null}">
+    </div>
+    
+    <!-- 비교함에 담기 -->
+	  <script>
+    function put() {
+      const pcode = document.querySelector('.pcode').value;
+      const pname = document.querySelector('.tit strong').textContent;
+      var brand = document.querySelector('.brand').textContent;
+      const price = document.querySelector('.price').textContent.trim();
+
+      const liElement = document.querySelector('.view li:nth-of-type(1)');
+      const imglink = liElement.style.backgroundImage.slice(4, -1);
+      console.log(imglink);
+
+      const rate = document.querySelector('.c00 em').textContent;
+      const review = document.querySelector('.star em a').textContent;
+      console.log("review: "+review);
+      
+      const pVolume = document.querySelector(".table_wrap td:nth-of-type(1)").textContent.trim();
+      const ptype = document.querySelector('.table_wrap table tbody tr:nth-child(2) td').textContent.trim();
+      const pingredient = document.querySelector('.table_wrap table tbody tr:nth-child(7) td').textContent.trim();
+
+      //const pcode = document.querySelector('.prd-share-info strong').textContent;
+      // var brand = $('.prd-shop').find('.brand a').text();
+      // const price = document.querySelector('.dis-price').textContent.trim();
+      // const imglink = document.querySelector('.cloudzoom').src;
+      // const rate = document.querySelector('.prd-review-info span').textContent;
+      // const review = document.querySelector('.text-point4').textContent;
+      
+
+  
+      let arr = JSON.parse(localStorage.getItem("arr")) || []; // null일 경우 빈 배열 생성
+  
+      if (arr.length >= 10) {
+        alert("비교함에는 10개의 상품을 담을 수 있습니다.");
+        return false;
+      }
+  
+      if (arr.some(item => item[0] === pcode)) { // 이미 비교함에 추가된 상품인 경우
+        alert("이미 비교함에 담긴 상품입니다.");
+      } else {
+        arr.push([pcode, pname, brand, price, imglink, rate, review, pVolume, ptype, pingredient]); // 상품 정보 저장
+        localStorage.setItem("arr", JSON.stringify(arr));
+      }
+
+      console.log("비교함에 담음");
+      //담았으면 옆에 사이드바에 띄워줘야 함
+    }
+
+
+  </script>
+
+	<script>
+	function addCart() {
+		console.log('장바구니 담기');
+		var pCode = document.querySelector('.pcode').value;
+    //옵션 바꾸기
+		//var pOption = document.querySelector('input[name="optNm"]').value;
+		var pAmount = document.querySelector('input[name="pamount"]').value;
+		var mid = document.getElementById('mid').value;
+		console.log(mid);
+		//console.log(pOption);
+		
+		if (mid !='anonymousUser'){
+			var requestData = JSON.stringify({
+				pcode : pCode,
+				//poption : pOption,
+			    pamount : pAmount,
+			    mid  :mid
+		  
+		});
+		//로그인 여부 확인 
+		//중복 상품 확인
+		
+		console.log(requestData);
+
+
+		 $.ajax({
+			url: '/restcart/addCart',
+			type: 'post',
+			data: requestData,
+			contentType: "application/json",
+			success	: function(result){
+				console.log("장바구니 success");
+				if(result == '0'){
+					alert("장바구니에 추가를 하지 못하였습니다.");
+				} else if(result == '1'){
+					alert("장바구니에 추가되었습니다.");
+				} else if(result == '2'){
+					alert("이미 장바구니에 담긴 상품으로 수량이 추가되었습니다.");
+				} 
+			},
+			error :function(request, status, error) {
+				console.log(error);
+			}
+		}); 
+		}else {
+			console.log("로그인 필요");
+			alert('장바구니는 로그인이 필요합니다.');
+			var loginUrl = "/member/login";
+			window.location.href = loginUrl;
+		}
+		
+	}
+
+	</script>
+  <script>
+    const arr = JSON.parse(localStorage.getItem("arr")) || [];
+
+    if(arr.length == 0) {
+      for(let i =1;i<=10;i++) {
+			const slide = document.getElementById(`s${i}`);
+			slide.innerHTML = '상품을 비교함에 담아보세요';
+      } 
+    }else {
+    
+      for(let i=0;i<arr.length;i++) {
+			console.log('상품 출력 중 ' + i);
+			const slide = document.getElementById(`s${i}`);					
+	    const [pcode, pname, brand, price, imglink, rate, review, pVolume, ptype, pingredient] = arr[i];
+			console.log("img: "+ imglink);
+        slide.innerHTML = `
+          <a href="/compare/main">
+            <img src=${imglink} alt="${pname}">
+          </a>
+        `;
+      }
+      for(let i=arr.length;i<=10;i++) {
+			console.log('빈 상품 출력');
+			const slide = document.getElementById(`s${i}`);
+			slide.innerHTML = `
+      <a href="/compare/main">
+        <img src="https://image.thehyundai.com/hdmall/images/pd/no_image_480x480.jpg">
+      </a>`;
+		}
+    }
+
+  </script>
 
     <!-- footer -->
 	<div class="include-footer" th:insert="~{include/footer}"></div>

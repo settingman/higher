@@ -41,16 +41,16 @@ public class MatchController {
 	
 	//화장품 매칭 메인 페이지
 	@GetMapping("/matchMain")
-	public String matchMain(@RequestParam("pmbti") String pmbti, Model model) {
+	public String matchMain(@RequestParam("mbti") String mbti, Model model) {
 		log.info("화장품 매칭 이동");
 		//model.addAttribute("categoryList", iService.categoryListAll());
 		
-		List<MatchProductDTO> product = mService.mbtiProduct(pmbti);
+		List<MatchProductDTO> product = mService.mbtiProduct(mbti);
 		model.addAttribute("product",product);
 		
 //		MatchMbtiDTO dto = new MatchMbtiDTO();
 //		dto = mService.getMbtiInfo(pmbti);
-		model.addAttribute("mbtiInfo",mService.getMbtiInfo(pmbti));
+		model.addAttribute("mbtiInfo",mService.getMbtiInfo(mbti));
 
 	 return "match/matchMain";
 	}

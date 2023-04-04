@@ -10,7 +10,7 @@ import com.hyundai.higher.domain.cart.CartItem;
 /**
  * @since : 2023. 3. 26.
  * @FileName: CartMapper.java
- * @author : 박서현s
+ * @author : 박서현
  * @설명 : 장바구니 데이터베이스 mybatis Interface
  * 
  *     <pre>
