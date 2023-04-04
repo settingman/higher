@@ -43,6 +43,15 @@ public interface MypageMapper {
 	// 결과 -> 결과값 페이스
 	public FoundationVO getFaceResult(String optname, String pcode);
 
+	// 유사제품 -> 립
+	public LipVO SimLip(String optcolor, String pcode);
+	
+	// 유사제품 -> 블러쉬
+	public BlushVO SimBlush(String optcolor, String pcode);
+	
+	// 유사제품 -> 파운데이션
+	public FoundationVO SimFace(String optcolor, String pcode);
+	
 	// 결과 -> 상담값
 	public ReservVO getReservInfo(String rid);
 
