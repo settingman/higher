@@ -34,8 +34,12 @@ new Chart(ctx, {
 function saveResult(mbti){
 	
 	$.ajax({
-		url: '/skinMBTIRest/saveMBTI?mbti=' + mbti,
-		type: 'GET',
+		url: '/skinMBTIRest/saveMBTI',
+		type: 'POST',
+		data: {
+			mbti: mbti,
+			mbti_scores: scores[0] + "," + scores[1] + "," + scores[2] + "," + scores[3]
+		},
 		success: function(r){
 			$("#survey_pop").css("display", "block");
 			

@@ -33,7 +33,7 @@ public class SimilarCosRestController {
 	@Autowired
 	private SimilarCosService service;
 	
-	// 검색 상품 조회 AJAX
+	// 검색어 추천 기능 AJAX
 	@GetMapping("/checkKeyword")
 	public List<ProductDTO> prodList(@RequestParam("keyword") String keyword){
 		

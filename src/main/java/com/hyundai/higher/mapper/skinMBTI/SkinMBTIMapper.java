@@ -22,5 +22,5 @@ public interface SkinMBTIMapper {
 	public SkinMBTIDTO selectMBTI(String stype);
 	
 	// 피부타입 저장
-	public void updateMBTI(String mid, String mbti);
+	public void updateMBTI(String mid, String mbti, String mbti_scores);
 }

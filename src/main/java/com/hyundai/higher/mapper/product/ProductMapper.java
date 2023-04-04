@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.hyundai.higher.domain.product.CategoryDTO;
+import com.hyundai.higher.domain.category.CategoryDTO;
 import com.hyundai.higher.domain.product.ImgDTO;
 import com.hyundai.higher.domain.product.OptionDTO;
 import com.hyundai.higher.domain.product.ProductDTO;
@@ -24,12 +24,6 @@ import com.hyundai.higher.domain.product.ProductDTO;
  */
 @Mapper
 public interface ProductMapper {
-	
-	// 카테고리 목록
-	public List<CategoryDTO> categoryListAll();
-	
-	// 상품 목록 - 카테고리
-	public List<CategoryDTO> categoryListSub(String dept1no);
 	
 	// 상품 목록 - 상품 리스트
 	public List<ProductDTO> productList(String dept1no, String dept2no);

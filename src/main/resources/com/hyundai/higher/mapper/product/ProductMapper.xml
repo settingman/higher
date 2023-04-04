@@ -5,23 +5,6 @@
 
 <mapper namespace="com.hyundai.higher.mapper.product.ProductMapper">
 
-	<!-- 카테고리 목록(전체) -->
-	<select id="categoryListAll" resultMap="categoryMap">
-		SELECT m.dept1no, l.dept1name, m.dept2no, m.dept2name
-		FROM category_dept2 m JOIN category_dept1 l ON m.dept1no = l.dept1no
-		ORDER BY m.dept2no ASC, m.dept1no ASC
-	</select>
-	
-	<!-- 카테고리 목록(하위) -->
-	<select id="categoryListSub" resultMap="categoryMap">
-		SELECT c.dept1no, c.dept1name, c.dept2no, c.dept2name, NVL(pcnt, 0) AS pcnt
-		FROM v_cate c LEFT JOIN (SELECT cateno, COUNT(*) as pcnt
-			                     FROM product
-			                     GROUP BY cateno) p
-		ON c.cateno = p.cateno
-		WHERE c.dept1no=#{dept1no}
-	</select>
-
 	<!-- 상품 목록 -->
 	<select id="productList" resultMap="productMap">
 		<![CDATA[
@@ -68,19 +51,6 @@
 		FROM poption
 		WHERE pcode=#{pcode}
 	</select>
-
-	<resultMap type="com.hyundai.higher.domain.product.CategoryDTO" id="categoryMap">
-		<result property="dept1no" column="dept1no"/>
-		<result property="dept1name" column="dept1name"/>
-		<collection property="dept2List" resultMap="dept2Map"/>
-	</resultMap>
-	
-	<resultMap type="com.hyundai.higher.domain.product.CategoryDept2DTO" id="dept2Map">
-		<result property="dept1no" column="dept1no"/>
-		<result property="dept2no" column="dept2no"/>
-		<result property="dept2name" column="dept2name"/>
-		<result property="pcnt" column="pcnt"/>		
-	</resultMap>
 	
 	<resultMap type="com.hyundai.higher.domain.product.ProductDTO" id="productMap">
 		<result property="pcode" column="pcode"/>
