@@ -17,6 +17,20 @@
 		r , MEMBER m
 		where r.MID = m.MID
 	</select>
+	
+	
+	<select id="findTodayReservation"
+		resultType="com.hyundai.higher.webRTC.dto.ReservationDTO">
+
+		SELECT r.RID, r.roomId, r.MID ,m.MNAME,r.RCHECK,
+		to_char(r.rDate,'yy-mm-dd')
+		as RDATE, to_char(r.rDate,'hh24:mm') as
+		RTIME, r.RIMG
+		FROM reservation
+		r , MEMBER m
+		where r.MID = m.MID 
+	</select>
+	
 
 
 	<update id="updateRoomID">

@@ -1,14 +1,15 @@
 package com.hyundai.higher.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.hyundai.higher.domain.cart.CartItem;
+import com.hyundai.higher.mapper.beauty.BeautyMapper;
+import com.hyundai.higher.webRTC.dto.ReservationDTO;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -25,7 +26,10 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Controller
+@RequiredArgsConstructor
 public class HomeController {
+	
+	private final BeautyMapper beautyMapper;
 
 	@GetMapping(value = "/")
 	public String memberForm(Model model) {
@@ -45,28 +49,18 @@ public class HomeController {
 
 	@GetMapping(value = "/test3")
 	public String test2(Model model) {
-		
-		
-	
-	      
-			/*
-			 * CartItem cart = new CartItem("A1504419", "테스트", 10000, "Brand", "Color",
-			 * 3,"option", "img_path");
-			 * 
-			 * CartItem cart2 = new CartItem("A1643072", "테스트2", 20000, "Brand", "Color",
-			 * 2,"option", "img_path");
-			 */
-			
-			/*
-			 * carts.add(cart); carts.add(cart2);
-			 */
-	      
-	  
 
-		
-		
-		
+		/*
+		 * CartItem cart = new CartItem("A1504419", "테스트", 10000, "Brand", "Color",
+		 * 3,"option", "img_path");
+		 * 
+		 * CartItem cart2 = new CartItem("A1643072", "테스트2", 20000, "Brand", "Color",
+		 * 2,"option", "img_path");
+		 */
 
+		/*
+		 * carts.add(cart); carts.add(cart2);
+		 */
 
 		return "test3";
 	}
@@ -75,6 +69,16 @@ public class HomeController {
 	public String test4(Model model) {
 
 		return "test4";
+	}
+
+	@GetMapping(value = "/test5")
+	public String test5(Model model) {
+
+		List<ReservationDTO> reservations = beautyMapper.findReservation();
+
+		model.addAttribute("reservations", reservations);
+
+		return "admin/reservation";
 	}
 	/*
 	 * @GetMapping("/success") public String requestFinalPayments(@RequestParam

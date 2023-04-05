@@ -40,7 +40,7 @@ public class MainController {
 
 		model.addAttribute("list", chatServiceMain.findAllRoom());
 		
-		List<ReservationDTO> reservations = beautyMapper.findReservation();
+		List<ReservationDTO> reservations = beautyMapper.findTodayReservation();
 		
 		model.addAttribute("reservations", reservations);
 		

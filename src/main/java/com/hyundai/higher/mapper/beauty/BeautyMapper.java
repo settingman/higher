@@ -24,6 +24,8 @@ import com.hyundai.higher.webRTC.dto.ReservationDTO;
 public interface BeautyMapper {
 
 	List<ReservationDTO> findReservation();
+	
+	List<ReservationDTO> findTodayReservation();
 
 	void updateRoomID(@Param("mid") String mid, @Param("rid") String rid, @Param("roomID") String roomID);
 	
