@@ -60,6 +60,7 @@ public class MatchController {
 		model.addAttribute("product",product);
 		
 		return "match/searchProduct";
+		
 	}
 	
 	//화장품 매칭하기

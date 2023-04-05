@@ -4,7 +4,16 @@
 <head>
 
 <head th:insert="~{include/head}"></head>
-  
+  <style>
+		header#header {
+			background: none;
+			height: auto;
+		}
+		footer#footer {
+    background: white;
+    border-top: 1px solid black !important;
+	}
+	</style>
 	<!-- 상품 비교 -->
   <link href="https://www.card-gorilla.com/css/app.efea5715.css" rel="preload" as="style">
   <link href="https://www.card-gorilla.com/css/app.efea5715.css" rel="stylesheet">
@@ -15,6 +24,10 @@
  -->
  
  <style type="text/css">
+
+	body {
+ 	 font-family: 'locator-medium','locator-regular','notokr-medium','notokr-demilight';
+	}
  	
 	 .price-info.single span {
   font-size: 18px;
@@ -195,9 +208,9 @@
 
 <!-- wrap -->
 <div id="wrap" class="sub">
-	<!-- header -->
-	<header id="header" th:insert="~{include/header}"></header>
-	<!-- /header -->
+    <!-- header -->
+		<header id="header" th:insert="~{include/header}"></header>
+    <!-- /header -->
 	<!-- container -->
 
 <script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/co/referCodes.js"></script>
@@ -519,16 +532,17 @@
 	</div>
 	<!-- //container -->
 
+    <!-- footer -->
+	<div class="include-footer" th:insert="~{include/footer}"></div>
+	<!-- /footer -->
 </div>
 <!-- //wrap -->
+</div>
 
 <!-- 20190514 skyscraper -->
 <script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/co/skyscraper.js?ver=030314"></script><div id="criteo-tags-div" style="display: none;"></div>
 <!-- //20190514 skyscraper -->
 
-	<!------ footer ------>
-	<div class="include-footer" th:insert="~{include/footer}"></div>
-	<!------ //footer ------>
 
 <script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/co/makePCookie.js"></script>
 
@@ -584,7 +598,7 @@
 		card01.querySelector(".corp_name").textContent = brand;
 
 		const bnBox = card01.querySelector('.bn_box'); 
-		card01.querySelector('.card_change').setAttribute('href',`/product/detail?code=${pcode}`);
+		card01.querySelector('.card_change').setAttribute('href',`/product/detail?pcode=${pcode}`);
 		const cardDel = card01.querySelector('.card_del');
 		bnBox.style.display ="";
 		cardDel.style.display = '';
@@ -608,7 +622,7 @@
 		card02.querySelector(".corp_name").textContent = brand;
 
 		const bnBox = card02.querySelector('.bn_box'); 
-		card02.querySelector('.card_change').setAttribute('href',`/product/detail?code=${pcode}`);
+		card02.querySelector('.card_change').setAttribute('href',`/product/detail?pcode=${pcode}`);
 		const cardDel = card02.querySelector('.card_del');
 		bnBox.style.display ="";
 		cardDel.style.display = '';
@@ -632,7 +646,7 @@
 			card03.querySelector(".corp_name").textContent = brand;
 
 			const bnBox = card03.querySelector('.bn_box'); 
-			card03.querySelector('.card_change').setAttribute('href',`/product/detail?code=${pcode}`);
+			card03.querySelector('.card_change').setAttribute('href',`/product/detail?pcode=${pcode}`);
 			const cardDel = card03.querySelector('.card_del');
 			bnBox.style.display ="";
 			cardDel.style.display = '';
@@ -733,7 +747,6 @@
 }
 
 </script>
-</div>
 <!-- 비교함 상품 출력 -->
 <script>
 	const arr = JSON.parse(localStorage.getItem("arr")) || [];
@@ -760,7 +773,7 @@
 					<input type="hidden" class="ptype" value="${ptype}">
 					<input type="hidden" class="pingredient" value="${pingredient}">
 
-          <a href="#" onclick="javascript:untdItemDetailView('30015','${pcode}', 'N','00','X');return false;"> 
+          <a href="/product/detail?pcode=${pcode}";"> 
             <img src=${imglink} alt="${pname}" onerror="noImage(this, 'https://image.thehyundai.com/hdmall/images/pd/no_image_480x480.jpg')">
           </a>
         </div>
