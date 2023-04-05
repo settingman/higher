@@ -22,13 +22,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.amazonaws.auth.AWSStaticCredentialsProvider;
-import com.amazonaws.auth.BasicAWSCredentials;
-import com.amazonaws.regions.Regions;
-import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.AmazonS3ClientBuilder;
-import com.amazonaws.services.s3.model.ObjectMetadata;
-import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.hyundai.higher.domain.makeup.UploadResultDTO;
 
 import lombok.extern.log4j.Log4j2;
@@ -43,22 +36,16 @@ public class UploadController {
 	private String uploadPath;
 
 	/*
-	 * @Value("${cloud.aws.credentials.accessKey}") private String accessKey;
+	 * private String accessKey = "AKIARGO2DAHDK5ATCHPN"; private String secretKey =
+	 * "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"; private String bucketName =
+	 * "hbeauty.bucket";
 	 * 
-	 * @Value("${cloud.aws.credentials.secretKey}") private String secretKey;
-	 * 
-	 * @Value("${cloud.aws.s3.bucket}") private String bucketName;
+	 * private AmazonS3 s3client = AmazonS3ClientBuilder.standard()
+	 * .withCredentials(new AWSStaticCredentialsProvider(new
+	 * BasicAWSCredentials(accessKey, secretKey)))
+	 * .withRegion(Regions.AP_NORTHEAST_2).build();
 	 */
 	
-	private String accessKey = "AKIARGO2DAHDK5ATCHPN";
-	private String secretKey = "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";
-	private String bucketName = "hbeauty.bucket";
-
-	private AmazonS3 s3client = AmazonS3ClientBuilder.standard()
-			.withCredentials(new AWSStaticCredentialsProvider(new BasicAWSCredentials(accessKey, secretKey)))
-			 .withRegion(Regions.AP_NORTHEAST_2).build();
-
-
 	private String makeFolder() {
 		String str = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
 		String folderPath = str.replace("/", File.separator);
@@ -72,44 +59,38 @@ public class UploadController {
 
 	@PostMapping("/upload.do")
 	public ResponseEntity<List<UploadResultDTO>> uploadFile(MultipartFile[] uploadFiles) {
-	    List<UploadResultDTO> resultDTOList = new ArrayList<>();
 
-	    for (MultipartFile i : uploadFiles) {
-	        if (i.getContentType().startsWith("image") == false) {
-	            log.warn("this file is not image type");
-	            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
-	        }
+		List<UploadResultDTO> resultDTOList = new ArrayList<>();
 
-	        String originalName = i.getOriginalFilename();
-	        log.info("fileName :" + originalName);
-	        String folderPath = makeFolder();
-	        log.info(folderPath);
-	        String uuid = UUID.randomUUID().toString();
-	        String saveName = uploadPath + File.separator + folderPath + File.separator + uuid + "_" + originalName;
-	        log.info(saveName);
+		for (MultipartFile i : uploadFiles) {
+			if (i.getContentType().startsWith("image") == false) {
+				log.warn("this file is not image type");
+				return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+			}
+
+			String originalName = i.getOriginalFilename();
+			log.info("fileName :" + originalName);
+			String folderPath = makeFolder();
+			log.info(folderPath);
+			String uuid = UUID.randomUUID().toString();
+			String saveName = uploadPath + File.separator + folderPath + File.separator + uuid + "_" + originalName;
+			log.info(saveName);
 			Path savePath = Paths.get(saveName);
-	        try {
+			try {
 				i.transferTo(savePath);
-
-	            PutObjectRequest putRequest = new PutObjectRequest(bucketName, saveName, i.getInputStream(), new ObjectMetadata());
-	            s3client.putObject(putRequest);
-	            
-	            String thumnailSaveName = uploadPath + File.separator + folderPath + File.separator + "s_" + uuid + "_"
+				String thumnailSaveName = uploadPath + File.separator + folderPath + File.separator + "s_" + uuid + "_"
 						+ originalName;
-	            File thumbailFile = new File(thumnailSaveName);
+				File thumbailFile = new File(thumnailSaveName);
 				Thumbnailator.createThumbnail(savePath.toFile(), thumbailFile, 300, 400);
-	            PutObjectRequest putThumbnailRequest = new PutObjectRequest(bucketName, thumnailSaveName, thumbailFile);
-	            s3client.putObject(putThumbnailRequest);
-
-	            resultDTOList.add(new UploadResultDTO(originalName, uuid, folderPath));
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	        }
-	    }
-	    log.info(resultDTOList);
-	    return new ResponseEntity<>(resultDTOList, HttpStatus.OK);
+				resultDTOList.add(new UploadResultDTO(originalName, uuid, folderPath));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		log.info(resultDTOList);
+		return new ResponseEntity<>(resultDTOList, HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/display")
 	public ResponseEntity<byte[]> getFile(String fileName) {
 		ResponseEntity<byte[]> result = null;
@@ -122,28 +103,27 @@ public class UploadController {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-		} 
+		}
 		return result;
 	}
-	
+
 	@PostMapping("/removeFile")
-	   public ResponseEntity<Boolean> removeFile(String fileName){
-	       String srcFileName= null;
-	       log.info("removeFile-----");
-	      
-	       try{
-	           srcFileName = URLDecoder.decode(fileName, "UTF-8");
-	           log.info("srcFileName: "+srcFileName);
-	           File file = new File(uploadPath + File.separator+ srcFileName);
-	           boolean result = file.delete();
-	           File thumnailfile =
-	                   new File(file.getParent(), "s_" + file.getName());
-	           result = thumnailfile.delete();
-	           return new ResponseEntity<>(result, HttpStatus.OK);
-	       }catch (Exception e){
-	           e.printStackTrace();
-	           return new ResponseEntity<>(false, HttpStatus.INTERNAL_SERVER_ERROR);
-	       }      
-	   }
+	public ResponseEntity<Boolean> removeFile(String fileName) {
+		String srcFileName = null;
+		log.info("removeFile-----");
+
+		try {
+			srcFileName = URLDecoder.decode(fileName, "UTF-8");
+			log.info("srcFileName: " + srcFileName);
+			File file = new File(uploadPath + File.separator + srcFileName);
+			boolean result = file.delete();
+			File thumnailfile = new File(file.getParent(), "s_" + file.getName());
+			result = thumnailfile.delete();
+			return new ResponseEntity<>(result, HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<>(false, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
 
 }

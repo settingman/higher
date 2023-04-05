@@ -3,6 +3,7 @@
   xmlns:th="http://www.thymeleaf.org"
 >
   <head>
+  <head th:insert="~{include/head}"></head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta
@@ -10,7 +11,12 @@
       content="width=device-width,initial-scale=1,maximum-scale=1.0"
     />
     <title>더현대닷컴</title>
-
+<style>
+header#header {
+    background: none;
+    height: auto;
+}
+</style>
     <link
       rel="stylesheet"
       type="text/css"
@@ -126,6 +132,7 @@
   >
     <!-- wrap -->
     <div id="wrap" class="sub">
+  	<header id="header" th:insert="~{include/header}"></header>
       <!-- gnb -->
 
       <script
