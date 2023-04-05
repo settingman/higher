@@ -1407,10 +1407,10 @@
 
                                                 <!-- 상품옵션 -->
                                                 <div class="option-info">
-                                                    <p class="cnt-ctrl">
-                                                        <a href="javascript:void(0);" class="cnt-up" th:onclick='minusOrdQty(this,[[${carts.pcode}]],[[${carts.poption}]],"c[[${state.index}]]" );'>－</a>
-                                                        <input type="text" class="onlyNumberInput" name="cnt" title="inputarea" th:value="${carts.pamount}" style="ime-mode: disabled;" onclick="this.focus();" maxlength="2">
-                                                        <a href="javascript:void(0);" class="cnt-down" th:onclick='plusOrdQty(this, [[${carts.pcode}]],[[${carts.poption}]],"c[[${state.index}]]" );'>＋</a>
+                                                    <p class="cnt-ctrl" style="float: left;margin-right: 10px;height:40px;"> 
+                                                        <a href="javascript:void(0);" style="height:40px;border: 1px solid #ccc;" class="cnt-up" th:onclick='minusOrdQty(this,[[${carts.pcode}]],[[${carts.poption}]],"c[[${state.index}]]" );'>－</a>
+                                                        <input type="text" class="onlyNumberInput" name="cnt" title="inputarea" th:value="${carts.pamount}" style="ime-mode: disabled;height: 40px;border-bottom: 1px solid #ccc;border-top: 1px solid #ccc;" onclick="this.focus();" maxlength="2">
+                                                        <a href="javascript:void(0);" style="height:40px;border: 1px solid #ccc;" class="cnt-down" th:onclick='plusOrdQty(this, [[${carts.pcode}]],[[${carts.poption}]],"c[[${state.index}]]" );'>＋</a>
                                                     </p>
 
                                                     <input type="hidden" class="cnt-opt" th:value="${carts.poption}">
