@@ -62,5 +62,18 @@ public class MatchController {
 		return "match/searchProduct";
 	}
 	
+	//화장품 매칭하기
+	@GetMapping("/matchIt")
+	public String matchIt(@RequestParam("pcode") String pcode, Model model) {
+		log.info("화장품 매칭");
+		
+		//성분 가져오기
+		
+		// 10개 성분 처리
+		
+		//성분 for문 해서 점수 카운트
+		return "match/matchIt";
+	}
+	
 	
 }

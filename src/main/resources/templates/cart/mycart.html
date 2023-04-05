@@ -28,8 +28,6 @@
     <script src="https://image.thehyundai.com/pc/js/common.js?ver=030123"></script>
     <script type="text/javascript" src="https://image.thehyundai.com/pc/js/swiper.min.js?ver=030123"></script>
 
-
-
     <link rel="stylesheet" type="text/css" href="https://www.thehyundai.com/cssssl/jquery-ui.css?ver=23">
     <link rel="stylesheet" type="text/css" href="https://www.thehyundai.com/cssssl/od.css?ver=23">
     <link rel="stylesheet" type="text/css" href="https://www.thehyundai.com/cssssl/dp.css?ver=23">
@@ -1307,10 +1305,18 @@
                 <!-- //cart-head -->
 
                 <!-- cart-body -->
+                <!-- cart-cont-wrap -->
                 <div class="cart-body" id="divCartInfo" style="min-height: 863px;">
+                    <div th:if="${carts} == null"  class="cart-empty" id="divCartInfo">
+                        <div class="nodata">
+                                장바구니에 담으신 상품이 없습니다.
+                                <div class="btn-wrap">
+                                    <a href="/" class="btn size5 color3">쇼핑 계속하기</a>
+                                </div>
+                        </div>
+                    </div>
 
-                    <!-- cart-cont-wrap -->
-                    <div class="cart-cont-wrap">
+                    <div th:unless="${carts} == null" class="cart-cont-wrap">
 
                         <!-- cart-tab cart-list-wrap -->
                         <div class="cart-list-wrap tab-pane active" id="cart-tab-01">
@@ -1442,7 +1448,7 @@
 					</div>
 					<!-- //cart-cont-wrap -->
 					<!-- cart-aside-wrap -->
-					<div class="cart-aside-wrap">
+					<div th:if="${carts} != null" class="cart-aside-wrap">
 
 						<!-- billprice-wrap -->
 						<div class="billprice-wrap">
