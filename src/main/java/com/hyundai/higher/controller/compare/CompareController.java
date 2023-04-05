@@ -24,6 +24,7 @@ import lombok.extern.log4j.Log4j2;
 @RequestMapping("/compare")
 @Controller
 public class CompareController {
+
 	
 	// 상품 비교 페이지
 	@GetMapping("/main")
