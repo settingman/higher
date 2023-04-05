@@ -6,16 +6,18 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
+import org.springframework.security.oauth2.core.OAuth2AccessToken;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
@@ -26,11 +28,14 @@ import org.springframework.web.client.RestTemplate;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.JsonParser;
 import com.hyundai.higher.domain.member.Member;
 import com.hyundai.higher.domain.member.MemberRole;
+import com.hyundai.higher.kakao.common.Trans;
 import com.hyundai.higher.mapper.member.MemberMapper;
 import com.hyundai.higher.security.dto.SecurityMember;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -46,9 +51,13 @@ import lombok.extern.slf4j.Slf4j;
  *     </pre>
  */
 @Slf4j
+@RequiredArgsConstructor
 @Service
 public class MemberOauthService extends DefaultOAuth2UserService {
 
+	
+	private final HttpSession httpSession;
+	
 	@Autowired
 	private MemberService memberService;
 
@@ -57,6 +66,8 @@ public class MemberOauthService extends DefaultOAuth2UserService {
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
+	
+	
 
 	// 구글 사용자 데이터베이스 저장
 	private Member saveSocialMember(String mId, String clienName) throws SQLException {
@@ -90,13 +101,10 @@ public class MemberOauthService extends DefaultOAuth2UserService {
 
 		log.info(clienName);
 		log.info(provider);
-		
 
 		// 인증 제공자 출력
 		log.info("clienName " + clienName);
 		log.info(userRequest.getAdditionalParameters().toString());
-		
-		 
 
 		// 사용자 정보 가져오기 구글에서 허용한 API 범위
 		OAuth2User oAuth2User = super.loadUser(userRequest);
@@ -114,25 +122,36 @@ public class MemberOauthService extends DefaultOAuth2UserService {
 			log.info("구글 인증 확인");
 			log.info("email : " + email);
 		} else if (clienName.equals("Kakao")) {
-			
+
 			log.info("카카오 인증 확인");
 
+			OAuth2AccessToken accessToken = userRequest.getAccessToken();
 			
 			
-			LinkedHashMap Account =oAuth2User.getAttribute("kakao_account");
+			String type=accessToken.getTokenType().getValue();
+			String token= accessToken.getTokenValue();
+			
+			log.info("accessTokenType = {}", accessToken.getTokenType().getValue());
+			log.info("accessTokenValue = {}", accessToken.getTokenValue());
+
+			LinkedHashMap Account = oAuth2User.getAttribute("kakao_account");
 			LinkedHashMap profile = (LinkedHashMap) Account.get("profile");
 			
+			
+			httpSession.setAttribute("token",token);
+			
+			
+			
+
 			email = Account.get("email").toString();
 			name = profile.get("nickname").toString();
-			
-			
+
 			log.info("카카오 인증 확인");
-		
 
 		}
 
 		try {
-			Member socialMember = saveSocialMember(email,clienName);
+			Member socialMember = saveSocialMember(email, clienName);
 
 			log.info("---saveSocialMember--");
 			log.info(socialMember.toString());
@@ -159,44 +178,39 @@ public class MemberOauthService extends DefaultOAuth2UserService {
 		// 구글에서 정보 가져온 oAuth2User
 		return oAuth2User;
 	}
-	
-	
-	 public String getAccessToken(String code) throws JsonProcessingException {
-		 
-		 String REQUEST_URL = "https://kauth.kakao.com/oauth/token";
-		 RestTemplate restTemplate=new RestTemplate();
-		 
-	        // HTTP Header 생성
-	        HttpHeaders headers = new HttpHeaders();
-	        headers.add("Content-type", "application/x-www-form-urlencoded");
-	        headers.add("Accept", "application/json"); 
 
-	        // HTTP Body 생성
-	        MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
-	        params.add("grant_type", "authorization_code");
-	        params.add("client_id", "e094422f425dd0498e91f2deb839c9f7");
-	        params.add("redirect_uri", "https://localhost:8080/member/oauth2/code/kakao");
-	        params.add("code", code);     
+	public String getAccessToken(String code) throws JsonProcessingException {
 
-	        
-	        log.info(code);
-	        log.info("토큰발급");
-	        
-	        
-	        // HTTP 요청 보내기
-	        HttpEntity<MultiValueMap<String, String>> kakaoTokenRequest = new HttpEntity<>(params, headers);
-	        
-	        ResponseEntity<String> stringResponseEntity = restTemplate.postForEntity(REQUEST_URL, kakaoTokenRequest, String.class);
-	     
-	        
-	        log.info("토큰발급");
-	        
-	        
+		String REQUEST_URL = "https://kauth.kakao.com/oauth/token";
+		RestTemplate restTemplate = new RestTemplate();
 
-	        // HTTP 응답 (JSON) -> 액세스 토큰 파싱
-	        String responseBody = stringResponseEntity.getBody();
-	        ObjectMapper objectMapper = new ObjectMapper();
-	        JsonNode jsonNode = objectMapper.readTree(responseBody);
-	        return jsonNode.get("access_token").asText();
-	    }
+		// HTTP Header 생성
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-type", "application/x-www-form-urlencoded");
+		headers.add("Accept", "application/json");
+
+		// HTTP Body 생성
+		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+		params.add("grant_type", "authorization_code");
+		params.add("client_id", "e094422f425dd0498e91f2deb839c9f7");
+		params.add("redirect_uri", "https://localhost:8080/member/oauth2/code/kakao");
+		params.add("code", code);
+
+		log.info(code);
+		log.info("토큰발급");
+
+		// HTTP 요청 보내기
+		HttpEntity<MultiValueMap<String, String>> kakaoTokenRequest = new HttpEntity<>(params, headers);
+
+		ResponseEntity<String> stringResponseEntity = restTemplate.postForEntity(REQUEST_URL, kakaoTokenRequest,
+				String.class);
+
+		log.info("토큰발급");
+
+		// HTTP 응답 (JSON) -> 액세스 토큰 파싱
+		String responseBody = stringResponseEntity.getBody();
+		ObjectMapper objectMapper = new ObjectMapper();
+		JsonNode jsonNode = objectMapper.readTree(responseBody);
+		return jsonNode.get("access_token").asText();
 	}
+}
