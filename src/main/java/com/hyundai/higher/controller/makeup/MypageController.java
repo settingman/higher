@@ -53,7 +53,7 @@ public class MypageController {
 	@Value("${com.demo.upload.path}")
 	private String uploadPath;
 
-	@GetMapping("/mypage_reserv")
+	@GetMapping("/reserv")
 	public void reserving(Principal principal, Model model) {
 		log.info("===== 마이페이지 예약관리 =====");
 		log.info(principal);
@@ -63,7 +63,7 @@ public class MypageController {
 		model.addAttribute("ready", ready);
 	}
 
-	@GetMapping("/mypage_result")
+	@GetMapping("/result")
 	public void mypageresult(@RequestParam("rid") String rid, Model model) {
 		log.info("==== 마이페이지 예약 결과 창 ====");
 

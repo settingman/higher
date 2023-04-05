@@ -66,7 +66,7 @@ public class MakeupController {
 	@Autowired
 	private MypageService mypage;
 
-	@GetMapping("/makeup_form")
+	@GetMapping("/form")
 	public void makeupForm(@RequestParam("rid") String rid, Model model) {
 		log.info("====== 플라스크 연동 메이크업 시연 ======");
 		ReservVO res = new ReservVO();
@@ -80,7 +80,7 @@ public class MakeupController {
 		model.addAttribute("res", res);
 	}
 	
-	@PostMapping("/makeup_send")
+	@PostMapping("/send")
 	public String ResultSend(@RequestParam("result_img") String result_img, @RequestParam("rid") String rid,
 			@RequestParam("lip") String lip, @RequestParam("lip_pcode") String lip_pcode,
 			@RequestParam("lip_opt") String lip_opt, @RequestParam("blush") String blush,
@@ -107,12 +107,12 @@ public class MakeupController {
 
 		log.info(result);
 
-		return ("redirect:/makeup/makeup_finish");
+		return ("redirect:/rtc/room");
 	}
 
 	// 결과 DB 연동 코드 -> result 보내기
 	// Flask api 연결 코드 -> 파이썬 세팅된 컴퓨터만 가능
-	@PostMapping("/makeup_result")
+	@PostMapping("/result")
 	public String MakeupResult(@RequestParam("filePath") String filePath, @RequestParam("lips") String lips,
 			@RequestParam("blush") String blush, @RequestParam("foundation") String foundation,
 			@RequestParam("output_filepath") String output_filepath, @RequestParam("rid") String rid, Model model)
@@ -141,7 +141,7 @@ public class MakeupController {
 		log.info(blushlist);
 		log.info(foundationlist);
 
-		return "/makeup/makeup_result";
+		return "/makeup/result";
 	}
 
 	// ajax용 코드
