@@ -23,7 +23,7 @@ header#header {
      </div>
     <div class="total">
       <div class="float_inner">
-    <form method="post" enctype="multipart/form-data" th:action="@{/reserv/reserv.do}">
+    <form method="post" enctype="multipart/form-data" th:action="@{/beauty/reserv.do}">
         <div class="exhib_info">
           <div class="exhib_tit">
             <div class="makeup-main">
@@ -382,7 +382,7 @@ selectTimes.forEach(selectTime => {
 			var removebtn = $(".removeBtn");
 			for (var i = 0; i < arr.length; i++) {
 			    str += "<div style='text-align:-webkit-center;'>";
-			    str += "<img src='/reserv/display?fileName=" + arr[i].thumbnailURL + "'>";
+			    str += "<img src='/beauty/display?fileName=" + arr[i].thumbnailURL + "'>";
 			    str += "<input type='hidden'name='reimg' class='reimg' id='reimg' value='" + arr[i].imageURL + "'>";
 			    str += "<div class='btn_gray' data-name='" + arr[i].imageURL + "'>";
 			    str += "<label for='removeBtn'>";
@@ -392,7 +392,7 @@ selectTimes.forEach(selectTime => {
 			    str += "</div>";
 			    str += "</div>";
 			    
-			    $(".rimg").val("/reserv/display?fileName=" + arr[i].thumbnailURL);
+			    $(".rimg").val("/beauty/display?fileName=" + arr[i].thumbnailURL);
 			  }
 			  divArea.append(str);
 			  
@@ -408,7 +408,7 @@ selectTimes.forEach(selectTime => {
 			}
 
 			$.ajax({
-				url : '/reserv/upload.do',
+				url : '/beauty/upload.do',
 				processData : false,
 				contentType : false,
 				data : formData,
@@ -430,7 +430,7 @@ selectTimes.forEach(selectTime => {
 			var fileName = target.data("name");
 			var targetDiv = $(this).closest("div");
 			console.log(fileName);
-			$.post('/reserv/removeFile', {
+			$.post('/beauty/removeFile', {
 				fileName : fileName
 			}, function(result) {
 				console.log(result);

@@ -9,14 +9,14 @@
 			style="width: fit-content;">
 	</div>
 	<form method="post" enctype="multipart/form-data"
-		th:action="@{/makeup/makeup_result}">
+		th:action="@{/makeup/result}">
 		<div class="makeupwrapper"
 			style="grid-template-columns: repeat(2, 1fr); place-items: center; display: grid; margin: 0 50 0 50;">
 			<div class="wrapper1">
 				<div class="faceupload"
 					style="width: 600px; height: 800px; background: darkgray; float: left;">
 					<img class="output_filepath" id="output_filepath" name="output_filepath"
-						th:src="'/reserv/display?fileName=' + ${res.rimg}"
+						th:src="'/beauty/display?fileName=' + ${res.rimg}"
 						style="width: 100%; height: 100%;">
 				</div>
 			</div>

@@ -29,7 +29,7 @@ import net.coobird.thumbnailator.Thumbnailator;
 
 @Log4j2
 @RestController
-@RequestMapping("/reserv")
+@RequestMapping("/beauty")
 public class UploadController {
 
 	@Value("${com.demo.upload.path}")

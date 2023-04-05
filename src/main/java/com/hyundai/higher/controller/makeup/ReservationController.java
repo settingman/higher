@@ -32,14 +32,14 @@ import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 @RequiredArgsConstructor
-@RequestMapping("/reserv")
+@RequestMapping("/beauty")
 @Controller
 public class ReservationController {
 	
 	@Autowired
 	private ReservService service;
 	
-	@GetMapping("/reserv_main")
+	@GetMapping("/reserv")
 	public void reserv_main() {
 		log.info("==== Make-on 메인 페이지====");
 	}
@@ -77,7 +77,7 @@ public class ReservationController {
 		service.reserv(vo);
 		log.info(vo);
 		
-		return "redirect:/mypage/mypage_reserv";
+		return "redirect:/mypage/reserv";
 	}
 
 }
