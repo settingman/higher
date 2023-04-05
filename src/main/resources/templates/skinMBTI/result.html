@@ -115,7 +115,7 @@
               <em style="color:#8f8f8f; margin-top:10px;">(진단 결과는 MY PAGE &gt; 나의 정보에서 확인가능)</em>
             </p>
             <div class="btn_wrap center mt30">
-              <button type="button" class="btn_base blue act" onclick="location.href='/member/login.do';">보러가기</button>
+              <button type="button" class="btn_base blue act" th:onclick="goMatch([[${mbti.stype}]]);">보러가기</button>
               <button type="button" class="btn_base darkgray act" id="save_close">취소</button>
             </div>
           </div>

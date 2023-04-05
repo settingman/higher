@@ -51,8 +51,16 @@ function saveResult(mbti){
 	});
 }
 
+function goMatch(mbti){
+	let url = "/match/matchMain?mbti=" + mbti;
+	
+	$(location).attr('href',url);
+}
+
 $(function(){
 	$("#save_close").on("click", function(){
 		$("#survey_pop").css("display", "none");	
 	});
+	
 });
+
