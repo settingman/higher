@@ -1,5 +1,9 @@
 package com.hyundai.higher.controller.makeup;
 
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.nio.file.Paths;
 import java.security.Principal;
 import java.util.List;
 
@@ -57,14 +61,16 @@ public class MypageController {
 	public void reserving(Principal principal, Model model) {
 		log.info("===== 마이페이지 예약관리 =====");
 		log.info(principal);
-		List<ReservVO> done = service.getReservdone(principal.getName());
+		List<ReservVO> nores = service.noResult(principal.getName());
+		List<ReservVO> yesres = service.yesResult(principal.getName());
 		List<ReservVO> ready = service.getReservReady(principal.getName());
-		model.addAttribute("done", done);
+		model.addAttribute("nores", nores);
+		model.addAttribute("yesres", yesres);
 		model.addAttribute("ready", ready);
 	}
 
 	@GetMapping("/result")
-	public void mypageresult(@RequestParam("rid") String rid, Model model) {
+	public void mypageresult(@RequestParam("rid") String rid, Model model) throws IOException {
 		log.info("==== 마이페이지 예약 결과 창 ====");
 
 		ReservVO info = service.getReservInfo(rid);

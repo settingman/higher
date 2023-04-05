@@ -330,7 +330,7 @@ header#header {
                       <div class="faceupload" style="float: left">
                         <img
                           class="face"
-                          th:src="${result.result_img}"
+                          th:src="'/beauty/display?fileName=' + ${info.rimg}"
                           style="
                             max-width: 150px;
                             margin: 0 20 20 20;
@@ -415,7 +415,7 @@ header#header {
                                 <a th:text="${lipresult.optname}"></a>
                               </div>
                               <div class="btn_red" style="">
-                                <p class="pickbtn">장바구니 담기</p>
+                                <p class="pickbtn" onclick="addCart()">장바구니 담기</p>
                               </div>
                             </div>
                           </div>
@@ -452,7 +452,7 @@ header#header {
                                 <a th:text="${blushresult.optname}"></a>
                               </div>
                               <div class="btn_red" style="">
-                                <p class="pickbtn">장바구니 담기</p>
+                                <p class="pickbtn" onclick="addCart()">장바구니 담기</p>
                               </div>
                             </div>
                           </div>
@@ -488,7 +488,7 @@ header#header {
                                 <a th:text="${faceresult.optname}"></a>
                               </div>
                               <div class="btn_red" style="">
-                                <p class="pickbtn">장바구니 담기</p>
+                                <p class="pickbtn" onclick="addCart()">장바구니 담기</p>
                               </div>
                             </div>
                           </div>
@@ -516,9 +516,74 @@ header#header {
         </div>
         <!-- //content-wrap -->
       </div>
+      <div class="include-footer" th:insert="~{include/footer}"></div>
     </div>
     <!-- //wrap -->
+<script>
+	function addCart() {
+		console.log('장바구니 담기');
+		var pCode = document.querySelector('.pcode').value;
+    //옵션 바꾸기
+		//var pOption = document.querySelector('input[name="optNm"]').value;
+		var pAmount = document.querySelector('input[name="pamount"]').value;
+		var mid = document.getElementById('mid').value;
+		console.log(mid);
+    var pOption = "";
 
+    var pname = document.querySelector('.datail_info_top .tit strong').textContent.trim();
+    console.log(pname+" 이름");
+
+    if (!document.querySelector('.option')) {
+      pOption = pname;
+    }else {
+      const selectEl = document.querySelector('.opt');  // select 요소 선택
+      const selectedValue = selectEl.options[selectEl.selectedIndex].value; 
+      pOption = selectedValue;
+    }
+		console.log(pOption);
+		
+		if (mid !='anonymousUser'){
+			var requestData = JSON.stringify({
+				pcode : pCode,
+				poption : pOption,
+			  pamount : pAmount,
+			  mid  :mid
+		});
+		//로그인 여부 확인 
+		//중복 상품 확인
+		
+		console.log(requestData);
+
+
+		 $.ajax({
+			url: '/restcart/addCart',
+			type: 'post',
+			data: requestData,
+			contentType: "application/json",
+			success	: function(result){
+				console.log("장바구니 success");
+				if(result == '0'){
+					alert("장바구니에 추가를 하지 못하였습니다.");
+				} else if(result == '1'){
+					alert("장바구니에 추가되었습니다.");
+				} else if(result == '2'){
+					alert("이미 장바구니에 담긴 상품으로 수량이 추가되었습니다.");
+				} 
+			},
+			error :function(request, status, error) {
+				console.log(error);
+			}
+		}); 
+		}else {
+			console.log("로그인 필요");
+			alert('장바구니는 로그인이 필요합니다.');
+			var loginUrl = "/member/login";
+			window.location.href = loginUrl;
+		}
+		
+	}
+
+	</script>
     <style>
       .btn_red {
         text-align: center;

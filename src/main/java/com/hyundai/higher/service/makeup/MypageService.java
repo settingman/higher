@@ -27,8 +27,14 @@ public interface MypageService {
 	// 상담 후
 	public List<ReservVO> getReservdone(String mid);
 
-	// 상담 전
+	// 예약만 된 상태
 	public List<ReservVO> getReservReady(String mid);
+
+	// 입장하기 코드
+	public List<ReservVO> noResult(String mid);
+
+	// 결과확인 코드
+	public List<ReservVO> yesResult(String mid);
 
 	// 결과 -> 결과값 립
 	public LipVO getLipResult(String optname);
@@ -38,21 +44,20 @@ public interface MypageService {
 
 	// 결과 -> 결과값 페이스
 	public FoundationVO getFaceResult(String optname, String pcode);
-	
+
 	// 유사제품 -> 립
 	public List<LipVO> SimLip(String optcolor, String pcode);
-	
+
 	// 유사제품 -> 블러쉬
 	public List<BlushVO> SimBlush(String optcolor, String pcode);
-	
+
 	// 유사제품 -> 파운데이션
 	public List<FoundationVO> SimFace(String optcolor, String pcode);
 
 	// 결과 -> 상담값
 	public ReservVO getReservInfo(String rid);
-	
+
 	// 결과 -> 결과값
 	public ResultVO getResultInfo(String rid);
-
 
 }

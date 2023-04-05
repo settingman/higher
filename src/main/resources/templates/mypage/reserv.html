@@ -175,6 +175,15 @@ header#header {
                   <li class="">
                     <a>예약 관리</a>
                   </li>
+                  <li class="">
+                    <a>예약 결과 확인</a>
+                  </li>
+                  <li class="">
+                    <a>상담 입장</a>
+                  </li>
+                  <li class="">
+                    <a>예약 신청 완료</a>
+                  </li>
                 </ul>
               </li>
               <li class="">
@@ -223,7 +232,7 @@ header#header {
             </div>
             <!-- cart-list -->
             <div class="myhyundai-main" style="margin: 40px 0">
-              <h2>예약 결과</h2>
+              <h2>예약 결과 확인</h2>
             </div>
             <div class="cart-list">
               <h4 class="blind">주문/배송 내역</h4>
@@ -250,18 +259,16 @@ header#header {
                     </tr>
                   </thead>
                   <tbody>
-                    <!--
-                    <tr>
-                      <td height="120" colspan="5">예약 내역이 없습니다.</td>
+                    <tr th:if="${#lists.isEmpty(yesres)}">
+                      <td height="120" colspan="5">결과가 없습니다.</td>
                     </tr>
-                    -->
-
-                    <tr th:each="done : ${done}">
+                    <!-- 상담 완료 - 결과 확인 -->
+                    <tr th:each="yesres : ${yesres}" th:if="${not #lists.isEmpty(yesres)}">
                       <td class="valign-top" rowspan="1">
                         <div class="od-info">
                           <p
                             class="strong text-point2"
-                            th:text="${done.rid}"
+                            th:text="${yesres.rid}"
                           ></p>
                           <p class="where">온라인</p>
                         </div>
@@ -270,13 +277,13 @@ header#header {
                       <td class="price-info" style="">
                         <div
                           class="tot-price"
-                          th:text="${#strings.substring(done.rdate, 0, 10)}"
+                          th:text="${#strings.substring(yesres.rdate, 0, 10)}"
                         ></div>
                       </td>
                       <td class="price-info">
                         <div
                           class="tot-price"
-                          th:text="${#strings.substring(done.rdate, 11, 16)}"
+                          th:text="${#strings.substring(yesres.rdate, 11, 16)}"
                         ></div>
                       </td>
                       <td class="shipping">
@@ -285,7 +292,7 @@ header#header {
                       <td class="ctrl">
                         <p class="v-btn-wrap">
                           <a
-                            th:href="'/mypage/result?rid=' + ${done.rid}"
+                            th:href="'/mypage/result?rid=' + ${yesres.rid}"
                             onclick="javascript:GA_Event('PC_마이페이지', '최근_주문_배송내역', '상세내역');"
                             class="btn color4 size1"
                             >결과 확인</a
@@ -293,13 +300,89 @@ header#header {
                         </p>
                       </td>
                     </tr>
+                     <!-- /상담 완료 - 결과 확인 -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- //cart-list -->
+             <!-- cart-list -->
+            <div class="myhyundai-main" style="margin: 40px 0">
+              <h2>상담 입장</h2>
+            </div>
+            <div class="cart-list">
+              <!-- table-wrap -->
+              <div class="table-wrap coltype cart no-border-top" style="
+    margin-bottom: 100px;
+">
+                <table>
+                  <caption></caption>
+                  <colgroup>
+                    <col style="width: 130px" />
+                    <col style="width: 100px" />
+                    <col style="width: 120px" />
+                    <col style="width: 120px" />
+                    <col style="width: 100px" />
+                  </colgroup>
+                  <thead>
+                    <tr>
+                      <th scope="col">예약번호</th>
+                      <th scope="col" style="width: 100px">날짜</th>
+                      <th scope="col" style="">시간</th>
+                      <th scope="col" style="">예약상태</th>
+                      <th scope="col">결과</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr th:if="${#lists.isEmpty(nores)}">
+                      <td height="120" colspan="5">입장 가능한 예약이 없습니다.</td>
+                    </tr>
+                    <!-- 상담 완료 - 결과 확인 -->
+                    <tr th:each="nores : ${nores}" th:if="${not #lists.isEmpty(nores)}">
+                      <td class="valign-top" rowspan="1">
+                        <div class="od-info">
+                          <p
+                            class="strong text-point2"
+                            th:text="${nores.rid}"
+                          ></p>
+                          <p class="where">온라인</p>
+                        </div>
+                      </td>
+
+                      <td class="price-info" style="">
+                        <div
+                          class="tot-price"
+                          th:text="${#strings.substring(nores.rdate, 0, 10)}"
+                        ></div>
+                      </td>
+                      <td class="price-info">
+                        <div
+                          class="tot-price"
+                          th:text="${#strings.substring(nores.rdate, 11, 16)}"
+                        ></div>
+                      </td>
+                      <td class="shipping">
+                        <div class="order-status">입장 가능</div>
+                      </td>
+                      <td class="ctrl">
+                        <p class="v-btn-wrap">
+                          <a
+                            th:href="'/mypage/result?rid=' + ${nores.roomid}"
+                            onclick="javascript:GA_Event('PC_마이페이지', '최근_주문_배송내역', '상세내역');"
+                            class="btn color4 size1"
+                            >입장 하기</a
+                          >
+                        </p>
+                      </td>
+                    </tr>
+                     <!-- /상담 완료 - 결과 확인 -->
                   </tbody>
                 </table>
               </div>
             </div>
             <!-- //cart-list -->
             <div class="myhyundai-main" style="margin: 40px 0">
-              <h2>예약 진행중</h2>
+              <h2>예약 신청 완료</h2>
             </div>
             <div class="table-wrap coltype cart no-border-top">
               <table>
@@ -321,13 +404,11 @@ header#header {
                   </tr>
                 </thead>
                 <tbody>
-                  <!--
-                    <tr>
-                      <td height="120" colspan="5">예약 내역이 없습니다.</td>
+                  <tr th:if="${#lists.isEmpty(ready)}">
+                      <td height="120" colspan="5">결과가 없습니다.</td>
                     </tr>
-                    -->
-
-                  <tr th:each="ready : ${ready}">
+                   <!-- 입장 대기 -->
+                  <tr th:each="ready : ${ready}" th:if="${not #lists.isEmpty(ready)}">
                     <td class="valign-top" rowspan="1">
                       <div class="od-info">
                         <p
@@ -359,6 +440,7 @@ header#header {
                       </p>
                     </td>
                   </tr>
+                  <!-- /입장 대기 -->
                 </tbody>
               </table>
             </div>
@@ -368,6 +450,7 @@ header#header {
         </div>
         <!-- //content-wrap -->
       </div>
+      <div class="include-footer" th:insert="~{include/footer}"></div>
     </div>
     <!-- //wrap -->
   </body>
