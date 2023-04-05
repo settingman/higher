@@ -51,9 +51,11 @@ public class ProductController {
 				
 		ProductDetailDTO dto = new ProductDetailDTO();
 		dto = service.productDetail(pcode);
+		int dept1no = dto.getProductDTO().getDept1no();
 		
 		log.info(dto);
 		
+		model.addAttribute("dept1no", dept1no);
 		model.addAttribute("product", service.productDetail(pcode));
 		
 		return "product/detail";

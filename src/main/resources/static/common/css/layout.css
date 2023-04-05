@@ -2542,7 +2542,7 @@ html {
 /* 병원판매제품 */
 #header .gnb_nav nav ul.left>li:first-child+li .sub_contain {
   left: -135px;
-  width: 800px;
+  width: 934px;
 }
 
 #header .gnb_nav nav ul.left>li:first-child+li .sub_contain:after,

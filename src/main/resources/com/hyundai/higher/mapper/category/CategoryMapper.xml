@@ -6,20 +6,20 @@
 <mapper namespace="com.hyundai.higher.mapper.category.CategoryMapper">
 	
 	<!-- 카테고리-중분류 전체 목록 -->
-	<select id="cateListAll">
+	<select id="cateListAll" resultType="com.hyundai.higher.domain.category.CategoryDTO">
 		SELECT dept2name, dept2no, dept1no
 		FROM category_dept2
 		WHERE dept1no = #{dept1no}
 	</select>
 
 	<!-- mbti 전체 목록 -->
-	<select id="mbtiCateListAll">
+	<select id="mbtiCateListAll" resultType="com.hyundai.higher.domain.category.MBTIDTO">
 		SELECT stype
 		FROM skinmbti
 	</select>
 
 	<!-- 브랜드 전체 목록 -->
-	<select id="brandCateListAll">
+	<select id="brandCateListAll" resultType="com.hyundai.higher.domain.category.BrandDTO">
 		SELECT b.bno, b.bname
 		FROM (
 		    SELECT UNIQUE(bno) AS bno
