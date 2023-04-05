@@ -782,15 +782,26 @@ $(function(){
 		var pAmount = document.querySelector('input[name="pamount"]').value;
 		var mid = document.getElementById('mid').value;
 		console.log(mid);
-		//console.log(pOption);
+    var pOption = "";
+
+    var pname = document.querySelector('.datail_info_top .tit strong').textContent.trim();
+    console.log(pname+" 이름");
+
+    if (!document.querySelector('.option')) {
+      pOption = pname;
+    }else {
+      const selectEl = document.querySelector('.opt');  // select 요소 선택
+      const selectedValue = selectEl.options[selectEl.selectedIndex].value; 
+      pOption = selectedValue;
+    }
+		console.log(pOption);
 		
 		if (mid !='anonymousUser'){
 			var requestData = JSON.stringify({
 				pcode : pCode,
-				//poption : pOption,
-			    pamount : pAmount,
-			    mid  :mid
-		  
+				poption : pOption,
+			  pamount : pAmount,
+			  mid  :mid
 		});
 		//로그인 여부 확인 
 		//중복 상품 확인
@@ -1029,59 +1040,59 @@ $(function(){
 	                    }
 	                }
 
-	                CART.save($('#orderForm'), function(data) {
-	                    if (data.result == "OK") {
-	                        // 토스트 팝업 처리.
-	                        setTimeout(function() {
-	                            $('.layer_alert_wrap').hide().find('span').hide();
-	                        }, 1500);
-	                        $('.layer_alert_wrap').css('display', 'block').find('.layer_alert3').css('display', 'block');
-	                        /* TAS 관련 스크립트 : 장바구니 제품 담기 */
-	                        var _tasz = [];
-	                        _tasz.push({
-	                            productName : lineNm + prdtNm,
-	                            productCode : value,
-	                            productPrice : price,
-	                            sapCode : sapCode
-	                        });
-	                        LARO.TAS.et("cartAdd", _tasz);
+	            //     CART.save($('#orderForm'), function(data) {
+	            //         if (data.result == "OK") {
+	            //             // 토스트 팝업 처리.
+	            //             setTimeout(function() {
+	            //                 $('.layer_alert_wrap').hide().find('span').hide();
+	            //             }, 1500);
+	            //             $('.layer_alert_wrap').css('display', 'block').find('.layer_alert3').css('display', 'block');
+	            //             /* TAS 관련 스크립트 : 장바구니 제품 담기 */
+	            //             var _tasz = [];
+	            //             _tasz.push({
+	            //                 productName : lineNm + prdtNm,
+	            //                 productCode : value,
+	            //                 productPrice : price,
+	            //                 sapCode : sapCode
+	            //             });
+	            //             LARO.TAS.et("cartAdd", _tasz);
 
-	                        var item = new Array(lineNm, prdtNm, value, price);
-	                        LARO.FBQ.cart(item);
+	            //             var item = new Array(lineNm, prdtNm, value, price);
+	            //             LARO.FBQ.cart(item);
 
-	                        // 태그 매니처 호출
-	                        var prdtSeq = $('#orderForm').find('input[name="prdtSeq"]').val();
-	                        var orderCnt = parseInt($('#orderForm').find('input[name="ordCnt"]').val());
-	                        var cateNm = $('#orderForm').find('input[name="cateNm"]').val();
-	                        var cateNm2 = $('#orderForm').find('input[name="cateNm2"]').val();
-	                        var cateNm3 = $('#orderForm').find('input[name="cateNm3"]').val();
-	                        var category = $('#orderForm').find('input[name="fullCateNm"]').val();
-	                        var salePrice = parseInt($('#orderForm').find("input[name=salePrice]").val());
+	            //             // 태그 매니처 호출
+	            //             var prdtSeq = $('#orderForm').find('input[name="prdtSeq"]').val();
+	            //             var orderCnt = parseInt($('#orderForm').find('input[name="ordCnt"]').val());
+	            //             var cateNm = $('#orderForm').find('input[name="cateNm"]').val();
+	            //             var cateNm2 = $('#orderForm').find('input[name="cateNm2"]').val();
+	            //             var cateNm3 = $('#orderForm').find('input[name="cateNm3"]').val();
+	            //             var category = $('#orderForm').find('input[name="fullCateNm"]').val();
+	            //             var salePrice = parseInt($('#orderForm').find("input[name=salePrice]").val());
 
-	                        category = (category ? category.replace(/>/gi, '/') : undefined);
+	            //             category = (category ? category.replace(/>/gi, '/') : undefined);
 
-	                        var tag = $('#orderForm').find('input[name="tag"]').val();
-	                        var noIngt = $('#orderForm').find('input[name="noIngt"]').val();
-	                        var giftNames = $('#orderForm').find('input[name="giftNames"]').val();
+	            //             var tag = $('#orderForm').find('input[name="tag"]').val();
+	            //             var noIngt = $('#orderForm').find('input[name="noIngt"]').val();
+	            //             var giftNames = $('#orderForm').find('input[name="giftNames"]').val();
 
-	                        var tagItem = new Array((lineNm + ' ' + prdtNm), prdtSeq, Number(price), lineNm, category, orderCnt, tag, noIngt, giftNames);
-	                        LARO.TagManager.addToCart(tagItem);
-	                        LARO.GA4TagManager.addToCart(tagItem);
-	                    } else {
-	                        setTimeout(function() {
-	                            if ("[LEVEL] 등급만 구매하실 수 있는 제품입니다." == data.message) {
-	                                if ($this.data("level") == undefined) {
-	                                    alert("등급이 맞지 않아 구매 하실수 없는 제품입니다.");
-	                                } else {
-	                                    alert(data.message.replace("[LEVEL]", $this.data("level-name")));
-	                                }
-	                            } else {
-	                                alert(data.message);
-	                            }
-	                        }, 300);
-	                    }
-	                });
-	            });
+	            //             var tagItem = new Array((lineNm + ' ' + prdtNm), prdtSeq, Number(price), lineNm, category, orderCnt, tag, noIngt, giftNames);
+	            //             LARO.TagManager.addToCart(tagItem);
+	            //             LARO.GA4TagManager.addToCart(tagItem);
+	            //         } else {
+	            //             setTimeout(function() {
+	            //                 if ("[LEVEL] 등급만 구매하실 수 있는 제품입니다." == data.message) {
+	            //                     if ($this.data("level") == undefined) {
+	            //                         alert("등급이 맞지 않아 구매 하실수 없는 제품입니다.");
+	            //                     } else {
+	            //                         alert(data.message.replace("[LEVEL]", $this.data("level-name")));
+	            //                     }
+	            //                 } else {
+	            //                     alert(data.message);
+	            //                 }
+	            //             }, 300);
+	            //         }
+	            //     });
+	            // });
 
 	            // 찜 이벤트
 	            $(".like").on("click", function() {

@@ -2,6 +2,21 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
+    <head th:insert="~{include/head}"></head>
+  <style>
+		header#header {
+			background: none;
+			height: auto;
+		}
+		footer#footer {
+        background: white;
+        border-top: 1px solid black !important;
+        }
+        .btn.color9 {
+        border: 1px solid #45675b !important;
+        background-color: #45675b !important;
+        }
+	</style>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -779,7 +794,7 @@
                 if ($(liList[i]).find('.icheckbox').hasClass('checked')) {
                     const pcode = $(liList[i]).find('#pcode').val();
                     console.log(pcode);
-                    const poption = $(liList[i]).find('.cnt-opt').text();
+                    const poption = $(liList[i]).find('.cnt-opt').value;
                     console.log("option" + poption);
                     arr.push({
                         pcode: pcode,
@@ -1233,6 +1248,9 @@
         .fancybox-margin {
             margin-right: 16px;
         }
+        body {
+            font-family: 'notokr-demilight', 'locator-regular';
+        }
     </style>
 
     <link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
@@ -1250,6 +1268,9 @@
 <body>
 
     <div id="wrap" class="sub notgnb simple-gnb">
+            <!-- header -->
+		<header id="header" th:insert="~{include/header}"></header>
+        <!-- /header -->
         <!-- gnb -->
 
         <script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/co/referCodes.js"></script>
@@ -1392,7 +1413,7 @@
                                                         <a href="javascript:void(0);" class="cnt-down" th:onclick='plusOrdQty(this, [[${carts.pcode}]],[[${carts.poption}]],"c[[${state.index}]]" );'>＋</a>
                                                     </p>
 
-                                                    <p class="cnt-opt">[[${carts.poption}]]</p>
+                                                    <input type="hidden" class="cnt-opt" th:value="${carts.poption}">
 
                                                     <select class="form-select form-select-sm" aria-label=".form-select-sm example">
                                                         <option value="${carts.poption}" th:text="${carts.poption}" selected=""></option>
@@ -1418,22 +1439,11 @@
                                                 <div class="option-price">
                                                     <div class="price-info">
                                                         <div class="tot-price" th:text="${#numbers.formatInteger(carts.pprice * carts.pamount,3,'COMMA')} + 원"></div>
-														<div class="o-price" th:text="${#numbers.formatInteger(carts.pprice* carts.pamount,3,'COMMA')}+원"></div>
 														<input type="hidden" name="bbprc" th:value="${carts.pprice}">
 														<input type="hidden" name="prodPrc" th:value="${carts.pprice* carts.pamount}" th:data-product_id="${carts.pcode}">
 														<input type="hidden" name="bbprcPrc" value="0">
 													</div>
 
-													<div class="btn-area">
-
-														<button class="btn size4 color15" type="button"
-															onclick="javascript:showChgUitmPup(this, '40A1580453', '00011', '[겔랑] 빠뤼르 골드 스킨 파운데이션 세트', '매트/00C', 131000, '40A1580453','01', 1, 300);return false;"
-														>옵션변경</button>
-
-														<button class="btn size4 color4" type="button"
-															onclick="javascript:buyDirect(this, 'checkbox01');GA_Event('PC_장바구니', '바로주문', '[겔랑] 빠뤼르 골드 스킨 파운데이션 세트');return false;"
-														>바로주문</button>
-													</div>
 												</div>
 											</div>
 										</div>
@@ -1534,9 +1544,9 @@
 			<!-- //content-wrap -->
 
 		</div>
-
-
-
+    <!-- footer -->
+	<div class="include-footer" th:insert="~{include/footer}"></div>
+	<!-- /footer -->
 
 <script>
 $("select.form-select").on("change", function() {
@@ -1560,7 +1570,7 @@ $("select.form-select").on("change", function() {
 						success	: function(result){
 							console.log("장바구니 옵션 변경 success"+ selectedOption);
 
-                            cnt.text(selectedOption);
+                            cnt.val(selectedOption);
 
 							loadingBar.stop();
 								

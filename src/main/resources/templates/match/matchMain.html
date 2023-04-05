@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
+	<head th:insert="~{include/head}"></head>
+	<style>
+		header#header {
+			background: none;
+			height: auto;
+		}
+		footer#footer {
+    background: white;
+    border-top: 1px solid black !important;
+		}
+	</style>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1">
@@ -547,6 +559,9 @@ function sendGroobee(){
 <body>
   
   <div id="wrap" class="sub">
+		    <!-- header -->
+				<header id="header" th:insert="~{include/header}"></header>
+				<!-- /header -->
     <div id="content-wrap">
 
         <div class="back" style="padding-bottom: 50px;">
@@ -554,7 +569,7 @@ function sendGroobee(){
               
             <!-- 검색창 -->
             
-            <div class="searching" style="width:550px; margin: auto;">
+            <div class="searching" style="width:550px; margin: auto;margin-bottom: 20px;">
               <form id="searchform" action="searchProduct" method="get" style="margin-top: 15px;margin-bottom: 25px;">
                 <div class="searchbox" style="border-top: 1.47px solid black; border-bottom: 1.47px solid black;">
                   <input type="text" class="search-input" name="keyword" placeholder="본 매칭은 스킨케어 제품만 가능합니다." maxlength="30" style="padding-left:60px;width: 500px; height: 50px; border: none; background-color: #FFFEF2; text-align: center; font-size: 18px;">
@@ -619,6 +634,9 @@ function sendGroobee(){
                 </div>
             </div>
         </div>
+				    <!-- footer -->
+	<div class="include-footer" th:insert="~{include/footer}"></div>
+	<!-- /footer -->
     </div>
   </div>
   <script>

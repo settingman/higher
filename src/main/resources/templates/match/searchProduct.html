@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
+  <head th:insert="~{include/head}"></head>
+  <style>
+		header#header {
+			background: none;
+			height: auto;
+		}
+		footer#footer {
+    background: white;
+    border-top: 1px solid black !important;
+	  }
+	</style>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1">
@@ -269,6 +280,9 @@ function setGnb() {
 <body>
   
   <div id="wrap" class="sub">
+    <!-- header -->
+		<header id="header" th:insert="~{include/header}"></header>
+    <!-- /header -->
     <div id="content-wrap">
 
         <div class="back" style="padding-bottom: 50px;padding-top: 30px;">
@@ -278,7 +292,7 @@ function setGnb() {
             <div class="searching" style="width:550px; margin: auto;">
               <form id="searchform" action="searchProduct" method="get" style="margin-top: 15px;margin-bottom: 25px;">
                 <div class="searchbox" style="border-top: 1.47px solid black; border-bottom: 1.47px solid black;">
-                  <input type="text" class="search-input" name="keyword" th:placeholder="${param.keyword}" maxlength="30" style="width: 500px; height: 50px; border: none; background-color: #FFFEF2; text-align: center; font-size: 18px;">
+                  <input type="text" class="search-input" name="keyword" th:placeholder="${param.keyword}" maxlength="30" style="width: 500px; height: 50px; border: none; background-color: #FFFEF2 !important; text-align: center; font-size: 18px;">
                   <button type="submit" class="search-btn" style="margin-left:10px;width:30px;height:30px;background: url(./img/arrow.png);background-size: cover;border: none;"></button>
                 </div>
               </form>
@@ -332,6 +346,9 @@ function setGnb() {
                 </div>
             </div>
         </div>
+  <!-- footer -->
+	<div class="include-footer" th:insert="~{include/footer}"></div>
+	<!-- /footer -->
     </div>
   </div>
   <script>
