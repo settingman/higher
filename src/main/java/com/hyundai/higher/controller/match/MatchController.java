@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hyundai.higher.domain.match.MatchProductDTO;
-import com.hyundai.higher.service.include.IncludeService;
 import com.hyundai.higher.service.match.MatchService;
 
 import lombok.extern.log4j.Log4j2;
@@ -33,8 +32,8 @@ import lombok.extern.log4j.Log4j2;
 @Controller
 public class MatchController {
 
-	@Autowired(required=true)
-	private IncludeService iService;
+//	@Autowired(required=true)
+//	private IncludeService iService;
 	
 	@Autowired(required=true)
 	private MatchService mService;
