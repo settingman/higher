@@ -8,12 +8,14 @@
 	<select id="getReservdone"
 		resultType="com.hyundai.higher.domain.makeup.ReservVO">
 		select * from reservation where mid=#{mid} and rcheck=1
+		 order by rid desc
 	</select>
 
 	<!-- 안끝난 예약 보여주기 -->
 	<select id="getReservReady"
 		resultType="com.hyundai.higher.domain.makeup.ReservVO">
 		select * from reservation where mid=#{mid} and rcheck=0
+		order by rid desc
 	</select>
 
 	<!-- rid로 예약 결과 가져와서 result -->
@@ -47,12 +49,14 @@
 		and itype='thumb' and iloc like '%0' and a.pcode=#{pcode} and
 		optname=#{optname}
 	</select>
-		<select id="SimLip" resultType="com.hyundai.higher.domain.makeup.LipVO">
+	<select id="SimLip"
+		resultType="com.hyundai.higher.domain.makeup.LipVO">
 		select a.pcode, pname, pprice, dept2no, optcolor, optname, iloc, itype
 		from product a, poption b, img c
 		where a.pcode=b.pcode and
 		a.pcode=c.pcode and dept2no=22
-		and itype='thumb' and iloc like '%0' and pcode!=#{pcode}
+		and itype='thumb' and iloc like '%0' and
+		a.pcode!=#{pcode} and
 		optcolor=#{optcolor} and rownum<![CDATA[ <= ]]>3
 	</select>
 
@@ -62,11 +66,12 @@
 		from product a, poption b, img c
 		where a.pcode=b.pcode and
 		a.pcode=c.pcode and dept2no=24
-		and itype='thumb' and iloc like '%0' and pcode!=#{pcode}
+		and itype='thumb' and iloc like '%0' and
+		a.pcode!=#{pcode} and
 		optcolor=#{optcolor} and rownum<![CDATA[ <= ]]>3
 	</select>
 
-	<select id="SimFoundation"
+	<select id="SimFace"
 		resultType="com.hyundai.higher.domain.makeup.FoundationVO">
 		select a.pcode, pname, pprice, dept2no, ptype, optcolor, optname,
 		iloc, itype
@@ -74,7 +79,8 @@
 		where a.pcode=b.pcode and
 		a.pcode=c.pcode and dept2no=21
 		and itype='thumb'
-		and pcode!=#{pcode} and
+		and a.pcode!=#{pcode}
+		and
 		optcolor=#{optcolor} and rownum<![CDATA[ <= ]]>3
 	</select>
 	<select id="getReservInfo"

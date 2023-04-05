@@ -54,17 +54,17 @@ public class MypageServiceImpl implements MypageService{
 	}
 
 	@Override
-	public LipVO SimLip(String optcolor, String pcode) {
+	public List<LipVO> SimLip(String optcolor, String pcode) {
 		return mapper.SimLip(optcolor, pcode);
 	}
 
 	@Override
-	public BlushVO SimBlush(String optcolor, String pcode) {
+	public List<BlushVO> SimBlush(String optcolor, String pcode) {
 		return mapper.SimBlush(optcolor, pcode);
 	}
 
 	@Override
-	public FoundationVO SimFace(String optcolor, String pcode) {
+	public List<FoundationVO> SimFace(String optcolor, String pcode) {
 		return mapper.SimFace(optcolor, pcode);
 	}
 

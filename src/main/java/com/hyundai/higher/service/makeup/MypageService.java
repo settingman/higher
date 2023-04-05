@@ -40,13 +40,13 @@ public interface MypageService {
 	public FoundationVO getFaceResult(String optname, String pcode);
 	
 	// 유사제품 -> 립
-	public LipVO SimLip(String optcolor, String pcode);
+	public List<LipVO> SimLip(String optcolor, String pcode);
 	
 	// 유사제품 -> 블러쉬
-	public BlushVO SimBlush(String optcolor, String pcode);
+	public List<BlushVO> SimBlush(String optcolor, String pcode);
 	
 	// 유사제품 -> 파운데이션
-	public FoundationVO SimFace(String optcolor, String pcode);
+	public List<FoundationVO> SimFace(String optcolor, String pcode);
 
 	// 결과 -> 상담값
 	public ReservVO getReservInfo(String rid);

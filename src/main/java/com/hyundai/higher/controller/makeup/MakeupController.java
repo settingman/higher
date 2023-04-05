@@ -79,12 +79,7 @@ public class MakeupController {
 		model.addAttribute("mem", mem);
 		model.addAttribute("res", res);
 	}
-
-	@GetMapping("/makeup_finish")
-	public void makeupFinish() {
-		log.info("====== 결과 전송 + 상담 완료 백오피스 창 =====");
-	}
-
+	
 	@PostMapping("/makeup_send")
 	public String ResultSend(@RequestParam("result_img") String result_img, @RequestParam("rid") String rid,
 			@RequestParam("lip") String lip, @RequestParam("lip_pcode") String lip_pcode,
@@ -112,7 +107,7 @@ public class MakeupController {
 
 		log.info(result);
 
-		return ("/makeup/makeup_finish");
+		return ("redirect:/makeup/makeup_finish");
 	}
 
 	// 결과 DB 연동 코드 -> result 보내기
