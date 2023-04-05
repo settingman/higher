@@ -100,7 +100,7 @@ public class ChatRoomController {
 	}
 
 	// 채팅방 삭제
-	@GetMapping("/chat/del	Room/{roomId}")
+	@GetMapping("/chat/delRoom/{roomId}")
 	public String delChatRoom(@PathVariable String roomId) {
 
 		// roomId 기준으로 chatRoomMap 에서 삭제, 해당 채팅룸 안에 있는 사진 삭제

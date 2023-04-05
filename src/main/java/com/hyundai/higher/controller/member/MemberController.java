@@ -99,7 +99,7 @@ public class MemberController {
 
 	// 로그인
 	@GetMapping("/login")
-	public String login(@RequestParam(value = "mId", required = false) String mId,
+	public String login(HttpServletRequest request, @RequestParam(value = "mId", required = false) String mId,
 			@RequestParam(value = "error", required = false) String error,
 			@RequestParam(value = "exception", required = false) String exception, Model model) {
 
@@ -107,6 +107,11 @@ public class MemberController {
 		model.addAttribute("mId", mId);
 		model.addAttribute("error", error);
 		model.addAttribute("exception", exception);
+		
+		String uri = request.getHeader("Referer");
+	    if (uri != null && !uri.contains("/login")) {
+	        request.getSession().setAttribute("prevPage", uri);
+	    }
 		
 		return "member/login";
 		
