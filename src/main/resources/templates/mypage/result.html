@@ -407,7 +407,8 @@ header#header {
                                   th:value="${lipresult.optname}"
                                 />
                                 <div class="price-info single">
-                                  <span th:text="${#numbers.formatInteger(lipresult.pprice, 3, 'COMMA')}"></span>
+                                  <span>[[${#numbers.formatInteger(lipresult.pprice, 3, 'COMMA')}]]<em>원</em></span>
+                                  
                                 </div>
                                 <div>
                                   <a th:text="${lipresult.pname}"></a>
@@ -443,7 +444,7 @@ header#header {
                                   th:value="${blushresult.optname}"
                                 />
                                 <div class="price-info single">
-                                  <span th:text="${#numbers.formatInteger(blushresult.pprice, 3, 'COMMA')}"></span>
+                                   <span>[[${#numbers.formatInteger(blushresult.pprice, 3, 'COMMA')}]]<em>원</em></span>
                                 </div>
                                 <div>
                                   <a th:text="${blushresult.pname}"></a
@@ -479,7 +480,7 @@ header#header {
                                   th:value="${faceresult.optname}"
                                 />
                                 <div class="price-info single">
-                                  <span th:text="${#numbers.formatInteger(faceresult.pprice, 3, 'COMMA')}"></span>
+                                   <span>[[${#numbers.formatInteger(faceresult.pprice, 3, 'COMMA')}]]<em>원</em></span>
                                 </div>
                                 <div>
                                   <a th:text="${faceresult.pname}"></a
@@ -594,7 +595,7 @@ header#header {
         margin: 20px 0;
       }
       .price-info.single {
-  margin-bottom: 10px;
+  margin: 10px 0px;
 }
 .prod {
   width: 100%;

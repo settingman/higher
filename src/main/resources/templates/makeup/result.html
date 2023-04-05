@@ -505,8 +505,7 @@
 																	name="lip_opt" class="lip_opt"
 																	th:value="${liplist.optname}" />
 																<div class="price-info single">
-																	<span
-																		th:text="${#numbers.formatInteger(liplist.pprice, 3, 'COMMA')}"><i>원</i></span>
+																   <span>[[${#numbers.formatInteger(liplist.pprice, 3, 'COMMA')}]]<em>원</em></span>
 																</div>
 																<div>
 																	<a th:text="${liplist.pname}"></a>
@@ -551,8 +550,7 @@
 																	type="hidden" name="blush_opt" class="blush_opt"
 																	th:value="${blushlist.optname}" />
 																<div class="price-info single">
-																	<span
-																		th:text="${#numbers.formatInteger(blushlist.pprice, 3, 'COMMA')}"><i>원</i></span>
+																	 <span>[[${#numbers.formatInteger(blushlist.pprice, 3, 'COMMA')}]]<em>원</em></span>
 																</div>
 																<div>
 																	<a th:text="${blushlist.pname}"></a>
@@ -615,8 +613,7 @@
 																<input type="hidden" name="face_opt" class="face_opt"
 																	th:value="${foundationlist.optname}" />
 																<div class="price-info single">
-																	<span
-																		th:text="${#numbers.formatInteger(foundationlist.pprice, 3, 'COMMA')}"><i>원</i></span>
+																	 <span>[[${#numbers.formatInteger(foundationlist.pprice, 3, 'COMMA')}]]<em>원</em></span>
 																</div>
 																<div>
 																	<a th:text="${foundationlist.pname}"></a>
