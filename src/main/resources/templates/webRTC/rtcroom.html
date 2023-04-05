@@ -1,145 +1,275 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Chat Room</title>
-    <!-- Latest minified Bootstrap & JQuery-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-    <script src="https://kit.fontawesome.com/c2edef0625.js" crossorigin="anonymous"></script>
-    <!-- Custom styles for this template -->
-    <style>
-        .btn.active {
-            display: none;
-        }
+<meta charset="UTF-8">
+<title>Chat Room</title>
+<!-- Latest minified Bootstrap & JQuery-->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="/common/css/content.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<script src="https://kit.fontawesome.com/c2edef0625.js"
+	crossorigin="anonymous"></script>
+<!-- Custom styles for this template -->
+<style>
+#rtc-header {
+	width: 98%;
+	margin: 0 auto;
+	border-bottom: #e9e9e9 1px solid;
+	padding: 30px 0 20px 0;
+	margin-bottom: 25px;
+}
 
-        .btn span:nth-of-type(1) {
-            display: none;
-        }
+#rtc-header img {
+	height: 40px;
+}
 
-        .btn span:last-child {
-            display: block;
-        }
+.btn.active {
+	display: none;
+}
 
-        .btn.active span:nth-of-type(1) {
-            display: block;
-        }
+.btn span:nth-of-type(1) {
+	display: none;
+}
 
-        .btn.active span:last-child {
-            display: none;
-        }
-    </style>
-    <link rel="stylesheet" type="text/css" href="/css/rtc/main.css" />
+.btn span:last-child {
+	display: block;
+}
+
+.btn.active span:nth-of-type(1) {
+	display: block;
+}
+
+.btn.active span:last-child {
+	display: none;
+}
+
+.fa-solid, .fas {
+	font-weight: 900;
+	font-size: 22px;
+	line-height: 37px;
+}
+
+.btn-outline-success {
+	color: #fff;
+	background-color: rgb(60, 64, 67);
+	background-image: none;
+	border-radius: 50%;
+	border-color: rgb(60, 64, 67);
+	height: 50px;
+	width: 50px;
+}
+
+.btn-outline-success:hover {
+	background-color: rgb(234, 67, 53);
+	border-color: rgb(234, 67, 53);
+}
+
+.btn-outline-warning {
+	color: #fff;
+	border-color: rgb(234, 67, 53);
+	background: rgb(234, 67, 53);
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+}
+
+.btn-outline-warning:hover {
+	background-color: rgb(60, 64, 67);
+	border-color: rgb(60, 64, 67);
+	color: #fff;
+}
+
+#video2 {
+	padding: 0 0 0 5px;
+	overflow: hidden;
+	border-radius: 7px;
+}
+
+#view_on:hover {
+	background-color: #28a745;
+	border-color: #28a745;
+}
+
+#view_off {
+	background-color: #28a745;
+	border-color: #28a745;
+}
+
+#user-info{
+	font-size: 17px;
+	margin-bottom: 10px;
+	color: #fff;
+}
+
+#exit{
+    color: #fff;
+    background-color: rgb(60, 64, 67);
+    border: rgb(60, 64, 67);
+    height: 45px;
+    width: 85px;
+    font-size: 14px;
+    border-radius: 11px;
+    padding: 0;
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+#exit i{
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 22px;
+    vertical-align: baseline;
+}
+
+#btn-wrap>div{
+	width: 33.3%;
+}
+
+#buttons{
+	text-align: center;
+    display: block;
+}
+
+#exit-btn-wrap{
+    text-align: right;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="/css/rtc/main.css" />
 </head>
 
-<body class="text-center">
+<body class="text-center" style="background-color: rgb(32, 33, 36);">
+	<div id="rtc-header">
+		<img src="/img/h-logo-white.png">
+	</div>
 
-    <!-- Begin page content -->
-    <main role="main" class="container-fluid">
-        <h1>현대 온라인 뷰티</h1>
-        <input type="hidden" id="id" name="id" th:value="${room.roomId}" />
-        <input type="hidden" id="uuid" name="uuid" th:value="${uuid}">
-        <div class="col-lg-12 mb-3">
-            <div class="mb-3" th:text=" '@ Room #' + ${room.roomName}">Local User Id</div>
-            <div class="col-lg-12 mb-3">
-                <div class="d-flex justify-content-around mb-3">
-                    <div id="buttons" class="row">
-                        <div class="btn-group mr-2" role="group">
-                            <div class="mr-2" data-toggle="buttons">
+	<!-- Begin page content -->
+	<main role="main" class="container-fluid">
+		<input type="hidden" id="id" name="id" th:value="${room.roomId}" /> <input
+			type="hidden" id="uuid" name="uuid" th:value="${uuid}">
+		<div class="col-lg-12 mb-3">
+<div class="mt-2" id="user-info" th:text=" '@ Room #' + ${room.roomName}">Local
+					User Id</div>
+			<div class="col-lg-12 mb-3"></div>
 
-                                <label class="btn btn-outline-success" id="video_off"> <input type="radio" name="options" style="display: none" autocomplete="off">
-                                    <i class="fa-solid fa-video fa-xl"></i>
-                                </label> <label class="btn btn-outline-warning active" id="video_on"> <input type="radio" name="options" style="display: none" autocomplete="off" checked><i class="fa-solid fa-video-slash fa-xl"></i>
-                                </label>
-                            </div>
-                            <div class="mr-2" data-toggle="buttons">
-                                <label class="btn btn-outline-success" id="audio_off"> <input type="radio" name="options" style="display: none" autocomplete="off">
-                                    <i class="fa-solid fa-microphone fa-xl"></i>
-                                </label> <label class="btn btn-outline-warning active" id="audio_on"> <input type="radio" name="options" style="display: none" autocomplete="off" checked><i class="fa-solid fa-microphone-slash fa-xl"></i>
-                                </label>
-                            </div>
-                            <div class="mr-2" data-toggle="buttons">
-                                <label class="btn btn-outline-success" id="view_on"> <input type="radio" name="options" style="display: none" autocomplete="off"><i class="fa-solid fa-display fa-xl"></i>
-                                </label> <label class="btn btn-outline-warning active" id="view_off"> <input type="radio" name="options" style="display: none" autocomplete="off"><i class="fa-solid fa-spinner fa-spin fa-xl"></i>
-                                </label>
-                            </div>
-                        </div>
+			<div class="row justify-content-around mb-3">
+				<div class="col-lg-6 mb-3" style="padding: 0 5px 0 0;">
+					<video id="local_video" autoplay playsinline></video>
+				</div>
 
-                        <a sec:authorize="hasRole('USER')" href="/rtc/room">
-                            <button type="button" class="btn btn-outline-danger" id="exit" name="exit">
-                                <i class="fa-solid fa-phone-slash fa-xl"></i>
-                            </button>
-                        </a>
-                        <a sec:authorize="hasRole('ADMIN')" href="/rtc/room">
-                            <button type="button" class="btn btn-outline-danger" id="exit" name="exit">
-                                <i class="fa-solid fa-phone-slash fa-xl"></i>
-                            </button>
-                        </a>
-                    </div>
-                </div>
-            </div>
+				<div class="col-lg-6 mb-3 container2" style="padding: 0 0 0 5px;"
+					id="video2">
 
-            <div class="row justify-content-around mb-3">
-                <div class="col-lg-6 mb-3 ">
-                    <video id="local_video" autoplay playsinline></video>
-                </div>
-
-                <div class="col-lg-6 mb-3 container2">
-
-                    <video id="remote_video" poster="/video_loading.png" autoplay playsinline>
+					<video id="remote_video" poster="/video_loading.png" autoplay
+						playsinline>
 
 
-                    </video>
+					</video>
 
-                </div>
-                <div class="col-lg-6 mb-3">
-                    <video id="share-video" autoplay=""></video>
-                </div>
-            </div>
+				</div>
+			</div>
+				
+				<div class="d-flex justify-content-around mb-3" id="btn-wrap">
+					<div>
+					
+					</div>
+					<div id="buttons" class="row">
+						<div class="btn-group mr-2" role="group">
+							<div class="mr-2" data-toggle="buttons">
 
-        </div>
-    </main>
+								<label class="btn btn-outline-success" id="video_off"> <input
+									type="radio" name="options" style="display: none"
+									autocomplete="off"> <i class="fa-solid fa-video fa-xl"></i>
+								</label> <label class="btn btn-outline-warning active" id="video_on">
+									<input type="radio" name="options" style="display: none"
+									autocomplete="off" checked><i
+									class="fa-solid fa-video-slash fa-xl"></i>
+								</label>
+							</div>
+							<div class="mr-2" data-toggle="buttons">
+								<label class="btn btn-outline-success" id="audio_off"> <input
+									type="radio" name="options" style="display: none"
+									autocomplete="off"> <i
+									class="fa-solid fa-microphone fa-xl"></i>
+								</label> <label class="btn btn-outline-warning active" id="audio_on">
+									<input type="radio" name="options" style="display: none"
+									autocomplete="off" checked><i
+									class="fa-solid fa-microphone-slash fa-xl"></i>
+								</label>
+							</div>
+							<div class="mr-2" data-toggle="buttons">
+								<label class="btn btn-outline-success" id="view_on"> <input
+									type="radio" name="options" style="display: none"
+									autocomplete="off"><i class="fa-solid fa-display fa-xl"></i>
+								</label> <label class="btn btn-outline-warning active" id="view_off">
+									<input type="radio" name="options" style="display: none"
+									autocomplete="off"><i
+									class="fa-solid fa-spinner fa-spin fa-xl"></i>
+								</label>
+							</div>
+						</div>
+
+						
+					</div>
+					<div id="exit-btn-wrap">
+						<a sec:authorize="hasRole('USER')" href="/rtc/room">
+							<button type="button" class="btn btn-outline-danger" id="exit"
+								name="exit">
+								상담종료
+							</button>
+						</a> <a sec:authorize="hasRole('ADMIN')" href="/rtc/room">
+							<button type="button" class="btn btn-outline-danger" id="exit"
+								name="exit">
+								상담종료
+							</button>
+						</a>
+					</div>
+				</div>
+		</div>
+	</main>
 
 
 
-    <script src="/js/rtc/webrtc_client.js"></script>
+	<script src="/js/rtc/webrtc_client.js"></script>
 
-    <style>
-        .container {
-            width: 100vw;
-            height: 80vh;
-            background: pink;
-            marin: 0px;
-        }
+	<style>
+.container {
+	width: 100vw;
+	height: 80vh;
+	background: pink;
+	margin: 0px;
+}
 
-        #local_video {
-            width: 100vw;
-            height: 100%;
-        }
+#local_video {
+	width: 100vw;
+	border-radius: 7px;
+}
 
-        video[poster] {
-            /* 포스터 이미지의 크기를 비디오 영상에 꽉차도록 */
-            height: 50px;
-            width: 50px;
-        }
+video[poster] {
+	/* 포스터 이미지의 크기를 비디오 영상에 꽉차도록 */
+	width: 50px;
+}
 
-        #remote_video {
-            width: 100vw;
-            height: 100%;
-        }
+#remote_video {
+	width: 100vw;
+	border-radius: 7px;
+}
 
-        .container22 {
-            width: 100vw;
-            height: 50vh;
-            background: blue;
-        }
-    </style>
+.container22 {
+	width: 100vw;
+	height: 50vh;
+	background: blue;
+}
+</style>
 
 
-    <script>
+	<script>
         // 전체화면 기능 .
 
 
