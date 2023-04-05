@@ -28,7 +28,7 @@ import lombok.extern.log4j.Log4j2;
  */
 
 @Log4j2
-@RequestMapping("/cart")
+@RequestMapping("/shop")
 @Controller
 public class CartController {
 
@@ -53,7 +53,7 @@ public class CartController {
 		log.info(carts);
 
 			
-	return "cart/mycart";
+	return "shop/mycart";
 	}
 	
 }

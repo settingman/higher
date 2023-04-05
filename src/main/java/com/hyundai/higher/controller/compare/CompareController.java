@@ -21,7 +21,7 @@ import lombok.extern.log4j.Log4j2;
  */
 
 @Log4j2
-@RequestMapping("/compare")
+@RequestMapping("/productCompare")
 @Controller
 public class CompareController {
 
@@ -30,7 +30,7 @@ public class CompareController {
 	@GetMapping("/main")
 	public String compare(Model model) {
 		
-		return "compare/main";
+		return "productCompare/main";
 	}
 
 }
