@@ -1,6 +1,9 @@
 package com.hyundai.higher.controller.makeup;
 
 import java.io.IOException;
+import java.net.URLDecoder;
+import java.nio.file.Paths;
+import java.security.Principal;
 import java.util.List;
 import java.util.Map;
 
@@ -24,12 +27,14 @@ import org.springframework.web.client.RestTemplate;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.hyundai.higher.domain.beauty.Profile;
 import com.hyundai.higher.domain.makeup.BlushVO;
 import com.hyundai.higher.domain.makeup.FoundationVO;
 import com.hyundai.higher.domain.makeup.LipVO;
 import com.hyundai.higher.domain.makeup.ReservVO;
 import com.hyundai.higher.domain.makeup.ResultVO;
 import com.hyundai.higher.domain.member.Member;
+import com.hyundai.higher.mapper.beauty.BeautyMapper;
 import com.hyundai.higher.service.makeup.MakeupService;
 import com.hyundai.higher.service.makeup.MypageService;
 
@@ -65,6 +70,9 @@ public class MakeupController {
 
 	@Autowired
 	private MypageService mypage;
+	
+	@Autowired
+	private BeautyMapper mapper;
 
 	@GetMapping("/form")
 	public void makeupForm(@RequestParam("rid") String rid, Model model) {
@@ -115,7 +123,7 @@ public class MakeupController {
 	@PostMapping("/result")
 	public String MakeupResult(@RequestParam("filePath") String filePath, @RequestParam("lips") String lips,
 			@RequestParam("blush") String blush, @RequestParam("foundation") String foundation,
-			@RequestParam("output_filepath") String output_filepath, @RequestParam("rid") String rid, Model model)
+			@RequestParam("output_filepath") String output_filepath, @RequestParam("rid") String rid, Principal principal, Model model)
 			throws IOException {
 
 		log.info("선택한 입술 색상 : " + lips);
@@ -136,6 +144,25 @@ public class MakeupController {
 		model.addAttribute("foundation", foundation);
 		model.addAttribute("output_filepath", output_filepath);
 		model.addAttribute("rid", rid);
+		
+		ReservVO res = new ReservVO();
+		res = mypage.getReservInfo(rid);
+		String rrid = res.getMid();
+		
+		Profile pro = new Profile();
+		pro = mapper.findProfile(rrid, rid);
+
+		Member mem = new Member();
+		mem = service.MemInfo(rrid);
+		log.info("고객 정보 : " + mem.getMName());
+		log.info(res);
+		log.info(pro);
+		log.info(principal);
+
+		model.addAttribute("mem", mem);
+		model.addAttribute("res", res);
+		model.addAttribute("pro", pro);
+		model.addAttribute("principal", principal);
 
 		log.info(liplist);
 		log.info(blushlist);
@@ -152,6 +179,10 @@ public class MakeupController {
 			@RequestParam("lips") String lips, @RequestParam("blush") String blush,
 			@RequestParam("foundation") String foundation, Model model) throws IOException {
 
+		filePath = URLDecoder.decode(filePath, "UTF-8"); 
+		filePath = filePath.replace('/', '\\'); 
+		filePath = Paths.get(filePath).toString(); 
+		
 		log.info("선택한 입술 색상 : " + lips);
 		log.info("선택된 블러쉬 색상 : " + blush);
 		log.info("선택된 파운데이션 색상 : " + foundation);
