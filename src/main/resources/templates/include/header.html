@@ -80,8 +80,8 @@ $(function(){
     <nav>
       <ul>
         <!-- 로그인 전 -->
-        <li><a href="https://www.larocheposay.co.kr/member/login.do">로그인</a></li>
-        <li><a href="https://www.larocheposay.co.kr/member/auth.do">회원가입</a></li>
+        <li><a href="/member/login">로그인</a></li>
+        <li><a href="/member/joinform">회원가입</a></li>
         <li><a href="https://www.larocheposay.co.kr/myPage/shopping/list.do">주문/배송조회</a></li>
         <li><a href="https://www.larocheposay.co.kr/cscenter/csHome.do">고객케어센터</a></li>
       </ul>
@@ -118,9 +118,6 @@ $(function(){
       <form id="headerSearchForm">
         <div class="search_cart">
           <div class="search_faq">
-            <input type="hidden" value="182" name="seq">
-            <input type="hidden" value="SHA001" name="hitType">
-            <input type="search" title="검색 입력창" name="topSearchKeyword" placeholder="유비데아로 촉촉하게 톤업" maxlength="20">
             <button type="button" onclick="topSearchEvent();"><span>검색</span></button>
           </div>
           <a href="https://www.larocheposay.co.kr/cart/cart.do" class="btn-cart"><span class="hide">장바구니</span><span

@@ -1,5 +1,4 @@
 'use strict';
-const addr = "localhost:8443"
 
 // document.write("<script src='jquery-3.6.1.js'></script>")
 document.write("<script\n" +
