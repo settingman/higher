@@ -52,7 +52,7 @@ function saveResult(mbti){
 }
 
 function goMatch(mbti){
-	let url = "/match/matchMain?mbti=" + mbti;
+	let url = "/match/main?mbti=" + mbti;
 	
 	$(location).attr('href',url);
 }

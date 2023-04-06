@@ -7,9 +7,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hyundai.higher.domain.category.MBTIDTO;
 import com.hyundai.higher.domain.product.ProductDTO;
 import com.hyundai.higher.domain.product.ProductDetailDTO;
-import com.hyundai.higher.mapper.product.ProductMapper;
+import com.hyundai.higher.mapper.category.CategoryMapper;
 import com.hyundai.higher.mapper.similarCos.SimilarCosMapper;
 import com.hyundai.higher.service.product.ProductService;
 
@@ -24,6 +25,9 @@ public class SimilarCosServiceImpl implements SimilarCosService {
 	
 	@Autowired
 	private SimilarCosMapper mapper;
+	
+	@Autowired
+	private CategoryMapper cMapper;
 	
 
 	// 유사성분템 제품 추천
@@ -76,6 +80,13 @@ public class SimilarCosServiceImpl implements SimilarCosService {
 	public List<ProductDTO> bestProdList() {
 
 		return mapper.selectBestProdList();
+	}
+
+	// mbti 카테고리
+	@Override
+	public List<MBTIDTO> mbtiList() {
+
+		return cMapper.mbtiCateListAll();
 	}
 
 

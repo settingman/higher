@@ -38,4 +38,6 @@ public class ProductDTO {
 	private String pcaution;
 	private String pingredient;
 	
+	private String pmbti;
+	
 }

@@ -11,15 +11,17 @@
 		<result property="pmbti" column="pmbti"/>
 		<result property="pmbti" column="pmbti"/>
 		<result property="iloc" column="iloc"/>
+		<result property="pprice" column="pprice"/>
+		<result property="bname" column="bname"/>		
 	</resultMap>
 
 	<select id="mbtiProduct" resultMap="mbtiMap">
-	select pi.pcode, pi.pname, pi.dept1no, pi.dept2no, pi.pmbti, pi.iloc
+	select pi.pcode, pi.pname, pi.dept1no, pi.dept2no, pi.pmbti, pi.iloc, pi.pprice, pi.bname
 	from(
-	    select p.pcode, p.pname, p.dept1no,p.dept2no,p.pmbti, i.iloc, 
+	    select p.pcode, p.pname, p.dept1no,p.dept2no,p.pmbti, i.iloc, p.pprice, p.bno, p.bname,
 	          row_number() over
 	          (partition by p.pcode order by i.iloc desc) as rn 
-	    from img i right join product p on p.pcode=i.pcode
+	    from img i right join (select pcode, pname, dept1no, dept2no, pprice, pd.bno, bname, pmbti from product pd join brand b on pd.bno=b.bno) p on p.pcode=i.pcode
 	    where i.itype='thumb' and p.pmbti=#{pmbti}
 	    ) pi right join product p on pi.pcode = p.pcode
 	    where pi.rn =1
@@ -39,6 +41,13 @@
 	    where i.itype='thumb' and p.dept1no=10 and p.pname like  '%'||#{keyword}||'%'
 	    ) pi right join product p on pi.pcode = p.pcode
 	    where pi.rn =1
+	</select>
+	
+	<!-- 회원 mbti 정보 불러오기 -->
+	<select id="getMemMbti" resultType="com.hyundai.higher.domain.match.MemberMBTIDTO">
+		SELECT mid, mbti, mbti_scores, stag
+		FROM member m JOIN skinmbti s on m.mbti=s.stype
+		WHERE mid=#{mid}
 	</select>
 	
 </mapper>

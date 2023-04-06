@@ -1,0 +1,114 @@
+#match-tit{
+    font-family: 'locator-regular';
+    padding-bottom: 10px;
+}
+
+#tit-info{
+	font-size: 13px;
+}
+
+#mem-wrap{
+	padding-top: 60px;
+}
+
+#mem-icon{
+	float: left;
+}
+
+#mem-icon img{
+	width: 45px; 
+	margin-right: 15px;
+}
+
+#mem-info{
+	padding-top: 10px; 
+	line-height: 26px;
+}
+
+#mem-info span{
+	color: #bfae90;
+}
+
+#mbti{
+	text-align: center;
+    font-size: 31px;
+    font-family: 'notokr-medium';
+    padding: 22px 0 13px;
+    color: #666666;
+    text-decoration-thickness: from-font;
+}
+
+#mbti-info{
+	text-align: center;
+    font-family: 'notokr-demilight';
+    font-size: 13px;
+    padding-bottom: 36px;
+    color: #666666;
+    padding-top: 10px;
+}
+
+#detail-btn{
+	width: 100%;
+    background-color: #bfae90;
+    color: #fff;
+    height: 39px;
+    margin-top: 46px;
+    font-family: 'notokr-demilight';
+}
+
+.sub-tit{
+	text-align: right;
+	font-family: 'notokr-demilight';
+    font-size: 17px;
+    color: #666666;
+    margin-right: 5px;
+    margin-bottom: 60px;
+}
+
+.sub-tit span{
+	font-family: 'locator-medium';
+	margin-right: 5px;
+}
+
+#search_tit{
+	display: none;
+}
+
+#search-keyword{
+	color: #f77694;
+    font-family: 'notokr-medium';
+    font-size: 21px;
+}
+
+#totalCount{
+	color: #f77694;
+    font-size: 19px;
+}
+
+#search-list{
+	display: none;
+	width: 558.4px;
+    margin: 0 auto;
+    border: 1px solid #000;
+    background-color: #fff;
+    position: absolute;
+    left: 145px;
+    z-index: 999;
+}
+
+#search-list li{
+	padding: 12px 17px;
+}
+
+#search-list li:first-child{
+	margin-top: 10px;
+}
+
+#search-list li:last-child{
+	margin-bottom: 10px;
+}
+
+#search-list li:hover{
+	background-color: #e9e9e9;
+	cursor: pointer;
+}

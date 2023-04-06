@@ -23,6 +23,8 @@ public class MatchProductDTO {
 	private String dept2no;
 	private String pmbti;
 	private String iloc;
+	private String bname;
+	private String pprice;
 
 
 }

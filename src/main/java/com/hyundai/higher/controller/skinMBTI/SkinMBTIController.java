@@ -1,9 +1,12 @@
 package com.hyundai.higher.controller.skinMBTI;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -40,7 +43,7 @@ public class SkinMBTIController {
 	}
 	
 	// 결과
-	@GetMapping("/result")
+	@PostMapping("/result")
 	public String skinMBTIResult(@RequestParam("mbti") String mbti, 
 			@RequestParam("score1") int score1, @RequestParam("score2") int score2, 
 			@RequestParam("score3") int score3, @RequestParam("score4") int score4, Model model) {

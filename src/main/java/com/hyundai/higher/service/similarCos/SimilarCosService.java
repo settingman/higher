@@ -2,6 +2,7 @@ package com.hyundai.higher.service.similarCos;
 
 import java.util.List;
 
+import com.hyundai.higher.domain.category.MBTIDTO;
 import com.hyundai.higher.domain.product.ProductDTO;
 import com.hyundai.higher.domain.product.ProductDetailDTO;
 
@@ -18,4 +19,7 @@ public interface SimilarCosService {
 
 	// 인기 상품 목록
 	public List<ProductDTO> bestProdList();
+	
+	// mbti 카테고리
+	public List<MBTIDTO> mbtiList();
 }
