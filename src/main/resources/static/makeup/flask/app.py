@@ -75,6 +75,8 @@ def try_makeup():
     
     # 파일경로 불러오기
     image = cv2.imread(filePath, cv2.IMREAD_UNCHANGED)
+    
+    print('원본 파일 경로')
     print(filePath)
     
     # 각 부위 별 색상 넣기
@@ -94,6 +96,7 @@ def try_makeup():
     output_filename = f"output_{int(time.time())}_{uuid.uuid4()}.jpg"
     output_filepath_local= f"./img/{output_filename}"
     cv2.imwrite(output_filepath_local, blend)
+    print('output 로컬 경로')
     print(output_filepath_local)
     print(output_filename)
     

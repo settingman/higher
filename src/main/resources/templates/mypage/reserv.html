@@ -159,18 +159,16 @@ header#header {
         <div class="content-wrap hasleft myhyundai">
           <!-- left contents -->
 
-          <div class="leftarea">
+       <div class="leftarea">
             <h2>
-              <a href="/front/mpf/selectMyPageMain.thd"
-                >마이현대<span>MY HYUNDAI</span></a
-              >
+              <a href="/front/mpf/selectMyPageMain.thd">마이현대<span>MY HYUNDAI</span></a>
             </h2>
             <div class="line"></div>
 
             <!-- leftmenu -->
             <ul class="leftmenu">
               <li class="">
-                <a class="not">Make-On</a>
+                <a class="not">MY Make-ON</a>
                 <ul>
                   <li class="">
                     <a>예약 관리</a>
@@ -187,37 +185,23 @@ header#header {
                 </ul>
               </li>
               <li class="">
-                <a class="not">주문현황</a>
+                <a class="not">MY 피부 MBTI</a>
                 <ul>
                   <li class="">
-                    <a
-                      href="/front/mpa/selectOrdDlvCrst.thd"
-                      onclick="javascript:GA_Event('PC_마이페이지', 'LNB', '주문현황_주문확인/배송조회');"
-                      >주문확인/배송조회</a
-                    >
+                    <a href="/front/mpd/changeMemberInfoForm.thd" onclick="javascript:GA_Event('PC_마이페이지', 'LNB', '나의정보_회원정보변경');">결과 보기</a>
                   </li>
+                </ul>
+              </li>
+              <li class="">
+                <a class="not">MY 주문</a>
+                <ul>
                   <li class="">
-                    <a
-                      href="/front/mpa/selectOrdCnclCrst.thd"
-                      onclick="javascript:GA_Event('PC_마이페이지', 'LNB', '주문현황_취소/반품/교환');"
-                      >취소/반품/교환</a
-                    >
+                    <a href="/front/mpa/selectOrdDlvCrst.thd" onclick="javascript:GA_Event('PC_마이페이지', 'LNB', '주문현황_주문확인/배송조회');">주문 내역</a>
                   </li>
+                  
                 </ul>
               </li>
 
-              <li class="">
-                <a class="not">나의 정보</a>
-                <ul>
-                  <li class="">
-                    <a
-                      href="/front/mpd/changeMemberInfoForm.thd"
-                      onclick="javascript:GA_Event('PC_마이페이지', 'LNB', '나의정보_회원정보변경');"
-                      >회원정보변경</a
-                    >
-                  </li>
-                </ul>
-              </li>
             </ul>
             <!-- //leftmenu -->
           </div>
@@ -367,7 +351,7 @@ header#header {
                       <td class="ctrl">
                         <p class="v-btn-wrap">
                           <a
-                            th:href="'/mypage/result?rid=' + ${nores.roomid}"
+                            th:href="'/chat/room?roomId=' + ${nores.roomid}"
                             onclick="javascript:GA_Event('PC_마이페이지', '최근_주문_배송내역', '상세내역');"
                             class="btn color4 size1"
                             >입장 하기</a
