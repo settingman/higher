@@ -39,6 +39,14 @@
 		MId=#{mId}
 	</select>
 	
+	
+	<update id="updateMileage">
+		update MEMBER set MMILEAGE =MMILEAGE + #{MMILEAGE}
+		where
+		MId=#{mId}
+	</update>
+	
+	
 
 
 	<update id="updatePassword">

@@ -28,6 +28,7 @@ import lombok.extern.slf4j.Slf4j;
  * ----------      --------    ---------------------------
  * 2023. 3. 3.     박성환      최초 생성
  * 2023. 3. 6.     박성환      주문 목록 페이지 처리
+ * 2023. 3. 24.     박성환     주문 아이템 리스트 처리
  *     </pre>
  */
 @Slf4j
@@ -62,10 +63,7 @@ public class OrderController {
 
 		model.addAttribute("mileage", mileage);
 
-		// cartService.cartToOrder(pIdList,principal.getName());
-		// 장바구니에서 선택된 상품의 id 값을 리스트로 받은 뒤 상품id와 회원 id를 통하여 장바구니 정보를 가져와 담아준다.
-
-		// 장바구니에서 상품id를 넘겨받아서 그걸 사용해서 카트테이블 조회해서 카트 객체 받아서 뿌림.
+		
 		model.addAttribute("orderItems", orderItems);
 		// 장바구니 객체를 리스트로 담아 넘긴다.
 

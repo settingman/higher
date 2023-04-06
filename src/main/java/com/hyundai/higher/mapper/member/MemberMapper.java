@@ -32,5 +32,7 @@ public interface MemberMapper {
 	void updatePassword(@Param("mId") String mId, @Param("encryptPassword") String encryptPassword);
 	
 	Integer findMileage(@Param("mId") String mId);
+	
+	void updateMileage(@Param("mId") String mId, @Param("MMILEAGE") Integer MMILEAGE);
 
 }

@@ -33,6 +33,7 @@ import lombok.extern.slf4j.Slf4j;
  *   수정일         수정자               수정내용
  * ----------      --------    ---------------------------
  * 2023. 3. 7.     박성환      	최초 생성
+ * 2023. 4. 6.     박성환      	마일리지 적립 수정
  *     </pre>
  */
 @Slf4j
@@ -43,6 +44,7 @@ public class BillingController {
 
 	private final OrderMapper orderMapper;
 	private final MemberMapper memberMapper;
+	
 	private RestTemplate restTemplate = new RestTemplate();
 	private static String testSecretApiKey = "test_sk_YPBal2vxj81Rx9BLyw35RQgOAND7";
 	private static String tossOriginUrl = "https://api.tosspayments.com/v1/payments/confirm";
@@ -87,11 +89,25 @@ public class BillingController {
 		model.addAttribute("orderSheet", orderSheet);
 
 		// ORDER TABLE INSERT
-
-		
 		
 		String customerName = principal.getName();
 		LocalDate now = LocalDate.now();
+		
+		
+		int useMileage = orderSheet.getOMileage();
+		int makeMileage = (int) ((int) orderSheet.getOTotalPrice() * 0.03);
+		
+		int saveMileage = makeMileage-useMileage;
+		
+		log.info("save mileage {}",saveMileage);
+		log.info(" useMileage {}",useMileage);
+		log.info(" makeMileage {}",makeMileage);
+		
+		memberMapper.updateMileage(customerName, saveMileage);
+
+		
+		
+		
 
 		orderSheet.setODate(now.toString());
 		orderMapper.insertOrder(orderSheet, customerName);
@@ -115,9 +131,7 @@ public class BillingController {
 		// ORDER ITEMS 에 주문된 상품 목록 넣기.
 		
 		
-		int mileage = memberMapper.findMileage(principal.getName());
 		
-		model.addAttribute("mileage", mileage);
 		
 		
 		

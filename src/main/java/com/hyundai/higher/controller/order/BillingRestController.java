@@ -21,6 +21,19 @@ import com.hyundai.higher.mapper.order.OrderMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * @since   : 2023. 3. 7.
+ * @FileName: BillingRestController.java
+ * @author  : 박성환
+ * @설명    : 토스 Api 결제 확인
+
+ * <pre>
+ *   수정일         수정자               수정내용
+ * ----------      --------    ---------------------------
+ * 2023. 3. 7.     박성환      	최초 생성
+ * 
+ * </pre>
+ */
 @Slf4j
 @RequestMapping("/toss")
 @RestController
