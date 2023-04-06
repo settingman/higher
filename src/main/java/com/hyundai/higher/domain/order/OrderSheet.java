@@ -45,6 +45,7 @@ public class OrderSheet {
 	private String oPayment;
 	
 	private Integer oTotalPrice;
+	private Integer oMileage;
 	
 	private List<String> product_id;
 	private List<Integer> product_Quntity;

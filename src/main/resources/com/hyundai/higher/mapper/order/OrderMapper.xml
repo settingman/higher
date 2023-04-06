@@ -15,7 +15,7 @@
 		#{orderSheet.oZipcode}, #{orderSheet.oAddress1}, #{orderSheet.oDate},
 		#{orderSheet.oReceiver},
 		#{orderSheet.oTel},
-		null, null,1,
+		#{orderSheet.oMileage}, null,1,
 		#{orderSheet.oPayment},
 		#{orderSheet.oAddress2},
 		#{orderSheet.oName},

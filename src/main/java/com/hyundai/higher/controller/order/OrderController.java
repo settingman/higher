@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.hyundai.higher.domain.cart.CartItem;
 import com.hyundai.higher.domain.cart.OrderItem;
+import com.hyundai.higher.mapper.member.MemberMapper;
 import com.hyundai.higher.mapper.order.OrderMapper;
 
 import lombok.RequiredArgsConstructor;
@@ -37,38 +37,34 @@ import lombok.extern.slf4j.Slf4j;
 public class OrderController {
 
 	private final OrderMapper orderMapper;
-	
-	
+	private final MemberMapper memberMapper;
+
 	// 오더페이지 이동.
 	@GetMapping(value = "/order")
-	public String Order(@RequestParam(required = false,defaultValue = "") List<String> pIdList, Model model, Principal principal) {
+	public String Order(@RequestParam(required = false, defaultValue = "") List<String> pIdList, Model model,
+			Principal principal) {
 
 		List<OrderItem> orderItems = new ArrayList<OrderItem>();
-		
-		
+
 		String mid = principal.getName();
-			
-		
-		if(!pIdList.isEmpty()) {
-			
-			for(String pcode : pIdList) {
-				
-				
-				
+
+		if (!pIdList.isEmpty()) {
+
+			for (String pcode : pIdList) {
+
 				orderItems.add(orderMapper.selectCartItem(mid, pcode));
-				
+
 			}
-			
-			
+
 		}
-		
-		
-		
+
+		int mileage = memberMapper.findMileage(principal.getName());
+
+		model.addAttribute("mileage", mileage);
 
 		// cartService.cartToOrder(pIdList,principal.getName());
 		// 장바구니에서 선택된 상품의 id 값을 리스트로 받은 뒤 상품id와 회원 id를 통하여 장바구니 정보를 가져와 담아준다.
 
-		
 		// 장바구니에서 상품id를 넘겨받아서 그걸 사용해서 카트테이블 조회해서 카트 객체 받아서 뿌림.
 		model.addAttribute("orderItems", orderItems);
 		// 장바구니 객체를 리스트로 담아 넘긴다.

@@ -17,6 +17,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.google.gson.Gson;
 import com.hyundai.higher.domain.order.OrderSheet;
+import com.hyundai.higher.mapper.member.MemberMapper;
 import com.hyundai.higher.mapper.order.OrderMapper;
 
 import lombok.RequiredArgsConstructor;
@@ -41,6 +42,7 @@ import lombok.extern.slf4j.Slf4j;
 public class BillingController {
 
 	private final OrderMapper orderMapper;
+	private final MemberMapper memberMapper;
 	private RestTemplate restTemplate = new RestTemplate();
 	private static String testSecretApiKey = "test_sk_YPBal2vxj81Rx9BLyw35RQgOAND7";
 	private static String tossOriginUrl = "https://api.tosspayments.com/v1/payments/confirm";
@@ -111,6 +113,13 @@ public class BillingController {
 		
 		
 		// ORDER ITEMS 에 주문된 상품 목록 넣기.
+		
+		
+		int mileage = memberMapper.findMileage(principal.getName());
+		
+		model.addAttribute("mileage", mileage);
+		
+		
 		
 		
 		

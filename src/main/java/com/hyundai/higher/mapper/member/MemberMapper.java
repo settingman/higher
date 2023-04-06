@@ -30,5 +30,7 @@ public interface MemberMapper {
 	Member findByNameId(@Param("mName") String mName, @Param("mId") String mId);
 
 	void updatePassword(@Param("mId") String mId, @Param("encryptPassword") String encryptPassword);
+	
+	Integer findMileage(@Param("mId") String mId);
 
 }

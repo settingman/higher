@@ -4,11 +4,8 @@
  @설명 : 오더 페이지
 -->
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-
 <title>주문 | 더한섬닷컴</title>
-
 <th:block th:replace="common/head :: headFragment"></th:block>
-
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0" />
@@ -35,7 +32,6 @@
 	margin-right: 16px;
 }
 </style>
-
 </script>
 <link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" />
 </head>
@@ -57,7 +53,6 @@
 				<a href="#footer">푸터영역 바로가기</a>
 			</p>
 		</div>
-
 		<div id="js-tpl-topBanner" style="display: none"></div>
 		<div class="top-wrap sub">
 			<div class="top-area-setting">
@@ -67,7 +62,6 @@
 							<a href="http://www.thehyundai.com/Home.html?MainpageGroup=Fix&amp;GroupbannerName=GNB_Logo"><span class="blind">The HYUNDAI</span></a>
 						</h1>
 					</div>
-
 					<div class="top-con-quick">
 						<ul>
 							<li class="myshop-info">
@@ -264,7 +258,7 @@
 										checked="checked" class="gencrinputstyle"
 									/><span class="cr-radio checked" id="gencrinputstyle-dstnSeq_0000000001"
 									style="cursor: pointer; margin-left: -16px; margin-top: -7.5px; margin-right: 0px;"
-								></span> </span>
+								></span></span>
 								<table>
 									<caption></caption>
 									<colgroup>
@@ -301,7 +295,6 @@
 									</tbody>
 								</table>
 							</div>
-
 						</div>
 					</div>
 				</div>
@@ -309,12 +302,6 @@
 				<div class="ordersheet-box">
 					<div class="ordersheet-title">
 						<h3>주문상품</h3>
-						<div class="right-area best-sale" style="white-space: normal">
-							<input type="checkbox" id="order-product-chk" class="gencrinputstyle" />
-							<span class="cr-checkbox checked" id="gencrinputstyle-order-product-chk"
-								style="cursor: pointer; margin-left: -17px; margin-top: -0.5px; margin-right: 0px;"
-							></span><span>최적 쿠폰 할인 적용</span>
-						</div>
 					</div>
 					<!--cart-list-->
 					<div class="cart-list">
@@ -338,13 +325,14 @@
 									</tr>
 								</thead>
 								<tbody>
-
 									<tr th:each="orderItem, stat : ${orderItems}">
 										<td class="valign-top">
 											<div class="prod-info no-ctrl">
 												<div class="img" id="img-40A1650970">
 													<input type="hidden" th:value="${orderItem.pcode}" />
-													<img th:src="${orderItem.IMAGE_PATH} + '_600.jpg'" onerror="noImage(this, 'https://image.thehyundai.com/hdmall/images/pd/no_image_100x100.jpg')" />
+													<img th:src="${orderItem.IMAGE_PATH} + '_600.jpg'"
+														onerror="noImage(this, 'https://image.thehyundai.com/hdmall/images/pd/no_image_100x100.jpg')"
+													/>
 													<div class="hover-info">
 														<a href="http://www.thehyundai.com/front/pda/itemPtc.thd?slitmCd=40A1650970&amp;sectId=102066" target="_blank" title="새창으로 보기">새창으로
 															보기</a><a href="javascript:sltdItemDone('40A1650970:00001','102066',event);return false;" title="찜하기"
@@ -361,15 +349,13 @@
 											</div>
 										</td>
 										<td class="prod-num">[[${orderItem.pamount}]]개</td>
-										<td class="price-info">
-											<input type="hidden" class="total-price" th:value="${orderItem.pprice*orderItem.pamount}"/>
+										<td class="price-info"><input type="hidden" class="total-price" th:value="${orderItem.pprice*orderItem.pamount}" />
 											<div class="o-price" th:text="${#numbers.formatInteger(orderItem.pprice, 3, 'COMMA') + '원'}"></div>
-											<div class="tot-price" >
+											<div class="tot-price">
 												<span data-tcprate="1.0" data-luityn="N" data-stlmdcamt="0"
 													th:text="${#numbers.formatInteger(orderItem.pprice*orderItem.pamount, 3, 'COMMA') + '원'}"
 												></span>
-											</div>
-										</td>
+											</div></td>
 										<td class="sale-info">
 											<div class="sale-price">
 												<span id="sale-price-40A1650970-00001">0원<br /></span><a class="btn size0 color1" href="#"
@@ -377,18 +363,12 @@
 												>쿠폰변경</a>
 											</div>
 										</td>
-										
-										
-										<td  th:if="${stat.count == 1}")class="shipping" rowspan="2">
+										<td th:if="${stat.count==1}" )class="shipping" rowspan="2">
 											<div class="free">
 												<div class="free">무료배송</div>
 											</div>
 										</td>
 									</tr>
-									
-									
-
-
 								</tbody>
 							</table>
 							<!-- // 20181227 수정 -->
@@ -525,7 +505,7 @@
 															H.Point <strong class="point" id="upointCurAmt"></strong><a href="#tooltip-discount-hpoint" class="tooltip"><i class="icon help">정보</i></a>
 															<a href="#none" id="hPointSearchBtn" class="btn size1 color7 ml5" onclick="javascript:selectHpoint(this);return false;"
 																style="display: none"
-															>포인트 조회</a> <a href="javascript:void(window.open('https://www.h-point.co.kr/pe/preppoint/prepPayRequest.shd','_blank'))"
+															>포인트 조회</a><a href="javascript:void(window.open('https://www.h-point.co.kr/pe/preppoint/prepPayRequest.shd','_blank'))"
 																class="btn size2 color16 ml5" onclick="javascript:"
 															><span>포인트 충전</span><i class="icon-arrow more3 ml10"></i></a>
 															<div class="tooltip-cont bottom" id="tooltip-discount-hpoint" data-placement="bottom" data-width="530"
@@ -544,14 +524,15 @@
 													</div>
 													<div class="cont">
 														<div class="fieldset discount">
-															<label style="white-space: normal"><input type="checkbox" name="uPointUseAllYn" id="uPointUseAllYn" value="Y"
-																	onclick="javascript:useUPoint(this);" class="gencrinputstyle" disabled=""
-																/><span class="cr-checkbox disabled" id="gencrinputstyle-uPointUseAllYn"
+															<label style="white-space: normal"><input type="checkbox" name="uPointUseAllYn" id="uPointUseAllYn" value="N"
+																	onclick="javascript:useUPoint(this);" class="gencrinputstyle"
+																/><span class="cr-checkbox" id="gencrinputstyle-uPointUseAllYn"
 																style="cursor: pointer; margin-left: -21px; margin-top: -0.5px; margin-right: 4px;"
 															></span> 모두사용 </label>
-															<input type="hidden" name="uPoint" value="20" />
-															<input type="text" value="0" name="useUPoint" id="useUPoint" class="onlyNumberInput" style="ime-mode: disabled" onpaste="return false;"
-																onkeyup="javascript:directInsertUPoint(this);" onblur="javascript:focusOutUPoint(this);" disabled=""
+															<input type="hidden" id="mileage" name="uPoint" th:value="${mileage}" />
+															<input type="text" name="useUPoint" id="useUPoint" class="onlyNumberInput" onpaste="return false;"
+																onkeyup="javascript:directInsertUPoint(this);" onblur="javascript:focusOutUPoint(this);"
+																th:placeholder="${#numbers.formatInteger(mileage, 3, 'COMMA')}"
 															/>
 															<span class="unit">P</span>
 														</div>
@@ -576,9 +557,9 @@
 																/><span class="cr-checkbox disabled" id="gencrinputstyle-hPointUseAllYn"
 																style="cursor: pointer; margin-left: -21px; margin-top: -0.5px; margin-right: 4px;"
 															></span> 모두사용 </label>
-															<input type="hidden" name="hPoint" value="0" />
-															<input type="text" value="0" name="useHPoint" id="useHPoint" class="onlyNumberInput" style="ime-mode: disabled" onpaste="return false;"
-																onkeyup="javascript:directInsertHPoint(this);" onblur="javascript:focusOutHPoint(this);" disabled=""
+															<input type="hidden" name="hPoint" th:value=0 />
+															<input type="text" th:value=0 name="useHPoint" id="useHPoint" class="onlyNumberInput" style="ime-mode: disabled"
+																onpaste="return false;" onkeyup="javascript:directInsertHPoint(this);" onblur="javascript:focusOutHPoint(this);" disabled=""
 															/>
 															<span class="unit">원</span>
 														</div>
@@ -713,7 +694,6 @@
 		</div>
 		<!-- //container -->
 	</div>
-
 	</form>
 	</div>
 	<!-- remote 용, 반복사용 툴팁은 wrap 밖에 두어야 offset 이 제대로 계산됨. -->
@@ -796,61 +776,29 @@
 			<a href="#" onclick="javascript:$.fancybox.close();return false;" class="btn size3 color2">확인</a>
 		</div>
 		<!-- //btn-wrap -->
-
-
-
-
 		<form class="orderForm" id="OrderSheet" action="/shop/oredercomplete" method="post">
-
-
 			<input type="hidden" name="orderId" id="orderId" value="1">
 			<input type="hidden" name="oName" id="oName" value="1">
-
 			<input type="hidden" name="oDate" id="oDate" value="1">
-
 			<input type="hidden" name="oZipcode" id="oZipcode" value="1">
 			<input type="hidden" name="oAddress1" id="oAddress1" value="1">
 			<input type="hidden" name="oAddress2" id="oAddress2" value="1">
-
 			<input type="hidden" name="oReceiver" id="oReceiver" value="1">
 			<input type="hidden" name="oTel" id="oTel" value="1">
 			<input type="hidden" name="oPayment" id=oPayment value="카드">
-
 			<input type="hidden" name="oTotalPrice" id="oTotalPrice" value="1">
-
+			<input type="hidden" name="oMileage" id="oMileage" value="1">
 			<div th:each="orderItem, stat : ${orderItems}">
-
 				<input type="hidden" name="product_id" id=product_id th:value="${orderItem.pcode}">
-
 				<input type="hidden" name="product_Quntity" id="product_Quntity" th:value="${orderItem.pamount}">
-				
 				<input type="hidden" name="product_name" id="product_name" th:value="${orderItem.pname}">
 				<input type="hidden" name="product_image" id="product_image" th:value="${orderItem.IMAGE_PATH}">
 				<input type="hidden" name="product_poption" id="product_poption" th:value="${orderItem.poption}">
-				
 				<input type="hidden" name="product_price" id="product_price" th:value="${orderItem.pprice}">
-				
-				
-
 			</div>
-
-
-
-
-
-
-
 		</form>
-
-
-
-
 	</div>
-
 	<script>
-	
-	
-	
 	function total_price(){
 	    let sum = 0;
 	    $('input.total-price').each(function(){
@@ -860,74 +808,76 @@
 	            sum += parseInt($(this).val());
 	        }
 	    });
-	    
 	    console.log(sum);
-	    
-	    
-	    
 	    $('#divTotPrdtAmt').text(intToWon(sum));
 	    $('#divTotPrdtAmt1').text(intToWon(sum));
 	    $('#divTotPrdtAmt2').text(intToWon(sum));
 	    $('#divTotPrdtAmt3').text(intToWon(sum));
 	    $('#divTotPrdtAmt4').text(intToWon(sum));
-	    
-	
 	}
-	
-	
+	const input = document.querySelector('#useUPoint');
+	input.addEventListener('keyup', function(e) {
+		// 모두사용 체크 해제
+		$('#uPointUseAllYn').val('N');
+		$('#gencrinputstyle-uPointUseAllYn').removeClass("checked")
+		const mileage = Number($('#mileage').val().replaceAll(',', ''));
+		 let value = e.target.value;
+		 value = Number(value.replaceAll(',', ''));	
+		if(Number(value)>mileage){			
+			value=mileage
+		}
+	  if(isNaN(value)) {
+	    input.value = 0;   
+	  }
+	  else if(value==0){
+	  }
+	  else {         
+	    const formatValue = value.toLocaleString('ko-KR');
+	    input.value = formatValue;
+	    $('#divTotDcAmt2').text('-'+ formatValue)
+	  }
+	  total_price_calc()
+	})
+	function useUPoint(e){
+		const mileage = Number($('#mileage').val().replaceAll(',', ''));
+		if($(e).val()=='N'){
+			$(e).val('Y');
+			$('#gencrinputstyle-uPointUseAllYn').addClass("checked")
+			$('#useUPoint').val(mileage.toLocaleString('ko-KR'));
+			$('#divTotDcAmt2').text('-'+ mileage.toLocaleString('ko-KR'))
+		}else{
+			$(e).val('N');
+			$('#gencrinputstyle-uPointUseAllYn').removeClass("checked")
+			$('#useUPoint').val(null);
+		}
+		total_price_calc()
+	}
 	total_price();
-	
-	
-	
     var clientKey = 'test_ck_ODnyRpQWGrNMgvmawLVKwv1M9ENj'
     var tossPayments = TossPayments(clientKey)
     var button = document.getElementById('payment-button') // 결제하기 버튼
-    
-    var totalPrice = wonToInt($('#divTotPrdtAmt').text());
-    
     var orderName = '상품 리스트 보고 정하기';
-    
-    
-    
     button.addEventListener('click', function () {
-    	
     	$('#OrderSheet').find('#orderId').val(
 				$('#order_addressee_name').val());
-    	
     	$('#OrderSheet').find('#oName').val(orderName);
-    	
-    	
     	$('#OrderSheet').find('#oZipcode').val(
 				$('#order_addressee_zip').val());
-    	
     	$('#OrderSheet').find('#oAddress1').val(
 				$('#addressee_addr1').val());
-    	
     	$('#OrderSheet').find('#oAddress2').val(
 				$('#addressee_addr2').val());
-    	
     	$('#OrderSheet').find('#oReceiver').val(
 				$('#order_addressee_name').val());
-    	
     	$('#OrderSheet').find('#oTel').val(
 				$('#addressee_phone').val());
-    	
-    	$('#OrderSheet').find('#oTotalPrice').val(totalPrice);
-    	
-    	
-    	
-    	
-    	
     	$.ajax({
             url: "/toss/order",
             type: "GET",
             dataType : "json",
             data: $("#OrderSheet").serialize(),
             success: function (data) {
-            	
             	console.log(encodeURI(JSON.stringify(data)));
-            	
-            	
             	tossPayments.requestPayment('카드', {
                     amount: data.oTotalPrice,
                     orderId: data.orderId,
@@ -939,22 +889,13 @@
             }
           });
         })
-        
-        
-        
-        
         function wonToInt(s) {
 			return parseInt(s.substr(0, s.length - 1).replaceAll(',', ''));
 		}
-    
-    
     function intToWon(s) {
 		return s.toLocaleString() + '원';
 	}
-    
 </script>
-
-	</div>
 	<script type="text/javascript" defer="defer">
 		$(document).ready(function() {
 			total_price_calc();
@@ -969,13 +910,15 @@
 			let final_price = 0; // 최종적으로 결제해야하는 가격 
 			let deliveryfee = 0; // 배송비
 			let og_price = 0;
-			var checkArr = new Array();
-			var PriceNum = new Array();
-			$("td[id^=itemPrice]").each(function(index, item) {
-				let origin = wonToInt($("#itemPrice" + (index + 1)).text());
-				final_price += parseInt(origin);
-				console.log(final_price);
-			});
+		    $('input.total-price').each(function(){
+		        // type으로 시작하는 input을 순차적으로 loop
+		        if(!isNaN($(this).val())){
+		            // CASE 값에 문자가 없는 경우 (숫자인 경우만 합산)
+		            final_price += parseInt($(this).val());
+		        }
+		    });
+		    const mileage = Number($('#useUPoint').val().replaceAll(',', ''));
+		    final_price-=mileage
 			/* 최종 가격 */
 			//배송비
 			let delivery = 0;
@@ -983,18 +926,21 @@
 				$(".before_price").text(final_price.toLocaleString());
 				delivery = 4000;
 				final_price += delivery;
-				$(".delivery_prc2").text(delivery.toLocaleString());
-				$(".order_info_sale_prc").text(final_price.toLocaleString());
-				$('.orderForm').find('#items_price').val(delivery);
-				$('.orderForm').find('#deliver_price').val(final_price);
+				$("#divTotDlvCost").text(delivery.toLocaleString()+'원');
+				$('#divTotPrdtAmt3').text(final_price.toLocaleString())
+				$('#divTotDcAmt2').text('-'+ mileage.toLocaleString()+'원')
+				$('#divTotPrdtAmt4').text(final_price.toLocaleString())
+				$('#oTotalPrice').val(final_price);
+				$('#oMileage').val(mileage);
 			} else {
 				$(".before_price").text(final_price.toLocaleString());
-				$(".delivery_prc2").text(0);
-				$(".order_info_sale_prc").text(final_price.toLocaleString());
-				$('.orderForm').find('#items_price').val(final_price);
-				$('.orderForm').find('#deliver_price').val(delivery);
+				$("#divTotDlvCost").text(0+'원');
+				$('#divTotPrdtAmt3').text(final_price.toLocaleString())
+				$('#divTotDcAmt2').text('-'+ mileage.toLocaleString()+'원')
+				$('#divTotPrdtAmt4').text(final_price.toLocaleString())
+				$('#oTotalPrice').val(final_price);
+				$('#oMileage').val(mileage);
 			}
-			console.log(final_price);
 		}
 		function findAddr() {
 			new daum.Postcode(
@@ -1019,7 +965,6 @@
 					}).open();
 		}
 	</script>
-
 	<div id="footer">
 		<h1 class="blind">푸터영역</h1>
 		<div class="top">
@@ -1027,7 +972,7 @@
 				<div class="hyundai-menu">
 					<span class="tit"><a href="javascript:;"
 						onclick="javascript: dummyLogCatch('http://www.ehyundai.com/newPortal/ir', 'Footer', 'group', 'blank', 'Y', null)"
-					>현대백화점그룹</a> </span>
+					>현대백화점그룹</a></span>
 					<ul>
 						<li><a onclick=href= "http://www.thehyundai.com/front/ccb/noticeList.thd?MainpageGroup=Footer&amp;GroupbannerName=notice">공지사항</a></li>
 						<li><a href="javascript:;"
@@ -1121,7 +1066,6 @@
 						<li><a href="javascript:;"
 							onclick="javascript:dummyLogCatch('https://twitter.com/eHyundai_tweets/', 'Footer', 'twitter', 'blank', 'Y', null)"
 						><i class="twitter">트위터</i></a></li>
-
 						<li><a href="javascript:;"
 							onclick="javascript:dummyLogCatch('https://www.instagram.com/the_hyundai/', 'Footer', 'instagram', 'blank', 'Y', null)"
 						><i class="instagram">instagram</i></a></li>

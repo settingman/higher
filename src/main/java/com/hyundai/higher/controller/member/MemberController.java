@@ -67,6 +67,17 @@ public class MemberController {
 		return "member/joinform";
 	}
 
+	
+	// 회원가입페이지 접근
+		@GetMapping(value = "/jointotal")
+		public String memberJointotal(Model model) {
+
+
+			return "member/jointotal";
+		}
+
+	
+	
 	// 회원가입 진행
 	@PostMapping(value = "joinform")
 	public String memberForm(@Valid MemberFormDto memberFormDto, BindingResult bindingResult, Model model, RedirectAttributes redirectAttributes) {

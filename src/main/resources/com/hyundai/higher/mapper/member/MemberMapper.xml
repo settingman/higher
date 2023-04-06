@@ -30,6 +30,15 @@
 		where
 		MName=#{mName} and MId=#{mId}
 	</select>
+	
+	
+	<select id="findMileage" resultType ="integer">
+		SELECT MMILEAGE
+		FROM MEMBER
+		where
+		MId=#{mId}
+	</select>
+	
 
 
 	<update id="updatePassword">
@@ -52,7 +61,7 @@
 		#{mPhone},
 		#{mBirth},
 		#{mRole},
-		0,
+		1000,
 		'백화점',
 		1,
 		null,

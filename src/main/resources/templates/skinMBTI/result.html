@@ -3,32 +3,32 @@
 
 <head>
 <head th:insert="~{include/head}"></head>
-  
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <link rel="stylesheet" type="text/css" href="/skinMBTI/css/result.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" type="text/css" href="/skinMBTI/css/result.css">
 
 </head>
 
 <body>
 
-  <div id="wrap">
+	<div id="wrap">
 
-    <nav id="skip_navi">
-      <a href="#contents">본문 바로가기</a>
-      <a href="#menu">메뉴 바로가기</a>
-      <a href="#footer">하단 정보 바로가기</a>
-    </nav>
-   	<!-- header -->
-	<header id="header" th:insert="~{include/header}"></header>
-	<!-- /header -->
-	<section class="sub_visual_warp">
+		<nav id="skip_navi">
+			<a href="#contents">본문 바로가기</a> <a href="#menu">메뉴 바로가기</a> <a href="#footer">하단 정보 바로가기</a>
+		</nav>
+		<!-- header -->
+		<header id="header" th:insert="~{include/header}"></header>
+		<!-- /header -->
+		<section class="sub_visual_warp">
 			<div class="sub_visual">
 				<img src="/skinMBTI/img/skinMBTI-banner3.jpg" style="width: 100%; height: 210px;">
 				<div class="sub_visual" style="top: -210px;">
-					<h1>피부 <i style="font-family: 'locator-medium';">MBTI</i></h1>
+					<h1>
+						피부 <i style="font-family: 'locator-medium';">MBTI</i>
+					</h1>
 					<h2>
 						나의 피부타입에 맞는 제품은?<br> 더현대뷰티가 추천하는 피부 솔루션!
 					</h2>
@@ -36,26 +36,27 @@
 			</div>
 		</section>
 
-    <section id="container">
-      <section id="contents" class="survey_wrap">
-        <div class="result_wrap">
-          <div class="line1">
-            <p><span sec:authentication="principal.mName">회원이름</span> 회원님의 피부 MBTI 진단 결과</p>
-          </div>
-          <div class="line2">
-          </div>
-          <div class="result_list">
-         	 <div class="left" style="height: 700px;">
-              <div class="img">
-                <img src="https://www.larocheposay.co.kr/images/customer/skincase_1.png" alt="">
-                <strong>나의 피부 MBTI는?</strong>
-              </div>
-              <div class="resultName">[[${mbti.stype}]]</div>
-              <p id="title">"[[${mbti.stitle}]]"</p>
-              <p class="resultKeyword">[[${mbti.stag}]]</p>
-              <p>[[${mbti.sexplain}]]</p>
-            	<table>
-									<tbody><tr id="infoPros">
+		<section id="container">
+			<section id="contents" class="survey_wrap">
+				<div class="result_wrap">
+					<div class="line1">
+						<p>
+							<span sec:authentication="principal.mName">회원이름</span> 회원님의 피부 MBTI 진단 결과
+						</p>
+					</div>
+					<div class="line2"></div>
+					<div class="result_list">
+						<div class="left" style="height: 700px;">
+							<div class="img">
+								<img src="https://www.larocheposay.co.kr/images/customer/skincase_1.png" alt=""> <strong>나의 피부 MBTI는?</strong>
+							</div>
+							<div class="resultName">[[${mbti.stype}]]</div>
+							<p id="title">"[[${mbti.stitle}]]"</p>
+							<p class="resultKeyword">[[${mbti.stag}]]</p>
+							<p>[[${mbti.sexplain}]]</p>
+							<table>
+								<tbody>
+									<tr id="infoPros">
 										<td class="infoName">Strength</td>
 										<td class="infoCon" id="pros">[[${mbti.spros}]]</td>
 									</tr>
@@ -68,66 +69,95 @@
 										<td class="infoCon" id="solution">[[${mbti.ssolution}]]</td>
 									</tr>
 
-								</tbody></table>
-            
-            </div>
-            <div class="right" style="padding-bottom: 40px; height: 700px;">
-              <div class="img">
-                  <img src="https://www.larocheposay.co.kr/images/customer/skincase_2.png" alt="">
-                  <strong class="">진단 차트 <em></em></strong>
-              </div>
-             
-              <div class="graph">
-				<canvas id="myChart" height="675" style="display: block; box-sizing: border-box; height: 450px; width: 450px;" width="675"></canvas>
+								</tbody>
+							</table>
+
+						</div>
+						<div class="right" style="padding-bottom: 40px; height: 700px;">
+							<div class="img">
+								<img src="https://www.larocheposay.co.kr/images/customer/skincase_2.png" alt=""> <strong class="">진단 차트 <em></em></strong>
+							</div>
+
+							<div class="graph">
+								<canvas id="myChart" height="675" style="display: block; box-sizing: border-box; height: 450px; width: 450px;" width="675"></canvas>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="btn_wrap center mt40">
+						<button type="button" class="btn_base" th:onclick="saveResult([[${mbti.stype}]]);">결과 저장하기</button>
+						<button type="button" class="btn_base">
+							<a id="kakaotalk-sharing-btn" href="javascript:;"> <img
+								src="https://developers.kakao.com/assets/img/about/logos/kakaotalksharing/kakaotalk_sharing_btn_small.png" alt="카카오톡 공유 보내기 버튼"
+							>카카오톡 공유하기
+							</a>
+
+						</button>
+					</div>
+
+
+
+
+				</div>
+			</section>
+			<!-- //contents -->
+		</section>
+		<!-- //container -->
+		<input type="hidden" id="score1" th:value="${scores[0]}">
+		<input type="hidden" id="score2" th:value="${scores[1]}">
+		<input type="hidden" id="score3" th:value="${scores[2]}">
+		<input type="hidden" id="score4" th:value="${scores[3]}">
+		<script src="/skinMBTI/js/result.js" charset="UTF-8"></script>
+
+		<section id="survey_pop" class="layerpop_warp open" style="display: none;">
+			<div class="layerpop blue" style="width: 460px;">
+				<div class="layerpop_head">
+					<h1>피부 MBTI 저장</h1>
+				</div>
+				<div class="layerpop_cont" style="height: 404.323px;">
+					<div class="save_cont">
+						<p>
+							피부 MBTI 진단 결과가 저장되었습니다.<br> 지금 바로 <i class="fc_blue">나만의 매칭 화장품을</i> 만나보세요.<br> <em style="color: #8f8f8f; margin-top: 10px;">(진단
+								결과는 MY PAGE &gt; 나의 정보에서 확인가능)</em>
+						</p>
+						<div class="btn_wrap center mt30">
+							<button type="button" class="btn_base blue act" th:onclick="goMatch([[${mbti.stype}]]);">보러가기</button>
+							<button type="button" class="btn_base darkgray act" id="save_close">취소</button>
+						</div>
+					</div>
+				</div>
+				<button type="button" class="close">닫기</button>
 			</div>
-          </div>  
-   
-          </div>
-			
-          <div class="btn_wrap center mt40">
-            <button type="button" class="btn_base" th:onclick="saveResult([[${mbti.stype}]]);">결과 저장하기</button>
-          </div>
-          
-          
-          
-          
-        </div>
-      </section>
-      <!-- //contents -->
-    </section>
-    <!-- //container -->
-    <input type="hidden" id="score1" th:value="${scores[0]}">
-    <input type="hidden" id="score2" th:value="${scores[1]}">
-    <input type="hidden" id="score3" th:value="${scores[2]}">
-    <input type="hidden" id="score4" th:value="${scores[3]}">
-    <script src="/skinMBTI/js/result.js" charset="UTF-8"></script>
+		</section>
 
-	<section id="survey_pop" class="layerpop_warp open" style="display: none;">
-      <div class="layerpop blue" style="width:460px;">
-        <div class="layerpop_head">
-          <h1>피부 MBTI 저장</h1>
-        </div>
-        <div class="layerpop_cont" style="height: 404.323px;">
-          <div class="save_cont">
-            <p>
-              피부 MBTI 진단 결과가 저장되었습니다.<br>
-              지금 바로 <i class="fc_blue">나만의 매칭 화장품을</i> 만나보세요.<br>
-              <em style="color:#8f8f8f; margin-top:10px;">(진단 결과는 MY PAGE &gt; 나의 정보에서 확인가능)</em>
-            </p>
-            <div class="btn_wrap center mt30">
-              <button type="button" class="btn_base blue act" th:onclick="goMatch([[${mbti.stype}]]);">보러가기</button>
-              <button type="button" class="btn_base darkgray act" id="save_close">취소</button>
-            </div>
-          </div>
-        </div>
-        <button type="button" class="close">닫기</button>
-      </div>
-    </section>
-
-    <!-- footer -->
-	<div class="include-footer" th:insert="~{include/footer}"></div>
-	<!-- /footer -->
+		<!-- footer -->
+		<div class="include-footer" th:insert="~{include/footer}"></div>
+		<!-- /footer -->
 	</div>
 </body>
+
+<script>
+
+	const mbti = $('.resultName').text();
+	
+	const templateId = 92199;
+	
+	// mbti 에 따라서 templateID  넣어주기
+	
+	console.log('hi')
+	console.log('hi')
+
+	Kakao.init('2381807d426f20ffe89a57888738bcbb'); // 사용하려는 앱의 JavaScript 키 입력
+
+	Kakao.Share.createCustomButton({
+		container : '#kakaotalk-sharing-btn',
+		templateId : templateId,
+		templateArgs : {
+			title : '제목 영역입니다.',
+			description : '설명 영역입니다.',
+		},
+	});
+</script>
 
 </html>

@@ -1,3 +1,6 @@
+<!-- CSS only -->
+
+
 <script>
 $(function(){
 	$.ajax({
@@ -81,7 +84,7 @@ $(function(){
 			<!-- 로그인 전 -->
 
 			<li sec:authorize="isAnonymous()"><a href="/member/login">로그인</a></li>
-			<li sec:authorize="isAnonymous()"><a href="/meber/joinform">회원가입</a></li>
+			<li sec:authorize="isAnonymous()"><a href="/member/jointotal">회원가입</a></li>
 			<!-- //로그인 후 -->
 			<li sec:authorize="isAuthenticated()" class="myinfo"><a
 				href="/mypage/mypage_reserv"><strong sec:authentication="principal.mName">회원이름</strong>
@@ -526,3 +529,4 @@ $(function(){
 		</ul>
 	</nav>
 </section>
+

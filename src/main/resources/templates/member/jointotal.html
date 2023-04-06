@@ -609,58 +609,79 @@ body.fb_hidden {
 	<!-- //pop-header -->
 	<!-- container -->
 	<div id="container">
+		<h1 class="blind">컨텐츠영역</h1>
+
+		<!-- breadcrumb -->
+		<div class="breadcrumb">
+			<ul class="breadcrumb-list">
+				<li><a href="#">HOME</a></li>
+				<li>회원가입 안내</li>
+			</ul>
+		</div>
+		<!-- //breadcrumb -->
+
 		<!-- content-wrap -->
 		<div class="content-wrap">
-			<!-- login-content-wrap // -->
-			<div class="login-content-wrap">
-				<!-- H.Point 통합회원 영역// -->
-				<div class="login-hpoint-area" style="display: block">
-					<h2>H.Point 통합회원</h2>
-					<div class="login-wrap" id="hMember">
-						<form name="login" id="loginForm" action="/member/login" method="post">
-							<div class="login-fieldset">
-								<div class="login-input">
-									<input type="text" title="아이디" placeholder="H.Point 아이디" name="mId" id="custId" th:value="${mId}"/>
-									<input type="password" title="비밀번호" placeholder="H.Point 비밀번호" name="password" id="custPwd" value="" autocomplete="off"/>
-								</div>
-								<!-- [TO DEV] Error msg here. -->
-								<div class="err_wrap">
-									<p id="hpErrMsg" class="err_txt">
-									</p>
-								</div>
-								<div th:if="error">
-									<p id="valid" style="color: red; font-size: 12px;">
-										<a th:text="${exception}"></a>
-									</p>
-								</div>
-								<button class="btn btn-login" id="login_btn" type="button">로그인</button>
-							</div>
-							<label class="error" style="display: none" id="point">아이디 또는 비밀번호가 올바르지 않습니다.</label>
-							<div class="login-block">
-								<div class="btn-find">
-									<button class="btn size2 color3" type="button" onclick="window.open('https://www.h-point.co.kr/cu/config/findCustId.nhd?prtnrId=D010&amp;chnnlId=1202');">아이디 찾기</button>
-									<button class="btn size2 color3" type="button" onclick="window.open('https://www.h-point.co.kr/cu/config/findCustPwd.nhd?mvPg=120202'); ">비밀번호 찾기</button>
-								</div>
-							</div>
-						</form>
-						<ul class="login-link-wrap">
-							<li><a href="#none" onclick="goRegMem();">회원가입</a></li>
-							<li><a href="#none" onclick="window.opener.top.location.href='http://www.thehyundai.com/CS/eva/evaEvntHdUserRegHpMb.thd'; javascript:">H포인트 소개</a></li>
-						</ul>
+
+			<!-- content -->
+			<div class="content">
+
+				<!-- 2017-03-03 통합멤버십 // -->
+				<div class="join-tm-wrap2">
+					<h2>회원가입</h2>
+					<div class="block-area type-top">
+						<h3>
+						    <!-- 20220414 수정// -->
+                            <div>H.Point 통합가입</div>
+                            <img src="https://image.thehyundai.com/hdmall/images/co/img_join_logo_hpoint2.png" alt="현대백화점그룹 H.Point">
+                            <!-- //20220414 수정 -->
+						</h3>
+						<div class="inner">
+							<ol>
+							    <!-- 20220414 추가// -->
+                                <li>본 H.Point 통합 회원가입을 통해서 현대백화점 공식 사이트 '현대백화점' 및 온라인몰 <br>'더현대닷컴'의 회원가입 정보를 한번에 연결시켜 간편하게 서비스에 이용하실 수 있습니다.</li>
+                                <li>본 H.Point 통합 회원가입은 '현대백화점' 과 '더현대닷컴' 동시가입에 동의한 것으로 간주됩니다.</li>
+                                <!-- //20220414 추가 -->
+								<li>현대백화점 그룹의 모든 서비스를 이용할 수 있는 통합ID를 만듭니다.</li>
+								<li>현대백화점 그룹의 온라인/오프라인 서비스에서 H.Point를 적립 및 사용하실 수 있으며,<br>다양한 혜택을 받아보실 수 있습니다.</li>
+								<li>현대백화점 H.Point를 1,000 point 적립해드립니다.</li>
+								<li>카카오 간편가입으로 휴대폰 본인인증 없이 간편하게 가입할 수 있습니다.</li>
+								
+							</ol>
+						</div>
+						<div class="btn-wrap">
+						<form name="frm" method="post">
+							<a class="btn size5 color4" href="/member/joinform" ><span>통합회원 가입</span></a></form></div>
+							
+							
+						
 					</div>
-					<!-- 20210420 H.point 로그인 화면만 보여야할 경우 -->
-					<div id="member-btn-wrap">
-						<ul class="login-sns-wrap">
-							<li><a href="#" onclick="naverLogin();"><span class="icon-naver">네이버</span></a></li>
-							<li><a href="/oauth2/authorization/kakao" id="kakaoLogin"><span class="icon-kakao">카카오</span></a></li>
-							<li><a href="/oauth2/authorization/google" id="googleLogin"><span class="icon-google">구글플러스</span></a></li>
-						</ul>
-					</div>
+					<!-- 2022.08.16 DEP01WORK-21646 비회원주문서 개선 - 통합회원 가입유도를 위해 더현대 가입 비노출 by msoh -->
+					
+					   <div class="block-area">
+	                        <h3><img src="https://image.thehyundai.com/hdmall/images/co/img_join_logo_thd.png" alt="THE HYUNDAI.COM"> <span>간편가입</span></h3>
+	                        <div class="inner">
+	                            <ol>
+	                                <li>더현대닷컴 서비스를 이용할 수 있는 ID를 만듭니다.</li>
+	                                <li>기존에 쓰던 개인계정으로 간편하게 회원가입을 할 수 있습니다.</li>
+	                            </ol>
+	                            <p class="noti-text">※ 통합멤버쉽 포인트(H.Point)는 적립/사용 하실 수 없습니다.</p>
+	                            <p class="noti-text">※ 이메일, 카카오톡, 페이스북, 구글 계정을 통해 간편가입시 개인정보(이메일, 아이디, 성명, 휴대폰 번호 등)을 간접<br>&nbsp; &nbsp; 수집합니다.</p>
+	                            <p class="noti-text">※ 고객님은 개인정보보호법 제 37조에 따라 개인정보 처리의 정지를 요구할 권리가 있습니다.</p>
+	                        </div>
+	                        <div class="btn-wrap"><a class="btn size5 color3" href="/front/cua/certification.thd" onclick="javascript:GA_Event('PC_회원가입', '간편회원가입', '간편회원가입');"><span>간편회원 가입</span></a></div>
+	                    </div>
+					
 				</div>
-				<!-- // H.Point 통합회원 영역 -->
+				<!-- // 2017-03-03 통합멤버십 -->
+
+
 			</div>
+			<!-- //content -->
+
 		</div>
 		<!-- //content-wrap -->
+
 	</div>
 	<!-- //container -->
 </div>

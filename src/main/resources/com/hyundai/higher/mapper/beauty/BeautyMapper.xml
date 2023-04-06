@@ -28,7 +28,8 @@
 		RTIME, r.RIMG
 		FROM reservation
 		r , MEMBER m
-		where r.MID = m.MID 
+		where r.MID = m.MID and to_char(r.rdate,'yy-mm-dd') >= to_char(SYSDATE,'yy-mm-dd')
+		order by rdate
 	</select>
 	
 
