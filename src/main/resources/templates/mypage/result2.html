@@ -15,7 +15,8 @@ header#header {
 </style>
 <link rel="stylesheet" type="text/css"
 	href="https://image.thehyundai.com/pc/cssssl/font.css" />
-
+<link rel="stylesheet" type="text/css"
+	href="/makeup/css/mypage_result.css">
 <link rel="stylesheet" type="text/css"
 	href="https://image.thehyundai.com/pc/cssssl/co.css?ver=13" />
 <link rel="stylesheet" type="text/css"
@@ -25,48 +26,6 @@ header#header {
 <script src="https://image.thehyundai.com/pc/js/jquery-1.11.3.min.js"></script>
 <script src="https://image.thehyundai.com/pc/js/jquery-ui.min.js"></script>
 <script src="https://image.thehyundai.com/pc/js/jquery-migrate.min.js"></script>
-
-<script type="text/javascript">
-	document.domain = "thehyundai.com";
-	var locationHref = document.location.href;
-	var imageServer = "https://image.thehyundai.com";
-	var serverHost = "http://www.thehyundai.com";
-	var serverHostForSSL = "https://www.thehyundai.com";
-
-	var switch_serverHost;
-	var contextPath = "/front";
-
-	if (locationHref.indexOf("https") > -1) {
-		switch_serverHost = serverHostForSSL;
-	} else if (locationHref.indexOf("http") > -1) {
-		switch_serverHost = serverHost;
-	}
-
-	var _timer;
-	$(document).ready(
-			function() {
-				var interval = 1801000;
-				var ChkSTDtm = new Date();
-				var expireDtm = new Date();
-				ChkSTDtm.setMinutes(ChkSTDtm.getMinutes() + 30);
-				expireDtm.setDate(expireDtm.getDate() + 1);
-				document.cookie = "ChkSTDtm=" + ChkSTDtm.getTime()
-						+ "; path=/; expires=" + expireDtm.toUTCString()
-						+ "; path=/";
-				_timer = setTimeout("timeOutLogOutCookie()", interval);
-			});
-
-	function timeOutLogOut() {
-		try {
-			gfnSsoDscdToknReq(dscdCallback2);
-		} catch (exception) {
-			console.log(exception);
-		} finally {
-			location.href = "https://www.thehyundai.com/front/cob/logout.thd";
-		}
-	}
-</script>
-
 <script src="https://image.thehyundai.com/pc/js/plugin.js?ver=040213"></script>
 <script type="text/javascript"
 	src="https://image.thehyundai.com/pc/js/hdmall/co/jquery.form.js"></script>
@@ -95,7 +54,37 @@ header#header {
 }
 </style>
 </head>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
 
+    var mySwiper = new Swiper('.swiper-container', {
+        slidesPerView: 3,
+        slidesPerGroup: 3,
+        observer: true,
+        observeParents: true,
+        spaceBetween: 24,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+            1280: {
+                slidesPerView: 3,
+                slidesPerGroup: 3,
+            },
+            720: {
+                slidesPerView: 1,
+                slidesPerGroup: 1,
+            }
+        }
+    });
+    
+});
+
+function back() {
+	history.go(-1); 
+}
+</script>
 <body oncontextmenu="return false" ondragstart="return false"
 	onselectstart="return false">
 	<!-- wrap -->
@@ -128,38 +117,64 @@ header#header {
 			<!-- content-wrap -->
 			<div class="content-wrap hasleft myhyundai">
 				<!-- left contents -->
-
 				<div class="leftarea">
 					<h2>
-						<a href="/front/mpf/selectMyPageMain.thd">마이현대<span>MY
-								HYUNDAI</span></a>
+						<a href="/front/mpf/selectMyPageMain.thd">상세 결과<span>ARTIST's
+								PICK</span></a>
 					</h2>
 					<div class="line"></div>
 
 					<!-- leftmenu -->
-					<ul class="leftmenu">
-						<li class=""><a class="not">MY Make-ON</a>
-							<ul>
-								<li class=""><a>예약 관리</a></li>
-								<li class=""><a>예약 결과 확인</a></li>
-								<li class=""><a>상담 입장</a></li>
-								<li class=""><a>예약 신청 완료</a></li>
-							</ul></li>
-						<li class=""><a class="not">MY 피부 MBTI</a>
-							<ul>
-								<li class=""><a href="/front/mpd/changeMemberInfoForm.thd"
-									onclick="javascript:GA_Event('PC_마이페이지', 'LNB', '나의정보_회원정보변경');">결과
-										보기</a></li>
-							</ul></li>
-						<li class=""><a class="not">MY 주문</a>
-							<ul>
-								<li class=""><a href="/front/mpa/selectOrdDlvCrst.thd"
-									onclick="javascript:GA_Event('PC_마이페이지', 'LNB', '주문현황_주문확인/배송조회');">주문
-										내역</a></li>
+					<div class="numbering" style="font-family: 'locator-medium';">
+						<p style="display: inline">예약번호 :</p>
+						<p style="display: inline">57</p>
+					</div>
+					<div class="table-wrap order-addinfo mt20" style="width: 200px;">
+						<table>
+							<caption></caption>
+							<colgroup>
+								<col style="width: 70px;">
+								<col style="width: 130px;">
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">예약자</th>
+									<td colspan="3" th:text="${mem.mName}"></td>
+								</tr>
+								<tr>
+									<th scope="row">립</th>
+									<td th:text="${result.lip}"></td>
+								</tr>
+								<tr>
+									<th scope="row">블러쉬</th>
+									<td th:text="${result.blush}"></td>
+								</tr>
 
-							</ul></li>
+								<tr>
+									<th scope="row">페이스</th>
+									<td colspan="3" th:text="${result.face}"></td>
+								</tr>
 
-					</ul>
+							</tbody>
+						</table>
+					</div>
+					<div
+						style="text-align: center; margin: 20px 0; margin-right: 30px;">
+						<span>결과</span>
+					</div>
+					<div class="compare" style="margin-right: 30px;">
+						<div class="comparison-slider">
+							<figure>
+								<img th:src="'/beauty/display?fileName=' + ${info.rimg}"
+									alt="before">
+								<figcaption>Before</figcaption>
+							</figure>
+							<figure>
+								<img th:src="${result.result_img}" alt="after">
+								<figcaption>After</figcaption>
+							</figure>
+						</div>
+					</div>
 					<!-- //leftmenu -->
 				</div>
 				<!-- //leftarea -->
@@ -171,220 +186,297 @@ header#header {
 					<div class="myhyundai-main"
 						style="margin: 40px 0; font-family: 'notokr-medium';">
 						<h3>Make-On 예약 관리</h3>
+						<img src="/makeup/img/return.png" onclick="back()"
+							style="width: 3%; margin-left: 10px; cursor: pointer;">
 					</div>
-					<!-- cart-list -->
 					<div class="myhyundai-main"
 						style="margin: 40px 0; font-family: 'notokr-demilight';">
 						<h2>예약 결과</h2>
 					</div>
-					<div class="numbering" style="font-family: 'locator-medium';">
-						<p style="display: inline">예약번호 :</p>
-						<p style="display: inline" th:text="${info.rid}"></p>
+					<div class="tab-block">
+						<!-- tab -->
+						<ul class="nav nav-tabs2">
+							<li class="active" style="width: 31vh;" id="lippick"><a>립
+									PICK</a></li>
+
+							<li style="width: 31vh;" id="blushpick"><a>블러쉬 PICK</a></li>
+							<li style="width: 31vh;" id="facepick"><a>페이스 PICK</a></li>
+						</ul>
 					</div>
-					<div>
-						<div class="makeupwrapper" style="margin-bottom: 100px;">
-							<!-- 예약자 정보 -->
-							<div class="table-wrap order-addinfo mt20">
-								<table>
-									<caption></caption>
-									<colgroup>
-										<col style="width: 150px;">
-										<col>
-										<col style="width: 150px;">
-										<col style="width: 215px;">
-									</colgroup>
-									<tbody>
-										<tr>
-											<th scope="row">예약자</th>
-											<td colspan="3" th:text="${mem.mName}"></td>
-										</tr>
-										<tr>
-											<th scope="row">상담일자</th>
-											<td th:text="${info.rdate}"></td>
-											<th scope="row">피부 MBTI</th>
-											<td>-</td>
-										</tr>
-
-										<tr>
-											<th scope="row">담당 ARTIST</th>
-											<td colspan="3">박성환</td>
-										</tr>
-										<!-- 주문시 요청사항 배송기사님 -->
-
-										<tr>
-											<th scope="row">요청 사항</th>
-											<td colspan="3">-</td>
-										</tr>
-
-									</tbody>
-								</table>
+					<!-- 립파트 -->
+					<div class="picklip">
+						<div class="selectprod">
+							<div class="numbering" style="margin: 20px 0; text-align: center">
+								<p
+									style="text-align: center; font-weight: bold; font-family: 'locator-regular'; font-size: 20px; color: cadetblue; margin-top: 30px;">
+									ARTIST's PICK</p>
 							</div>
-							<!-- 예약자 정보 -->
-							<!-- color 정보 -->
-							<div class="table-wrap order-addinfo mt20">
-								<table>
-									<caption></caption>
-									<colgroup>
-										<col style="width: 31.1vh;">
-
-										<col style="width: 31.1vh;">
-										<col style="width: 31.1vh;">
-									</colgroup>
-									<tbody>
-										<tr style="font-family: 'notokr-medium';">
-											<td style="text-align: center;">LIP</td>
-											<td style="text-align: center;">BLUSH</td>
-											<td style="text-align: center;">FOUNDATION</td>
-										</tr>
-										<tr>
-											<td style="text-align: center;" th:text="${result.lip}"></td>
-											<td style="text-align: center;" th:text="${result.blush}"></td>
-											<td style="text-align: center;" th:text="${result.face}"></td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-							<!-- color 정보 -->
-							<!-- before after -->
-							<div class="numbering"
-								style="text-align: center; margin: 20px; font-family: 'notokr-demilight'; font-size: initial;">
-								<p style="">결과 사진</p>
-							</div>
-							<div class="wrapper3"
-								style="grid-template-columns: repeat(2, 1fr); display: grid; place-items: center;">
-								<div class="faceupload" style="float: left">
-									<img class="face"
-										th:src="'/beauty/display?fileName=' + ${info.rimg}"
-										style="max-width: 250px; margin: 0 20 20 20; float: right;">
-								</div>
-								<div class="faceupload" style="float: left">
-									<img class="face" th:src="${result.result_img}"
-										style="max-width: 250px; margin: 0 20 20 20">
-								</div>
-								<div style="text-align: center">
-									<span style="font-family: 'locator-regular';">BEFORE</span>
-								</div>
-								<div style="font-family: 'locator-regular';">
-									<span>AFTER</span>
-								</div>
-							</div>
-							<!-- before after -->
-							<div class="selectprod">
-								<div class="numbering"
-									style="margin: 20px 0; text-align: center">
-									<p
-										style="text-align: center; font-weight: bold; font-family: 'notokr-demilight'; font-size: initial;">
-										ARTIST's PICK</p>
-								</div>
-								<form method="post" enctype="multipart/form-data"
-									action="/makeup/makeup_send">
-									<div class="lip_prod">
-										<div class="product-list-wrap1" style="width: fit-content">
-											<div class="select-list" style="width: auto;">
-												<div style="margin-bottom: 10px">
-													<p>Lip</p>
-												</div>
-												<div style="margin-bottom: 10px">
-													<p>Blush</p>
-												</div>
-												<div style="margin-bottom: 10px">
-													<p>Foundation</p>
-												</div>
-
-											</div>
-											<section class="product_wrap">
-
-												<!-- 신상, 단독구성 -->
-												<ul class="product_list ea03" id="listUl">
-													<li style="margin: 0 0 20px 16px;"><a
-														href="/product/detail?code=A1592419"> <img
-															th:src="${lipresult.iloc} + '_600.jpg'"
-															th:alt="${lipresult.pname}"> <input type="hidden"
-															name="lip_pcode" class="lip_pcode"
-															th:value="${lipresult.pcode}" /> <input type="hidden"
-															name="lip_opt" class="lip_opt"
-															th:value="${lipresult.optname}" /> <span
-															class="hash_tag">브랜드명</span> <span class="tit"
-															th:text="${lipresult.pname}"></span> <span class="kind"
-															th:text="${lipresult.optname}"></span> <span
-															class="rating"> </span> <span class="price"> <span
-																class="after">[[${#numbers.formatInteger(lipresult.pprice,
-																	3, 'COMMA')}]]<em>원</em>
-															</span>
+							<form method="post" enctype="multipart/form-data"
+								action="/makeup/makeup_send">
+								<div class="lip_prod">
+									<div class="product-list-wrap1"
+										style="text-align: center; width: fit-content; margin: 0 auto;">
+										<section class="product_wrap">
+											<!-- 신상, 단독구성 -->
+											<ul class="product_list ea03" id="listUl">
+												<li style="margin: 0 0 20px 16px;"><a
+													href="/product/detail?code=A1592419"> <img
+														th:src="${lipresult.iloc} + '_600.jpg'"
+														th:alt="${lipresult.pname}"> <input type="hidden"
+														name="lip_pcode" class="lip_pcode"
+														th:value="${lipresult.pcode}" /> <input type="hidden"
+														name="lip_opt" class="lip_opt"
+														th:value="${lipresult.optname}" /> <span class="hash_tag">브랜드명</span>
+														<span class="tit" th:text="${lipresult.pname}"></span> <span
+														class="kind" th:text="${lipresult.optname}"></span> <span
+														class="rating"> </span> <span class="price"> <span
+															class="after">[[${#numbers.formatInteger(lipresult.pprice,
+																3, 'COMMA')}]]<em>원</em>
 														</span>
-													</a>
-														<div class="over">
-															<button class="detailview">자세히보기</button>
-															<button data-price="45000" data-linename="[나스] 파워매트 립스틱"
-																data-sapcode="A1592419" data-category="20"
-																class="addcart basket">장바구니 담기</button>
-														</div></li>
-													<li class="" style="margin: 0 0 20px 16px;"><a
-														href="/product/detail?code=A0484419"> <img
-															th:src="${blushresult.iloc} + '_600.jpg'"
-															th:alt="${blushresult.pname}"> <input type="hidden"
-															name="blush_pcode" class="blush_pcode"
-															th:value="${blushresult.pcode}" /> <input type="hidden"
-															name="blush_opt" class="blush_opt"
-															th:value="${blushresult.optname}" /> <span
-															class="hash_tag">브랜드명</span> <span class="tit"
-															th:text="${blushresult.pname}"></span> <span class="kind"
-															th:text="${blushresult.optname}"></span> <span
-															class="rating"> </span> <span class="price"> <span
-																class="after">[[${#numbers.formatInteger(blushresult.pprice,
-																	3, 'COMMA')}]]<em>원</em>
-															</span>
+													</span>
+												</a>
+													<div class="btn_green"
+														style="text-align: center; margin: 30px 0;">
+														<p class="pickbtn"
+															style="line-height: 30px; display: inline-block;">
+															<img src="/common/image/add.png"
+																style="width: 22px; height: 22px; margin-right: 6px; margin-bottom: 3px;">비교함
+															담기
+														</p>
+													</div>
+													<div class="over">
+														<button class="detailview">자세히보기</button>
+														<button data-price="45000" data-linename="[나스] 파워매트 립스틱"
+															data-sapcode="A1592419" data-category="20"
+															class="addcart basket">장바구니 담기</button>
+													</div></li>
+											</ul>
+										</section>
+									</div>
+								</div>
+							</form>
+						</div>
+						<div class="simlip">
+							<div class="makeupwrapper" style="margin-bottom: 100px;">
+								<div class="swiper-container">
+									<div class="swiper-wrapper">
+										<div class="swiper-slide" th:each="simlip : ${simlip}">
+											<li style="margin: 0 0 20px 16px;"><a
+												th:href="'/product/detail?code=' + ${simlip.pcode}"> <img
+													th:src="${simlip.iloc} + '_600.jpg'"
+													th:alt="${simlip.pname}"> <input type="hidden"
+													name="lip_pcode" class="lip_pcode"
+													th:value="${simlip.pcode}"> <input type="hidden"
+													name="lip_opt" class="lip_opt" th:value="${simlip.optname}">
+													<span class="hash_tag">브랜드명</span> <span class="tit"
+													th:value="${simlip.pname}" th:text="${simlip.pname}"></span>
+													<span class="kind" th:value="${simlip.optname}"
+													th:text="${simlip.optname}"></span> <span class="price">
+														<span class="after">[[${#numbers.formatInteger(simlip.pprice,
+															3, 'COMMA')}]]<em>원</em>
+													</span> <span class="choice"> <span class="checkcss">
+																<input type="checkbox" class="recomPrdtSeq"
+																name="prdtSeqs" data-cnt="10" id="checkbox966"
+																value="966"><label for="checkbox966"><i
+																	class="hide">선택</i></label>
 														</span>
-													</a>
-														<div class="over">
-															<button class="detailview">자세히보기</button>
-															<button data-price="34000"
-																data-linename="메이크업포에버 아티스트 하이드라블룸 2.8g"
-																data-sapcode="A0484419" data-category="20"
-																class="addcart basket">장바구니 담기</button>
-														</div></li>
-													<li style="margin: 0 0 20px 16px;"><a
-														href="/product/detail?code=A1183830"> <img
-															th:src="${faceresult.iloc} + '_600.jpg'"
-															th:alt="${faceresult.pname}"> <input type="hidden"
-															name="face_pcode" class="face_pcode"
-															th:value="${faceresult.pcode}" /> <input type="hidden"
-															name="face_opt" class="face_opt"
-															th:value="${faceresult.optname}" /> <span
-															class="hash_tag">브랜드명</span> <span class="tit"
-															th:text="${faceresult.pname}"></span> <span class="kind"
-															th:text="${faceresult.optname}"></span> <span
-															class="rating"> </span> <span class="price"> <span
-																class="after">[[${#numbers.formatInteger(faceresult.pprice,
-																	3, 'COMMA')}]]<em>원</em>
-															</span>
-														</span>
-													</a>
-														<div class="over">
-															<button class="detailview">자세히보기</button>
-															<button data-price="32000"
-																data-linename="[클라랑스] 립 오일 인텐스 7ml"
-																data-sapcode="A1183830" data-category="20"
-																class="addcart basket">장바구니 담기</button>
-														</div></li>
-
-												</ul>
-											</section>
-											<div class="btn_green"
-												style="text-align: center; margin-top: 10px">
-												<p class="pickbtn" style="line-height: 30px">전체 장바구니 담기
-												</p>
-											</div>
+													</span>
+												</span>
+											</a></li>
 										</div>
 									</div>
-								</form>
+									<div class="swiper-button-next"></div>
+									<div class="swiper-button-prev"></div>
+								</div>
+								<!-- before after -->
 							</div>
 						</div>
 					</div>
-
-					<!-- //cart-list -->
-
-					<!-- //입장-->
+					<!-- /립파트 -->
+					<!-- 블러쉬파트 -->
+					<div class="pickblush" style="display: none;">
+						<div class="selectprod">
+							<div class="numbering" style="margin: 20px 0; text-align: center">
+								<p
+									style="text-align: center; font-weight: bold; font-family: 'locator-regular'; font-size: 20px; color: cadetblue; margin-top: 30px;">
+									ARTIST's PICK</p>
+							</div>
+							<form method="post" enctype="multipart/form-data"
+								action="/makeup/makeup_send">
+								<div class="lip_prod">
+									<div class="product-list-wrap1"
+										style="text-align: center; width: fit-content; margin: 0 auto;">
+										<section class="product_wrap">
+											<!-- 신상, 단독구성 -->
+											<ul class="product_list ea03" id="listUl">
+												<li style="margin: 0 0 20px 16px;"><a
+													href="/product/detail?code=A1592419"> <img
+														th:src="${blushresult.iloc} + '_600.jpg'"
+														th:alt="${blushresult.pname}"> <input type="hidden"
+														name="blush_pcode" class="blush_pcode"
+														th:value="${blushresult.pcode}" /> <input type="hidden"
+														name="blush_opt" class="blush_opt"
+														th:value="${blushresult.optname}" /> <span
+														class="hash_tag">브랜드명</span> <span class="tit"
+														th:text="${blushresult.pname}"></span> <span class="kind"
+														th:text="${blushresult.optname}"></span> <span
+														class="rating"> </span> <span class="price"> <span
+															class="after">[[${#numbers.formatInteger(blushresult.pprice,
+																3, 'COMMA')}]]<em>원</em>
+														</span>
+													</span>
+												</a>
+													<div class="btn_green"
+														style="text-align: center; margin: 30px 0;">
+														<p class="pickbtn"
+															style="line-height: 30px; display: inline-block;">
+															<img src="/common/image/add.png"
+																style="width: 22px; height: 22px; margin-right: 6px; margin-bottom: 3px;">비교함
+															담기
+														</p>
+													</div>
+													<div class="over">
+														<button class="detailview">자세히보기</button>
+														<button data-price="45000" data-linename="[나스] 파워매트 립스틱"
+															data-sapcode="A1592419" data-category="20"
+															class="addcart basket">장바구니 담기</button>
+													</div></li>
+											</ul>
+										</section>
+									</div>
+								</div>
+							</form>
+						</div>
+						<div class="simblush">
+							<div class="makeupwrapper" style="margin-bottom: 100px;">
+								<div class="swiper-container">
+									<div class="swiper-wrapper">
+										<div class="swiper-slide" th:each="simblush : ${simblush}">
+											<li style="margin: 0 0 20px 16px;"><a
+												th:href="'/product/detail?code=' + ${simblush.pcode}"> <img
+													th:src="${simblush.iloc} + '_600.jpg'"
+													th:alt="${simblush.pname}"> <input type="hidden"
+													name="blush_pcode" class="blush_pcode"
+													th:value="${simblush.pcode}"> <input type="hidden"
+													name="blush_opt" class="blush_opt"
+													th:value="${simblush.optname}"> <span
+													class="hash_tag">브랜드명</span> <span class="tit"
+													th:value="${simblush.pname}" th:text="${simblush.pname}"></span>
+													<span class="kind" th:value="${simblush.optname}"
+													th:text="${simblush.optname}"></span> <span class="price">
+														<span class="after">[[${#numbers.formatInteger(simblush.pprice,
+															3, 'COMMA')}]]<em>원</em>
+													</span> <span class="choice"> <span class="checkcss">
+																<input type="checkbox" class="recomPrdtSeq"
+																name="prdtSeqs" data-cnt="10" id="checkbox966"
+																value="966"><label for="checkbox966"><i
+																	class="hide">선택</i></label>
+														</span>
+													</span>
+												</span>
+											</a></li>
+										</div>
+									</div>
+									<div class="swiper-button-next"></div>
+									<div class="swiper-button-prev"></div>
+								</div>
+								<!-- before after -->
+							</div>
+						</div>
+					</div>
+					<!-- /블러쉬파트 -->
+					<!-- 파데파트 -->
+					<div class="pickface" style="display: none;">
+						<div class="selectprod">
+							<div class="numbering" style="margin: 20px 0; text-align: center">
+								<p
+									style="text-align: center; font-weight: bold; font-family: 'locator-regular'; font-size: 20px; color: cadetblue; margin-top: 30px;">
+									ARTIST's PICK</p>
+							</div>
+							<form method="post" enctype="multipart/form-data"
+								action="/makeup/makeup_send">
+								<div class="face_prod">
+									<div class="product-list-wrap1"
+										style="text-align: center; width: fit-content; margin: 0 auto;">
+										<section class="product_wrap">
+											<!-- 신상, 단독구성 -->
+											<ul class="product_list ea03" id="listUl">
+												<li style="margin: 0 0 20px 16px;"><a
+													href="/product/detail?code=A1592419"> <img
+														th:src="${faceresult.iloc} + '_600.jpg'"
+														th:alt="${faceresult.pname}"> <input type="hidden"
+														name="face_pcode" class="face_pcode"
+														th:value="${faceresult.pcode}" /> <input type="hidden"
+														name="face_opt" class="face_opt"
+														th:value="${faceresult.optname}" /> <span
+														class="hash_tag">브랜드명</span> <span class="tit"
+														th:text="${faceresult.pname}"></span> <span class="kind"
+														th:text="${faceresult.optname}"></span> <span
+														class="rating"> </span> <span class="price"> <span
+															class="after">[[${#numbers.formatInteger(faceresult.pprice,
+																3, 'COMMA')}]]<em>원</em>
+														</span>
+													</span>
+												</a>
+													<div class="btn_green"
+														style="text-align: center; margin: 30px 0;">
+														<p class="pickbtn"
+															style="line-height: 30px; display: inline-block;">
+															<img src="/common/image/add.png"
+																style="width: 22px; height: 22px; margin-right: 6px; margin-bottom: 3px;">비교함
+															담기
+														</p>
+													</div>
+													<div class="over">
+														<button class="detailview">자세히보기</button>
+														<button data-price="45000" data-linename="[나스] 파워매트 립스틱"
+															data-sapcode="A1592419" data-category="20"
+															class="addcart basket">장바구니 담기</button>
+													</div></li>
+											</ul>
+										</section>
+									</div>
+								</div>
+							</form>
+						</div>
+						<div class="simface">
+							<div class="makeupwrapper" style="margin-bottom: 100px;">
+								<div class="swiper-container">
+									<div class="swiper-wrapper">
+										<div class="swiper-slide" th:each="simface : ${simface}">
+											<li style="margin: 0 0 20px 16px;"><a
+												th:href="'/product/detail?code=' + ${simface.pcode}"> <img
+													th:src="${simface.iloc} + '_600.jpg'"
+													th:alt="${simface.pname}"> <input type="hidden"
+													name="face_pcode" class="face_pcode"
+													th:value="${simface.pcode}"> <input type="hidden"
+													name="face_opt" class="faceopt"
+													th:value="${simface.optname}"> <span
+													class="hash_tag">브랜드명</span> <span class="tit"
+													th:value="${simface.pname}" th:text="${simface.pname}"></span>
+													<span class="kind" th:value="${simface.optname}"
+													th:text="${simface.optname}"></span> <span class="price">
+														<span class="after">[[${#numbers.formatInteger(simface.pprice,
+															3, 'COMMA')}]]<em>원</em>
+													</span> <span class="choice"> <span class="checkcss">
+																<input type="checkbox" class="recomPrdtSeq"
+																name="prdtSeqs" data-cnt="10" id="checkbox966"
+																value="966"><label for="checkbox966"><i
+																	class="hide">선택</i></label>
+														</span>
+													</span>
+												</span>
+											</a></li>
+										</div>
+									</div>
+									<div class="swiper-button-next"></div>
+									<div class="swiper-button-prev"></div>
+								</div>
+								<!-- before after -->
+							</div>
+						</div>
+					</div>
+					<!-- /파데파트 -->
 				</div>
 				<!-- //content -->
 			</div>
@@ -393,212 +485,120 @@ header#header {
 		<div class="include-footer" th:insert="~{include/footer}"></div>
 	</div>
 	<!-- //wrap -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script>
-		function addCart() {
-			console.log('장바구니 담기');
-			var pCode = document.querySelector('.pcode').value;
-			//옵션 바꾸기
-			//var pOption = document.querySelector('input[name="optNm"]').value;
-			var pAmount = document.querySelector('input[name="pamount"]').value;
-			var mid = document.getElementById('mid').value;
-			console.log(mid);
-			var pOption = "";
+$('#lippick').click(function(){
+	$('ul.nav-tabs2 li').removeClass('active');
+    $(this).addClass('active');
+	$('.picklip').css('display','block');
+	$('.pickblush').css('display','none');
+	$('.pickface').css('display','none');
+})
+$('#blushpick').click(function(){
+	$('ul.nav-tabs2 li').removeClass('active');
+    $(this).addClass('active');
+	$('.picklip').css('display','none');
+	$('.pickblush').css('display','block');
+	$('.pickface').css('display','none');
+})
+$('#facepick').click(function(){
+	$('ul.nav-tabs2 li').removeClass('active');
+    $(this).addClass('active');
+	$('.picklip').css('display','none');
+	$('.pickblush').css('display','none');
+	$('.pickface').css('display','block');
+})
+</script>
+	<script>
+	// 결과 비포에프터 비교 스크립트
+	document.querySelectorAll(".comparison-slider").forEach((element) => {
+    const slider = document.createElement("div");
+    const resizeElement = element.getElementsByTagName("figure")[1];
+    if (!resizeElement) return;
+    const figcaption = {
+        first: element.getElementsByTagName("figcaption")[0],
+        second: element.getElementsByTagName("figcaption")[1],
+    };
+    const arrow = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
 
-			var pname = document.querySelector('.datail_info_top .tit strong').textContent
-					.trim();
-			console.log(pname + " 이름");
+    let ticking = false;
 
-			if (!document.querySelector('.option')) {
-				pOption = pname;
-			} else {
-				const selectEl = document.querySelector('.opt'); // select 요소 선택
-				const selectedValue = selectEl.options[selectEl.selectedIndex].value;
-				pOption = selectedValue;
-			}
-			console.log(pOption);
+    const slide = (event) => {
+        if (!ticking) {
+            ticking = true;
+            requestAnimationFrame(() => {
+                ticking = false;
 
-			if (mid != 'anonymousUser') {
-				var requestData = JSON.stringify({
-					pcode : pCode,
-					poption : pOption,
-					pamount : pAmount,
-					mid : mid
-				});
-				//로그인 여부 확인 
-				//중복 상품 확인
+                // sliding image
+                const clientX = event.clientX ?? event.touches[0].clientX;
+                const x = clientX - element.offsetLeft;
+                let percentage = ((x / element.offsetWidth) * 10000) / 100;
 
-				console.log(requestData);
+                if (percentage >= 100) {
+                    percentage = 100;
+                }
+                if (percentage <= 0) {
+                    percentage = 0;
+                }
 
-				$.ajax({
-					url : '/restcart/addCart',
-					type : 'post',
-					data : requestData,
-					contentType : "application/json",
-					success : function(result) {
-						console.log("장바구니 success");
-						if (result == '0') {
-							alert("장바구니에 추가를 하지 못하였습니다.");
-						} else if (result == '1') {
-							alert("장바구니에 추가되었습니다.");
-						} else if (result == '2') {
-							alert("이미 장바구니에 담긴 상품으로 수량이 추가되었습니다.");
-						}
-					},
-					error : function(request, status, error) {
-						console.log(error);
-					}
-				});
-			} else {
-				console.log("로그인 필요");
-				alert('장바구니는 로그인이 필요합니다.');
-				var loginUrl = "/member/login";
-				window.location.href = loginUrl;
-			}
+                slider.style.left = `${percentage}%`;
+                resizeElement.style.clipPath = `polygon(${percentage}% 0, 100% 0, 100% 100%, ${percentage}% 100%)`;
 
-		}
+                // hiding figcaption
+                if (figcaption.first) {
+                    if (x <= figcaption.first.offsetWidth) {
+                        figcaption.first.classList.add("hide");
+                    } else {
+                        figcaption.first.classList.remove("hide");
+                    }
+                }
+
+                if (figcaption.second) {
+                    if (
+                        element.offsetWidth - x <=
+                        figcaption.second.offsetWidth
+                    ) {
+                        figcaption.second.classList.add("hide");
+                    } else {
+                        figcaption.second.classList.remove("hide");
+                    }
+                }
+            });
+        }
+    };
+    const dragStart = () => {
+        element.addEventListener("mousemove", slide, { passive: true });
+        element.addEventListener("touchmove", slide, { passive: true });
+        element.classList.add("dragging");
+    };
+    const dragDone = () => {
+        element.removeEventListener("mousemove", slide);
+        element.removeEventListener("touchmove", slide);
+        element.classList.remove("dragging");
+    };
+
+    slider.addEventListener("mousedown", dragStart, { passive: true });
+    slider.addEventListener("touchstart", dragStart, { passive: true });
+
+    document.addEventListener("mouseup", dragDone, { passive: true });
+    document.addEventListener("touchend", dragDone, { passive: true });
+    document.addEventListener("touchcancel", dragDone, { passive: true });
+
+    slider.classList.add("slider");
+    arrow.setAttribute("width", "20");
+    arrow.setAttribute("height", "20");
+    arrow.setAttribute("viewBox", "0 0 30 30");
+    path.setAttribute(
+        "d",
+        "M1,14.9l7.8-7.6v4.2h12.3V7.3l7.9,7.6l-7.9,7.7v-4.2H8.8v4.2L1,14.9z"
+    );
+    arrow.append(path);
+    slider.append(arrow);
+
+    element.append(slider);
+});
 	</script>
-	<style>
-.btn_red {
-	text-align: center;
-	background: #e35c61;
-	height: 50px;
-	color: white;
-	line-height: 30px;
-	margin: 20px 0;
-}
-
-.price-info.single {
-	margin: 10px 0px;
-}
-
-.prod {
-	width: 100%;
-	margin: 10px;
-}
-
-.prod-unit .img img {
-	display: block;
-	width: 256px;
-	height: 256px;
-}
-
-.prod-unit .img .bg {
-	display: none;
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: 10;
-	width: 100%;
-	height: 100%;
-	background:
-		url(https://image.thehyundai.com/hdmall/images/co/bg_produnit_hover.png);
-}
-
-.prod-unit .info {
-	padding-top: 20px;
-	width: 256px;
-	margin-left: 20px;
-}
-
-.product-list {
-	overflow: hidden;
-	position: absolute;
-	width: 100%;
-	display: grid;
-	place-items: center;
-	overflow-x: scroll;
-	grid-auto-flow: column;
-	height: 100%;
-}
-
-ul {
-	list-style: none;
-}
-
-.product-list-wrap {
-	position: relative;
-	width: 100%;
-	height: 480px;
-	overflow: auto;
-}
-
-.btn_green {
-	color: white;
-	background: #45675b;
-	height: 50px;
-}
-
-.btn_gray {
-	color: white;
-	background: slategray;
-	height: 50px;
-}
-
-p.pickbtn {
-	margin-top: 10px;
-	font-weight: 100;
-	font-size: 16;
-	cursor: pointer;
-	height: 50px;
-	display: inline-grid;
-	vertical-align: middle;
-}
-
-.lip_pick {
-	width: 255px;
-	margin: 20 auto;
-	text-align: center;
-}
-
-.blush_pick {
-	width: 150px;
-	margin: 20 auto;
-	text-align: center;
-}
-
-.foundation_pick {
-	width: 150px;
-	margin: 20 auto;
-	text-align: center;
-}
-
-.select-list {
-	grid-template-columns: repeat(3, 1fr);
-	display: grid;
-	place-items: center;
-	width: 70%;
-	margin: 0 auto;
-	font-family: 'notokr-medium';
-}
-
-.type_pick {
-	width: 255px;
-	text-align: center;
-	margin: 0 20px;
-}
-
-.select-list1 {
-	grid-template-columns: repeat(3, 1fr);
-	display: grid;
-	place-items: center;
-	width: 70%;
-	margin: 0 auto;
-}
-
-.clonepart .img img {
-	display: block;
-	width: 256px;
-	height: 256px;
-}
-
-.empty {
-	width: 250;
-	height: 330;
-	border-radius: 10%;
-	border-style: dashed;
-	border-color: darkgray;
-	margin: 0 10px;
-}
-</style>
 </body>
 </html>
