@@ -177,18 +177,9 @@ header#header {
 						style="margin: 40px 0; font-family: 'notokr-demilight';">
 						<h2>예약 결과</h2>
 					</div>
-					<div class="numbering"
-						style="font-family: 'locator-medium'; position: relative; float: left; margin-right: 695px; line-height: 26px;">
+					<div class="numbering" style="font-family: 'locator-medium';">
 						<p style="display: inline">예약번호 :</p>
 						<p style="display: inline" th:text="${info.rid}"></p>
-					</div>
-					<div style="position: relative;">
-						<p class="v-btn-wrap" style="">
-							<a th:href="'/mypage/result2?rid=' + ${info.rid}"
-								onclick="javascript:GA_Event('PC_마이페이지', '최근_주문_배송내역', '상세내역');"
-								class="btn color4 size1"
-								style="background: #bfae90; border: #bfae90;">상세 결과</a>
-						</p>
 					</div>
 					<div>
 						<div class="makeupwrapper" style="margin-bottom: 100px;">

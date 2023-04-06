@@ -69,6 +69,70 @@ public class MypageController {
 		model.addAttribute("ready", ready);
 	}
 
+	@GetMapping("/result2")
+	public void mypageresult2(@RequestParam("rid") String rid, Model model) throws IOException {
+		log.info("==== 마이페이지 예약 결과 창 ====");
+
+		ReservVO info = service.getReservInfo(rid);
+		String rrid = info.getMid();
+		Member mem = new Member();
+		mem = makeup.MemInfo(rrid);
+
+		ResultVO result = service.getResultInfo(rid);
+
+		log.info(info);
+		log.info(result);
+		log.info(mem.getMName());
+
+		LipVO lipresult = new LipVO();
+		BlushVO blushresult = new BlushVO();
+		FoundationVO faceresult = new FoundationVO();
+
+		log.info("입술 옵션 : " + result.getLip_opt());
+		String lipopt = result.getLip_opt();
+		lipresult = service.getLipResult(lipopt);
+		log.info("가져온 입술 정보 : " + lipresult);
+
+		log.info("블러쉬 옵션 : " + result.getBlush_opt());
+		String blushopt = result.getBlush_opt();
+		blushresult = service.getBlushResult(blushopt);
+		log.info("가져온 블러쉬 정보 : " + blushresult);
+
+		log.info("파운데이션 옵션 : " + result.getFace_opt());
+		log.info("파운데이션 상품코드 : " + result.getFace_pcode());
+		String faceopt = result.getFace_opt();
+		String facepcode = result.getFace_pcode();
+		faceresult = service.getFaceResult(faceopt, facepcode);
+		log.info("가져온 파운데이션 정보 : " + faceresult);
+
+		String simlipcolor = lipresult.getOptcolor();
+		String simlippcode = lipresult.getPcode();
+		List<LipVO> simlip = service.SimLip(simlipcolor, simlippcode);
+		log.info(simlip);
+
+		String simblushcolor = blushresult.getOptcolor();
+		String simblushpcode = blushresult.getPcode();
+		List<BlushVO> simblush = service.SimBlush(simblushcolor, simblushpcode);
+		log.info(simblush);
+
+		String simfacecolor = faceresult.getOptcolor();
+		String simfacepcode = faceresult.getPcode();
+		List<FoundationVO> simface = service.SimFace(simfacecolor, simfacepcode);
+		log.info(simface);
+
+		model.addAttribute("mem", mem);
+		model.addAttribute("info", info);
+		model.addAttribute("result", result);
+		model.addAttribute("lipresult", lipresult);
+		model.addAttribute("blushresult", blushresult);
+		model.addAttribute("faceresult", faceresult);
+
+		model.addAttribute("simlip", simlip);
+		model.addAttribute("simblush", simblush);
+		model.addAttribute("simface", simface);
+
+	}
+
 	@GetMapping("/result")
 	public void mypageresult(@RequestParam("rid") String rid, Model model) throws IOException {
 		log.info("==== 마이페이지 예약 결과 창 ====");

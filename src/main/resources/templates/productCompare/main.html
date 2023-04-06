@@ -598,7 +598,7 @@
 		card01.querySelector(".corp_name").textContent = brand;
 
 		const bnBox = card01.querySelector('.bn_box'); 
-		card01.querySelector('.card_change').setAttribute('href',`/product/detail?pcode=${pcode}`);
+		card01.querySelector('.card_change').setAttribute('href',`/product/detail?code=${pcode}`);
 		const cardDel = card01.querySelector('.card_del');
 		bnBox.style.display ="";
 		cardDel.style.display = '';
@@ -622,7 +622,7 @@
 		card02.querySelector(".corp_name").textContent = brand;
 
 		const bnBox = card02.querySelector('.bn_box'); 
-		card02.querySelector('.card_change').setAttribute('href',`/product/detail?pcode=${pcode}`);
+		card02.querySelector('.card_change').setAttribute('href',`/product/detail?code=${pcode}`);
 		const cardDel = card02.querySelector('.card_del');
 		bnBox.style.display ="";
 		cardDel.style.display = '';
@@ -646,7 +646,7 @@
 			card03.querySelector(".corp_name").textContent = brand;
 
 			const bnBox = card03.querySelector('.bn_box'); 
-			card03.querySelector('.card_change').setAttribute('href',`/product/detail?pcode=${pcode}`);
+			card03.querySelector('.card_change').setAttribute('href',`/product/detail?code=${pcode}`);
 			const cardDel = card03.querySelector('.card_del');
 			bnBox.style.display ="";
 			cardDel.style.display = '';
@@ -773,7 +773,7 @@
 					<input type="hidden" class="ptype" value="${ptype}">
 					<input type="hidden" class="pingredient" value="${pingredient}">
 
-          <a href="/product/detail?pcode=${pcode}";"> 
+          <a href="/product/detail?code=${pcode}";"> 
             <img src=${imglink} alt="${pname}" onerror="noImage(this, 'https://image.thehyundai.com/hdmall/images/pd/no_image_480x480.jpg')">
           </a>
         </div>

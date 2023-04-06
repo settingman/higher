@@ -764,6 +764,7 @@ $(function(){
       } else {
         arr.push([pcode, pname, brand, price, imglink, rate, review, pVolume, ptype, pingredient]); // 상품 정보 저장
         localStorage.setItem("arr", JSON.stringify(arr));
+        alert("비교함에 담겼습니다.");
       }
 
       console.log("비교함에 담음");
@@ -790,9 +791,17 @@ $(function(){
     if (!document.querySelector('.option')) {
       pOption = pname;
     }else {
-      const selectEl = document.querySelector('.opt');  // select 요소 선택
-      const selectedValue = selectEl.options[selectEl.selectedIndex].value; 
-      pOption = selectedValue;
+      var selectedOption = $('.datail_info_data .opt option:selected').text();
+      console.log(selectedOption);
+
+      // const selectEl = document.querySelector('.opt');  // select 요소 선택
+      // const selectedValue = selectEl.options[selectEl.selectedIndex].val;
+      if(selectedOption =='선택'){
+        console.log("옵션 선택 안함");
+        alert('옵션을 선택하세요');
+        return;
+      }; 
+      pOption = selectedOption;
     }
 		console.log(pOption);
 		
