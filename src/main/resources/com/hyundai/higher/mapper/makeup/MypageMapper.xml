@@ -1,22 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-        
+
 <mapper namespace="com.hyundai.higher.mapper.makeup.MypageMapper">
 
-	<!-- 끝난 예약 보여주기 -->
-	<select id="getReservdone"
+	<!-- 입장하기 코드 -->
+	<select id="noResult"
 		resultType="com.hyundai.higher.domain.makeup.ReservVO">
-		select * from reservation where mid=#{mid} and rcheck=1
-		 order by rid desc
+		SELECT a.mid, a.rdate, a.rcheck, a.roomid, a.rid, a.rimg
+		FROM reservation a
+		LEFT JOIN result b ON a.rid = b.rid
+		WHERE
+		a.mid=#{mid} AND a.rcheck=1 AND b.rid IS NULL
+		ORDER BY a.rid DESC
 	</select>
 
-	<!-- 안끝난 예약 보여주기 -->
+	<!-- 결과확인 코드 -->
+	<select id="yesResult"
+		resultType="com.hyundai.higher.domain.makeup.ReservVO">
+		SELECT a.mid, a.rdate, a.rcheck, a.roomid, a.rid, a.rimg
+		FROM reservation a
+		LEFT JOIN result b ON a.rid = b.rid
+		WHERE
+		a.mid=#{mid} AND a.rcheck=1 AND b.rid IS NOT NULL
+		ORDER BY a.rid DESC
+	</select>
+
+	<!-- 예약만 된 상태 코드 -->
 	<select id="getReservReady"
 		resultType="com.hyundai.higher.domain.makeup.ReservVO">
 		select * from reservation where mid=#{mid} and rcheck=0
 		order by rid desc
 	</select>
+	
+	<!-- 끝난 예약 보여주기 -->
+	<select id="getReservdone"
+		resultType="com.hyundai.higher.domain.makeup.ReservVO">
+		select distinct a.rid, mid, rdate, rcheck, roomid, rimg
+		from reservation a , result b where mid=#{mid} and rcheck=1
+		order by
+		a.rid desc
+	</select>
+
 
 	<!-- rid로 예약 결과 가져와서 result -->
 	<select id="getLipResult"
@@ -46,7 +71,8 @@
 		from product a, poption b, img c
 		where a.pcode=b.pcode and
 		a.pcode=c.pcode and dept2no=21
-		and itype='thumb' and iloc like '%0' and a.pcode=#{pcode} and
+		and itype='thumb' and iloc like '%0' and
+		a.pcode=#{pcode} and
 		optname=#{optname}
 	</select>
 	<select id="SimLip"

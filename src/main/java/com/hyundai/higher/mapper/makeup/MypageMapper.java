@@ -28,11 +28,18 @@ import com.hyundai.higher.domain.makeup.ResultVO;
 @Mapper
 public interface MypageMapper {
 	
+	
 	// 상담 후
 	public List<ReservVO> getReservdone(String mid);
 
-	// 상담 전
+	// 예약만 된 상태
 	public List<ReservVO> getReservReady(String mid);
+	
+	// 입장하기 코드
+	public List<ReservVO> noResult(String mid);
+	
+	// 결과확인 코드
+	public List<ReservVO> yesResult(String mid);
 	
 	// 결과 -> 결과값 립
 	public LipVO getLipResult(String optname);

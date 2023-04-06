@@ -400,7 +400,7 @@
 								<h2 style="margin-top: 30px;">상담 결과</h2>
 								<div class="numbering" style="margin: 40px 50px">
 									<p style="display: inline">예약번호 :</p>
-									<p style="display: inline">N093873509</p>
+									<p style="display: inline" th:text="${res.rid}"></p>
 								</div>
 								<div class="makeupwrapper"
 									style="grid-template-columns: 30% 20% 50%; display: grid; margin: 0 50 0 50;">
@@ -408,24 +408,24 @@
 										<p style="margin-top: 0; font-weight: bold">고객 정보</p>
 										<div>
 											<p style="display: inline; margin-bottom: 10px">상담자 :</p>
-											<p style="display: inline">세팅맨</p>
+											<p style="display: inline" th:text="${mem.MName}"></p>
 										</div>
 										<div>
 											<p style="display: inline">
 												<br />메이크업 아티스트 :
 											</p>
-											<p style="display: inline">MARY</p>
+											<p style="display: inline" th:text="${principal.name}"></p>
 										</div>
 										<p style="display: inline">
 											<br />상담 일자 :
 										</p>
-										<p style="display: inline">2023/03/23 11:00</p>
+										<p style="display: inline" th:text="${res.rdate}"></p>
 										<div>
 											<!-- 기초 진단 정보 그래프로 나타나는 js 데려와서 해보는거 추후 논의-->
 											<p style="display: inline">
 												<br />기초 진단 정보 :
 											</p>
-											<p style="display: inline">NBTI</p>
+											<p style="display: inline" th:text="${pro.mbti}"></p>
 										</div>
 										<div>
 											<!-- 상담 내용 checkbox나 라디오 버튼 만들어서 상담 내역 관리 가능하게도 가능 (추후 논의 후 수정) -->
@@ -464,7 +464,7 @@
 										<div class="wrapper3"
 											style="grid-template-columns: repeat(2, 1fr); display: grid; place-items: center;">
 											<div class="faceupload" style="float: left">
-												<img class="face" th:src="@{${output_filepath}}"
+												<img class="face" th:src="'/beauty/display?fileName=' + ${res.rimg}"
 													style="max-width: 200px; margin: 0 20 20 20; float: right;" />
 											</div>
 											<div class="faceupload" style="float: left">
@@ -505,8 +505,7 @@
 																	name="lip_opt" class="lip_opt"
 																	th:value="${liplist.optname}" />
 																<div class="price-info single">
-																	<span
-																		th:text="${#numbers.formatInteger(liplist.pprice, 3, 'COMMA')}"><i>원</i></span>
+																   <span>[[${#numbers.formatInteger(liplist.pprice, 3, 'COMMA')}]]<em>원</em></span>
 																</div>
 																<div>
 																	<a th:text="${liplist.pname}"></a>
@@ -551,8 +550,7 @@
 																	type="hidden" name="blush_opt" class="blush_opt"
 																	th:value="${blushlist.optname}" />
 																<div class="price-info single">
-																	<span
-																		th:text="${#numbers.formatInteger(blushlist.pprice, 3, 'COMMA')}"><i>원</i></span>
+																	 <span>[[${#numbers.formatInteger(blushlist.pprice, 3, 'COMMA')}]]<em>원</em></span>
 																</div>
 																<div>
 																	<a th:text="${blushlist.pname}"></a>
@@ -615,8 +613,7 @@
 																<input type="hidden" name="face_opt" class="face_opt"
 																	th:value="${foundationlist.optname}" />
 																<div class="price-info single">
-																	<span
-																		th:text="${#numbers.formatInteger(foundationlist.pprice, 3, 'COMMA')}"><i>원</i></span>
+																	 <span>[[${#numbers.formatInteger(foundationlist.pprice, 3, 'COMMA')}]]<em>원</em></span>
 																</div>
 																<div>
 																	<a th:text="${foundationlist.pname}"></a>

@@ -68,4 +68,14 @@ public class MypageServiceImpl implements MypageService{
 		return mapper.SimFace(optcolor, pcode);
 	}
 
+	@Override
+	public List<ReservVO> noResult(String mid) {
+		return mapper.noResult(mid);
+	}
+
+	@Override
+	public List<ReservVO> yesResult(String mid) {
+		return mapper.yesResult(mid);
+	}
+
 }
