@@ -83,7 +83,7 @@
 		a.pcode=c.pcode and dept2no=22
 		and itype='thumb' and iloc like '%0' and
 		a.pcode!=#{pcode} and
-		optcolor=#{optcolor} and rownum<![CDATA[ <= ]]>3
+		optcolor=#{optcolor} and rownum<![CDATA[ <= ]]>9
 	</select>
 
 	<select id="SimBlush"
@@ -94,7 +94,7 @@
 		a.pcode=c.pcode and dept2no=24
 		and itype='thumb' and iloc like '%0' and
 		a.pcode!=#{pcode} and
-		optcolor=#{optcolor} and rownum<![CDATA[ <= ]]>3
+		optcolor=#{optcolor} and rownum<![CDATA[ <= ]]>9
 	</select>
 
 	<select id="SimFace"
@@ -107,7 +107,7 @@
 		and itype='thumb'
 		and a.pcode!=#{pcode}
 		and
-		optcolor=#{optcolor} and rownum<![CDATA[ <= ]]>3
+		optcolor=#{optcolor} and rownum<![CDATA[ <= ]]>9
 	</select>
 	<select id="getReservInfo"
 		resultType="com.hyundai.higher.domain.makeup.ReservVO">
