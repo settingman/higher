@@ -300,8 +300,8 @@
 										</td>
 										<td class="minus">
 											<div class="title">할인금액</div>
-											<div class="price">
-												0<span>원</span>
+											<div class="price" th:text="${#numbers.formatInteger(orderSheet.oMileage, 3, 'COMMA') + '원'}">
+												<span>원</span>
 											</div>
 										</td>
 										<td class="equal">

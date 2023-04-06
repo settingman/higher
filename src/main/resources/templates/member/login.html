@@ -8,13 +8,13 @@
 <head>
 <head th:insert="~{include/head}">
 </head>
-<meta charset="utf-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0"/>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0" />
 <title>THE HYUNDAI</title>
-<link rel="stylesheet" type="text/css" href="https://image.thehyundai.com/pc/cssssl/font.css"/>
-<link rel="stylesheet" type="text/css" href="https://image.thehyundai.com/pc/cssssl/co.css?ver=19"/>
-<link rel="stylesheet" type="text/css" href="https://image.thehyundai.com/pc/cssssl/wf.css"/>
+<link rel="stylesheet" type="text/css" href="https://image.thehyundai.com/pc/cssssl/font.css" />
+<link rel="stylesheet" type="text/css" href="https://image.thehyundai.com/pc/cssssl/co.css?ver=19" />
+<link rel="stylesheet" type="text/css" href="https://image.thehyundai.com/pc/cssssl/wf.css" />
 <script src="https://image.thehyundai.com/pc/js/jquery-1.11.3.min.js"></script>
 <script src="https://image.thehyundai.com/pc/js/jquery-ui.min.js"></script>
 <script src="https://image.thehyundai.com/pc/js/jquery-migrate.min.js"></script>
@@ -29,9 +29,8 @@
 	margin-right: 0px;
 }
 </style>
-<link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css"/>
-<style type="text/css" data-fbcssmodules="css:fb.css.base css:fb.css.dialog css:fb.css.iframewidget css:fb.css.customer_chat_plugin_iframe">
-.fb_hidden {
+<link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" />
+<style type="text/css" data-fbcssmodules="css:fb.css.base css:fb.css.dialog css:fb.css.iframewidget css:fb.css.customer_chat_plugin_iframe">.fb_hidden {
 	position:absolute;
 	top:-10000px;
 	z-index:10001;
@@ -583,89 +582,92 @@ body.fb_hidden {
 }
 </style>
 <style>
-      header#header {
-         background: none;
-         height: auto;
-      }
-      footer#footer {
-    background: white;
-    border-top: 1px solid black !important;
-      }
+header#header {
+	background: none;
+	height: auto;
+}
+
+footer#footer {
+	background: white;
+	border-top: 1px solid black !important;
+}
 </style>
 </head>
 <body>
-
-<header id="header" th:insert="~{include/header}"></header>
-<!-- 로그인 페이지 리뉴얼 정길화 2021.03.30 -->
-<!-- 580px 450px -->
-<!-- wrap -->
-<div id="wrap" class="popup">
-	<!-- pop-header -->
-	<div class="pop-header">
-		<!-- 20210302 SSO회원화를 위한 로그인 페이지 개편// -->
-		<h1 style="overflow-wrap: break-word; white-space: normal">로그인</h1>
-		<!-- //20210302 SSO회원화를 위한 로그인 페이지 개편 -->
-	</div>
-	<!-- //pop-header -->
-	<!-- container -->
-	<div id="container">
-		<!-- content-wrap -->
-		<div class="content-wrap">
-			<!-- login-content-wrap // -->
-			<div class="login-content-wrap">
-				<!-- H.Point 통합회원 영역// -->
-				<div class="login-hpoint-area" style="display: block">
-					<h2>H.Point 통합회원</h2>
-					<div class="login-wrap" id="hMember">
-						<form name="login" id="loginForm" action="/member/login" method="post">
-							<div class="login-fieldset">
-								<div class="login-input">
-									<input type="text" title="아이디" placeholder="H.Point 아이디" name="mId" id="custId" th:value="${mId}"/>
-									<input type="password" title="비밀번호" placeholder="H.Point 비밀번호" name="password" id="custPwd" value="" autocomplete="off"/>
-								</div>
-								<!-- [TO DEV] Error msg here. -->
-								<div class="err_wrap">
-									<p id="hpErrMsg" class="err_txt">
-									</p>
-								</div>
-								<div th:if="error">
-									<p id="valid" style="color: red; font-size: 12px;">
-										<a th:text="${exception}"></a>
-									</p>
-								</div>
-								<button class="btn btn-login" id="login_btn" type="button">로그인</button>
-							</div>
-							<label class="error" style="display: none" id="point">아이디 또는 비밀번호가 올바르지 않습니다.</label>
-							<div class="login-block">
-								<div class="btn-find">
-									<button class="btn size2 color3" type="button" onclick="window.open('https://www.h-point.co.kr/cu/config/findCustId.nhd?prtnrId=D010&amp;chnnlId=1202');">아이디 찾기</button>
-									<button class="btn size2 color3" type="button" onclick="window.open('https://www.h-point.co.kr/cu/config/findCustPwd.nhd?mvPg=120202'); ">비밀번호 찾기</button>
-								</div>
-							</div>
-						</form>
-						<ul class="login-link-wrap">
-							<li><a href="#none" onclick="goRegMem();">회원가입</a></li>
-							<li><a href="#none" onclick="window.opener.top.location.href='http://www.thehyundai.com/CS/eva/evaEvntHdUserRegHpMb.thd'; javascript:">H포인트 소개</a></li>
-						</ul>
-					</div>
-					<!-- 20210420 H.point 로그인 화면만 보여야할 경우 -->
-					<div id="member-btn-wrap">
-						<ul class="login-sns-wrap">
-							<li><a href="#" onclick="naverLogin();"><span class="icon-naver">네이버</span></a></li>
-							<li><a href="/oauth2/authorization/kakao" id="kakaoLogin"><span class="icon-kakao">카카오</span></a></li>
-							<li><a href="/oauth2/authorization/google" id="googleLogin"><span class="icon-google">구글플러스</span></a></li>
-						</ul>
-					</div>
-				</div>
-				<!-- // H.Point 통합회원 영역 -->
-			</div>
+	<header id="header" th:insert="~{include/header}"></header>
+	<!-- 로그인 페이지 리뉴얼 정길화 2021.03.30 -->
+	<!-- 580px 450px -->
+	<!-- wrap -->
+	<div id="wrap" class="popup">
+		<!-- pop-header -->
+		<div class="pop-header">
+			<!-- 20210302 SSO회원화를 위한 로그인 페이지 개편// -->
+			<h1 style="overflow-wrap: break-word; white-space: normal">로그인</h1>
+			<!-- //20210302 SSO회원화를 위한 로그인 페이지 개편 -->
 		</div>
-		<!-- //content-wrap -->
+		<!-- //pop-header -->
+		<!-- container -->
+		<div id="container">
+			<!-- content-wrap -->
+			<div class="content-wrap">
+				<!-- login-content-wrap // -->
+				<div class="login-content-wrap">
+					<!-- H.Point 통합회원 영역// -->
+					<div class="login-hpoint-area" style="display: block">
+						<h2>H.Point 통합회원</h2>
+						<div class="login-wrap" id="hMember">
+							<form name="login" id="loginForm" action="/member/login" method="post">
+								<div class="login-fieldset">
+									<div class="login-input">
+										<input type="text" title="아이디" placeholder="H.Point 아이디" name="mId" id="custId" th:value="${mId}" />
+										<input type="password" title="비밀번호" placeholder="H.Point 비밀번호" name="password" id="custPwd" value="" autocomplete="off" />
+									</div>
+									<!-- [TO DEV] Error msg here. -->
+									<div class="err_wrap">
+										<p id="hpErrMsg" class="err_txt"></p>
+									</div>
+									<div th:if="error">
+										<p id="valid" style="color: red; font-size: 12px;">
+											<a th:text="${exception}"></a>
+										</p>
+									</div>
+									<button class="btn btn-login" id="login_btn" type="button">로그인</button>
+								</div>
+								<label class="error" style="display: none" id="point">아이디 또는 비밀번호가 올바르지 않습니다.</label>
+								<div class="login-block">
+									<div class="btn-find">
+										<button class="btn size2 color3" type="button"
+											onclick="window.open('/member/findId');"
+										>아이디 찾기</button>
+										<button class="btn size2 color3" type="button" onclick="window.open('/member/findId'); ">비밀번호
+											찾기</button>
+									</div>
+								</div>
+							</form>
+							<ul class="login-link-wrap">
+								<li><a href="/member/jointotal" ">회원가입</a></li>
+								<li><a href="#none" onclick="window.opener.top.location.href='http://www.thehyundai.com/CS/eva/evaEvntHdUserRegHpMb.thd'; javascript:">H포인트
+										소개</a></li>
+							</ul>
+						</div>
+						<!-- 20210420 H.point 로그인 화면만 보여야할 경우 -->
+						<div id="member-btn-wrap">
+							<ul class="login-sns-wrap">
+								<li><a href="#" onclick="naverLogin();"><span class="icon-naver">네이버</span></a></li>
+								<li><a href="/oauth2/authorization/kakao" id="kakaoLogin"><span class="icon-kakao">카카오</span></a></li>
+								<li><a href="/oauth2/authorization/google" id="googleLogin"><span class="icon-google">구글플러스</span></a></li>
+							</ul>
+						</div>
+					</div>
+					<!-- // H.Point 통합회원 영역 -->
+				</div>
+			</div>
+			<!-- //content-wrap -->
+		</div>
+		<!-- //container -->
 	</div>
-	<!-- //container -->
-</div>
-<!-- //wrap -->
-<script type="text/javascript">
+	<!-- //wrap -->
+	<script type="text/javascript">
 		(function(d, s, id) {
 			var js, fjs = d.getElementsByTagName(s)[0];
 			if (d.getElementById(id)) {
@@ -712,7 +714,7 @@ body.fb_hidden {
 							});
 		}
 	</script>
-<script type="text/javascript">
+	<script type="text/javascript">
 		$("#login_btn")
 				.click(
 						function() {
