@@ -791,7 +791,12 @@ $(function(){
       pOption = pname;
     }else {
       const selectEl = document.querySelector('.opt');  // select 요소 선택
-      const selectedValue = selectEl.options[selectEl.selectedIndex].value; 
+      const selectedValue = selectEl.options[selectEl.selectedIndex].value
+      if(selectedValue =='선택'){
+        console.log("옵션 선택 안함");
+        alert('옵션을 선택하세요');
+        return;
+      }; 
       pOption = selectedValue;
     }
 		console.log(pOption);
