@@ -149,21 +149,26 @@ public class MatchController {
 	@GetMapping("/main")
 	public String mathMain2(@RequestParam(value="mbti", required=false, defaultValue = "") String mbti, Model model, Principal prin) {
 		
-		String mid = prin.getName();
-		MemberMBTIDTO memMbti = mService.getMemMBTI(mid);
-		
-		StringTokenizer st = new StringTokenizer(memMbti.getMbti_scores(), ",");
-		List<Integer> scores = new ArrayList<>();
-		for(int i=0; i<4; i++) {
-			scores.add(Integer.parseInt(st.nextToken()));
+		if(prin != null) {
+			String mid = prin.getName();
+			MemberMBTIDTO memMbti = mService.getMemMBTI(mid);
+			StringTokenizer st = new StringTokenizer(memMbti.getMbti_scores(), ",");
+			List<Integer> scores = new ArrayList<>();
+			for(int i=0; i<4; i++) {
+				scores.add(Integer.parseInt(st.nextToken()));
+			}
+			model.addAttribute("memMBTI", memMbti);
+			model.addAttribute("scores", scores);
 		}
+		
+		
+		
 				
 		List<MatchProductDTO> product = mService.mbtiProduct(mbti);
 		
 		model.addAttribute("product",product);
 		model.addAttribute("mbti", mbti);
-		model.addAttribute("memMBTI", memMbti);
-		model.addAttribute("scores", scores);
+		
 		model.addAttribute("mbtiCate", mService.mbtiList());
 		
 		return "match/main";
