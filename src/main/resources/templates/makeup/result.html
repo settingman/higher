@@ -9,6 +9,8 @@
 
 <title>온라인 뷰티 예약 관리</title>
 
+<link rel="stylesheet" type="text/css"
+	href="/makeup/css/mypage_result.css">
 <!-- Custom fonts for this template-->
 <link href="/admin/vendor/fontawesome-free/css/all.min.css"
 	rel="stylesheet" type="text/css" />
@@ -18,7 +20,6 @@
 
 <!-- Custom styles for this template-->
 <link href="/admin/css/sb-admin-2.min.css" rel="stylesheet" />
-
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
 	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 	crossorigin="anonymous"></script>
@@ -398,89 +399,106 @@
 							style="float: left; display: inline-flex; font-size: 12px;">
 							<div class="makeupwrapper">
 								<h2 style="margin-top: 30px;">상담 결과</h2>
-								<div class="numbering" style="margin: 40px 50px">
-									<p style="display: inline">예약번호 :</p>
-									<p style="display: inline" th:text="${res.rid}"></p>
-								</div>
-								<div class="makeupwrapper"
-									style="grid-template-columns: 30% 20% 50%; display: grid; margin: 0 50 0 50;">
-									<div class="wrapper1" style="margin-right: 20px">
-										<p style="margin-top: 0; font-weight: bold">고객 정보</p>
-										<div>
-											<p style="display: inline; margin-bottom: 10px">상담자 :</p>
-											<p style="display: inline" th:text="${mem.MName}"></p>
-										</div>
-										<div>
-											<p style="display: inline">
-												<br />메이크업 아티스트 :
-											</p>
-											<p style="display: inline" th:text="${principal.name}"></p>
-										</div>
-										<p style="display: inline">
-											<br />상담 일자 :
-										</p>
-										<p style="display: inline" th:text="${res.rdate}"></p>
-										<div>
-											<!-- 기초 진단 정보 그래프로 나타나는 js 데려와서 해보는거 추후 논의-->
-											<p style="display: inline">
-												<br />기초 진단 정보 :
-											</p>
-											<p style="display: inline" th:text="${pro.mbti}"></p>
-										</div>
-										<div>
-											<!-- 상담 내용 checkbox나 라디오 버튼 만들어서 상담 내역 관리 가능하게도 가능 (추후 논의 후 수정) -->
-											<p style="display: inline">
-												<br />요청 사항 :
-											</p>
-											<p style="display: inline">촉촉한 피부 마감 선호, 립 브랜드 베네피트 선호</p>
-										</div>
-									</div>
-									<div class="wrapper2" style="">
-										<p style="margin-top: 0; font-weight: bold">상담결과</p>
-										<div>
-											<p style="display: inline">Lip :</p>
-											<p style="display: inline" th:text="${lips}"></p>
-										</div>
-										<div>
-											<p style="display: inline">
-												<br />Blush :
-											</p>
-											<p style="display: inline" th:text="${blush}"></p>
-										</div>
-										<div>
-											<p style="display: inline">
-												<br />Foundation :
-											</p>
-											<p style="display: inline" th:text="${foundation}"></p>
-										</div>
-									</div>
-									<div class="makeupwrapper">
-										<div class="numbering"
-											style="text-align: center; margin-top: 30px;">
-											<p
-												style="text-align: center; margin-top: 0; font-weight: bold;">
-												결과 사진</p>
-										</div>
-										<div class="wrapper3"
-											style="grid-template-columns: repeat(2, 1fr); display: grid; place-items: center;">
-											<div class="faceupload" style="float: left">
-												<img class="face" th:src="'/beauty/display?fileName=' + ${res.rimg}"
-													style="max-width: 200px; margin: 0 20 20 20; float: right;" />
-											</div>
-											<div class="faceupload" style="float: left">
-												<img class="face" th:src="@{${output_filepath}}"
-													style="max-width: 200px; margin: 0 20 20 20" />
-											</div>
-											<div style="text-align: center">
-												<span>BEFORE</span>
-											</div>
-											<div style="text-align: center">
-												<span>AFTER</span>
-											</div>
-										</div>
-									</div>
-								</div>
+								<div class="numbering"
+						style="font-family: 'locator-medium'; position: relative; float: left; margin-right: 695px; line-height: 26px;">
+						<p style="display: inline">예약번호 :</p>
+						<p style="display: inline" th:text="${res.rid}"></p>
+					</div>
+					<div style="position: relative;">
+						<p class="v-btn-wrap" style="">
+							<a th:href="'/mypage/result2?rid=' + ${res.rid}"
+								onclick="javascript:GA_Event('PC_마이페이지', '최근_주문_배송내역', '상세내역');"
+								class="btn color4 size1"
+								style="background: #bfae90; border: #bfae90;">상세 결과</a>
+						</p>
+					</div>
+					<div>
+						<div class="makeupwrapper" style="margin-bottom: 100px;">
+							<!-- 예약자 정보 -->
+							<div class="table-wrap order-addinfo mt20">
+								<table>
+									<caption></caption>
+									<colgroup>
+										<col style="width: 150px;">
+										<col>
+										<col style="width: 150px;">
+										<col style="width: 215px;">
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">예약자</th>
+											<td colspan="3" th:text="${mem.mName}"></td>
+										</tr>
+										<tr>
+											<th scope="row">상담일자</th>
+											<td th:text="${res.rdate}"></td>
+											<th scope="row" th:text="${pro.mbti}"></th>
+											<td>-</td>
+										</tr>
 
+										<tr>
+											<th scope="row">담당 ARTIST</th>
+											<td colspan="3" th:text="${principal.name}"></td>
+										</tr>
+										<!-- 주문시 요청사항 배송기사님 -->
+
+										<tr>
+											<th scope="row">요청 사항</th>
+											<td colspan="3">-</td>
+										</tr>
+
+									</tbody>
+								</table>
+							</div>
+							<!-- 예약자 정보 -->
+							<!-- color 정보 -->
+							<div class="table-wrap order-addinfo mt20">
+								<table>
+									<caption></caption>
+									<colgroup>
+										<col style="width: 31.1vh;">
+
+										<col style="width: 31.1vh;">
+										<col style="width: 31.1vh;">
+									</colgroup>
+									<tbody>
+										<tr style="font-family: 'notokr-medium';">
+											<td style="text-align: center;">LIP</td>
+											<td style="text-align: center;">BLUSH</td>
+											<td style="text-align: center;">FOUNDATION</td>
+										</tr>
+										<tr>
+											<td style="text-align: center;" th:text="${lips}"></td>
+											<td style="text-align: center;" th:text="${blush}"></td>
+											<td style="text-align: center;" th:text="${foundation}"></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<!-- color 정보 -->
+							<!-- before after -->
+							<div class="numbering"
+								style="text-align: center; margin: 20px; font-family: 'notokr-demilight'; font-size: initial;">
+								<p style="">결과 사진</p>
+							</div>
+							<div class="wrapper3"
+								style="grid-template-columns: repeat(2, 1fr);display: grid;place-items: center;margin: 0 50px;">
+								<div class="faceupload" style="float: left">
+									<img class="face"
+										th:src="'/beauty/display?fileName=' + ${res.rimg}"
+										style="max-width: 300px; margin: 0 20 20 20; float: right;">
+								</div>
+								<div class="faceupload" style="float: left">
+									<img class="face" th:src="${output_filepath}"
+										style="max-width: 300px; margin: 0 20 20 20">
+								</div>
+								<div style="text-align: center">
+									<span style="font-family: 'locator-regular';">BEFORE</span>
+								</div>
+								<div style="font-family: 'locator-regular';">
+									<span>AFTER</span>
+								</div>
+							</div>
 								<!-- lip wrap-->
 								<div class="lip_wrap">
 									<div class="numbering"

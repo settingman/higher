@@ -15,17 +15,15 @@ header#header {
 </style>
 <link rel="stylesheet" type="text/css"
 	href="https://image.thehyundai.com/pc/cssssl/font.css" />
-<link rel="stylesheet" type="text/css" href="/makeup/css/mypage_result.css">
+<link rel="stylesheet" type="text/css"
+	href="/makeup/css/mypage_result.css">
 <link rel="stylesheet" type="text/css"
 	href="https://image.thehyundai.com/pc/cssssl/co.css?ver=13" />
 <link rel="stylesheet" type="text/css"
 	href="https://image.thehyundai.com/pc/cssssl/wf.css" />
-<link rel="stylesheet" type="text/css"
-	href="../../static/css/makeup_result.css" />
 <script src="https://image.thehyundai.com/pc/js/jquery-1.11.3.min.js"></script>
 <script src="https://image.thehyundai.com/pc/js/jquery-ui.min.js"></script>
 <script src="https://image.thehyundai.com/pc/js/jquery-migrate.min.js"></script>
-
 <script type="text/javascript">
 	document.domain = "thehyundai.com";
 	var locationHref = document.location.href;
@@ -260,15 +258,15 @@ header#header {
 								<p style="">결과 사진</p>
 							</div>
 							<div class="wrapper3"
-								style="grid-template-columns: repeat(2, 1fr); display: grid; place-items: center;">
+								style="grid-template-columns: repeat(2, 1fr);display: grid;place-items: center;margin: 0 50px;">
 								<div class="faceupload" style="float: left">
 									<img class="face"
 										th:src="'/beauty/display?fileName=' + ${info.rimg}"
-										style="max-width: 250px; margin: 0 20 20 20; float: right;">
+										style="max-width: 300px; margin: 0 20 20 20; float: right;">
 								</div>
 								<div class="faceupload" style="float: left">
 									<img class="face" th:src="${result.result_img}"
-										style="max-width: 250px; margin: 0 20 20 20">
+										style="max-width: 300px; margin: 0 20 20 20">
 								</div>
 								<div style="text-align: center">
 									<span style="font-family: 'locator-regular';">BEFORE</span>
@@ -402,6 +400,7 @@ header#header {
 		<div class="include-footer" th:insert="~{include/footer}"></div>
 	</div>
 	<!-- //wrap -->
+	
 	<script>
 		function addCart() {
 			console.log('장바구니 담기');

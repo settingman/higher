@@ -196,11 +196,11 @@ function back() {
 					<div class="tab-block">
 						<!-- tab -->
 						<ul class="nav nav-tabs2">
-							<li class="active" style="width: 31vh;" id="lippick"><a>립
+							<li class="active" style="width: 34vh;" id="lippick"><a>립
 									PICK</a></li>
 
-							<li style="width: 31vh;" id="blushpick"><a>블러쉬 PICK</a></li>
-							<li style="width: 31vh;" id="facepick"><a>페이스 PICK</a></li>
+							<li style="width: 34vh;" id="blushpick"><a>블러쉬 PICK</a></li>
+							<li style="width: 34vh;" id="facepick"><a>페이스 PICK</a></li>
 						</ul>
 					</div>
 					<!-- 립파트 -->
@@ -259,8 +259,8 @@ function back() {
 						<div class="simlip">
 							<div class="makeupwrapper" style="margin-bottom: 100px;">
 								<div class="swiper-container">
-									<div class="swiper-wrapper">
-										<div class="swiper-slide" th:each="simlip : ${simlip}">
+									<div class="swiper-wrapper" style="height: 400px;">
+										<div class="swiper-slide" th:each="simlip : ${simlip}" style="width: 264px;margin-right: 24px;height: 400px;">
 											<li style="margin: 0 0 20px 16px;"><a
 												th:href="'/product/detail?code=' + ${simlip.pcode}"> <img
 													th:src="${simlip.iloc} + '_600.jpg'"
@@ -350,8 +350,8 @@ function back() {
 						<div class="simblush">
 							<div class="makeupwrapper" style="margin-bottom: 100px;">
 								<div class="swiper-container">
-									<div class="swiper-wrapper">
-										<div class="swiper-slide" th:each="simblush : ${simblush}">
+									<div class="swiper-wrapper" style="height: 400px;">
+										<div class="swiper-slide" th:each="simblush : ${simblush}"  style="width: 264px;margin-right: 24px;height: 400px;">
 											<li style="margin: 0 0 20px 16px;"><a
 												th:href="'/product/detail?code=' + ${simblush.pcode}"> <img
 													th:src="${simblush.iloc} + '_600.jpg'"
@@ -442,8 +442,8 @@ function back() {
 						<div class="simface">
 							<div class="makeupwrapper" style="margin-bottom: 100px;">
 								<div class="swiper-container">
-									<div class="swiper-wrapper">
-										<div class="swiper-slide" th:each="simface : ${simface}">
+										<div class="swiper-wrapper" style="height: 500px;">
+										<div class="swiper-slide" th:each="simface : ${simface}"  style="width: 264px;margin-right: 24px;height: 500px;">
 											<li style="margin: 0 0 20px 16px;"><a
 												th:href="'/product/detail?code=' + ${simface.pcode}"> <img
 													th:src="${simface.iloc} + '_600.jpg'"
@@ -587,6 +587,7 @@ $('#facepick').click(function(){
     document.addEventListener("touchcancel", dragDone, { passive: true });
 
     slider.classList.add("slider");
+    arrow.setAttribute("display", "none");
     arrow.setAttribute("width", "20");
     arrow.setAttribute("height", "20");
     arrow.setAttribute("viewBox", "0 0 30 30");
@@ -594,10 +595,10 @@ $('#facepick').click(function(){
         "d",
         "M1,14.9l7.8-7.6v4.2h12.3V7.3l7.9,7.6l-7.9,7.7v-4.2H8.8v4.2L1,14.9z"
     );
-    arrow.append(path);
-    slider.append(arrow);
+    //arrow.append(path);
+    //slider.append(arrow);
 
-    element.append(slider);
+    //element.append(slider);
 });
 	</script>
 </body>
