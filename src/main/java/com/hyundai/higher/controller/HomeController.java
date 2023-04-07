@@ -74,11 +74,8 @@ public class HomeController {
 	@GetMapping(value = "/test5")
 	public String test5(Model model) {
 
-		List<ReservationDTO> reservations = beautyMapper.findReservation();
-
-		model.addAttribute("reservations", reservations);
-
-		return "admin/reservation";
+	
+		return "test5";
 	}
 	/*
 	 * @GetMapping("/success") public String requestFinalPayments(@RequestParam

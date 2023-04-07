@@ -335,6 +335,8 @@ function handleICEConnectionStateChangeEvent() {
         $("#remote_video").show();
     } else if (status === "disconnected") {
         log("status : " + status)
+        
+        console.log('여기에요 여기');
 
         $("#remote_video").hide();
     }
