@@ -1,6 +1,9 @@
 package com.hyundai.higher.controller.match;
 
+import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hyundai.higher.domain.match.MatchProductDTO;
+import com.hyundai.higher.domain.match.MemberMBTIDTO;
 import com.hyundai.higher.service.match.MatchService;
 
 import lombok.extern.log4j.Log4j2;
@@ -23,7 +27,8 @@ import lombok.extern.log4j.Log4j2;
  * <pre>
  * 	   수정일          수정자                수정내용
  * -------------   --------    ---------------------------
- * 2023. 04. 01.     박서현       최초 생성
+ * 2023. 04. 01.    박서현       최초 생성
+ * 2023. 04. 06.	신수진		main
  * </pre>
  */
 
@@ -74,6 +79,30 @@ public class MatchController {
 		
 		//성분 for문 해서 점수 카운트
 		return "match/matchIt";
+	}
+	
+	// 화장품 매칭 메인 페이지
+	@GetMapping("/main")
+	public String mathMain2(@RequestParam(value="mbti", required=false, defaultValue = "") String mbti, Model model, Principal prin) {
+		
+		String mid = prin.getName();
+		MemberMBTIDTO memMbti = mService.getMemMBTI(mid);
+		
+		StringTokenizer st = new StringTokenizer(memMbti.getMbti_scores(), ",");
+		List<Integer> scores = new ArrayList<>();
+		for(int i=0; i<4; i++) {
+			scores.add(Integer.parseInt(st.nextToken()));
+		}
+				
+		List<MatchProductDTO> product = mService.mbtiProduct(mbti);
+		
+		model.addAttribute("product",product);
+		model.addAttribute("mbti", mbti);
+		model.addAttribute("memMBTI", memMbti);
+		model.addAttribute("scores", scores);
+		model.addAttribute("mbtiCate", mService.mbtiList());
+		
+		return "match/main";
 	}
 	
 	

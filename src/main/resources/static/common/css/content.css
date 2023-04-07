@@ -5129,8 +5129,8 @@
 /*기타 - 검색*/
 .search_wrap .search_area {
   border-bottom: 1px solid #e9e9e9;
-  padding: 60px 0;
-  margin-bottom: 50px;
+  padding: 60px 0 30px;
+  margin-bottom: 30px;
 }
 
 .search_wrap .search_area .search_faq {

@@ -6,5 +6,5 @@ public interface CategoryService {
 	
 	// 카테고리 목록 전체
 	public CategoryAllDTO cateAll();
-
+	
 }

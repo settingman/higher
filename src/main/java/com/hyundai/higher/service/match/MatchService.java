@@ -2,8 +2,10 @@ package com.hyundai.higher.service.match;
 
 import java.util.List;
 
+import com.hyundai.higher.domain.category.MBTIDTO;
 import com.hyundai.higher.domain.match.MatchMbtiDTO;
 import com.hyundai.higher.domain.match.MatchProductDTO;
+import com.hyundai.higher.domain.match.MemberMBTIDTO;
 
 /**
  * @since   : 2023. 04. 01.
@@ -15,6 +17,7 @@ import com.hyundai.higher.domain.match.MatchProductDTO;
  *   수정일         수정자               수정내용
  * ----------      --------    ---------------------------
  * 2023. 04. 01.     박서현      	최초 생성
+ * 2023. 04. 06.	신수진		
  * </pre>
  */
 public interface MatchService {
@@ -27,4 +30,10 @@ public interface MatchService {
 
 	//상품 검색 조회
 	public List<MatchProductDTO> searchProduct(String keyword);
+	
+	// 회원 mbti 정보 불러오기
+	public MemberMBTIDTO getMemMBTI(String mid);
+	
+	// mbti 카테고리
+	public List<MBTIDTO> mbtiList();
 }
