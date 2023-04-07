@@ -84,7 +84,7 @@ public class MemberService implements UserDetailsService {
 		// 시큐리티 회원정보 주입. (다른 정보를 더 넣고싶다면 Secuirty 맴버에 필드 추가 후 주입해준다.)
 		securityMember.setMName(member.getMName());
 		securityMember.setMPhone(member.getMPhone());
-		securityMember.setMPhone(member.getMbti());
+		securityMember.setMbti(member.getMbti());
 
 		log.info(securityMember.toString());
 
