@@ -8,9 +8,46 @@
 <meta name="author" content="" />
 
 <title>온라인 뷰티 예약 관리</title>
+<script type="text/javascript"
+	src="https://image.thehyundai.com/pc/js/swiper.min.js?ver=040213"></script>
+<script>
+	document.addEventListener("DOMContentLoaded", function() {
+
+		var mySwiper = new Swiper('.swiper-container', {
+			slidesPerView : 3,
+			slidesPerGroup : 3,
+			observer : true,
+			observeParents : true,
+			spaceBetween : 24,
+			navigation : {
+				nextEl : '.swiper-button-next',
+				prevEl : '.swiper-button-prev',
+			},
+			breakpoints : {
+				1280 : {
+					slidesPerView : 4,
+					slidesPerGroup : 4,
+				},
+				720 : {
+					slidesPerView : 1,
+					slidesPerGroup : 1,
+				}
+			}
+		});
+
+	});
+
+	function back() {
+		history.go(-1);
+	}
+</script>
 
 <link rel="stylesheet" type="text/css"
 	href="/makeup/css/mypage_result.css">
+<link rel="stylesheet" type="text/css"
+	href="https://image.thehyundai.com/pc/cssssl/co.css?ver=13" />
+<link rel="stylesheet" type="text/css"
+	href="https://image.thehyundai.com/pc/cssssl/wf.css" />
 <!-- Custom fonts for this template-->
 <link href="/admin/vendor/fontawesome-free/css/all.min.css"
 	rel="stylesheet" type="text/css" />
@@ -45,42 +82,61 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></script>
+<link rel="stylesheet" type="text/css" href="/common/css/common.css">
+<link rel="stylesheet" type="text/css" href="/common/css/layout.css">
+<link rel="stylesheet" type="text/css" href="/common/css/content.css">
 <script>
 	function cloneLip(el) {
-		var empty = document.querySelector(".lipclone .empty");
-		if (empty) {
-			empty.remove();
+		const originalElement = el.closest('.swiper-slide');
+		if (!originalElement)
+			return;
+
+		const clonedElement = originalElement.cloneNode(true);
+		clonedElement.classList.add('swiper-slide-active');
+		const foundationlistPick = clonedElement.querySelector('.lip_pick');
+		clonedElement.remove('.lip_pick');
+
+		const faceClone = document.querySelector('.lipclone');
+		while (faceClone.firstChild) {
+			faceClone.removeChild(faceClone.firstChild);
 		}
-		var prevClone = document.querySelector(".lipclone .clonepart");
-		if (prevClone) {
-			prevClone.remove();
-		}
-		var clone = el.parentNode.querySelector(".clonepart").cloneNode(true);
-		document.querySelector(".lipclone").appendChild(clone);
+
+		faceClone.appendChild(clonedElement);
 	}
 	function cloneBlush(el) {
-		var empty = document.querySelector(".blushclone .empty");
-		if (empty) {
-			empty.remove();
+		const originalElement = el.closest('.swiper-slide');
+		if (!originalElement)
+			return;
+
+		const clonedElement = originalElement.cloneNode(true);
+		clonedElement.classList.add('swiper-slide-active');
+		const foundationlistPick = clonedElement.querySelector('.blush_pick');
+		clonedElement.remove('.blush_pick');
+
+		const faceClone = document.querySelector('.blushclone');
+		while (faceClone.firstChild) {
+			faceClone.removeChild(faceClone.firstChild);
 		}
-		var prevClone = document.querySelector(".blushclone .clonepart");
-		if (prevClone) {
-			prevClone.remove();
-		}
-		var clone = el.parentNode.querySelector(".clonepart").cloneNode(true);
-		document.querySelector(".blushclone").appendChild(clone);
+
+		faceClone.appendChild(clonedElement);
 	}
 	function cloneFace(el) {
-		var empty = document.querySelector(".faceclone .empty");
-		if (empty) {
-			empty.remove();
+		const originalElement = el.closest('.swiper-slide');
+		if (!originalElement)
+			return;
+
+		const clonedElement = originalElement.cloneNode(true);
+		clonedElement.classList.add('swiper-slide-active');
+		const foundationlistPick = clonedElement
+				.querySelector('.foundationlist_pick');
+		clonedElement.remove('.foundationlist_pick');
+
+		const faceClone = document.querySelector('.faceclone');
+		while (faceClone.firstChild) {
+			faceClone.removeChild(faceClone.firstChild);
 		}
-		var prevClone = document.querySelector(".faceclone .clonepart");
-		if (prevClone) {
-			prevClone.remove();
-		}
-		var clone = el.parentNode.querySelector(".clonepart").cloneNode(true);
-		document.querySelector(".faceclone").appendChild(clone);
+
+		faceClone.appendChild(clonedElement);
 	}
 </script>
 </head>
@@ -395,497 +451,344 @@
      -->
 
 					<div class="container">
-						<div class="container"
-							style="float: left; display: inline-flex; font-size: 12px;">
-							<div class="makeupwrapper">
+						<div class="container" style="float: left; font-size: 12px;">
+							<div class="makeupwrapper"
+								style="margin-bottom: 100px; float: left;">
 								<h2 style="margin-top: 30px;">상담 결과</h2>
 								<div class="numbering"
-						style="font-family: 'locator-medium'; position: relative; float: left; margin-right: 695px; line-height: 26px;">
-						<p style="display: inline">예약번호 :</p>
-						<p style="display: inline" th:text="${res.rid}"></p>
-					</div>
-					<div style="position: relative;">
-						<p class="v-btn-wrap" style="">
-							<a th:href="'/mypage/result2?rid=' + ${res.rid}"
-								onclick="javascript:GA_Event('PC_마이페이지', '최근_주문_배송내역', '상세내역');"
-								class="btn color4 size1"
-								style="background: #bfae90; border: #bfae90;">상세 결과</a>
-						</p>
-					</div>
-					<div>
-						<div class="makeupwrapper" style="margin-bottom: 100px;">
-							<!-- 예약자 정보 -->
-							<div class="table-wrap order-addinfo mt20">
-								<table>
-									<caption></caption>
-									<colgroup>
-										<col style="width: 150px;">
-										<col>
-										<col style="width: 150px;">
-										<col style="width: 215px;">
-									</colgroup>
-									<tbody>
-										<tr>
-											<th scope="row">예약자</th>
-											<td colspan="3" th:text="${mem.mName}"></td>
-										</tr>
-										<tr>
-											<th scope="row">상담일자</th>
-											<td th:text="${res.rdate}"></td>
-											<th scope="row" th:text="${pro.mbti}"></th>
-											<td>-</td>
-										</tr>
-
-										<tr>
-											<th scope="row">담당 ARTIST</th>
-											<td colspan="3" th:text="${principal.name}"></td>
-										</tr>
-										<!-- 주문시 요청사항 배송기사님 -->
-
-										<tr>
-											<th scope="row">요청 사항</th>
-											<td colspan="3">-</td>
-										</tr>
-
-									</tbody>
-								</table>
-							</div>
-							<!-- 예약자 정보 -->
-							<!-- color 정보 -->
-							<div class="table-wrap order-addinfo mt20">
-								<table>
-									<caption></caption>
-									<colgroup>
-										<col style="width: 31.1vh;">
-
-										<col style="width: 31.1vh;">
-										<col style="width: 31.1vh;">
-									</colgroup>
-									<tbody>
-										<tr style="font-family: 'notokr-medium';">
-											<td style="text-align: center;">LIP</td>
-											<td style="text-align: center;">BLUSH</td>
-											<td style="text-align: center;">FOUNDATION</td>
-										</tr>
-										<tr>
-											<td style="text-align: center;" th:text="${lips}"></td>
-											<td style="text-align: center;" th:text="${blush}"></td>
-											<td style="text-align: center;" th:text="${foundation}"></td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-							<!-- color 정보 -->
-							<!-- before after -->
-							<div class="numbering"
-								style="text-align: center; margin: 20px; font-family: 'notokr-demilight'; font-size: initial;">
-								<p style="">결과 사진</p>
-							</div>
-							<div class="wrapper3"
-								style="grid-template-columns: repeat(2, 1fr);display: grid;place-items: center;margin: 0 50px;">
-								<div class="faceupload" style="float: left">
-									<img class="face"
-										th:src="'/beauty/display?fileName=' + ${res.rimg}"
-										style="max-width: 300px; margin: 0 20 20 20; float: right;">
+									style="font-family: 'locator-medium'; position: relative; float: left; margin-right: 695px; line-height: 26px;">
+									<p style="display: inline">예약번호 :</p>
+									<p style="display: inline" th:text="${res.rid}"></p>
 								</div>
-								<div class="faceupload" style="float: left">
-									<img class="face" th:src="${output_filepath}"
-										style="max-width: 300px; margin: 0 20 20 20">
+								<div style="position: relative;">
+									<p class="v-btn-wrap" style="">
+										<a th:href="'/mypage/result2?rid=' + ${res.rid}"
+											onclick="javascript:GA_Event('PC_마이페이지', '최근_주문_배송내역', '상세내역');"
+											class="btn color4 size1"
+											style="background: #bfae90; border: #bfae90;">상세 결과</a>
+									</p>
 								</div>
-								<div style="text-align: center">
-									<span style="font-family: 'locator-regular';">BEFORE</span>
-								</div>
-								<div style="font-family: 'locator-regular';">
-									<span>AFTER</span>
-								</div>
-							</div>
-								<!-- lip wrap-->
-								<div class="lip_wrap">
-									<div class="numbering"
-										style="text-align: center; margin-top: 30px;">
-										<p style="text-align: center; font-weight: bold">LIP PICK
-										</p>
-									</div>
-									<div class="lip_prod">
-										<div class="product-list-wrap">
-											<div class="product-list type1" id="product-list">
-												<!-- 단일 상품 -->
-												<div class="prod" th:each="liplist : ${liplist}">
-													<div class="prod-unit">
-														<div class="clonepart">
-															<div class="img">
-																<a><img th:src="${liplist.iloc} + '_600.jpg'"
-																	th:alt="${liplist.pname}" /><span class="bg"></span></a>
-															</div>
-															<div class="info">
-																<input type="hidden" name="lip_pcode" class="lip_pcode"
-																	th:value="${liplist.pcode}" /> <input type="hidden"
-																	name="lip_opt" class="lip_opt"
-																	th:value="${liplist.optname}" />
-																<div class="price-info single">
-																   <span>[[${#numbers.formatInteger(liplist.pprice, 3, 'COMMA')}]]<em>원</em></span>
-																</div>
-																<div>
-																	<a th:text="${liplist.pname}"></a>
-																</div>
-																<a th:text="${liplist.optname}"></a>
-															</div>
-														</div>
-														<div class="lip_pick" onclick="cloneLip(this)">
-															<div class="btn_green">
-																<p class="pickbtn">PICK</p>
-															</div>
-														</div>
-													</div>
-												</div>
-												<!-- 단일 상품 -->
+								<div class="dualwrap">
+									<div class="makeupwrapper" style="margin-bottom: 100px;">
+										<!-- 예약자 정보 -->
+										<div class="table-wrap order-addinfo mt20">
+											<table style="font-size: inherit;">
+												<caption></caption>
+												<colgroup>
+													<col style="width: 180px;">
+													<col>
+													<col style="width: 180px;">
+													<col>
+												</colgroup>
+												<tbody>
+													<tr>
+														<th scope="row">예약자</th>
+														<td colspan="3" th:text="${mem.mName}"></td>
+													</tr>
+													<tr>
+														<th scope="row">상담일자</th>
+														<td th:text="${res.rdate}"></td>
+														<th scope="row">피부 MBTI</th>
+														<td th:text="${pro.mbti}"></td>
+													</tr>
+
+													<tr>
+														<th scope="row">담당 ARTIST</th>
+														<td colspan="3" th:text="${principal.name}"></td>
+													</tr>
+													<!-- 주문시 요청사항 배송기사님 -->
+
+													<tr>
+														<th scope="row">요청 사항</th>
+														<td colspan="3"><input type="text" id="needs"
+															name="needs" size="300" style="border-color: white;"></td>
+													</tr>
+
+												</tbody>
+											</table>
+										</div>
+										<!-- 예약자 정보 -->
+										<!-- color 정보 -->
+										<div class="table-wrap order-addinfo mt20">
+											<table style="font-size: inherit;">
+												<caption></caption>
+												<colgroup>
+													<col style="width: 31.1vh;">
+
+													<col style="width: 31.1vh;">
+													<col style="width: 31.1vh;">
+												</colgroup>
+												<tbody>
+													<tr
+														style="font-family: 'notokr-medium'; font-weight: bold;">
+														<td style="text-align: center;">LIP</td>
+														<td style="text-align: center;">BLUSH</td>
+														<td style="text-align: center;">FOUNDATION</td>
+													</tr>
+													<tr>
+														<td style="text-align: center;" th:text="${lips}"></td>
+														<td style="text-align: center;" th:text="${blush}"></td>
+														<td style="text-align: center;" th:text="${foundation}"></td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+										<!-- color 정보 -->
+										<!-- before after -->
+										<div class="numbering"
+											style="text-align: center; font-weight: bold; font-family: 'locator-regular'; font-size: large; margin: 30px 0;">
+											결과 사진
+											<p></p>
+										</div>
+										<div class="wrapper3"
+											style="grid-template-columns: repeat(2, 1fr); display: grid; place-items: center; margin: 0 50px;">
+											<div class="faceupload" style="float: left">
+												<img class="face"
+													th:src="'/beauty/display?fileName=' + ${res.rimg}"
+													style="max-width: 300px; margin: 0 20 20 20; float: right;">
+											</div>
+											<div class="faceupload" style="float: left">
+												<img class="face" th:src="${output_filepath}"
+													style="max-width: 300px; margin: 0 20 20 20">
+											</div>
+											<div style="text-align: center">
+												<span style="font-family: 'locator-regular';">BEFORE</span>
+											</div>
+											<div style="font-family: 'locator-regular';">
+												<span>AFTER</span>
 											</div>
 										</div>
 									</div>
 								</div>
-								<!-- /lip wrap-->
-								<!-- blush wrap-->
-								<div class="blush_wrap">
-									<div class="numbering"
-										style="text-align: center; margin-top: 30px;">
-										<p style="text-align: center; font-weight: bold">BLUSH
-											PICK</p>
-									</div>
-									<div class="blush_prod">
-										<div class="product-list-wrap">
-											<div class="product-list type1" id="product-list">
-												<!-- 단일 상품 -->
-												<div class="prod" th:each="blushlist : ${blushlist}">
-													<div class="prod-unit">
-														<div class="clonepart">
-															<div class="img">
-																<a><img th:src="${blushlist.iloc} + '_600.jpg'"
-																	th:alt="${blushlist.pname}" /><span class="bg"></span></a>
-															</div>
-															<div class="info">
-																<input type="hidden" name="blush_pcode"
-																	class="blush_pcode" th:value="${blushlist.pcode}" /> <input
-																	type="hidden" name="blush_opt" class="blush_opt"
-																	th:value="${blushlist.optname}" />
-																<div class="price-info single">
-																	 <span>[[${#numbers.formatInteger(blushlist.pprice, 3, 'COMMA')}]]<em>원</em></span>
+								<div class="makeupgrid" style="display: flex;">
+									<!-- lip wrap-->
+									<div class="doublewrap">
+										<div class="makeupwrap">
+											<div class="lip_wrap">
+												<div class="numbering"
+													style="text-align: center; font-weight: bold; font-family: 'locator-regular'; font-size: large; margin: 30px 0;">
+													LIP PICK</div>
+												<div class="simlip">
+													<div class="makeupwrapper"
+														style="margin-bottom: 50px; width: 900px;">
+														<div class="swiper-container" style="width: 900px;">
+															<div class="swiper-wrapper" style="height: 470px;">
+																<div class="swiper-slide" th:each="liplist : ${liplist}"
+																	id="clonepart"
+																	style="width: 264px; margin-right: 24px; height: 470px; border-radius: 10%;">
+																	<li><a> <img
+																			th:src="${liplist.iloc} + '_600.jpg'"
+																			th:alt="${liplist.pname}"
+																			style="margin-bottom: 10px;"> <input
+																			type="hidden" name="lip_pcode" class="lip_pcode"
+																			th:value="${liplist.pcode}"> <input
+																			type="hidden" name="lip_opt" class="lip_opt"
+																			th:value="${liplist.optname}"> <span
+																			class="hash_tag">브랜드명</span> <span class="tit"
+																			th:value="${liplist.pname}"
+																			th:text="${liplist.pname}"></span> <span class="kind"
+																			th:value="${liplist.optname}"
+																			th:text="${liplist.optname}"></span> <span
+																			class="price"> <span class="after">[[${#numbers.formatInteger(liplist.pprice,
+																					3, 'COMMA')}]]<em>원</em>
+																			</span>
+																				<div class="lip_pick" onclick="cloneLip(this)"
+																					style="width: auto;">
+																					<div class="btn_green"
+																						style="margin: 0 auto; width: 150px; height: 40px;">
+																						<p class="pickbtn">PICK</p>
+																					</div>
+																				</div>
+																		</span>
+																	</a></li>
 																</div>
-																<div>
-																	<a th:text="${blushlist.pname}"></a>
-																</div>
-																<a th:text="${blushlist.optname}"></a>
 															</div>
+															<div class="swiper-button-next"></div>
+															<div class="swiper-button-prev"></div>
 														</div>
-														<div class="blush_pick" onclick="cloneBlush(this)">
-															<div class="btn_green">
-																<p class="pickbtn">PICK</p>
-															</div>
-														</div>
+														<!-- before after -->
 													</div>
 												</div>
-												<!-- 단일 상품 -->
 											</div>
-										</div>
-									</div>
-								</div>
-								<!-- /blush wrap-->
-								<!-- foundation wrap-->
-								<div class="foundation_wrap">
-									<div class="numbering"
-										style="text-align: center; margin-top: 30px;">
-										<p style="text-align: center; font-weight: bold">
-											FOUNDATION PICK</p>
-									</div>
-									<!--            <div class="select-list1">
-                      <div class="type_pick" style="">
-                        <div class="btn_green">
-                          <p class="pickbtn">지성</p>
-                        </div>
-                      </div>
-                      <div class="type_pick" style="">
-                        <div class="btn_green">
-                          <p class="pickbtn">건성</p>
-                        </div>
-                      </div>
-                      <div class="type_pick" style="">
-                        <div class="btn_green">
-                          <p class="pickbtn">수분 복합 지성</p>
-                        </div>
-                      </div>
-                    </div> -->
-									<div class="foundationlist_prod">
-										<div class="product-list-wrap">
-											<div class="product-list type1" id="product-list">
-												<!-- 단일 상품 -->
-												<div class="prod"
-													th:each="foundationlist : ${foundationlist}">
-													<div class="prod-unit">
-														<div class="clonepart">
-															<div class="img">
-																<a><img th:src="${foundationlist.iloc} + '_600.jpg'"
-																	th:alt="${foundationlist.pname}" /><span class="bg"></span></a>
-															</div>
-															<div class="info">
-																<input type="hidden" name="face_pcode"
-																	class="face_pcode" th:value="${foundationlist.pcode}" />
-																<input type="hidden" name="face_opt" class="face_opt"
-																	th:value="${foundationlist.optname}" />
-																<div class="price-info single">
-																	 <span>[[${#numbers.formatInteger(foundationlist.pprice, 3, 'COMMA')}]]<em>원</em></span>
+											<!-- /lip wrap-->
+											<!-- blush wrap-->
+											<div class="blush_wrap">
+												<div class="numbering"
+													style="text-align: center; font-weight: bold; font-family: 'locator-regular'; font-size: large; margin: 30px 0;">
+													BLUSH PICK</div>
+												<div class="blush_prod">
+													<div class="makeupwrapper"
+														style="margin-bottom: 100px; width: 900px;">
+														<div class="swiper-container" style="width: 900px;">
+															<div class="swiper-wrapper" style="height: 470px;">
+																<div class="swiper-slide"
+																	th:each="blushlist : ${blushlist}" id="clonepart"
+																	style="width: 264px; margin-right: 24px; height: 470px; border-radius: 10%;">
+																	<li><a> <img
+																			th:src="${blushlist.iloc} + '_600.jpg'"
+																			th:alt="${blushlist.pname}"
+																			style="margin-bottom: 10px;"> <input
+																			type="hidden" name="blush_pcode" class="blush_pcode"
+																			th:value="${blushlist.pcode}"> <input
+																			type="hidden" name="blush_opt" class="blush_opt"
+																			th:value="${blushlist.optname}"> <span
+																			class="hash_tag">브랜드명</span> <span class="tit"
+																			th:value="${blushlist.pname}"
+																			th:text="${blushlist.pname}"></span> <span
+																			class="kind" th:value="${blushlist.optname}"
+																			th:text="${blushlist.optname}"></span> <span
+																			class="price"> <span class="after">[[${#numbers.formatInteger(blushlist.pprice,
+																					3, 'COMMA')}]]<em>원</em>
+																			</span>
+																				<div class="blush_pick" onclick="cloneBlush(this)"
+																					style="width: auto;">
+																					<div class="btn_green"
+																						style="margin: 0 auto; width: 150px; height: 40px;">
+																						<p class="pickbtn">PICK</p>
+																					</div>
+																				</div>
+																		</span>
+																	</a></li>
 																</div>
-																<div>
-																	<a th:text="${foundationlist.pname}"></a>
-																</div>
-																<a th:text="${foundationlist.optname}"></a>
 															</div>
+															<div class="swiper-button-next"></div>
+															<div class="swiper-button-prev"></div>
 														</div>
-														<div class="foundation_pick" onclick="cloneFace(this)">
-															<div class="btn_green">
-																<p class="pickbtn">PICK</p>
-															</div>
-														</div>
+														<!-- before after -->
 													</div>
 												</div>
-												<!-- 단일 상품 -->
 											</div>
+											<!-- /blush wrap-->
+											<!-- foundation wrap-->
+											<div class="foundation_wrap">
+												<div class="numbering"
+													style="text-align: center; font-weight: bold; font-family: 'locator-regular'; font-size: large; margin: 30px 0;">
+													FOUNDATION PICK</div>
+												<div class="face_prod">
+													<div class="makeupwrapper"
+														style="margin-bottom: 100px; width: 900px;">
+														<div class="swiper-container" style="width: 900px;">
+															<div class="swiper-wrapper" style="height: 470px;">
+																<div class="swiper-slide"
+																	th:each="foundationlist : ${foundationlist}"
+																	id="clonepart"
+																	style="width: 264px; margin-right: 24px; height: 470px; border-radius: 10%;">
+																	<li><a> <img
+																			th:src="${foundationlist.iloc} + '_600.jpg'"
+																			th:alt="${foundationlist.pname}"
+																			style="margin-bottom: 10px;"> <input
+																			type="hidden" name="foundation_pcode"
+																			class="foundation_pcode"
+																			th:value="${foundationlist.pcode}"> <input
+																			type="hidden" name="foundation_opt"
+																			class="foundation_opt"
+																			th:value="${foundationlist.optname}"> <span
+																			class="hash_tag">브랜드명</span> <span class="tit"
+																			th:value="${foundationlist.pname}"
+																			th:text="${foundationlist.pname}"></span> <span
+																			class="kind" th:value="${foundationlist.optname}"
+																			th:text="${foundationlist.optname}"></span> <span
+																			class="price"> <span class="after">[[${#numbers.formatInteger(foundationlist.pprice,
+																					3, 'COMMA')}]]<em>원</em>
+																			</span>
+																				<div class="foundationlist_pick"
+																					onclick="cloneFace(this)" style="width: auto;">
+																					<div class="btn_green"
+																						style="margin: 0 auto; width: 150px; height: 40px; margin-top: 20px;">
+																						<p class="pickbtn">PICK</p>
+																					</div>
+																				</div>
+																		</span>
+																	</a></li>
+																</div>
+															</div>
+															<div class="swiper-button-next"></div>
+															<div class="swiper-button-prev"></div>
+														</div>
+														<!-- before after -->
+													</div>
+												</div>
+											</div>
+											<!-- /foundation wrap-->
 										</div>
+									</div>
+									<div class="result"
+										style="margin-left: 40px; float: right; background: #bfae90; border-radius: 20px;">
+										<form method="post" enctype="multipart/form-data"
+											action="/makeup/send">
+											<div class="select-list2" style="text-align: center;">
+
+												<div class="numbering"
+													style="text-align: center; font-weight: bold; font-family: 'locator-regular'; font-size: large; margin: 20px 0; color: white;">ARTIST's
+													PICK</div>
+												<div
+													style="font-family: 'notokr-medium'; font-size: medium; margin: 10px 0;">
+													<p style="color: white;">Lip</p>
+												</div>
+												<div class="lipclone"
+													style="margin-left: 10px; margin-right: 10px;">
+													<div class="empty"
+														style="border-color: white; margin: 0 10px; width: 284px; height: 470px;"></div>
+												</div>
+												<div
+													style="font-family: 'notokr-medium'; font-size: medium; margin-top: 50px; color: white; margin-bottom: 30px;">
+													<p>Blush</p>
+												</div>
+												<div class="blushclone">
+													<div class="empty"
+														style="border-color: white; margin: 0 10px; width: 284px; height: 470px;"></div>
+												</div>
+												<div
+													style="font-family: 'notokr-medium'; font-size: medium; margin-top: 95px; margin-bottom: 34px; color: white;">
+													<p>Foundation</p>
+												</div>
+												<div class="faceclone">
+													<div class="empty"
+														style="border-color: white; margin: 0 10px; width: 284px; height: 470px;"></div>
+												</div>
+												<input type="hidden" name="rid" class="rid"
+													th:value="${res.rid}"> <input type="hidden"
+													name="result_img" class="result_img"
+													th:value="${output_filepath}"> <input type="hidden"
+													name="lip" class="lip" th:value="${lips}"> <input
+													type="hidden" name="blush" class="blush" th:value="coral">
+												<input type="hidden" th:name="${blush}" class="face"
+													th:value="${foundation}">
+												<div class="send_pick">
+													<p style="text-align: center;">
+														<button type="submit">결과 전송</button>
+													</p>
+												</div>
+											</div>
+										</form>
 									</div>
 								</div>
-								<!-- /foundation wrap-->
+
 							</div>
-							<div class="result">
-								<form method="post" enctype="multipart/form-data"
-									action="/makeup/send">
-									<div class="select-list2">
-										<div class="numbering" style="text-align: center">
-											<p style="text-align: center; font-weight: bold">ARTIST's
-												PICK</p>
-										</div>
-										<div>
-											<p>Lip</p>
-										</div>
-										<div class="lipclone" style="">
-											<div class="empty"></div>
-										</div>
-										<div>
-											<p>Blush</p>
-										</div>
-										<div class="blushclone">
-											<div class="empty"></div>
-										</div>
-										<div>
-											<p>Foundation</p>
-										</div>
-										<div class="faceclone">
-											<div class="empty"></div>
-										</div>
-										<input type="hidden" name="rid" class="rid" th:value="${rid}">
-										<input type="hidden" name="result_img" class="result_img"
-											th:value="${output_filepath}"> <input type="hidden"
-											name="lip" class="lip" th:value="${lips}"> <input
-											type="hidden" name="blush" class="blush" th:value="${blush}">
-										<input type="hidden" name="face" class="face"
-											th:value="${foundation}">
-										<div class="lip_pick">
-											<p style="text-align: center;">
-												<button type="submit">결과 전송</button>
-											</p>
-										</div>
-									</div>
-								</form>
-							</div>
-
-
-
 						</div>
-
 					</div>
+					<!-- /.container-fluid -->
 				</div>
+				<!-- End of Page Wrapper -->
 			</div>
-			<!-- /.container-fluid -->
+
+			<!-- Bootstrap core JavaScript-->
+			<script src="/admin/vendor/jquery/jquery.min.js"></script>
+			<script src="/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+			<!-- Core plugin JavaScript-->
+			<script src="/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+			<!-- Custom scripts for all pages-->
+			<script src="/admin/js/sb-admin-2.min.js"></script>
+
+			<!-- Page level plugins -->
+			<script src="/admin/vendor/chart.js/Chart.min.js"></script>
+
+			<!-- Page level custom scripts -->
+			<script src="/admin/js/demo/chart-area-demo.js"></script>
+			<script src="/admin/js/demo/chart-pie-demo.js"></script>
+
 		</div>
-		<!-- End of Page Wrapper -->
-	</div>
-
-	<!-- Bootstrap core JavaScript-->
-	<script src="/admin/vendor/jquery/jquery.min.js"></script>
-	<script src="/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-	<!-- Core plugin JavaScript-->
-	<script src="/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-	<!-- Custom scripts for all pages-->
-	<script src="/admin/js/sb-admin-2.min.js"></script>
-
-	<!-- Page level plugins -->
-	<script src="/admin/vendor/chart.js/Chart.min.js"></script>
-
-	<!-- Page level custom scripts -->
-	<script src="/admin/js/demo/chart-area-demo.js"></script>
-	<script src="/admin/js/demo/chart-pie-demo.js"></script>
-
-	<style>
-.price-info.single {
-	margin-bottom: 10px;
-}
-
-.prod {
-	width: 100%;
-	margin: 10px;
-}
-
-.clonepart .img img {
-	display: block;
-	width: 200px;
-	height: 200px;
-}
-
-.clonepart .img .bg {
-	display: none;
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: 10;
-	width: 100%;
-	height: 100%;
-	background:
-		url(https://image.thehyundai.com/hdmall/images/co/bg_produnit_hover.png);
-}
-
-.clonepart .info {
-	padding-top: 20px;
-	width: 200px;
-	margin-left: 20px;
-}
-
-.product-list {
-	overflow: hidden;
-	position: absolute;
-	width: 100%;
-	display: grid;
-	place-items: center;
-	overflow-x: scroll;
-	grid-auto-flow: column;
-	height: 100%;
-}
-
-ul {
-	list-style: none;
-}
-
-.product-list-wrap {
-	position: relative;
-	width: 100%;
-	height: 480px;
-	overflow: auto;
-}
-
-.btn_green {
-	color: white;
-	background: #45675b;
-	height: 50px;
-}
-
-.btn_gray {
-	color: white;
-	background: slategray;
-	height: 50px;
-}
-
-p.pickbtn {
-	margin-top: 10px;
-	font-weight: 100;
-	font-size: 16;
-	cursor: pointer;
-	height: 50px;
-	display: inline-grid;
-	vertical-align: middle;
-}
-
-.lip_pick {
-	width: 190px;
-	margin: 20 auto;
-	text-align: center;
-}
-
-.blush_pick {
-	width: 190px;
-	margin: 20 auto;
-	text-align: center;
-}
-
-.foundation_pick {
-	width: 190px;
-	margin: 20 auto;
-	text-align: center;
-}
-
-.select-list {
-	grid-template-columns: repeat(3, 1fr);
-	display: grid;
-	place-items: center;
-	width: 70%;
-	height: 440px;
-	margin: 0 auto;
-}
-
-.type_pick {
-	width: 190px;
-	text-align: center;
-	margin: 0 20px;
-}
-
-.select-list1 {
-	grid-template-columns: repeat(3, 1fr);
-	display: grid;
-	place-items: center;
-	width: 70%;
-	margin: 0 auto;
-}
-
-.clonepart .img img {
-	display: block;
-	width: 200px;
-	height: 200px;
-}
-
-.empty {
-	width: 150;
-	height: 200;
-	border-radius: 10%;
-	border-style: dashed;
-	border-color: darkgray;
-	margin: 0 10px;
-}
-
-.lipclone {
-	margin-bottom: 10px;
-}
-
-.blushclone {
-	margin-bottom: 10px;
-}
-
-.faceclone {
-	margin-bottom: 10px;
-}
-
-.select-list2 {
-	grid-template-rows: auto;
-	display: grid;
-	place-items: center;
-	margin: 0 auto;
-	float: right;
-}
-
-.result {
-	float: right;
-	height: fit-content;
-	width: fit-content;
-	margin: 30px 0;
-	margin-left: 60px;
-}
-</style>
-	</div>
 </body>
 </html>

@@ -116,3 +116,164 @@ p.pickbtn {
   border-color: darkgray;
   margin: 0 10px;
 }
+
+.price-info.single {
+	margin-bottom: 10px;
+}
+
+.prod {
+	width: 100%;
+	margin: 10px;
+}
+
+.clonepart .img img {
+	display: block;
+	width: 200px;
+	height: 200px;
+}
+
+.clonepart .img .bg {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 10;
+	width: 100%;
+	height: 100%;
+	background:
+		url(https://image.thehyundai.com/hdmall/images/co/bg_produnit_hover.png);
+}
+
+.clonepart .info {
+	padding-top: 20px;
+	width: 200px;
+	margin-left: 20px;
+}
+
+.product-list {
+	overflow: hidden;
+	position: absolute;
+	width: 100%;
+	display: grid;
+	place-items: center;
+	overflow-x: scroll;
+	grid-auto-flow: column;
+	height: 100%;
+}
+
+ul {
+	list-style: none;
+}
+
+.product-list-wrap {
+	position: relative;
+	width: 100%;
+	height: 480px;
+	overflow: auto;
+}
+
+.btn_green {
+	color: white;
+	background: #45675b;
+	height: 50px;
+}
+
+.btn_gray {
+	color: white;
+	background: slategray;
+	height: 50px;
+}
+
+p.pickbtn {
+	margin-top: 10px;
+	font-weight: 100;
+	font-size: 16;
+	cursor: pointer;
+	height: 50px;
+	display: inline-grid;
+	vertical-align: middle;
+}
+
+.lip_pick {
+	width: 190px;
+	margin: 20 auto;
+	text-align: center;
+}
+
+.blush_pick {
+	width: 190px;
+	margin: 20 auto;
+	text-align: center;
+}
+
+.foundation_pick {
+	width: 190px;
+	margin: 20 auto;
+	text-align: center;
+}
+
+.select-list {
+	grid-template-columns: repeat(3, 1fr);
+	display: grid;
+	place-items: center;
+	width: 70%;
+	height: 440px;
+	margin: 0 auto;
+}
+
+.type_pick {
+	width: 190px;
+	text-align: center;
+	margin: 0 20px;
+}
+
+.select-list1 {
+	grid-template-columns: repeat(3, 1fr);
+	display: grid;
+	place-items: center;
+	width: 70%;
+	margin: 0 auto;
+}
+
+.clonepart .img img {
+	display: block;
+	width: 200px;
+	height: 200px;
+}
+
+.empty {
+	width: 150;
+	height: 200;
+	border-radius: 10%;
+	border-style: dashed;
+	border-color: darkgray;
+	margin: 0 10px;
+}
+
+.lipclone {
+	margin-bottom: 10px;
+}
+
+.blushclone {
+	margin-bottom: 10px;
+}
+
+.faceclone {
+	margin-bottom: 10px;
+}
+
+.select-list2 {
+	grid-template-rows: auto;
+	display: grid;
+	place-items: center;
+	margin: 0 auto;
+	float: right;
+}
+
+.result {
+	float: right;
+	height: fit-content;
+	width: fit-content;
+	margin: 30px 0;
+	margin-left: 60px;
+}
