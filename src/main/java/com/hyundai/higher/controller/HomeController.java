@@ -1,13 +1,12 @@
 package com.hyundai.higher.controller;
 
-import java.util.List;
-
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.hyundai.higher.mapper.beauty.BeautyMapper;
-import com.hyundai.higher.webRTC.dto.ReservationDTO;
+import com.hyundai.higher.security.dto.SecurityMember;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -40,11 +39,13 @@ public class HomeController {
 	}
 
 	@GetMapping(value = "/test")
-	public String test(Model model) {
+	public String test(Model model, @AuthenticationPrincipal SecurityMember securityMember ) {
 
-		log.info("main");
+		log.info(securityMember.toString());
+		
+		securityMember.setMbti("test");
 
-		return "order/orderComplete";
+		return "test";
 	}
 
 	@GetMapping(value = "/test3")
