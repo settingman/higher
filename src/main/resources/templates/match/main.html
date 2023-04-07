@@ -7,6 +7,19 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="stylesheet" type="text/css" href="/match/css/main.css">
   <script type="text/javascript" src="/match/js/main.js"></script>
+	<style>
+	.product_wrap .product_list li:hover>a:before{
+		  content: '';
+		  position: absolute;
+		  top: 0;
+		  left: 0;
+		  width: 100%;
+		  height: 100%;
+		  border: 1px solid #fff;
+		  box-sizing: border-box;
+	}
+	</style>
+
 </head>
 
 <body>
@@ -83,10 +96,13 @@
         <div class="sideleft" style="width: 270px;">
           <div id="mem-wrap">
             <div id="mem-icon"><img src="https://www.larocheposay.co.kr/images/customer/skincase_1.png"></div>
-            <h2 id="mem-info" sec:authorize="isAuthenticated()"><span sec:authentication="principal.mName">회원이름</span> 회원님의 <br>피부 MBTI는?</h2>
+            <!-- 로그인되어 있을 때 -->
+            <h2 sec:authorize="isAuthenticated()" id="mem-info"><span sec:authentication="principal.mName">회원이름</span> 회원님의 <br>피부 MBTI는?</h2>
+            <!-- 로그인이 안되어 있을 때 -->
             <h2 sec:authorize="isAnonymous()" id="side-tit">나의 피부 MBTI는?</h2>
           </div>
-          <div sec:authorize="isAuthenticated()">
+          <!-- 로그인되어 있을 때 / mbti 진단 완료 -->
+          <div sec:authorize="isAuthenticated()" th:if="${memMBTI != null}">
             <div id="mbti">[[${memMBTI.mbti}]]</div>
             <div id="mbti-info">[[${memMBTI.stag}]]</div>
             <div class="graph">
@@ -107,6 +123,16 @@
 				<input type="hidden" name="mbti" th:value="${memMBTI.mbti}">
 			</form>
           </div>
+          <div sec:authorize="isAuthenticated()" th:if="${memMBTI == null}">
+            <div id="join-guide">피부 MBTI를 진단하고<br>나의 피부타입에 맞는<br>추천제품 확인하세요!</div>
+          	<div id="join-btn"><a class="btn_base move" href="/skinMBTI/selfConsult">진단하러 가기</a></div>
+          </div>
+          
+          <!-- 로그인이 안되어 있을 때 -->
+          <div sec:authorize="isAnonymous()">
+          	<div id="join-guide">회원가입 후 피부 MBTI를 진단하고<br>나의 피부타입에 맞는<br>추천제품 확인하세요!</div>
+          	<div id="join-btn"><a class="btn_base move" href="/member/login">회원가입 후 진단하러 가기</a></div>
+          </div>
           
           <h2>피부 타입</h2>
           <nav>
@@ -114,9 +140,9 @@
               <li class="open current">
                 <span>MBTI 별</span>
                 <ul class="submenu" style="display: block;">
-                  <li class="current"><a
-                      href="#"><i>전체보기</i></a></li>
-                  <li th:each="mCate : ${mbtiCate}">
+                  <li th:class="${#strings.isEmpty(mbti) ? 'current' : ''}"><a
+                      href="/match/main"><i>전체보기</i></a></li>
+                  <li th:each="mCate : ${mbtiCate}" th:class="${#strings.equals(mbti, mCate.stype) ? 'current' : ''}">
                     <a th:href="${'/match/main?mbti='+mCate.stype}"><i>[[${mCate.stype}]]</i></a>
                   </li>
                   
@@ -179,14 +205,14 @@
 			            <img th:if="${prod.iloc != null}" th:src="${prod.iloc + '_600.jpg'}" th:alt="${prod.pname}">
                 		<span class="hash_tag">[[${prod.bname}]]</span> 
                 		<span class="tit">[[${prod.pname}]]</span> 
-                    	<span class="kind">[[${prod.pmbti}]] </span> 
+                    	<span class="kind">[[${#numbers.formatInteger(prod.pprice, 3, 'COMMA')}]]<em>원</em> </span> 
                     	<span class="rating">
                       		<div class="star-rating small"> 
                       			<span class="c50"><em class="hide">벌점 5개</em></span> 
                       		</div>
                       		<em>(1346)</em>
                     	</span> 
-                    	<span class="price">[[${#numbers.formatInteger(prod.pprice, 3, 'COMMA')}]]<em>원</em></span> 
+                    	<span class="price"><button class="match-btn">매칭하기</button></span> 
                   </a>
                   <div class="over"> <button onclick="prdtViewLink('3858','PT','Y', 1)"
                       class="detailview">자세히보기</button> <button data-saleprice="27000" data-value="3858" data-cnt="10"
@@ -206,7 +232,6 @@
 
       </section>
     </section>
-
 
     <!-- right 제품구매 플로팅 -->
     <section class="flot_right_warp">

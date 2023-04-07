@@ -80,7 +80,7 @@ $(function(){
 <section class="top_nav">
 	<nav>
 		<ul>
-			
+			<!-- <li sec:authentication="principal"></li> -->
 			<!-- 로그인 전 -->
 			<li sec:authorize="isAnonymous()"><a href="/member/login">로그인</a></li>
 			<li sec:authorize="isAnonymous()"><a href="/member/jointotal">회원가입</a></li>
@@ -368,7 +368,7 @@ $(function(){
 				</div> <!-- //sub_contain --></li>
 			<li class="">
 				<a sec:authorize="isAnonymous()" href="/match/main" data-depth="1"><span>매칭화장품</span><em>MATCH IT</em></a>
-				<a sec:authorize="isAuthenticated()" href="/match/main" data-depth="1"><span>매칭화장품</span><em>MATCH IT</em></a>
+				<a sec:authorize="isAuthenticated()" href="/match/main?mbti=" data-depth="1"><span>매칭화장품</span><em>MATCH IT</em></a>
 				<div class="sub_contain" style="opacity: 1; display: none;">
 					<div class="menu">
 						<ul>

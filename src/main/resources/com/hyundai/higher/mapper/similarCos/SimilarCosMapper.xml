@@ -51,7 +51,7 @@
 	<!-- 검색 상품 목록 조회 -->
 	<select id="selectProdList" resultMap="productMap">
 		SELECT p.pcode, p.pname, p.pprice, p.bno, b.bname, dept1no, dept2no, itype, iloc, pvolume, ptype, pmbti
-		FROM (SELECT * FROM product WHERE pname LIKE '%'||#{keyword}||'%' AND dept1no=10) p 
+		FROM (SELECT * FROM product WHERE pname LIKE '%'||#{keyword}||'%' AND dept1no=10 AND pmbti IS NOT NULL) p 
 		LEFT JOIN brand b ON p.bno=b.bno
 		LEFT JOIN (SELECT pcode, itype, iloc FROM IMG WHERE itype='thumb') i ON p.pcode=i.pcode
 	</select>
