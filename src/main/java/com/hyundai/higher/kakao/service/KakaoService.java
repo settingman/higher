@@ -89,15 +89,11 @@ public class KakaoService {
 		
 		String [] uuids = uuid.split(",");
 		
-		System.out.println("바보");
-		System.out.println(Arrays.toString(uuids));
-		System.out.println("바보2");
+		
 		
 		String friends ="receiver_uuids=%5B%22"+uuids[0]+"%22%2C%22"+uuids[1]+"%22%2C%22"+uuids[2]+"%22%5D&request_url=https%3A%2F%2Flocalhost%3A8443&template_id=92317";
 		
-		System.out.println("바보3");
-		System.out.println(friends);
-		System.out.println(Trans.default_friend_data);
+		
 		
 		
 		return httpCallService.CallwithToken(Const.POST, uri, httpSession.getAttribute("token").toString(),

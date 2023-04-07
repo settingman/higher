@@ -8,7 +8,7 @@
 
 	<select id="findById"
 		resultType="com.hyundai.higher.domain.member.Member">
-		SELECT MID, MPassword, MName, MPhone, MEmail, MBirth, MRole
+		SELECT MID, MPassword, MName, MPhone, MEmail, MBirth, MRole, mbti
 		FROM MEMBER
 		where
 		MID=#{mId}
@@ -17,7 +17,7 @@
 
 	<select id="findByNameBirth"
 		resultType="com.hyundai.higher.domain.member.Member">
-		SELECT MID, MPassword, MName, MPhone, MEmail, MBirth, MRole
+		SELECT MID, MPassword, MName, MPhone, MEmail, MBirth, MRole, mbti
 		FROM MEMBER
 		where
 		MName=#{mName} and MBirth=#{mBirth}
@@ -25,7 +25,7 @@
 
 	<select id="findByNameId"
 		resultType="com.hyundai.higher.domain.member.Member">
-		SELECT MID, MPassword, MName, MPhone, MEmail, MBirth, MRole
+		SELECT MID, MPassword, MName, MPhone, MEmail, MBirth, MRole, mbti
 		FROM MEMBER
 		where
 		MName=#{mName} and MId=#{mId}

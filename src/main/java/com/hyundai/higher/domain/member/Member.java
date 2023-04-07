@@ -41,10 +41,12 @@ public class Member {
 	private Date mBirth;
 
 	private MemberRole mRole;
+	
+	private String mbti;
 
 	@Builder
 	public Member(String mId, String mPassword, String mName, String mPhone, String mEmail, Date mBirth,
-			MemberRole mRole) {
+			MemberRole mRole,String mbti) {
 		this.mId = mId;
 		this.mPassword = mPassword;
 		this.mName = mName;
@@ -52,6 +54,7 @@ public class Member {
 		this.mEmail = mEmail;
 		this.mBirth = mBirth;
 		this.mRole = mRole;
+		this.mbti = mbti;
 	}
 
 	public static Member createMember(MemberFormDto memberFormDto, PasswordEncoder passwordEncoder) {

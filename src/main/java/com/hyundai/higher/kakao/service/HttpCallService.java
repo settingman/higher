@@ -32,7 +32,6 @@ public class HttpCallService {
 			conn.setRequestMethod(method);
 			conn.setRequestProperty("Authorization", header);
 			if (param != null) {
-				System.out.println("param : " + param);
 				conn.setDoOutput(true);
 				BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
 				bw.write(param);
@@ -40,38 +39,30 @@ public class HttpCallService {
 
 			}
 			int responseCode = conn.getResponseCode();
-			System.out.println("responseCode : " + responseCode);
-
-			System.out.println("reqURL : " + reqURL);
-			System.out.println("method : " + method);
-			System.out.println("Authorization : " + header);
+			
 			InputStream stream = conn.getErrorStream();
 			if (stream != null) {
 				try (Scanner scanner = new Scanner(stream)) {
 					scanner.useDelimiter("\\Z");
 					response = scanner.next();
 				}
-				System.out.println("error response : " + response);
 			}
 			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 			String line = "";
 			while ((line = br.readLine()) != null) {
 				result += line;
 			}
-			System.out.println("response body : " + result);
 
 			JSONParser parser = new JSONParser();
 			JSONObject jsonObject = (JSONObject) parser.parse(result);
 			
 			
-			System.out.println("안녕");
 			JSONArray jsonarray=(JSONArray) jsonObject.get("elements");
-			System.out.println("안녕");
+		
 			
 			
 			if(jsonarray!=null) {
 				
-				System.out.println("안녕");
 			
 			
 			Map<String, String> has = new HashMap<>();
@@ -81,9 +72,7 @@ public class HttpCallService {
 				has = (Map<String, String>) jsonarray.get(i);
 				uuid.add(has.get("uuid"));
 			}
-			
-			System.out.print("리스트");
-			System.out.print(uuid.toString());
+		
 			
 			return uuid.toString();
 			
