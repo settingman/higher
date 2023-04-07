@@ -36,4 +36,14 @@ public interface MatchMapper {
 		
 		// 회원 mbti 정보 불러오기
 		public MemberMBTIDTO getMemMbti(String mid);
+
+		//회원의 mbti 조회
+		public String userMbti(String mid);
+		
+		//pcode에 해당하는 상품의 성분 불러오기
+		public String[] getIngredient(String pcode);
+		
+		//해당 성분의 피부 타입 매칭 결과 불러오기
+		public String getEffect(String ingredient, String mbti);
+		
 }

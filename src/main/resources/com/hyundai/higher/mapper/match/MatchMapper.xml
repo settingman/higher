@@ -43,11 +43,33 @@
 	    where pi.rn =1
 	</select>
 	
+
 	<!-- 회원 mbti 정보 불러오기 -->
 	<select id="getMemMbti" resultType="com.hyundai.higher.domain.match.MemberMBTIDTO">
 		SELECT mid, mbti, mbti_scores, stag
 		FROM member m JOIN skinmbti s on m.mbti=s.stype
 		WHERE mid=#{mid}
+	</select>
+
+	<select id="userMbti" resultType="string">
+		select mbti from member where mid=#{mid}
+	</select>
+		
+	<select id="getIngredient" resultType="string">
+	 <![CDATA[ 
+	 SELECT TRIM(REGEXP_SUBSTR(TO_CHAR(a.langList), '[^,]+', 1, LEVEL)) AS split_result
+	  FROM (SELECT REPLACE(pingredient, ' ', ',') AS langList 
+	        FROM product WHERE pcode=#{pcode}) a
+	  WHERE TRIM(REGEXP_SUBSTR(TO_CHAR(a.langList), '[^,]+', 1, LEVEL)) != '정제수'
+	    AND ROWNUM <= 10
+	  CONNECT BY LEVEL <= LENGTH(REGEXP_REPLACE(TO_CHAR(a.langList), '[^,]+','')) + 1
+	  ]]>
+	</select>
+	
+	<select id="getEffect" resultType="string">
+	SELECT M.effect FROM INGREDIENT I RIGHT JOIN MBTI_INGREDIENT M 
+	ON M.INO=I.INO
+	WHERE I.INAME_KO = #{ingredient} AND mbti=#{mbti}
 	</select>
 	
 </mapper>

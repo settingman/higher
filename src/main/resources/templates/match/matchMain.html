@@ -623,8 +623,7 @@ function sendGroobee(){
                             <!-- 브랜드 이름 상품에 다 포함되어 있으면 삭제하기
                             <a href="#" class="title ellipsis" onclick="javascript:untdItemDetailView('40003','40A0497086', 'N','00','');return false;">브랜드이름</a> -->
                           </div>
-                          <button type="button" class="matchbtn">매칭하기</button>
-
+                          <button type="button" class="matchbtn" th:onclick='match([[${product.pcode}]]);'>매칭하기</button>
                         </div>
                       </li>
 
@@ -649,5 +648,11 @@ function sendGroobee(){
     });
 
   </script>
+	<script>
+	function match(pcode) {
+		location.href = '/match/matchIt?pcode=' + pcode;
+	}
+	</script>
+
 </body>
 </html>

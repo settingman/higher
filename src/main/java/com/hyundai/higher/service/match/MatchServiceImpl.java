@@ -67,6 +67,21 @@ public class MatchServiceImpl implements MatchService{
 		return cMapper.mbtiCateListAll();
 	}
 	
+	@Override
+	public String userMbti(String mid) {
+		return mMapper.userMbti(mid);
+	}
+
+	@Override
+	public String[] getIngredient(String pcode) {
+		return mMapper.getIngredient(pcode);
+	}
+
+	@Override
+	public String getEffect(String ingredient, String mbti) {
+		return mMapper.getEffect(ingredient, mbti);
+	}
+	
 	
 
 }

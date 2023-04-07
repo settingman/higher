@@ -21,16 +21,16 @@ import lombok.extern.log4j.Log4j2;
  */
 
 @Log4j2
-@RequestMapping("/productCompare")
+@RequestMapping("/product")
 @Controller
 public class CompareController {
 
 	
 	// 상품 비교 페이지
-	@GetMapping("/main")
+	@GetMapping("/compare")
 	public String compare(Model model) {
 		
-		return "productCompare/main";
+		return "product/compare";
 	}
 
 }
