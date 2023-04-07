@@ -83,9 +83,9 @@
         <div class="sideleft" style="width: 270px;">
           <div id="mem-wrap">
             <div id="mem-icon"><img src="https://www.larocheposay.co.kr/images/customer/skincase_1.png"></div>
-            <h2 id="mem-info"><span sec:authentication="principal.mName">회원이름</span> 회원님의 <br>피부 MBTI</h2>
+            <h2 id="mem-info" sec:authorize="isAuthenticated()"><span sec:authentication="principal.mName">회원이름</span> 회원님의 <br>피부 MBTI</h2>
           </div>
-          <div>
+          <div sec:authorize="isAuthenticated()">
             <div id="mbti">[[${memMBTI.mbti}]]</div>
             <div id="mbti-info">[[${memMBTI.stag}]]</div>
             <div class="graph">

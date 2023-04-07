@@ -2208,13 +2208,13 @@ html {
 }
 
 #header .gnb_nav nav ul.right>li:nth-child(3)>a .ico {
-  display: inline-block;
-  width: 25px;
-  height: 17px;
-  margin: -3px 5px 0 0;
-  vertical-align: middle;
-  background: url('https://www.larocheposay.co.kr/images/common/ico_comm_sp.png') no-repeat -232px -30px;
-  background-size: 300px 300px;
+	display: inline-block;
+    width: 27px;
+    height: 27px;
+    margin: -3px 5px 0 0;
+    vertical-align: middle;
+    background: url(/common/image/basket.png) no-repeat;
+    background-size: 27px 27px;
 }
 
 #header .gnb_nav nav ul.right>li:nth-child(3)>a span {
