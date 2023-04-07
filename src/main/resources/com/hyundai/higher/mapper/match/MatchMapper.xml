@@ -22,9 +22,12 @@
 	          row_number() over
 	          (partition by p.pcode order by i.iloc desc) as rn 
 	    from img i right join (select pcode, pname, dept1no, dept2no, pprice, pd.bno, bname, pmbti from product pd join brand b on pd.bno=b.bno) p on p.pcode=i.pcode
-	    where i.itype='thumb' and p.pmbti=#{pmbti}
+	    where i.itype='thumb' 
+	    		<if test="!pmbti.equals('') and pmbti!=null">
+	    		and p.pmbti=#{pmbti}
+	    		</if>
 	    ) pi right join product p on pi.pcode = p.pcode
-	    where pi.rn =1
+	    where pi.rn =1 and pi.pmbti is not null and pi.dept1no = 10
 	</select>
 	
 	<select id="getMbtiInfo" resultType="com.hyundai.higher.domain.match.MatchMbtiDTO">
