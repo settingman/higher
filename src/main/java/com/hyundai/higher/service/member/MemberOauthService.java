@@ -83,7 +83,7 @@ public class MemberOauthService extends DefaultOAuth2UserService {
 
 		// 가입한적이 없다면 추가 패스워드 1111 이름은 이메일주소
 		socialMember = Member.builder().mId(mId).mPassword(passwordEncoder.encode("1111")) // 암호화처리
-				.mName(clienName).mPhone("google").mEmail(mId).mBirth(new Date(230101)).mRole(MemberRole.USER).build();
+				.mName(clienName).mPhone("google").mEmail(mId).mBirth(new Date(230101)).mRole(MemberRole.USER).mbti(null).build();
 
 		memberService.saveMember(socialMember);
 

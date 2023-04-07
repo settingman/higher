@@ -43,5 +43,12 @@ public class KakaoContoller {
 	@RequestMapping("/message")
     public String message() {
        return kakaoService.message();
-    }		
+    }
+	
+	
+	@RequestMapping("/sendMessage")
+    public String sendMessage() {
+       return kakaoService.Sendmessage();
+    }	
+	
 }

@@ -35,6 +35,8 @@ public class SecurityMember extends User implements OAuth2User {
 	private String mName;
 	private String mPhone;
 	private String password;
+	private String mbti;
+	
 	private Map<String, Object> OA2_attr;
 
 	// 현대백화점 회원 구성자 설정

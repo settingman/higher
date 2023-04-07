@@ -1,7 +1,8 @@
 package com.hyundai.higher.kakao.service;
 
-import javax.servlet.http.HttpSession;
+import java.util.Arrays;
 
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -76,5 +77,26 @@ public class KakaoService {
 		String uri = KAKAO_API_HOST + "/v2/api/talk/memo/default/send";
 		return httpCallService.CallwithToken(Const.POST, uri, httpSession.getAttribute("token").toString(),
 				Trans.default_msg_param);
+	}
+
+	public String Sendmessage() {
+		
+		String uri2 = KAKAO_API_HOST + "/v1/api/talk/friends";
+		
+		String uri = KAKAO_API_HOST + "/v1/api/talk/friends/message/scrap/send";
+		
+		String uuid = httpCallService.CallwithToken(Const.GET, uri2, httpSession.getAttribute("token").toString());
+		
+		String [] uuids = uuid.split(",");
+		
+		
+		
+		String friends ="receiver_uuids=%5B%22"+uuids[0]+"%22%2C%22"+uuids[1]+"%22%2C%22"+uuids[2]+"%22%5D&request_url=https%3A%2F%2Flocalhost%3A8443&template_id=92317";
+		
+		
+		
+		
+		return httpCallService.CallwithToken(Const.POST, uri, httpSession.getAttribute("token").toString(),
+				friends);
 	}
 }
