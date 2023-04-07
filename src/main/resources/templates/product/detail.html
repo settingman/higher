@@ -186,9 +186,9 @@ $(function(){
                     </li>
                     <li class="amount"><strong>수량</strong>
                       <div class="count">
-                        <button type="button">-</button>
+                        <button type="button" class="minus">-</button>
                         <input type="text" name="pamount" value="1" readonly="">
-                        <button type="button">+</button>
+                        <button type="button" class="plus">+</button>
                       </div>
                     </li>
                     <li th:if="${dept1no == 10}" class="subscription_text">나의 피부타입과 매칭해보세요.<a href="#" class="btn_move">피부 MBTI와 매칭하러 가기</a></li>
@@ -885,9 +885,7 @@ $(function(){
 	        function() {
 	            /** ****************** 상세 정보 이벤트 ******************* */
 	            // 수량 이벤트
-	            $(".amount").find("button").on(
-	                    "click",
-	                    function() {
+	            $(".amount").find("button").on("click",function() {
 	                        var orderCnt = parseInt($('#orderForm').find("input[name=ordCnt]").val()), prdtCnt = parseInt($('#orderForm').find("input[name=prdtCnt]").val()), prdtType = $('#orderForm')
 	                                .find("input[name=prdtType]").val();
 	                        if ($(this).index() == 0) { // -
@@ -921,83 +919,6 @@ $(function(){
 	                    });
 	            // 상단 상세 및 간단 레이어 팝업 개수 동일화.
 	            $(".amount").find("input[type=text]").val(1);
-
-	            // 바로 구매 하기
-	            $('.nowBuy').on('click', function() {
-	                var $this = $(this);
-	                var value = $this.data('value');
-	                var price = $this.data('price');
-	                var lineNm = $this.data('linename');
-	                var prdtNm = $this.data('prdtname');
-	                var sapCode = $this.data('sapCode');
-	                var level = $this.data('level');
-	                var buyLevel = $this.data('buy-level');
-	                var mbrJoinYm = $this.data('mbr-join-ym');
-	                var userLevel = $this.data('user-level');
-	                var levelName = $this.data('level-name');
-
-	                var prdtSeq = $('#orderForm').find('input[name="prdtSeq"]').val();
-
-	                if (buyLevel == 'N') {
-
-	                    LARO.GA4TagManager.buyNow(prdtNm,prdtSeq);
-
-	                    $('#orderForm').attr('method', 'POST');
-	                    $('#orderForm').attr('action', '/order/orderBuyNowMemberChk.do').submit();
-	                } else {
-	                    if (buyLevel == 'A') {
-	                        if (userLevel != '') {
-
-	                            LARO.GA4TagManager.buyNow(prdtNm,prdtSeq);
-
-	                            $('#orderForm').attr('method', 'POST');
-	                            $('#orderForm').attr('action', '/order/orderBuyNowMemberChk.do').submit();
-	                        } else {
-	                            alert('회원만 구입 가능한 제품입니다. 로그인 후 구입해주세요.');
-	                        }
-	                    } else if (buyLevel == 'M') {
-	                        var today = new Date();
-	                        var yyyy = today.getFullYear().toString();
-	                        var mm = (today.getMonth() + 1) < 10 ? '0' + (today.getMonth() + 1) : (today.getMonth() + 1).toString();
-	                        var todayYm = yyyy + mm;
-
-	                        if (mbrJoinYm == todayYm) {
-
-	                            LARO.GA4TagManager.buyNow(prdtNm,prdtSeq);
-
-	                            $('#orderForm').attr('method', 'POST');
-	                            $('#orderForm').attr('action', '/order/orderBuyNowMemberChk.do').submit();
-	                        } else {
-	                            alert(today.getMonth() + 1 + '월 신규회원만 구입 가능한 제품입니다.');
-	                        }
-	                    } else if (buyLevel == 'L') {
-	                        var today = new Date();
-	                        var yyyy = today.getFullYear().toString();
-	                        var mm = (today.getMonth() + 1) < 10 ? '0' + (today.getMonth() + 1) : (today.getMonth() + 1).toString();
-	                        var todayYm = yyyy + mm;
-
-	                        if (mbrJoinYm != todayYm) {
-
-	                            LARO.GA4TagManager.buyNow(prdtNm,prdtSeq);
-
-	                            $('#orderForm').attr('method', 'POST');
-	                            $('#orderForm').attr('action', '/order/orderBuyNowMemberChk.do').submit();
-	                        } else {
-	                            alert(today.getMonth() + 1 + '월 이전 가입 회원만 구입 가능한 제품입니다.');
-	                        }
-	                    } else {
-	                        if (buyLevel != userLevel) {
-	                            alert(levelName + ' 등급만 구매하실 수 있는 제품입니다.');
-	                        } else {
-
-	                            LARO.GA4TagManager.buyNow(prdtNm,prdtSeq);
-
-	                            $('#orderForm').attr('method', 'POST');
-	                            $('#orderForm').attr('action', '/order/orderBuyNowMemberChk.do').submit();
-	                        }
-	                    }
-	                }
-	            });
 
 	            // 장바구니 이벤트
 	            $(".basket").on("click", function() {
@@ -1048,61 +969,7 @@ $(function(){
 	                        return;
 	                    }
 	                }
-
-	            //     CART.save($('#orderForm'), function(data) {
-	            //         if (data.result == "OK") {
-	            //             // 토스트 팝업 처리.
-	            //             setTimeout(function() {
-	            //                 $('.layer_alert_wrap').hide().find('span').hide();
-	            //             }, 1500);
-	            //             $('.layer_alert_wrap').css('display', 'block').find('.layer_alert3').css('display', 'block');
-	            //             /* TAS 관련 스크립트 : 장바구니 제품 담기 */
-	            //             var _tasz = [];
-	            //             _tasz.push({
-	            //                 productName : lineNm + prdtNm,
-	            //                 productCode : value,
-	            //                 productPrice : price,
-	            //                 sapCode : sapCode
-	            //             });
-	            //             LARO.TAS.et("cartAdd", _tasz);
-
-	            //             var item = new Array(lineNm, prdtNm, value, price);
-	            //             LARO.FBQ.cart(item);
-
-	            //             // 태그 매니처 호출
-	            //             var prdtSeq = $('#orderForm').find('input[name="prdtSeq"]').val();
-	            //             var orderCnt = parseInt($('#orderForm').find('input[name="ordCnt"]').val());
-	            //             var cateNm = $('#orderForm').find('input[name="cateNm"]').val();
-	            //             var cateNm2 = $('#orderForm').find('input[name="cateNm2"]').val();
-	            //             var cateNm3 = $('#orderForm').find('input[name="cateNm3"]').val();
-	            //             var category = $('#orderForm').find('input[name="fullCateNm"]').val();
-	            //             var salePrice = parseInt($('#orderForm').find("input[name=salePrice]").val());
-
-	            //             category = (category ? category.replace(/>/gi, '/') : undefined);
-
-	            //             var tag = $('#orderForm').find('input[name="tag"]').val();
-	            //             var noIngt = $('#orderForm').find('input[name="noIngt"]').val();
-	            //             var giftNames = $('#orderForm').find('input[name="giftNames"]').val();
-
-	            //             var tagItem = new Array((lineNm + ' ' + prdtNm), prdtSeq, Number(price), lineNm, category, orderCnt, tag, noIngt, giftNames);
-	            //             LARO.TagManager.addToCart(tagItem);
-	            //             LARO.GA4TagManager.addToCart(tagItem);
-	            //         } else {
-	            //             setTimeout(function() {
-	            //                 if ("[LEVEL] 등급만 구매하실 수 있는 제품입니다." == data.message) {
-	            //                     if ($this.data("level") == undefined) {
-	            //                         alert("등급이 맞지 않아 구매 하실수 없는 제품입니다.");
-	            //                     } else {
-	            //                         alert(data.message.replace("[LEVEL]", $this.data("level-name")));
-	            //                     }
-	            //                 } else {
-	            //                     alert(data.message);
-	            //                 }
-	            //             }, 300);
-	            //         }
-	            //     });
-	            // });
-
+                });
 	            // 찜 이벤트
 	            $(".like").on("click", function() {
 	            	var $this = $(this);
@@ -1158,183 +1025,17 @@ $(function(){
 	                    });
 	                }
 	            });
+            });
 
-	            /** ****************** 추천 및 라인 목록 이벤트 ******************* */
-	            // 체크 제품 일괄 장바구니 이벤트
-	            $(".recomBasket").on("click", function() {
-	                var soldOutFlag = false;
-	                for (var i = 0; i < $("input.recomPrdtSeq:checked").length; i++) {
-	                    if ($("input.recomPrdtSeq:checked").eq(i).data("cnt") == 0) {
-	                        soldOutFlag = true;
-	                        $("input.recomPrdtSeq:checked").eq(i).prop("checked", false);
-	                    }
-	                }
-	                if ($("input.recomPrdtSeq:checked").length > 0) {
-	                    CART.saveArr("PT", function(data) {
-	                        if (data.result == "OK") {
-	                            if (soldOutFlag) {
-	                                alert("일시품절 제품을 제외하고 장바구니에 담깁니다.");
-	                            } else {
-	                                // 토스트 팝업 처리.
-	                                setTimeout(function() {
-	                                    $('.layer_alert_wrap').hide().find('span').hide();
-	                                }, 1500);
-	                                $('.layer_alert_wrap').css('display', 'block').find('.layer_alert3').css('display', 'block');
-	                            }
-	                        } else {
-	                            alert(data.message);
-	                        }
-	                    }, "input.recomPrdtSeq:checked");
-	                } else {
-	                    alert("장바구니에 담을 제품을 선택해주세요.");
-	                    return false;
-	                }
-	            });
 
-	            $(".lineBasket").on("click", function() {
-
-	                var $this = $(this);
-	                var value = $this.data("value");
-	                var price = $this.data("price");
-	                var lineNm = $this.data("linename");
-	                var prdtNm = $this.data("prdtname");
-	                var sapCode = $this.data("sapCode");
-
-	                var soldOutFlag = false;
-	                for (var i = 0; i < $("input.linePrdtSeq:checked").length; i++) {
-	                    if ($("input.linePrdtSeq:checked").eq(i).data("cnt") == 0) {
-	                        soldOutFlag = true;
-	                        $("input.linePrdtSeq:checked").eq(i).prop("checked", false);
-	                    }
-	                }
-	                if ($("input.linePrdtSeq:checked").length > 0) {
-	                    CART.saveArr("PT", function(data) {
-	                        if (data.result == "OK") {
-	                            if (soldOutFlag) {
-	                                alert("임시품절 제품 제외하고 장바구니에 담았습니다.");
-	                            } else {
-	                                // 토스트 팝업 처리.
-	                                setTimeout(function() {
-	                                    $('.layer_alert_wrap').hide().find('span').hide();
-	                                }, 1500);
-	                                $('.layer_alert_wrap').css('display', 'block').find('.layer_alert3').css('display', 'block');
-
-	                                /* TAS 관련 스크립트 : 장바구니 제품 담기 */
-	                                var _tasz = [];
-	                                _tasz.push({
-	                                    productName : lineNm + prdtNm,
-	                                    productCode : value,
-	                                    productPrice : price,
-	                                    sapCode : sapCode
-	                                });
-	                                LARO.TAS.et("cartAdd", _tasz);
-	                            }
-	                        } else {
-	                            alert(data.message);
-	                        }
-	                    }, "input.linePrdtSeq:checked");
-	                } else {
-	                    alert("장바구니에 담을 제품을 선택해주세요.");
-	                    return false;
-	                }
-	            });
-	            $(".listBasket").on("click", function() {
-	                if ($(this).data("cnt") > 0) {
-	                    var $this = $(this);
-	                    $("#productForm").find("input[name=ordCnt]").data("prdt-seq", $this.data("value"));
-	                    var value = $this.data("value");
-	                    var price = $this.data("price");
-	                    var lineNm = $this.data("linename");
-	                    var prdtNm = $this.data("prdtname");
-	                    var sapCode = $this.data("sapCode");
-	                    var buyLevel = $this.data("buy-level");
-	                    var mbrJoinYm = $this.data('mbr-join-ym');
-	                    var userLevel = $this.data('user-level');
-	                    var levelName = $this.data('level-name');
-
-	                    var today = new Date();
-	                    var yyyy = today.getFullYear().toString();
-	                    var mm = (today.getMonth() + 1) < 10 ? "0" + (today.getMonth() + 1) : (today.getMonth() + 1).toString();
-	                    var todayYm = yyyy + mm;
-
-	                    // 회원전용(등급전체) 구매 가능 여부 체크
-	                    if ('A' == buyLevel) {
-	                        var message = '회원만 신청 가능한 제품입니다.\n로그인 후 진행해주세요.';
-	                        if (mbrJoinYm == null || mbrJoinYm == '' || mbrJoinYm == 'undefined') {
-	                            alert(message);
-	                            return;
-	                        }
-	                    }
-
-	                    // 신규회원(당월) 구매 가능 여부 체크
-	                    if ('M' == buyLevel) {
-	                        if (todayYm != mbrJoinYm) {
-	                            alert(today.getMonth() + 1 + "월 신규회원만 구입 가능한 제품입니다.");
-	                            return;
-	                        }
-	                    }
-
-	                    // 기존회원(당월이전) 구매 가능 여부 체크
-	                    if ('L' == buyLevel) {
-	                        if (todayYm == mbrJoinYm || (mbrJoinYm == null || mbrJoinYm == '' || mbrJoinYm == 'undefined')) {
-	                            alert(today.getMonth() + 1 + "월 이전 가입한 회원만 구입 가능한 제품입니다.");
-	                            return;
-	                        }
-	                    }
-
-	                    if ('MBR001' == buyLevel || 'MBR002' == buyLevel || 'MBR003' == buyLevel || 'MBR004' == buyLevel || 'MBR005' == buyLevel) {
-	                        if (buyLevel != userLevel) {
-	                            alert(levelName + ' 등급만 구매하실 수 있는 제품입니다.');
-	                            return;
-	                        }
-	                    }
-
-	                    CART.save($("#productForm"), function(data) {
-	                        if (data.result == "OK") {
-	                            // 토스트 팝업 처리.
-	                            setTimeout(function() {
-	                                $('.layer_alert_wrap').hide().find('span').hide();
-	                            }, 1500);
-	                            $('.layer_alert_wrap').css('display', 'block').find('.layer_alert3').css('display', 'block');
-	                            /* TAS 관련 스크립트 : 장바구니 제품 담기 */
-	                            var _tasz = [];
-	                            _tasz.push({
-	                                productName : lineNm + prdtNm,
-	                                productCode : value,
-	                                productPrice : price,
-	                                sapCode : sapCode
-	                            });
-	                            LARO.TAS.et("cartAdd", _tasz);
-	                        } else {
-	                            if ("[LEVEL] 등급만 구매하실 수 있는 제품입니다." == data.message) {
-	                                if ($this.data("level") == undefined) {
-	                                    alert("등급이 맞지 않아 구매 하실수 없는 제품입니다.");
-	                                } else {
-	                                    alert(data.message.replace("[LEVEL]", $this.data("level")));
-	                                }
-	                            } else {
-	                                alert(data.message);
-	                            }
-	                        }
-	                    });
-	                } else {
-	                    alert("품절된 제품입니다.");
-	                }
-	            });
-
-	            $(".listView").on("click", function() {
-	                location.href = "/product/view/" + $(this).data("value") + ".do";
-	            });
-	        });
-
-	// 계산 출력.
-	function calculation() {
-	    var totalPrice = 0, salePrice = parseInt($('#orderForm').find("input[name=salePrice]").val()), orderCount = parseInt($('#orderForm').find("input[name=ordCnt]").val()), prdtType = $('#orderForm')
-	            .find("input[name=prdtType]").val();
-	    ;
-	    // 총 구매 금액
-	    $(".pricetotal").html(comma(salePrice * orderCount) + '<em>' + (prdtType == "PT" ? '원' : 'M') + '</em>');
-	}
+      // 계산 출력.
+      function calculation() {
+          var totalPrice = 0, salePrice = parseInt($('#orderForm').find("input[name=salePrice]").val()), orderCount = parseInt($('#orderForm').find("input[name=ordCnt]").val()), prdtType = $('#orderForm')
+                  .find("input[name=prdtType]").val();
+          ;
+          // 총 구매 금액
+          $(".pricetotal").html(comma(salePrice * orderCount) + '<em>' + (prdtType == "PT" ? '원' : 'M') + '</em>');
+      }
 
 	// 콤마 처리
 	function comma(num) {
@@ -1410,5 +1111,6 @@ $(function(){
   <!-- //wrap -->
 
 </body>
+
 
 </html>

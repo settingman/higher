@@ -19,11 +19,15 @@
         const mychart = document.querySelector('.mychart');
         const percent = mychart.dataset.percent;
         console.log(percent+"-------------------------");
-    
+
+        // $('.mychart').easyPieChart({
+        //   trackColor: '#ccc'
+        // })
+
         if(percent <=20) {
           $('.mychart').easyPieChart({
           barColor: '#FFCBCF',
-          trackColor:'#fff', //도넛배경색
+          trackColor:'#ccc', //도넛배경색
           scaleColor: '#fff',
           lineCap: 'butt',
           lineWidth: 30,
@@ -34,8 +38,8 @@
            });
         }else if(percent <=40){
           $('.mychart').easyPieChart({
-          barColor: '#FFEDCB',
-          trackColor:'#fff', //도넛배경색
+        	  barColor: '#f77694',
+          trackColor:'#e9ecef', //도넛배경색
           scaleColor: '#fff',
           lineCap: 'butt',
           lineWidth: 30,
@@ -47,7 +51,7 @@
         }else if(percent <= 60) {
           $('.mychart').easyPieChart({
           barColor: '#DCFBF9',
-          trackColor:'#fff', //도넛배경색
+          trackColor:'#ccc', //도넛배경색
           scaleColor: '#fff',
           lineCap: 'butt',
           lineWidth: 30,
@@ -59,7 +63,7 @@
         }else if(percent <= 80) {
           $('.mychart').easyPieChart({
           barColor: '#CBE6FF',
-          trackColor:'#fff', //도넛배경색
+          trackColor:'#ccc', //도넛배경색
           scaleColor: '#fff',
           lineCap: 'butt',
           lineWidth: 30,
@@ -71,7 +75,7 @@
         }else if(percent <= 100) {
           $('.mychart').easyPieChart({
           barColor: '#B7BCFE',
-          trackColor:'#fff', //도넛배경색
+          trackColor:'#ccc', //도넛배경색
           scaleColor: '#fff',
           lineCap: 'butt',
           lineWidth: 30,
@@ -212,7 +216,7 @@
                     <em><a href="#product_detail_review" style="color:#8f8f8f;">(270)</a></em>
                   </span>
                   <div class="result" style="display: flex;justify-content: center;margin-bottom: 40px;">
-                    <div class="chart mychart" th:data-percent="${score}"><span class="title">[[${score}]]추천해요</span></div>
+                    <div class="chart mychart" th:data-percent="${score}"><span class="title" style="top:110px;">[[${score}]]추천해요</span></div>
                   </div>
                   <div id="ingredient_box">
 	                  <div id="iTit">주요성분</div>

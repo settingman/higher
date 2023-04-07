@@ -3,8 +3,10 @@
 	xmlns:th="http://www.thymeleaf.org">
 <head>
 
-<head th:insert="~{include/head}"></head>
   <style>
+		a {
+			text-decoration: none !important;
+		}
 		header#header {
 			background: none;
 			height: auto;
@@ -201,6 +203,7 @@
 
 <!-- <script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/co/md5.js"></script>
 <script type="text/javascript" src="//static.criteo.net/js/ld/ld.js" async="true"></script> -->
+<head th:insert="~{include/head}"></head>
 
 
 </head>
@@ -534,7 +537,7 @@
 	<section id="survey_pop" class="layerpop_warp open" style="display: none;">
 		<div class="layerpop blue" style="width:460px;">
 			<div class="layerpop_head">
-				<h1>상품 비교하기</h1>
+				<h1 style="padding-top: 13px;">상품 비교하기</h1>
 			</div>
 			<div class="layerpop_cont" style="height: 330px;">
 				<div class="save_cont">

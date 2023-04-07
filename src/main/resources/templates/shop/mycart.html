@@ -3,20 +3,6 @@
 
 <head>
     <head th:insert="~{include/head}"></head>
-  <style>
-		header#header {
-			background: none;
-			height: auto;
-		}
-		footer#footer {
-        background: white;
-        border-top: 1px solid black !important;
-        }
-        .btn.color9 {
-        border: 1px solid #45675b !important;
-        background-color: #45675b !important;
-        }
-	</style>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -778,8 +764,15 @@
 
 
         function deleteBaskt(obj, targetObj, delType) {
+            $("#survey_pop").css("display", "block");
 
-            //버튼이 눌렸을 때
+    
+            const okaybtn = document.querySelector(".okay");
+            okaybtn.addEventListener("click", e => {
+                console.log("삭제 okay");
+                $("#survey_pop").css("display", "none");
+                
+                 //버튼이 눌렸을 때
             let liList = document.querySelectorAll(".cart-list-unit");
             console.log("-------");
             let pcodeTest = $("#c0").find(".check-group").children("#pcode").val();
@@ -794,7 +787,7 @@
                 if ($(liList[i]).find('.icheckbox').hasClass('checked')) {
                     const pcode = $(liList[i]).find('#pcode').val();
                     console.log(pcode);
-                    const poption = $(liList[i]).find('.cnt-opt').value;
+                    const poption = $(liList[i]).find('.cnt-opt').val();
                     console.log("option" + poption);
                     arr.push({
                         pcode: pcode,
@@ -843,11 +836,18 @@
 						}
 					});   */
 
+            })
+
+
+
+           
 
         }
 
 
         function deleteBasktItem(pcode, poption, cindex) {
+            $("#survey_pop").css("display", "block");
+
             if (!confirm("삭제하시겠습니까?")) {
                 return false;
             }
@@ -1261,6 +1261,36 @@
             margin-right: 13px;
         }
     </style>
+      <style>
+		header#header {
+			background: none;
+			height: auto;
+		}
+		footer#footer {
+        background: white;
+        border-top: 1px solid black !important;
+        }
+        .btn.color9 {
+        border: 1px solid #45675b !important;
+        background-color: #45675b !important;
+        }
+        .cnt-ctrl {
+            width: 130px ;
+        }
+        .cnt-ctrl .cnt-up{
+            background-position: -16px center;
+            background-size: 70px;
+            width: 37px;
+        }
+        .cnt-ctrl .cnt-down {
+            background-position: -44px center;
+            background-size: 70px;
+            width: 37px;
+        }
+        .cnt-ctrl input {
+            width: 47px;
+        }
+    </style>
 
     <script type="text/javascript" async="" src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/879261918/?random=1679898029293&amp;cv=11&amp;fst=1679898029293&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;gtm=45be33m0&amp;u_w=1707&amp;u_h=1067&amp;url=http%3A%2F%2F192.168.137.247%3A5500%2F%25EB%258D%2594%25ED%2598%2584%25EB%258C%2580%25EB%258B%25B7%25EC%25BB%25B4.html&amp;ref=http%3A%2F%2F192.168.137.247%3A5500%2F%25EB%258D%2594%25ED%2598%2584%25EB%258C%2580%25EB%258B%25B7%25EC%25BB%25B4.html&amp;hn=www.googleadservices.com&amp;frm=0&amp;tiba=%EB%8D%94%ED%98%84%EB%8C%80%EB%8B%B7%EC%BB%B4&amp;auid=1184932784.1678862774&amp;data=event%3Dgtag.config&amp;rfmt=3&amp;fmt=4"></script>
 </head>
@@ -1544,9 +1574,38 @@
 			<!-- //content-wrap -->
 
 		</div>
+
+        <section id="survey_pop" class="layerpop_warp open" style="display: none;">
+			<div class="layerpop blue" style="width: 460px;">
+				<div class="layerpop_head">
+					<h1>장바구니</h1>
+				</div>
+				<div class="layerpop_cont" style="height: 330px;">
+					<div class="save_cont">
+						<p>
+							상품을 삭제하시겠습니까?
+						</p>
+						<div class="btn_wrap center mt30">
+                            <button type="button" class="btn_base blue act" id="okay">확인</button>
+							<button type="button" class="btn_base darkgray act" id="save_close">취소</button>
+						</div>
+					</div>
+				</div>
+				<button type="button" class="close">닫기</button>
+			</div>
+		</section>
     <!-- footer -->
 	<div class="include-footer" th:insert="~{include/footer}"></div>
 	<!-- /footer -->
+
+        <script>
+        $(function(){
+            $("#save_close").on("click", function(){
+                $("#survey_pop").css("display", "none");	
+            });
+            
+        });
+    </script>
 
 <script>
 $("select.form-select").on("change", function() {
