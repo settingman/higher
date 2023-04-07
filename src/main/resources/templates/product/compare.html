@@ -237,7 +237,7 @@
 
 				<!-- product-list type -->
 				<div style="background-color: #FFFEF2;">
-					<img src="./img/comparelogo.png" style="margin: auto;width:1118.51px;display: block;border-bottom: 1px solid #666;">
+					<img src="../compare/img/comparelogo.png" style="margin: auto;width:1118.51px;display: block;border-bottom: 1px solid #666;">
 				</div>
 		<!-- <h4 class="sort-title">Find The ONE!</h4> -->
 		<p style="text-align: right; margin-right: 10px;font-size: 15px;margin-top: 10px;">비교함에는 10개의 상품까지 담을 수 있습니다.</p>
@@ -295,7 +295,7 @@
   <div data-v-35734774="" data-v-4ade122e="" data-v-214bdc2f="" class="compare_detail" style="padding-top: 0px;">
 		<div class="col" style="background-color: #FFFEF2;border-bottom: 1px solid black;">
 			<!-- <h4 style="padding-bottom: 20px; text-align: center; border-bottom: 1px solid #666;padding-top: 30px;">What's Your Pick?</h4> -->
-				<img src="./img/pick.png" style="margin: auto;width:1050px;display: block;">
+				<img src="../compare/img/pick.png" style="margin: auto;width:1050px;display: block;">
 		</div>
   <section data-v-35734774="" class="">
   <article data-v-4ade122e="" data-v-35734774="" class="cd_con card_choice">
@@ -531,6 +531,24 @@
 
 	</div>
 	<!-- //container -->
+	<section id="survey_pop" class="layerpop_warp open" style="display: none;">
+		<div class="layerpop blue" style="width:460px;">
+			<div class="layerpop_head">
+				<h1>상품 비교하기</h1>
+			</div>
+			<div class="layerpop_cont" style="height: 330px;">
+				<div class="save_cont">
+					<p>
+						상품을 삭제했습니다.
+					</p>
+					<div class="btn_wrap center mt30">
+						<button type="button" class="btn_base blue act" id="save_close">확인</button>
+					</div>
+				</div>
+			</div>
+			<button type="button" class="close">닫기</button>
+		</div>
+	</section>
 
     <!-- footer -->
 	<div class="include-footer" th:insert="~{include/footer}"></div>
@@ -560,8 +578,14 @@
  	}
  </script>
 
-<!-- //footer -->
-
+<script>
+$(function(){
+	$("#save_close").on("click", function(){
+		$("#survey_pop").css("display", "none");	
+	});
+	
+});
+</script>
 <script type="text/javascript">
 	function psplit(pingredient) {
   if (pingredient.includes(',')) {
@@ -832,7 +856,7 @@
 			slide.innerHTML = '상품을 비교함에 담아보세요';
 		}
 
-    alert('삭제했습니다');
+		$("#survey_pop").css("display", "block");
 
 			//비교함과 플로팅 박스에서 삭제
 			//비교함 순서 땡기기
