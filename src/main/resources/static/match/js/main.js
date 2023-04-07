@@ -1,4 +1,8 @@
 $(function(){	
+	$("#detail-btn").on("click", function(){
+		$("#mbtiFrm").submit();
+	});
+	
 	$("#search-input").on("focus", function(){
 		$("#search-list").css('display', 'block');
 		$('#search-list').html('');

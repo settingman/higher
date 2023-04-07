@@ -83,7 +83,8 @@
         <div class="sideleft" style="width: 270px;">
           <div id="mem-wrap">
             <div id="mem-icon"><img src="https://www.larocheposay.co.kr/images/customer/skincase_1.png"></div>
-            <h2 id="mem-info" sec:authorize="isAuthenticated()"><span sec:authentication="principal.mName">회원이름</span> 회원님의 <br>피부 MBTI</h2>
+            <h2 id="mem-info" sec:authorize="isAuthenticated()"><span sec:authentication="principal.mName">회원이름</span> 회원님의 <br>피부 MBTI는?</h2>
+            <h2 sec:authorize="isAnonymous()" id="side-tit">나의 피부 MBTI는?</h2>
           </div>
           <div sec:authorize="isAuthenticated()">
             <div id="mbti">[[${memMBTI.mbti}]]</div>
@@ -98,11 +99,15 @@
             </script>
 			<script src="/match/js/chart.js"></script>
 			
-			<form id="mbtiFrm" method="POST" action="">
-			
+			<form id="mbtiFrm" method="POST" action="/skinMBTI/result">
+				<input type="hidden" name="score1" th:value="${scores[0]}">
+				<input type="hidden" name="score2" th:value="${scores[1]}">
+				<input type="hidden" name="score3" th:value="${scores[2]}">
+				<input type="hidden" name="score4" th:value="${scores[3]}">
+				<input type="hidden" name="mbti" th:value="${memMBTI.mbti}">
 			</form>
-
           </div>
+          
           <h2>피부 타입</h2>
           <nav>
             <ul class="accordion">
@@ -169,7 +174,7 @@
               <!-- 신상, 단독구성 -->
               <ul class="product_list ea03" id="listUl">
                 <li th:each="prod : ${product}" class=" "> 
-                	<a th:href="@{/match/detail(pcode=${prod.pcode})}"> 
+                	<a href="javascript:prdtViewLink('3858','PT','Y', 1);"> 
                 		<img th:if="${prod.iloc == null}" src="https://image.thehyundai.com/hdmall/images/pd/no_image_480x480.jpg" th:alt="${prod.pname}">
 			            <img th:if="${prod.iloc != null}" th:src="${prod.iloc + '_600.jpg'}" th:alt="${prod.pname}">
                 		<span class="hash_tag">[[${prod.bname}]]</span> 
