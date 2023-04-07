@@ -25,6 +25,10 @@
 	line-height: 26px;
 }
 
+#side-tit{
+	padding-top: 30px;
+}
+
 #mem-info span{
 	color: #bfae90;
 }

@@ -20,4 +20,6 @@ public class CategoryController {
 		
 		return service.cateAll();
 	}
+	
+	
 }
