@@ -8,6 +8,18 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import com.hyundai.higher.kakao.service.KakaoService;
 
+/**
+ * @since   : 2023. 4. 8.
+ * @FileName: KakaoContoller.java
+ * @author  : 박성환
+ * @설명    : 카카오톡 API RESTCONTROLLER
+
+ * <pre>
+ *   수정일         수정자               수정내용
+ * ----------      --------    ---------------------------
+ * 2023. 4. 8.     박성환      	최초 생성
+ * </pre>
+ */
 @RestController
 @RequestMapping("/kakao")
 public class KakaoContoller {

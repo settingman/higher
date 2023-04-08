@@ -67,29 +67,4 @@ public class HomeController {
 	
 		return "test5";
 	}
-	/*
-	 * @GetMapping("/success") public String requestFinalPayments(@RequestParam
-	 * String paymentKey, @RequestParam String orderId,
-	 * 
-	 * @RequestParam Long amount) { String url =
-	 * "https://api.tosspayments.com/v1/payments/confirm"; String body =
-	 * "{\"paymentKey\":\"gqyGWADQ6jf6QMw80VTht\",\"amount\":15000,\"orderId\":\"Rr-6VcLQUxRXIeSXLr7lA\"}";
-	 * 
-	 * RestTemplate restTemplate = new RestTemplate();
-	 * 
-	 * HttpHeaders headers = new HttpHeaders();
-	 * headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-	 * headers.setContentType(MediaType.APPLICATION_JSON);
-	 * headers.set("Authorization",
-	 * "Basic dGVzdF9za19ZUEJhbDJ2eGo4MVJ4OUJMeXczNVJRZ09BTkQ3Og==");
-	 * 
-	 * HttpEntity<String> entity = new HttpEntity<String>(body, headers);
-	 * 
-	 * ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.POST,
-	 * entity, String.class);
-	 * 
-	 * String responseBody = response.getBody();
-	 * 
-	 * }
-	 */
 }

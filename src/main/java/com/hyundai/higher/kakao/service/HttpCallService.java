@@ -20,6 +20,18 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Service;
 
+/**
+ * @since   : 2023. 4. 8.
+ * @FileName: HttpCallService.java
+ * @author  : 박성환
+ * @설명    : RESTAPI CALL SERVICE
+
+ * <pre>
+ *   수정일         수정자               수정내용
+ * ----------      --------    ---------------------------
+ * 2023. 4. 8.     박성환      	최초 생성
+ * </pre>
+ */
 @Service
 public class HttpCallService {
 

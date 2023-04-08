@@ -3,6 +3,18 @@ package com.hyundai.higher.kakao.common;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 
+/**
+ * @since   : 2023. 4. 8.
+ * @FileName: Trans.java
+ * @author  : 박성환
+ * @설명    : 카카오톡 API 요청 바디 파라미터
+
+ * <pre>
+ *   수정일         수정자               수정내용
+ * ----------      --------    ---------------------------
+ * 2023. 4. 8.     박성환      	최초 생성
+ * </pre>
+ */
 public class Trans {
 
 	public static String default_msg_param = "" + "template_object={\n" + "        \"object_type\": \"feed\",\n"

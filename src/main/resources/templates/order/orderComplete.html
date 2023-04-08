@@ -291,7 +291,7 @@
 									<tr>
 										<td>
 											<div class="title">주문금액</div>
-											<div class="price" th:text="${#numbers.formatInteger(orderSheet.oTotalPrice, 3, 'COMMA') + '원'}">
+											<div class="price" th:text="${#numbers.formatInteger(orderSheet.oTotalPrice+orderSheet.oMileage, 3, 'COMMA') + '원'}">
 											</div>
 										</td>
 										<td>

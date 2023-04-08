@@ -15,6 +15,18 @@ import com.hyundai.higher.kakao.common.Trans;
 
 import lombok.RequiredArgsConstructor;
 
+/**
+ * @since : 2023. 4. 8.
+ * @FileName: KakaoService.java
+ * @author : 박성환
+ * @설명 : 카카오톡 API 요청 처리
+ * 
+ *     <pre>
+ *   수정일         수정자               수정내용
+ * ----------      --------    ---------------------------
+ * 2023. 4. 8.     박성환      	최초 생성
+ *     </pre>
+ */
 @RequiredArgsConstructor
 @Service
 public class KakaoService {
@@ -55,6 +67,7 @@ public class KakaoService {
 		return new RedirectView(uri);
 	}
 
+	//카카오톡 request 콜백 처리 (토큰발급)
 	public RedirectView loginCallback(String code) {
 		String param = "grant_type=authorization_code&client_id=" + REST_API_KEY + "&redirect_uri=" + REDIRECT_URI
 				+ "&client_secret=" + CLIENT_SECRET + "&code=" + code;
@@ -63,11 +76,15 @@ public class KakaoService {
 		return new RedirectView("/test4");
 	}
 
+	
+	//카카오톡 프필 받기
 	public String getProfile() {
 		String uri = KAKAO_API_HOST + "/v2/user/me";
 		return httpCallService.CallwithToken(Const.GET, uri, httpSession.getAttribute("token").toString());
 	}
 
+	
+	// 카카오톡 친구 리스트 불러오기
 	public String getFriends() {
 		String uri = KAKAO_API_HOST + "/v1/api/talk/friends";
 		return httpCallService.CallwithToken(Const.GET, uri, httpSession.getAttribute("token").toString());
@@ -79,24 +96,21 @@ public class KakaoService {
 				Trans.default_msg_param);
 	}
 
+	
+	// 카카오톡 친구에게 메세지 보내기
 	public String Sendmessage() {
-		
+
 		String uri2 = KAKAO_API_HOST + "/v1/api/talk/friends";
-		
+
 		String uri = KAKAO_API_HOST + "/v1/api/talk/friends/message/scrap/send";
-		
+
 		String uuid = httpCallService.CallwithToken(Const.GET, uri2, httpSession.getAttribute("token").toString());
-		
-		String [] uuids = uuid.split(",");
-		
-		
-		
-		String friends ="receiver_uuids=%5B%22"+uuids[0]+"%22%2C%22"+uuids[1]+"%22%2C%22"+uuids[2]+"%22%5D&request_url=https%3A%2F%2Flocalhost%3A8443&template_id=92317";
-		
-		
-		
-		
-		return httpCallService.CallwithToken(Const.POST, uri, httpSession.getAttribute("token").toString(),
-				friends);
+
+		String[] uuids = uuid.split(",");
+
+		String friends = "receiver_uuids=%5B%22" + uuids[0] + "%22%2C%22" + uuids[1] + "%22%2C%22" + uuids[2]
+				+ "%22%5D&request_url=https%3A%2F%2Flocalhost%3A8443&template_id=92317";
+
+		return httpCallService.CallwithToken(Const.POST, uri, httpSession.getAttribute("token").toString(), friends);
 	}
 }

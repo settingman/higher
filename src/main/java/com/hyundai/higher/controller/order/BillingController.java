@@ -116,7 +116,7 @@ public class BillingController {
 			
 			orderSheet.setOName(orderSheet.getProduct_name().get(0));
 		}else {
-			orderSheet.setOName(orderSheet.getProduct_name().get(0) +"외" + orderSheet.getProduct_id().size() + "개");
+			orderSheet.setOName(orderSheet.getProduct_name().get(0) +" 외 " + orderSheet.getProduct_id().size() + "개");
 			
 		}
 		
