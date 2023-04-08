@@ -51,18 +51,7 @@ public class HomeController {
 	@GetMapping(value = "/test3")
 	public String test2(Model model) {
 
-		/*
-		 * CartItem cart = new CartItem("A1504419", "테스트", 10000, "Brand", "Color",
-		 * 3,"option", "img_path");
-		 * 
-		 * CartItem cart2 = new CartItem("A1643072", "테스트2", 20000, "Brand", "Color",
-		 * 2,"option", "img_path");
-		 */
-
-		/*
-		 * carts.add(cart); carts.add(cart2);
-		 */
-
+	
 		return "test3";
 	}
 

@@ -1,0 +1,825 @@
+<html class="">
+<head>
+<style>
+header#header {
+	background: none;
+	height: auto;
+}
+
+span.statusimage {
+	width: 102px;
+	display: inline-block;
+	height: 80px;
+	margin-bottom: 5px;
+}
+</style>
+<head th:insert="~{include/head}"></head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0" />
+<title>더현대닷컴</title>
+<link rel="stylesheet" type="text/css" href="https://image.thehyundai.com/pc/cssssl/font.css" />
+
+<link rel="stylesheet" type="text/css" href="https://image.thehyundai.com/pc/cssssl/co.css?ver=13" />
+<link rel="stylesheet" type="text/css" href="https://image.thehyundai.com/pc/cssssl/wf.css" />
+<script src="https://image.thehyundai.com/pc/js/jquery-1.11.3.min.js"></script>
+<script src="https://image.thehyundai.com/pc/js/jquery-ui.min.js"></script>
+<script src="https://image.thehyundai.com/pc/js/jquery-migrate.min.js"></script>
+
+
+
+<script src="https://image.thehyundai.com/pc/js/plugin.js?ver=040816"></script>
+<script type="text/javascript" src="https://image.thehyundai.com/pc/js/hdmall/co/jquery.form.js"></script>
+<script type="text/javascript" src="https://image.thehyundai.com/pc/js/hdmall/co/default.js?ver=040816"></script>
+<script type="text/javascript" src="https://image.thehyundai.com/pc/js/hdmall/co/common.js?ver=040816"></script>
+<script src="https://image.thehyundai.com/pc/js/common.js?ver=040816"></script>
+<script type="text/javascript" src="https://image.thehyundai.com/pc/js/swiper.min.js?ver=040816"></script>
+
+
+
+<script type="text/javascript">
+	var custNoMa = '';
+	var itntGrdMa = '';
+	var sexGbcdMa = '';
+	var upntCustMa = '';
+	var birthMa = '';
+	if (pageViewObj2.custNo != null)
+		custNoMa = pageViewObj2.custNo;
+	if (pageViewObj2.itntGrd != null)
+		itntGrdMa = pageViewObj2.itntGrd;
+	if (pageViewObj2.sexGbcd != null)
+		sexGbcdMa = pageViewObj2.sexGbcd;
+	if (pageViewObj2.upntCustYn != null)
+		upntCustMa = pageViewObj2.upntCustYn;
+	if (pageViewObj2.birthday != null)
+		birthMa = pageViewObj2.birthday;
+
+	$('meta[property="groobee:member_id"]').attr('content', custNoMa);
+	$('meta[property="groobee:member_grade"]').attr('content', itntGrdMa);
+	$('meta[property="groobee:member_gender"]').attr('content', sexGbcdMa);
+	$('meta[property="groobee:member_type"]').attr('content', upntCustMa);
+	$('meta[property="groobee:member_age"]').attr('content', birthMa);
+</script>
+
+
+<link rel="stylesheet" type="text/css" href="https://www.thehyundai.com/cssssl/jquery-ui.css?ver=16" />
+<link rel="stylesheet" type="text/css" href="https://www.thehyundai.com/cssssl/cc.css?ver=16" />
+<link rel="stylesheet" type="text/css" href="https://www.thehyundai.com/cssssl/dp.css?ver=16" />
+<link rel="stylesheet" type="text/css" href="https://www.thehyundai.com/cssssl/od.css?ver=16" />
+<link rel="stylesheet" type="text/css" href="https://www.thehyundai.com/cssssl/ms.css?ver=16" />
+<script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/co/section_mypage.js"></script>
+<script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/mp/mpb/mpbShpgSymp.js"></script>
+<script type="text/javascript">
+	var _gaPageTitle = "주문/배송";
+
+	// 내부 팝업에서 데이터 수정후 호출
+	function fnRefresh() {
+		var pageParam = "1";
+		if (!isEmpty(pageParam) && !isNaN(pageParam)) {
+			window.location.reload();
+		} else {
+			$("#serach").click();
+		}
+	}
+
+	function isValidDate(str) {
+
+		// 빈칸무시
+		if (str == "")
+			return true;
+
+		if (!/^(\d){8}$/.test(str))
+			return false;
+
+		var y = str.substr(0, 4), m = str.substr(4, 2) - 1, d = str
+				.substr(6, 2);
+		var date = new Date(y, m, d);
+
+		if (Object.prototype.toString.call(date) !== "[object Date]") {
+			return false;
+		}
+
+		if (date.getFullYear() != Number(y) || date.getMonth() != Number(m)
+				|| date.getDate() != Number(d)) {
+			return false;
+		}
+
+		return !isNaN(date.getTime());
+	}
+
+	function makeDateFormat(dateStr) {
+		if (dateStr.length != 8) {
+			return dateStr;
+		}
+
+		var year = dateStr.substring(0, 4);
+		var month = dateStr.substring(4, 6);
+		var day = dateStr.substring(6);
+
+		return year + "-" + month + "-" + day;
+	}
+
+	$(function() {
+
+		$(".search-wrap div.btn-term button").click(
+				function() {
+
+					var type = $(this).text();
+					$(".search-wrap div.btn-term button").removeClass(
+							"btn-active");
+					$(this).addClass("btn-active");
+
+					if (type == "1개월") {
+						$("#txtOrdStrtDt").val(
+								makeDateFormat(getBeforeDateByMonth(1)));
+						$("#txtOrdEndDt").val(makeDateFormat(getToday()));
+					} else if (type == "3개월") {
+						$("#txtOrdStrtDt").val(
+								makeDateFormat(getBeforeDateByMonth(3)));
+						$("#txtOrdEndDt").val(makeDateFormat(getToday()));
+					} else if (type == "6개월") {
+						$("#txtOrdStrtDt").val(
+								makeDateFormat(getBeforeDateByMonth(6)));
+						$("#txtOrdEndDt").val(makeDateFormat(getToday()));
+					} else { // 전체
+						$("#txtOrdStrtDt").val("");
+						$("#txtOrdEndDt").val("");
+					}
+					$("#serach").click();
+				});
+
+		$("#serach,#serach2").click(
+				function() {
+					var searchType = $(
+							".search-wrap div.btn-term button.btn-active")
+							.text();
+
+					var ordStrtDt = $("#txtOrdStrtDt").val().replace(/-/g, "");
+					var ordEndDt = $("#txtOrdEndDt").val().replace(/-/g, "");
+
+					if (ordStrtDt > ordEndDt) {
+						alert("시작날짜가 종료날짜보다 클수없습니다.");
+						return false;
+					}
+					if (!isValidDate(ordStrtDt) || !isValidDate(ordEndDt)) {
+						alert("날짜형식이 잘못되었습니다.");
+						return false;
+					}
+
+					var listSize = $("#selectListSize").val();
+					var selectTypeGbcd = $("#selectTypeGbcd").val();
+					var itemNm = $("#txtItemNm").val();
+
+					$("#searchForm input[name=searchType]").val(searchType);
+					$("#searchForm input[name=ordStrtDt]").val(ordStrtDt);
+					$("#searchForm input[name=ordEndDt]").val(ordEndDt);
+					$("#searchForm input[name=selectTypeGbcd]").val(
+							selectTypeGbcd);
+					$("#searchForm input[name=listSize]").val(listSize);
+					$("#searchForm input[name=itemNm]").val(itemNm);
+					$("#searchForm input[name=page]").val("1");
+					$("#searchForm input[name=ordNo]").val("");
+
+					console.log(ordStrtDt);
+
+					$.ajax({
+						url : "/shop/orderSearch",
+						type : "GET",
+						dataType : "json",
+						data : $("#searchForm").serialize(),
+						success : function(data) {
+							console.log(encodeURI(JSON.stringify(data)));
+
+						}
+					});
+
+				});
+
+		$("#selectListSize,#selectTypeGbcd").change(function() {
+			$("#serach").click();
+		});
+
+		if ("" == "") {
+			$("#txtOrdEndDt").val(makeDateFormat(getToday()));
+			$("#txtOrdStrtDt").val(makeDateFormat(getBeforeDateByMonth(1)));
+			var ordStrtDt = $("#txtOrdStrtDt").val().replace(/-/g, "");
+			var ordEndDt = $("#txtOrdEndDt").val().replace(/-/g, "");
+			$("input[name=ordStrtDt]").val(ordStrtDt);
+			$("input[name=ordEndDt]").val(ordEndDt);
+			//$(".searchDiv a").eq(3).click();
+		} else {
+			$("#txtOrdStrtDt").val(makeDateFormat(""));
+			$("#txtOrdEndDt").val(makeDateFormat(""));
+		}
+
+		$(document).on(
+				"click",
+				".opt-select-box:not(.opened) .opt-select-value a",
+				function(e) {
+					e.preventDefault();
+					// 옵션 선택창 활성화
+					$(this).parents(".opt-select-box").toggleClass("current");
+					// 옵션 첫번째 단계활성화
+					$(this).parents(".opt-select-box").find(
+							".opt-select-layer li:first-child").addClass(
+							"current");
+					// class="current"
+
+					return false;
+				});
+
+		$(document).on(
+				"click",
+				".opt-select-layer a.depth-menu",
+				function(e) {
+					e.preventDefault();
+					$index = $(this).parent("li").index();
+
+					// 선행 옵션을 선택하지 않으면 선택할수 없다.
+					if ($(this).parent().prev().length > 0
+							&& !$(this).parent().prev().find(".depth-menu")
+									.hasClass("selected")) {
+						alert("위의 정보를 먼저 선택해주세요!");
+						return false;
+					}
+
+					$(this).parents(".opt-select-layer").children("li").each(
+							function(idx, elm) {
+								if (idx >= $index) {
+									$(this).removeClass("selected").siblings(
+											".depth-opt-list li").removeClass(
+											".current").end().find(
+											".depth-menu").removeClass(
+											"selected").attr("value", "").end()
+											.find(".selected-opt").text("");
+									if (idx > 0) {
+										$(this).find(".depth-opt-list")
+												.children("li").each(
+														function() {
+															$(this).remove();
+														});
+									}
+								}
+							});
+
+					// 아니면 다른 단계의 선택을 모두 제거하고 해당 단계부터 옵션을 다시 선택한다.
+					$(this).parent().siblings("li").removeClass("current")
+							.end().addClass("current");
+
+					return false;
+				});
+
+		$(document).on(
+				"click",
+				".depth-opt-list a.selectUitmAttrType2",
+				function(e) {
+					e.preventDefault();
+					// 상품속성코드 클리어
+					$("#updateUitmForm input[name=newUitmCd]").val("");
+
+					// 선택된 옵션의 이름
+					$val = $(this).find(".opt-name").text();
+
+					// 해당 옵션 부모에 선택된 값 넣기.
+					$(this).parents(".depth-opt-list").siblings(".depth-menu")
+							.attr("value", $(this).attr("value"));
+					$(this).parents(".depth-opt-list").siblings(".depth-menu")
+							.find(".selected-opt").text($val).end().addClass(
+									"selected").parent("li").removeClass(
+									"current").next().addClass("current");
+
+					$("#updateUitmForm input[name=newUitmCd]").val(
+							$(this).attr("value"));
+
+					var last_opt_value = "";
+					$(this).parents(".opt-select-layer").find(".depth-menu")
+							.each(
+									function() {
+										if (last_opt_value.length > 0) {
+											last_opt_value += " / "
+										}
+										last_opt_value += $(this).find(
+												".selected-opt").text();
+
+									});
+
+					last_opt_value += '<i class="icon-arrow opt-toggle"></i>';
+					$(this).parents(".opt-select-box").find(
+							".opt-select-value a").html(last_opt_value);
+					// 옵션 모두 선택됨. 초기화
+					option_reset($(this).parents(".opt-select-layer"));
+
+					return false;
+				});
+
+		$(document)
+				.on(
+						"click",
+						".depth-opt-list a.selectUitmAttrType",
+						function(e) {
+							e.preventDefault();
+							$("#updateUitmForm input[name=newUitmCd]").val("");
+
+							// 선택된 옵션의 이름
+							$val = $(this).find(".opt-name").text();
+
+							$currIndex = $(this).parents(".depth-opt-list")
+									.parent("li").index();
+							$lastidx = $(this).parents(".opt-select-layer")
+									.children("li").length;
+
+							var slitmCd = $(
+									"#updateUitmForm input[name='slitmCd']")
+									.val();
+							var bsitmCd = $(
+									"#updateUitmForm input[name='bsitmCd']")
+									.val();
+							var uitmAttrTypeSeq = $(this).parents(
+									".opt-select-layer").find(
+									"input[name='uitmAttrTypeSeq']:eq("
+											+ (Number($currIndex) + 1) + ")")
+									.val();
+
+							if (uitmAttrTypeSeq == undefined
+									|| uitmAttrTypeSeq == "undefined") {
+								uitmAttrTypeSeq = $(this).parents(
+										".opt-select-layer").find(
+										"input[name='uitmAttrTypeSeq']:eq("
+												+ Number($currIndex) + ")")
+										.val();
+							}
+
+							// 해당 옵션 부모에 선택된 값 넣기.
+							$(this).parents(".depth-opt-list").siblings(
+									".depth-menu").attr("value",
+									$(this).attr("value"));
+							$(this).parents(".depth-opt-list").siblings(
+									".depth-menu").find(".selected-opt").text(
+									$val).end().addClass("selected").parent(
+									"li").removeClass("current").next()
+									.addClass("current");
+
+							var last_opt_value = "";
+							var uitmSeqArrParam = new Array();
+							$(this).parents(".opt-select-layer").find(
+									".depth-menu").each(
+									function() {
+										if (last_opt_value.length > 0) {
+											last_opt_value += " / "
+										}
+										last_opt_value += $(this).find(
+												".selected-opt").text();
+										uitmSeqArrParam.push($(this).attr(
+												"value"));
+									});
+
+							if ($currIndex == $lastidx - 1) {
+
+								last_opt_value += '<i class="icon-arrow opt-toggle"></i>';
+								$(this).parents(".opt-select-box").find(
+										".opt-select-value a").html(
+										last_opt_value);
+
+								// 상품속성코드 조회
+								$
+										.ajax({
+											type : "post",
+											url : "/front/mpa/selectUitmCd.thd?uitmSeqArr="
+													+ uitmSeqArrParam
+															.join("&uitmSeqArr="),
+											dataType : "json",
+											data : {
+												slitmCd : slitmCd,
+												bsitmCd : bsitmCd,
+												uitmAttrTypeSeq : uitmAttrTypeSeq
+											},
+											success : function(data) {
+												$(
+														"#updateUitmForm input[name=newUitmCd]")
+														.val(data.newUitmCd);
+											},
+											error : function(data) {
+												alert("시스템 오류입니다. 다시 시도해주세요.");
+											}
+										});
+
+								// 옵션 모두 선택됨. 초기화
+								option_reset($(this).parents(
+										".opt-select-layer"));
+
+								return;
+							}
+
+							/*
+							 * 선택한 속성에 따른 다음 속성 값 조회 후 select 셋팅
+							 */
+							$
+									.ajax({
+										type : "post",
+										url : "/front/pda/selectUitmAttrListForChangeSelect.thd?uitmSeqArr="
+												+ uitmSeqArrParam
+														.join("&uitmSeqArr="),
+										dataType : "json",
+										data : {
+											slitmCd : slitmCd,
+											bsitmCd : bsitmCd,
+											uitmAttrTypeSeq : uitmAttrTypeSeq
+										},
+										success : function(data) {
+											if (data.uitmList) {
+												var prevUitmSeq = "";
+												for ( var i in data.uitmList) {
+													if (data.uitmList[i].uitmAttrTypeSeq == uitmAttrTypeSeq) {
+														if (prevUitmSeq != data.uitmList[i].uitmSeq) {
+															prevUitmSeq = data.uitmList[i].uitmSeq;
+															$(
+																	".opt-select-layer")
+																	.find(
+																			".depth-opt-list:eq("
+																					+ (Number($currIndex) + 1)
+																					+ ")")
+																	.append(
+																			'<li><a href="#" value="'+data.uitmList[i].uitmSeq+'" class="selectUitmAttrType"><span class="opt-name">'
+																					+ data.uitmList[i].uitmAttrNm
+																					+ '</span></a></li>');
+														}
+													}
+												}
+											}
+										},
+										error : function(data) {
+											alert("시스템 오류입니다. 다시 시도해주세요.");
+										}
+									});
+
+							return false;
+
+						});
+
+		$("select[name=selectBaseCmpsType]")
+				.change(
+						function() {
+							var selectedCount = 0;
+							$("select[name=selectBaseCmpsType] option:selected")
+									.each(function() {
+										if (!isEmpty($(this).val())) {
+											selectedCount++;
+										}
+									});
+
+							$("input[name=cmpsItemSeq]").val(this.value);
+
+							var aaa = $("input[name=cmpsItemSeq]").val();
+
+							var uitmCombYn = $("input[name='uitmCombYn']")
+									.val();
+							var uitmChocPossYn = $(
+									"input[name='uitmChocPossYn']").val();
+
+							if ($("li.selectUitmAttrType").length > 0
+									&& (selectedCount < $("li.selectUitmAttrType").length)) {
+								alert("주문선택사항을 먼저 선택하시기 바랍니다.");
+								$(this).find("option:first").attr("selected",
+										true);
+								return;
+							}
+
+							var baseCmpsTypeIndex = $(this).index(
+									"select." + $(this).attr("class"));
+
+							// 선택값이 없을 경우 리턴시킴
+							if (isEmpty($(this).val())) {
+								return;
+							}
+
+							var baseCmpsTypeCnt = $("select[name=selectBaseCmpsType]").length;
+							var baseCmpsSelectedCount = 0;
+							$("select[name=selectBaseCmpsType] option:selected")
+									.each(function() {
+										if (!isEmpty($(this).val())) {
+											baseCmpsSelectedCount++;
+										}
+									});
+
+							if (baseCmpsTypeCnt > 0
+									&& (baseCmpsSelectedCount < baseCmpsTypeCnt)) {
+								return;
+							}
+						});
+
+	});
+</script>
+
+
+
+
+
+<style type="text/css">
+.fancybox-margin {
+	margin-right: 16px;
+}
+</style>
+
+<script type="text/javascript" async=""
+	src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/879261918/?random=1680935927713&amp;cv=11&amp;fst=1680935927713&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;gtm=45be3430&amp;u_w=1707&amp;u_h=1067&amp;url=https%3A%2F%2Fwww.thehyundai.com%2Ffront%2Fmpa%2FselectOrdDlvCrst.thd%3FMainpageGroup%3DUtil%26GroupbannerName%3DGNB_Order&amp;ref=https%3A%2F%2Fwww.thehyundai.com%2FHome.html&amp;hn=www.googleadservices.com&amp;frm=0&amp;tiba=%EB%8D%94%ED%98%84%EB%8C%80%EB%8B%B7%EC%BB%B4&amp;auid=1634151386.1677462498&amp;uaa=x86&amp;uab=64&amp;uafvl=Chromium%3B112.0.5615.49%7CGoogle%2520Chrome%3B112.0.5615.49%7CNot%253AA-Brand%3B99.0.0.0&amp;uamb=0&amp;uap=Windows&amp;uapv=15.0.0&amp;uaw=0&amp;data=event%3Dgtag.config&amp;rfmt=3&amp;fmt=4"
+></script>
+<link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+</head>
+<body>
+	<!-- 검색폼 -->
+	<form id="searchForm" name="searchForm" action="" method="post">
+		<input type="hidden" name="searchType" value="">
+		<input type="hidden" name="ordStrtDt" value="20230308">
+		<input type="hidden" name="ordEndDt" value="20230408">
+		<input type="hidden" id="selectTypeGbcd" name="selectTypeGbcd" value="A1">
+		<input type="hidden" name="itemNm" value="">
+		<input type="hidden" name="listSize" value="">
+		<input type="hidden" name="page" value="">
+		<input type="hidden" name="ordNo" value="">
+	</form>
+
+	<!-- wrap -->
+	<div id="wrap" class="sub">
+
+
+
+		<script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/co/referCodes.js"></script>
+		<script src="/js/sso/SsoHttpRequest.js"></script>
+		<script src="/js/sso/SsoAjax.js"></script>
+		<script src="/js/sso/SsoLogin.js"></script>
+		<!-- SSO 로그인 js 공통 처리 2021.02.17-->
+
+		<script type="text/javascript" src="https://www.thehyundai.com/static/gen/js/mainBnnrContents.js?ver=081538"></script>
+
+
+		</script>
+
+		<script src="https://image.thehyundai.com/pc/js/plugin.js?ver=040213"></script>
+		<script type="text/javascript" src="https://image.thehyundai.com/pc/js/hdmall/co/jquery.form.js"></script>
+		<script type="text/javascript" src="https://image.thehyundai.com/pc/js/hdmall/co/default.js?ver=040213"></script>
+		<script type="text/javascript" src="https://image.thehyundai.com/pc/js/hdmall/co/common.js?ver=040213"></script>
+		<script src="https://image.thehyundai.com/pc/js/common.js?ver=040213"></script>
+		<script type="text/javascript" src="https://image.thehyundai.com/pc/js/swiper.min.js?ver=040213"></script>
+		<style type="text/css">
+.fancybox-margin {
+	margin-right: 17px;
+}
+</style>
+		<link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" />
+		</head>
+
+		<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
+			<!-- wrap -->
+			<div id="wrap" class="sub">
+				<header id="header" th:insert="~{include/header}"></header>
+				<!-- gnb -->
+
+				<script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/co/referCodes.js"></script>
+				<script src="/js/sso/SsoHttpRequest.js"></script>
+				<script src="/js/sso/SsoAjax.js"></script>
+				<script src="/js/sso/SsoLogin.js"></script>
+				<!-- SSO 로그인 js 공통 처리 2021.02.17-->
+
+				<script type="text/javascript" src="https://www.thehyundai.com/static/gen/js/mainBnnrContents.js?ver=021318"></script>
+				<!-- top banner -->
+				<div id="js-tpl-topBanner" style="display: none"></div>
+
+				<div class="top-wrap sub">
+					<div class="top-area-setting">
+						<script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/dp/dpo/dqSearch.js?ver=040213"></script>
+
+						<script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/dp/dpo/dqAutoCompleteNewCommon.js?ver=040213"></script>
+						<script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/dp/dpo/dqAutoCompleteNew.js?ver=040213"></script>
+
+						<!-- //header -->
+					</div>
+				</div>
+
+				<!-- container -->
+				<div id="container">
+					<!-- content-wrap -->
+					<div class="content-wrap hasleft myhyundai">
+						<!-- left contents -->
+
+						<div class="leftarea">
+							<h2>
+								<a href="/front/mpf/selectMyPageMain.thd">마이현대<span>MY HYUNDAI</span></a>
+							</h2>
+							<div class="line"></div>
+
+							<!-- leftmenu -->
+							<ul class="leftmenu">
+								<li class=""><a class="not">MY Make-ON</a>
+									<ul>
+										<li class=""><a>예약 관리</a></li>
+										<li class=""><a>예약 결과 확인</a></li>
+										<li class=""><a>상담 입장</a></li>
+										<li class=""><a>예약 신청 완료</a></li>
+									</ul></li>
+								<li class=""><a class="not">MY 피부 MBTI</a>
+									<ul>
+										<li class=""><a href="/front/mpd/changeMemberInfoForm.thd" onclick="javascript:GA_Event('PC_마이페이지', 'LNB', '나의정보_회원정보변경');">결과 보기</a></li>
+									</ul></li>
+								<li class=""><a class="not">MY 주문</a>
+									<ul>
+										<li class=""><a href="/front/mpa/selectOrdDlvCrst.thd" onclick="javascript:GA_Event('PC_마이페이지', 'LNB', '주문현황_주문확인/배송조회');">주문 내역</a></li>
+
+									</ul></li>
+
+							</ul>
+							<!-- //leftmenu -->
+						</div>
+						<!-- //leftarea -->
+						<!-- // left contents -->
+
+
+						<div class="content">
+							<div class="myhyundai-head">
+
+								<div class="title-wrap">
+									<h3>주문확인 / 배송조회</h3>
+									<div class="sel-orderuser"></div>
+								</div>
+
+								<!-- search-wrap -->
+								<div class="search-wrap bg">
+									<form action="search">
+										<div class="form-group fixtit">
+											<span class="tit">조회기간</span>
+											<div class="col-group fl-left">
+												<div class="btn-group btn-term">
+													<button class="btn btn-in btn-active" type="button">1개월</button>
+													<button class="btn btn-in" type="button">3개월</button>
+													<button class="btn btn-in" type="button">6개월</button>
+													<button class="btn btn-in" type="button">전체보기</button>
+												</div>
+											</div>
+											<div class="period col-group fl-right">
+												<input type="text" title="날짜 시작일" name="txtOrdStrtDt" id="txtOrdStrtDt" class="input-datepicker hasDatepicker"
+													data-date-format="yyyy.mm.dd"
+												>
+												<button type="button" class="ui-datepicker-trigger">...</button>
+												<span>~</span>
+												<input type="text" title="날짜 종료일" name="txtOrdEndDt" id="txtOrdEndDt" class="input-datepicker hasDatepicker" data-date-format="yyyy.mm.dd">
+												<button type="button" class="ui-datepicker-trigger">...</button>
+												<button type="button" id="serach" class="btn size2 color1 strong ml5">조회</button>
+											</div>
+										</div>
+										<div class="form-group fixtit">
+											<span class="tit">상품명</span>
+											<div class="col-group fl-left">
+												<div class="fieldset withbtn">
+													<input type="text" title="Inputbox" id="txtItemNm" name="txtItemNm" placeholder="주문상품명 입력" value="">
+													<a href="#" id="serach2" class="btn size2 color1">검색</a>
+												</div>
+											</div>
+											<div class="col-group fl-right">
+
+												<div class="selectric-wrapper" style="width: 91px;">
+													<div class="selectric-hide-select">
+														<select id="selectListSize" title="selectbox" tabindex="0" style="display: none;">
+															<option value="10">10개</option>
+															<option value="20">20개</option>
+															<option value="50">50개</option>
+														</select>
+													</div>
+													<div class="selectric">
+														<p class="label">10개</p>
+														<b class="button">▾</b>
+													</div>
+													<div class="selectric-items" tabindex="-1">
+														<div class="selectric-scroll">
+															<ul>
+																<li data-index="0" class="selected">10개</li>
+																<li data-index="1" class="">20개</li>
+																<li data-index="2" class="last">50개</li>
+															</ul>
+														</div>
+													</div>
+													<input class="selectric-input" tabindex="0">
+												</div>
+											</div>
+										</div>
+									</form>
+								</div>
+								<!--// search-wrap -->
+
+							</div>
+							<div class="tab-block">
+								<!-- tab -->
+								<ul class="nav nav-tabs2">
+									<li class="active"><a href="javascript://">주문확인/배송 내역</a></li>
+									<li><a href="/front/mpa/selectOrdDlvCrstFrgn.thd">해외주문 내역</a></li>
+								</ul>
+
+							</div>
+
+
+							<!-- tab-content -->
+							<div class="tab-content">
+
+								<!-- tab-pane -->
+								<div class="tab-pane active">
+
+									<!-- cart-list -->
+									<div class="cart-list">
+										<h4 class="blind">주문/배송 내역</h4>
+
+										<!-- table-wrap -->
+										<div class="table-wrap coltype cart no-border-top">
+											<table>
+												<caption></caption>
+												<colgroup>
+													<col style="width: 130px">
+													<col style="width: *">
+													<col style="width: 120px">
+													<col style="width: 110px">
+													<col style="width: 100px">
+												</colgroup>
+												<thead>
+													<tr>
+														<th scope="col">주문일/주문번호</th>
+														<th scope="col">상품정보/옵션정보</th>
+														<th scope="col">결제금액</th>
+														<th scope="col">주문상태</th>
+														<th scope="col">상품평/취소<br>/반품/교환
+														</th>
+													</tr>
+												</thead>
+												<tbody>
+
+
+													<tr th:if="${#lists.isEmpty(orderList)}" >
+														<td height="120" colspan="5">1개월 이내 주문/배송 내역이 없습니다.</td>
+													</tr>
+													<tr th:if="!${#lists.isEmpty(orderList)}" th:each="orderList, stat : ${orderList}">
+														<td class="prod-num">[[${orderList.oDate}]] <br> [[${orderList.orderId}]]</td>
+														<td class="prod-num">[[${orderList.oName}]]</td>
+														<td class="prod-num">[[${#numbers.formatInteger(orderList.oTotalPrice, 3, 'COMMA')}]]원</td>
+														<td class="prod-num">배송 대기</td>
+														<td class="prod-num">상품평</td>
+													</tr>
+
+													
+
+												</tbody>
+											</table>
+										</div>
+										<!-- pagination-wrap -->
+										<div class="pagination-wrap">
+											<ul class="pagination">
+
+
+
+
+
+
+
+											</ul>
+										</div>
+										<!-- //pagination-wrap -->
+									</div>
+									<!-- //cart-list -->
+
+
+
+
+
+									<div class="instruction2 bg">
+										<div class="cont-block">
+											<div class="title">이용안내</div>
+											<div class="cont">
+												<ul>
+													<li>결제수단 변경은 결제 완료 단계까지 가능합니다.(복합결제 주문 제외)</li>
+													<li>상품 속성/배송지 변경은 결제 완료 단계까지만 가능합니다.(상품 속성이란? 상품의 색상 및 사이즈 등을 의미합니다.)</li>
+													<li>결제수단을 무통장입금이나 상품권으로 하신 경우, 주문 발생일로부터 다음날까지(영업일 기준) 입금/접수 확인이 되지 않으면 주문이 취소됩니다.</li>
+													<li>취소/반품, 교환 신청은 상품 발송 후 7일 이내에만 가능합니다.</li>
+													<li>반품하실 경우 반품 상품 도착 후 상품 상태를 점검한 다음 결제를 취소해드립니다.<br> 단, 반품된 상품 점검시, 현대백화점 상품 교환/반품 불가 사유에 해당될 경우에는 반품이 불가능하며, 고객님에게 이 사실을 통보 후
+														상품을 다시 배송해 드립니다.
+													</li>
+													<li>현금 결제 수단(무통장) 환불은 예치금 또는 환불 요청 계좌로 환불 처리됩니다.</li>
+												</ul>
+											</div>
+
+										</div>
+
+									</div>
+								</div>
+								<!-- //tab-pane -->
+
+							</div>
+							<!-- //tab-content -->
+
+
+
+						</div>
+
+
+					</div>
+					<!-- //content-wrap -->
+				</div>
+				<div class="include-footer" th:insert="~{include/footer}"></div>
+			</div>
+			<!-- //wrap -->
+		</body>
+</html>

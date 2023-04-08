@@ -1,5 +1,7 @@
 package com.hyundai.higher.mapper.order;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -23,10 +25,11 @@ public interface OrderMapper {
 
 	public void insertOrder(@Param("orderSheet") OrderSheet orderSheet, @Param("mId") String mId);
 
-	public void insertOrderList(@Param("oId") String oId, @Param("pCode") String pCode,
-			@Param("pAmount") int pAmount);
+	public void insertOrderList(@Param("oId") String oId, @Param("pCode") String pCode, @Param("pAmount") int pAmount);
 
-	
-	public OrderItem selectCartItem (@Param("mId") String mId,  @Param("pCode") String pCode);
+	public OrderItem selectCartItem(@Param("mId") String mId, @Param("pCode") String pCode);
+
+	public List<OrderSheet> findOrderList(@Param("mid") String mId, @Param("ordStrtDt") String ordStrtDt,
+			@Param("ordEndDt") String ordEndDt, @Param("itemNm") String itemNm);
 
 }

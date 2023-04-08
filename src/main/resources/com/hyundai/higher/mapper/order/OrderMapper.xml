@@ -11,8 +11,10 @@
 
 
 		INSERT INTO OrderList
-		VALUES(#{orderSheet.orderId}, #{mId},
-		#{orderSheet.oZipcode}, #{orderSheet.oAddress1}, #{orderSheet.oDate},
+		VALUES(#{orderSheet.orderId},
+		#{mId},
+		#{orderSheet.oZipcode}, #{orderSheet.oAddress1},
+		#{orderSheet.oDate},
 		#{orderSheet.oReceiver},
 		#{orderSheet.oTel},
 		#{orderSheet.oMileage}, null,1,
@@ -41,12 +43,46 @@
 
 	<select id="selectCartItem"
 		resultType="com.hyundai.higher.domain.cart.OrderItem">
-		
-		SELECT p.pcode, p.pname, p.pprice,b.bname as brand, o.OPTCOLOR as color,c.pamount,c.OPTNAME as poption,i.iloc as Image_path 
+
+		SELECT p.pcode, p.pname, p.pprice,b.bname as brand,
+		o.OPTCOLOR as
+		color,c.pamount,c.OPTNAME as poption,i.iloc as Image_path
 		FROM CART c, PRODUCT p,IMG i, POPTION o , Brand b
-		where c.pcode=#{pCode} and c.MID = #{mId} and c.pcode =p.pcode and p.pcode=i.pcode and i.itype ='thumb' and o.pcode=c.pcode and p.BNO = b.BNO and rownum=1
-        
- 
+		where
+		c.pcode=#{pCode}
+		and c.MID = #{mId} and c.pcode =p.pcode and
+		p.pcode=i.pcode and
+		i.itype ='thumb' and o.pcode=c.pcode and p.BNO =
+		b.BNO and rownum=1
+
+
+	</select>
+
+
+	<select id="findOrderList"
+		resultType="com.hyundai.higher.domain.order.OrderSheet">
+
+		SELECT
+		oid as orderId,to_char(odate,'yy-mm-dd') as odate,oname,ousedmileage as oMileage, oprice as
+		oTotalPrice
+		FROM
+		orderlist
+		WHERE mid = #{mid}
+
+
+		<if test="ordStrtDt!=null and !ordStrtDt.equals('') ">
+			AND odate > #{ordStrtDt}
+		</if>
+		
+		<if test="ordEndDt!=null and !ordEndDt.equals('')">
+			AND odate > #{ordStrtDt}
+		</if>
+
+		<if test="itemNm!=null and !itemNm.equals('')">
+			AND oname like %#{itemNm}%
+		</if>
+		order by odate desc
+
 	</select>
 
 

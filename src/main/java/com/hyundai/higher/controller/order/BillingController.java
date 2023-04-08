@@ -110,6 +110,20 @@ public class BillingController {
 		
 
 		orderSheet.setODate(now.toString());
+		
+		
+		if(orderSheet.getProduct_image().size()==1) {
+			
+			orderSheet.setOName(orderSheet.getProduct_name().get(0));
+		}else {
+			orderSheet.setOName(orderSheet.getProduct_name().get(0) +"외" + orderSheet.getProduct_id().size() + "개");
+			
+		}
+		
+		
+		
+		
+		
 		orderMapper.insertOrder(orderSheet, customerName);
 		
 		int size = orderSheet.getProduct_id().size();
