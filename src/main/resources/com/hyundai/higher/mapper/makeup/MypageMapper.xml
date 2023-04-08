@@ -46,30 +46,27 @@
 	<!-- rid로 예약 결과 가져와서 result -->
 	<select id="getLipResult"
 		resultType="com.hyundai.higher.domain.makeup.LipVO">
-		select a.pcode, pname, pprice, dept2no, optcolor, optname,
-		iloc, itype
-		from product a, poption b, img c
-		where a.pcode=b.pcode and
+		select a.pcode, bname, pname, pprice, dept2no, optcolor, optname, iloc, itype
+		from product a, poption b, img c, brand d
+		where a.pcode=b.pcode and a.bno = d.bno and
 		a.pcode=c.pcode and dept2no=22
 		and itype='thumb' and iloc like '%0' and
 		optname=#{optname}
 	</select>
 	<select id="getBlushResult"
 		resultType="com.hyundai.higher.domain.makeup.BlushVO">
-		select a.pcode, pname, pprice, dept2no, optcolor, optname,
-		iloc, itype
-		from product a, poption b, img c
-		where a.pcode=b.pcode and
+		select a.pcode, bname, pname, pprice, dept2no, optcolor, optname, iloc, itype
+		from product a, poption b, img c, brand d
+		where a.pcode=b.pcode and a.bno = d.bno and
 		a.pcode=c.pcode and dept2no=24
 		and itype='thumb' and iloc like '%0' and
 		optname=#{optname}
 	</select>
 	<select id="getFaceResult"
 		resultType="com.hyundai.higher.domain.makeup.FoundationVO">
-		select a.pcode, pname, pprice, dept2no, optcolor, optname,
-		iloc, itype
-		from product a, poption b, img c
-		where a.pcode=b.pcode and
+		select a.pcode, bname, pname, pprice, dept2no, optcolor, optname, iloc, itype
+		from product a, poption b, img c, brand d
+		where a.pcode=b.pcode and a.bno = d.bno and
 		a.pcode=c.pcode and dept2no=21
 		and itype='thumb' and iloc like '%0' and
 		a.pcode=#{pcode} and
@@ -77,9 +74,9 @@
 	</select>
 	<select id="SimLip"
 		resultType="com.hyundai.higher.domain.makeup.LipVO">
-		select a.pcode, pname, pprice, dept2no, optcolor, optname, iloc, itype
-		from product a, poption b, img c
-		where a.pcode=b.pcode and
+		select a.pcode, bname, pname, pprice, dept2no, optcolor, optname, iloc, itype
+		from product a, poption b, img c, brand d
+		where a.pcode=b.pcode and a.bno = d.bno and
 		a.pcode=c.pcode and dept2no=22
 		and itype='thumb' and iloc like '%0' and
 		a.pcode!=#{pcode} and
@@ -88,9 +85,9 @@
 
 	<select id="SimBlush"
 		resultType="com.hyundai.higher.domain.makeup.BlushVO">
-		select a.pcode, pname, pprice, dept2no, optcolor, optname, iloc, itype
-		from product a, poption b, img c
-		where a.pcode=b.pcode and
+		select a.pcode, bname, pname, pprice, dept2no, optcolor, optname, iloc, itype
+		from product a, poption b, img c, brand d
+		where a.pcode=b.pcode and a.bno = d.bno and
 		a.pcode=c.pcode and dept2no=24
 		and itype='thumb' and iloc like '%0' and
 		a.pcode!=#{pcode} and
@@ -99,14 +96,11 @@
 
 	<select id="SimFace"
 		resultType="com.hyundai.higher.domain.makeup.FoundationVO">
-		select a.pcode, pname, pprice, dept2no, ptype, optcolor, optname,
-		iloc, itype
-		from product a, poption b, img c
-		where a.pcode=b.pcode and
+	select a.pcode, bname, pname, pprice, dept2no, optcolor, optname, iloc, itype
+		from product a, poption b, img c, brand d
+		where a.pcode=b.pcode and a.bno = d.bno and
 		a.pcode=c.pcode and dept2no=21
-		and itype='thumb'
-		and a.pcode!=#{pcode}
-		and
+		and itype='thumb' and iloc like '%0' and
 		optcolor=#{optcolor} and rownum<![CDATA[ <= ]]>9
 	</select>
 	<select id="getReservInfo"

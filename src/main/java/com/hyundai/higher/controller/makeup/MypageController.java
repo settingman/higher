@@ -15,12 +15,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.hyundai.higher.domain.beauty.Profile;
 import com.hyundai.higher.domain.makeup.BlushVO;
 import com.hyundai.higher.domain.makeup.FoundationVO;
 import com.hyundai.higher.domain.makeup.LipVO;
 import com.hyundai.higher.domain.makeup.ReservVO;
 import com.hyundai.higher.domain.makeup.ResultVO;
 import com.hyundai.higher.domain.member.Member;
+import com.hyundai.higher.mapper.beauty.BeautyMapper;
 import com.hyundai.higher.service.makeup.MakeupService;
 import com.hyundai.higher.service.makeup.MypageService;
 
@@ -53,6 +55,9 @@ public class MypageController {
 
 	@Autowired
 	private MakeupService makeup;
+	
+	@Autowired
+	private BeautyMapper mapper;
 
 	@Value("${com.demo.upload.path}")
 	private String uploadPath;
@@ -77,6 +82,9 @@ public class MypageController {
 		String rrid = info.getMid();
 		Member mem = new Member();
 		mem = makeup.MemInfo(rrid);
+		
+		Profile pro = new Profile();
+		pro = mapper.findProfile(rrid, rid);
 
 		ResultVO result = service.getResultInfo(rid);
 
@@ -121,6 +129,7 @@ public class MypageController {
 		log.info(simface);
 
 		model.addAttribute("mem", mem);
+		model.addAttribute("pro", pro);
 		model.addAttribute("info", info);
 		model.addAttribute("result", result);
 		model.addAttribute("lipresult", lipresult);
@@ -141,6 +150,9 @@ public class MypageController {
 		String rrid = info.getMid();
 		Member mem = new Member();
 		mem = makeup.MemInfo(rrid);
+		
+		Profile pro = new Profile();
+		pro = mapper.findProfile(rrid, rid);
 
 		ResultVO result = service.getResultInfo(rid);
 
@@ -185,6 +197,7 @@ public class MypageController {
 		log.info(simface);
 
 		model.addAttribute("mem", mem);
+		model.addAttribute("pro", pro);
 		model.addAttribute("info", info);
 		model.addAttribute("result", result);
 		model.addAttribute("lipresult", lipresult);
