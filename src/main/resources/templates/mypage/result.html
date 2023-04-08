@@ -209,7 +209,7 @@ header#header {
 											<th scope="row">상담일자</th>
 											<td th:text="${info.rdate}"></td>
 											<th scope="row">피부 MBTI</th>
-											<td>-</td>
+											<td th:text="${pro.mbti}"></td>
 										</tr>
 
 										<tr>
@@ -311,8 +311,10 @@ header#header {
 															th:value="${lipresult.pcode}" /> <input type="hidden"
 															name="lip_opt" class="lip_opt"
 															th:value="${lipresult.optname}" /> <span
-															class="hash_tag">브랜드명</span> <span class="tit"
-															th:text="${lipresult.pname}"></span> <span class="kind"
+															class="hash_tag" th:text="${lipresult.bname}"></span> <span class="tit"
+															th:text="${lipresult.pname}" style="
+    height: 54px;
+"></span> <span class="kind"
 															th:text="${lipresult.optname}"></span> <span
 															class="rating"> </span> <span class="price"> <span
 																class="after">[[${#numbers.formatInteger(lipresult.pprice,
@@ -334,7 +336,9 @@ header#header {
 															th:value="${blushresult.pcode}" /> <input type="hidden"
 															name="blush_opt" class="blush_opt"
 															th:value="${blushresult.optname}" /> <span
-															class="hash_tag">브랜드명</span> <span class="tit"
+															class="hash_tag" th:text="${blushresult.bname}"></span> <span class="tit" style="
+    height: 54px;
+"
 															th:text="${blushresult.pname}"></span> <span class="kind"
 															th:text="${blushresult.optname}"></span> <span
 															class="rating"> </span> <span class="price"> <span
@@ -358,7 +362,9 @@ header#header {
 															th:value="${faceresult.pcode}" /> <input type="hidden"
 															name="face_opt" class="face_opt"
 															th:value="${faceresult.optname}" /> <span
-															class="hash_tag">브랜드명</span> <span class="tit"
+															class="hash_tag"th:text="${faceresult.bname}"></span> <span class="tit" style="
+    height: 54px;
+"
 															th:text="${faceresult.pname}"></span> <span class="kind"
 															th:text="${faceresult.optname}"></span> <span
 															class="rating"> </span> <span class="price"> <span

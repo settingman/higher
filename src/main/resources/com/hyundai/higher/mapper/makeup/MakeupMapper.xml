@@ -8,9 +8,9 @@
 		select * from member where mid=#{mid}
 	</select>
 	<select id="PickLip" resultType="com.hyundai.higher.domain.makeup.LipVO">
-		select a.pcode, pname, pprice, dept2no, optcolor, optname, iloc, itype
-		from product a, poption b, img c
-		where a.pcode=b.pcode and
+		select a.pcode, bname, pname, pprice, dept2no, optcolor, optname, iloc, itype
+		from product a, poption b, img c, brand d
+		where a.pcode=b.pcode and a.bno = d.bno and
 		a.pcode=c.pcode and dept2no=22
 		and itype='thumb' and iloc like '%0' and
 		optcolor=#{optcolor} and rownum<![CDATA[ <= ]]>10
@@ -18,9 +18,9 @@
 
 	<select id="PickBlush"
 		resultType="com.hyundai.higher.domain.makeup.BlushVO">
-		select a.pcode, pname, pprice, dept2no, optcolor, optname, iloc, itype
-		from product a, poption b, img c
-		where a.pcode=b.pcode and
+		select a.pcode, bname, pname, pprice, dept2no, optcolor, optname, iloc, itype
+		from product a, poption b, img c, brand d
+		where a.pcode=b.pcode and a.bno = d.bno and
 		a.pcode=c.pcode and dept2no=24
 		and itype='thumb' and iloc like '%0' and
 		optcolor=#{optcolor} and rownum<![CDATA[ <= ]]>10
@@ -28,13 +28,11 @@
 
 	<select id="PickFoundation"
 		resultType="com.hyundai.higher.domain.makeup.FoundationVO">
-		select a.pcode, pname, pprice, dept2no, ptype, optcolor, optname,
-		iloc, itype
-		from product a, poption b, img c
-		where a.pcode=b.pcode and
+		select a.pcode, bname, pname, pprice, dept2no, optcolor, optname, iloc, itype
+		from product a, poption b, img c, brand d
+		where a.pcode=b.pcode and a.bno = d.bno and
 		a.pcode=c.pcode and dept2no=21
-		and itype='thumb'
-		and
+		and itype='thumb' and iloc like '%0' and
 		optcolor=#{optcolor} and rownum<![CDATA[ <= ]]>10
 	</select>
 
