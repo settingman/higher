@@ -1,10 +1,12 @@
 #match-tit{
     font-family: 'locator-regular';
     padding-bottom: 10px;
+    margin-left: 15px;
 }
 
 #tit-info{
 	font-size: 13px;
+	margin-left: 15px;
 }
 
 #mem-wrap{
