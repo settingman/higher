@@ -18,6 +18,7 @@ import lombok.Data;
 public class FoundationVO {
 	
 	private String pcode;
+	private String bname;
 	private String pname;
 	private int pprice;
 	private int dept2no;

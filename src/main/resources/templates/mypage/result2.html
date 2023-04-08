@@ -196,11 +196,11 @@ function back() {
 					<div class="tab-block">
 						<!-- tab -->
 						<ul class="nav nav-tabs2">
-							<li class="active" style="width: 34vh;" id="lippick"><a>립
+							<li class="active" style="width: 33%;" id="lippick"><a>립
 									PICK</a></li>
 
-							<li style="width: 34vh;" id="blushpick"><a>블러쉬 PICK</a></li>
-							<li style="width: 34vh;" id="facepick"><a>페이스 PICK</a></li>
+							<li style="width: 33%;" id="blushpick"><a>블러쉬 PICK</a></li>
+							<li style="width: 33%;" id="facepick"><a>페이스 PICK</a></li>
 						</ul>
 					</div>
 					<!-- 립파트 -->
@@ -226,8 +226,8 @@ function back() {
 														name="lip_pcode" class="lip_pcode"
 														th:value="${lipresult.pcode}" /> <input type="hidden"
 														name="lip_opt" class="lip_opt"
-														th:value="${lipresult.optname}" /> <span class="hash_tag">브랜드명</span>
-														<span class="tit" th:text="${lipresult.pname}"></span> <span
+														th:value="${lipresult.optname}" /> <span class="hash_tag" th:text="${lipresult.bname}"></span>
+														<span class="tit" style="height: 54px"th:text="${lipresult.pname}"></span> <span
 														class="kind" th:text="${lipresult.optname}"></span> <span
 														class="rating"> </span> <span class="price"> <span
 															class="after">[[${#numbers.formatInteger(lipresult.pprice,
@@ -268,7 +268,7 @@ function back() {
 													name="lip_pcode" class="lip_pcode"
 													th:value="${simlip.pcode}"> <input type="hidden"
 													name="lip_opt" class="lip_opt" th:value="${simlip.optname}">
-													<span class="hash_tag">브랜드명</span> <span class="tit"
+													<span class="hash_tag" th:text="${simlip.bname}"></span> <span class="tit"
 													th:value="${simlip.pname}" th:text="${simlip.pname}"></span>
 													<span class="kind" th:value="${simlip.optname}"
 													th:text="${simlip.optname}"></span> <span class="price">
@@ -317,7 +317,7 @@ function back() {
 														th:value="${blushresult.pcode}" /> <input type="hidden"
 														name="blush_opt" class="blush_opt"
 														th:value="${blushresult.optname}" /> <span
-														class="hash_tag">브랜드명</span> <span class="tit"
+														class="hash_tag" th:text="${blushresult.bname}"></span> <span class="tit" style="height: 54px"
 														th:text="${blushresult.pname}"></span> <span class="kind"
 														th:text="${blushresult.optname}"></span> <span
 														class="rating"> </span> <span class="price"> <span
@@ -360,7 +360,7 @@ function back() {
 													th:value="${simblush.pcode}"> <input type="hidden"
 													name="blush_opt" class="blush_opt"
 													th:value="${simblush.optname}"> <span
-													class="hash_tag">브랜드명</span> <span class="tit"
+													class="hash_tag" th:text="${simblush.bname}"> </span> <span class="tit"
 													th:value="${simblush.pname}" th:text="${simblush.pname}"></span>
 													<span class="kind" th:value="${simblush.optname}"
 													th:text="${simblush.optname}"></span> <span class="price">
@@ -409,7 +409,7 @@ function back() {
 														th:value="${faceresult.pcode}" /> <input type="hidden"
 														name="face_opt" class="face_opt"
 														th:value="${faceresult.optname}" /> <span
-														class="hash_tag">브랜드명</span> <span class="tit"
+														class="hash_tag" th:text="${faceresult.bname}"></span> <span class="tit" style="height: 54px"
 														th:text="${faceresult.pname}"></span> <span class="kind"
 														th:text="${faceresult.optname}"></span> <span
 														class="rating"> </span> <span class="price"> <span
@@ -452,7 +452,7 @@ function back() {
 													th:value="${simface.pcode}"> <input type="hidden"
 													name="face_opt" class="faceopt"
 													th:value="${simface.optname}"> <span
-													class="hash_tag">브랜드명</span> <span class="tit"
+													class="hash_tag" th:text="${simface.bname}"></span> <span class="tit"
 													th:value="${simface.pname}" th:text="${simface.pname}"></span>
 													<span class="kind" th:value="${simface.optname}"
 													th:text="${simface.optname}"></span> <span class="price">
