@@ -43,4 +43,10 @@ public class MakeupServiceImpl implements MakeupService{
 		return mapper.MemInfo(rid);
 	}
 
+	@Override
+	public void mileageupdate(String mid) {
+		mapper.mileageupdate(mid);
+		
+	}
+
 }

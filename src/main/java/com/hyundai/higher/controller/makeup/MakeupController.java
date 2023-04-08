@@ -94,7 +94,7 @@ public class MakeupController {
 			@RequestParam("lip_opt") String lip_opt, @RequestParam("blush") String blush,
 			@RequestParam("blush_pcode") String blush_pcode, @RequestParam("blush_opt") String blush_opt,
 			@RequestParam("face") String face, @RequestParam("face_pcode") String face_pcode,
-			@RequestParam("face_opt") String face_opt, Model model) {
+			@RequestParam("face_opt") String face_opt,@RequestParam("mid") String mid, Model model) {
 
 		log.info("======== 결과 DB로 넘어갔습니다 =======");
 
@@ -112,14 +112,14 @@ public class MakeupController {
 		result.setFace_opt(face_opt);
 
 		service.insertResult(result);
+		
+		service.mileageupdate(mid);
 
 		log.info(result);
 
 		return ("redirect:/rtc/room");
 	}
 
-	// 결과 DB 연동 코드 -> result 보내기
-	// Flask api 연결 코드 -> 파이썬 세팅된 컴퓨터만 가능
 	@PostMapping("/result")
 	public String MakeupResult(@RequestParam("filePath") String filePath, @RequestParam("lips") String lips,
 			@RequestParam("blush") String blush, @RequestParam("foundation") String foundation,

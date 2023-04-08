@@ -46,5 +46,9 @@
 		#{face}, #{face_pcode},
 		#{face_opt})
 	</insert>
+	
+	<update id="mileageupdate">
+		update member set mmileage = mmileage+2000  where mid=#{mid}
+	</update>
 
 </mapper>

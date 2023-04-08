@@ -225,19 +225,19 @@ span.statusimage {
 						<li style="
     width: 33%;
     padding-left: 16px;
-"><a href="/front/mpa/selectOrdDlvCrst.thd" onclick="javascript:GA_Event('PC_마이페이지', '주문현황', '주문완료');"><span class="orderstep-status type01"></span><span class="txt">예약 완료<em>0건</em></span></a></li>
+"><a href="/front/mpa/selectOrdDlvCrst.thd" onclick="javascript:GA_Event('PC_마이페이지', '주문현황', '주문완료');"><span class="orderstep-status type01"></span><span class="txt">예약 완료<em>[[${#lists.size(ready)}]]건</em></span></a></li>
 						
 						<li style="
     width: 33%;
 "><a href="/front/mpa/selectOrdDlvCrst.thd" onclick="javascript:GA_Event('PC_마이페이지', '주문현황', '상품준비');"><span class="statusimage">
-    <img src="/img/001.png"></span><span class="txt">입장 가능<em>0건</em></span></a></li>
+    <img src="/img/001.png"></span><span class="txt">입장 가능<em>[[${#lists.size(nores)}]]건</em></span></a></li>
 						
 						
 						<li style="
     width: 33%;
 "><a href="/front/mpa/selectOrdDlvCrst.thd" onclick="javascript:GA_Event('PC_마이페이지', '주문현황', '배송/픽업 완료');"><span class="statusimage">
     <img src="/img/002.png">
-</span><span class="txt">상담 완료<em>0건</em></span></a></li>
+</span><span class="txt">상담 완료<em>[[${#lists.size(yesres)}]]건</em></span></a></li>
 					</ul>
 					
 				</div>

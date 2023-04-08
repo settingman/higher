@@ -579,11 +579,11 @@
 																	<li><a> <img
 																			th:src="${liplist.iloc} + '_600.jpg'"
 																			th:alt="${liplist.pname}"
-																			style="margin-bottom: 10px;"> <input
-																			type="hidden" name="lip_pcode" class="lip_pcode"
-																			th:value="${liplist.pcode}"> <input
-																			type="hidden" name="lip_opt" class="lip_opt"
-																			th:value="${liplist.optname}"> <span
+																			style="margin-bottom: 10px;"> 
+																			
+																			<input type="hidden" name="lip_pcode" class="lip_pcode" th:value="${liplist.pcode}"> 
+																			<input type="hidden" name="lip_opt" class="lip_opt" th:value="${liplist.optname}"> 
+																			<span
 																			class="hash_tag">브랜드명</span> <span class="tit"
 																			th:value="${liplist.pname}"
 																			th:text="${liplist.pname}"></span> <span class="kind"
@@ -631,7 +631,9 @@
 																			type="hidden" name="blush_pcode" class="blush_pcode"
 																			th:value="${blushlist.pcode}"> <input
 																			type="hidden" name="blush_opt" class="blush_opt"
-																			th:value="${blushlist.optname}"> <span
+																			th:value="${blushlist.optname}"> 
+																			
+																			<span
 																			class="hash_tag">브랜드명</span> <span class="tit"
 																			th:value="${blushlist.pname}"
 																			th:text="${blushlist.pname}"></span> <span
@@ -679,7 +681,8 @@
 																			style="margin-bottom: 10px;"> <input
 																			type="hidden" name="foundation_pcode"
 																			class="foundation_pcode"
-																			th:value="${foundationlist.pcode}"> <input
+																			th:value="${foundationlist.pcode}"> 
+																			<input
 																			type="hidden" name="foundation_opt"
 																			class="foundation_opt"
 																			th:value="${foundationlist.optname}"> <span
@@ -747,12 +750,14 @@
 														style="border-color: white; margin: 0 10px; width: 284px; height: 470px;"></div>
 												</div>
 												<input type="hidden" name="rid" class="rid"
-													th:value="${res.rid}"> <input type="hidden"
+													th:value="${res.rid}"> 
+												<input type="hidden" name="mid" class="mid" th:value="${mem.mid}">	
+													<input type="hidden"
 													name="result_img" class="result_img"
 													th:value="${output_filepath}"> <input type="hidden"
 													name="lip" class="lip" th:value="${lips}"> <input
-													type="hidden" name="blush" class="blush" th:value="coral">
-												<input type="hidden" th:name="${blush}" class="face"
+													type="hidden" name="blush" class="blush" th:value="${blush}">
+												<input type="hidden" name="face" class="face"
 													th:value="${foundation}">
 												<div class="send_pick">
 													<p style="text-align: center;">

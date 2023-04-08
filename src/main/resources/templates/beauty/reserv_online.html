@@ -8,6 +8,63 @@ header#header {
 	height: auto;
 	margin-top: auto;
 }
+
+td a {
+	line-height: 35px;
+	font-weight: bold;
+	display: block;
+	height: 100%;
+	width: 35px;
+}
+
+td.current-day {
+	background-color: #e9e9e9;;
+}
+
+td.two-weeks {
+	background: #bca384;
+	color: #fff;
+	border-left: 1px solid #fff;
+	border-bottom: 1px solid #fff;
+}
+
+td.listday {
+	background: #fff;
+	color: #e5e5e5;
+	border-left: 1px solid #f3f3f3;
+	border-bottom: 1px solid #f3f3f3;
+}
+
+.list_day li:after {
+	content: '';
+	display: block;
+	clear: both;
+	position: absolute;
+	left: 0;
+	top: 50%;
+	margin-top: -7px;
+	width: 14px;
+	height: 14px;
+	background:
+		url(https://ticket.leeum.org/resources/img/front/ico_calendar_on.png)
+		0 50% no-repeat;
+	background-size: 14px 14px;
+}
+
+.list_day li {
+	position: relative;
+	margin-bottom: 10px;
+	font-size: 12px;
+	color: #000;
+	font-weight: 300;
+	padding-left: 24px;
+}
+
+div#selected {
+	font-family: 'notokr-medium';
+	font-size: 16px;
+	margin-bottom: 20px;
+}
 </style>
 <title>MakeON 온라인예약</title>
 <meta charset="UTF-8" />
@@ -44,7 +101,7 @@ header#header {
 								<img src="/img/online.jpeg">
 							</div>
 							<ul class="exhib_list" id="floatPC_layer"
-								style="text-align: center">
+								style="text-align: center; font-family: 'notokr-medium'; margin: revert; font-size: large;">
 								<span style="">온라인 프로그램</span>
 							</ul>
 						</div>
@@ -66,12 +123,13 @@ header#header {
 				<!-- 달력 -->
 				<div class="tit" title="날짜 선택" id="step1-head" tabindex="0">
 					<h3 class="g-title-1">날짜 선택</h3>
+				<!-- 	<img src="/makeup/img/down.png" > -->
 				</div>
 				<div class="calendartable">
 					<div class="accordion_cont">
 						<div class="calendargrid">
 							<div class="calendar">
-								<table>
+								<table style="font-family: 'notokr-medium';">
 									<tr>
 										<td align="center">
 											<button onclick="prevCalendar()">Prev</button>
@@ -93,14 +151,19 @@ header#header {
 									<tbody id="calendarBody"></tbody>
 								</table>
 							</div>
-							<dl class="calendar_info" style="margin-left: 20px">
-								<dt>예약 안내</dt>
-								<dd style="line-height: 20px;">
-									<p>온라인 예약은 프로그램 한달 전부터 가능하며, 상담은 6개월이 지나야 재예약이 가능합니다.</p>
-									<p>원활한 상담을 위해 반드시 예약 사항을 지켜주시기 바라며, 상담이 어려우시면 다른 고객을 위해 반드시
-										예약를 취소해 주시기 바랍니다.</p>
-								</dd>
-							</dl>
+							<div style="margin-left: 40px">
+								<ul class="list_day">
+									<li>예약 가능일</li>
+								</ul>
+								<dl class="calendar_info">
+									<dt>예약 안내</dt>
+									<dd style="line-height: 20px;">
+										<p>온라인 예약은 프로그램 한달 전부터 가능하며, 상담은 6개월이 지나야 재예약이 가능합니다.</p>
+										<p>원활한 상담을 위해 반드시 예약 사항을 지켜주시기 바라며, 상담이 어려우시면 다른 고객을 위해
+											반드시 예약를 취소해 주시기 바랍니다.</p>
+									</dd>
+								</dl>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -113,32 +176,40 @@ header#header {
 					<div class="accordion_cont1" style="">
 						<div class="time_wrap clickTime" id="time_body2">
 							<ul class="clickTime_left">
-								<li class="select_time"><a href="#" title=""><span
-										class="time" style="float: left" value="10:00:00">10:00</span><span
-										style="float: right; margin-right: 20px;">예약 가능</span></a></li>
-								<li class="select_time"><a href="#" title=""><span
-										class="time" style="float: left" value="11:00:00">11:00</span><span
-										style="float: right; margin-right: 20px;">예약 가능</span></a></li>
-								<li class="select_time"><a href="#" title=""><span
-										class="time" style="float: left" value="12:00:00">12:00</span><span
-										style="float: right; margin-right: 20px;">예약 가능</span></a></li>
-								<li class="select_time"><a href="#" title=""><span
-										class="time" style="float: left" value="13:00:00">13:00</span><span
-										style="float: right; margin-right: 20px;">예약 가능</span></a></li>
+								<li class="select_time"><a title=""><span class="time"
+										style="float: left" value="10:00:00">10:00</span><span
+										style="float: right; margin-right: 20px; font-family: 'notokr-medium'; font-size: 14px;">예약
+											가능</span></a></li>
+								<li class="select_time"><a title=""><span class="time"
+										style="float: left" value="11:00:00">11:00</span><span
+										style="float: right; margin-right: 20px; font-family: 'notokr-medium'; font-size: 14px;">예약
+											가능</span></a></li>
+								<li class="select_time"><a title=""><span class="time"
+										style="float: left" value="12:00:00">12:00</span><span
+										style="float: right; margin-right: 20px; font-family: 'notokr-medium'; font-size: 14px;">예약
+											가능</span></a></li>
+								<li class="select_time"><a title=""><span class="time"
+										style="float: left" value="13:00:00">13:00</span><span
+										style="float: right; margin-right: 20px; font-family: 'notokr-medium'; font-size: 14px;">예약
+											가능</span></a></li>
 							</ul>
 							<ul class="clickTime_right">
-								<li class="select_time"><a href="#" title=""><span
-										class="time" style="float: left" value="14:00:00">14:00</span><span
-										style="float: right; margin-right: 20px;">예약 가능</span></a></li>
-								<li class="select_time"><a href="#" title=""><span
-										class="time" style="float: left" value="15:00:00">15:00</span><span
-										style="float: right; margin-right: 20px;">예약 가능</span></a></li>
-								<li class="select_time"><a href="#" title=""><span
-										class="time" style="float: left" value="16:00:00">16:00</span><span
-										style="float: right; margin-right: 20px;">예약 가능</span></a></li>
-								<li class="select_time"><a href="#" title=""><span
-										class="time" style="float: left" value="17:00:00">17:00</span><span
-										style="float: right; margin-right: 20px;">예약 가능</span></a></li>
+								<li class="select_time"><a title=""><span class="time"
+										style="float: left" value="14:00:00">14:00</span><span
+										style="float: right; margin-right: 20px; font-family: 'notokr-medium'; font-size: 14px;">예약
+											가능</span></a></li>
+								<li class="select_time"><a title=""><span class="time"
+										style="float: left" value="15:00:00">15:00</span><span
+										style="float: right; margin-right: 20px; font-family: 'notokr-medium'; font-size: 14px;">예약
+											가능</span></a></li>
+								<li class="select_time"><a title=""><span class="time"
+										style="float: left" value="16:00:00">16:00</span><span
+										style="float: right; margin-right: 20px; font-family: 'notokr-medium'; font-size: 14px;">예약
+											가능</span></a></li>
+								<li class="select_time"><a title=""><span class="time"
+										style="float: left" value="17:00:00">17:00</span><span
+										style="float: right; margin-right: 20px; font-family: 'notokr-medium'; font-size: 14px;">예약
+											가능</span></a></li>
 							</ul>
 							<div style="clear: both"></div>
 						</div>
@@ -172,10 +243,10 @@ header#header {
 								</div>
 								<div class="makeupbtn1">
 
-									<div class="btn_green">
+									<div class="btn_green"
+										style="background: #bfae90; font-family: 'notokr-medium'; font-size: large; width: 200px; margin-right: 55px;">
 										<label for="file">
-											<div class="btn-upload"
-												style="height: 40px; line-height: 40px;">파일 찾기</div>
+											<div class="btn-upload" style="height: 50px; line-height: 50px;">사진 등록</div>
 										</label> <input type="file" name="file" id="file"
 											style="display: none;">
 									</div>
@@ -216,13 +287,16 @@ header#header {
           for (let j = 0; j < 7; j++) {
             if (i === 0 && j < firstDay.getDay()) {
               let cell = document.createElement("td");
+              let cella = document.createElement("a");
               let cellText = document.createTextNode("");
-              cell.appendChild(cellText);
+              cella.appendChild(cellText);
+              cell.appendChild(cella);
               row.appendChild(cell);
             } else if (date > lastDay.getDate()) {
               break;
             } else {
               let cell = document.createElement("td");
+              let cella = document.createElement("a");
               let cellText = document.createTextNode(date);
               if (
                 date === today.getDate() &&
@@ -240,7 +314,9 @@ header#header {
                 cell.classList.add("two-weeks");
               	cell.addEventListener("click", showTimetable); // 클릭 이벤트 추가
               }
-              cell.appendChild(cellText);
+              else if (cell.classList!="current-day") {cell.classList.add("listday");}
+              cella.appendChild(cellText);
+              cell.appendChild(cella);
               row.appendChild(cell);
               date++;
             }
@@ -248,6 +324,7 @@ header#header {
           calendarBody.appendChild(row);
         }
       }
+
 
       function prevCalendar() {
         currentYear = currentMonth === 0 ? currentYear - 1 : currentYear;
@@ -284,7 +361,7 @@ header#header {
         ymd.innerHTML = "날짜 - " + selectedYear + "-" + selectedMonth + "-" + selectedDate;
         //ymdvalue.value= selectedYear + "-" + selectedMonth + "-" + selectedDate;
         console.log(selectedYear + "-" + selectedMonth + "-" + selectedDate);
-        yearDiv.innerHTML ="Selected date: " + selectedYear + "-" + selectedMonth + "-" + selectedDate;
+        yearDiv.innerHTML ="선택하신 날짜: " + selectedYear + "-" + selectedMonth + "-" + selectedDate;
         yearParent.appendChild(yearDiv);
         //document.querySelector(".timetable").appendChild(yearDiv);
         document.querySelector(".timetable").style.display = "block";
@@ -409,11 +486,17 @@ selectTimes.forEach(selectTime => {
 				console.log(result);
 				if (result === true) {
 					targetDiv.parent().remove();
-					$(".uploadResult").css("background", "darkgray");
+					$(".reservi").css("background", "darkgray");
 					
 				}
 			});
 		});
+		
+		$(".removeBtn").on("click", function(e){
+			 $(".reservi").css("background", "gainsboro");
+			 
+		})
+		
 	</script>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script>
@@ -460,11 +543,11 @@ ul#floatPC_layer {
 	box-shadow: 10px 10px 50px rgba(0, 0, 0, .2);
 	width: 250px;
 	color: #767676;
-	height: 450px;
+	height: 536px;
 }
 
 ul.list_info {
-	padding: 0 20px;
+	padding: 20px 20px;
 	box-sizing: border-box;
 }
 
@@ -482,7 +565,7 @@ ul.list_info {
 
 li#floatPC_daytime {
 	padding: 15px 0;
-	font-size: 13px;
+	font-size: 16px;
 	color: #000;
 	line-height: 1.3em;
 	list-style: none;
@@ -492,7 +575,7 @@ li#floatPC_time {
 	list-style: none;
 	padding: 15px 0;
 	border-top: 1px solid #e5e5e5;
-	font-size: 13px;
+	font-size: 16px;
 	color: #000;
 	line-height: 1.3em;
 }
@@ -526,16 +609,7 @@ td, th {
 }
 
 td:hover {
-	background-color: lightblue;
-}
-
-.current-day {
-	background-color: #CDDC39;
-}
-
-.two-weeks {
-	background-color: #795548;
-	color: white;
+	background-color: beige;
 }
 
 .accordion_cont {
@@ -591,10 +665,11 @@ li.select_time {
 }
 
 span.time {
-	font-size: 14px;
+	font-size: 15px;
 	font-weight: 500;
 	color: black;
 	margin-left: 20px;
+	font-family: 'notokr-medium';
 }
 
 .time_wrap.clickTime {
@@ -653,7 +728,8 @@ dl {
 	border: 1px dashed #e5e5e5;
 	background: #fff;
 	box-sizing: border-box;
-	margin-bottom: 85px;
+	margin-bottom: 160px;
+	font-family: 'notokr-medium';
 }
 
 dd {
@@ -667,11 +743,10 @@ dd {
 }
 
 h3.g-title-1 {
-	background-color: #8a9591ba;
 	margin: 0;
-	padding: 14px 20px;
-	color: white;
-	font-size: initial;
+	padding: 14px 0;
+	font-size: 18px;
+	font-family: 'notokr-medium';
 }
 
 .calendargrid {

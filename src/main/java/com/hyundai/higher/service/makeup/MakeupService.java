@@ -36,5 +36,8 @@ public interface MakeupService {
 
 	// 고객 정보
 	public Member MemInfo(String rid);
+	
+	// 마일리지 추가
+	public void mileageupdate(String mid);
 
 }
