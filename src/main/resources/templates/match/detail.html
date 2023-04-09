@@ -212,7 +212,7 @@
 									</a> <em><a href="#product_detail_review"
 											style="color: #8f8f8f;">(270)</a></em>
 									</span>
-									<div class="result"
+									<div th:if="${score != null}" class="result"
 										style="display: flex; justify-content: center; margin-bottom: 40px;">
 										<div class="chart mychart" th:data-percent="${score}">
 											<span class="title" style="top: 110px;">[[${score}]]추천해요</span>

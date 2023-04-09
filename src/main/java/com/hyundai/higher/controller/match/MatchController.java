@@ -201,12 +201,12 @@ public class MatchController {
 				break;
 		}
 
-		if(principal != null) {
-
 		// 성분
 		model.addAttribute("product", product);
 		model.addAttribute("mainIngredient", mainIngredient);
 		model.addAttribute("similarCos", sService.recogProducts(pcode));
+
+		if(principal != null) {
 
 		// mbti 가져오기
 		String mid = principal.getName();
