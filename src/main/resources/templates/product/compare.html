@@ -56,7 +56,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-			height: 480px;
+			height: 450px;
     }
 
     swiper-slide img {
@@ -67,13 +67,13 @@
     }
 
     swiper-container {
-      width: 95%;
-      height: 490px;
+      width: 100%;
+      height: 460px;
       margin: 20px auto;
     }
 
 		:root {
-			--swiper-theme-color: rgb(66, 31, 0);
+			--swiper-theme-color: #bfae90;
 		}
 
 		.button {
@@ -84,7 +84,6 @@
     text-decoration: none;
     display: inline-block;
     font-size: 13px;
-    margin: 0px 5px;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.1s;
     width:120px;
@@ -94,25 +93,39 @@
 		font-weight: 700;
 
 }
+.x {
+	background: url(../compare/img/x.png);
+    width: 18px;
+    height: 18px;
+    background-size: cover;
+    position: absolute;
+    bottom: 248px;
+    left: 228px;
+}
+
+.prod-unit .img > a:before{
+	background-color: rgba(0,0,0,0) !important;
+}
 
 .button5{
-    background-color: #806A53;
-		margin-left: 0px;
-    color: #FFFEF2;
-		float: left;
+		width: 100%;
+		background-color: #FFFFFF;
+    color: #bfae90;
+    border: 1.5px solid #bfae90;
 		line-height: 3;
+
 }
 
 .button5:hover {
-    background-color: #FFFFFF;
-    color: #806A53;
-    border: 1.5px solid #806A53;
+	background-color: #bfae90;
+		margin-left: 0px;
+    color: #FFFEF2;
+    
 }
 .button4{
 		background-color: #FFFFFF;
     color: #806A53;
     border: 1.5px solid #806A53;
-		float: right;
 		margin-left: 0px;
 		line-height: 3;
 }
@@ -168,6 +181,12 @@
 	.card_choice .txt .card_name[data-v-4ade122e] {
 		font-size:20px;
 	}
+	.iimg {
+		height: 25px;
+	}
+	.ing {
+		line-height: 32px;
+	}
  
  </style>
 
@@ -217,12 +236,12 @@
 
 		<section class="sub_visual_warp">
 			<div class="sub_visual">
-				<img src="../compare/image/compare.png" style="width: 100%; height: 210px;">
+				<img src="../compare/img/compare.png" style="width: 100%; height: 210px;">
 				<div class="sub_visual" style="top: -210px;">
 					<h1>
-						<i style="font-family: 'locator-medium'; color: white;text-shadow:-1px -1px 1px #000;">FIND THE ONE!</i>
+						<i style="font-family: 'locator-medium';color: white;text-shadow: 2px 2px 1px #000;font-size: 60px;">FIND THE ONE!</i>
 					</h1>
-					<h2 style="color: white;">
+					<h2 style="color: #4b4646;">
 						다양한 제품들 중에 무엇을 살 지 고민이 된다면?
 						<br>화장품 스펙 비교로 원하는 상품을 찾아보세요!
 						<!-- 당신에게 꼭 맞는 화장품을 찾아보세요 -->
@@ -234,318 +253,284 @@
 
 	<!-- container -->
 
-<!-- header -->
 <!-- 서브메뉴 -->
-
-<!-- top banner -->
-
-<div id="container">
+<section id="container">
+	<section id="contents" class="survey_warp">
 		
-		<h1 class="blind">컨텐츠영역</h1>
-
-		<!-- content-wrap -->
-		<div class="content-wrap">
-
-			<!-- content -->
-			<div class="content" style="border-top: 1px solid #666; padding-top: 0px;">
-
-
-				<!-- product-list type -->
-				<div style="background-color: #FFFEF2;">
-					<img src="../compare/img/comparelogo.png" style="margin: auto;width:1118.51px;display: block;border-bottom: 1px solid #666;">
-				</div>
-		<!-- <h4 class="sort-title">Find The ONE!</h4> -->
-		<p style="text-align: right; margin-right: 10px;font-size: 15px;margin-top: 10px;">비교함에는 10개의 상품까지 담을 수 있습니다.</p>
-
-		<swiper-container class="mySwiper" slides-per-view="4" centered-slides="true" space-between="30"
-    pagination-type="fraction" navigation="true" >
-
-    
-    <swiper-slide class="slide0"></swiper-slide>
-		<swiper-slide class="slide1"></swiper-slide>
-		<swiper-slide class="slide2"></swiper-slide>
-    <swiper-slide class="slide3"></swiper-slide>
-    <swiper-slide class="slide4"></swiper-slide>
-		<swiper-slide class="slide5"></swiper-slide>
-    <swiper-slide class="slide6"></swiper-slide>
-    <swiper-slide class="slide7"></swiper-slide>
-    <swiper-slide class="slide8"></swiper-slide>
-		<swiper-slide class="slide9"></swiper-slide>
-
-  </swiper-container>
-
-	<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
+					<!-- content -->
+					<div class="content" style="padding-top: 0px;">
+						<div style="display: flex;justify-content: center;">
+								<p style="font-size: 25px; margin-top: 22px; border-left: 3px solid #bfae90;border-right: 3px solid #bfae90;font-family: 'notokr-demilight';padding:3px 45px;">비교함</p>
+						</div>
+						<!-- <h4 class="sort-title">Find The ONE!</h4> -->
+						<p style="text-align: right; margin-right: 10px;font-size: 15px;margin-top: 10px;">비교함에는 10개의 상품까지 담을 수 있습니다.</p>
 				
-											<h4 class="sort-title" style="margin-bottom: 0px;"></h4>
-		<!-- <h4 class="sort-title">NEW 아이템</h4> -->
+						<swiper-container class="mySwiper" slides-per-view="4" centered-slides="false" space-between="30"
+						pagination-type="fraction" navigation="true" >
+				
+						
+						<swiper-slide class="slide0"></swiper-slide>
+						<swiper-slide class="slide1"></swiper-slide>
+						<swiper-slide class="slide2"></swiper-slide>
+						<swiper-slide class="slide3"></swiper-slide>
+						<swiper-slide class="slide4"></swiper-slide>
+						<swiper-slide class="slide5"></swiper-slide>
+						<swiper-slide class="slide6"></swiper-slide>
+						<swiper-slide class="slide7"></swiper-slide>
+						<swiper-slide class="slide8"></swiper-slide>
+						<swiper-slide class="slide9"></swiper-slide>
+				
+					</swiper-container>
+				
+					<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
+				
+						<!-- 상품 비교 -->
+				
+					<div id="q-app" style="width: 100%;">
+					<div>
+					<div data-v-214bdc2f="" id="q-app">
 
-		<!-- 상품 비교 -->
-
-  <div id="q-app" style="width: 50%;">
-  <div>
-  <div data-v-214bdc2f="" id="q-app">
-  <div data-v-58e952e9="" data-v-214bdc2f="" class="floating-layers">
-  <!---->
-  <!---->
-  <!---->
-  <div data-v-58e952e9="" class="toast-banner-small" style="display: none;">
-  <div data-v-0a0e3ee1="" data-v-58e952e9="" class="display-container bg-grey-2 full-height relative-position display-container" style="outline: red solid 0px;">
-  <div data-v-0a0e3ee1="" class="full-height">
-  <!---->
-  </div>
-  </div>
-  </div>
-  <!---->
-  <!---->
-  <b data-v-58e952e9="">
-  </b>
-  </div>
-  <div data-v-35734774="" data-v-902ef014="" data-v-214bdc2f="">
-  <section data-v-35734774="" class="">
-  <!---->
-
-  </section>
-  </div>
-  <section data-v-214bdc2f="" class="contentArea" style="min-width: 1119px;background-color: #fff;">
-  <div data-v-35734774="" data-v-4ade122e="" data-v-214bdc2f="" class="compare_detail" style="padding-top: 0px;">
-		<div class="col" style="background-color: #FFFEF2;border-bottom: 1px solid black;">
-			<!-- <h4 style="padding-bottom: 20px; text-align: center; border-bottom: 1px solid #666;padding-top: 30px;">What's Your Pick?</h4> -->
-				<img src="../compare/img/pick.png" style="margin: auto;width:1050px;display: block;">
-		</div>
-  <section data-v-35734774="" class="">
-  <article data-v-4ade122e="" data-v-35734774="" class="cd_con card_choice">
-  <h3 data-v-4ade122e="" data-v-35734774="" class="hide">카드선택</h3>
-  <div data-v-4ade122e="" data-v-35734774="" class="inner">
-
-		<div data-v-4ade122e="" data-v-35734774="" class="card_01">
-			<div data-v-4ade122e="" data-v-35734774="">
-				<div data-v-4ade122e="" data-v-35734774="" class="card_img">
-					<p data-v-4ade122e="" data-v-35734774="" class="img">
-						<img data-v-4ade122e="" data-v-35734774="" src="" width="auto" height="auto" style="max-width: 200px; max-height: 200px;">
-					</p>
-				</div>
-				<div data-v-4ade122e="" data-v-35734774="" class="txt">
-					<p data-v-4ade122e="" data-v-35734774="" class="card_name"></p>
-					<p data-v-4ade122e="" data-v-35734774="" class="corp_name"></p>
-				</div>
-				<div data-v-4ade122e="" data-v-35734774="" class="bn_box" style="display: none;">
-					<a data-v-4ade122e="" data-v-35734774="" class="card_change" style="background-color: #806A53;color: #FFFEF2;" href="">제품상세보기</a>
-					<a data-v-4ade122e="" class="benefit_detail" data-v-35734774="" href="" style="background-color: white;color: #6c5944;border: 1px solid #806A53;">장바구니담기</a>
-				</div>
-				<a data-v-4ade122e="" data-v-35734774="" class="card_del" style="display:none;" onclick="delThis('card_01')">삭제하기</a>
-			</div>
-		</div>
-
-		<div data-v-4ade122e="" data-v-35734774="" class="card_02">
-			<div data-v-4ade122e="" data-v-35734774="">
-				<div data-v-4ade122e="" data-v-35734774="" class="card_img">
-					<p data-v-4ade122e="" data-v-35734774="" class="img">
-						<img data-v-4ade122e="" data-v-35734774="" src="" width="auto" height="auto" style="max-width: 200px; max-height: 200px;">
-					</p>
-			</div>
-			<div data-v-4ade122e="" data-v-35734774="" class="txt">
-				<!-- <p data-v-4ade122e="" data-v-35734774="" class="card_name">신한카드 Mr.Life</p>
-				<p data-v-4ade122e="" data-v-35734774="" class="corp_name">신한카드</p> -->
-				<p data-v-4ade122e="" data-v-35734774="" class="card_name"></p>
-				<p data-v-4ade122e="" data-v-35734774="" class="corp_name"></p>
-			</div>
-			<div data-v-4ade122e="" data-v-35734774="" class="bn_box" style="display: none;">
-				<a data-v-4ade122e="" data-v-35734774="" class="card_change" style="background-color: #806A53;color: #FFFEF2;" href="">제품상세보기</a>
-				<a data-v-4ade122e="" class="benefit_detail" data-v-35734774="" href="" style="background-color: white;color: #6c5944;border: 1px solid #806A53;">장바구니담기</a>
-			</div>
-			<a data-v-4ade122e="" data-v-35734774="" class="card_del" style="display:none;" onclick="delThis('card_02')">삭제하기</a>
-			</div>
-		</div>
-
-		<div data-v-4ade122e="" data-v-35734774="" class="card_03">
-			<div data-v-4ade122e="" data-v-35734774="">
-				<div data-v-4ade122e="" data-v-35734774="" class="card_img">
-					<p data-v-4ade122e="" data-v-35734774="" class="img">
-						<img data-v-4ade122e="" data-v-35734774="" src="" width="auto" height="auto" style="max-width: 200px; max-height: 200px;">
-					</p>
-			</div>
-			<div data-v-4ade122e="" data-v-35734774="" class="txt">
-				<p data-v-4ade122e="" data-v-35734774="" class="card_name"></p>
-				<p data-v-4ade122e="" data-v-35734774="" class="corp_name"></p>
-			</div>
-			<div data-v-4ade122e="" data-v-35734774="" class="bn_box" style="display: none;">
-				<a data-v-4ade122e="" data-v-35734774="" class="card_change" style="background-color: #806A53;color: #FFFEF2;" href="">제품상세보기</a>
-				<a data-v-4ade122e="" class="benefit_detail" data-v-35734774="" href="" style="background-color: white;color: #6c5944;border: 1px solid #806A53;">장바구니담기</a>
-			</div>
-			<a data-v-4ade122e="" data-v-35734774="" class="card_del" style="display:none;" onclick="delThis('card_03')">삭제하기</a>
-			</div>
-		</div>
-
-  </div>
-  </article>
-
-  <article data-v-4ade122e="" data-v-35734774="" class="cd_con card_sort">
-  <h3 data-v-4ade122e="" data-v-35734774="">평점</h3>
-  <div data-v-4ade122e="" data-v-35734774="" class="inner txt_box">
-		<div data-v-4ade122e="" data-v-35734774="" class="card_01">
-			<!-- <span data-v-4ade122e="" data-v-35734774="" class="rates">제품1 평점</span> -->
-			<span data-v-4ade122e="" data-v-35734774="" class="rates"></span>
-		</div>
-		<div data-v-4ade122e="" data-v-35734774="" class="card_02">
-			<span data-v-4ade122e="" data-v-35734774="" class="rates"></span>
-		</div>
-		<div data-v-4ade122e="" data-v-35734774="" class="card_03">
-			<span data-v-4ade122e="" data-v-35734774="" class="rates"></span>
-		</div>
-  </div>
-  </article>
-
-  <article data-v-4ade122e="" data-v-35734774="" class="cd_con card_event">
-  <h3 data-v-4ade122e="" data-v-35734774="">가격</h3>
-  <div data-v-4ade122e="" data-v-35734774="" class="inner txt_box">
-
-  	<div data-v-4ade122e="" data-v-35734774="" class="card_01">
-  		<div data-v-4ade122e="" data-v-35734774="">
-  			<p data-v-4ade122e="" data-v-35734774=""></p>
-				<p class="price"></p>
-  			<p></p>
-  		</div>
-  	</div>
-
-		<div data-v-4ade122e="" data-v-35734774="" class="card_02">
-			<div data-v-4ade122e="" data-v-35734774="">
-				<p data-v-4ade122e="" data-v-35734774=""></p>
-				<p class="price"></p>
-				<!-- <p class="price">신한카드 이용하고 최대 17만원 캐시백 받아가자!</p> -->
-				<p></p>
-			</div>
-		</div>
-		
-		<div data-v-4ade122e="" data-v-35734774="" class="card_03">
-			<div data-v-4ade122e="" data-v-35734774="">
-				<p data-v-4ade122e="" data-v-35734774=""></p>
-				<p class="price"></p>
-				<p></p>
-			</div>
-		</div>
-  </div>
-  </article>
-
-  <article data-v-4ade122e="" data-v-35734774="" class="cd_con annual_fee">
-  <h3 data-v-4ade122e="" data-v-35734774="">피부 타입</h3>
-  <div data-v-4ade122e="" data-v-35734774="" class="inner txt_box">
-		
-		<div data-v-4ade122e="" data-v-35734774="" class="card_01">
-		<span data-v-4ade122e="" data-v-35734774="" class="keyword"></span>
-		<!-- <span data-v-4ade122e="" data-v-35734774="" class="keyword">국내전용 [20,000원] / 해외겸용 [20,000원]</span> -->
-		</div>
-		
-		<div data-v-4ade122e="" data-v-35734774="" class="card_02">
-		<span data-v-4ade122e="" data-v-35734774="" class="keyword"></span>
-		</div>
-		
-		<div data-v-4ade122e="" data-v-35734774="" class="card_03">
-			<span data-v-4ade122e="" data-v-35734774="" class="keyword"></span>
-		</div>
-  </div>
-  </article>
-
-  <article data-v-4ade122e="" data-v-35734774="" class="cd_con last_result">
-  <h3 data-v-4ade122e="" data-v-35734774="">주요 성분</h3>
-  <div data-v-4ade122e="" data-v-35734774="" class="inner txt_box">
-
-		<div data-v-4ade122e="" data-v-35734774="" class="card_01">
-		<!-- <span data-v-4ade122e="" data-v-35734774="" class="caution">50 만원 이상</span> -->
-			<span data-v-4ade122e="" data-v-35734774="" class="caution"></span>
-		</div>
-		<div data-v-4ade122e="" data-v-35734774="" class="card_02">
-			<span data-v-4ade122e="" data-v-35734774=""class="caution"></span>
-		</div>
-		<div data-v-4ade122e="" data-v-35734774="" class="card_03">
-			<span data-v-4ade122e="" data-v-35734774="" class="caution"></span>
-		</div>
-  </div>
-  </article>
-
-  <article data-v-4ade122e="" data-v-35734774="" class="cd_con card_benefit">
-  <h3 data-v-4ade122e="" data-v-35734774="">20가지 주의성분</h3>
-  <div data-v-4ade122e="" data-v-35734774="" class="inner">
-
-		<div data-v-4ade122e="" data-v-35734774="" class="card_01">
-			<div data-v-4ade122e="" data-v-35734774="">
-			<dl data-v-4ade122e="" data-v-35734774="">
-			<dt data-v-4ade122e="" data-v-35734774=""></dt>
-			<dd data-v-4ade122e="" data-v-35734774=""></dd>		
-			<!-- <dt data-v-4ade122e="" data-v-35734774="">공과금</dt>
-			<dd data-v-4ade122e="" data-v-35734774="">[생활업종]아파트관리비 10% 할인</dd> -->
-			</dl>
-			<dl data-v-4ade122e="" data-v-35734774="">
-			<dt data-v-4ade122e="" data-v-35734774=""></dt>
-			<dd data-v-4ade122e="" data-v-35734774=""></dd>
-			</dl>
-			<dl data-v-4ade122e="" data-v-35734774="">
-			<dt data-v-4ade122e="" data-v-35734774=""></dt>
-			<dd data-v-4ade122e="" data-v-35734774=""></dd>
-			</dl>
-			</div>
-		</div>
-
-		<div data-v-4ade122e="" data-v-35734774="" class="card_02">
-			<div data-v-4ade122e="" data-v-35734774="">
-			<dl data-v-4ade122e="" data-v-35734774="">
-			<dt data-v-4ade122e="" data-v-35734774=""></dt>
-			<dd data-v-4ade122e="" data-v-35734774=""></dd>
-			</dl>
-			<dl data-v-4ade122e="" data-v-35734774="">
-			<dt data-v-4ade122e="" data-v-35734774=""></dt>
-			<dd data-v-4ade122e="" data-v-35734774=""></dd>
-			</dl>
-			<dl data-v-4ade122e="" data-v-35734774="">
-			<dt data-v-4ade122e="" data-v-35734774=""></dt>
-			<dd data-v-4ade122e="" data-v-35734774=""></dd>
-			</dl>
-			</div>
-		</div>
-
-		<div data-v-4ade122e="" data-v-35734774="" class="card_03">
-			<div data-v-4ade122e="" data-v-35734774="">
-				<dl data-v-4ade122e="" data-v-35734774="">
-				<dt data-v-4ade122e="" data-v-35734774=""></dt>
-				<dd data-v-4ade122e="" data-v-35734774=""></dd>
-				</dl>
-				<dl data-v-4ade122e="" data-v-35734774="">
-				<dt data-v-4ade122e="" data-v-35734774=""></dt>
-				<dd data-v-4ade122e="" data-v-35734774=""></dd>
-				</dl>
-				<dl data-v-4ade122e="" data-v-35734774="">
-				<dt data-v-4ade122e="" data-v-35734774=""></dt>
-				<dd data-v-4ade122e="" data-v-35734774=""></dd>
-				</dl>
-				</div>
-		</div>
-  </div>
-  </article>
-  
-  </section>
-  </div>
-  </section>
-  </div>
-  </div>
-  </div>
-
-
-		<!-- 상품 비교 end -->
-
-				<!-- product-list type2 -->
-
-				<!-- exhibition-wrap -->
+					<section data-v-214bdc2f="" class="contentArea" style="min-width: 1119px;background-color: #fff;">
+					<div data-v-35734774="" data-v-4ade122e="" data-v-214bdc2f="" class="compare_detail" style="padding-top: 0px;">
+						<div class="col" style="background-color: #bfae90;">
+							<h2 style="text-align: center;color: white;padding-top: 5px;font-size: 39px;font-family: 'locator-medium';padding-bottom: 5px;text-shadow: 2px 2px 0px black;">What's Your Pick?</h2>
+					</div>
+					<section data-v-35734774="" class="">
+					<article data-v-4ade122e="" data-v-35734774="" class="cd_con card_choice">
+					<h3 data-v-4ade122e="" data-v-35734774="" class="hide">카드선택</h3>
+					<div data-v-4ade122e="" data-v-35734774="" class="inner">
+				
+						<div data-v-4ade122e="" data-v-35734774="" class="card_01">
+							<div data-v-4ade122e="" data-v-35734774="">
+								<div data-v-4ade122e="" data-v-35734774="" class="card_img">
+									<p data-v-4ade122e="" data-v-35734774="" class="img">
+										<img data-v-4ade122e="" data-v-35734774="" src="" width="auto" height="auto" style="max-width: 200px; max-height: 200px;">
+									</p>
+								</div>
+								<div data-v-4ade122e="" data-v-35734774="" class="txt">
+									<p data-v-4ade122e="" data-v-35734774="" class="card_name"></p>
+									<p data-v-4ade122e="" data-v-35734774="" class="corp_name"></p>
+								</div>
+								<div data-v-4ade122e="" data-v-35734774="" class="bn_box" style="display: none;">
+									<a data-v-4ade122e="" data-v-35734774="" class="card_change" style="background-color: #bfae90;color: #FFFEF2;" href="">제품상세보기</a>
+									<a data-v-4ade122e="" class="benefit_detail" data-v-35734774="" href="" style="background-color: white;color: #291d07;border: 1px solid #bfae90;">장바구니담기</a>
+								</div>
+								<a data-v-4ade122e="" data-v-35734774="" class="card_del" style="display:none;" onclick="delThis('card_01')">삭제하기</a>
+							</div>
+						</div>
+				
+						<div data-v-4ade122e="" data-v-35734774="" class="card_02">
+							<div data-v-4ade122e="" data-v-35734774="">
+								<div data-v-4ade122e="" data-v-35734774="" class="card_img">
+									<p data-v-4ade122e="" data-v-35734774="" class="img">
+										<img data-v-4ade122e="" data-v-35734774="" src="" width="auto" height="auto" style="max-width: 200px; max-height: 200px;">
+									</p>
+							</div>
+							<div data-v-4ade122e="" data-v-35734774="" class="txt">
+								<!-- <p data-v-4ade122e="" data-v-35734774="" class="card_name">신한카드 Mr.Life</p>
+								<p data-v-4ade122e="" data-v-35734774="" class="corp_name">신한카드</p> -->
+								<p data-v-4ade122e="" data-v-35734774="" class="card_name"></p>
+								<p data-v-4ade122e="" data-v-35734774="" class="corp_name"></p>
+							</div>
+							<div data-v-4ade122e="" data-v-35734774="" class="bn_box" style="display: none;">
+								<a data-v-4ade122e="" data-v-35734774="" class="card_change" style="background-color: #bfae90;color: #FFFEF2;" href="">제품상세보기</a>
+								<a data-v-4ade122e="" class="benefit_detail" data-v-35734774="" href="" style="background-color: white;color: #291d07;border: 1px solid #bfae90;">장바구니담기</a>
+							</div>
+							<a data-v-4ade122e="" data-v-35734774="" class="card_del" style="display:none;" onclick="delThis('card_02')">삭제하기</a>
+							</div>
+						</div>
+				
+						<div data-v-4ade122e="" data-v-35734774="" class="card_03">
+							<div data-v-4ade122e="" data-v-35734774="">
+								<div data-v-4ade122e="" data-v-35734774="" class="card_img">
+									<p data-v-4ade122e="" data-v-35734774="" class="img">
+										<img data-v-4ade122e="" data-v-35734774="" src="" width="auto" height="auto" style="max-width: 200px; max-height: 200px;">
+									</p>
+							</div>
+							<div data-v-4ade122e="" data-v-35734774="" class="txt">
+								<p data-v-4ade122e="" data-v-35734774="" class="card_name"></p>
+								<p data-v-4ade122e="" data-v-35734774="" class="corp_name"></p>
+							</div>
+							<div data-v-4ade122e="" data-v-35734774="" class="bn_box" style="display: none;">
+								<a data-v-4ade122e="" data-v-35734774="" class="card_change" style="background-color: #bfae90;color: #FFFEF2;" href="">제품상세보기</a>
+								<a data-v-4ade122e="" class="benefit_detail" data-v-35734774="" href="" style="background-color: white;color: #291d07;border: 1px solid #bfae90;">장바구니담기</a>
+							</div>
+							<a data-v-4ade122e="" data-v-35734774="" class="card_del" style="display:none;" onclick="delThis('card_03')">삭제하기</a>
+							</div>
+						</div>
+				
+					</div>
+					</article>
+				
+					<article data-v-4ade122e="" data-v-35734774="" class="cd_con card_sort">
+					<h3 data-v-4ade122e="" data-v-35734774="">평점</h3>
+					<div data-v-4ade122e="" data-v-35734774="" class="inner txt_box">
+						<div data-v-4ade122e="" data-v-35734774="" class="card_01">
+							<!-- <span data-v-4ade122e="" data-v-35734774="" class="rates">제품1 평점</span> -->
+							<span data-v-4ade122e="" data-v-35734774="" class="rates"></span>
+						</div>
+						<div data-v-4ade122e="" data-v-35734774="" class="card_02">
+							<span data-v-4ade122e="" data-v-35734774="" class="rates"></span>
+						</div>
+						<div data-v-4ade122e="" data-v-35734774="" class="card_03">
+							<span data-v-4ade122e="" data-v-35734774="" class="rates"></span>
+						</div>
+					</div>
+					</article>
+				
+					<article data-v-4ade122e="" data-v-35734774="" class="cd_con card_event">
+					<h3 data-v-4ade122e="" data-v-35734774="">가격</h3>
+					<div data-v-4ade122e="" data-v-35734774="" class="inner txt_box">
+				
+						<div data-v-4ade122e="" data-v-35734774="" class="card_01">
+							<div data-v-4ade122e="" data-v-35734774="">
+								<p data-v-4ade122e="" data-v-35734774=""></p>
+								<p class="price"></p>
+								<p></p>
+							</div>
+						</div>
+				
+						<div data-v-4ade122e="" data-v-35734774="" class="card_02">
+							<div data-v-4ade122e="" data-v-35734774="">
+								<p data-v-4ade122e="" data-v-35734774=""></p>
+								<p class="price"></p>
+								<!-- <p class="price">신한카드 이용하고 최대 17만원 캐시백 받아가자!</p> -->
+								<p></p>
+							</div>
+						</div>
+						
+						<div data-v-4ade122e="" data-v-35734774="" class="card_03">
+							<div data-v-4ade122e="" data-v-35734774="">
+								<p data-v-4ade122e="" data-v-35734774=""></p>
+								<p class="price"></p>
+								<p></p>
+							</div>
+						</div>
+					</div>
+					</article>
+				
+					<article data-v-4ade122e="" data-v-35734774="" class="cd_con annual_fee">
+					<h3 data-v-4ade122e="" data-v-35734774="">피부 타입</h3>
+					<div data-v-4ade122e="" data-v-35734774="" class="inner txt_box">
+						
+						<div data-v-4ade122e="" data-v-35734774="" class="card_01">
+						<span data-v-4ade122e="" data-v-35734774="" class="keyword"></span>
+						<!-- <span data-v-4ade122e="" data-v-35734774="" class="keyword">국내전용 [20,000원] / 해외겸용 [20,000원]</span> -->
+						</div>
+						
+						<div data-v-4ade122e="" data-v-35734774="" class="card_02">
+						<span data-v-4ade122e="" data-v-35734774="" class="keyword"></span>
+						</div>
+						
+						<div data-v-4ade122e="" data-v-35734774="" class="card_03">
+							<span data-v-4ade122e="" data-v-35734774="" class="keyword"></span>
+						</div>
+					</div>
+					</article>
+				
+					<article data-v-4ade122e="" data-v-35734774="" class="cd_con last_result">
+					<h3 data-v-4ade122e="" data-v-35734774="">주요 성분</h3>
+					<div data-v-4ade122e="" data-v-35734774="" class="inner txt_box">
+				
+						<div data-v-4ade122e="" data-v-35734774="" class="card_01">
+						<!-- <span data-v-4ade122e="" data-v-35734774="" class="caution">50 만원 이상</span> -->
+							<span data-v-4ade122e="" data-v-35734774="" class="caution"></span>
+						</div>
+						<div data-v-4ade122e="" data-v-35734774="" class="card_02">
+							<span data-v-4ade122e="" data-v-35734774=""class="caution"></span>
+						</div>
+						<div data-v-4ade122e="" data-v-35734774="" class="card_03">
+							<span data-v-4ade122e="" data-v-35734774="" class="caution"></span>
+						</div>
+					</div>
+					</article>
+				
+					<article data-v-4ade122e="" data-v-35734774="" class="cd_con card_benefit">
+					<h3 data-v-4ade122e="" data-v-35734774="">20가지 주의성분</h3>
+					<div data-v-4ade122e="" data-v-35734774="" class="inner">
+				
+						<div data-v-4ade122e="" data-v-35734774="" class="card_01">
+							<div data-v-4ade122e="" data-v-35734774="">
+							<dl data-v-4ade122e="" data-v-35734774="">
+							<dt data-v-4ade122e="" data-v-35734774=""></dt>
+							<dd data-v-4ade122e="" data-v-35734774=""></dd>		
+							<!-- <dt data-v-4ade122e="" data-v-35734774="">공과금</dt>
+							<dd data-v-4ade122e="" data-v-35734774="">[생활업종]아파트관리비 10% 할인</dd> -->
+							</dl>
+							<dl data-v-4ade122e="" data-v-35734774="">
+							<dt data-v-4ade122e="" data-v-35734774=""></dt>
+							<dd data-v-4ade122e="" data-v-35734774=""></dd>
+							</dl>
+							<dl data-v-4ade122e="" data-v-35734774="">
+							<dt data-v-4ade122e="" data-v-35734774=""></dt>
+							<dd data-v-4ade122e="" data-v-35734774=""></dd>
+							</dl>
+							</div>
+						</div>
+				
+						<div data-v-4ade122e="" data-v-35734774="" class="card_02">
+							<div data-v-4ade122e="" data-v-35734774="">
+							<dl data-v-4ade122e="" data-v-35734774="">
+							<dt data-v-4ade122e="" data-v-35734774=""></dt>
+							<dd data-v-4ade122e="" data-v-35734774=""></dd>
+							</dl>
+							<dl data-v-4ade122e="" data-v-35734774="">
+							<dt data-v-4ade122e="" data-v-35734774=""></dt>
+							<dd data-v-4ade122e="" data-v-35734774=""></dd>
+							</dl>
+							<dl data-v-4ade122e="" data-v-35734774="">
+							<dt data-v-4ade122e="" data-v-35734774=""></dt>
+							<dd data-v-4ade122e="" data-v-35734774=""></dd>
+							</dl>
+							</div>
+						</div>
+				
+						<div data-v-4ade122e="" data-v-35734774="" class="card_03">
+							<div data-v-4ade122e="" data-v-35734774="">
+								<dl data-v-4ade122e="" data-v-35734774="">
+								<dt data-v-4ade122e="" data-v-35734774=""></dt>
+								<dd data-v-4ade122e="" data-v-35734774=""></dd>
+								</dl>
+								<dl data-v-4ade122e="" data-v-35734774="">
+								<dt data-v-4ade122e="" data-v-35734774=""></dt>
+								<dd data-v-4ade122e="" data-v-35734774=""></dd>
+								</dl>
+								<dl data-v-4ade122e="" data-v-35734774="">
+								<dt data-v-4ade122e="" data-v-35734774=""></dt>
+								<dd data-v-4ade122e="" data-v-35734774=""></dd>
+								</dl>
+								</div>
+						</div>
+					</div>
+					</article>
+					
+					</section>
+					</div>
+					</section>
+					</div>
+					</div>
+					</div>
 				
 				
-				<!-- //exhibition-wrap -->
+						<!-- 상품 비교 end -->
+				
+								<!-- product-list type2 -->
+				
+								<!-- exhibition-wrap -->
+								
+								
+								<!-- //exhibition-wrap -->
+				
+							</div>
+							<!-- //content -->
 
-			</div>
-			<!-- //content -->
+	</section>
 
-		</div>
-		<!-- //content-wrap -->
 
-	</div>
-	<!-- //container -->
+</section>
+
+</section>
+
 	<section id="survey_pop" class="layerpop_warp open" style="display: none;">
 		<div class="layerpop blue" style="width:460px;">
 			<div class="layerpop_head">
@@ -603,11 +588,17 @@ $(function(){
 </script>
 <script type="text/javascript">
 	function psplit(pingredient) {
-  if (pingredient.includes(',')) {
-    return pingredient.split(',');
-  } else {
-    return pingredient.split(' ');
-  }
+
+		const arr = pingredient.includes(",") ? pingredient.split(",") : pingredient.split(" ");
+		let subArr = [];
+		for (let i = 0; i < arr.length; i++) {
+			let item = arr[i].trim();
+			if (item && item !== "정제수" && item !== "글리세린") {
+				subArr.push(item);
+				if (subArr.length >= 6) break;
+			}
+		}
+		return subArr;
 }
 	function compareThis(slidenum) {
 	console.log("비교하기 상품");
@@ -625,8 +616,8 @@ $(function(){
 	var pingredient = document.querySelector(`.${slidenum} .pingredient`).value;
 
 
-		var arr = psplit(pingredient);
-		const slicedIngredients = arr.slice(0,10);
+		var slicedIngredients = psplit(pingredient);
+		//const slicedIngredients = arr.slice(0,10);
 		console.log(slicedIngredients);
 
 	if($(".card_choice .card_01").find(".card_name").text() == ""){ //카드1 섹션이 비워져있을 때 1에 상품 삽입
@@ -651,7 +642,27 @@ $(function(){
 		const p = document.querySelector(".cd_con.annual_fee .card_01");
 		p.querySelector('.keyword').textContent = ptype;
 		const i = document.querySelector(".cd_con.last_result .card_01");
-		i.querySelector('.caution').textContent = slicedIngredients;
+		// i.querySelector('.caution').textContent = slicedIngredients;
+
+		const cautionEl = i.querySelector('.caution');
+		const ulEl = document.createElement("ul");
+		slicedIngredients.forEach(item => {
+		const liEl = document.createElement("li");
+		liEl.classList.add("ing");
+		
+		const imgEl = document.createElement("img");
+		imgEl.src = "/similarCos/img/drop.png";
+		imgEl.classList.add("iimg");
+
+		liEl.appendChild(imgEl);
+		liEl.appendChild(document.createTextNode(item));
+
+		ulEl.appendChild(liEl);
+		});
+
+		cautionEl.innerHTML = "";
+		cautionEl.appendChild(ulEl);
+		
 
 	}else if ($(".card_choice .card_02").find(".card_name").text() == "") { //카드 섹션 1 채워져있고 2 비워져있을 때 2에 삽입
 
@@ -675,7 +686,24 @@ $(function(){
 		const p = document.querySelector(".cd_con.annual_fee .card_02");
 		p.querySelector('.keyword').textContent = ptype;
 		const i = document.querySelector(".cd_con.last_result .card_02");
-		i.querySelector('.caution').textContent = slicedIngredients;
+		const cautionEl = i.querySelector('.caution');
+		const ulEl = document.createElement("ul");
+		slicedIngredients.forEach(item => {
+		const liEl = document.createElement("li");
+		liEl.classList.add("ing");
+		
+		const imgEl = document.createElement("img");
+		imgEl.src = "/similarCos/img/drop.png";
+		imgEl.classList.add("iimg");
+
+		liEl.appendChild(imgEl);
+		liEl.appendChild(document.createTextNode(item));
+
+		ulEl.appendChild(liEl);
+		});
+
+		cautionEl.innerHTML = "";
+		cautionEl.appendChild(ulEl);
 
 	}else if ($(".card_choice .card_02").find(".card_name").text() != "") { //카드 섹션 2 비워져있을 때 3에 삽입
 
@@ -699,8 +727,24 @@ $(function(){
 			const p = document.querySelector(".cd_con.annual_fee .card_03");
 		p.querySelector('.keyword').textContent = ptype;
 		const i = document.querySelector(".cd_con.last_result .card_03");
-		i.querySelector('.caution').textContent = slicedIngredients;
+		const cautionEl = i.querySelector('.caution');
+		const ulEl = document.createElement("ul");
+		slicedIngredients.forEach(item => {
+		const liEl = document.createElement("li");
+		liEl.classList.add("ing");
+		
+		const imgEl = document.createElement("img");
+		imgEl.src = "/similarCos/img/drop.png";
+		imgEl.classList.add("iimg");
 
+		liEl.appendChild(imgEl);
+		liEl.appendChild(document.createTextNode(item));
+
+		ulEl.appendChild(liEl);
+		});
+
+		cautionEl.innerHTML = "";
+		cautionEl.appendChild(ulEl);
 	}else {
 		alert('최대 3개의 상품까지 비교할 수 있습니다.');
 	}
@@ -741,7 +785,7 @@ $(function(){
 		document.querySelector(`.${take} .card_del`).setAttribute('onclick', `delThis('${take}')`);
 		document.querySelector(`.${take} .rates`).textContent = document.querySelector(`.${give} .rates`).textContent;
 		document.querySelector(`.${take} .price`).textContent = document.querySelector(`.${give} .price`).textContent;
-		document.querySelector(`.${take} .caution`).textContent = document.querySelector(`.${give} .caution`).textContent;
+		document.querySelector(`.${take} .caution`).innerHTML = document.querySelector(`.${give} .caution`).innerHTML;
 		document.querySelector(`.${take} .keyword`).textContent = document.querySelector(`.${give} .keyword`).textContent;
 
 	}
@@ -804,7 +848,7 @@ $(function(){
 	    const [pcode, pname, brand, price, imglink, rate, review, pVolume, ptype, pingredient] = arr[i];
 			console.log("img: "+ imglink);
 	    slide.innerHTML = `
-      <div class="prod-unit">
+      <div class="prod-unit" style="padding:0px;height:100%;">
         <div class="img" data-slitmcd="" data-info="">
 					<input type="hidden" class="pcode" value="${pcode}">
 					<input type="hidden" class="price" value="${price}">
@@ -812,13 +856,14 @@ $(function(){
 					<input type="hidden" class="ptype" value="${ptype}">
 					<input type="hidden" class="pingredient" value="${pingredient}">
 
-          <a href="/product/detail?code=${pcode}";"> 
+          <a href="/product/detail?code=${pcode}";" style="display: inline-block; position: relative;"> 
             <img src=${imglink} alt="${pname}" onerror="noImage(this, 'https://image.thehyundai.com/hdmall/images/pd/no_image_480x480.jpg')">
+						<a href="#" onclick="del('${pcode}',${i})" class="x"></a>
           </a>
         </div>
-        <div class="info">
-          <div class="price-info single"><span style="font-size:18px;">${pname}</span></div>
-          <a href="#" class="title ellipsis" onclick="javascript:untdItemDetailView('30015','${pcode}', 'N','00','');return false;" style="font-size:16px !important">${brand}</a>
+        <div class="info" style="padding-top:0px;">
+          <a class="title ellipsis" onclick="javascript:untdItemDetailView('30015','${pcode}', 'N','00','');return false;" style="font-size:15px !important">${brand}</a>
+          <div class="price-info single" style="margin-top:0px;"><span style="font-size:18px;">${pname}</span></div>
         </div>
         <div class="addinfo" style="margin-top:0px;">
           <div class="review-info">
@@ -828,8 +873,7 @@ $(function(){
         </div>
         <div class="card_choice">
           <div class="bn_box" style="margin-top:10px;">
-            <a type="button" class="button button5" onclick="compareThis('slide${i}')">비교하기</button>
-            <a onclick="del('${pcode}',${i})" class="button button4" data-v-35734774="">삭제하기</a>  
+            <a type="button" class="button button5" onclick="compareThis('slide${i}')">비교하기</a>
           </div>
         </div>
       </div>
@@ -863,6 +907,11 @@ $(function(){
 			var prev = document.querySelector('.slide'+(i-1));
 
 			prev.innerHTML = next.innerHTML;
+			var button5 = prev.querySelector('.button5');
+    	button5.onclick = function() {
+      compareThis(`slide${i-1}`);
+    
+  }
 		}
 
 		//마지막 prod-unit 슬라이드부터 10까지
