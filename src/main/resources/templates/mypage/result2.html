@@ -12,6 +12,19 @@ header#header {
 	background: none;
 	height: auto;
 }
+
+button.addcart.basket {
+	background:
+		url(https://www.larocheposay.co.kr/images/product/bg_product_sp.png)
+		-444px 0 no-repeat;
+}
+
+button.detailview {
+	background-image: url(/makeup/img/plus.png);
+	width: 56px;
+	height: 56px;
+	background-size: 56px;
+}
 </style>
 <link rel="stylesheet" type="text/css"
 	href="https://image.thehyundai.com/pc/cssssl/font.css" />
@@ -219,30 +232,30 @@ function back() {
 										<section class="product_wrap">
 											<!-- 신상, 단독구성 -->
 											<ul class="product_list ea03" id="listUl">
-													<li style="margin: 0 0 20px 16px;"><a
-														th:href="'/product/detail?code=' + ${lipresult.pcode}"> <img
-															th:src="${lipresult.iloc} + '_600.jpg'"
-															th:alt="${lipresult.pname}"> <input type="hidden"
-															name="lip_pcode" class="lip_pcode"
-															th:value="${lipresult.pcode}" /> <input type="hidden"
-															name="lip_opt" class="lip_opt"
-															th:value="${lipresult.optname}" /> <span
-															class="hash_tag" th:text="${lipresult.bname}"></span> <span
-															class="tit" th:text="${lipresult.pname}"
-															style="height: 54px;"></span> <span class="kind"
-															th:text="${lipresult.optname}"></span> <span
-															class="rating"> </span> <span class="price"> <span
-																class="after">[[${#numbers.formatInteger(lipresult.pprice,
-																	3, 'COMMA')}]]<em>원</em>
-															</span>
+												<li style="margin: 0 0 20px 16px;"><a
+													th:href="'/product/detail?code=' + ${lipresult.pcode}">
+														<img th:src="${lipresult.iloc} + '_600.jpg'"
+														th:alt="${lipresult.pname}"> <input type="hidden"
+														name="lip_pcode" class="lip_pcode"
+														th:value="${lipresult.pcode}" /> <input type="hidden"
+														name="lip_opt" class="lip_opt"
+														th:value="${lipresult.optname}" /> <span class="hash_tag"
+														th:text="${lipresult.bname}"></span> <span class="tit"
+														th:text="${lipresult.pname}" style="height: 54px;"></span>
+														<span class="kind" th:text="${lipresult.optname}"></span>
+														<span class="rating"> </span> <span class="price">
+															<span class="after">[[${#numbers.formatInteger(lipresult.pprice,
+																3, 'COMMA')}]]<em>원</em>
 														</span>
-													</a>
-														<div class="over">
-															<button class="detailview">자세히보기</button>
-															<button data-price="${lipresult.pprice}" data-linename="${lipresult.pname}"
-																data-sapcode="${lipresult.pname}" data-category="20"
-																class="addcart basket">장바구니 담기</button>
-														</div></li>
+													</span>
+												</a>
+													<div class="over">
+														<button class="detailview">자세히보기</button>
+														<button data-price="${lipresult.pprice}"
+															data-linename="${lipresult.pname}"
+															data-sapcode="${lipresult.pname}" data-category="20"
+															class="addcart basket">장바구니 담기</button>
+													</div></li>
 											</ul>
 										</section>
 									</div>
@@ -250,24 +263,25 @@ function back() {
 							</form>
 						</div>
 						<div class="simlip">
-							<div class="makeupwrapper" style="margin-bottom: 100px;width: 900px;">
+							<div class="makeupwrapper"
+								style="margin-bottom: 100px; width: 900px;">
 								<div class="swiper-container">
 									<div class="swiper-wrapper" style="height: 440px;">
-										<div class="swiper-slide" th:each="simlip : ${simlip}" style="width: 284px;height:437px;margin-right: 24px;">
-										<section class="product_wrap">
-										<ul class="product_list ea03" id="listUl">
-											<li style="margin: 0 0 20px 16px;"><a
+										<div class="swiper-slide" th:each="simlip : ${simlip}"
+											style="width: 284px; height: 437px; margin-right: 24px;">
+											<section class="product_wrap">
+												<ul class="product_list ea03" id="listUl">
+													<li style="margin: 0 0 20px 16px;"><a
 														th:href="'/product/detail?code=' + ${simlip.pcode}"> <img
 															th:src="${simlip.iloc} + '_600.jpg'"
 															th:alt="${simlip.pname}"> <input type="hidden"
 															name="lip_pcode" class="lip_pcode"
 															th:value="${simlip.pcode}" /> <input type="hidden"
 															name="lip_opt" class="lip_opt"
-															th:value="${simlip.optname}" /> <span
-															class="hash_tag" th:text="${simlip.bname}"></span> <span
-															class="tit" th:text="${simlip.pname}"
-															style="height: 54px;"></span> <span class="kind"
-															th:text="${simlip.optname}"></span> <span
+															th:value="${simlip.optname}" /> <span class="hash_tag"
+															th:text="${simlip.bname}"></span> <span class="tit"
+															th:text="${simlip.pname}" style="height: 54px;"></span> <span
+															class="kind" th:text="${simlip.optname}"></span> <span
 															class="rating"> </span> <span class="price"> <span
 																class="after">[[${#numbers.formatInteger(simlip.pprice,
 																	3, 'COMMA')}]]<em>원</em>
@@ -276,10 +290,13 @@ function back() {
 													</a>
 														<div class="over">
 															<button class="detailview">자세히보기</button>
-															<button data-price="${simlip.pprice}" data-linename="${simlip.pname}"
+															<button data-price="${simlip.pprice}"
+																data-linename="${simlip.pname}"
 																data-sapcode="${simlip.pname}" data-category="20"
 																class="addcart basket">장바구니 담기</button>
-														</div></li></ul></section>
+														</div></li>
+												</ul>
+											</section>
 										</div>
 									</div>
 									<div class="swiper-button-next"></div>
@@ -298,80 +315,77 @@ function back() {
 									style="text-align: center; font-weight: bold; font-family: 'locator-regular'; font-size: 20px; color: cadetblue; margin-top: 30px;">
 									ARTIST's PICK</p>
 							</div>
-							<form method="post" enctype="multipart/form-data"
-								action="/makeup/makeup_send">
-								<div class="lip_prod">
-									<div class="product-list-wrap1"
-										style="text-align: center; width: fit-content; margin: 0 auto;">
-										<section class="product_wrap">
-											<!-- 신상, 단독구성 -->
-											<ul class="product_list ea03" id="listUl">
-												<li style="margin: 0 0 20px 16px;"><a
-													href="/product/detail?code=A1592419"> <img
-														th:src="${blushresult.iloc} + '_600.jpg'"
-														th:alt="${blushresult.pname}"> <input type="hidden"
-														name="blush_pcode" class="blush_pcode"
-														th:value="${blushresult.pcode}" /> <input type="hidden"
-														name="blush_opt" class="blush_opt"
-														th:value="${blushresult.optname}" /> <span
-														class="hash_tag" th:text="${blushresult.bname}"></span> <span class="tit" style="height: 54px"
-														th:text="${blushresult.pname}"></span> <span class="kind"
-														th:text="${blushresult.optname}"></span> <span
-														class="rating"> </span> <span class="price"> <span
-															class="after">[[${#numbers.formatInteger(blushresult.pprice,
-																3, 'COMMA')}]]<em>원</em>
-														</span>
-													</span>
-												</a>
-													<div class="btn_green"
-														style="text-align: center; margin: 30px 0;">
-														<p class="pickbtn"
-															style="line-height: 30px; display: inline-block;">
-															<img src="/common/image/add.png"
-																style="width: 22px; height: 22px; margin-right: 6px; margin-bottom: 3px;">비교함
-															담기
-														</p>
-													</div>
-													<div class="over">
-														<button class="detailview">자세히보기</button>
-														<button data-price="45000" data-linename="[나스] 파워매트 립스틱"
-															data-sapcode="A1592419" data-category="20"
-															class="addcart basket">장바구니 담기</button>
-													</div></li>
-											</ul>
-										</section>
-									</div>
-								</div>
-							</form>
-						</div>
-						<div class="simblush">
-							<div class="makeupwrapper" style="margin-bottom: 100px;">
-								<div class="swiper-container">
-									<div class="swiper-wrapper" style="height: 400px;">
-										<div class="swiper-slide" th:each="simblush : ${simblush}"  style="width: 264px;margin-right: 24px;height: 400px;">
+							<div class="lip_prod">
+								<div class="product-list-wrap1"
+									style="text-align: center; width: fit-content; margin: 0 auto;">
+									<section class="product_wrap">
+										<!-- 신상, 단독구성 -->
+										<ul class="product_list ea03" id="listUl">
 											<li style="margin: 0 0 20px 16px;"><a
-												th:href="'/product/detail?code=' + ${simblush.pcode}"> <img
-													th:src="${simblush.iloc} + '_600.jpg'"
-													th:alt="${simblush.pname}"> <input type="hidden"
+												href="/product/detail?code=A1592419"> <img
+													th:src="${blushresult.iloc} + '_600.jpg'"
+													th:alt="${blushresult.pname}"> <input type="hidden"
 													name="blush_pcode" class="blush_pcode"
-													th:value="${simblush.pcode}"> <input type="hidden"
+													th:value="${blushresult.pcode}" /> <input type="hidden"
 													name="blush_opt" class="blush_opt"
-													th:value="${simblush.optname}"> <span
-													class="hash_tag" th:text="${simblush.bname}"> </span> <span class="tit"
-													th:value="${simblush.pname}" th:text="${simblush.pname}"></span>
-													<span class="kind" th:value="${simblush.optname}"
-													th:text="${simblush.optname}"></span> <span class="price">
-														<span class="after">[[${#numbers.formatInteger(simblush.pprice,
+													th:value="${blushresult.optname}" /> <span
+													class="hash_tag" th:text="${blushresult.bname}"></span> <span
+													class="tit" style="height: 54px"
+													th:text="${blushresult.pname}"></span> <span class="kind"
+													th:text="${blushresult.optname}"></span> <span
+													class="rating"> </span> <span class="price"> <span
+														class="after">[[${#numbers.formatInteger(blushresult.pprice,
 															3, 'COMMA')}]]<em>원</em>
-													</span> <span class="choice"> <span class="checkcss">
-																<input type="checkbox" class="recomPrdtSeq"
-																name="prdtSeqs" data-cnt="10" id="checkbox966"
-																value="966"><label for="checkbox966"><i
-																	class="hide">선택</i></label>
-														</span>
 													</span>
 												</span>
-											</a></li>
+											</a>
+												<div class="over">
+													<button class="detailview">자세히보기</button>
+													<button data-price="45000" data-linename="[나스] 파워매트 립스틱"
+														data-sapcode="A1592419" data-category="20"
+														class="addcart basket">장바구니 담기</button>
+												</div></li>
+										</ul>
+									</section>
+								</div>
+							</div>
+						</div>
+						<div class="simblush">
+							<div class="makeupwrapper"
+								style="margin-bottom: 100px; width: 900px;">
+								<div class="swiper-container">
+									<div class="swiper-wrapper" style="height: 440px;">
+										<div class="swiper-slide" th:each="simblush : ${simblush}"
+											style="width: 284px; height: 437px; margin-right: 24px;">
+											<section class="product_wrap">
+												<ul class="product_list ea03" id="listUl">
+													<li style="margin: 0 0 20px 16px;"><a
+														th:href="'/product/detail?code=' + ${simblush.pcode}">
+															<img th:src="${simblush.iloc} + '_600.jpg'"
+															th:alt="${simblush.pname}"> <input type="hidden"
+															name="blush_pcode" class="blush_pcode"
+															th:value="${simblush.pcode}"> <input
+															type="hidden" name="blush_opt" class="blush_opt"
+															th:value="${simblush.optname}"> <span
+															class="hash_tag" th:text="${simblush.bname}"> </span> <span
+															class="tit" th:value="${simblush.pname}"
+															style="height: 54px;" th:text="${simblush.pname}"></span>
+															<span class="kind" th:value="${simblush.optname}"
+															th:text="${simblush.optname}"></span> <span class="price">
+																<span class="after">[[${#numbers.formatInteger(simblush.pprice,
+																	3, 'COMMA')}]]<em>원</em>
+															</span>
+														</span>
+													</a>
+														<div class="over">
+															<button class="detailview">자세히보기</button>
+															<button data-price="${simblush.pprice}"
+																data-linename="${simblush.pname}"
+																data-sapcode="${simblush.pname}" data-category="20"
+																class="addcart basket">장바구니 담기</button>
+														</div></li>
+												</ul>
+											</section>
 										</div>
 									</div>
 									<div class="swiper-button-next"></div>
@@ -390,80 +404,76 @@ function back() {
 									style="text-align: center; font-weight: bold; font-family: 'locator-regular'; font-size: 20px; color: cadetblue; margin-top: 30px;">
 									ARTIST's PICK</p>
 							</div>
-							<form method="post" enctype="multipart/form-data"
-								action="/makeup/makeup_send">
-								<div class="face_prod">
-									<div class="product-list-wrap1"
-										style="text-align: center; width: fit-content; margin: 0 auto;">
-										<section class="product_wrap">
-											<!-- 신상, 단독구성 -->
-											<ul class="product_list ea03" id="listUl">
-												<li style="margin: 0 0 20px 16px;"><a
-													href="/product/detail?code=A1592419"> <img
-														th:src="${faceresult.iloc} + '_600.jpg'"
-														th:alt="${faceresult.pname}"> <input type="hidden"
-														name="face_pcode" class="face_pcode"
-														th:value="${faceresult.pcode}" /> <input type="hidden"
-														name="face_opt" class="face_opt"
-														th:value="${faceresult.optname}" /> <span
-														class="hash_tag" th:text="${faceresult.bname}"></span> <span class="tit" style="height: 54px"
-														th:text="${faceresult.pname}"></span> <span class="kind"
-														th:text="${faceresult.optname}"></span> <span
-														class="rating"> </span> <span class="price"> <span
-															class="after">[[${#numbers.formatInteger(faceresult.pprice,
-																3, 'COMMA')}]]<em>원</em>
-														</span>
-													</span>
-												</a>
-													<div class="btn_green"
-														style="text-align: center; margin: 30px 0;">
-														<p class="pickbtn"
-															style="line-height: 30px; display: inline-block;">
-															<img src="/common/image/add.png"
-																style="width: 22px; height: 22px; margin-right: 6px; margin-bottom: 3px;">비교함
-															담기
-														</p>
-													</div>
-													<div class="over">
-														<button class="detailview">자세히보기</button>
-														<button data-price="45000" data-linename="[나스] 파워매트 립스틱"
-															data-sapcode="A1592419" data-category="20"
-															class="addcart basket">장바구니 담기</button>
-													</div></li>
-											</ul>
-										</section>
-									</div>
-								</div>
-							</form>
-						</div>
-						<div class="simface">
-							<div class="makeupwrapper" style="margin-bottom: 100px;">
-								<div class="swiper-container">
-										<div class="swiper-wrapper" style="height: 500px;">
-										<div class="swiper-slide" th:each="simface : ${simface}"  style="width: 264px;margin-right: 24px;height: 500px;">
+							<div class="face_prod">
+								<div class="product-list-wrap1"
+									style="text-align: center; width: fit-content; margin: 0 auto;">
+									<section class="product_wrap">
+										<!-- 신상, 단독구성 -->
+										<ul class="product_list ea03" id="listUl">
 											<li style="margin: 0 0 20px 16px;"><a
-												th:href="'/product/detail?code=' + ${simface.pcode}"> <img
-													th:src="${simface.iloc} + '_600.jpg'"
-													th:alt="${simface.pname}"> <input type="hidden"
+												href="/product/detail?code=A1592419"> <img
+													th:src="${faceresult.iloc} + '_600.jpg'"
+													th:alt="${faceresult.pname}"> <input type="hidden"
 													name="face_pcode" class="face_pcode"
-													th:value="${simface.pcode}"> <input type="hidden"
-													name="face_opt" class="faceopt"
-													th:value="${simface.optname}"> <span
-													class="hash_tag" th:text="${simface.bname}"></span> <span class="tit"
-													th:value="${simface.pname}" th:text="${simface.pname}"></span>
-													<span class="kind" th:value="${simface.optname}"
-													th:text="${simface.optname}"></span> <span class="price">
-														<span class="after">[[${#numbers.formatInteger(simface.pprice,
+													th:value="${faceresult.pcode}" /> <input type="hidden"
+													name="face_opt" class="face_opt"
+													th:value="${faceresult.optname}" /> <span class="hash_tag"
+													th:text="${faceresult.bname}"></span> <span class="tit"
+													style="height: 54px" th:text="${faceresult.pname}"></span>
+													<span class="kind" th:text="${faceresult.optname}"></span>
+													<span class="rating"> </span> <span class="price"> <span
+														class="after">[[${#numbers.formatInteger(faceresult.pprice,
 															3, 'COMMA')}]]<em>원</em>
-													</span> <span class="choice"> <span class="checkcss">
-																<input type="checkbox" class="recomPrdtSeq"
-																name="prdtSeqs" data-cnt="10" id="checkbox966"
-																value="966"><label for="checkbox966"><i
-																	class="hide">선택</i></label>
-														</span>
 													</span>
 												</span>
-											</a></li>
+											</a>
+												<div class="over">
+													<button class="detailview">자세히보기</button>
+													<button data-price="45000" data-linename="[나스] 파워매트 립스틱"
+														data-sapcode="A1592419" data-category="20"
+														class="addcart basket">장바구니 담기</button>
+												</div></li>
+										</ul>
+									</section>
+								</div>
+							</div>
+						</div>
+						<div class="simface">
+							<div class="makeupwrapper"
+								style="margin-bottom: 100px; width: 900px;">
+								<div class="swiper-container">
+									<div class="swiper-wrapper" style="height: 440px;">
+										<div class="swiper-slide" th:each="simface : ${simface}"
+											style="width: 284px; height: 437px; margin-right: 24px;">
+											<section class="product_wrap">
+												<ul class="product_list ea03" id="listUl">
+													<li style="margin: 0 0 20px 16px;"><a
+														th:href="'/product/detail?code=' + ${simface.pcode}">
+															<img th:src="${simface.iloc} + '_600.jpg'"
+															th:alt="${simface.pname}"> <input type="hidden"
+															name="face_pcode" class="face_pcode"
+															th:value="${simface.pcode}"> <input type="hidden"
+															name="face_opt" class="faceopt"
+															th:value="${simface.optname}"> <span
+															class="hash_tag" th:text="${simface.bname}"></span> <span
+															class="tit" th:value="${simface.pname}"
+															style="height: 54px;" th:text="${simface.pname}"></span>
+															<span class="kind" th:value="${simface.optname}"
+															th:text="${simface.optname}"></span> <span class="price">
+																<span class="after">[[${#numbers.formatInteger(simface.pprice,
+																	3, 'COMMA')}]]<em>원</em>
+															</span>
+														</span>
+													</a>
+														<div class="over">
+															<button class="detailview">자세히보기</button>
+															<button data-price="${simface.pprice}"
+																data-linename="${simface.pname}"
+																data-sapcode="${simface.pname}" data-category="20"
+																class="addcart basket">장바구니 담기</button>
+														</div></li>
+												</ul>
+											</section>
 										</div>
 									</div>
 									<div class="swiper-button-next"></div>
@@ -598,5 +608,27 @@ $('#facepick').click(function(){
     //element.append(slider);
 });
 	</script>
+	<style>
+button.addcart.basket {
+	background:
+		url(https://www.larocheposay.co.kr/images/product/bg_product_sp.png)
+		-444px 0 no-repeat !important;
+}
+
+button.detailview {
+	background-image: url(/makeup/img/plus.png) !important;
+	width: 56px !important;
+	height: 56px !important;
+	background-size: 56px !important;
+	background: aliceblue !important;
+	border-radius: 50px !important;
+}
+
+.product_wrap .product_list .over button:first-child {
+	background-image: url(/makeup/img/plus.png) !important;
+	background-size: 56px !important;
+	opacity: 0.85;
+}
+</style>
 </body>
 </html>

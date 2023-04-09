@@ -104,8 +104,7 @@ span.statusimage {
 							</ul></li>
 						<li class=""><a class="not">MY 주문</a>
 							<ul>
-								<li class=""><a href="/front/mpa/selectOrdDlvCrst.thd"
-									onclick="javascript:GA_Event('PC_마이페이지', 'LNB', '주문현황_주문확인/배송조회');">주문
+								<li class=""><a href="/mypage/order">주문
 										내역</a></li>
 
 							</ul></li>
@@ -117,9 +116,72 @@ span.statusimage {
 				<div class="content">
 					<div class="myhyundai-head"></div>
 					<div class="myhyundai-main" style="margin: 40px 0">
-						<h3>MY 피부 MBTI</h3>
+						<h3>MY 주문</h3>
 					</div>
 					<!-- 여기다 내용 쓰면 된다 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+					<div class="cart-list">
+						<h4 class="blind">주문/배송 내역</h4>
+						<!-- table-wrap -->
+						<div class="table-wrap coltype cart no-border-top"
+							style="margin-bottom: 100px;">
+							<table style="margin-top:0;font-size: 13px;">
+								<caption></caption>
+								<colgroup>
+									<col style="width: 130px" />
+									<col style="width: 470px" />
+									<col style="width: 120px" />
+									<col style="width: 120px" />
+								</colgroup>
+								<thead>
+									<tr>
+										<th scope="col">주문일/주문번호</th>
+										<th scope="col" style="width: 100px">상품정보/옵션정보</th>
+										<th scope="col" style="">결제금액</th>
+										<th scope="col" style="">주문상태</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:if="${#lists.isEmpty(yesres)}">
+										<td height="120" colspan="5">주문 내역이 없습니다.</td>
+									</tr>
+									<!-- 상담 완료 - 결과 확인 -->
+									<tr th:each="yesres : ${yesres}"
+										th:if="${not #lists.isEmpty(yesres)}">
+										<td class="valign-top" rowspan="1">
+											<div class="od-info">
+												<p class="strong text-point2" th:text="${yesres.rid}"></p>
+												<p class="where">온라인</p>
+											</div>
+										</td>
+
+										<td class="price-info" style="">
+											<div class="tot-price"
+												th:text="${#strings.substring(yesres.rdate, 0, 10)}"></div>
+										</td>
+										<td class="price-info">
+											<div class="tot-price"
+												th:text="${#strings.substring(yesres.rdate, 11, 16)}"></div>
+										</td>
+										<td class="shipping">
+											<div class="order-status">상담 완료</div>
+										</td>
+										<td class="ctrl">
+											<p class="v-btn-wrap">
+												<a th:href="'/mypage/result?rid=' + ${yesres.rid}"
+													onclick="javascript:GA_Event('PC_마이페이지', '최근_주문_배송내역', '상세내역');"
+													class="btn color4 size1">결과
+													확인</a>
+											</p>
+										</td>
+									</tr>
+									<!-- /상담 완료 - 결과 확인 -->
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+					<!-- 여기다 내용 쓰면 된다 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+					
 
 
 				</div>

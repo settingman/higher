@@ -68,6 +68,24 @@ public class MypageController {
 	@Value("${com.demo.upload.path}")
 	private String uploadPath;
 	
+	// 메이크업 예약 수정
+	@GetMapping("/reserv_detail")
+	public void reserv_read(@RequestParam("rid") String rid, Model model) {
+		log.info("===== 예약 내역 확인 =====");
+		
+		ReservVO info = service.getReservInfo(rid);
+		String rrid = info.getMid();
+		Member mem = new Member();
+		mem = makeup.MemInfo(rrid);
+		
+		Profile pro = new Profile();
+		pro = mapper.findProfile(rrid, rid);
+		
+		model.addAttribute("mem", mem);
+		model.addAttribute("pro", pro);
+		model.addAttribute("info", info);
+	}
+	
 	// 주문내역
 	@GetMapping("/order")
 	public void orderlist(Principal principal, Model model) {

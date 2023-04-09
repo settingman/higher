@@ -145,13 +145,11 @@ header#header {
 							</ul></li>
 						<li class=""><a class="not">MY 피부 MBTI</a>
 							<ul>
-								<li class=""><a href="/mypage/skinmbti">결과
-										보기</a></li>
+								<li class=""><a href="/mypage/skinmbti">결과 보기</a></li>
 							</ul></li>
 						<li class=""><a class="not">MY 주문</a>
 							<ul>
-								<li class=""><a href="/mypage/order">주문
-										내역</a></li>
+								<li class=""><a href="/mypage/order">주문 내역</a></li>
 
 							</ul></li>
 
@@ -171,7 +169,7 @@ header#header {
 					<!-- cart-list -->
 					<div class="myhyundai-main"
 						style="margin: 40px 0; font-family: 'notokr-demilight';">
-						<h2>예약 결과</h2>
+						<h2>예약 내용</h2>
 					</div>
 					<div class="numbering"
 						style="font-family: 'locator-medium'; position: relative; float: left; margin-right: 695px; line-height: 26px;">
@@ -180,215 +178,53 @@ header#header {
 					</div>
 					<div style="position: relative;">
 						<p class="v-btn-wrap" style="">
-							<a th:href="'/mypage/result2?rid=' + ${info.rid}"
+							<a th:href="'/mypage/modify?rid=' + ${info.rid}"
 								onclick="javascript:GA_Event('PC_마이페이지', '최근_주문_배송내역', '상세내역');"
 								class="btn color4 size1"
-								style="background: #bfae90; border: #bfae90;">상세 결과</a>
+								style="background: #bfae90; border: #bfae90;">수정하기</a>
 						</p>
 					</div>
 					<div>
-						<div class="makeupwrapper" style="margin-bottom: 100px;">
+						<div class="makeupwrapper">
 							<!-- 예약자 정보 -->
-							<div class="table-wrap order-addinfo mt20">
+							<div class="table-wrap order-addinfo mt20" style="display: flex;">
+								<div class="wrapper3">
+									<div class="faceupload">
+										<img class="face"
+											th:src="'/beauty/display?fileName=' + ${info.rimg}"
+											style="max-width: 200px; height: 265px;">
+									</div>
+								</div>
+
 								<table>
 									<caption></caption>
 									<colgroup>
 										<col style="width: 150px;">
-										<col style="width: 690px;">
+										<col style="width: 390px;">
 									</colgroup>
 									<tbody>
 										<tr>
-											<th scope="row">예약자</th>
+											<th scope="row" style="vertical-align: middle;">예약자</th>
 											<td colspan="3" th:text="${mem.mName}"></td>
 										</tr>
 										<tr>
-											<th scope="row">상담일자</th>
+											<th scope="row" style="vertical-align: middle;">상담일자</th>
 											<td th:text="${info.rdate}"></td>
 										</tr>
 										<tr>
-											<th scope="row">피부 MBTI</th>
+											<th scope="row" style="vertical-align: middle;">피부 MBTI</th>
 											<td th:text="${pro.mbti}"></td>
 										</tr>
 
 										<tr>
-											<th scope="row">담당 ARTIST</th>
-											<td colspan="3">박성환</td>
-										</tr>
-										<!-- 주문시 요청사항 배송기사님 -->
-
-										<tr>
-											<th scope="row">요청 사항</th>
+											<th scope="row" style="vertical-align: middle;">요청 사항</th>
 											<td th:text="${info.rneeds}">></td>
-										</tr>
-										<tr>
-											<th scope="row">아티스트 당부 사항</th>
-											<td colspan="3" th:text="${result.artistcmt}"></td>
 										</tr>
 
 									</tbody>
 								</table>
 							</div>
 							<!-- 예약자 정보 -->
-							<!-- color 정보 -->
-							<div class="table-wrap order-addinfo mt20">
-								<table>
-									<caption></caption>
-									<colgroup>
-										<col style="width: 33%;">
-
-										<col style="width: 33%;">
-										<col style="width: 33%;">
-									</colgroup>
-									<tbody>
-										<tr style="font-family: 'notokr-medium';">
-											<td style="text-align: center;">LIP</td>
-											<td style="text-align: center;">BLUSH</td>
-											<td style="text-align: center;">FOUNDATION</td>
-										</tr>
-										<tr>
-											<td style="text-align: center;" th:text="${result.lip}"></td>
-											<td style="text-align: center;" th:text="${result.blush}"></td>
-											<td style="text-align: center;" th:text="${result.face}"></td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-							<!-- color 정보 -->
-							<!-- before after -->
-							<div class="numbering"
-								style="text-align: center; margin: 20px; font-family: 'notokr-demilight'; font-size: initial;">
-								<p style="">결과 사진</p>
-							</div>
-							<div class="wrapper3"
-								style="grid-template-columns: repeat(2, 1fr); display: grid; place-items: center; margin: 0 50px;">
-								<div class="faceupload" style="float: left">
-									<img class="face"
-										th:src="'/beauty/display?fileName=' + ${info.rimg}"
-										style="max-width: 300px; margin: 0 20 20 20; float: right;">
-								</div>
-								<div class="faceupload" style="float: left">
-									<img class="face" th:src="${result.result_img}"
-										style="max-width: 300px; margin: 0 20 20 20">
-								</div>
-								<div style="text-align: center">
-									<span style="font-family: 'locator-regular';">BEFORE</span>
-								</div>
-								<div style="font-family: 'locator-regular';">
-									<span>AFTER</span>
-								</div>
-							</div>
-							<!-- before after -->
-							<div class="selectprod">
-								<div class="numbering"
-									style="margin: 20px 0; text-align: center">
-									<p
-										style="text-align: center; font-weight: bold; font-family: 'notokr-demilight'; font-size: initial;">
-										ARTIST's PICK</p>
-								</div>
-								<form method="post" enctype="multipart/form-data"
-									action="/makeup/makeup_send">
-									<div class="lip_prod">
-										<div class="product-list-wrap1" style="width: fit-content">
-											<div class="select-list" style="width: auto;">
-												<div style="margin-bottom: 10px">
-													<p>Lip</p>
-												</div>
-												<div style="margin-bottom: 10px">
-													<p>Blush</p>
-												</div>
-												<div style="margin-bottom: 10px">
-													<p>Foundation</p>
-												</div>
-
-											</div>
-											<section class="product_wrap">
-
-												<!-- 신상, 단독구성 -->
-												<ul class="product_list ea03" id="listUl">
-													<li style="margin: 0 0 20px 16px;"><a
-														th:href="'/product/detail?code=' + ${lipresult.pcode}"> <img
-															th:src="${lipresult.iloc} + '_600.jpg'"
-															th:alt="${lipresult.pname}"> <input type="hidden"
-															name="lip_pcode" class="lip_pcode"
-															th:value="${lipresult.pcode}" /> <input type="hidden"
-															name="lip_opt" class="lip_opt"
-															th:value="${lipresult.optname}" /> <span
-															class="hash_tag" th:text="${lipresult.bname}"></span> <span
-															class="tit" th:text="${lipresult.pname}"
-															style="height: 54px;"></span> <span class="kind"
-															th:text="${lipresult.optname}"></span> <span
-															class="rating"> </span> <span class="price"> <span
-																class="after">[[${#numbers.formatInteger(lipresult.pprice,
-																	3, 'COMMA')}]]<em>원</em>
-															</span>
-														</span>
-													</a>
-														<div class="over">
-															<button class="detailview">자세히보기</button>
-															<button data-price="${lipresult.pprice}" data-linename="${lipresult.pname}"
-																data-sapcode="${lipresult.pname}" data-category="20"
-																class="addcart basket">장바구니 담기</button>
-														</div></li>
-													<li class="" style="margin: 0 0 20px 16px;"><a
-														th:href="'/product/detail?code=' + ${blushresult.pcode}"> <img
-															th:src="${blushresult.iloc} + '_600.jpg'"
-															th:alt="${blushresult.pname}"> <input type="hidden"
-															name="blush_pcode" class="blush_pcode"
-															th:value="${blushresult.pcode}" /> <input type="hidden"
-															name="blush_opt" class="blush_opt"
-															th:value="${blushresult.optname}" /> <span
-															class="hash_tag" th:text="${blushresult.bname}"></span> <span
-															class="tit" style="height: 54px;"
-															th:text="${blushresult.pname}"></span> <span class="kind"
-															th:text="${blushresult.optname}"></span> <span
-															class="rating"> </span> <span class="price"> <span
-																class="after">[[${#numbers.formatInteger(blushresult.pprice,
-																	3, 'COMMA')}]]<em>원</em>
-															</span>
-														</span>
-													</a>
-													<div class="over">
-															<button class="detailview">자세히보기</button>
-															<button data-price="${blushresult.pprice}" data-linename="${blushresult.pname}"
-																data-sapcode="${blushresult.pname}" data-category="20"
-																class="addcart basket">장바구니 담기</button>
-														</div></li>
-													<li style="margin: 0 0 20px 16px;"><a
-														th:href="'/product/detail?code=' + ${faceresult.pcode}"> <img
-															th:src="${faceresult.iloc} + '_600.jpg'"
-															th:alt="${faceresult.pname}"> <input type="hidden"
-															name="face_pcode" class="face_pcode"
-															th:value="${faceresult.pcode}" /> <input type="hidden"
-															name="face_opt" class="face_opt"
-															th:value="${faceresult.optname}" /> <span
-															class="hash_tag" th:text="${faceresult.bname}"></span> <span
-															class="tit" style="height: 54px;"
-															th:text="${faceresult.pname}"></span> <span class="kind"
-															th:text="${faceresult.optname}"></span> <span
-															class="rating"> </span> <span class="price"> <span
-																class="after">[[${#numbers.formatInteger(faceresult.pprice,
-																	3, 'COMMA')}]]<em>원</em>
-															</span>
-														</span>
-													</a>
-														<div class="over">
-															<button class="detailview">자세히보기</button>
-															<button data-price="${faceresult.pprice}" data-linename="${faceresult.pname}"
-																data-sapcode="${faceresult.pname}" data-category="20"
-																class="addcart basket">장바구니 담기</button>
-														</div></li>
-
-												</ul>
-											</section>
-											<div class="btn_green"
-												style="text-align: center; margin-top: 10px">
-												<p class="pickbtn" style="line-height: 30px">전체 장바구니 담기
-												</p>
-											</div>
-										</div>
-									</div>
-								</form>
-							</div>
 						</div>
 					</div>
 
@@ -468,7 +304,7 @@ header#header {
 
 		}
 	</script>
-		<style>
+	<style>
 button.addcart.basket {
 	background:
 		url(https://www.larocheposay.co.kr/images/product/bg_product_sp.png)
