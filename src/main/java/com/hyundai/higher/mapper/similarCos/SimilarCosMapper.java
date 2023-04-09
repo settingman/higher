@@ -26,14 +26,5 @@ public interface SimilarCosMapper {
 
 	// 성분 유사템 추천
 	public List<SimilarCosDTO> cntList(String pcode, int dept1no, int dept2no, List<String> list);
-
-	// 상품명 검색 조회 AJAX
-	public List<ProductDTO> searchProdList(String keyword);
-	
-	// 상품 검색 조회
-	public List<ProductDTO> selectProdList(String keyword);
-	
-	// 인기 상품 목록
-	public List<ProductDTO> selectBestProdList();
 	
 }

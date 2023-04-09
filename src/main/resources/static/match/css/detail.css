@@ -1,0 +1,45 @@
+.product_detail .addItem_slider .view li>div span.ico{
+	position: absolute;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 60px;
+    background: url(https://www.larocheposay.co.kr/images/product/bg_product_sp.png) no-repeat;
+    text-align: center;
+    color: #fff;
+    font-size: 24px;
+    font-family: 'locator-medium';
+    padding: 5px 0 0;
+}
+
+.product_detail .addItem_slider .view li>div span.ico em{
+    display: block;
+    font-size: 12px;
+    margin-top: 1px;
+}
+
+.sm{
+    font-size: 16px;
+    font-family: 'notokr-medium';
+    padding-right: 25px;
+}
+
+.sm img{
+    width: 20px;
+    vertical-align: bottom;
+    margin-right: 2px;
+}
+
+.sm-per{
+    font-size: 23px;
+    font-family: 'locator-medium';
+    margin-top: 7px;
+}
+
+.product_detail .addItem_slider .view li>div span.tit em{
+	height: 20px;
+}
+
+.star{
+	margin: 10px;
+}

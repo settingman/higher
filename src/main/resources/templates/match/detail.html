@@ -1,436 +1,486 @@
 <!DOCTYPE html>
-<html lang="ko" class="js" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" class="js" xmlns:sec="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 
 <head>
 <head th:insert="~{include/head}"></head>
 
 <style>
-.chart {float: left; width: 200px; height: 200px; text-align: center;}
-.chart span.title{position: relative; display: block; width: 100%; text-align: center; top: 115px;font-size: 20px;}
+.chart {
+	float: left;
+	width: 200px;
+	height: 200px;
+	text-align: center;
+}
+
+.chart span.title {
+	position: relative;
+	display: block;
+	width: 100%;
+	text-align: center;
+	top: 115px;
+	font-size: 20px;
+}
 </style>
+<link rel="stylesheet" type="text/css" href="/match/css/detail.css">
 </head>
 
 <body>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/easy-pie-chart/2.1.6/jquery.easypiechart.min.js"></script>
-  <script>
-    window.onload = function() {
-    
-        const mychart = document.querySelector('.mychart');
-        const percent = mychart.dataset.percent;
-        console.log(percent+"-------------------------");
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/easy-pie-chart/2.1.6/jquery.easypiechart.min.js"></script>
+	<script>
+		window.onload = function() {
 
-        // $('.mychart').easyPieChart({
-        //   trackColor: '#ccc'
-        // })
+			const mychart = document.querySelector('.mychart');
+			const percent = mychart.dataset.percent;
+			console.log(percent + "-------------------------");
 
-        if(percent <=20) {
-          $('.mychart').easyPieChart({
-          barColor: '#FFCBCF',
-          trackColor:'#ccc', //도넛배경색
-          scaleColor: '#fff',
-          lineCap: 'butt',
-          lineWidth: 30,
-          size: 200,
-          animate: 1000,
-          onStart: $.noop,
-          onStop: $.noop
-           });
-        }else if(percent <=40){
-          $('.mychart').easyPieChart({
-        	  barColor: '#f77694',
-          trackColor:'#e9ecef', //도넛배경색
-          scaleColor: '#fff',
-          lineCap: 'butt',
-          lineWidth: 30,
-          size: 200,
-          animate: 1000,
-          onStart: $.noop,
-          onStop: $.noop
-           });
-        }else if(percent <= 60) {
-          $('.mychart').easyPieChart({
-          barColor: '#DCFBF9',
-          trackColor:'#ccc', //도넛배경색
-          scaleColor: '#fff',
-          lineCap: 'butt',
-          lineWidth: 30,
-          size: 200,
-          animate: 1000,
-          onStart: $.noop,
-          onStop: $.noop
-           });
-        }else if(percent <= 80) {
-          $('.mychart').easyPieChart({
-          barColor: '#CBE6FF',
-          trackColor:'#ccc', //도넛배경색
-          scaleColor: '#fff',
-          lineCap: 'butt',
-          lineWidth: 30,
-          size: 200,
-          animate: 1000,
-          onStart: $.noop,
-          onStop: $.noop
-           });
-        }else if(percent <= 100) {
-          $('.mychart').easyPieChart({
-          barColor: '#B7BCFE',
-          trackColor:'#ccc', //도넛배경색
-          scaleColor: '#fff',
-          lineCap: 'butt',
-          lineWidth: 30,
-          size: 200,
-          animate: 1000,
-          onStart: $.noop,
-          onStop: $.noop
-           });
-        }
-    
-      }
-      </script>
-  <div id="wrap" class="right_type" data-fbq-content-id="3596" data-fbq-value="48000">
+			// $('.mychart').easyPieChart({
+			//   trackColor: '#ccc'
+			// })
 
-    <nav id="skip_navi">
-      <a href="#contents">본문 바로가기</a>
-      <a href="#menu">메뉴 바로가기</a>
-      <a href="#footer">하단 정보 바로가기</a>
-    </nav>
-    <!-- header -->
-   	<header id="header" th:insert="~{include/header}"></header>
-    <!-- /header -->
+			if (percent <= 20) {
+				$('.mychart').easyPieChart({
+					barColor : '#FFCBCF',
+					trackColor : '#ccc', //도넛배경색
+					scaleColor : '#fff',
+					lineCap : 'butt',
+					lineWidth : 30,
+					size : 200,
+					animate : 1000,
+					onStart : $.noop,
+					onStop : $.noop
+				});
+			} else if (percent <= 40) {
+				$('.mychart').easyPieChart({
+					barColor : '#f77694',
+					trackColor : '#e9ecef', //도넛배경색
+					scaleColor : '#fff',
+					lineCap : 'butt',
+					lineWidth : 30,
+					size : 200,
+					animate : 1000,
+					onStart : $.noop,
+					onStop : $.noop
+				});
+			} else if (percent <= 60) {
+				$('.mychart').easyPieChart({
+					barColor : '#DCFBF9',
+					trackColor : '#ccc', //도넛배경색
+					scaleColor : '#fff',
+					lineCap : 'butt',
+					lineWidth : 30,
+					size : 200,
+					animate : 1000,
+					onStart : $.noop,
+					onStop : $.noop
+				});
+			} else if (percent <= 80) {
+				$('.mychart').easyPieChart({
+					barColor : '#CBE6FF',
+					trackColor : '#ccc', //도넛배경색
+					scaleColor : '#fff',
+					lineCap : 'butt',
+					lineWidth : 30,
+					size : 200,
+					animate : 1000,
+					onStart : $.noop,
+					onStop : $.noop
+				});
+			} else if (percent <= 100) {
+				$('.mychart').easyPieChart({
+					barColor : '#B7BCFE',
+					trackColor : '#ccc', //도넛배경색
+					scaleColor : '#fff',
+					lineCap : 'butt',
+					lineWidth : 30,
+					size : 200,
+					animate : 1000,
+					onStart : $.noop,
+					onStop : $.noop
+				});
+			}
 
-    <section class="h_link">
-      <nav>
-        <ol>
-          <li><a href="javascript:void(0);" onclick="location.href='/'"><i>HOME</i></a></li>
-          <li class="kor">
-            <a href=""><i>FACE</i></a>
-            <ul class="h_link_sub">
-              <li class="kor">
-                <a href="javascript:void(0)" onclick="location.href='/product/list.do?cate2=1130'">
-                  병원판매화장품</a>
-              </li>
-              <li class="on">
-                <a href="javascript:void(0)" onclick="location.href='/product/list.do?cate2=1004'">
-                  FACE</a>
-              </li>
-              <li>
-                <a href="javascript:void(0)" onclick="location.href='/product/list.do?cate2=1033'">
-                  BODY</a>
-              </li>
-              <li>
-                <a href="javascript:void(0)" onclick="location.href='/product/list.do?cate2=1009'">
-                  SUN CARE</a>
-              </li>
-            </ul>
-          </li>
-          <li class="kor">
-            <a href=""><i>제품 라인별</i></a>
-            <ul class="h_link_sub">
-              <li class="kor">
-                <a href="javascript:void(0)" onclick="location.href='/product/list.do?cate2=1004'">
-                  피부 고민별</a>
-              </li>
-              <li class="on kor">
-                <a href="javascript:void(0)" onclick="location.href='/product/list.do?cate2=1008'">
-                  제품 라인별</a>
-              </li>
-              <li class="kor">
-                <a href="javascript:void(0)" onclick="location.href='/product/list.do?cate2=1011'">
-                  사용 단계별</a>
-              </li>
-            </ul>
-          </li>
-          <li class="current kor">
-            <a href=""><i>시카플라스트</i></a>
-            <ul class="h_link_sub">
-              <li class="kor">
-                <a href="javascript:void(0);" onclick="location.href='/product/list.do?cate2=1008'">전체보기</a>
-              </li>
-              <li class="kor">
-                <a href="javascript:void(0);" onclick="location.href='/product/list.do?cate3=1018'">에빠끌라</a>
-              </li>
-              <li class="on kor">
-                <a href="javascript:void(0);" onclick="location.href='/product/list.do?cate3=1021'">시카플라스트</a>
-              </li>
-              <li class="kor">
-                <a href="javascript:void(0);" onclick="location.href='/product/list.do?cate3=1010'">똘러리앙</a>
-              </li>
-              <li class="kor">
-                <a href="javascript:void(0);" onclick="location.href='/product/list.do?cate3=1024'">히알루 B5</a>
-              </li>
-              <li class="kor">
-                <a href="javascript:void(0);" onclick="location.href='/product/list.do?cate3=1107'">유비데아</a>
-              </li>
-              <li class="kor">
-                <a href="javascript:void(0);" onclick="location.href='/product/list.do?cate3=1114'">퓨어비타민C10</a>
-              </li>
-              <li class="kor">
-                <a href="javascript:void(0);" onclick="location.href='/product/list.do?cate3=1025'">세로징크</a>
-              </li>
-              <li class="kor">
-                <a href="javascript:void(0);" onclick="location.href='/product/list.do?cate3=1022'">오 떼르말</a>
-              </li>
-              <li class="kor">
-                <a href="javascript:void(0);" onclick="location.href='/product/list.do?cate3=1023'">미셀라 클렌징 워터</a>
-              </li>
-              <li class="kor">
-                <a href="javascript:void(0);" onclick="location.href='/product/list.do?cate3=1139'">나이아신아마이드</a>
-              </li>
-            </ul>
-          </li>
-        </ol>
-      </nav>
-    </section>
-    <section id="container">
-      <section id="contents" class="template_wrap" style="margin: 0 auto;">
-        <div class="product_detail">
-          <div class="top">
-            <form id="orderForm" name="orderForm">
+		}
+	</script>
+	<div id="wrap" class="right_type" data-fbq-content-id="3596"
+		data-fbq-value="48000">
 
-              <div class="left">
-                <div class="detail_slider">
-                  <div class="view">
-                    <ul>
-                      <li th:style="'background-image:url('+ ${product.thumbImgList[0].iloc} +'_600.jpg);'">1</li>
-                    </ul>
-                  </div>
-                </div>
-                <!-- //detail_slider -->
-              </div>
-              <!-- //left -->
-              <div class="right" style="margin-top: 90px;">
-                <div class="datail_info_top" style="border: none;">
-                 <p class="brand">[[${product.productDTO.bname}]]</p>
-                  <span class="tit" style="margin-top: 20px;">
-                    <strong>[[${product.productDTO.pname}]]</strong>
-                    <!-- 리페어 세럼 B5 -->
-                  </span>
-                  <span class="star">
-                    <a href="#product_detail_review">
-                      <div class="star-rating bic">
+		<nav id="skip_navi">
+			<a href="#contents">본문 바로가기</a> <a href="#menu">메뉴 바로가기</a> <a
+				href="#footer">하단 정보 바로가기</a>
+		</nav>
+		<!-- header -->
+		<header id="header" th:insert="~{include/header}"></header>
+		<!-- /header -->
+
+		<section class="h_link">
+			<nav>
+				<ol>
+					<li><a href="javascript:void(0);" onclick="location.href='/'"><i>HOME</i></a></li>
+					<li class="kor"><a href=""><i>FACE</i></a>
+						<ul class="h_link_sub">
+							<li class="kor"><a href="javascript:void(0)"
+								onclick="location.href='/product/list.do?cate2=1130'">
+									병원판매화장품</a></li>
+							<li class="on"><a href="javascript:void(0)"
+								onclick="location.href='/product/list.do?cate2=1004'"> FACE</a>
+							</li>
+							<li><a href="javascript:void(0)"
+								onclick="location.href='/product/list.do?cate2=1033'"> BODY</a>
+							</li>
+							<li><a href="javascript:void(0)"
+								onclick="location.href='/product/list.do?cate2=1009'"> SUN
+									CARE</a></li>
+						</ul></li>
+					<li class="kor"><a href=""><i>제품 라인별</i></a>
+						<ul class="h_link_sub">
+							<li class="kor"><a href="javascript:void(0)"
+								onclick="location.href='/product/list.do?cate2=1004'"> 피부
+									고민별</a></li>
+							<li class="on kor"><a href="javascript:void(0)"
+								onclick="location.href='/product/list.do?cate2=1008'"> 제품
+									라인별</a></li>
+							<li class="kor"><a href="javascript:void(0)"
+								onclick="location.href='/product/list.do?cate2=1011'"> 사용
+									단계별</a></li>
+						</ul></li>
+					<li class="current kor"><a href=""><i>시카플라스트</i></a>
+						<ul class="h_link_sub">
+							<li class="kor"><a href="javascript:void(0);"
+								onclick="location.href='/product/list.do?cate2=1008'">전체보기</a></li>
+							<li class="kor"><a href="javascript:void(0);"
+								onclick="location.href='/product/list.do?cate3=1018'">에빠끌라</a></li>
+							<li class="on kor"><a href="javascript:void(0);"
+								onclick="location.href='/product/list.do?cate3=1021'">시카플라스트</a>
+							</li>
+							<li class="kor"><a href="javascript:void(0);"
+								onclick="location.href='/product/list.do?cate3=1010'">똘러리앙</a></li>
+							<li class="kor"><a href="javascript:void(0);"
+								onclick="location.href='/product/list.do?cate3=1024'">히알루 B5</a>
+							</li>
+							<li class="kor"><a href="javascript:void(0);"
+								onclick="location.href='/product/list.do?cate3=1107'">유비데아</a></li>
+							<li class="kor"><a href="javascript:void(0);"
+								onclick="location.href='/product/list.do?cate3=1114'">퓨어비타민C10</a>
+							</li>
+							<li class="kor"><a href="javascript:void(0);"
+								onclick="location.href='/product/list.do?cate3=1025'">세로징크</a></li>
+							<li class="kor"><a href="javascript:void(0);"
+								onclick="location.href='/product/list.do?cate3=1022'">오 떼르말</a>
+							</li>
+							<li class="kor"><a href="javascript:void(0);"
+								onclick="location.href='/product/list.do?cate3=1023'">미셀라
+									클렌징 워터</a></li>
+							<li class="kor"><a href="javascript:void(0);"
+								onclick="location.href='/product/list.do?cate3=1139'">나이아신아마이드</a>
+							</li>
+						</ul></li>
+				</ol>
+			</nav>
+		</section>
+		<section id="container">
+			<section id="contents" class="template_wrap" style="margin: 0 auto;">
+				<div class="product_detail">
+					<div class="top">
+						<form id="orderForm" name="orderForm">
+
+							<div class="left">
+								<div class="detail_slider">
+									<div class="view">
+										<ul>
+											<li
+												th:style="'background-image:url('+ ${product.thumbImgList[0].iloc} +'_600.jpg);'">1</li>
+										</ul>
+									</div>
+								</div>
+								<!-- //detail_slider -->
+							</div>
+							<!-- //left -->
+							<div class="right" style="margin-top: 50px;">
+								<div class="datail_info_top" style="border: none;">
+									<p class="brand">[[${product.productDTO.bname}]]</p>
+									<span class="tit" style="margin-top: 20px;"> <strong
+										style="font-size: 30px;">[[${product.productDTO.pname}]]</strong>
+										<!-- 리페어 세럼 B5 -->
+									</span> <span class="star"> <a href="#product_detail_review">
+											<div class="star-rating bic">
+												<span class="c00"> <em class="hide">벌점 0개</em></span>
+											</div>
+									</a> <em><a href="#product_detail_review"
+											style="color: #8f8f8f;">(270)</a></em>
+									</span>
+									<div class="result"
+										style="display: flex; justify-content: center; margin-bottom: 40px;">
+										<div class="chart mychart" th:data-percent="${score}">
+											<span class="title" style="top: 110px;">[[${score}]]추천해요</span>
+										</div>
+									</div>
+									<div id="ingredient_box">
+										<div id="iTit">주요성분</div>
+										<div>
+											<ul>
+												<li th:each="i : ${mainIngredient}"><img
+													src="/similarCos/img/drop.png">[[${i}]]</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="datail_info_data">
+									<ul>
+
+										<li class="total"><span class="pricetotal">[[${#numbers.formatInteger(product.productDTO.pprice,
+												3, 'COMMA')}]]<em>원</em>
+										</span></li>
+									</ul>
+								</div>
+							</div>
+						</form>
+					</div>
+					<!-- //top -->
+          <div class="addItem_head">
+            <h3>성분이 비슷한 제품 BEST</h3>
+            <div class="right">
+              <span class="checkcss"><input type="checkbox" id="checkbox10_1"><label for="checkbox10_1"><em>제품
+                    모두선택</em></label></span>
+              <button type="button" class="btn_base gray recomBasket">장바구니</button>
+            </div>
+          </div>
+          <!-- addItem_slider -->
+          <div class="addItem_slider">
+            <button type="button" class="ctrl_prev">prev</button>
+            <ul class="view">
+              <li th:each="sProd, sStat : ${similarCos}" th:if="${sProd.percent >= 40}">
+                <div>
+                  <button type="button" class="like">좋아요</button> <!-- 선택완료 class on -->
+                  <span class="ico">[[${sStat.count}]]<em>BEST</em></span> 
+                  <a th:href="'/product/detail?pcode='+${sProd.pcode}">
+                    <span class="photo">
+                    	<img th:if="${sProd.iloc != 'NULL'}" th:src="${sProd.iloc}+'_600.jpg'">
+                    	<img th:if="${sProd.iloc == 'NULL'}" src="https://image.thehyundai.com/hdmall/images/pd/no_image_480x480.jpg">
+                    </span>
+                    <span class="hash">[[${sProd.bname}]]</span>
+                    <span class="tit"><strong style="overflow: hidden; height: 19px; white-space: break-spaces;">[[${sProd.pname}]]</strong></span>
+                   	<span style="margin-bottom: 10px;"><em>[[${#numbers.formatInteger(sProd.pprice, 3, 'COMMA')}]]<i>원</i></em></span>
+                   <span class="sm"><img src="/similarCos/img/drop.png">성분 유사도 </span>
+                   <span class="sm-per">[[${sProd.percent}]]%</span>
+                    <span class="star">
+                      <div class="star-rating small">
                         <span class="c00">
                           <em class="hide">벌점 0개</em></span>
                       </div>
-                    </a>
-                    <em><a href="#product_detail_review" style="color:#8f8f8f;">(270)</a></em>
-                  </span>
-                  <div class="result" style="display: flex;justify-content: center;margin-bottom: 40px;">
-                    <div class="chart mychart" th:data-percent="${score}"><span class="title" style="top:110px;">[[${score}]]추천해요</span></div>
-                  </div>
-                  <div id="ingredient_box">
-	                  <div id="iTit">주요성분</div>
-	                  <div>
-	                  	<ul>
-	                  		<li th:each="i : ${mainIngredient}">
-	                  			<img src="/similarCos/img/drop.png">[[${i}]]
-	                  		</li>
-	                  	</ul>              
-	                  </div>
-                  </div>
-                </div>
-                <div class="datail_info_data">
-                  <ul>
+                      <em>(276)</em>
+                    </span>
                     
-                    <li class="total">
-                      <span class="pricetotal">[[${#numbers.formatInteger(product.productDTO.pprice, 3, 'COMMA')}]]<em>원</em></span>
-                    </li>
-                  </ul>
+                    <span class="choice">
+                      <span class="checkcss">
+                        <input type="checkbox" class="recomPrdtSeq" name="prdtSeqs" data-cnt="10" id="checkbox780"
+                          value="780"><label for="checkbox780"><i class="hide">선택</i></label>
+                      </span>
+                    </span>
+                  </a>
+                  <span class="link">
+                    <button type="button" class="detailview listView" data-value="780">자세히보기</button>
+                    <button type="button" class="addcart listBasket" data-level="" data-cnt="10" data-value="780"
+                      data-price="17000" data-linename="세로징크" data-prdtname="세범 컨트롤 토닝 미스트 150ml"
+                      data-sapcode="M9066001" data-buy-level="N" data-mbr-join-ym="" data-user-level=""
+                      data-level-name="">장바구니 담기</button>
+                  </span>
                 </div>
-              </div>
-            </form>
+              </li>
+            </ul>
+            <button type="button" class="ctrl_next">next</button>
           </div>
-          <!-- //top -->
+
+          <!-- //addItem_slider -->
 
 
-        </div>
-        <!-- //product_detail -->
 
-      </section>
-      <!-- //contents -->
-      <section id="contents" class="dev_best">
-        <section class="product_wrap">
-          <div class="tabtext_warp" style="margin: 0;">
-            <div id="similar_result_tit"><i><img src="/similarCos/img/search-95_512.gif" style="width: 200px;"></i>성분이 비슷한 <span id="similar_cate">크림</span> <span id="similar_cnt">8개</span> 찾았어요<span id="impact">!</span></div>
-          </div>
-          <ul class="product_list best_list ea04"><!-- 베스트 제품페이지에서 best_list클레스 추가 -->
-            <li class=" new">
-              <a href="#none;" onclick="prdtViewLink('3596','PT','Y', Number('1'))">
-                <span class="ico">1<em>BEST</em></span>
-                <div style="border: 4px solid #45675b; margin-bottom: 10px; height: fit-content; padding: 10px; font-size: 16px; font-family: 'notokr-medium'; width: 212px; text-align: center;">성분 유사도 <span style="display: contents; font-family: 'locator-medium'; font-size: 22px;">71%</span></div>
-                
-                <img src="https://www.larocheposay.co.kr/upload/product/main/2022/01/20220113_1136039_353_400x400.png"
-                  alt="시카세럼30ml">
-                <span class="hash_tag">#피부장벽강화</span>
-                <span class="tit">시카플라스트</span>
-                <span class="kind">리페어 세럼 B5</span>
-                <span class="rating">
-                  <div class="star-rating small">
-                    <span class="c50">
-                      <em class="hide">벌점 5.0개</em></span>
-                  </div>
-                  <em>(270)</em>
-                </span>
-                <span class="price">48,000<em>원</em></span>
-              </a>
-              <div class="over">
-                <button type="button" class="detailview"
-                  onclick="prdtViewLink('3596','PT','Y', Number('1'))">자세히보기</button>
-                <button type="button" class="addcart listBasket" data-saleprice="48000" data-level="제한없음" data-cnt="142"
-                  data-value="3596" data-price="48000" data-linename="시카플라스트" data-prdtname="리페어 세럼 B5"
-                  data-sapcode="MB451200" data-tag-names="#피부장벽강화,# 회복세럼,# 시카세럼,# 판테놀10%세럼" data-noingt-names=""
-                  data-category="FACE>제품 라인별>시카플라스트">장바구니 담기</button>
-              </div>
-              <span class="like listLike" data-value="3596" data-price="48000" data-linename="시카플라스트"
-                data-prdtname="리페어 세럼 B5" data-sapcode="MB451200" data-category="FACE>제품 라인별>시카플라스트"><i
-                  class="hide">관심제품</i></span>
-            </li>
-            <li class=" new">
-              <a href="#none;" onclick="prdtViewLink('3596','PT','Y', Number('1'))">
-                <span class="ico">1<em>BEST</em></span>
-                <div style="border: 4px solid #45675b; margin-bottom: 10px; height: fit-content; padding: 10px; font-size: 16px; font-family: 'notokr-medium'; width: 212px; text-align: center;">성분 유사도 <span style="display: contents; font-family: 'locator-medium'; font-size: 22px;">71%</span></div>
-                
-                <img src="https://www.larocheposay.co.kr/upload/product/main/2022/01/20220113_1136039_353_400x400.png"
-                  alt="시카세럼30ml">
-                <span class="hash_tag">#피부장벽강화</span>
-                <span class="tit">시카플라스트</span>
-                <span class="kind">리페어 세럼 B5</span>
-                <span class="rating">
-                  <div class="star-rating small">
-                    <span class="c50">
-                      <em class="hide">벌점 5.0개</em></span>
-                  </div>
-                  <em>(270)</em>
-                </span>
-                <span class="price">48,000<em>원</em></span>
-              </a>
-              <div class="over">
-                <button type="button" class="detailview"
-                  onclick="prdtViewLink('3596','PT','Y', Number('1'))">자세히보기</button>
-                <button type="button" class="addcart listBasket" data-saleprice="48000" data-level="제한없음" data-cnt="142"
-                  data-value="3596" data-price="48000" data-linename="시카플라스트" data-prdtname="리페어 세럼 B5"
-                  data-sapcode="MB451200" data-tag-names="#피부장벽강화,# 회복세럼,# 시카세럼,# 판테놀10%세럼" data-noingt-names=""
-                  data-category="FACE>제품 라인별>시카플라스트">장바구니 담기</button>
-              </div>
-              <span class="like listLike" data-value="3596" data-price="48000" data-linename="시카플라스트"
-                data-prdtname="리페어 세럼 B5" data-sapcode="MB451200" data-category="FACE>제품 라인별>시카플라스트"><i
-                  class="hide">관심제품</i></span>
-            </li>
-            <li class=" new">
-              <a href="#none;" onclick="prdtViewLink('3596','PT','Y', Number('1'))">
-                <span class="ico">1<em>BEST</em></span>
-                <div style="border: 4px solid #45675b; margin-bottom: 10px; height: fit-content; padding: 10px; font-size: 16px; font-family: 'notokr-medium'; width: 212px; text-align: center;">성분 유사도 <span style="display: contents; font-family: 'locator-medium'; font-size: 22px;">71%</span></div>
-                
-                <img src="https://www.larocheposay.co.kr/upload/product/main/2022/01/20220113_1136039_353_400x400.png"
-                  alt="시카세럼30ml">
-                <span class="hash_tag">#피부장벽강화</span>
-                <span class="tit">시카플라스트</span>
-                <span class="kind">리페어 세럼 B5</span>
-                <span class="rating">
-                  <div class="star-rating small">
-                    <span class="c50">
-                      <em class="hide">벌점 5.0개</em></span>
-                  </div>
-                  <em>(270)</em>
-                </span>
-                <span class="price">48,000<em>원</em></span>
-              </a>
-              <div class="over">
-                <button type="button" class="detailview"
-                  onclick="prdtViewLink('3596','PT','Y', Number('1'))">자세히보기</button>
-                <button type="button" class="addcart listBasket" data-saleprice="48000" data-level="제한없음" data-cnt="142"
-                  data-value="3596" data-price="48000" data-linename="시카플라스트" data-prdtname="리페어 세럼 B5"
-                  data-sapcode="MB451200" data-tag-names="#피부장벽강화,# 회복세럼,# 시카세럼,# 판테놀10%세럼" data-noingt-names=""
-                  data-category="FACE>제품 라인별>시카플라스트">장바구니 담기</button>
-              </div>
-              <span class="like listLike" data-value="3596" data-price="48000" data-linename="시카플라스트"
-                data-prdtname="리페어 세럼 B5" data-sapcode="MB451200" data-category="FACE>제품 라인별>시카플라스트"><i
-                  class="hide">관심제품</i></span>
-            </li>
-            <li class=" new">
-              <a href="#none;" onclick="prdtViewLink('3596','PT','Y', Number('1'))">
-                <span class="ico">1<em>BEST</em></span>
-                <div style="border: 4px solid #45675b; margin-bottom: 10px; height: fit-content; padding: 10px; font-size: 16px; font-family: 'notokr-medium'; width: 212px; text-align: center;">성분 유사도 <span style="display: contents; font-family: 'locator-medium'; font-size: 22px;">71%</span></div>
-                
-                <img src="https://www.larocheposay.co.kr/upload/product/main/2022/01/20220113_1136039_353_400x400.png"
-                  alt="시카세럼30ml">
-                <span class="hash_tag">#피부장벽강화</span>
-                <span class="tit">시카플라스트</span>
-                <span class="kind">리페어 세럼 B5</span>
-                <span class="rating">
-                  <div class="star-rating small">
-                    <span class="c50">
-                      <em class="hide">벌점 5.0개</em></span>
-                  </div>
-                  <em>(270)</em>
-                </span>
-                <span class="price">48,000<em>원</em></span>
-              </a>
-              <div class="over">
-                <button type="button" class="detailview"
-                  onclick="prdtViewLink('3596','PT','Y', Number('1'))">자세히보기</button>
-                <button type="button" class="addcart listBasket" data-saleprice="48000" data-level="제한없음" data-cnt="142"
-                  data-value="3596" data-price="48000" data-linename="시카플라스트" data-prdtname="리페어 세럼 B5"
-                  data-sapcode="MB451200" data-tag-names="#피부장벽강화,# 회복세럼,# 시카세럼,# 판테놀10%세럼" data-noingt-names=""
-                  data-category="FACE>제품 라인별>시카플라스트">장바구니 담기</button>
-              </div>
-              <span class="like listLike" data-value="3596" data-price="48000" data-linename="시카플라스트"
-                data-prdtname="리페어 세럼 B5" data-sapcode="MB451200" data-category="FACE>제품 라인별>시카플라스트"><i
-                  class="hide">관심제품</i></span>
-            </li>
-          </ul>
-        </section>
-      </section>
+			
+				</div>
+				<!-- //product_detail -->
+
+			</section>
+			<!-- //contents -->
+
+		</section>
+		<!-- //container -->
+
+		  <script type="text/javascript">
+    $(function () {
+      // 유의사항 토글
+      $(document).on('click', '.event_notice .tit', function () {
+        var $this = $(this);
+        $this.toggleClass('on').next('.cont').stop().slideToggle();
+        return false;
+      });
+    });
+    //slide 제품 리스트 chackbox 선택
+    $(document).ready(function () {
+      $('.addItem_head input:checkbox').click(function () {
+        $(this).parent().parent().parent().next().find('input:checkbox').not(this).prop('checked', this.checked);
+      });
+
+      if ($('.product_detail')) {
+        laro.ui('productDetail', '.product_detail');
+      }
+    });
+
+    //product_detail_tab scroll screen top and fixed
+    if ($('.product_detail_tab').length > 0) {
+      var $window = $(window);
+      var $detailTab = $('.product_detail_tab');
+      var elTop = $detailTab.offset().top;
+      $window.scroll(function () {
+        $detailTab.toggleClass('fixed', $window.scrollTop() > elTop);
+      });
+      $(document).on('click', '.product_detail_tab a[href^="#"]', function (event) {
+        event.preventDefault();
+        var $this = $(event.target);
+        var dTab = $detailTab.height();
+        var dTabfixed = $('.product_detail_tab.fixed').height();
+        $this.parent().addClass('on').siblings('li').removeClass('on');
+        //console.log("dTab : " +  dTab);
+        //console.log("dTabfixed : " +  dTabfixed);
+        var $htmlBody = $('html, body');
+        var moveHeight = 100;
+        if (!dTabfixed && !$(this).parent().index() == 0) {
+          moveHeight = 150;
+        } else if (dTabfixed && $(this).parent().index() == 0) {
+          moveHeight = 20;
+        } else if ($(this).parent().index() == 0) {
+          moveHeight = 70;
+        }
+        $htmlBody.animate({
+          scrollTop: $($.attr(this, 'href')).offset().top - moveHeight
+        }, 500);
+        //console.log(moveHeight);
+      });
+    }
+
+    var skinSlider;
+    // 제품상세 플로팅 펼치고 접기
+    $(document).ready(function () {
+      var menuOpened = true;
+      $('.zoom').click(function () {
+        var $t = $('.price_side');
+        if (menuOpened === false) {
+          $t.fadeIn(150, function () {
+            menuOpened = true;
+          });
+          $(this).removeClass('out');
+        } else {
+          $t.fadeOut(150, function () {
+            menuOpened = false;
+          });
+          $(this).addClass('out');
+        }
+      });
+
+      skinSlider = new Swiper('#review_slider', {
+        pagination: '.swiper-pagination',
+        loop: true,
+        paginationClickable: true
+      });
+      $('.skinprd-prev').on('click', function (e) {
+        e.preventDefault();
+        skinSlider.swipePrev();
+      });
+      $('.skinprd-next').on('click', function (e) {
+        e.preventDefault();
+        skinSlider.swipeNext();
+      });
+    });
+
+    var incnt = 0;
+
+    $(document).on('scroll', function () { //3개 텝 일 경우
+      var $templateCont = $('#template_cont');
+      if ($templateCont.length == 1 && $(this).scrollTop() > $templateCont.position().top) {
+        $('.product_detail_tab li').removeClass('on');
+        $('.product_detail_tab li:nth-child(1)').addClass('on');
+      }
+
+      var $productDetailReview = $('#product_detail_review');
+      if ($productDetailReview.length == 1 && $(this).scrollTop() > $productDetailReview.position().top) {
+        $('.product_detail_tab li').removeClass('on');
+        $('.product_detail_tab li:nth-child(2)').addClass('on');
+
+        var prdt_name = 'MAT 세보 컨트롤링 모이스춰라이저 ';
+        var prdt_seq = '3859';
+
+        if (incnt < 1) {
+          LARO.GA4TagManager.readReview(prdt_name, prdt_seq);
+        }
+        incnt++;
+      }
+
+      var $productDetailNote = $('#product_detail_note');
+      if ($productDetailNote.length == 1 && $(this).scrollTop() > $productDetailNote.position().top) {
+        $('.product_detail_tab li').removeClass('on');
+        $('.product_detail_tab li:nth-child(3)').addClass('on');
+      }
+    });
+  </script>
 
 
-    </section>
-    <!-- //container -->
+		<!-- right 제품구매 플로팅 -->
+		<section class="flot_right_warp">
+			<div class="flot_price_btn">
+				<div class="flotmem">
+					<a href="https://www.larocheposay.co.kr/myPage/myPageHome.do"></a><strong><em>고객</em>님</strong>반갑습니다
+				</div>
+				<div class="flotcart">
+					<a href="https://www.larocheposay.co.kr/cart/cart.do"><span
+						class="count">0</span><span class="hide">장바구니 - 바로가기</span></a>
+				</div>
+				<div class="flotheart">
+					<a href="https://www.larocheposay.co.kr/myPage/likeList.do"><span
+						class="count">0</span><span class="hide">찜한제품 - 바로가기</span></a>
+				</div>
+				<div id="flotprd" class="swiper-container">
+					<div class="swiper-wrapper"
+						style="width: 168px; height: 79px; transform: translate3d(-56px, 0px, 0px); transition-duration: 0s;">
+						<div class="swiper-slide" style="width: 56px; height: 79px;">
+							<a href="https://www.larocheposay.co.kr/product/view/3596.do">
+								<img
+								src="https://www.larocheposay.co.kr/upload/product/main/2022/01/20220113_1136039_353_100x100.png"
+								alt="리페어 세럼 B5">
+							</a>
+						</div>
+						<div class="swiper-slide swiper-slide-visible swiper-slide-active"
+							style="width: 56px; height: 79px;">
+							<a href="https://www.larocheposay.co.kr/product/view/3596.do">
+								<img
+								src="https://www.larocheposay.co.kr/upload/product/main/2022/01/20220113_1136039_353_100x100.png"
+								alt="리페어 세럼 B5">
+							</a>
+						</div>
+						<div class="swiper-slide" style="width: 56px; height: 79px;">
+							<a href="https://www.larocheposay.co.kr/product/view/3596.do">
+								<img
+								src="https://www.larocheposay.co.kr/upload/product/main/2022/01/20220113_1136039_353_100x100.png"
+								alt="리페어 세럼 B5">
+							</a>
+						</div>
+					</div>
+					<button type="button" class="flotprd-prev" style="z-index: 1000;">
+						<span class="hide">이전</span>
+					</button>
+					<button type="button" class="flotprd-next" style="z-index: 1000;">
+						<span class="hide">다음</span>
+					</button>
+				</div>
+				<!-- //swiper-container -->
+				<button type="button" class="btn_top" title="상단 이동">top</button>
+			</div>
 
+		</section>
 
-    <!-- right 제품구매 플로팅 -->
-    <section class="flot_right_warp">
-      <div class="flot_price_btn">
-        <div class="flotmem"><a
-            href="https://www.larocheposay.co.kr/myPage/myPageHome.do"></a><strong><em>고객</em>님</strong>반갑습니다</div>
-        <div class="flotcart"><a href="https://www.larocheposay.co.kr/cart/cart.do"><span class="count">0</span><span
-              class="hide">장바구니 -
-              바로가기</span></a></div>
-        <div class="flotheart"><a href="https://www.larocheposay.co.kr/myPage/likeList.do"><span
-              class="count">0</span><span class="hide">찜한제품 -
-              바로가기</span></a></div>
-        <div id="flotprd" class="swiper-container">
-          <div class="swiper-wrapper"
-            style="width: 168px; height: 79px; transform: translate3d(-56px, 0px, 0px); transition-duration: 0s;">
-            <div class="swiper-slide" style="width: 56px; height: 79px;">
-              <a href="https://www.larocheposay.co.kr/product/view/3596.do">
-                <img src="https://www.larocheposay.co.kr/upload/product/main/2022/01/20220113_1136039_353_100x100.png"
-                  alt="리페어 세럼 B5">
-              </a>
-            </div>
-            <div class="swiper-slide swiper-slide-visible swiper-slide-active" style="width: 56px; height: 79px;">
-              <a href="https://www.larocheposay.co.kr/product/view/3596.do">
-                <img src="https://www.larocheposay.co.kr/upload/product/main/2022/01/20220113_1136039_353_100x100.png"
-                  alt="리페어 세럼 B5">
-              </a>
-            </div>
-            <div class="swiper-slide" style="width: 56px; height: 79px;">
-              <a href="https://www.larocheposay.co.kr/product/view/3596.do">
-                <img src="https://www.larocheposay.co.kr/upload/product/main/2022/01/20220113_1136039_353_100x100.png"
-                  alt="리페어 세럼 B5">
-              </a>
-            </div>
-          </div>
-          <button type="button" class="flotprd-prev" style="z-index:1000;"><span class="hide">이전</span></button>
-          <button type="button" class="flotprd-next" style="z-index:1000;"><span class="hide">다음</span></button>
-        </div>
-        <!-- //swiper-container -->
-        <button type="button" class="btn_top" title="상단 이동">top</button>
-      </div>
-
-    </section>
-
-	   	<!-- footer -->
-		<div class="include-footer" th:insert="~{include/footer}"></div>
+		<!-- footer -->
+		<div class="include-footer" th:insert="~{include/footer}" style="padding-top: 150px;"></div>
 		<!-- /footer -->
 	</div>
 </body>

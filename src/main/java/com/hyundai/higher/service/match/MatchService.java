@@ -10,7 +10,7 @@ import com.hyundai.higher.domain.match.MemberMBTIDTO;
 /**
  * @since   : 2023. 04. 01.
  * @FileName: MatchService.java
- * @author  : 박서현
+ * @author  : 박서현, 신수진
  * @설명    : 화장품 매칭을 위한 서비스
 
  * <pre>
