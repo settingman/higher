@@ -201,64 +201,67 @@ public class MatchController {
 			model.addAttribute("mainIngredient", mainIngredient);
 			service.recogProducts(pcode);
 			
-			//mbti 가져오기
-			String mid = principal.getName();
-			String mbti = mService.userMbti(mid);
-			log.info("mbti--------------  "+mbti);
+			if(principal != null) {
 			
-			//mbti 글자별로 나누기
-			String[] mbtiList  = mbti.split("");
-
-			//성분 가져오기
-			String[] ingredients = mService.getIngredient(pcode);
-		
-
-			//성분 for문 해서 점수 카운트
-			int score = 0;
-			//첫번째 mbti 점수 계산. 총 40점. good 4점, normal 2점, bad 1점 
-			for(int i=0; i<ingredients.length;i++) {
-				log.info("============================");
-
-				String result = mService.getEffect(ingredients[i], mbtiList[0]);
-				log.info("effect "+result);
-				if(result.equals("GOOD")) {
-					log.info("goood");
-					score +=4;
-				}else if(result.equals("NORMAL")) {
-					score +=2;
-				}
-			}
-			log.info(score+"-----------------------------------");
+				//mbti 가져오기
+				String mid = principal.getName();
+				String mbti = mService.userMbti(mid);
+				log.info("mbti--------------  "+mbti);
+				
+				//mbti 글자별로 나누기
+				String[] mbtiList  = mbti.split("");
+	
+				//성분 가져오기
+				String[] ingredients = mService.getIngredient(pcode);
 			
-			//두번째 mbti 점수 계산. 총 30점. good 3점, normal 2점, bad 1점
-			for(int i=0; i<ingredients.length;i++) {
-				String result = mService.getEffect(ingredients[i], mbtiList[1]);
-				if(result.equals("GOOD")) {
-					score +=3;
-				}else if(result.equals("NORMAL")) {
-					score +=2;
+	
+				//성분 for문 해서 점수 카운트
+				int score = 0;
+				//첫번째 mbti 점수 계산. 총 40점. good 4점, normal 2점, bad 1점 
+				for(int i=0; i<ingredients.length;i++) {
+					log.info("============================");
+	
+					String result = mService.getEffect(ingredients[i], mbtiList[0]);
+					log.info("effect "+result);
+					if(result.equals("GOOD")) {
+						log.info("goood");
+						score +=4;
+					}else if(result.equals("NORMAL")) {
+						score +=2;
+					}
 				}
-			}
-			
-			//세번째 mbti 점수 계산. 총 20점. good 2점, normal 1점, bad 0점
-			for(int i=0; i<ingredients.length;i++) {
-				String result = mService.getEffect(ingredients[i], mbtiList[2]);
-				if(result.equals("GOOD")) {
-					score +=2;
-				}else if(result.equals("NORMAL")) {
-					score +=1;
+				log.info(score+"-----------------------------------");
+				
+				//두번째 mbti 점수 계산. 총 30점. good 3점, normal 2점, bad 1점
+				for(int i=0; i<ingredients.length;i++) {
+					String result = mService.getEffect(ingredients[i], mbtiList[1]);
+					if(result.equals("GOOD")) {
+						score +=3;
+					}else if(result.equals("NORMAL")) {
+						score +=2;
+					}
 				}
-			}
-			
-			//네번째 mbti 점수 계산. 총 10점. good 1점, normal 0점, bad 0점
-			for(int i=0; i<ingredients.length;i++) {
-				String result = mService.getEffect(ingredients[i], mbtiList[3]);
-				if(result.equals("GOOD")) {
-					score +=1;
+				
+				//세번째 mbti 점수 계산. 총 20점. good 2점, normal 1점, bad 0점
+				for(int i=0; i<ingredients.length;i++) {
+					String result = mService.getEffect(ingredients[i], mbtiList[2]);
+					if(result.equals("GOOD")) {
+						score +=2;
+					}else if(result.equals("NORMAL")) {
+						score +=1;
+					}
 				}
+				
+				//네번째 mbti 점수 계산. 총 10점. good 1점, normal 0점, bad 0점
+				for(int i=0; i<ingredients.length;i++) {
+					String result = mService.getEffect(ingredients[i], mbtiList[3]);
+					if(result.equals("GOOD")) {
+						score +=1;
+					}
+				}
+				log.info("----------------------"+score);
+				model.addAttribute("score",score);
 			}
-			log.info("----------------------"+score);
-			model.addAttribute("score",score);
 			
 			return "match/detail";
 		}
