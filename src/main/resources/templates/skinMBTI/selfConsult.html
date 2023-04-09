@@ -67,10 +67,12 @@
 									class="layer-pop">약관보기</a>
 							</p>
 							<div class="radio_wrap side">
-								<span class="radiocss"><input type="radio" name="group2"
-									id="radio2_1"><label for="radio2_1"><em>동의</em></label></span>
-								<span class="radiocss"><input type="radio" name="group2"
-									id="radio2_2"><label for="radio2_2"><em>미동의</em></label></span>
+								<span class="radiocss">
+									<input type="radio" name="group2" id="radio2_1"><label for="radio2_1"><em>동의</em></label>
+								</span>
+								<span class="radiocss">
+									<input type="radio" name="group2" id="radio2_2"><label for="radio2_2"><em>미동의</em></label>
+								</span>
 							</div>
 							<!-- 비회원일 경우 -->
 							<a sec:authorize="isAnonymous()" href="#survey_pop" class="arrow layer-pop">START</a>
@@ -86,10 +88,10 @@
 					<div class="test_top">
 						<h3>기본 정보를 체크해 주세요</h3>
 						<ol class="step_num">
-							<li class="on">1 <span>유수분도</span></li>
-							<li class="">2 <span>민감도</span></li>
-							<li class="">3 <span>색소침착도</span></li>
-							<li>4 <span>주름형성도</span></li>
+							<li class="on" id="step1">1 <span>유수분도</span></li>
+							<li class="" id="step2">2 <span>민감도</span></li>
+							<li class="" id="step3">3 <span>색소침착도</span></li>
+							<li class="" id="step4">4 <span>주름형성도</span></li>
 							<li>5 <span>측정결과</span></li>
 						</ol>
 					</div>
