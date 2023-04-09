@@ -1,10 +1,8 @@
 package com.hyundai.higher.controller.makeup;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.nio.file.Paths;
 import java.security.Principal;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,12 +17,15 @@ import com.hyundai.higher.domain.beauty.Profile;
 import com.hyundai.higher.domain.makeup.BlushVO;
 import com.hyundai.higher.domain.makeup.FoundationVO;
 import com.hyundai.higher.domain.makeup.LipVO;
+import com.hyundai.higher.domain.makeup.MbtiVO;
 import com.hyundai.higher.domain.makeup.ReservVO;
 import com.hyundai.higher.domain.makeup.ResultVO;
 import com.hyundai.higher.domain.member.Member;
+import com.hyundai.higher.domain.skinMBTI.SkinMBTIDTO;
 import com.hyundai.higher.mapper.beauty.BeautyMapper;
 import com.hyundai.higher.service.makeup.MakeupService;
 import com.hyundai.higher.service.makeup.MypageService;
+import com.hyundai.higher.service.skinMBTI.SkinMBTIService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -58,9 +59,33 @@ public class MypageController {
 	
 	@Autowired
 	private BeautyMapper mapper;
+	
+	@Autowired
+	private SkinMBTIService mbtiser;
 
 	@Value("${com.demo.upload.path}")
 	private String uploadPath;
+	
+	@GetMapping("/skinmbti")
+	public void skinmbti(Principal principal, Model model) {
+		log.info("===== 피부 진단 결과 열람창 =====");
+		
+		MbtiVO info = new MbtiVO();
+		info = makeup.findmbti(principal.getName());
+		
+		String score = info.getMbti_scores();
+		List<String> scoresList = Arrays.asList(score.split(","));
+		
+		SkinMBTIDTO mbti = new SkinMBTIDTO();
+		mbti = mbtiser.selectSkinMBTI(info.getMbti());
+		
+		model.addAttribute("info", info);
+		model.addAttribute("mbti", mbti);
+		model.addAttribute("score1", scoresList.get(0));
+		model.addAttribute("score2", scoresList.get(1));
+		model.addAttribute("score3", scoresList.get(2));
+		model.addAttribute("score4", scoresList.get(3));
+	}
 
 	@GetMapping("/reserv")
 	public void reserving(Principal principal, Model model) {

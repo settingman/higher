@@ -1,0 +1,232 @@
+<html class="js">
+<style>
+header#header {
+	background: none;
+	height: auto;
+}
+
+span.statusimage {
+	width: 102px;
+	display: inline-block;
+	height: 80px;
+	margin-bottom: 5px;
+}
+</style>
+<head th:insert="~{include/head}"></head>
+<link rel="stylesheet" type="text/css"
+	href="https://image.thehyundai.com/pc/cssssl/font.css" />
+
+<link rel="stylesheet" type="text/css"
+	href="https://image.thehyundai.com/pc/cssssl/co.css?ver=13" />
+<link rel="stylesheet" type="text/css"
+	href="https://image.thehyundai.com/pc/cssssl/wf.css" />
+<script src="https://image.thehyundai.com/pc/js/jquery-1.11.3.min.js"></script>
+<script src="https://image.thehyundai.com/pc/js/jquery-ui.min.js"></script>
+<script src="https://image.thehyundai.com/pc/js/jquery-migrate.min.js"></script>
+
+<script src="https://image.thehyundai.com/pc/js/plugin.js?ver=040213"></script>
+<script type="text/javascript"
+	src="https://image.thehyundai.com/pc/js/hdmall/co/jquery.form.js"></script>
+<script type="text/javascript"
+	src="https://image.thehyundai.com/pc/js/hdmall/co/default.js?ver=040213"></script>
+<script type="text/javascript"
+	src="https://image.thehyundai.com/pc/js/hdmall/co/common.js?ver=040213"></script>
+<script src="https://image.thehyundai.com/pc/js/common.js?ver=040213"></script>
+<script type="text/javascript"
+	src="https://image.thehyundai.com/pc/js/swiper.min.js?ver=040213"></script>
+<style type="text/css">
+.fancybox-margin {
+	margin-right: 17px;
+}
+</style>
+<link rel="stylesheet" type="text/css"
+	href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap"
+	rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" type="text/css" href="/skinMBTI/css/result.css">
+
+
+<body oncontextmenu="return false" ondragstart="return false"
+	onselectstart="return false">
+	<!-- wrap -->
+	<div id="wrap" class="sub">
+		<header id="header" th:insert="~{include/header}"></header>
+		<!-- gnb -->
+
+		<script type="text/javascript"
+			src="https://www.thehyundai.com/js/hdmall/co/referCodes.js"></script>
+		<script src="/js/sso/SsoHttpRequest.js"></script>
+		<script src="/js/sso/SsoAjax.js"></script>
+		<script src="/js/sso/SsoLogin.js"></script>
+		<!-- SSO 로그인 js 공통 처리 2021.02.17-->
+
+		<script type="text/javascript"
+			src="https://www.thehyundai.com/static/gen/js/mainBnnrContents.js?ver=021318"></script>
+		<!-- top banner -->
+		<div id="js-tpl-topBanner" style="display: none"></div>
+
+		<div class="top-wrap sub">
+			<div class="top-area-setting">
+				<script type="text/javascript"
+					src="https://www.thehyundai.com/js/hdmall/dp/dpo/dqSearch.js?ver=040213"></script>
+
+				<script type="text/javascript"
+					src="https://www.thehyundai.com/js/hdmall/dp/dpo/dqAutoCompleteNewCommon.js?ver=040213"></script>
+				<script type="text/javascript"
+					src="https://www.thehyundai.com/js/hdmall/dp/dpo/dqAutoCompleteNew.js?ver=040213"></script>
+
+				<!-- //header -->
+			</div>
+		</div>
+
+		<!-- container -->
+		<div id="container">
+			<!-- content-wrap -->
+			<div class="content-wrap hasleft myhyundai">
+				<!-- left contents -->
+
+				<div class="leftarea">
+					<h2>
+						<a href="/front/mpf/selectMyPageMain.thd">마이현대<span>MY
+								HYUNDAI</span></a>
+					</h2>
+					<div class="line"></div>
+
+					<!-- leftmenu -->
+					<ul class="leftmenu">
+						<li class=""><a class="not">MY Make-ON</a>
+							<ul>
+								<li class=""><a>예약 관리</a></li>
+								<li class=""><a>예약 결과 확인</a></li>
+								<li class=""><a>상담 입장</a></li>
+								<li class=""><a>예약 신청 완료</a></li>
+							</ul></li>
+						<li class=""><a class="not">MY 피부 MBTI</a>
+							<ul>
+								<li class=""><a href="/front/mpd/changeMemberInfoForm.thd"
+									onclick="javascript:GA_Event('PC_마이페이지', 'LNB', '나의정보_회원정보변경');">결과
+										보기</a></li>
+							</ul></li>
+						<li class=""><a class="not">MY 주문</a>
+							<ul>
+								<li class=""><a href="/front/mpa/selectOrdDlvCrst.thd"
+									onclick="javascript:GA_Event('PC_마이페이지', 'LNB', '주문현황_주문확인/배송조회');">주문
+										내역</a></li>
+
+							</ul></li>
+
+					</ul>
+					<!-- //leftmenu -->
+				</div>
+				<!-- //leftarea -->
+				<!-- // left contents -->
+
+				<!-- content -->
+				<div class="content">
+					<div class="myhyundai-head"></div>
+					<div class="myhyundai-main" style="margin: 40px 0">
+						<h3>MY 피부 MBTI</h3>
+					</div>
+
+					<!-- cart-list -->
+					<div class="myhyundai-main" style="margin: 40px 0">
+						<h2>피부 MBTI 결과 확인</h2>
+					</div>
+					<section id="container">
+						<section id="contents" class="survey_wrap"
+							style="margin: 0; padding: 0; width: 900px;">
+							<div class="result_wrap">
+								<div class="line1">
+									<p>
+										<span sec:authentication="principal.mName">회원이름</span> 회원님의 피부
+										MBTI 진단 결과
+									</p>
+								</div>
+								<div class="line2"></div>
+								<div class="result_list"
+									style="background: white; margin: 20px;">
+									<div class="left"
+										style="height: 700px; display: contents; background: beige;">
+										<div class="img" style="margin: 20px;">
+											<img
+												src="https://www.larocheposay.co.kr/images/customer/skincase_1.png"
+												alt=""> <strong>나의 피부 MBTI는?</strong>
+										</div>
+										<div class="resultName">[[${mbti.stype}]]</div>
+										<p id="title">"[[${mbti.stitle}]]"</p>
+										<p class="resultKeyword">[[${mbti.stag}]]</p>
+										<p style="margin: 20px;">[[${mbti.sexplain}]]</p>
+										<table style="margin: 20px;">
+											<tbody>
+												<tr id="infoPros">
+													<td class="infoName">Strength</td>
+													<td class="infoCon" id="pros">[[${mbti.spros}]]</td>
+												</tr>
+												<tr>
+													<td class="infoName">Weakness</td>
+													<td class="infoCon" id="cons">[[${mbti.scons}]]</td>
+												</tr>
+												<tr>
+													<td class="infoName">Solution</td>
+													<td class="infoCon" id="solution">[[${mbti.ssolution}]]</td>
+												</tr>
+
+											</tbody>
+										</table>
+
+									</div>
+									<div class="right"
+										style="padding-bottom: 40px; height: 700px; display: contents;">
+										<div class="img" style="margin: 20px;">
+											<img
+												src="https://www.larocheposay.co.kr/images/customer/skincase_2.png"
+												alt=""> <strong class="">진단 차트 <em></em></strong>
+										</div>
+
+										<div class="graph">
+											<canvas id="myChart" height="675"
+												style="display: block; box-sizing: border-box; height: 450px; width: 450px;"
+												width="562"></canvas>
+										</div>
+									</div>
+
+								</div>
+
+								<div class="btn_wrap center mt40">
+									<button type="button" class="btn_base" onclick="location.href='/skinMBTI/selfConsult' ">재검사하기</button>
+									<button type="button" class="btn_base">
+										<a id="kakaotalk-sharing-btn" href="javascript:;"> <img
+											src="https://developers.kakao.com/assets/img/about/logos/kakaotalksharing/kakaotalk_sharing_btn_small.png"
+											alt="카카오톡 공유 보내기 버튼">카카오톡 공유하기
+										</a>
+
+									</button>
+								</div>
+
+
+
+
+							</div>
+						</section>
+						<!-- //contents -->
+					</section>
+					<input type="hidden" id="score1" th:value="${score1}">
+					<input type="hidden" id="score2" th:value="${score2}">
+					<input type="hidden" id="score3" th:value="${score3}">
+					<input type="hidden" id="score4" th:value="${score4}">
+					<script src="/skinMBTI/js/result.js" charset="UTF-8"></script>
+
+				</div>
+				<!-- //content -->
+			</div>
+			<!-- //content-wrap -->
+		</div>
+		<div class="include-footer" th:insert="~{include/footer}"></div>
+	</div>
+	<!-- //wrap -->
+</body>
+</html>

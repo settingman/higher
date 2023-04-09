@@ -50,5 +50,9 @@
 	<update id="mileageupdate">
 		update member set mmileage = mmileage+2000  where mid=#{mid}
 	</update>
+	
+	<select id="findmbti" resultType="com.hyundai.higher.domain.makeup.MbtiVO">
+		select mbti, mbti_scores from member where mid=#{mid}
+	</select>
 
 </mapper>

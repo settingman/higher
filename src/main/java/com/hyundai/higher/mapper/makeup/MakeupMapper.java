@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import com.hyundai.higher.domain.makeup.BlushVO;
 import com.hyundai.higher.domain.makeup.FoundationVO;
 import com.hyundai.higher.domain.makeup.LipVO;
+import com.hyundai.higher.domain.makeup.MbtiVO;
 import com.hyundai.higher.domain.makeup.ResultVO;
 import com.hyundai.higher.domain.member.Member;
 
@@ -44,5 +45,8 @@ public interface MakeupMapper {
 	
 	// 마일리지 추가
 	public void mileageupdate(String mid);
+	
+	// mbti 정보 찾기
+	public MbtiVO findmbti(String mid);
 
 }
