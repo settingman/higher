@@ -42,6 +42,8 @@ import lombok.extern.log4j.Log4j2;
  * 2023. 4. 1.     이세아       create
  * 2023. 4. 1.     이세아       마이페이지 controller - makeon 예약관리
  * 2023. 4. 2.     이세아       마이페이지 controller - makeon 예약결과
+ * 2023. 4. 4.	   이세아		  마이페이지 결과 - 세부 결과 페이지
+ * 2023. 4. 8.	   이세아		  마이페이지 - makeon 결과 세부 분리
  *     </pre>
  */
 
@@ -66,6 +68,35 @@ public class MypageController {
 	@Value("${com.demo.upload.path}")
 	private String uploadPath;
 	
+	// 주문내역
+	@GetMapping("/order")
+	public void orderlist(Principal principal, Model model) {
+		log.info("===== 회원 주문내역 마이페이지 =====");
+	}
+	
+	// 예약만 완료
+	@GetMapping("/reserv_ing")
+	public void reserv_ing(Principal principal, Model model) {
+		log.info("==== 예약만 받은 페이지 ====");
+		List<ReservVO> ready = service.getReservReady(principal.getName());
+		model.addAttribute("ready", ready);
+	}
+	// 입장 가능
+	@GetMapping("/reserv_ready")
+	public void reserv_ready(Principal principal, Model model) {
+		log.info("==== 입장 가능 페이지 ====");
+		List<ReservVO> nores = service.noResult(principal.getName());
+		model.addAttribute("nores", nores);
+	}
+	// 예약 완료
+	@GetMapping("/reserv_done")
+	public void reserv_done(Principal principal, Model model) {
+		log.info("==== 예약 완료 페이지 ====");
+		List<ReservVO> yesres = service.yesResult(principal.getName());
+		model.addAttribute("yesres", yesres);
+	}
+	
+	// 회원 skinmbti 결과 확인
 	@GetMapping("/skinmbti")
 	public void skinmbti(Principal principal, Model model) {
 		log.info("===== 피부 진단 결과 열람창 =====");
@@ -87,6 +118,7 @@ public class MypageController {
 		model.addAttribute("score4", scoresList.get(3));
 	}
 
+	// 마이페이지 메인 / 예약 페이지
 	@GetMapping("/reserv")
 	public void reserving(Principal principal, Model model) {
 		log.info("===== 마이페이지 예약관리 =====");
@@ -99,6 +131,7 @@ public class MypageController {
 		model.addAttribute("ready", ready);
 	}
 
+	// 결과 상세
 	@GetMapping("/result2")
 	public void mypageresult2(@RequestParam("rid") String rid, Model model) throws IOException {
 		log.info("==== 마이페이지 예약 결과 창 ====");
@@ -166,7 +199,8 @@ public class MypageController {
 		model.addAttribute("simface", simface);
 
 	}
-
+	
+	// 결과
 	@GetMapping("/result")
 	public void mypageresult(@RequestParam("rid") String rid, Model model) throws IOException {
 		log.info("==== 마이페이지 예약 결과 창 ====");

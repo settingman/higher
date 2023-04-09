@@ -136,17 +136,16 @@ header#header {
 
 					<!-- leftmenu -->
 					<ul class="leftmenu">
-						<li class=""><a class="not" href="/mypage/reserv">MY Make-ON</a>
+						<li class=""><a class="not">MY Make-ON</a>
 							<ul>
 								<li class=""><a href="/mypage/reserv">예약 관리</a></li>
-								<li class=""><a>예약 결과 확인</a></li>
-								<li class=""><a>상담 입장</a></li>
-								<li class=""><a>예약 신청 완료</a></li>
+								<li class=""><a href="/mypage/reserv_done">예약 결과 확인</a></li>
+								<li class=""><a href="/mypage/reserv_ready">상담 입장</a></li>
+								<li class=""><a href="/mypage/reserv_ing">예약 신청 완료</a></li>
 							</ul></li>
 						<li class=""><a class="not">MY 피부 MBTI</a>
 							<ul>
-								<li class=""><a href="/front/mpd/changeMemberInfoForm.thd"
-									onclick="javascript:GA_Event('PC_마이페이지', 'LNB', '나의정보_회원정보변경');">결과
+								<li class=""><a href="/mypage/skinmbti">결과
 										보기</a></li>
 							</ul></li>
 						<li class=""><a class="not">MY 주문</a>
@@ -308,7 +307,7 @@ header#header {
 												<!-- 신상, 단독구성 -->
 												<ul class="product_list ea03" id="listUl">
 													<li style="margin: 0 0 20px 16px;"><a
-														href="/product/detail?code=A1592419"> <img
+														th:href="'/product/detail?code=' + ${lipresult.pcode}"> <img
 															th:src="${lipresult.iloc} + '_600.jpg'"
 															th:alt="${lipresult.pname}"> <input type="hidden"
 															name="lip_pcode" class="lip_pcode"
@@ -327,12 +326,12 @@ header#header {
 													</a>
 														<div class="over">
 															<button class="detailview">자세히보기</button>
-															<button data-price="45000" data-linename="[나스] 파워매트 립스틱"
-																data-sapcode="A1592419" data-category="20"
+															<button data-price="${lipresult.pprice}" data-linename="${lipresult.pname}"
+																data-sapcode="${lipresult.pname}" data-category="20"
 																class="addcart basket">장바구니 담기</button>
 														</div></li>
 													<li class="" style="margin: 0 0 20px 16px;"><a
-														href="/product/detail?code=A0484419"> <img
+														th:href="'/product/detail?code=' + ${blushresult.pcode}"> <img
 															th:src="${blushresult.iloc} + '_600.jpg'"
 															th:alt="${blushresult.pname}"> <input type="hidden"
 															name="blush_pcode" class="blush_pcode"
@@ -349,15 +348,14 @@ header#header {
 															</span>
 														</span>
 													</a>
-														<div class="over">
+													<div class="over">
 															<button class="detailview">자세히보기</button>
-															<button data-price="34000"
-																data-linename="메이크업포에버 아티스트 하이드라블룸 2.8g"
-																data-sapcode="A0484419" data-category="20"
+															<button data-price="${blushresult.pprice}" data-linename="${blushresult.pname}"
+																data-sapcode="${blushresult.pname}" data-category="20"
 																class="addcart basket">장바구니 담기</button>
 														</div></li>
 													<li style="margin: 0 0 20px 16px;"><a
-														href="/product/detail?code=A1183830"> <img
+														th:href="'/product/detail?code=' + ${faceresult.pcode}"> <img
 															th:src="${faceresult.iloc} + '_600.jpg'"
 															th:alt="${faceresult.pname}"> <input type="hidden"
 															name="face_pcode" class="face_pcode"
@@ -376,9 +374,8 @@ header#header {
 													</a>
 														<div class="over">
 															<button class="detailview">자세히보기</button>
-															<button data-price="32000"
-																data-linename="[클라랑스] 립 오일 인텐스 7ml"
-																data-sapcode="A1183830" data-category="20"
+															<button data-price="${faceresult.pprice}" data-linename="${faceresult.pname}"
+																data-sapcode="${faceresult.pname}" data-category="20"
 																class="addcart basket">장바구니 담기</button>
 														</div></li>
 
@@ -404,7 +401,7 @@ header#header {
 			</div>
 			<!-- //content-wrap -->
 		</div>
-		<div class="include-footer" th:insert="~{include/footer}"></div>
+		<div class="include-footer" th:insert="~{include/footer2}"></div>
 	</div>
 	<!-- //wrap -->
 

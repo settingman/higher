@@ -219,37 +219,30 @@ function back() {
 										<section class="product_wrap">
 											<!-- 신상, 단독구성 -->
 											<ul class="product_list ea03" id="listUl">
-												<li style="margin: 0 0 20px 16px;"><a
-													href="/product/detail?code=A1592419"> <img
-														th:src="${lipresult.iloc} + '_600.jpg'"
-														th:alt="${lipresult.pname}"> <input type="hidden"
-														name="lip_pcode" class="lip_pcode"
-														th:value="${lipresult.pcode}" /> <input type="hidden"
-														name="lip_opt" class="lip_opt"
-														th:value="${lipresult.optname}" /> <span class="hash_tag" th:text="${lipresult.bname}"></span>
-														<span class="tit" style="height: 54px"th:text="${lipresult.pname}"></span> <span
-														class="kind" th:text="${lipresult.optname}"></span> <span
-														class="rating"> </span> <span class="price"> <span
-															class="after">[[${#numbers.formatInteger(lipresult.pprice,
-																3, 'COMMA')}]]<em>원</em>
+													<li style="margin: 0 0 20px 16px;"><a
+														th:href="'/product/detail?code=' + ${lipresult.pcode}"> <img
+															th:src="${lipresult.iloc} + '_600.jpg'"
+															th:alt="${lipresult.pname}"> <input type="hidden"
+															name="lip_pcode" class="lip_pcode"
+															th:value="${lipresult.pcode}" /> <input type="hidden"
+															name="lip_opt" class="lip_opt"
+															th:value="${lipresult.optname}" /> <span
+															class="hash_tag" th:text="${lipresult.bname}"></span> <span
+															class="tit" th:text="${lipresult.pname}"
+															style="height: 54px;"></span> <span class="kind"
+															th:text="${lipresult.optname}"></span> <span
+															class="rating"> </span> <span class="price"> <span
+																class="after">[[${#numbers.formatInteger(lipresult.pprice,
+																	3, 'COMMA')}]]<em>원</em>
+															</span>
 														</span>
-													</span>
-												</a>
-													<div class="btn_green"
-														style="text-align: center; margin: 30px 0;">
-														<p class="pickbtn"
-															style="line-height: 30px; display: inline-block;">
-															<img src="/common/image/add.png"
-																style="width: 22px; height: 22px; margin-right: 6px; margin-bottom: 3px;">비교함
-															담기
-														</p>
-													</div>
-													<div class="over">
-														<button class="detailview">자세히보기</button>
-														<button data-price="45000" data-linename="[나스] 파워매트 립스틱"
-															data-sapcode="A1592419" data-category="20"
-															class="addcart basket">장바구니 담기</button>
-													</div></li>
+													</a>
+														<div class="over">
+															<button class="detailview">자세히보기</button>
+															<button data-price="${lipresult.pprice}" data-linename="${lipresult.pname}"
+																data-sapcode="${lipresult.pname}" data-category="20"
+																class="addcart basket">장바구니 담기</button>
+														</div></li>
 											</ul>
 										</section>
 									</div>
@@ -257,32 +250,36 @@ function back() {
 							</form>
 						</div>
 						<div class="simlip">
-							<div class="makeupwrapper" style="margin-bottom: 100px;">
+							<div class="makeupwrapper" style="margin-bottom: 100px;width: 900px;">
 								<div class="swiper-container">
-									<div class="swiper-wrapper" style="height: 400px;">
-										<div class="swiper-slide" th:each="simlip : ${simlip}" style="width: 264px;margin-right: 24px;height: 400px;">
+									<div class="swiper-wrapper" style="height: 440px;">
+										<div class="swiper-slide" th:each="simlip : ${simlip}" style="width: 284px;height:437px;margin-right: 24px;">
+										<section class="product_wrap">
+										<ul class="product_list ea03" id="listUl">
 											<li style="margin: 0 0 20px 16px;"><a
-												th:href="'/product/detail?code=' + ${simlip.pcode}"> <img
-													th:src="${simlip.iloc} + '_600.jpg'"
-													th:alt="${simlip.pname}"> <input type="hidden"
-													name="lip_pcode" class="lip_pcode"
-													th:value="${simlip.pcode}"> <input type="hidden"
-													name="lip_opt" class="lip_opt" th:value="${simlip.optname}">
-													<span class="hash_tag" th:text="${simlip.bname}"></span> <span class="tit"
-													th:value="${simlip.pname}" th:text="${simlip.pname}"></span>
-													<span class="kind" th:value="${simlip.optname}"
-													th:text="${simlip.optname}"></span> <span class="price">
-														<span class="after">[[${#numbers.formatInteger(simlip.pprice,
-															3, 'COMMA')}]]<em>원</em>
-													</span> <span class="choice"> <span class="checkcss">
-																<input type="checkbox" class="recomPrdtSeq"
-																name="prdtSeqs" data-cnt="10" id="checkbox966"
-																value="966"><label for="checkbox966"><i
-																	class="hide">선택</i></label>
+														th:href="'/product/detail?code=' + ${simlip.pcode}"> <img
+															th:src="${simlip.iloc} + '_600.jpg'"
+															th:alt="${simlip.pname}"> <input type="hidden"
+															name="lip_pcode" class="lip_pcode"
+															th:value="${simlip.pcode}" /> <input type="hidden"
+															name="lip_opt" class="lip_opt"
+															th:value="${simlip.optname}" /> <span
+															class="hash_tag" th:text="${simlip.bname}"></span> <span
+															class="tit" th:text="${simlip.pname}"
+															style="height: 54px;"></span> <span class="kind"
+															th:text="${simlip.optname}"></span> <span
+															class="rating"> </span> <span class="price"> <span
+																class="after">[[${#numbers.formatInteger(simlip.pprice,
+																	3, 'COMMA')}]]<em>원</em>
+															</span>
 														</span>
-													</span>
-												</span>
-											</a></li>
+													</a>
+														<div class="over">
+															<button class="detailview">자세히보기</button>
+															<button data-price="${simlip.pprice}" data-linename="${simlip.pname}"
+																data-sapcode="${simlip.pname}" data-category="20"
+																class="addcart basket">장바구니 담기</button>
+														</div></li></ul></section>
 										</div>
 									</div>
 									<div class="swiper-button-next"></div>
@@ -482,7 +479,7 @@ function back() {
 			</div>
 			<!-- //content-wrap -->
 		</div>
-		<div class="include-footer" th:insert="~{include/footer}"></div>
+		<div class="include-footer" th:insert="~{include/footer2}"></div>
 	</div>
 	<!-- //wrap -->
 	<script
