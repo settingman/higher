@@ -1,10 +1,134 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<html class="js">
+<style>
+header#header {
+	background: none;
+	height: auto;
+}
 
+span.statusimage {
+	width: 102px;
+	display: inline-block;
+	height: 80px;
+	margin-bottom: 5px;
+}
+</style>
+<head th:insert="~{include/head}"></head>
+<link rel="stylesheet" type="text/css"
+	href="https://image.thehyundai.com/pc/cssssl/font.css" />
+
+<link rel="stylesheet" type="text/css"
+	href="https://image.thehyundai.com/pc/cssssl/co.css?ver=13" />
+<link rel="stylesheet" type="text/css"
+	href="https://image.thehyundai.com/pc/cssssl/wf.css" />
+<script src="https://image.thehyundai.com/pc/js/jquery-1.11.3.min.js"></script>
+<script src="https://image.thehyundai.com/pc/js/jquery-ui.min.js"></script>
+<script src="https://image.thehyundai.com/pc/js/jquery-migrate.min.js"></script>
+
+<script src="https://image.thehyundai.com/pc/js/plugin.js?ver=040213"></script>
+<script type="text/javascript"
+	src="https://image.thehyundai.com/pc/js/hdmall/co/jquery.form.js"></script>
+<script type="text/javascript"
+	src="https://image.thehyundai.com/pc/js/hdmall/co/default.js?ver=040213"></script>
+<script type="text/javascript"
+	src="https://image.thehyundai.com/pc/js/hdmall/co/common.js?ver=040213"></script>
+<script src="https://image.thehyundai.com/pc/js/common.js?ver=040213"></script>
+<script type="text/javascript"
+	src="https://image.thehyundai.com/pc/js/swiper.min.js?ver=040213"></script>
+<style type="text/css">
+.fancybox-margin {
+	margin-right: 17px;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="/skinMBTI/css/result.css">
+
+
+<body oncontextmenu="return false" ondragstart="return false"
+	onselectstart="return false">
+	<!-- wrap -->
+	<div id="wrap" class="sub">
+		<header id="header" th:insert="~{include/header}"></header>
+		<!-- gnb -->
+
+		<script type="text/javascript"
+			src="https://www.thehyundai.com/js/hdmall/co/referCodes.js"></script>
+		<script src="/js/sso/SsoHttpRequest.js"></script>
+		<script src="/js/sso/SsoAjax.js"></script>
+		<script src="/js/sso/SsoLogin.js"></script>
+		<!-- SSO 로그인 js 공통 처리 2021.02.17-->
+
+		<script type="text/javascript"
+			src="https://www.thehyundai.com/static/gen/js/mainBnnrContents.js?ver=021318"></script>
+		<!-- top banner -->
+		<div id="js-tpl-topBanner" style="display: none"></div>
+
+		<div class="top-wrap sub">
+			<div class="top-area-setting">
+				<script type="text/javascript"
+					src="https://www.thehyundai.com/js/hdmall/dp/dpo/dqSearch.js?ver=040213"></script>
+
+				<script type="text/javascript"
+					src="https://www.thehyundai.com/js/hdmall/dp/dpo/dqAutoCompleteNewCommon.js?ver=040213"></script>
+				<script type="text/javascript"
+					src="https://www.thehyundai.com/js/hdmall/dp/dpo/dqAutoCompleteNew.js?ver=040213"></script>
+
+				<!-- //header -->
+			</div>
+		</div>
+
+		<!-- container -->
+		<div id="container">
+			<!-- content-wrap -->
+			<div class="content-wrap hasleft myhyundai">
+				<!-- left contents -->
+
+				<div class="leftarea">
+					<h2>
+						<a href="/front/mpf/selectMyPageMain.thd">마이현대<span>MY
+								HYUNDAI</span></a>
+					</h2>
+					<div class="line"></div>
+
+					<!-- leftmenu -->
+					<ul class="leftmenu">
+						<li class=""><a class="not">MY Make-ON</a>
+							<ul>
+								<li class=""><a href="/mypage/reserv">예약 관리</a></li>
+								<li class=""><a href="/mypage/reserv_done">예약 결과 확인</a></li>
+								<li class=""><a href="/mypage/reserv_ready">상담 입장</a></li>
+								<li class=""><a href="/mypage/reserv_ing">예약 신청 완료</a></li>
+							</ul></li>
+						<li class=""><a class="not">MY 피부 MBTI</a>
+							<ul>
+								<li class=""><a href="/mypage/skinmbti">결과
+										보기</a></li>
+							</ul></li>
+						<li class=""><a class="not">MY 주문</a>
+							<ul>
+								<li class=""><a href="/front/mpa/selectOrdDlvCrst.thd"
+									onclick="javascript:GA_Event('PC_마이페이지', 'LNB', '주문현황_주문확인/배송조회');">주문
+										내역</a></li>
+
+							</ul></li>
+
+					</ul>
+				</div>
+
+				<!-- content -->
+				<div class="content">
+					<div class="myhyundai-head"></div>
+					<div class="myhyundai-main" style="margin: 40px 0">
+						<h3>MY 피부 MBTI</h3>
+					</div>
+					<!-- 여기다 내용 쓰면 된다 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+
+
+				</div>
+				<!-- //content -->
+			</div>
+			<!-- //content-wrap -->
+		</div>
+		<div class="include-footer" th:insert="~{include/footer2}"></div>
+	</div>
+	<!-- //wrap -->
 </body>
 </html>

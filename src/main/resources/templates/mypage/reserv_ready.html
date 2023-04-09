@@ -1,4 +1,5 @@
-<html class="js">
+<html class="">
+<head>
 <style>
 header#header {
 	background: none;
@@ -13,6 +14,11 @@ span.statusimage {
 }
 </style>
 <head th:insert="~{include/head}"></head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport"
+	content="width=device-width,initial-scale=1,maximum-scale=1.0" />
+<title>더현대닷컴</title>
 <link rel="stylesheet" type="text/css"
 	href="https://image.thehyundai.com/pc/cssssl/font.css" />
 
@@ -41,14 +47,7 @@ span.statusimage {
 </style>
 <link rel="stylesheet" type="text/css"
 	href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-	href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap"
-	rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<link rel="stylesheet" type="text/css" href="/skinMBTI/css/result.css">
-
+</head>
 
 <body oncontextmenu="return false" ondragstart="return false"
 	onselectstart="return false">
@@ -127,98 +126,76 @@ span.statusimage {
 				<!-- content -->
 				<div class="content">
 					<div class="myhyundai-head"></div>
-					<div class="myhyundai-main" style="margin: 40px 0">
-						<h3>MY 피부 MBTI</h3>
+						<div class="myhyundai-main" style="margin: 40px 0">
+						<h3>Make-On 예약 관리</h3>
 					</div>
-
 					<!-- cart-list -->
 					<div class="myhyundai-main" style="margin: 40px 0">
-						<h2>피부 MBTI 결과 확인</h2>
+						<h2>상담 입장</h2>
 					</div>
-					<section id="container">
-						<section id="contents" class="survey_wrap"
-							style="margin: 0; padding: 0; width: 900px;">
-							<div class="result_wrap">
-								<div class="line1">
-									<p>
-										<span sec:authentication="principal.mName">회원이름</span> 회원님의 피부
-										MBTI 진단 결과
-									</p>
-								</div>
-								<div class="line2"></div>
-								<div class="result_list"
-									style="background: white; margin: 20px;">
-									<div class="left"
-										style="height: 700px; display: contents; background: beige;">
-										<div class="img" style="margin: 20px;">
-											<img
-												src="https://www.larocheposay.co.kr/images/customer/skincase_1.png"
-												alt=""> <strong>나의 피부 MBTI는?</strong>
-										</div>
-										<div class="resultName">[[${mbti.stype}]]</div>
-										<p id="title">"[[${mbti.stitle}]]"</p>
-										<p class="resultKeyword">[[${mbti.stag}]]</p>
-										<p style="margin: 20px;">[[${mbti.sexplain}]]</p>
-										<table style="margin: 20px;">
-											<tbody>
-												<tr id="infoPros">
-													<td class="infoName">Strength</td>
-													<td class="infoCon" id="pros">[[${mbti.spros}]]</td>
-												</tr>
-												<tr>
-													<td class="infoName">Weakness</td>
-													<td class="infoCon" id="cons">[[${mbti.scons}]]</td>
-												</tr>
-												<tr>
-													<td class="infoName">Solution</td>
-													<td class="infoCon" id="solution">[[${mbti.ssolution}]]</td>
-												</tr>
+					<div class="cart-list">
+						<!-- table-wrap -->
+						<div class="table-wrap coltype cart no-border-top"
+							style="margin-bottom: 100px;">
+							<table>
+								<caption></caption>
+								<colgroup>
+									<col style="width: 130px" />
+									<col style="width: 100px" />
+									<col style="width: 120px" />
+									<col style="width: 120px" />
+									<col style="width: 100px" />
+								</colgroup>
+								<thead>
+									<tr>
+										<th scope="col">예약번호</th>
+										<th scope="col" style="width: 100px">날짜</th>
+										<th scope="col" style="">시간</th>
+										<th scope="col" style="">예약상태</th>
+										<th scope="col">결과</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:if="${#lists.isEmpty(nores)}">
+										<td height="120" colspan="5">입장 가능한 예약이 없습니다.</td>
+									</tr>
+									<!-- 상담 완료 - 결과 확인 -->
+									<tr th:each="nores : ${nores}"
+										th:if="${not #lists.isEmpty(nores)}">
+										<td class="valign-top" rowspan="1">
+											<div class="od-info">
+												<p class="strong text-point2" th:text="${nores.rid}"></p>
+												<p class="where">온라인</p>
+											</div>
+										</td>
 
-											</tbody>
-										</table>
-
-									</div>
-									<div class="right"
-										style="padding-bottom: 40px; height: 700px; display: contents;">
-										<div class="img" style="margin: 20px;">
-											<img
-												src="https://www.larocheposay.co.kr/images/customer/skincase_2.png"
-												alt=""> <strong class="">진단 차트 <em></em></strong>
-										</div>
-
-										<div class="graph">
-											<canvas id="myChart" height="675"
-												style="display: block; box-sizing: border-box; height: 450px; width: 450px;"
-												width="562"></canvas>
-										</div>
-									</div>
-
-								</div>
-
-								<div class="btn_wrap center mt40">
-									<button type="button" class="btn_base" onclick="location.href='/skinMBTI/selfConsult' ">재검사하기</button>
-									<button type="button" class="btn_base">
-										<a id="kakaotalk-sharing-btn" href="javascript:;"> <img
-											src="https://developers.kakao.com/assets/img/about/logos/kakaotalksharing/kakaotalk_sharing_btn_small.png"
-											alt="카카오톡 공유 보내기 버튼">카카오톡 공유하기
-										</a>
-
-									</button>
-								</div>
-
-
-
-
-							</div>
-						</section>
-						<!-- //contents -->
-					</section>
-					<input type="hidden" id="score1" th:value="${score1}">
-					<input type="hidden" id="score2" th:value="${score2}">
-					<input type="hidden" id="score3" th:value="${score3}">
-					<input type="hidden" id="score4" th:value="${score4}">
-					<script src="/skinMBTI/js/result.js" charset="UTF-8"></script>
-
+										<td class="price-info" style="">
+											<div class="tot-price"
+												th:text="${#strings.substring(nores.rdate, 0, 10)}"></div>
+										</td>
+										<td class="price-info">
+											<div class="tot-price"
+												th:text="${#strings.substring(nores.rdate, 11, 16)}"></div>
+										</td>
+										<td class="shipping">
+											<div class="order-status">입장 가능</div>
+										</td>
+										<td class="ctrl">
+											<p class="v-btn-wrap">
+												<a th:href="'/chat/room?roomId=' + ${nores.roomid}"
+													onclick="javascript:GA_Event('PC_마이페이지', '최근_주문_배송내역', '상세내역');"
+													class="btn color4 size1">입장
+													하기</a>
+											</p>
+										</td>
+									</tr>
+									<!-- /상담 완료 - 결과 확인 -->
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<!-- //cart-list -->
+					<!-- //입장-->
 				</div>
 				<!-- //content -->
 			</div>

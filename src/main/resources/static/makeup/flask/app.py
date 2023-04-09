@@ -11,6 +11,10 @@ import boto3
 app = Flask(__name__)
 CORS(app)
 
+# Author : 이세아
+# s3를 통한 이미지 저장 및 스프링부트 서버와 연동
+# 스프링부트 값에 따른 색상값을 이미지에 적용
+
 class FeatureChoice(str, enum.Enum):
     lips = 'lips'
     blush = 'blush'
