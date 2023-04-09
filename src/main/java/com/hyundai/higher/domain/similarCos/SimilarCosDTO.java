@@ -6,6 +6,14 @@ import lombok.Data;
 public class SimilarCosDTO {
 
 	private String pcode;
+	
 	private int total;
+	private int percent;
+	
+	private String pname;
+	private String iloc;
+	private int bno;
+	private String bname;
+	private int pprice;
 	
 }
