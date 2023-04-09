@@ -173,7 +173,7 @@ public class MatchController {
 
 		return "match/main";
 	}
-
+	
 	// 매칭 세부
 	@GetMapping("/detail")
 	public String matchDetail(@RequestParam("pcode") String pcode, Model model, Principal principal) {
@@ -200,6 +200,8 @@ public class MatchController {
 			if (idx == 6)
 				break;
 		}
+
+		if(principal != null) {
 
 		// 성분
 		model.addAttribute("product", product);
@@ -263,6 +265,7 @@ public class MatchController {
 		}
 		log.info("----------------------" + score);
 		model.addAttribute("score", score);
+		}
 
 		return "match/detail";
 	}
