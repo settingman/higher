@@ -136,9 +136,9 @@ header#header {
 
 					<!-- leftmenu -->
 					<ul class="leftmenu">
-						<li class=""><a class="not">MY Make-ON</a>
+						<li class=""><a class="not" href="/mypage/reserv">MY Make-ON</a>
 							<ul>
-								<li class=""><a>예약 관리</a></li>
+								<li class=""><a href="/mypage/reserv">예약 관리</a></li>
 								<li class=""><a>예약 결과 확인</a></li>
 								<li class=""><a>상담 입장</a></li>
 								<li class=""><a>예약 신청 완료</a></li>
@@ -196,9 +196,7 @@ header#header {
 									<caption></caption>
 									<colgroup>
 										<col style="width: 150px;">
-										<col>
-										<col style="width: 150px;">
-										<col style="width: 215px;">
+										<col style="width: 690px;">
 									</colgroup>
 									<tbody>
 										<tr>
@@ -208,6 +206,8 @@ header#header {
 										<tr>
 											<th scope="row">상담일자</th>
 											<td th:text="${info.rdate}"></td>
+										</tr>
+										<tr>
 											<th scope="row">피부 MBTI</th>
 											<td th:text="${pro.mbti}"></td>
 										</tr>
@@ -220,7 +220,11 @@ header#header {
 
 										<tr>
 											<th scope="row">요청 사항</th>
-											<td colspan="3">-</td>
+											<td th:text="${info.rneeds}">></td>
+										</tr>
+										<tr>
+											<th scope="row">아티스트 당부 사항</th>
+											<td colspan="3" th:text="${result.artistcmt}"></td>
 										</tr>
 
 									</tbody>
@@ -232,10 +236,10 @@ header#header {
 								<table>
 									<caption></caption>
 									<colgroup>
-										<col style="width: 31.1vh;">
+										<col style="width: 33%;">
 
-										<col style="width: 31.1vh;">
-										<col style="width: 31.1vh;">
+										<col style="width: 33%;">
+										<col style="width: 33%;">
 									</colgroup>
 									<tbody>
 										<tr style="font-family: 'notokr-medium';">
@@ -258,7 +262,7 @@ header#header {
 								<p style="">결과 사진</p>
 							</div>
 							<div class="wrapper3"
-								style="grid-template-columns: repeat(2, 1fr);display: grid;place-items: center;margin: 0 50px;">
+								style="grid-template-columns: repeat(2, 1fr); display: grid; place-items: center; margin: 0 50px;">
 								<div class="faceupload" style="float: left">
 									<img class="face"
 										th:src="'/beauty/display?fileName=' + ${info.rimg}"
@@ -311,10 +315,9 @@ header#header {
 															th:value="${lipresult.pcode}" /> <input type="hidden"
 															name="lip_opt" class="lip_opt"
 															th:value="${lipresult.optname}" /> <span
-															class="hash_tag" th:text="${lipresult.bname}"></span> <span class="tit"
-															th:text="${lipresult.pname}" style="
-    height: 54px;
-"></span> <span class="kind"
+															class="hash_tag" th:text="${lipresult.bname}"></span> <span
+															class="tit" th:text="${lipresult.pname}"
+															style="height: 54px;"></span> <span class="kind"
 															th:text="${lipresult.optname}"></span> <span
 															class="rating"> </span> <span class="price"> <span
 																class="after">[[${#numbers.formatInteger(lipresult.pprice,
@@ -336,9 +339,8 @@ header#header {
 															th:value="${blushresult.pcode}" /> <input type="hidden"
 															name="blush_opt" class="blush_opt"
 															th:value="${blushresult.optname}" /> <span
-															class="hash_tag" th:text="${blushresult.bname}"></span> <span class="tit" style="
-    height: 54px;
-"
+															class="hash_tag" th:text="${blushresult.bname}"></span> <span
+															class="tit" style="height: 54px;"
 															th:text="${blushresult.pname}"></span> <span class="kind"
 															th:text="${blushresult.optname}"></span> <span
 															class="rating"> </span> <span class="price"> <span
@@ -362,9 +364,8 @@ header#header {
 															th:value="${faceresult.pcode}" /> <input type="hidden"
 															name="face_opt" class="face_opt"
 															th:value="${faceresult.optname}" /> <span
-															class="hash_tag"th:text="${faceresult.bname}"></span> <span class="tit" style="
-    height: 54px;
-"
+															class="hash_tag" th:text="${faceresult.bname}"></span> <span
+															class="tit" style="height: 54px;"
 															th:text="${faceresult.pname}"></span> <span class="kind"
 															th:text="${faceresult.optname}"></span> <span
 															class="rating"> </span> <span class="price"> <span
@@ -406,7 +407,7 @@ header#header {
 		<div class="include-footer" th:insert="~{include/footer}"></div>
 	</div>
 	<!-- //wrap -->
-	
+
 	<script>
 		function addCart() {
 			console.log('장바구니 담기');

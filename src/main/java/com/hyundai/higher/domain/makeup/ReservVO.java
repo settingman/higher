@@ -11,5 +11,6 @@ public class ReservVO {
 	private String roomid;
 	private String rdate;
 	private String mid;
+	private String rneeds;
 
 }

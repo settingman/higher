@@ -55,7 +55,8 @@ header#header {
 
 		<section class="sub_visual_warp" style="background: black;">
 			<div class="sub_visual" style="">
-				<img style="width: 100%;height: 210px;object-fit: cover;opacity: 0.8;"
+				<img
+					style="width: 100%; height: 210px; object-fit: cover; opacity: 0.8;"
 					src="/makeup/img/makeup.jpg">
 				<div class="sub_visual" style="top: -210px;">
 					<h1 style="color: white;">
@@ -157,7 +158,7 @@ header#header {
 
 								</div>
 								<p>
-									참여해 주신 회원님께<br> <span class="fc_blue">2000 h.point
+									참여해 주신 회원님께<br> <span class="fc_blue">h.point 2000점
 										지급!</span><br>아티스트에게 추천받은 상품을<br> 알뜰하게 구매하세요.
 								</p></li>
 						</ul>
@@ -165,8 +166,13 @@ header#header {
 							style="position: absolute; top: 85%; left: 50%; transform: translate(-50%, 0); text-align: center;">
 							<div class="btn_green"
 								style="float: left; margin-right: 50; color: white; background: #bfae90; height: 60; width: 200; line-height: 60px; font-family: 'notokr-medium';">
-								<p style="font-weight: 100; font-size: 18; cursor: pointer;"
-									onclick="location.href='/beauty/reserv_type'">예약하기</p>
+								<p sec:authorize="isAuthenticated()"
+									style="font-weight: 100; font-size: 18; cursor: pointer;"
+									onclick="location.href='/beauty/reserv_type'" class="arrow">예약하기</p>
+								<p sec:authorize="isAnonymous()"
+									style="font-weight: 100; font-size: 18; cursor: pointer;"
+									href="#survey_pop" class="arrow layer-pop">예약하기</p>
+
 							</div>
 							<div class="btn_gray"
 								style="float: right; color: white; background: slategray; height: 60; width: 200; font-family: 'notokr-demilight'; line-height: 60px;">
@@ -177,6 +183,38 @@ header#header {
 					</div>
 				</div>
 			</section>
+		</section>
+		<section id="survey_pop" class="layerpop_warp">
+			<div class="layerpop blue" style="width: 460px;">
+				<div class="layerpop_head">
+					<h1>로그인</h1>
+				</div>
+				<div class="layerpop_cont">
+					<div class="login">
+						<div class="stepimg" style="margin: 30px auto;">
+							<div class="imgdiv"
+								style="width: 120px; margin: 0 auto; background: #d3d3d373; border-radius: 50%; height: 120px; position: relative;">
+								<div style="">
+									<img src="/makeup/img/hpoint.png"
+										style="width: 120px; position: relative;">
+								</div>
+							</div>
+						</div>
+						<p
+							style="font-size: 16px; color: #222222; line-height: 1.5; text-align: center;">
+							회원 로그인 후 참여 가능합니다.<br> <i class="fc_blue">예약 완료 시,
+								h.point 2000점</i> 이 발급됩니다.<br> <em
+								style="color: #8f8f8f; margin-top: 10px;">(발급된 마일리지는 MY현대에서 확인가능)</em>
+						</p>
+						<div class="btn_wrap center mt30">
+							<button type="button" class="btn_base blue act"
+								onclick="location.href='/member/login';">로그인</button>
+							<button type="button" class="btn_base darkgray act" id="close">취소</button>
+						</div>
+					</div>
+				</div>
+				<button type="button" class="close">닫기</button>
+			</div>
 		</section>
 		<div class="include-footer" th:insert="~{include/footer}"></div>
 	</div>

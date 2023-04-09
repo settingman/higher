@@ -39,12 +39,12 @@
 	<insert id="insertResult"
 		parameterType="com.hyundai.higher.domain.makeup.ResultVO">
 		insert into result(rid, result_img, lip, lip_pcode,
-		lip_opt, blush, blush_pcode, blush_opt, face, face_pcode, face_opt)
+		lip_opt, blush, blush_pcode, blush_opt, face, face_pcode, face_opt, artistcmt)
 		values (#{rid},#{result_img}, #{lip},
 		#{lip_pcode}, #{lip_opt},
 		#{blush}, #{blush_pcode}, #{blush_opt},
 		#{face}, #{face_pcode},
-		#{face_opt})
+		#{face_opt}, #{artistcmt})
 	</insert>
 	
 	<update id="mileageupdate">

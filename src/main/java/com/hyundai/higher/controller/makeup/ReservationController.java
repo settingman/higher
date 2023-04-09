@@ -16,18 +16,18 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
 /**
- * @since   : 2023. 3. 27.
+ * @since : 2023. 3. 27.
  * @FileName: ReservationController.java
- * @author  : 이세아
- * @설명    : @
-
- * <pre>
+ * @author : 이세아
+ * @설명 : @
+ * 
+ *     <pre>
  *   수정일         수정자               수정내용
  * ----------      --------    ---------------------------
  * 2023. 3. 27.     이세아       create
  * 2023. 3. 27.     이세아       예약서비스 html 연결
  * 2023. 3. 30.		이세아	   첨부파일 업로드 처리
- * </pre>
+ *     </pre>
  */
 
 @Log4j2
@@ -35,10 +35,10 @@ import lombok.extern.log4j.Log4j2;
 @RequestMapping("/beauty")
 @Controller
 public class ReservationController {
-	
+
 	@Autowired
 	private ReservService service;
-	
+
 	@GetMapping("/reserv")
 	public void reserv_main() {
 		log.info("==== Make-on 메인 페이지====");
@@ -57,26 +57,28 @@ public class ReservationController {
 	@GetMapping("/reserv_online")
 	public void reserv_online() {
 		log.info("==== 예약 디테일 입력 페이지 : 온라인 전용 ====");
-		
+
 	}
-	
+
 	@GetMapping("/uploadEx")
 	public void uploadEx() {
 		log.info("==== 파일 업로드 샘플 페이지 ====");
 	}
-	
+
 	@PostMapping("/reserv.do")
-	public String reservSend(@RequestParam("rimg") String rimg, @RequestParam("rdate") String rdate, Principal principal) {
+	public String reservSend(@RequestParam("rimg") String rimg, @RequestParam("rdate") String rdate,
+			@RequestParam("rneeds") String rneeds, Principal principal) {
 
 		log.info("==== 예약 DB 처리중 ====");
 		ReservVO vo = new ReservVO();
 		vo.setMid(principal.getName());
 		vo.setRdate(rdate);
 		vo.setRimg(rimg);
-		
+		vo.setRneeds(rneeds);
+
 		service.reserv(vo);
 		log.info(vo);
-		
+
 		return "redirect:/mypage/reserv";
 	}
 

@@ -94,7 +94,7 @@ public class MakeupController {
 			@RequestParam("lip_opt") String lip_opt, @RequestParam("blush") String blush,
 			@RequestParam("blush_pcode") String blush_pcode, @RequestParam("blush_opt") String blush_opt,
 			@RequestParam("face") String face, @RequestParam("face_pcode") String face_pcode,
-			@RequestParam("face_opt") String face_opt,@RequestParam("mid") String mid, Model model) {
+			@RequestParam("face_opt") String face_opt,@RequestParam("mid") String mid, @RequestParam("artistcmt") String artistcmt, Model model) {
 
 		log.info("======== 결과 DB로 넘어갔습니다 =======");
 
@@ -110,6 +110,7 @@ public class MakeupController {
 		result.setFace(face);
 		result.setFace_pcode(face_pcode);
 		result.setFace_opt(face_opt);
+		result.setArtistcmt(artistcmt);
 
 		service.insertResult(result);
 		

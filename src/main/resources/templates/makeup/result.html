@@ -96,12 +96,14 @@
 		const foundationlistPick = clonedElement.querySelector('.lip_pick');
 		clonedElement.remove('.lip_pick');
 
-		const faceClone = document.querySelector('.lipclone');
-		while (faceClone.firstChild) {
-			faceClone.removeChild(faceClone.firstChild);
+		clonedElement.style.marginRight = '0';
+
+		const lipClone = document.querySelector('.lipclone');
+		while (lipClone.firstChild) {
+			lipClone.removeChild(lipClone.firstChild);
 		}
 
-		faceClone.appendChild(clonedElement);
+		lipClone.appendChild(clonedElement);
 	}
 	function cloneBlush(el) {
 		const originalElement = el.closest('.swiper-slide');
@@ -113,12 +115,15 @@
 		const foundationlistPick = clonedElement.querySelector('.blush_pick');
 		clonedElement.remove('.blush_pick');
 
-		const faceClone = document.querySelector('.blushclone');
-		while (faceClone.firstChild) {
-			faceClone.removeChild(faceClone.firstChild);
+		clonedElement.style.marginRight = '0';
+		clonedElement.style.margin = '0 auto';
+
+		const blushClone = document.querySelector('.blushclone');
+		while (blushClone.firstChild) {
+			blushClone.removeChild(blushClone.firstChild);
 		}
 
-		faceClone.appendChild(clonedElement);
+		blushClone.appendChild(clonedElement);
 	}
 	function cloneFace(el) {
 		const originalElement = el.closest('.swiper-slide');
@@ -130,6 +135,9 @@
 		const foundationlistPick = clonedElement
 				.querySelector('.foundationlist_pick');
 		clonedElement.remove('.foundationlist_pick');
+
+		clonedElement.style.marginRight = '0';
+		clonedElement.style.margin = '0 auto';
 
 		const faceClone = document.querySelector('.faceclone');
 		while (faceClone.firstChild) {
@@ -453,21 +461,14 @@
 					<div class="container">
 						<div class="container" style="float: left; font-size: 12px;">
 							<div class="makeupwrapper"
-								style="margin-bottom: 100px; float: left;">
+								style="margin-bottom: 100px; float: left; width: 1220px;">
 								<h2 style="margin-top: 30px;">상담 결과</h2>
 								<div class="numbering"
-									style="font-family: 'locator-medium'; position: relative; float: left; margin-right: 695px; line-height: 26px;">
+									style="font-family: 'locator-medium'; line-height: 26px;">
 									<p style="display: inline">예약번호 :</p>
 									<p style="display: inline" th:text="${res.rid}"></p>
 								</div>
-								<div style="position: relative;">
-									<p class="v-btn-wrap" style="">
-										<a th:href="'/mypage/result2?rid=' + ${res.rid}"
-											onclick="javascript:GA_Event('PC_마이페이지', '최근_주문_배송내역', '상세내역');"
-											class="btn color4 size1"
-											style="background: #bfae90; border: #bfae90;">상세 결과</a>
-									</p>
-								</div>
+
 								<div class="dualwrap">
 									<div class="makeupwrapper" style="margin-bottom: 100px;">
 										<!-- 예약자 정보 -->
@@ -475,10 +476,8 @@
 											<table style="font-size: inherit;">
 												<caption></caption>
 												<colgroup>
-													<col style="width: 180px;">
-													<col>
-													<col style="width: 180px;">
-													<col>
+													<col style="width: 150px;">
+													<col style="width: 690px;">
 												</colgroup>
 												<tbody>
 													<tr>
@@ -488,6 +487,8 @@
 													<tr>
 														<th scope="row">상담일자</th>
 														<td th:text="${res.rdate}"></td>
+													</tr>
+													<tr>
 														<th scope="row">피부 MBTI</th>
 														<td th:text="${pro.mbti}"></td>
 													</tr>
@@ -497,11 +498,16 @@
 														<td colspan="3" th:text="${principal.name}"></td>
 													</tr>
 													<!-- 주문시 요청사항 배송기사님 -->
-
 													<tr>
 														<th scope="row">요청 사항</th>
-														<td colspan="3"><input type="text" id="needs"
-															name="needs" size="300" style="border-color: white;"></td>
+														<td th:text="${res.rneeds}">></td>
+													</tr>
+
+													<tr>
+														<th scope="row">코멘트</th>
+														<td colspan="3"><input type="text" id="forartistcmt"
+															name="forartistcmt" class="forartistcmt" size="300"
+															style="border-color: white;"></td>
 													</tr>
 
 												</tbody>
@@ -579,13 +585,13 @@
 																	<li><a> <img
 																			th:src="${liplist.iloc} + '_600.jpg'"
 																			th:alt="${liplist.pname}"
-																			style="margin-bottom: 10px;"> 
-																			
-																			<input type="hidden" name="lip_pcode" class="lip_pcode" th:value="${liplist.pcode}"> 
-																			<input type="hidden" name="lip_opt" class="lip_opt" th:value="${liplist.optname}"> 
-																			<span
-																			class="hash_tag">브랜드명</span> <span class="tit"
-																			th:value="${liplist.pname}"
+																			style="margin-bottom: 10px;"> <input
+																			type="hidden" name="lip_pcode" class="lip_pcode"
+																			th:value="${liplist.pcode}"> <input
+																			type="hidden" name="lip_opt" class="lip_opt"
+																			th:value="${liplist.optname}"> <span
+																			class="hash_tag" th:text="${liplist.bname}"></span> <span
+																			class="tit" th:value="${liplist.pname}"
 																			th:text="${liplist.pname}"></span> <span class="kind"
 																			th:value="${liplist.optname}"
 																			th:text="${liplist.optname}"></span> <span
@@ -631,11 +637,9 @@
 																			type="hidden" name="blush_pcode" class="blush_pcode"
 																			th:value="${blushlist.pcode}"> <input
 																			type="hidden" name="blush_opt" class="blush_opt"
-																			th:value="${blushlist.optname}"> 
-																			
-																			<span
-																			class="hash_tag">브랜드명</span> <span class="tit"
-																			th:value="${blushlist.pname}"
+																			th:value="${blushlist.optname}"> <span
+																			class="hash_tag" th:text="${blushlist.bname}"></span>
+																			<span class="tit" th:value="${blushlist.pname}"
 																			th:text="${blushlist.pname}"></span> <span
 																			class="kind" th:value="${blushlist.optname}"
 																			th:text="${blushlist.optname}"></span> <span
@@ -679,15 +683,12 @@
 																			th:src="${foundationlist.iloc} + '_600.jpg'"
 																			th:alt="${foundationlist.pname}"
 																			style="margin-bottom: 10px;"> <input
-																			type="hidden" name="foundation_pcode"
-																			class="foundation_pcode"
-																			th:value="${foundationlist.pcode}"> 
-																			<input
-																			type="hidden" name="foundation_opt"
-																			class="foundation_opt"
+																			type="hidden" name="face_pcode" class="face_pcode"
+																			th:value="${foundationlist.pcode}"> <input
+																			type="hidden" name="face_opt" class="face_opt"
 																			th:value="${foundationlist.optname}"> <span
-																			class="hash_tag">브랜드명</span> <span class="tit"
-																			th:value="${foundationlist.pname}"
+																			class="hash_tag" th:text="${foundationlist.bname}"></span>
+																			<span class="tit" th:value="${foundationlist.pname}"
 																			th:text="${foundationlist.pname}"></span> <span
 																			class="kind" th:value="${foundationlist.optname}"
 																			th:text="${foundationlist.optname}"></span> <span
@@ -750,18 +751,22 @@
 														style="border-color: white; margin: 0 10px; width: 284px; height: 470px;"></div>
 												</div>
 												<input type="hidden" name="rid" class="rid"
-													th:value="${res.rid}"> 
-												<input type="hidden" name="mid" class="mid" th:value="${mem.mid}">	
-													<input type="hidden"
-													name="result_img" class="result_img"
+													th:value="${res.rid}"> <input type="hidden"
+													name="mid" class="mid" th:value="${res.mid}"> <input
+													type="hidden" name="result_img" class="result_img"
 													th:value="${output_filepath}"> <input type="hidden"
 													name="lip" class="lip" th:value="${lips}"> <input
-													type="hidden" name="blush" class="blush" th:value="${blush}">
-												<input type="hidden" name="face" class="face"
-													th:value="${foundation}">
+													type="hidden" name="blush" class="blush"
+													th:value="${blush}"> <input type="hidden"
+													name="face" class="face" th:value="${foundation}">
+												<input type="hidden" name="artistcmt" class="artistcmt"
+													id="artistcmt" value="">
 												<div class="send_pick">
+
 													<p style="text-align: center;">
-														<button type="submit">결과 전송</button>
+														<button type="submit"
+															style="background: white; width: 200px; height: 60px; margin-top: 20px; font-family: 'notokr-medium'; font-size: 20px; border-radius: 20px;">결과
+															전송</button>
 													</p>
 												</div>
 											</div>
@@ -772,6 +777,13 @@
 							</div>
 						</div>
 					</div>
+					<script>
+						$(document).ready(function() {
+							$(".forartistcmt").on("input", function() {
+								$(".artistcmt").val($(this).val());
+							});
+						});
+					</script>
 					<!-- /.container-fluid -->
 				</div>
 				<!-- End of Page Wrapper -->

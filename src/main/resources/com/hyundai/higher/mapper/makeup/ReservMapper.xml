@@ -6,9 +6,9 @@
 
 	<insert id="reserv"
 		parameterType="com.hyundai.higher.domain.makeup.ReservVO">
-		insert into reservation(rid, rcheck, rimg, rdate, mid)
+		insert into reservation(rid, rcheck, rimg, rdate, mid, rneeds)
 		values
-		(seq_rid.nextval, 0, #{rimg}, to_date(#{rdate},'YYYY-MM-DD HH24:MI:SS'), #{mid})
+		(seq_rid.nextval, 0, #{rimg}, to_date(#{rdate},'YYYY-MM-DD HH24:MI:SS'), #{mid}, #{rneeds})
 	</insert>
 
 	<select id="CountDate" resultType="java.lang.Integer">

@@ -16,5 +16,6 @@ public class ResultVO {
 	private String face;
 	private String face_pcode;
 	private String face_opt;
+	private String artistcmt;
 
 }

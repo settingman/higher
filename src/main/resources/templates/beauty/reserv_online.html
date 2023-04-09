@@ -98,7 +98,8 @@ div#selected {
 						<div class="exhib_tit">
 							<div class="makeup-main">
 								<input type="hidden" name="rimg" class="rimg" id="rimg" value="">
-								<img src="/img/online.jpeg">
+								<input type="hidden" name="rneeds" class="rneeds" id="rneeds"
+									value=""> <img src="/img/online.jpeg">
 							</div>
 							<ul class="exhib_list" id="floatPC_layer"
 								style="text-align: center; font-family: 'notokr-medium'; margin: revert; font-size: large;">
@@ -123,7 +124,7 @@ div#selected {
 				<!-- 달력 -->
 				<div class="tit" title="날짜 선택" id="step1-head" tabindex="0">
 					<h3 class="g-title-1">날짜 선택</h3>
-				<!-- 	<img src="/makeup/img/down.png" > -->
+					<!-- 	<img src="/makeup/img/down.png" > -->
 				</div>
 				<div class="calendartable">
 					<div class="accordion_cont">
@@ -246,7 +247,8 @@ div#selected {
 									<div class="btn_green"
 										style="background: #bfae90; font-family: 'notokr-medium'; font-size: large; width: 200px; margin-right: 55px;">
 										<label for="file">
-											<div class="btn-upload" style="height: 50px; line-height: 50px;">사진 등록</div>
+											<div class="btn-upload"
+												style="height: 50px; line-height: 50px;">사진 등록</div>
 										</label> <input type="file" name="file" id="file"
 											style="display: none;">
 									</div>
@@ -255,8 +257,43 @@ div#selected {
 							</div>
 						</div>
 					</div>
-					<!-- /사진 업로드 -->
 				</div>
+				<!-- /사진 업로드 -->
+				<!-- 요청 사항 -->
+				<div class="tit" title="요청 사항" id="step1-head" tabindex="0">
+					<h3 class="g-title-1">요청 사항</h3>
+				</div>
+				<div class="inputneeds" style="display: none;">
+					<div class="accordion_cont" style="">
+						<div class="box">
+
+							<div class="rightbox" style="">
+								<div class="g_box" style="margin: 0; width: auto;">
+									<input class="input_text" cols="100" rows="4" type="textarea"
+										style="width: 100%; height: 100px; margin-bottom: 40px; padding: 20px; color: black;"
+										placeholder="요청 사항을 입력하세요.">
+								</div>
+
+								<div class="g_box" style="margin: 0; width: auto;">
+									<dl style="margin-bottom: revert;">
+										<dt>GUIDE</dt>
+										<dd>
+											다음과 같은 내용을 적어주세요.<br>
+										</dd>
+										<dd  style="line-height: 20px;">
+											1. 내 피부 상태에 대한 설명 : 피부MBTI 결과를 아티스트가 숙지하고 상담을 진행합니다. 이 외에 추가하고 싶은 정보가 있다면 기재해주세요.
+										</dd>
+										<dd>2. 평소에 시도해보고 싶던 메이크업 스타일이나, 자주하던 스타일이 있다면 기재해주세요.</dd>
+										<dd>3. 선호하는 브랜드나, 기존에 사용하던 제품의 특징이 있다면 기재해주세요.</dd>
+										<dd>요청 사항 내용은 상담 이외의 목적으로 사용되지 않습니다.</dd>
+									</dl>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /요청 사항 -->
+
 			</div>
 		</div>
 		<div class="include-footer" th:insert="~{include/footer}"></div>
@@ -401,7 +438,7 @@ selectTimes.forEach(selectTime => {
   });
 });
 
-    let uploadpagebtn = document.querySelector(".uploadimage");
+   	  let uploadpagebtn = document.querySelector(".uploadimage");
       let uploadSelect = document.querySelector('[title="사진 업로드"]');
       uploadSelect.addEventListener("click", function () {
         if (uploadpagebtn.style.display === "none") {
@@ -409,6 +446,16 @@ selectTimes.forEach(selectTime => {
         } else {
           uploadpagebtn.style.display = "none";
         }
+      });
+      
+      let needsbtn = document.querySelector('[title="요청 사항"]');
+      let needsdiv = document.querySelector(".inputneeds");
+      needsbtn.addEventListener("click", function(){
+    	  if (needsdiv.style.display === "none") {
+    		  needsdiv.style.display = "block";
+    	  } else {
+    		  needsdiv.style.display = "none";
+    	  }
       });
 
       let calendarpagebtn = document.querySelector(".calendartable");
@@ -449,6 +496,8 @@ selectTimes.forEach(selectTime => {
 		$('#file').on('change', function() {
 			  var files = $(this)[0].files;
 			  var formData = new FormData();
+			  var pass = document.querySelector(".uploadimage");
+			  var nextstep = document.querySelector(".inputneeds");
 			  for (var i = 0; i < files.length; i++) {
 			    formData.append("uploadFiles", files[i]);
 			  }
@@ -464,10 +513,11 @@ selectTimes.forEach(selectTime => {
 			      console.log(result);
 			      $(".uploadResult").css("background", "none");
 			      showUploadedImages(result);
+			      
 			      $(".uploadResult").css("background", "none");
-		    	  $(".reservi").css("background", "#bfae90");
-		    	  $(".reservi").css("cursor", "pointer");
-		    	  $(".reservi").removeAttr("disabled");
+			      pass.style.display = "none";
+			      nextstep.style.display = "block";
+			      
 			    },
 			    error: function(jqXHR, textStatus, errorThrown) {
 			      console.log(textStatus);
@@ -486,16 +536,29 @@ selectTimes.forEach(selectTime => {
 				console.log(result);
 				if (result === true) {
 					targetDiv.parent().remove();
-					$(".reservi").css("background", "darkgray");
+					$(".uploadResult").css("background", "darkgray");
 					
 				}
 			});
 		});
 		
-		$(".removeBtn").on("click", function(e){
-			 $(".reservi").css("background", "gainsboro");
-			 
-		})
+		$(".input_text").on("input", function(e){
+			if($(".input_text").val()!=''){
+			 $(".reservi").css("background", "#bfae90");
+	    	 $(".reservi").css("cursor", "pointer");
+	    	 $(".reservi").removeAttr("disabled");
+			}
+			else if ($(".input_text").val()=='') {
+			$(".reservi").attr("disabled", "disabled");
+			$(".reservi").css("background","gainsboro");
+			}
+		});
+		
+		$(document).ready(function() {
+			  $(".input_text").on("input", function() {
+			    $(".rneeds").val($(this).val());
+			  });
+			});
 		
 	</script>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
