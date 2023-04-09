@@ -2,7 +2,21 @@ const main = document.querySelector("#main");
 const qna = document.querySelector("#qna");
 const endPoint = 12;
 const resultScore = [0, 0, 0, 0];
+let agreeStat = 'disagree';
 let mbti = '';
+
+
+$(function(){
+	$('#radio2_1').click(function(){
+		agreeStat = 'agree';
+		console.log(agreeStat);
+	});
+	
+	$('#radio2_2').click(function(){
+		agreeStat = 'disagree';
+		console.log(agreeStat);
+	});
+});
 
 function calResult(){
   for(var i=0; i<=3; i++){
@@ -53,6 +67,10 @@ function goResult(){
 }
 
 function begin(){
+if(agreeStat == 'disagree'){
+	alert('민감 정보 수집에 동의하셔야 참여 가능합니다.');
+	return;
+}else{
   main.style.WebkitAnimation = "fadeOut 1s";
   main.style.animation = "fadeOut 1s";
   setTimeout(() => {
@@ -64,4 +82,6 @@ function begin(){
       qna.style.display = "block";
     }, 400)
   }, 400);
+	
+}
 }
