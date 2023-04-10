@@ -221,6 +221,8 @@ public class MatchController {
 
 		// 성분 for문 해서 점수 카운트
 		int score = 0;
+		log.info("ffffffff"+mService.getEffect(ingredients[9], mbtiList[0]));
+	if(mService.getEffect(ingredients[9], mbtiList[0]) != null) {
 		// 첫번째 mbti 점수 계산. 총 40점. good 4점, normal 2점, bad 1점
 		for (int i = 0; i < ingredients.length; i++) {
 			log.info("============================");
@@ -265,6 +267,7 @@ public class MatchController {
 		}
 		log.info("----------------------" + score);
 		model.addAttribute("score", score);
+		}
 		}
 
 		return "match/detail";

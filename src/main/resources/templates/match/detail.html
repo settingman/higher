@@ -322,6 +322,29 @@
 											<span class="title" style="top: 110px;">[[${score}]]</span>
 										</div>
 									</div>
+                  <div th:unless="${score != null}" class="result"
+                  style="display: flex;justify-content: center;padding: 30px 10px;margin-bottom: 40px;border: 1px solid #c2bdbd;border-radius: 39px;">
+										<div class="inform">
+                      <h2 id="side-tit" style="
+                      font-family: 'locator-medium';
+                      font-size: 22px;
+                      padding-bottom: 5px;
+                      border-bottom: 2px solid #d2d2d2;
+                      margin-bottom: 21px;
+                  ">이 제품과 나의 피부 <i style="color:#bfae90;">매칭도</i>는?</h2>
+                      <div id="join-guide" style="
+                      font-size: 16px;
+                      text-align: center;
+                      font-family: 'notokr-demilight';
+                      line-height: 25px;
+                  ">회원가입 후 피부 MBTI를 진단하고<br>나의 피부타입과 제품의<br>매칭도를 확인하세요!</div>
+          	          <div id="join-btn" style="
+                      margin-top: 17px;
+                      display: flex;
+                      justify-content: center;
+                  "><a class="btn_base move" href="/member/login">회원가입 후 진단하러 가기</a></div>
+										</div>
+									</div>
                   
 									<div id="ingredient_box">
 										<div id="iTit">주요성분</div>
@@ -409,12 +432,125 @@
 
 			</section>
 			<!-- //contents -->
+<!-- right 제품구매 플로팅 -->
+<section class="flot_right_warp">
+  <div class="flot_price_btn">
+    <div class="flotmem"><a href="/"></a><strong><em>고객</em>님</strong>반갑습니다</div>
+    <div class="flotcart"><a href="/shop/mycart"><span class="count">0</span><span class="hide">장바구니 -
+          바로가기</span></a></div>
+    <div class="flotheart"><a href="/product/compare">
+      <p style="font-size: 15px; color: #8d806a; background: white; margin-top: 7px; display: inline-block; padding: 6px 14px; border-radius: 27px; border: 2px solid #bfae90; font-family: 'notokr-medium';">비교하기</p>
+    </a></div>
+    <div id="flotprd" class="swiper-container">
+      <div class="swiper-wrapper"
+        style="width: 1079.86px; height: 105.995px; transform: translate3d(-56px, 0px, 0px); transition-duration: 0.3s;">
+        
+        <div class="swiper-slide swiper-slide-visible swiper-slide-active" style="width: 89.9884px; height: 105.995px;" id="s0">
+          <!-- <a href="https://www.larocheposay.co.kr/product/view/3596.do">
+            <img src="https://image.thehyundai.com/static/6/3/2/77/A0/40A0772361_0_600.jpg" alt="리페어 세럼 B5">
+          </a> -->
+        </div>
+        <div class="swiper-slide" style="width: 89.9884px; height: 105.995px;" id="s1">
+          <!-- <a href="https://www.larocheposay.co.kr/product/view/3596.do">
+            <img src="https://www.larocheposay.co.kr/upload/product/main/2022/01/20220113_1136039_353_100x100.png" alt="리페어 세럼 B5">
+          </a> -->
+        </div>
+        <div class="swiper-slide" style="width: 89.9884px; height: 105.995px;" id="s2">
+          <!-- <a href="https://www.larocheposay.co.kr/product/view/3596.do">
+            <img src="https://www.larocheposay.co.kr/upload/product/main/2022/01/20220113_1136039_353_100x100.png" alt="리페어 세럼 B5">
+          </a> -->
+        </div>
+        <div class="swiper-slide" style="width: 89.9884px; height: 105.995px;;" id="s3">
+          <!-- <a href="https://www.larocheposay.co.kr/product/view/3596.do">
+            <img src="https://www.larocheposay.co.kr/upload/product/main/2022/01/20220113_1136039_353_100x100.png" alt="리페어 세럼 B5">
+          </a> -->
+        </div>
+        <div class="swiper-slide" style="width: 89.9884px; height: 105.995px;;" id="s4">
+          <!-- <a href="https://www.larocheposay.co.kr/product/view/3596.do">
+            <img src="https://image.thehyundai.com/static/6/0/5/56/A1/40A1565069_0_600.jpg" alt="리페어 세럼 B5">
+          </a> -->
+        </div>
+        <div class="swiper-slide" style="width: 89.9884px; height: 105.995px;" id="s5">
+          <!-- <a href="https://www.larocheposay.co.kr/product/view/3596.do">
+            <img src="https://www.larocheposay.co.kr/upload/product/main/2022/01/20220113_1136039_353_100x100.png" alt="리페어 세럼 B5">
+          </a> -->
+        </div>
+        <div class="swiper-slide" style="width: 89.9884px; height: 105.995px;" id="s6">
+          <!-- <a href="https://www.larocheposay.co.kr/product/view/3596.do">
+            <img src="https://www.larocheposay.co.kr/upload/product/main/2022/01/20220113_1136039_353_100x100.png" alt="리페어 세럼 B5">
+          </a> -->
+        </div>
+        <div class="swiper-slide" style="width: 89.9884px; height: 105.995px;" id="s7">
+          <!-- <a href="https://www.larocheposay.co.kr/product/view/3596.do">
+            <img src="https://www.larocheposay.co.kr/upload/product/main/2022/01/20220113_1136039_353_100x100.png" alt="리페어 세럼 B5">
+          </a> -->
+        </div>
+        <div class="swiper-slide" style="width: 89.9884px; height: 105.995px;" id="s8">
+          <!-- <a href="https://www.larocheposay.co.kr/product/view/3596.do">
+            <img src="https://www.larocheposay.co.kr/upload/product/main/2022/01/20220113_1136039_353_100x100.png" alt="리페어 세럼 B5">
+          </a> -->
+        </div>
+        <div class="swiper-slide" style="width: 89.9884px; height: 105.995px;" id="s9">
+          <!-- <a href="https://www.larocheposay.co.kr/product/view/3596.do">
+            <img src="https://image.thehyundai.com/static/0/7/9/61/A0/40A0619700_0_600.jpg" alt="리페어 세럼 B5">
+          </a> -->
+        </div>
+
+      </div>
+      <button type="button" class="flotprd-prev" style="z-index:1000;"><span class="hide">이전</span></button>
+      <button type="button" class="flotprd-next" style="z-index:1000;"><span class="hide">다음</span></button>
+    </div>
+    <!-- //swiper-container -->
+    <button type="button" class="btn_top" title="상단 이동">top</button>
+  </div>
+  <script>
+    $(function () {
+      console.log("비교함");
+      getArr();
+    });
+    
+  </script>
+<script>
+      function getArr() {
+        const arr = JSON.parse(localStorage.getItem("arr")) || [];
+  
+        if(arr.length == 0) {
+          for(let i =0;i<=9;i++) {
+          const slide = document.getElementById(`s${i}`);
+          slide.innerHTML = '상품을 비교함에 담아보세요';
+          } 
+        }else {
+        
+          for(let i=0;i<arr.length;i++) {
+          console.log('상품 출력 중 ' + i);
+          const slide = document.getElementById(`s${i}`);					
+          const [pcode, pname, brand, price, imglink, rate, review, pVolume, ptype, pingredient,pOption] = arr[i];
+          console.log("img: "+ imglink);
+            slide.innerHTML = `
+              <a href="/product/compare">
+                <img src=${imglink} alt="${pname}">
+              </a>
+            `;
+          }
+          for(let i=arr.length;i<10;i++) {
+          console.log('빈 상품 출력');
+          const slide = document.getElementById(`s${i}`);
+          slide.innerHTML = `
+          <a href="/product/compare">
+            <img src="https://image.thehyundai.com/hdmall/images/pd/no_image_480x480.jpg">
+          </a>`;
+          }
+        }
+      }
+  
+    </script>
+
+</section>
 
 		</section>
 		<!-- //container -->
 
-<!-- right 제품구매 플로팅 -->
-<section class="flot_right_warp" th:insert="~{include/float}"></section>
+
 
 		  <script type="text/javascript">
     $(function () {
