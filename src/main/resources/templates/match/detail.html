@@ -523,7 +523,10 @@
         e.preventDefault();
         flotPrd.swipeNext();
     });
-}
+    }
+    $(document).scroll(function() {
+    flotSideOffset();
+    });
   </script>
 <script>
       function getArr() {

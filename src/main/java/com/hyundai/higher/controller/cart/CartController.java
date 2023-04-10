@@ -57,19 +57,6 @@ public class CartController {
 	return "shop/mycart";
 	}
 	
-	// 장바구니 개수 카운트
-	@GetMapping("/count")
-	public String countCart(Principal principal) {
-		log.info("장바구니 카운트");
-		
-		String mid = principal.getName();
-		
-		int count =0;
-		count = cService.getCount(mid);
-		log.info("장바구니 개수 "+count);
-		
-		return "shop/count";
-		
-	}
+
 	
 }
