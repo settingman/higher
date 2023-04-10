@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lagn="ko" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>예약 관리</title>
+
+<!-- Custom fonts for this template-->
+<link href="/admin/vendor/fontawesome-free/css/all.min.css"
+	rel="stylesheet" type="text/css">
+<link
+	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+	rel="stylesheet">
+
+<!-- Custom styles for this template-->
+<link href="/admin/css/sb-admin-2.min.css" rel="stylesheet">
+<link href="/admin/vendor/datatables/dataTables.bootstrap4.min.css"
+	rel="stylesheet">
+
+<link rel="stylesheet" type="text/css"
+	href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap"
+	rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" type="text/css" href="/skinMBTI/css/result.css">
+
+
+
+<style>
+table {
+	width: 700px;
+	table-layout: fixed;
+	border-spacing: 0;
+	border-collapse: collapse;
+	background: #fff;
+	height: 265px;
+}
+
+th {
+	padding: 0 10px;
+	text-align: left;
+	color: #444;
+	font-weight: 600;
+	border-top: 1px solid #eee;
+	background: #f6f6f6;
+}
+
+td {
+	padding: 0 12px;
+	vertical-align: middle;
+	text-align: left;
+	color: #666;
+	border-top: 1px solid #eee;
+}
+</style>
+</head>
+
+
+<body id="page-top">
+
+	<!-- Page Wrapper -->
+	<div id="wrapper">
+
+		<th:block th:replace="admin/fragments/sidebar :: sidebarFragment"></th:block>
+
+		<!-- Content Wrapper -->
+		<div id="content-wrapper" class="d-flex flex-column">
+
+			<!-- Main Content -->
+			<div id="content">
+
+				<th:block th:replace="admin/fragments/header :: headerFragment"></th:block>
+
+				<!-- Begin Page Content -->
+				<div class="container-fluid">
+
+					<div class="container">
+						<div class="container" style="float: left; font-size: 12px;">
+							<div class="makeupwrapper"
+								style="margin-bottom: 100px; float: left; width: 1220px;">
+								<div class="content">
+									<div class="myhyundai-head"></div>
+									<div class="myhyundai-main"
+										style="margin: 40px 0; font-family: 'notokr-medium';">
+										<h3>고객 정보</h3>
+									</div>
+									<!-- cart-list -->
+									<div class="numbering"
+										style="font-family: 'locator-medium'; position: relative; float: left; margin-right: 695px; line-height: 26px;">
+										<p style="display: inline">예약번호 :</p>
+										<p style="display: inline" th:text="${info.rid}"></p>
+									</div>
+									<div style="position: relative;">
+										<p class="v-btn-wrap">
+											<a class="btn color4 size1"
+												style="background: #bfae90; border: #bfae90; margin-left: 55px; color: white; font-family: 'Font Awesome 5 Free'; font-size: 13px;">입장하기</a>
+										</p>
+									</div>
+									<div>
+										<div class="makeupwrapper">
+											<!-- 예약자 정보 -->
+											<div class="table-wrap order-addinfo mt20"
+												style="display: flex;">
+												<div class="wrapper3">
+													<div class="faceupload">
+														<img class="face"
+															th:src="'/beauty/display?fileName=' + ${info.rimg}"
+															style="max-width: 200px; height: 265px;">
+													</div>
+												</div>
+
+												<table style="margin-top: 0; font-size: 12px;">
+													<caption></caption>
+													<colgroup>
+														<col style="width: 150px;">
+														<col style="width: 390px;">
+													</colgroup>
+													<tbody>
+														<tr>
+															<th scope="row" style="vertical-align: middle;">예약자</th>
+															<td th:text="${mem.mName}"></td>
+														</tr>
+														<tr>
+															<th scope="row" style="vertical-align: middle;">상담일자</th>
+															<td th:text="${info.rdate}"></td>
+														</tr>
+														<tr>
+															<th scope="row" style="vertical-align: middle;">피부
+																MBTI</th>
+															<td th:text="${pro.mbti}"></td>
+														</tr>
+
+														<tr>
+															<th scope="row" style="vertical-align: middle;">Strength
+															
+															</td>
+															<td>[[${mbti.spros}]]</td>
+														</tr>
+														<tr>
+															<th scope="row" style="vertical-align: middle;">Weakness
+															
+															</td>
+															<td>[[${mbti.scons}]]</td>
+														</tr>
+														<tr>
+															<th scope="row" style="vertical-align: middle;">Solution
+															
+															</td>
+															<td>[[${mbti.ssolution}]]</td>
+														</tr>
+														<tr>
+															<th scope="row" style="vertical-align: middle;">요청
+																사항</th>
+															<td th:text="${info.rneeds}">></td>
+														</tr>
+
+													</tbody>
+												</table>
+											</div>
+											<!-- 예약자 정보 -->
+										</div>
+									</div>
+								</div>
+								<div class="result_wrap" style="width: 900px;">
+									<div class="result_list"
+										style="background: white; padding: 20px 38px;">
+
+										<div class="right"
+											style="padding-bottom: 40px; height: 700px; display: contents;">
+
+											<div class="graph">
+												<h2
+													style="text-align: center; font-family: unset; font-size: x-large; font-weight: 700;">피부
+													MBTI 점수</h2>
+												<canvas id="myChart" height="675"
+													style="display: block; box-sizing: border-box; height: 450px; width: 450px;"
+													width="562"></canvas>
+											</div>
+										</div>
+
+									</div>
+
+								</div>
+								<input type="hidden" id="score1" th:value="${score1}"> <input
+									type="hidden" id="score2" th:value="${score2}"> <input
+									type="hidden" id="score3" th:value="${score3}"> <input
+									type="hidden" id="score4" th:value="${score4}">
+								<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+								<script src="/skinMBTI/js/result.js" charset="UTF-8"></script>
+							</div>
+							<!-- 메이크업 래퍼 : 회원 정보 -->
+						</div>
+					</div>
+					<!-- /.container-fluid -->
+				</div>
+				<!-- End of Page Wrapper -->
+			</div>
+
+			<!-- Bootstrap core JavaScript-->
+			<script src="/admin/vendor/jquery/jquery.min.js"></script>
+			<script src="/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+			<!-- Core plugin JavaScript-->
+			<script src="/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+			<!-- Custom scripts for all pages-->
+			<script src="/admin/js/sb-admin-2.min.js"></script>
+
+			<!-- Page level plugins -->
+			<script src="/admin/vendor/chart.js/Chart.min.js"></script>
+
+			<!-- 			 Page level custom scripts 
+			<script src="/admin/js/demo/chart-area-demo.js"></script>
+			<script src="/admin/js/demo/chart-pie-demo.js"></script> -->
+
+		</div>
+</body>
+</html>

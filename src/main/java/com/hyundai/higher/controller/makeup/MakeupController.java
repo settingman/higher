@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URLDecoder;
 import java.nio.file.Paths;
 import java.security.Principal;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -31,12 +32,15 @@ import com.hyundai.higher.domain.beauty.Profile;
 import com.hyundai.higher.domain.makeup.BlushVO;
 import com.hyundai.higher.domain.makeup.FoundationVO;
 import com.hyundai.higher.domain.makeup.LipVO;
+import com.hyundai.higher.domain.makeup.MbtiVO;
 import com.hyundai.higher.domain.makeup.ReservVO;
 import com.hyundai.higher.domain.makeup.ResultVO;
 import com.hyundai.higher.domain.member.Member;
+import com.hyundai.higher.domain.skinMBTI.SkinMBTIDTO;
 import com.hyundai.higher.mapper.beauty.BeautyMapper;
 import com.hyundai.higher.service.makeup.MakeupService;
 import com.hyundai.higher.service.makeup.MypageService;
+import com.hyundai.higher.service.skinMBTI.SkinMBTIService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -73,6 +77,41 @@ public class MakeupController {
 	
 	@Autowired
 	private BeautyMapper mapper;
+	
+	@Autowired
+	private SkinMBTIService mbtiser;
+	
+	@GetMapping("/info")
+	public void makeupinfo(@RequestParam("rid") String rid, Model model) {
+		log.info("====== 상담 전 회원정보 열람 ======");
+		ReservVO info = mypage.getReservInfo(rid);
+		String rrid = info.getMid();
+		Member mem = new Member();
+		mem = service.MemInfo(rrid);
+		
+		Profile pro = new Profile();
+		pro = mapper.findProfile(rrid, rid);
+		
+		model.addAttribute("mem", mem);
+		model.addAttribute("pro", pro);
+		model.addAttribute("info", info);
+		
+		MbtiVO minfo = new MbtiVO();
+		minfo = service.findmbti(rrid);
+		
+		String score = minfo.getMbti_scores();
+		List<String> scoresList = Arrays.asList(score.split(","));
+		
+		SkinMBTIDTO mbti = new SkinMBTIDTO();
+		mbti = mbtiser.selectSkinMBTI(minfo.getMbti());
+		
+		model.addAttribute("minfo", minfo);
+		model.addAttribute("mbti", mbti);
+		model.addAttribute("score1", scoresList.get(0));
+		model.addAttribute("score2", scoresList.get(1));
+		model.addAttribute("score3", scoresList.get(2));
+		model.addAttribute("score4", scoresList.get(3));
+	}
 
 	@GetMapping("/form")
 	public void makeupForm(@RequestParam("rid") String rid, Model model) {
