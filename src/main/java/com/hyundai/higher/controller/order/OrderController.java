@@ -52,16 +52,24 @@ public class OrderController {
 		List<OrderItem> orderItems = new ArrayList<OrderItem>();
 
 		String mid = principal.getName();
+		
+		
+		log.info(pIdList.toString());
 
 		if (!pIdList.isEmpty()) {
 
 			for (String pcode : pIdList) {
+				
+				log.info(pcode);
 
 				orderItems.add(orderMapper.selectCartItem(mid, pcode));
 
 			}
 
 		}
+		
+		
+		log.info(orderItems.toString());
 
 		int mileage = memberMapper.findMileage(principal.getName());
 
