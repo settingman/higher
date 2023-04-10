@@ -16,7 +16,7 @@
       name="viewport"
       content="width=device-width,initial-scale=1,maximum-scale=1.0"
     />
-    <title>THE HYUNDAI</title>
+    <title>THE HYUNDAI BEAUTY</title>
     <link
       rel="stylesheet"
       type="text/css"
@@ -53,6 +53,7 @@
       type="text/javascript"
       src="https://image.thehyundai.com/pc/js/swiper.min.js?ver=030119"
     ></script>
+    <link rel="stylesheet" type="text/css" href="/common/css/common.css">
     <style type="text/css">
       .fancybox-margin {
         margin-right: 0px;
@@ -636,6 +637,26 @@
         background: white;
         border-top: 1px solid black !important;
       }
+      
+      #logo-wrap{
+      	text-align: center;
+	    padding: 30px;
+	    border-bottom: 1px solid #e3e3e3;
+	    margin-bottom: 46px;
+      }
+      
+      #logo-wrap img{
+      	height: 34px; 
+      }
+      
+      .pop-header:after{
+      	border: none;
+      }
+    	
+      #custId:focus{
+    	outline: none !important;
+      }
+      
     </style>
   </head>
   <body>
@@ -644,22 +665,25 @@
     <!-- 580px 450px -->
     <!-- wrap -->
     <div id="wrap" class="popup">
+    <div id="logo-wrap">
+    	<a href="/"><img src="/common/image/h-logo-new.png"></a>
+    </div>
       <!-- pop-header -->
-      <div class="pop-header">
-        <!-- 20210302 SSO회원화를 위한 로그인 페이지 개편// -->
-        <h1 style="overflow-wrap: break-word; white-space: normal">로그인</h1>
-        <!-- //20210302 SSO회원화를 위한 로그인 페이지 개편 -->
+      <div class="pop-header" style="border: none;">
+<!--         20210302 SSO회원화를 위한 로그인 페이지 개편//
+        <h1 style="overflow-wrap: break-word; white-space: normal;">로그인</h1>
+        //20210302 SSO회원화를 위한 로그인 페이지 개편 -->
       </div>
       <!-- //pop-header -->
       <!-- container -->
       <div id="container">
         <!-- content-wrap -->
-        <div class="content-wrap">
+        <div class="content-wrap" style="margin-top: 80px; margin-bottom: 165px;">
           <!-- login-content-wrap // -->
           <div class="login-content-wrap">
             <!-- H.Point 통합회원 영역// -->
             <div class="login-hpoint-area" style="display: block">
-              <h2>H.Point 통합회원</h2>
+              <h2 style="padding-bottom: 40px;">H.Point 통합회원</h2>
               <div class="login-wrap" id="hMember">
                 <form
                   name="login"
@@ -667,9 +691,9 @@
                   action="/member/login"
                   method="post"
                 >
-                  <div class="login-fieldset">
+                  <div class="login-fieldset" style="margin: 20px 0;">
                     <div class="login-input">
-                      <input
+                      <input style="padding-left: 5px;"
                         type="text"
                         title="아이디"
                         placeholder="H.Point 아이디"
@@ -677,7 +701,7 @@
                         id="custId"
                         th:value="${mId}"
                       />
-                      <input
+                      <input style="padding-left: 5px;"
                         type="password"
                         title="비밀번호"
                         placeholder="H.Point 비밀번호"
@@ -703,7 +727,7 @@
                   <label class="error" style="display: none" id="point"
                     >아이디 또는 비밀번호가 올바르지 않습니다.</label
                   >
-                  <div class="login-block">
+                  <div class="login-block" style="margin-bottom: 20px;">
                     <div class="btn-find">
                       <button
                         class="btn size2 color3"
@@ -760,6 +784,9 @@
         <!-- //content-wrap -->
       </div>
       <!-- //container -->
+      <!-- footer -->
+		<div class="include-footer" th:insert="~{include/footer2}"></div>
+		<!-- /footer -->
     </div>
     <!-- //wrap -->
     <script type="text/javascript">

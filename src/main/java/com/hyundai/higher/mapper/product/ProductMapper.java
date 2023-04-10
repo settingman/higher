@@ -39,4 +39,7 @@ public interface ProductMapper {
 	
 	// 상품 세부 옵션
 	public List<OptionDTO> optList(String pcode);
+	
+	// 카테고리 목록 이름
+	public CategoryDTO getDept2name(String dept1no, String dept2no);
 }

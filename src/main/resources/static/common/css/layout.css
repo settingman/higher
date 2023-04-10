@@ -2169,7 +2169,7 @@ html {
 }
 
 #header .gnb_nav nav ul.left>li:first-child+li+li+li {
-  min-width: 111px;
+  min-width: 140px;
 }
 
 #header .gnb_nav nav ul.left>li:first-child+li+li+li+li {
@@ -2542,7 +2542,7 @@ html {
 /* 병원판매제품 */
 #header .gnb_nav nav ul.left>li:first-child+li .sub_contain {
   left: -135px;
-  width: 934px;
+  width: 1130px;
 }
 
 #header .gnb_nav nav ul.left>li:first-child+li .sub_contain:after,

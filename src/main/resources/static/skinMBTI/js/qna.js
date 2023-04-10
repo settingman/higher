@@ -102,7 +102,7 @@ UI = {
            
             });
 
-            $doc.on('click', '#close', function (e) {
+            $doc.on('click', '.close_pop', function (e) {
                 var $con = $(this).closest('.layerpop_warp');
                 pop.close($con);
                 $con.removeClass('open');

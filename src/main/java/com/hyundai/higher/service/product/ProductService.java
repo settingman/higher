@@ -25,4 +25,11 @@ public interface ProductService {
 	
 	// 상품 세부 정보 전체
 	public ProductDetailDTO productDetail(String pcode);
+	
+	// 상품 분류
+	public List<CategoryDTO> cateList(String dept1no);
+	
+	// 중분류 이름
+	public CategoryDTO getDept2name(String dept1no, String dept2no);
+	
 }

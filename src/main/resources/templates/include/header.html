@@ -1,37 +1,11 @@
 <script>
 	$(function() {
 		// 헤더 카테고리
-		$
-				.ajax({
+		$.ajax({
 					url : '/category/cateAll',
 					type : 'GET',
 					success : function(r) {
-						console.log(r);
-
-						// mbti - 건성
-						let mbti = r.mbtiDTO;
-
-						let mbtiDTag = `<a href="/product/list?dept1=10&stype=D">전체</a>`;
-						for (let i = 0; i < 8; i++) {
-							mbtiDTag += `<a href="/product/list?dept1=10&stype=`
-									+ mbti[i].stype
-									+ `">`
-									+ mbti[i].stype
-									+ `</a>`;
-						}
-						$('#mbti_d').html(mbtiDTag);
-
-						// mbti - 지성
-						let mbtiOTag = `<a href="/product/list?dept1=10&stype=O">전체</a>`;
-						for (let i = 8; i < 16; i++) {
-							mbtiOTag += `<a href="/product/list?dept1=10&stype=`
-									+ mbti[i].stype
-									+ `">`
-									+ mbti[i].stype
-									+ `</a>`;
-						}
-						$('#mbti_o').html(mbtiOTag);
-
+						
 						// 스킨케어 - 중분류
 						let skin = r.skinDTO;
 						let skinTag = `<a href="/product/list?dept1=10">전체</a>`;
@@ -212,47 +186,7 @@
 						</a>
 					</div>
 				</div> <!-- //sub_contain --></li>
-			<li class=""><a href="#" onclick="LARO.TagManager.menu(this);"
-				data-menu-name="병원판매화장품" data-depth="1"> <span>피부타입</span> <em>MBTI
-						TYPE</em>
-			</a>
-				<div class="sub_contain" style="opacity: 1; display: none;">
-					<div class="submenu">
-						<dl>
-							<dt>
-								<a href="#">건성</a>
-							</dt>
-							<dd id="mbti_d"></dd>
-						</dl>
-					</div>
-					<div class="submenu">
-						<dl>
-							<dt>
-								<a href="#">지성</a>
-							</dt>
-							<dd id="mbti_o"></dd>
-						</dl>
-					</div>
-					<div class="sub_contain_button">
-						<button type="button" class="btn_base move"
-							onclick="location.href='/product/allList.do';">전체 제품 보기</button>
-						<button type="button" class="btn_base move"
-							onclick="location.href='/skinlife/selfConsult.do';">피부
-							MBTI 진단하기</button>
-					</div>
-					<div class="sub_contain_banner">
-						<a
-							href="javascript:bannerLink('1238', '/product/view/3738.do', '_self');">
-							<span class="product_banner"> <img
-								src="https://www.larocheposay.co.kr/upload/product/main/2022/12/20221220_1654046_085_210x210.png"
-								alt="에빠끌라 에이치 아이소 바이옴 크림 썸네일"> <span class="tit">에빠끌라</span>
-								<span class="kind">H 아이소바이옴 울트라 수딩 하이드레이팅 크림 [병원판매 화장품]</span> <span
-								class="price"> <span class="after">29,000<em>원</em></span>
-							</span>
-						</span>
-						</a>
-					</div>
-				</div></li>
+		
 			<li class=""><a href="/product/list?dept1=10"
 				data-menu-name="스킨케어" data-depth="1"> <span>스킨케어</span> <em>FACE</em>
 			</a>
@@ -260,7 +194,7 @@
 					<div class="submenu">
 						<dl>
 							<dt>
-								<a href="/product/list?dept1=10"> 사용 단계별</a>
+								<a href="/product/list?dept1=10"> 스킨케어</a>
 							</dt>
 							<dd id="cateSkin"></dd>
 						</dl>
@@ -346,6 +280,55 @@
 								alt="리피카 윌 라방 (저자극 바디 오일 클렌저)"> <span class="tit">리피카</span>
 								<span class="kind">바디 오일 클렌저 대용량 세트</span> <span class="price">
 									<span class="after">53,000<em>원</em></span>
+							</span>
+						</span>
+						</a>
+					</div>
+				</div></li>
+				<li class="">
+					<a href="/product/list?dept1=30" data-menu-name="바디/헤어케어" data-depth="1"> <span>바디/헤어케어</span> <em>BODY/HAIR</em>
+					</a>
+				<div class="sub_contain" style="opacity: 1; display: none;">
+					<div class="submenu">
+						<dl>
+							<dt>
+								<a href="/product/list?dept1=30"> 바디/헤어케어</a>
+							</dt>
+							<dd id="cateBH"></dd>
+						</dl>
+					</div>
+					<div class="submenu" style="margin-right: 0px;">
+						<dl>
+							<dt>
+								<a href="/product/list?dept1=30" data-depth="2">브랜드별</a>
+							</dt>
+							<dd id="cateSkinBrand1"></dd>
+						</dl>
+					</div>
+					<div class="submenu" style="margin-left: 0px;">
+						<dl style="margin-top: 16px;">
+							<dt>
+								<a href="javascript:void(0);" data-depth="2"></a>
+							</dt>
+							<dd id="cateSkinBrand2"></dd>
+						</dl>
+					</div>
+					<div class="sub_contain_button">
+						<button type="button" class="btn_base move"
+							onclick="location.href='/product/list?dept1=30';">전체 제품
+							보기</button>
+						<button type="button" class="btn_base move"
+							onclick="location.href='/skinMBTI/selfConsult';">피부 MBTI
+							진단하기</button>
+					</div>
+					<div class="sub_contain_banner">
+						<a
+							href="javascript:bannerLink('1239', '/product/view/3862.do', '_self');">
+							<span class="product_banner"> <img
+								src="https://www.larocheposay.co.kr/upload/product/main/2021/10/20230130_1351020_733_210x210.png"
+								alt="에빠끌라 딥 클렌징 포밍 크림"> <span class="tit">에빠끌라</span> <span
+								class="kind">딥 클렌징 포밍 크림</span> <span class="price"> <span
+									class="after">28,000<em>원</em></span>
 							</span>
 						</span>
 						</a>
