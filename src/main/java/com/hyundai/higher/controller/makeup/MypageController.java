@@ -19,6 +19,7 @@ import com.hyundai.higher.domain.makeup.FoundationVO;
 import com.hyundai.higher.domain.makeup.LipVO;
 import com.hyundai.higher.domain.makeup.MbtiVO;
 import com.hyundai.higher.domain.makeup.ReservVO;
+import com.hyundai.higher.domain.makeup.ResultProdVO;
 import com.hyundai.higher.domain.makeup.ResultVO;
 import com.hyundai.higher.domain.member.Member;
 import com.hyundai.higher.domain.skinMBTI.SkinMBTIDTO;
@@ -44,6 +45,7 @@ import lombok.extern.log4j.Log4j2;
  * 2023. 4. 2.     이세아       마이페이지 controller - makeon 예약결과
  * 2023. 4. 4.	   이세아		  마이페이지 결과 - 세부 결과 페이지
  * 2023. 4. 8.	   이세아		  마이페이지 - makeon 결과 세부 분리
+ * 2023. 4.10.     이세아		  결과에서 비교함/장바구니 연결 위한 컨트롤러 연결
  *     </pre>
  */
 
@@ -170,6 +172,10 @@ public class MypageController {
 		String lipopt = result.getLip_opt();
 		lipresult = service.getLipResult(lipopt);
 		log.info("가져온 입술 정보 : " + lipresult);
+		
+		ResultProdVO lipresultprod = new ResultProdVO();
+		String lipresultcode = lipresult.getPcode();
+		lipresultprod = service.resultProdInfo(lipresultcode);
 
 		log.info("블러쉬 옵션 : " + result.getBlush_opt());
 		String blushopt = result.getBlush_opt();
@@ -182,6 +188,7 @@ public class MypageController {
 		String facepcode = result.getFace_pcode();
 		faceresult = service.getFaceResult(faceopt, facepcode);
 		log.info("가져온 파운데이션 정보 : " + faceresult);
+		
 
 		String simlipcolor = lipresult.getOptcolor();
 		String simlippcode = lipresult.getPcode();
@@ -203,6 +210,7 @@ public class MypageController {
 		model.addAttribute("info", info);
 		model.addAttribute("result", result);
 		model.addAttribute("lipresult", lipresult);
+		model.addAttribute("lipresultinfo", lipresultprod);
 		model.addAttribute("blushresult", blushresult);
 		model.addAttribute("faceresult", faceresult);
 

@@ -4,6 +4,12 @@
 
 <mapper namespace="com.hyundai.higher.mapper.makeup.MypageMapper">
 
+	<!-- 결과 상뭎 비교함에 넣기 -->
+	<select id="resultProdInfo" resultType="com.hyundai.higher.domain.makeup.ResultProdVO">
+		select pvolume, ptype, pingredient
+		from product where pcode=#{pcode}
+	</select>
+
 	<!-- 입장하기 코드 -->
 	<select id="noResult"
 		resultType="com.hyundai.higher.domain.makeup.ReservVO">
