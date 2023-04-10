@@ -86,12 +86,6 @@ public class MypageController {
 		model.addAttribute("info", info);
 	}
 	
-	// 주문내역
-	@GetMapping("/order")
-	public void orderlist(Principal principal, Model model) {
-		log.info("===== 회원 주문내역 마이페이지 =====");
-	}
-	
 	// 예약만 완료
 	@GetMapping("/reserv_ing")
 	public void reserv_ing(Principal principal, Model model) {
