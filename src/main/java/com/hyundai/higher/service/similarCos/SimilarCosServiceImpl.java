@@ -1,6 +1,7 @@
 package com.hyundai.higher.service.similarCos;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,6 +63,7 @@ public class SimilarCosServiceImpl implements SimilarCosService {
 			int similarPercent = (int)(cnt / len * 100);
 			s.setPercent(similarPercent);
 		}
+		
 		
 		return similarCostList;
 	}

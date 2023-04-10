@@ -55,12 +55,5 @@ public class SimilarCosMapperTests {
 		
 		log.info(mapper.selectProdList(keyword));
 	}
-	
-	// 인기 상품 목록
-	@Test
-	public void testBestProdList() {
-		
-		log.info(mapper.selectBestProdList());
-	}
-	
+
 }
