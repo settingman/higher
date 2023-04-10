@@ -30,6 +30,7 @@
 		) c
 		JOIN similarCos_view s 
 		ON c.pcode=s.pcode
+		ORDER BY total DESC
 	</select>
 	
 		

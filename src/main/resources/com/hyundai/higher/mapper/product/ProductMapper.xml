@@ -17,7 +17,7 @@
 				AND dept2no=#{dept2no} 
 			</if> 
 		<![CDATA[	
-			 AND ROWNUM<=40) p 
+			 AND ROWNUM<=70) p 
 		LEFT JOIN brand b ON p.bno=b.bno
 		JOIN (SELECT pcode, itype, iloc FROM IMG WHERE itype='thumb') i ON p.pcode=i.pcode
 		ORDER BY PTOTALAMOUNT DESC

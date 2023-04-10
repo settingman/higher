@@ -13,4 +13,7 @@ public class CategoryAllDTO {
 	
 	private List<CategoryDTO> makeDTO;
 	private List<BrandDTO> makeBrandDTO;
+	
+	private List<CategoryDTO> bodyDTO;
+	private List<BrandDTO> bodyBrandDTO;
 }

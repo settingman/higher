@@ -5,7 +5,7 @@
 					url : '/category/cateAll',
 					type : 'GET',
 					success : function(r) {
-						
+						console.log(r);
 						// 스킨케어 - 중분류
 						let skin = r.skinDTO;
 						let skinTag = `<a href="/product/list?dept1=10">전체</a>`;
@@ -71,12 +71,45 @@
 										});
 						$('#cateMakeBrand1').html(makeBrandTag1);
 						$("#cateMakeBrand2").html(makeBrandTag2);
+						
+						// 바디/헤어 - 중분류
+						let body = r.bodyDTO;
+						let bodyTag = `<a href="/product/list?dept1=30">전체</a>`;
+						$.each(body, function(idx, item) {
+							bodyTag += `<a href="/product/list?dept1=30&dept2=`
+									+ item.dept2no + `">` + item.dept2name
+									+ `</a>`;
+						});
+						$('#cateBody').html(bodyTag);
+						
+						// 바디/헤어 - 브랜드
+						let bodyBrand = r.bodyBrandDTO;
+						let bodyBrandTag1 = `<a href="/product/list?dept1=30">전체</a>`;
+						let bodyBrandTag2 = ``;
+						$.each(bodyBrand,
+										function(idx, item) {
+											if (idx < 9) {
+												bodyBrandTag1 += `<a href="/product/list?dept1=30&bno=`
+														+ item.bno
+														+ `">`
+														+ item.bname + `</a>`;
+											} else if (idx > 10 && idx <= 20) {
+												bodyBrandTag2 += `<a href="/product/list?dept1=30&bno=`
+														+ item.bno
+														+ `">`
+														+ item.bname + `</a>`;
+											}
+										});
+						$('#cateBodyBrand1').html(bodyBrandTag1);
+						$("#cateBodyBrand2").html(bodyBrandTag2);
 
 					},
 					error : function(e) {
 						console.log(e);
 					}
 				});
+		
+		
 
 	});
 </script>
@@ -294,7 +327,7 @@
 							<dt>
 								<a href="/product/list?dept1=30"> 바디/헤어케어</a>
 							</dt>
-							<dd id="cateBH"></dd>
+							<dd id="cateBody"></dd>
 						</dl>
 					</div>
 					<div class="submenu" style="margin-right: 0px;">
@@ -302,7 +335,7 @@
 							<dt>
 								<a href="/product/list?dept1=30" data-depth="2">브랜드별</a>
 							</dt>
-							<dd id="cateSkinBrand1"></dd>
+							<dd id="cateBodyBrand1"></dd>
 						</dl>
 					</div>
 					<div class="submenu" style="margin-left: 0px;">
@@ -310,7 +343,7 @@
 							<dt>
 								<a href="javascript:void(0);" data-depth="2"></a>
 							</dt>
-							<dd id="cateSkinBrand2"></dd>
+							<dd id="cateBodyBrand2"></dd>
 						</dl>
 					</div>
 					<div class="sub_contain_button">
@@ -342,7 +375,7 @@
 					<div class="menu">
 						<ul>
 							<li><a href="/skinMBTI/selfConsult" data-depth="2">진단하기</a></li>
-							<li><a href="/skinMBTI/result?mbti=OSPW" data-depth="2">결과보기</a></li>
+							<li sec:authorize="isAuthenticated()"><a href="/skinMBTI/check_result" data-depth="2">결과보기</a></li>
 						</ul>
 					</div>
 				</div> <!-- //sub_contain --></li>
@@ -357,14 +390,14 @@
 						</ul>
 					</div>
 				</div> <!-- //sub_contain --></li>
-			<li class=""><a sec:authorize="isAnonymous()" href="/match/main"
-				data-depth="1"><span>매칭화장품</span><em>MATCH IT</em></a> <a
-				sec:authorize="isAuthenticated()" href="/match/main?mbti="
-				data-depth="1"><span>매칭화장품</span><em>MATCH IT</em></a>
+			<li class="">
+				<a sec:authorize="isAnonymous()" href="/match/main" data-depth="1"><span>매칭화장품</span><em>MATCH IT</em></a> 
+				<a th:with="name=${#authentication.getPrincipal().mbti}" sec:authorize="isAuthenticated()" th:href="@{/match/main(mbti=${name})}" data-depth="1"><span>매칭화장품</span><em>MATCH IT</em></a>
+			
 			</li>
 			<li class=""><a href="/product/compare" data-depth="1"
 				class="sp-goal-457-c65-35-1627285161700"> <span><i
-						class="ico"></i>상품 비교함</span><em>COMPARE IT</em>
+						class="ico"><img src="/common/image/basket.png" style="width: 24px; margin-bottom: 4px; margin-right: 3px;"></i>상품 비교함</span><em>COMPARE IT</em>
 			</a> <!-- //sub_contain --></li>
 		</ul>
 	</nav>
