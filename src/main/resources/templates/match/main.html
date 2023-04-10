@@ -24,7 +24,7 @@
 
 <body>
 
-  <div id="wrap">
+  <div id="wrap" class="right_type">
 
     <nav id="skip_navi">
       <a href="#contents">본문 바로가기</a>
@@ -234,31 +234,8 @@
     </section>
 
     <!-- right 제품구매 플로팅 -->
-    <section class="flot_right_warp">
-      <div class="flot_price_btn">
-        <div class="flotmem"><a href="https://www.larocheposay.co.kr/member/login.do">로그인</a></div>
-        <div class="flotcart"><a href="https://www.larocheposay.co.kr/cart/cart.do"><span class="count">0</span><span
-              class="hide">장바구니 - 바로가기</span></a></div>
-        <div id="flotprd" class="swiper-container">
-          <div class="swiper-wrapper"
-            style="width: 168px; height: 79px; transform: translate3d(-56px, 0px, 0px); transition-duration: 0s;">
-            <div class="swiper-slide" style="width: 56px; height: 79px;">
-              <span>최근 본<br>제품이<br>없습니다</span>
-            </div>
-            <div class="swiper-slide swiper-slide-visible swiper-slide-active" style="width: 56px; height: 79px;">
-              <span>최근 본<br>제품이<br>없습니다</span>
-            </div>
-            <div class="swiper-slide" style="width: 56px; height: 79px;">
-              <span>최근 본<br>제품이<br>없습니다</span>
-            </div>
-          </div>
-          <button type="button" class="flotprd-prev" style="z-index:1000;"><span class="hide">이전</span></button>
-          <button type="button" class="flotprd-next" style="z-index:1000;"><span class="hide">다음</span></button>
-        </div>
-        <!-- //swiper-container -->
-        <button type="button" class="btn_top" title="상단 이동">top</button>
-      </div>
-    </section>
+    <section class="flot_right_warp" th:insert="~{include/float}"></section>
+
     <!-- //right 제품구매 플로팅 -->
     <!-- 찜, 장바구니 담기 팝업 -->
     <div class="layer_alert_wrap">

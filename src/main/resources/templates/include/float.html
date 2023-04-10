@@ -7,54 +7,54 @@
     </a></div>
     <div id="flotprd" class="swiper-container">
       <div class="swiper-wrapper"
-        style="width: 168px; height: 79px; transform: translate3d(-56px, 0px, 0px); transition-duration: 0s;">
+        style="width: 1079.86px; height: 105.995px; transform: translate3d(-56px, 0px, 0px); transition-duration: 0.3s;">
         
-        <div class="swiper-slide swiper-slide-visible swiper-slide-active" style="width: 56px; height: 79px;" id="s0">
+        <div class="swiper-slide swiper-slide-visible swiper-slide-active" style="width: 89.9884px; height: 105.995px;" id="s0">
           <!-- <a href="https://www.larocheposay.co.kr/product/view/3596.do">
             <img src="https://image.thehyundai.com/static/6/3/2/77/A0/40A0772361_0_600.jpg" alt="리페어 세럼 B5">
           </a> -->
         </div>
-        <div class="swiper-slide" style="width: 56px; height: 79px;" id="s1">
+        <div class="swiper-slide" style="width: 89.9884px; height: 105.995px;" id="s1">
           <!-- <a href="https://www.larocheposay.co.kr/product/view/3596.do">
             <img src="https://www.larocheposay.co.kr/upload/product/main/2022/01/20220113_1136039_353_100x100.png" alt="리페어 세럼 B5">
           </a> -->
         </div>
-        <div class="swiper-slide" style="width: 56px; height: 79px;" id="s2">
+        <div class="swiper-slide" style="width: 89.9884px; height: 105.995px;" id="s2">
           <!-- <a href="https://www.larocheposay.co.kr/product/view/3596.do">
             <img src="https://www.larocheposay.co.kr/upload/product/main/2022/01/20220113_1136039_353_100x100.png" alt="리페어 세럼 B5">
           </a> -->
         </div>
-        <div class="swiper-slide" style="width: 56px; height: 79px;" id="s3">
+        <div class="swiper-slide" style="width: 89.9884px; height: 105.995px;;" id="s3">
           <!-- <a href="https://www.larocheposay.co.kr/product/view/3596.do">
             <img src="https://www.larocheposay.co.kr/upload/product/main/2022/01/20220113_1136039_353_100x100.png" alt="리페어 세럼 B5">
           </a> -->
         </div>
-        <div class="swiper-slide" style="width: 56px; height: 79px;" id="s4">
+        <div class="swiper-slide" style="width: 89.9884px; height: 105.995px;;" id="s4">
           <!-- <a href="https://www.larocheposay.co.kr/product/view/3596.do">
             <img src="https://image.thehyundai.com/static/6/0/5/56/A1/40A1565069_0_600.jpg" alt="리페어 세럼 B5">
           </a> -->
         </div>
-        <div class="swiper-slide" style="width: 56px; height: 79px;" id="s5">
+        <div class="swiper-slide" style="width: 89.9884px; height: 105.995px;" id="s5">
           <!-- <a href="https://www.larocheposay.co.kr/product/view/3596.do">
             <img src="https://www.larocheposay.co.kr/upload/product/main/2022/01/20220113_1136039_353_100x100.png" alt="리페어 세럼 B5">
           </a> -->
         </div>
-        <div class="swiper-slide" style="width: 56px; height: 79px;" id="s6">
+        <div class="swiper-slide" style="width: 89.9884px; height: 105.995px;" id="s6">
           <!-- <a href="https://www.larocheposay.co.kr/product/view/3596.do">
             <img src="https://www.larocheposay.co.kr/upload/product/main/2022/01/20220113_1136039_353_100x100.png" alt="리페어 세럼 B5">
           </a> -->
         </div>
-        <div class="swiper-slide" style="width: 56px; height: 79px;" id="s7">
+        <div class="swiper-slide" style="width: 89.9884px; height: 105.995px;" id="s7">
           <!-- <a href="https://www.larocheposay.co.kr/product/view/3596.do">
             <img src="https://www.larocheposay.co.kr/upload/product/main/2022/01/20220113_1136039_353_100x100.png" alt="리페어 세럼 B5">
           </a> -->
         </div>
-        <div class="swiper-slide" style="width: 56px; height: 79px;" id="s8">
+        <div class="swiper-slide" style="width: 89.9884px; height: 105.995px;" id="s8">
           <!-- <a href="https://www.larocheposay.co.kr/product/view/3596.do">
             <img src="https://www.larocheposay.co.kr/upload/product/main/2022/01/20220113_1136039_353_100x100.png" alt="리페어 세럼 B5">
           </a> -->
         </div>
-        <div class="swiper-slide" style="width: 56px; height: 79px;" id="s9">
+        <div class="swiper-slide" style="width: 89.9884px; height: 105.995px;" id="s9">
           <!-- <a href="https://www.larocheposay.co.kr/product/view/3596.do">
             <img src="https://image.thehyundai.com/static/0/7/9/61/A0/40A0619700_0_600.jpg" alt="리페어 세럼 B5">
           </a> -->
@@ -74,12 +74,12 @@
     });
     
   </script>
-    <script>
+<script>
       function getArr() {
         const arr = JSON.parse(localStorage.getItem("arr")) || [];
   
         if(arr.length == 0) {
-          for(let i =1;i<=10;i++) {
+          for(let i =0;i<=9;i++) {
           const slide = document.getElementById(`s${i}`);
           slide.innerHTML = '상품을 비교함에 담아보세요';
           } 
@@ -96,7 +96,7 @@
               </a>
             `;
           }
-          for(let i=arr.length;i<=10;i++) {
+          for(let i=arr.length;i<10;i++) {
           console.log('빈 상품 출력');
           const slide = document.getElementById(`s${i}`);
           slide.innerHTML = `
