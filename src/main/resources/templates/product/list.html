@@ -2,6 +2,30 @@
 <html lang="ko" class="js" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
   <head>
 <head th:insert="~{include/head}"></head>
+	<style>
+button.addcart.basket {
+	background:
+		url(/img/cart.png) !important;
+			width: 56px !important;
+	height: 56px !important;
+	background-size: 56px !important;
+}
+
+button.detailview {
+	background-image: url(/img/search.png) !important;
+	width: 56px !important;
+	height: 56px !important;
+	background-size: 56px !important;
+	background: rgba(0, 0, 0, 0) !important;
+	border-radius: 50px !important;
+}
+
+.product_wrap .product_list .over button:first-child {
+	background-image: url(/img/search.png) !important;
+	background-size: 56px !important;
+	opacity: 0.85;
+}
+</style>
   </head>
 <body>
   <div id="wrap" class="right_type" data-mbr-join-ym="" data-user-level="">
