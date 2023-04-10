@@ -17,6 +17,12 @@ $(function(){
 	});
 });
 </script>
+<style>
+	body {
+ 	 font-family: 'locator-medium','locator-regular','notokr-medium','notokr-demilight';
+	}
+
+</style>
 <body>
   <div id="wrap" class="right_type" data-fbq-content-id="3596" data-fbq-value="48000">
     <nav id="skip_navi">
@@ -178,7 +184,7 @@ $(function(){
                     <li><strong>배송비</strong>
                       무료배송
                     </li>
-                    <li th:if="${!#lists.isEmpty(product.optList) and #lists.size(product.optList)>1}" class="option"><strong>옵션</strong>
+                    <li th:if="${!#lists.isEmpty(product.optList) }" class="option"><strong>옵션</strong>
                       <select style="width: 75%;" class="opt">
                       	<option>선택</option>
                       	<option th:each="opt, optStat : ${product.optList}">[[${opt.optname}]]</option>
@@ -612,11 +618,12 @@ $(function(){
     <!-- right 제품구매 플로팅 -->
     <section class="flot_right_warp">
       <div class="flot_price_btn">
-        <div class="flotmem"><a href="https://www.larocheposay.co.kr/myPage/myPageHome.do"></a><strong><em>고객</em>님</strong>반갑습니다</div>
-        <div class="flotcart"><a href="https://www.larocheposay.co.kr/cart/cart.do"><span class="count">0</span><span class="hide">장바구니 -
+        <div class="flotmem"><a href="/"></a><strong><em>고객</em>님</strong>반갑습니다</div>
+        <div class="flotcart"><a href="/shop/mycart"><span class="count">0</span><span class="hide">장바구니 -
               바로가기</span></a></div>
-        <div class="flotheart"><a href="https://www.larocheposay.co.kr/myPage/likeList.do"><span class="count">0</span><span class="hide">찜한제품 -
-              바로가기</span></a></div>
+        <div class="flotheart"><a href="compare">
+          <p style="font-size: 15px; color: #8d806a; background: white; margin-top: 7px; display: inline-block; padding: 6px 14px; border-radius: 27px; border: 2px solid #bfae90; font-family: 'notokr-medium';">비교하기</p>
+        </a></div>
         <div id="flotprd" class="swiper-container">
           <div class="swiper-wrapper"
             style="width: 168px; height: 79px; transform: translate3d(-56px, 0px, 0px); transition-duration: 0s;">
@@ -704,11 +711,11 @@ $(function(){
           </div>
           <div class="datail_info_btn">
             <button type="button" class="like" data-value="3596" data-price="48000" data-linename="시카플라스트"
-              data-prdtname="리페어 세럼 B5" data-sapcode="MB451200">좋아요</button>
+              data-prdtname="리페어 세럼 B5" data-sapcode="MB451200" onclick="put()">좋아요</button>
             <span class="instock">
               <button type="button" class="btn_base darkgray cart basket" data-level="N" data-level-name="제한없음"
                 data-value="3596" data-price="48000" data-linename="시카플라스트" data-prdtname="리페어 세럼 B5" data-buy-level="N"
-                data-mbr-join-ym="202303" data-user-level="MBR001">장바구니</button>
+                data-mbr-join-ym="202303" data-user-level="MBR001" onclick="addCart()">장바구니</button>
               <button type="button" class="btn_base blue buy nowBuy" data-level="N" data-level-name="제한없음"
                 data-value="3596" data-price="48000" data-linename="시카플라스트" data-prdtname="리페어 세럼 B5" data-buy-level="N"
                 data-mbr-join-ym="202303" data-user-level="MBR001">구매하기</button>
@@ -717,12 +724,34 @@ $(function(){
         </div>
       </div>
     </section>
+    <section id="survey_pop" class="layerpop_warp" style="background: rgba(0,0,0,0.8);">
+			<div class="layerpop blue" style="width: 460px;">
+				<div class="layerpop_head">
+					<h1>장바구니</h1>
+				</div>
+				<div class="layerpop_cont" style="height: 330px;">
+					<div class="save_cont">
+						<p>
+							해당 상품을 장바구니에 추가하였습니다.<br>
+              장바구니 페이지로 이동하시겠습니까?
+						</p>
+						<div class="btn_wrap center mt30">
+              <button type="button" class="btn_base blue act" id="okay" onclick="location.href='/shop/mycart'">확인</button>
+							<button type="button" class="btn_base darkgray act" id="save_close">취소</button>
+						</div>
+					</div>
+				</div>
+				<button type="button" class="close">닫기</button>
+			</div>
+		</section>
+   
     <div th:if="${#authentication.getPrincipal() != null}">
       <input type="hidden" id="mid" th:value="${#authentication.getName()}">
     </div>
     <div th:unless="${#authentication.getPrincipal() != null}">
     </div>
     
+
     <!-- 비교함에 담기 -->
 	  <script>
     function put() {
@@ -742,32 +771,138 @@ $(function(){
       const pVolume = document.querySelector(".table_wrap td:nth-of-type(1)").textContent.trim();
       const ptype = document.querySelector('.table_wrap table tbody tr:nth-child(2) td').textContent.trim();
       const pingredient = document.querySelector('.table_wrap table tbody tr:nth-child(7) td').textContent.trim();
+      var pOption = "";
 
-      //const pcode = document.querySelector('.prd-share-info strong').textContent;
-      // var brand = $('.prd-shop').find('.brand a').text();
-      // const price = document.querySelector('.dis-price').textContent.trim();
-      // const imglink = document.querySelector('.cloudzoom').src;
-      // const rate = document.querySelector('.prd-review-info span').textContent;
-      // const review = document.querySelector('.text-point4').textContent;
-      
+      if (!document.querySelector('.option')) {
+      pOption = pname;
+    }else {
+      var selectedOption = $('.datail_info_data .opt option:selected').text();
+      console.log(selectedOption);
 
+      if(selectedOption =='선택'){
+        console.log("옵션 선택 안함");
+        const pop = document.getElementById('survey_pop');
+        pop.innerHTML= `
+			<div class="layerpop blue" style="width: 460px;">
+				<div class="layerpop_head">
+					<h1 class="poptitle">비교함</h1>
+				</div>
+				<div class="layerpop_cont" style="height: 330px;">
+					<div class="save_cont">
+						<p>
+							옵션을 선택하세요.
+						</p>
+						<div class="btn_wrap center mt30">
+							<button type="button" class="btn_base darkgray act" id="save_close">확인</button>
+						</div>
+					</div>
+				</div>
+				<button type="button" class="close">닫기</button>
+			</div>
+        `;
+        $("#survey_pop").css("display", "block");
+
+       $('#save_close').click(function() {
+        $("#survey_pop").css("display", "none");
+
+       });
+        return;
+      }; 
+      pOption = selectedOption;
+    }
   
       let arr = JSON.parse(localStorage.getItem("arr")) || []; // null일 경우 빈 배열 생성
   
       if (arr.length >= 10) {
-        alert("비교함에는 10개의 상품을 담을 수 있습니다.");
+        const pop = document.getElementById('survey_pop');
+        pop.innerHTML= `
+			<div class="layerpop blue" style="width: 460px;">
+				<div class="layerpop_head">
+					<h1 class="poptitle">비교함</h1>
+				</div>
+				<div class="layerpop_cont" style="height: 330px;">
+					<div class="save_cont">
+						<p>
+							비교함에는 10개의 상품을 담을 수 있습니다.
+						</p>
+						<div class="btn_wrap center mt30">
+							<button type="button" class="btn_base darkgray act" id="save_close">확인</button>
+						</div>
+					</div>
+				</div>
+				<button type="button" class="close">닫기</button>
+			</div>
+        `;
+        $("#survey_pop").css("display", "block");
+
+       $('#save_close').click(function() {
+        $("#survey_pop").css("display", "none");
+
+       });
         return false;
       }
   
       if (arr.some(item => item[0] === pcode)) { // 이미 비교함에 추가된 상품인 경우
-        alert("이미 비교함에 담긴 상품입니다.");
+        const pop = document.getElementById('survey_pop');
+        pop.innerHTML= `
+			<div class="layerpop blue" style="width: 460px;">
+				<div class="layerpop_head">
+					<h1 class="poptitle">비교함</h1>
+				</div>
+				<div class="layerpop_cont" style="height: 330px;">
+					<div class="save_cont">
+						<p>
+							이미 비교함에 담긴 상품입니다.
+						</p>
+						<div class="btn_wrap center mt30">
+							<button type="button" class="btn_base darkgray act" id="save_close">확인</button>
+						</div>
+					</div>
+				</div>
+				<button type="button" class="close">닫기</button>
+			</div>
+        `;
+        $("#survey_pop").css("display", "block");
+
+       $('#save_close').click(function() {
+        $("#survey_pop").css("display", "none");
+
+       });
       } else {
-        arr.push([pcode, pname, brand, price, imglink, rate, review, pVolume, ptype, pingredient]); // 상품 정보 저장
+        arr.push([pcode, pname, brand, price, imglink, rate, review, pVolume, ptype, pingredient,pOption]); // 상품 정보 저장
         localStorage.setItem("arr", JSON.stringify(arr));
-        alert("비교함에 담겼습니다.");
+
+        const pop = document.getElementById('survey_pop');
+        pop.innerHTML= `
+			<div class="layerpop blue" style="width: 460px;">
+				<div class="layerpop_head">
+					<h1 class="poptitle">비교함</h1>
+				</div>
+				<div class="layerpop_cont" style="height: 330px;">
+					<div class="save_cont">
+						<p>
+							상품을 비교함에 담았습니다. <br>
+              비교하기 페이지로 이동하시겠습니까?
+						</p>
+						<div class="btn_wrap center mt30">
+              <button type="button" class="btn_base blue act" id="okay" onclick="location.href='/product/compare'">확인</button>
+							<button type="button" class="btn_base darkgray act" id="save_close">취소</button>
+						</div>
+					</div>
+				</div>
+				<button type="button" class="close">닫기</button>
+			</div>
+        `;
+        $("#survey_pop").css("display", "block");
+
+       $('#save_close').click(function() {
+        $("#survey_pop").css("display", "none");
+
+       });
       }
 
       console.log("비교함에 담음");
+      getArr();
       //담았으면 옆에 사이드바에 띄워줘야 함
     }
 
@@ -789,7 +924,9 @@ $(function(){
     console.log(pname+" 이름");
 
     if (!document.querySelector('.option')) {
+      console.log("----옵션 ");
       pOption = pname;
+      console.log("-------------"+pOption);
     }else {
       var selectedOption = $('.datail_info_data .opt option:selected').text();
       console.log(selectedOption);
@@ -798,7 +935,31 @@ $(function(){
       // const selectedValue = selectEl.options[selectEl.selectedIndex].val;
       if(selectedOption =='선택'){
         console.log("옵션 선택 안함");
-        alert('옵션을 선택하세요');
+        const pop = document.getElementById('survey_pop');
+        pop.innerHTML= `
+			<div class="layerpop blue" style="width: 460px;">
+				<div class="layerpop_head">
+					<h1 class="poptitle">장바구니</h1>
+				</div>
+				<div class="layerpop_cont" style="height: 330px;">
+					<div class="save_cont">
+						<p>
+							옵션을 선택하세요.
+						</p>
+						<div class="btn_wrap center mt30">
+							<button type="button" class="btn_base darkgray act" id="save_close">확인</button>
+						</div>
+					</div>
+				</div>
+				<button type="button" class="close">닫기</button>
+			</div>
+        `;
+        $("#survey_pop").css("display", "block");
+
+       $('#save_close').click(function() {
+        $("#survey_pop").css("display", "none");
+
+       });
         return;
       }; 
       pOption = selectedOption;
@@ -828,9 +989,13 @@ $(function(){
 				if(result == '0'){
 					alert("장바구니에 추가를 하지 못하였습니다.");
 				} else if(result == '1'){
-					alert("장바구니에 추가되었습니다.");
+            $("#survey_pop").css("display", "block");
+
+            makemodal();
 				} else if(result == '2'){
-					alert("이미 장바구니에 담긴 상품으로 수량이 추가되었습니다.");
+            $("#survey_pop").css("display", "block");
+            makemodal();
+
 				} 
 			},
 			error :function(request, status, error) {
@@ -839,43 +1004,120 @@ $(function(){
 		}); 
 		}else {
 			console.log("로그인 필요");
-			alert('장바구니는 로그인이 필요합니다.');
-			var loginUrl = "/member/login";
-			window.location.href = loginUrl;
+			
+      const pop = document.getElementById('survey_pop');
+        pop.innerHTML= `
+			<div class="layerpop blue" style="width: 460px;">
+				<div class="layerpop_head">
+					<h1 class="poptitle">비교함</h1>
+				</div>
+				<div class="layerpop_cont" style="height: 330px;">
+					<div class="save_cont">
+						<p>
+							장바구니는 로그인이 필요합니다.<br>
+              로그인 페이지로 이동하시겠습니까?
+						</p>
+						<div class="btn_wrap center mt30">
+              <button type="button" class="btn_base blue act" id="okay" onclick="location.href='/member/login'">확인</button>
+							<button type="button" class="btn_base darkgray act" id="save_close">취소</button>
+						</div>
+					</div>
+				</div>
+				<button type="button" class="close">닫기</button>
+			</div>
+        `;
+        $("#survey_pop").css("display", "block");
+
+       $('#save_close').click(function() {
+        $("#survey_pop").css("display", "none");
+
+       });
+      
+
 		}
 		
 	}
 
 	</script>
   <script>
-    const arr = JSON.parse(localStorage.getItem("arr")) || [];
+    function getArr() {
+      const arr = JSON.parse(localStorage.getItem("arr")) || [];
 
-    if(arr.length == 0) {
-      for(let i =1;i<=10;i++) {
-			const slide = document.getElementById(`s${i}`);
-			slide.innerHTML = '상품을 비교함에 담아보세요';
-      } 
-    }else {
-    
-      for(let i=0;i<arr.length;i++) {
-			console.log('상품 출력 중 ' + i);
-			const slide = document.getElementById(`s${i}`);					
-	    const [pcode, pname, brand, price, imglink, rate, review, pVolume, ptype, pingredient] = arr[i];
-			console.log("img: "+ imglink);
+      if(arr.length == 0) {
+        for(let i =1;i<=10;i++) {
+        const slide = document.getElementById(`s${i}`);
+        slide.innerHTML = '상품을 비교함에 담아보세요';
+        } 
+      }else {
+      
+        for(let i=0;i<arr.length;i++) {
+        console.log('상품 출력 중 ' + i);
+        const slide = document.getElementById(`s${i}`);					
+        const [pcode, pname, brand, price, imglink, rate, review, pVolume, ptype, pingredient,pOption] = arr[i];
+        console.log("img: "+ imglink);
+          slide.innerHTML = `
+            <a href="/product/compare">
+              <img src=${imglink} alt="${pname}">
+            </a>
+          `;
+        }
+        for(let i=arr.length;i<=10;i++) {
+        console.log('빈 상품 출력');
+        const slide = document.getElementById(`s${i}`);
         slide.innerHTML = `
-          <a href="/compare/main">
-            <img src=${imglink} alt="${pname}">
-          </a>
-        `;
+        <a href="/product/compare">
+          <img src="https://image.thehyundai.com/hdmall/images/pd/no_image_480x480.jpg">
+        </a>`;
+        }
       }
-      for(let i=arr.length;i<=10;i++) {
-			console.log('빈 상품 출력');
-			const slide = document.getElementById(`s${i}`);
-			slide.innerHTML = `
-      <a href="/compare/main">
-        <img src="https://image.thehyundai.com/hdmall/images/pd/no_image_480x480.jpg">
-      </a>`;
-		}
+    }
+
+  </script>
+  <script>
+    $(function () {
+      console.log("비교함");
+      getArr();
+    });
+    
+  </script>
+  <script>
+        $(function(){
+            $("#save_close").on("click", function(){
+                $("#survey_pop").css("display", "none");	
+            });
+            
+        });
+  </script>
+  <script>
+    function makemodal() {
+            const pop = document.getElementById('survey_pop');
+        pop.innerHTML= `
+			<div class="layerpop blue" style="width: 460px;">
+				<div class="layerpop_head">
+					<h1>장바구니</h1>
+				</div>
+				<div class="layerpop_cont" style="height: 330px;">
+					<div class="save_cont">
+						<p>
+							해당 상품을 장바구니에 추가하였습니다.<br>
+              장바구니 페이지로 이동하시겠습니까?
+						</p>
+						<div class="btn_wrap center mt30">
+              <button type="button" class="btn_base blue act" id="okay" onclick="location.href='/shop/mycart'">확인</button>
+							<button type="button" class="btn_base darkgray act" id="save_close">취소</button>
+						</div>
+					</div>
+				</div>
+				<button type="button" class="close">닫기</button>
+			</div>
+        `;
+        $("#survey_pop").css("display", "block");
+
+       $('#save_close').click(function() {
+        $("#survey_pop").css("display", "none");
+
+       });
+      
     }
 
   </script>
