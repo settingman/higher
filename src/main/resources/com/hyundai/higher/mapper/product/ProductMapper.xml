@@ -68,5 +68,12 @@
 		<result property="itype" column="itype"/>
 		<result property="iloc" column="iloc"/>
 	</resultMap>
+	
+	<!-- // 카테고리 목록 이름 -->
+	<select id="getDept2name" resultType="com.hyundai.higher.domain.category.CategoryDTO">
+		SELECT a.dept1no, dept1name, dept2no, dept2name
+		FROM category_dept2 a JOIN category_dept1 b ON a.dept1no=b.dept1no
+		WHERE a.dept1no=#{dept1no} AND dept2no=#{dept2no}
+	</select>
 
 </mapper>

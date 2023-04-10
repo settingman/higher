@@ -124,6 +124,7 @@ $(function(){
               <input type="hidden" name="ordCnt" value="1" data-prdt-seq="3596" data-seq="3596" data-prdt-type="PT">
               <input type="hidden" name="adPrdtName" th:value="${product.productDTO.pname}">
               <input type="hidden" name="prdtName" th:value="${product.productDTO.pname}">
+			  <!-- left -->
               <div class="left">
                 <div class="detail_slider">
                   <div class="view">
@@ -140,8 +141,9 @@ $(function(){
                     <button type="button" class="next">다음</button>
                   </div>
                 </div>
-                <!-- //detail_slider -->
+                
               </div>
+				
               <!-- //left -->
               <div class="right">
                 <div class="datail_info_top">
@@ -173,7 +175,7 @@ $(function(){
                       최대 6개월
                     </li>
                     <li><strong>적립금</strong>
-                      H.Point <span class="mile">[[${#numbers.formatInteger(product.productDTO.pprice*0.95, 3,'COMMA')}]]<i>P</i><em> 적립</em></span>
+                      H.Point <span class="mile">[[${#numbers.formatInteger(product.productDTO.pprice*0.003, 3,'COMMA')}]]<i>P</i><em> 적립</em></span>
                     </li>
                     <li><strong>배송비</strong>
                       무료배송
@@ -191,7 +193,7 @@ $(function(){
                         <button type="button" class="plus">+</button>
                       </div>
                     </li>
-                    <li th:if="${dept1no == 10}" class="subscription_text">나의 피부타입과 매칭해보세요.<a href="#" class="btn_move">피부 MBTI와 매칭하러 가기</a></li>
+                    <li th:if="${dept1no == 10}" class="subscription_text">나의 피부타입과 매칭해보세요.<a th:href="'/match/detail?pcode='+${product.productDTO.pcode}" class="btn_move">피부 MBTI와 매칭하러 가기</a></li>
                     <li class="total"><strong>총 구매금액</strong>
                       <span class="pricetotal">[[${#numbers.formatInteger(product.productDTO.pprice, 3,'COMMA')}]]<em>원</em></span>
                     </li>
@@ -999,11 +1001,194 @@ $(function(){
 	}
   </script>
 
+  
+
     <!-- footer -->
 	<div class="include-footer" th:insert="~{include/footer}"></div>
 	<!-- /footer -->
   </div>
   <!-- //wrap -->
+
+
+  <script type="text/javascript">
+    $(function () {
+      // 유의사항 토글
+      $(document).on('click', '.event_notice .tit', function () {
+        var $this = $(this);
+        $this.toggleClass('on').next('.cont').stop().slideToggle();
+        return false;
+      });
+    });
+    //slide 제품 리스트 chackbox 선택
+    $(document).ready(function () {
+      $('.addItem_head input:checkbox').click(function () {
+        $(this).parent().parent().parent().next().find('input:checkbox').not(this).prop('checked', this.checked);
+      });
+
+      if ($('.product_detail')) {
+        laro.ui('productDetail', '.product_detail');
+      }
+    });
+
+    //product_detail_tab scroll screen top and fixed
+    if ($('.product_detail_tab').length > 0) {
+      var $window = $(window);
+      var $detailTab = $('.product_detail_tab');
+      var elTop = $detailTab.offset().top;
+      $window.scroll(function () {
+        $detailTab.toggleClass('fixed', $window.scrollTop() > elTop);
+      });
+      $(document).on('click', '.product_detail_tab a[href^="#"]', function (event) {
+        event.preventDefault();
+        var $this = $(event.target);
+        var dTab = $detailTab.height();
+        var dTabfixed = $('.product_detail_tab.fixed').height();
+        $this.parent().addClass('on').siblings('li').removeClass('on');
+        //console.log("dTab : " +  dTab);
+        //console.log("dTabfixed : " +  dTabfixed);
+        var $htmlBody = $('html, body');
+        var moveHeight = 100;
+        if (!dTabfixed && !$(this).parent().index() == 0) {
+          moveHeight = 150;
+        } else if (dTabfixed && $(this).parent().index() == 0) {
+          moveHeight = 20;
+        } else if ($(this).parent().index() == 0) {
+          moveHeight = 70;
+        }
+        $htmlBody.animate({
+          scrollTop: $($.attr(this, 'href')).offset().top - moveHeight
+        }, 500);
+        //console.log(moveHeight);
+      });
+    }
+
+    var skinSlider;
+    // 제품상세 플로팅 펼치고 접기
+    $(document).ready(function () {
+      var menuOpened = true;
+      $('.zoom').click(function () {
+        var $t = $('.price_side');
+        if (menuOpened === false) {
+          $t.fadeIn(150, function () {
+            menuOpened = true;
+          });
+          $(this).removeClass('out');
+        } else {
+          $t.fadeOut(150, function () {
+            menuOpened = false;
+          });
+          $(this).addClass('out');
+        }
+      });
+
+      skinSlider = new Swiper('#review_slider', {
+        pagination: '.swiper-pagination',
+        loop: true,
+        paginationClickable: true
+      });
+      $('.skinprd-prev').on('click', function (e) {
+        e.preventDefault();
+        skinSlider.swipePrev();
+      });
+      $('.skinprd-next').on('click', function (e) {
+        e.preventDefault();
+        skinSlider.swipeNext();
+      });
+
+
+      var prdtNm = '에빠끌라MAT 세보 컨트롤링 모이스춰라이저 ';
+      var prdtSeq = '3859';
+      var prdtPrice = Number('34000');
+      var lineNm = '에빠끌라';
+      var salePrice = '34000';
+
+      var category = 'FACE>제품 라인별>에빠끌라';
+      if (category != null && category != '') {
+        category = category.replace(/>/gi, '/');
+      } else {
+        category = undefined;
+      }
+
+      var tag = $('#orderForm').find('input[name="tag"]').val();
+      var noIngt = $('#orderForm').find('input[name="noIngt"]').val();
+      var giftNames = $('#orderForm').find('input[name="giftNames"]').val();
+
+      var item = new Array(prdtNm, prdtSeq, prdtPrice, lineNm, category, tag, noIngt, giftNames);
+      LARO.TagManager.productView(item);
+      LARO.GA4TagManager.productView(item);
+
+      window.insider_object = window.insider_object || {};
+      window.insider_object.product = {
+        'id': '3859',
+        'name': '에빠끌라MAT 세보 컨트롤링 모이스춰라이저 ',
+        'taxonomy': [
+
+          {
+            'depth1': 'FACE',
+            'depth2': '제품 라인별',
+            'depth3': '에빠끌라'
+          },
+          {
+            'depth1': 'FACE',
+            'depth2': '피부 고민별',
+            'depth3': '지성/트러블 피부'
+          },
+          {
+            'depth1': 'FACE',
+            'depth2': '사용 단계별',
+            'depth3': '로션/크림'
+          },
+          {
+            'depth1': 'FACE',
+            'depth2': '사용 단계별',
+            'depth3': '로션/크림'
+          }
+        ],
+        'currency': 'KRW',
+        'unit_price': '34000',
+        'unit_sale_price': '34000',
+        'url': 'https://www.larocheposay.co.kr/product/view/3859.do',
+        'stock': '10',
+        'color': '',
+        'size': '40ml ',
+        'product_image_url': 'https://www.larocheposay.co.kr/upload/product/main/2020/07/20230130_1345034_694.png'
+      };
+
+    });
+
+    var incnt = 0;
+
+    $(document).on('scroll', function () { //3개 텝 일 경우
+      var $templateCont = $('#template_cont');
+      if ($templateCont.length == 1 && $(this).scrollTop() > $templateCont.position().top) {
+        $('.product_detail_tab li').removeClass('on');
+        $('.product_detail_tab li:nth-child(1)').addClass('on');
+      }
+
+      var $productDetailReview = $('#product_detail_review');
+      if ($productDetailReview.length == 1 && $(this).scrollTop() > $productDetailReview.position().top) {
+        $('.product_detail_tab li').removeClass('on');
+        $('.product_detail_tab li:nth-child(2)').addClass('on');
+
+        var prdt_name = 'MAT 세보 컨트롤링 모이스춰라이저 ';
+        var prdt_seq = '3859';
+
+        if (incnt < 1) {
+          LARO.GA4TagManager.readReview(prdt_name, prdt_seq);
+        }
+        incnt++;
+      }
+
+      var $productDetailNote = $('#product_detail_note');
+      if ($productDetailNote.length == 1 && $(this).scrollTop() > $productDetailNote.position().top) {
+        $('.product_detail_tab li').removeClass('on');
+        $('.product_detail_tab li:nth-child(3)').addClass('on');
+      }
+    });
+
+
+  </script>
+
 
 </body>
 

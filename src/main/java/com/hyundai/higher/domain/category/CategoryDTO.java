@@ -18,6 +18,7 @@ import lombok.Data;
 public class CategoryDTO {
 
 	private String dept1no;
+	private String dept1name;
 	private String dept2name;
 	private String dept2no;
 }
