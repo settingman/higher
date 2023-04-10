@@ -1,8 +1,9 @@
 package com.hyundai.higher.mapper.member;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.context.annotation.ComponentScan;
 
 import com.hyundai.higher.domain.member.Member;
 
@@ -34,5 +35,7 @@ public interface MemberMapper {
 	Integer findMileage(@Param("mId") String mId);
 	
 	void updateMileage(@Param("mId") String mId, @Param("MMILEAGE") Integer MMILEAGE);
+	
+	List<Member> findMember();
 
 }

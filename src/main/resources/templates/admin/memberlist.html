@@ -55,33 +55,28 @@
 								<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 									<thead>
 										<tr align="center">
-											<th scope="col">예약 번호</th>
 											<th scope="col">고객 아이디</th>
 											<th scope="col">고객 이름</th>
-											<th scope="col">예약 날짜</th>
-											<th scope="col">시 간</th>
-											<th scope="col">진행 현황</th>
+											<th scope="col">고객 이메일</th>
+											<th scope="col">고객 마일리지</th>
 										</tr>
 									</thead>
 									<tfoot>
 										<tr align="center">
-											<th scope="col">예약 번호</th>
 											<th scope="col">고객 아이디</th>
 											<th scope="col">고객 이름</th>
-											<th scope="col">예약 날짜</th>
-											<th scope="col">시 간</th>
-											<th scope="col">진행 현황</th>
+											<th scope="col">고객 이메일</th>
+											<th scope="col">고객 핸드폰번호</th>
+											<th scope="col">고객 피부mbti</th>
 										</tr>
 									</tfoot>
 									<tbody>
-										<tr align="center" th:each="res : ${reservations}">
-											<td class="fw-normal visible mname">[[${res.RID}]]</td>
-											<td class="fw-normal visible mname">[[${res.MNAME}]]</td>
-											<td class="fw-normal visible mid">[[${res.MID}]]</td>
-											<td class="fw-normal visible rdare">[[${res.RDATE}]]</td>
-											<td class="fw-normal visible rtime">[[${res.RTIME}]]</td>
-											<td class="rcheck" th:if="${res.RCHECK}"><span class="col-sm-2 align-self-auto"> 진행 완료 </span></td>
-											<td class="rcheck2" th:if="${!res.RCHECK}"><span class="col-sm-2 align-self-auto"> 진행 전 </span></td>
+										<tr align="center" th:each="mem : ${members}">
+											<td class="fw-normal visible mname">[[${mem.mId}]]</td>
+											<td class="fw-normal visible mname">[[${mem.mName}]]</td>
+											<td class="fw-normal visible mid">[[${mem.mEmail}]]</td>
+											<td class="fw-normal visible rdare">[[${mem.mPhone}]]</td>
+											<td class="fw-normal visible rtime">[[${mem.mbti}]]</td>
 
 										</tr>
 									</tbody>

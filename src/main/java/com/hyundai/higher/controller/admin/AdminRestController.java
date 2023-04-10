@@ -1,4 +1,4 @@
-package com.hyundai.higher.controller.beauty;
+package com.hyundai.higher.controller.admin;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,9 +25,9 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @RequiredArgsConstructor
-@RequestMapping("/beauty")
+@RequestMapping("/admin")
 @RestController
-public class BeautyRestController {
+public class AdminRestController {
 
 	private final BeautyMapper beautyMapper;
 

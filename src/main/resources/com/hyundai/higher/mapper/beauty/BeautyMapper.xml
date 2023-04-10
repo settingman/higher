@@ -11,7 +11,7 @@
 
 		SELECT r.RID, r.roomId, r.MID ,m.MNAME,r.RCHECK,
 		to_char(r.rDate,'yy-mm-dd')
-		as RDATE, to_char(r.rDate,'hh24:mm') as
+		as RDATE, to_char(r.rDate,'hh24:mi') as
 		RTIME, r.RIMG
 		FROM reservation
 		r , MEMBER m
@@ -24,7 +24,7 @@
 
 		SELECT r.RID, r.roomId, r.MID ,m.MNAME,r.RCHECK,
 		to_char(r.rDate,'yy-mm-dd')
-		as RDATE, to_char(r.rDate,'hh24:mm') as
+		as RDATE, to_char(r.rDate,'hh24:mi') as
 		RTIME, r.RIMG
 		FROM reservation
 		r , MEMBER m

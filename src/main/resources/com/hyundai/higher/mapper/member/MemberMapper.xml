@@ -6,6 +6,15 @@
 <mapper namespace="com.hyundai.higher.mapper.member.MemberMapper">
 
 
+	<select id="findMember"
+		resultType="com.hyundai.higher.domain.member.Member">
+		SELECT MID, MPassword, MName, MPhone, MEmail, MBirth, MRole, mbti
+		FROM MEMBER
+	</select>
+
+
+
+
 	<select id="findById"
 		resultType="com.hyundai.higher.domain.member.Member">
 		SELECT MID, MPassword, MName, MPhone, MEmail, MBirth, MRole, mbti

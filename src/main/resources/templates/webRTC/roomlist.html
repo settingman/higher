@@ -322,6 +322,13 @@ span.input-group-text.input-password-hide {
 span.input-group-text.input-password-show {
 	height: 40px;
 }
+
+
+a {
+  color: #45675b;
+ 
+}
+
 </style>
 </head>
 
@@ -353,6 +360,7 @@ span.input-group-text.input-password-show {
 								<h2>예약 내역</h2>
 								<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 									<tr align="center">
+									<th scope="col">예약 번호</th>
 										<th scope="col">고객명</th>
 										<th scope="col">고객 아이디</th>
 										<th scope="col">예약 날짜</th>
@@ -364,6 +372,7 @@ span.input-group-text.input-password-show {
 									<th:block th:fragment="content" id="block">
 
 										<tr align="center" th:each="res : ${reservations}">
+										<td class="fw-normal visible mname">[[${res.RID}]]</td>
 											<td class="fw-normal visible mname">[[${res.MNAME}]]</td>
 											<td class="fw-normal visible mid">[[${res.MID}]]</td>
 											<td class="fw-normal visible rdare">[[${res.RDATE}]]</td>
@@ -414,7 +423,7 @@ span.input-group-text.input-password-show {
 											>[[${room.roomName}]]</a>
 											</td>
 											<td><span th:if="${room.secretChk}"> 🔒︎ </span></td>
-											<td><span class="badge bg-primary rounded-pill">[[${room.userCount}]]/[[${room.maxUserCnt}]]</span></td>
+											<td><span>[[${room.userCount}]]/[[${room.maxUserCnt}]]</span></td>
 											<td><span th:if="${#strings.equals(room.chatType, 'MSG')}">일반 채팅</span> <span th:unless="${#strings.equals(room.chatType, 'MSG')}">화상
 													채팅</span></td>
 											<td>
@@ -670,7 +679,7 @@ span.input-group-text.input-password-show {
 
 				$.ajax({
 					type : "get",
-					url : "/beauty/profile",
+					url : "/admin/profile",
 					data : {
 						"mid" : mid,
 						"rid" : rid

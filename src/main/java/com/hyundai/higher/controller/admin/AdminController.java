@@ -1,4 +1,4 @@
-package com.hyundai.higher.controller.beauty;
+package com.hyundai.higher.controller.admin;
 
 import java.util.List;
 
@@ -6,11 +6,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
-import com.hyundai.higher.domain.beauty.Profile;
+import com.hyundai.higher.domain.member.Member;
 import com.hyundai.higher.mapper.beauty.BeautyMapper;
+import com.hyundai.higher.mapper.member.MemberMapper;
 import com.hyundai.higher.webRTC.dto.ReservationDTO;
 
 import lombok.RequiredArgsConstructor;
@@ -30,11 +29,12 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @RequiredArgsConstructor
-@RequestMapping("/beauty")
+@RequestMapping("/admin")
 @Controller
-public class BeautyController {
+public class AdminController {
 
 	private final BeautyMapper beautyMapper;
+	private final MemberMapper memberMapper;
 
 	// 온라인 예약 내역 불러오기
 	@GetMapping("/reservation")
@@ -48,5 +48,21 @@ public class BeautyController {
 		return "admin/reservation";
 
 	}
+	
+	// 온라인 예약 내역 불러오기
+	@GetMapping("/memberlist")
+
+	public String findMember(Model model) {
+
+		List<Member> members = memberMapper.findMember();
+
+		model.addAttribute("members", members);
+
+		return "admin/memberlist";
+
+	}
+	
+	
+	
 
 }
