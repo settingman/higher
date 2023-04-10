@@ -64,7 +64,7 @@
 			from  (
 			    select c.pcode, c.optname, c.pamount, i.iloc, 
 			          row_number() over
-			          (partition by c.pcode order by i.iloc desc) as rn 
+			          (partition by c.pcode,c.optname order by i.iloc desc) as rn 
 			    from img i right join cart c on c.pcode=i.pcode
 			    where i.itype='thumb' and mid = #{mid}
 			    ) ci right join product p on ci.pcode = p.pcode

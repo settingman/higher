@@ -34,6 +34,17 @@
     <link rel="stylesheet" type="text/css" href="https://www.thehyundai.com/cssssl/dp.css?ver=23">
     <!-- 	<script src="https://www.thehyundai.com/js/cart.js?ver=030123"></script>
  -->
+
+    <style>
+    body {
+ 	 font-family: 'locator-medium','locator-regular','notokr-medium','notokr-demilight';
+	}
+    
+    .cart-list-area .cont-group .option-info .selectric-wrapper{
+        width:215px !important;
+    }
+
+    </style>
     <script src="/js/cart/cart.js"></script>
 
     <script type="text/javascript">
@@ -766,62 +777,61 @@
         function deleteBaskt(obj, targetObj, delType) {
             $("#survey_pop").css("display", "block");
 
+            $('#okay').click(function() {
+                console.log("okay");
+                let liList = document.querySelectorAll(".cart-list-unit");
+                console.log("-------");
+                let pcodeTest = $("#c0").find(".check-group").children("#pcode").val();
+                console.log(pcodeTest);
+                var arr = new Array();
+                var checked = new Array();
     
-            const okaybtn = document.querySelector(".okay");
-            okaybtn.addEventListener("click", e => {
-                console.log("삭제 okay");
-                $("#survey_pop").css("display", "none");
-                
-                 //버튼이 눌렸을 때
-            let liList = document.querySelectorAll(".cart-list-unit");
-            console.log("-------");
-            let pcodeTest = $("#c0").find(".check-group").children("#pcode").val();
-            console.log(pcodeTest);
-            var arr = new Array();
-            var checked = new Array();
-
-
-            for (let i = 0; i < liList.length; i++) {
-                console.log("-----------");
-
-                if ($(liList[i]).find('.icheckbox').hasClass('checked')) {
-                    const pcode = $(liList[i]).find('#pcode').val();
-                    console.log(pcode);
-                    const poption = $(liList[i]).find('.cnt-opt').val();
-                    console.log("option" + poption);
-                    arr.push({
-                        pcode: pcode,
-                        poption: poption
-                    });
-                    checked.push("c" + i);
-                }
-
-            }
-
-            $.ajax({
-                url: '/restcart/deleteCarts', // 서버 측에서 정의한 URL 주소
-                type: 'post',
-                data: JSON.stringify(arr),
-                contentType: "application/json",
-
-                success: function(result) {
-                    console.log("장바구니 선택 삭제 success");
-
-                    for (let i = 0; i < checked.length; i++) {
-                        const li = document.getElementById(checked[i]);
-                        li.remove();
-                        cal();
-                        if ($(liList[i]).find('.icheckbox').hasClass('checked')) {
-
-                        }
-
+    
+                for (let i = 0; i < liList.length; i++) {
+                    console.log("-----------");
+    
+                    if ($(liList[i]).find('.icheckbox').hasClass('checked')) {
+                        const pcode = $(liList[i]).find('#pcode').val();
+                        console.log(pcode);
+                        const poption = $(liList[i]).find('.cnt-opt').val();
+                        console.log("option" + poption);
+                        arr.push({
+                            pcode: pcode,
+                            poption: poption
+                        });
+                        checked.push("c" + i);
                     }
-                },
-                error: function(request, status, error) {
-                    console.log(error);
-                    // 처리 중 에러가 발생한 경우에 실행할 코드 작성
+    
                 }
+    
+                $.ajax({
+                    url: '/restcart/deleteCarts', // 서버 측에서 정의한 URL 주소
+                    type: 'post',
+                    data: JSON.stringify(arr),
+                    contentType: "application/json",
+    
+                    success: function(result) {
+                        console.log("장바구니 선택 삭제 success");
+                        $("#survey_pop").css("display", "none");
+                        
+                        for (let i = 0; i < checked.length; i++) {
+                            const li = document.getElementById(checked[i]);
+                            li.remove();
+                            cal();
+                            if ($(liList[i]).find('.icheckbox').hasClass('checked')) {
+    
+                            }
+                        }
+                    },
+                    error: function(request, status, error) {
+                        console.log(error);
+                        // 처리 중 에러가 발생한 경우에 실행할 코드 작성
+                    }
+                });
+
+
             });
+
             /* 	    success: function (result) {
 							console.log("장바구니 선택 삭제 success");
 							
@@ -836,7 +846,6 @@
 						}
 					});   */
 
-            })
 
 
 
@@ -848,34 +857,35 @@
         function deleteBasktItem(pcode, poption, cindex) {
             $("#survey_pop").css("display", "block");
 
-            if (!confirm("삭제하시겠습니까?")) {
-                return false;
-            }
+            $('#okay').click(function() {
 
-            var requestData = JSON.stringify({
-                pcode: pcode,
-                poption: poption,
-            });
+                var requestData = JSON.stringify({
+                    pcode: pcode,
+                    poption: poption,
+                });
+    
+                console.log("---" + requestData);
+    
+                $.ajax({
+                    url: '/restcart/deleteCart',
+                    type: 'post',
+                    data: requestData,
+                    contentType: "application/json",
+                    success: function(result) {
+                        console.log("장바구니 삭제 success");
+                        $("#survey_pop").css("display", "none");
 
-            console.log("---" + requestData);
+                        const li = document.getElementById(cindex);
+    
+                        li.remove();
+                        cal();
+    
+                    },
+                    error: function(request, status, error) {
+                        console.log(error);
+                    }
+                });
 
-            $.ajax({
-                url: '/restcart/deleteCart',
-                type: 'post',
-                data: requestData,
-                contentType: "application/json",
-                success: function(result) {
-                    console.log("장바구니 삭제 success");
-
-                    const li = document.getElementById(cindex);
-
-                    li.remove();
-                    cal();
-
-                },
-                error: function(request, status, error) {
-                    console.log(error);
-                }
             });
 
 
@@ -1409,6 +1419,7 @@
                                                 <input type="hidden" id="pcode" th:value="${carts.pcode}">
 
                                                 <button class="btn-list-delete" th:onclick='deleteBasktItem([[${carts.pcode}]],[[${carts.poption}]],"c[[${state.index}]]");'>
+                                                <!-- <button class="arrow layer-pop" onclick="location.href='#survey_pop'"> -->
                                                     <img src="https://image.thehyundai.com/hdmall/images/co/icon_delete.png" alt="삭제">
                                                 </button>
                                             </div>
@@ -1575,7 +1586,7 @@
 
 		</div>
 
-        <section id="survey_pop" class="layerpop_warp open" style="display: none;">
+        <section id="survey_pop" class="layerpop_warp" style="background: rgba(0,0,0,0.8);">
 			<div class="layerpop blue" style="width: 460px;">
 				<div class="layerpop_head">
 					<h1>장바구니</h1>

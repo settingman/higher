@@ -2021,7 +2021,7 @@
   transform: translateY(-50%);
   text-align: right;
   z-index: 99;
-  width: 56px;
+  width: 80px;
 }
 
 .right_type .flot_right_warp {
@@ -2031,7 +2031,7 @@
   transform: translateY(-25%);
   text-align: right;
   z-index: 99;
-  width: 56px;
+  width: 90px;
 }
 
 .flot_right_warp.f_stop {
@@ -2318,7 +2318,7 @@
 
 .flot_right_warp .flotmem {
   display: block;
-  width: 56px;
+  width: 100%;
   padding: 9px 0;
   color: #222;
   font-size: 11px;
@@ -2340,7 +2340,7 @@
 
 .flot_right_warp .flotcart {
   display: block;
-  width: 56px;
+  width: 100%;
   height: 44px;
   text-align: center;
   border-bottom: rgba(0, 0, 0, 0.1) solid 1px;
@@ -2349,7 +2349,7 @@
 .flot_right_warp .flotcart a {
   position: relative;
   display: block;
-  width: 56px;
+  width: 100%;
   height: 44px;
   font-size: 11px;
 }
@@ -2368,7 +2368,7 @@
 
 .flot_right_warp .flotheart {
   display: block;
-  width: 56px;
+  width: 100%;
   font-size: 11px;
   text-align: center;
 }
@@ -2376,7 +2376,7 @@
 .flot_right_warp .flotheart a {
   position: relative;
   display: block;
-  width: 56px;
+  width: 100%;
   height: 44px;
   font-size: 11px;
 }
@@ -2389,15 +2389,15 @@
   margin: -8px 0 0 -11px;
   width: 22px;
   height: 18px;
-  background: url('https://www.larocheposay.co.kr/images/common/ico_comm_sp.png') no-repeat 100% -67px;
-  background-size: 300px 300px;
+/*   background: url('https://www.larocheposay.co.kr/images/common/ico_comm_sp.png') no-repeat 100% -67px;*/  
+ background-size: 300px 300px;
 }
 
 .flot_right_warp .flotheart a .count,
 .flot_right_warp .flotcart a .count {
   position: absolute;
   top: 3px;
-  right: 6px;
+  right: 21px;
   width: 20px;
   height: 20px;
   color: #fff;
@@ -2410,8 +2410,8 @@
 }
 
 .flot_right_warp #flotprd {
-  width: 56px;
-  height: 79px;
+  width: 100%;
+  height: 106px;
   padding-top: 4px;
   text-align: center;
   border-top: rgba(0, 0, 0, 0.1) solid 1px;
@@ -2435,8 +2435,9 @@
 .flot_right_warp #flotprd .swiper-slide a {
   position: relative;
   display: block;
-  width: 56px;
-  height: 56px;
+  width: 80px;
+  height: 80px;
+  margin: auto;
 }
 
 .flot_right_warp #flotprd .swiper-slide a img {
@@ -2446,34 +2447,34 @@
 
 .flot_right_warp #flotprd .flotprd-prev {
   position: absolute;
-  bottom: 6px;
-  left: 50%;
+  bottom: 4px;
+  left: 44%;
   margin: 0 0 0 -12px;
-  width: 12px;
-  height: 12px;
-  background: url('https://www.larocheposay.co.kr/images/common/ico_comm_sp.png') no-repeat -198px -39px;
-  background-size: 300px 300px;
+  width: 18px;
+  height: 18px;
+  background: url('https://www.larocheposay.co.kr/images/common/ico_comm_sp.png') no-repeat -234px -44px;
+  background-size: 360px 360px;
 }
 
 .flot_right_warp #flotprd .flotprd-next {
   position: absolute;
-  bottom: 6px;
-  right: 50%;
-  margin: 0 -11px 0 0;
-  width: 12px;
-  height: 12px;
-  background: url('https://www.larocheposay.co.kr/images/common/ico_comm_sp.png') no-repeat -215px -39px;
-  background-size: 300px 300px;
+  bottom: 3px;
+  right: 47%;
+  margin: 0 -12px 0 0;
+  width: 18px;
+  height: 18px;
+  background: url('https://www.larocheposay.co.kr/images/common/ico_comm_sp.png') no-repeat -255px -45px;
+  background-size: 360px 360px;
 }
 
 .flot_right_warp .flot_price_btn {
-  width: 56px;
+  width: 100%;
   display: inline-block;
 }
 
 .flot_right_warp .flot_price_btn button.btn_top {
   position: relative;
-  width: 56px;
+  width: 100%;
   height: 24px;
   border-top: rgba(0, 0, 0, 0.3) solid 1px;
   border-bottom: rgba(0, 0, 0, 0.5) solid 1px;

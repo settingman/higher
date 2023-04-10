@@ -20,6 +20,7 @@
 	text-align: center;
 	top: 115px;
 	font-size: 20px;
+  font-family: 'notokr-medium';
 }
 </style>
 <link rel="stylesheet" type="text/css" href="/match/css/detail.css">
@@ -43,8 +44,8 @@
 
 			if (percent <= 20) {
 				$('.mychart').easyPieChart({
-					barColor : '#FFCBCF',
-					trackColor : '#ccc', //도넛배경색
+					barColor : '#fe3c69',
+					trackColor : '#dadada', //도넛배경색
 					scaleColor : '#fff',
 					lineCap : 'butt',
 					lineWidth : 30,
@@ -53,10 +54,12 @@
 					onStart : $.noop,
 					onStop : $.noop
 				});
+        document.querySelector(".title").textContent = '글쎄요';
+
 			} else if (percent <= 40) {
 				$('.mychart').easyPieChart({
 					barColor : '#f77694',
-					trackColor : '#e9ecef', //도넛배경색
+					trackColor : '#dadada', //도넛배경색
 					scaleColor : '#fff',
 					lineCap : 'butt',
 					lineWidth : 30,
@@ -65,6 +68,8 @@
 					onStart : $.noop,
 					onStop : $.noop
 				});
+        document.querySelector(".title").textContent = '그냥 그래요';
+
 			} else if (percent <= 60) {
 				$('.mychart').easyPieChart({
 					barColor : '#DCFBF9',
@@ -77,6 +82,8 @@
 					onStart : $.noop,
 					onStop : $.noop
 				});
+        document.querySelector(".title").textContent = '보통이에요';
+
 			} else if (percent <= 80) {
 				$('.mychart').easyPieChart({
 					barColor : '#CBE6FF',
@@ -89,6 +96,8 @@
 					onStart : $.noop,
 					onStop : $.noop
 				});
+        document.querySelector(".title").textContent = '잘 맞는 편!';
+
 			} else if (percent <= 100) {
 				$('.mychart').easyPieChart({
 					barColor : '#B7BCFE',
@@ -101,6 +110,8 @@
 					onStart : $.noop,
 					onStop : $.noop
 				});
+        document.querySelector(".title").textContent = '찰떡궁합';
+
 			}
 
 		}
@@ -215,7 +226,7 @@
 									<div th:if="${score != null}" class="result"
 										style="display: flex; justify-content: center; margin-bottom: 40px;">
 										<div class="chart mychart" th:data-percent="${score}">
-											<span class="title" style="top: 110px;">[[${score}]]추천해요</span>
+											<span class="title" style="top: 110px;">[[${score}]]</span>
 										</div>
 									</div>
 									<div id="ingredient_box">
