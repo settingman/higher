@@ -25,7 +25,7 @@ public interface OrderMapper {
 
 	public void insertOrder(@Param("orderSheet") OrderSheet orderSheet, @Param("mId") String mId);
 
-	public void insertOrderList(@Param("oId") String oId, @Param("pCode") String pCode, @Param("pAmount") int pAmount);
+	public void insertOrderList(@Param("oId") String oId, @Param("pCode") String pCode, @Param("pAmount") int pAmount, @Param("mId") String mId);
 
 	public OrderItem selectCartItem(@Param("mId") String mId, @Param("pCode") String pCode);
 

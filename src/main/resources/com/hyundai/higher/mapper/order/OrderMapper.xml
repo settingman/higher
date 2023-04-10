@@ -32,10 +32,18 @@
 	<insert id="insertOrderList">
 
 
-		INSERT INTO OrderITEM
-		VALUES(#{pCode}, null,
-		#{pAmount}, #{oId}
-		)
+		<![CDATA[
+        BEGIN
+			INSERT INTO OrderITEM
+			VALUES(#{pCode}, null,
+			#{pAmount}, #{oId}
+			);
+			
+			DELETE FROM Cart
+             WHERE mid=#{mId} and pcode=#{pCode}
+            ;
+     END;
+        ]]>
 
 	</insert>
 
@@ -63,7 +71,8 @@
 		resultType="com.hyundai.higher.domain.order.OrderSheet">
 
 		SELECT
-		oid as orderId,to_char(odate,'yy-mm-dd') as odate,oname,ousedmileage as oMileage, oprice as
+		oid as orderId,to_char(odate,'yy-mm-dd') as
+		odate,oname,ousedmileage as oMileage, oprice as
 		oTotalPrice
 		FROM
 		orderlist
@@ -73,14 +82,13 @@
 		<if test="ordStrtDt!=null and !ordStrtDt.equals('') ">
 			AND odate > #{ordStrtDt}
 		</if>
-		
+
 		<if test="ordEndDt!=null and !ordEndDt.equals('')">
 			AND odate > #{ordStrtDt}
 		</if>
 
 		<if test="itemNm!=null and !itemNm.equals('')">
-			AND oname like %#{itemNm}%
-		</if>
+			AND oname like %#{itemNm}% </if>
 		order by odate desc
 
 	</select>

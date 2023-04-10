@@ -135,7 +135,7 @@ public class BillingController {
 			String pCode = orderSheet.getProduct_id().get(i);
 			int pAmount =  orderSheet.getProduct_Quntity().get(i);
 			
-			orderMapper.insertOrderList(oId, pCode, pAmount);
+			orderMapper.insertOrderList(oId, pCode, pAmount,customerName);
 			
 			
 		}
