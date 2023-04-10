@@ -2,6 +2,8 @@ package com.hyundai.higher.service.cart;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.hyundai.higher.domain.cart.CartItem; 
 
 public interface CartService {
@@ -23,5 +25,8 @@ public interface CartService {
 		
 		//장바구니 상품 목록 불러오기
 		public List<CartItem> getCart (String mid);
+		
+		//장바구니 개수 불러오기
+		public int getCount(@Param("mid") String mid);
 
 }

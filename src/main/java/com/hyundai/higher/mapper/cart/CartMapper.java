@@ -47,6 +47,8 @@ public interface CartMapper {
 	//장바구니 중복 검사
 	public int checkSame(@Param("item") CartItem cart);
 	
+	//장바구니 상품의 옵션들 불러오기
 	
-	//장바구니 상품의 옵션들 불러오기 
+	//장바구니 개수 불러오기
+	public int getCount(@Param("mid") String mid);
 }

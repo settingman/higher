@@ -98,7 +98,6 @@
 		}
 
 		.button {
-    background-color: #4CAF50; /* Green */
     border: none;
     color: white;
     text-align: center;
@@ -106,10 +105,10 @@
     display: inline-block;
     font-size: 13px;
     -webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.1s;
-    width:120px;
+    transition-duration: 0.3s;
+    width:45%;
     cursor: pointer;
-    border-radius: 4px;
+    /* border-radius: 4px; */
 		height: 40px;
 		font-weight: 700;
 
@@ -129,31 +128,38 @@
 }
 
 .button5{
-		width: 100%;
-		background-color: #FFFFFF;
-    color: #68593f;
-    border: 1.5px solid #bfae90;
+	display: inline-block !important;
+	float: left;
+		width: 46%;
+		background-color: #bfae90;
+    color: white;
+    /* border: 1.5px solid #bfae90; */
 		line-height: 3;
+		margin-left: 8px;
 
 }
 
 .button5:hover {
-	background-color: #bfae90;
-		margin-left: 0px;
-    color: #FFFEF2;
+	background-color: white;
+	border: 1px solid #bfae90;
+		margin-left: 8px;
+    color: #574f42;
     
 }
 .button4{
-		background-color: #FFFFFF;
-    color: #806A53;
-    border: 1.5px solid #806A53;
-		margin-left: 0px;
+		background-color: #666;
+    color: white;
+    /* border: 1.5px solid #806A53; */
+		margin-right: 8px;
 		line-height: 3;
+		display: inline-block !important;
+	float: right;
 }
 
 .button4:hover {
-	background-color: #806A53;
-    color: #FFFEF2;
+	background-color: white;
+	border: 1px solid #666;
+    color: #666;
 
 }
 
@@ -216,8 +222,22 @@
 		margin-bottom: 3px;
 	}
 	.blank {
-		border: 2px solid #9c94946e;
-    padding: 193px 13px 189px 12px;
+		height: 100% !important;
+		/* border: 2px solid #9c94946e; */
+    /* padding: 193px 13px 189px 12px; */
+	}
+	.empty {
+		background: #efefea;
+    height: 200px;
+    width: 200px;
+    margin: auto;
+    border-radius: 100px;
+    padding: 70px 55px;
+		margin-top: 40px;
+	}
+	.forblank {
+		margin-top: 28px;
+		font-size: 18px;
 	}
  
  </style>
@@ -334,19 +354,20 @@
 					<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
 				
 					<div style="display: flex;justify-content: center;">
-						<p style="font-size: 25px; margin-top: 22px; border-left: 3px solid #bfae90;border-right: 3px solid #bfae90;font-family: 'notokr-demilight';padding:3px 45px;">비교함</p>
+						<p style="font-size: 25px; margin-top: 22px; border-left: 3px solid #bfae90;
+						border-right: 3px solid #bfae90;font-family: 'notokr-demilight';padding:3px 45px;margin-bottom: 26px;">비교함</p>
 					</div>
 						<!-- 상품 비교 -->
 				
-					<div id="q-app" style="width: 100%;">
+					<div id="q-app" style="width: 100%; border-top: 1px solid #ccc;">
 					<div>
 					<div data-v-214bdc2f="" id="q-app">
 
 					<section data-v-214bdc2f="" class="contentArea" style="min-width: 1119px;background-color: #fff;">
 					<div data-v-35734774="" data-v-4ade122e="" data-v-214bdc2f="" class="compare_detail" style="padding-top: 0px;">
-						<div class="col" style="background-color: #bfae90;">
+						<!-- <div class="col" style="background-color: #bfae90;">
 							<h2 style="text-align: center;color: white;padding-top: 5px;font-size: 39px;font-family: 'locator-medium';padding-bottom: 5px;">What's Your Pick?</h2>
-					</div>
+						</div> -->
 					<section data-v-35734774="" class="">
 					<article data-v-4ade122e="" data-v-35734774="" class="cd_con card_choice">
 					<h3 data-v-4ade122e="" data-v-35734774="" class="hide">카드선택</h3>
@@ -644,8 +665,10 @@ $(function(){
 	var imglink = document.querySelector(`.${slidenum} img`).getAttribute('src') ;
 	var name= document.querySelector(`.${slidenum} .price-info.single span`).textContent;
 	var brand= document.querySelector(`.${slidenum} .title.ellipsis`).textContent;
-	var rates = document.querySelector(`.${slidenum} .score`).textContent.trim().replace(/^별점\s*/, '');
-	var review = document.querySelector(`.${slidenum} .comment`).textContent.trim().replace(/^댓글\s*/, '');
+	// var rates = document.querySelector(`.${slidenum} .score`).textContent.trim().replace(/^별점\s*/, '');
+	// var review = document.querySelector(`.${slidenum} .comment`).textContent.trim().replace(/^댓글\s*/, '');
+	const rates = document.querySelector(`.${slidenum} .score`).value;
+	const review = document.querySelector(`.${slidenum} .comment`).value;
 
 	const price = document.querySelector(`.${slidenum} .price`).value;
 	const pcode = document.querySelector(`.${slidenum} .pcode`).value;
@@ -897,6 +920,8 @@ $(function(){
 					<input type="hidden" class="ptype" value="${ptype}">
 					<input type="hidden" class="pingredient" value="${pingredient}">
 					<input type="hidden" class="pOption" value="${pOption}">
+					<input type="hidden" class="score" value="${rate}">
+					<input type="hidden" class="comment" value="${review}">
 
           <a href="/product/detail?code=${pcode}";" style="display: inline-block; position: relative;"> 
             <img src=${imglink} alt="${pname}" onerror="noImage(this, 'https://image.thehyundai.com/hdmall/images/pd/no_image_480x480.jpg')">
@@ -907,7 +932,7 @@ $(function(){
           <div class="price-info single" style="margin-top:0px;"><span style="font-size:18px;">${pname}</span></div>
         </div>
         <div class="addinfo" style="margin-top:0px;">
-          
+
         </div>
         <div class="card_choice">
           <div class="bn_box" style="margin-top:10px;">
@@ -922,7 +947,7 @@ $(function(){
 		for(let i=arr.length;i<=9;i++) {
 			console.log('빈 상품 출력');
 			const slide = document.querySelector(`.slide${i}`);
-			slide.innerHTML = '<p class="blank">상품을 비교함에 담아보세요</p>';
+			slide.innerHTML = '<div class="blank"><div class="empty"> <img src="https://www.card-gorilla.com/statics/img/compare_detail_add.png"></div><h4 class="forblank">상품을 비교함에<br>담아보세요</h4></div>';
 		}
 
 	}
