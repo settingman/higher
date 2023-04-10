@@ -34,6 +34,7 @@ import com.hyundai.higher.domain.makeup.LipVO;
 import com.hyundai.higher.domain.makeup.ReservVO;
 import com.hyundai.higher.domain.makeup.ResultVO;
 import com.hyundai.higher.domain.member.Member;
+import com.hyundai.higher.kakao.service.KakaoService;
 import com.hyundai.higher.mapper.beauty.BeautyMapper;
 import com.hyundai.higher.service.makeup.MakeupService;
 import com.hyundai.higher.service.makeup.MypageService;
@@ -56,6 +57,7 @@ import lombok.extern.log4j.Log4j2;
  * 2023. 3. 25.		이세아	   ajax를 위한 json 타입으로 return 변경, ajax done
  * 2023. 3. 26. 	이세아	   makeup result를 위한 controller 추가
  * 2023. 3. 27.		이세아	   makeup service을 통한 결과값 불러오기 완료
+ * 2023. 4. 10.		박성환	   kakao 알림 전송
  *     </pre>
  */
 
@@ -73,6 +75,9 @@ public class MakeupController {
 	
 	@Autowired
 	private BeautyMapper mapper;
+	
+	@Autowired
+	public KakaoService kakaoService;
 
 	@GetMapping("/form")
 	public void makeupForm(@RequestParam("rid") String rid, Model model) {
@@ -117,6 +122,9 @@ public class MakeupController {
 		service.mileageupdate(mid);
 
 		log.info(result);
+		
+		// 결과 완료 알림메세지 카카오톡 전송
+		kakaoService.Sendmessage();
 
 		return ("redirect:/rtc/room");
 	}
