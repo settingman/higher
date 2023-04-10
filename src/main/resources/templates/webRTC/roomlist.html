@@ -323,12 +323,9 @@ span.input-group-text.input-password-show {
 	height: 40px;
 }
 
-
 a {
-  color: #45675b;
- 
+	color: #45675b;
 }
-
 </style>
 </head>
 
@@ -360,7 +357,7 @@ a {
 								<h2>예약 내역</h2>
 								<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 									<tr align="center">
-									<th scope="col">예약 번호</th>
+										<th scope="col">예약 번호</th>
 										<th scope="col">고객명</th>
 										<th scope="col">고객 아이디</th>
 										<th scope="col">예약 날짜</th>
@@ -372,14 +369,14 @@ a {
 									<th:block th:fragment="content" id="block">
 
 										<tr align="center" th:each="res : ${reservations}">
-										<td class="fw-normal visible mname">[[${res.RID}]]</td>
+											<td class="fw-normal visible mname">[[${res.RID}]]</td>
 											<td class="fw-normal visible mname">[[${res.MNAME}]]</td>
 											<td class="fw-normal visible mid">[[${res.MID}]]</td>
 											<td class="fw-normal visible rdare">[[${res.RDATE}]]</td>
 											<td class="fw-normal visible rtime">[[${res.RTIME}]]</td>
-											<td class="fw-normal visible rmakeup"><button type="button" class="btn btn-primary btn-sm open" data-bs-toggle="modal"
-													data-bs-target="#profileModal" th:onclick="profileOpen([[${res.MID}]],[[${res.RID}]])"
-												>정보 확인</button></td>
+											<td class="fw-normal visible rmakeup"><a type="button" class="btn btn-primary btn-sm open"
+													th:href="@{/makeup/info(rid=${res.RID})}"
+												>정보 확인</a></td>
 											<td class="rcheck" th:if="${res.RCHECK}"><span class="col-sm-2 align-self-auto"> 생성 완료 </span></td>
 											<td class="rcheck2" th:if="${!res.RCHECK}"><span class="col-sm-2 align-self-auto">
 													<button type="button" class="btn btn-primary btn-sm open" data-bs-toggle="modal" data-bs-target="#roomModal"
