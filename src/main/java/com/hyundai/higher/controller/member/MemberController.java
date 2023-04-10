@@ -86,7 +86,7 @@ public class MemberController {
 		if (bindingResult.hasErrors()) {
 
 			for (ObjectError allError : bindingResult.getAllErrors()) {
-				System.out.println(allError.toString());
+				log.info(allError.toString());
 			}
 			log.info("bindingResult Error");
 			return "member/joinform";

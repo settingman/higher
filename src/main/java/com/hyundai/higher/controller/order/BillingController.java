@@ -69,7 +69,7 @@ public class BillingController {
 		testSecretApiKey = testSecretApiKey + ":";
 		String encodedAuth = new String(Base64.getEncoder().encode(testSecretApiKey.getBytes(StandardCharsets.UTF_8)));
 
-		System.out.println("encodedAuth = " + encodedAuth);
+		log.info("encodedAuth = " + encodedAuth);
 
 		RestTemplate restTemplate = new RestTemplate();
 

@@ -61,7 +61,6 @@ public class Member {
 
 		String date = memberFormDto.getMBirth().toString();
 		String sqldate = date.substring(0, 4) + "-" + date.substring(4, 6) + "-" + date.substring(6, 8);
-		System.out.println(sqldate);
 
 		Member member = Member.builder().mId(memberFormDto.getMId())
 				.mPassword(passwordEncoder.encode(memberFormDto.getMPassword())) // 암호화처리
