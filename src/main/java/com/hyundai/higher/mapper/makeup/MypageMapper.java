@@ -8,6 +8,7 @@ import com.hyundai.higher.domain.makeup.BlushVO;
 import com.hyundai.higher.domain.makeup.FoundationVO;
 import com.hyundai.higher.domain.makeup.LipVO;
 import com.hyundai.higher.domain.makeup.ReservVO;
+import com.hyundai.higher.domain.makeup.ResultProdVO;
 import com.hyundai.higher.domain.makeup.ResultVO;
 
 /**
@@ -27,7 +28,6 @@ import com.hyundai.higher.domain.makeup.ResultVO;
 
 @Mapper
 public interface MypageMapper {
-	
 	
 	// 상담 후
 	public List<ReservVO> getReservdone(String mid);
@@ -64,5 +64,8 @@ public interface MypageMapper {
 
 	// 결과 -> 결과값
 	public ResultVO getResultInfo(String rid);
+	
+	// 비교함 담기 위한 상품 상세
+	public ResultProdVO resultProdInfo(String pcode);
 
 }

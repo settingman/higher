@@ -140,7 +140,7 @@ function back() {
 					<!-- leftmenu -->
 					<div class="numbering" style="font-family: 'locator-medium';">
 						<p style="display: inline">예약번호 :</p>
-						<p style="display: inline">57</p>
+						<p style="display: inline" th:text="${info.rid}"></p>
 					</div>
 					<div class="table-wrap order-addinfo mt20" style="width: 200px;">
 						<table>
@@ -224,8 +224,6 @@ function back() {
 									style="text-align: center; font-weight: bold; font-family: 'locator-regular'; font-size: 20px; color: cadetblue; margin-top: 30px;">
 									ARTIST's PICK</p>
 							</div>
-							<form method="post" enctype="multipart/form-data"
-								action="/makeup/makeup_send">
 								<div class="lip_prod">
 									<div class="product-list-wrap1"
 										style="text-align: center; width: fit-content; margin: 0 auto;">
@@ -239,28 +237,43 @@ function back() {
 														name="lip_pcode" class="lip_pcode"
 														th:value="${lipresult.pcode}" /> <input type="hidden"
 														name="lip_opt" class="lip_opt"
-														th:value="${lipresult.optname}" /> <span class="hash_tag"
-														th:text="${lipresult.bname}"></span> <span class="tit"
-														th:text="${lipresult.pname}" style="height: 54px;"></span>
-														<span class="kind" th:text="${lipresult.optname}"></span>
-														<span class="rating"> </span> <span class="price">
-															<span class="after">[[${#numbers.formatInteger(lipresult.pprice,
+														th:value="${lipresult.optname}" /> <input type="hidden"
+														name="price" class="price" th:value="${lipresult.pprice}" />
+														<input type="hidden" name="pname" class="pname"
+														th:value="${lipresult.pname}" /> <input type="hidden"
+														name="brand" class="brand" th:value="${lipresult.bname}" />
+														<input type="hidden" name="imglink" class="imglink"
+														th:value="${lipresult.iloc} + '_600.jpg'" /> <input
+														type="hidden" name="rate" class="rate" value="4.5" /> <input
+														type="hidden" name="review" class="review" value="" /> <input
+														type="hidden" name="pVolume" class="pVolume"
+														value="" /> <input
+														type="hidden" name="ptype" class="ptype"
+														value="" /> <input type="hidden"
+														name="pingredient" class="pingredient"
+														value="" /> <span
+														class="hash_tag" th:text="${lipresult.bname}"></span> <span
+														class="tit" th:text="${lipresult.pname}"
+														style="height: 54px;"></span> <span class="kind"
+														th:text="${lipresult.optname}"></span> <span
+														class="rating"> </span> <span class="price"> <span
+															class="after">[[${#numbers.formatInteger(lipresult.pprice,
 																3, 'COMMA')}]]<em>원</em>
 														</span>
 													</span>
 												</a>
 													<div class="over">
-														<button class="detailview">자세히보기</button>
+														<button class="detailview" onclick="put()">비교함 담기</button>
 														<button data-price="${lipresult.pprice}"
 															data-linename="${lipresult.pname}"
 															data-sapcode="${lipresult.pname}" data-category="20"
-															class="addcart basket">장바구니 담기</button>
+															class="addcart basket" onclick="addCart()">장바구니
+															담기</button>
 													</div></li>
 											</ul>
 										</section>
 									</div>
 								</div>
-							</form>
 						</div>
 						<div class="simlip">
 							<div class="makeupwrapper"
@@ -289,11 +302,13 @@ function back() {
 														</span>
 													</a>
 														<div class="over">
-															<button class="detailview">자세히보기</button>
+															<button class="detailview" onclick="put()">비교함
+																담기</button>
 															<button data-price="${simlip.pprice}"
 																data-linename="${simlip.pname}"
 																data-sapcode="${simlip.pname}" data-category="20"
-																class="addcart basket">장바구니 담기</button>
+																class="addcart basket" onclick="addCart()">장바구니
+																담기</button>
 														</div></li>
 												</ul>
 											</section>
@@ -340,10 +355,11 @@ function back() {
 												</span>
 											</a>
 												<div class="over">
-													<button class="detailview">자세히보기</button>
+													<button class="detailview" onclick="put()">비교함 담기</button>
 													<button data-price="45000" data-linename="[나스] 파워매트 립스틱"
 														data-sapcode="A1592419" data-category="20"
-														class="addcart basket">장바구니 담기</button>
+														class="addcart basket" onclick="addCart()">장바구니
+														담기</button>
 												</div></li>
 										</ul>
 									</section>
@@ -378,11 +394,13 @@ function back() {
 														</span>
 													</a>
 														<div class="over">
-															<button class="detailview">자세히보기</button>
+															<button class="detailview" onclick="put()">비교함
+																담기</button>
 															<button data-price="${simblush.pprice}"
 																data-linename="${simblush.pname}"
 																data-sapcode="${simblush.pname}" data-category="20"
-																class="addcart basket">장바구니 담기</button>
+																class="addcart basket" onclick="addCart()">장바구니
+																담기</button>
 														</div></li>
 												</ul>
 											</section>
@@ -428,10 +446,12 @@ function back() {
 												</span>
 											</a>
 												<div class="over">
-													<button class="detailview">자세히보기</button>
-													<button data-price="45000" data-linename="[나스] 파워매트 립스틱"
-														data-sapcode="A1592419" data-category="20"
-														class="addcart basket">장바구니 담기</button>
+													<button class="detailview" onclick="put()">비교함 담기</button>
+													<button data-price="${faceresult.pprice}"
+														data-linename="${faceresult.pname}"
+														data-sapcode="${faceresult.pname}" data-category="20"
+														class="addcart basket" onclick="addCart()">장바구니
+														담기</button>
 												</div></li>
 										</ul>
 									</section>
@@ -466,11 +486,13 @@ function back() {
 														</span>
 													</a>
 														<div class="over">
-															<button class="detailview">자세히보기</button>
+															<button class="detailview" onclick="put()">비교함
+																담기</button>
 															<button data-price="${simface.pprice}"
 																data-linename="${simface.pname}"
 																data-sapcode="${simface.pname}" data-category="20"
-																class="addcart basket">장바구니 담기</button>
+																class="addcart basket" onclick="addCart()">장바구니
+																담기</button>
 														</div></li>
 												</ul>
 											</section>
@@ -608,11 +630,120 @@ $('#facepick').click(function(){
     //element.append(slider);
 });
 	</script>
+	<script>
+    function put() {
+    	
+    	const clickedDiv = event.currentTarget;
+    	const pcode = clickedDiv.querySelector(".lip_pcode").value;
+    	const opt = clickedDiv.querySelector(".lip_opt").value;
+    	const price = clickedDiv.querySelector(".price").value;
+    	const pname = clickedDiv.querySelector(".pname").value;
+    	const brand = clickedDiv.querySelector(".brand").value;
+    	const imglink = clickedDiv.querySelector(".imglink").value;
+    	const rate = clickedDiv.querySelector(".rate").value;
+    	const review = clickedDiv.querySelector(".review").value;
+    	//const pVolume = clickedDiv.querySelector(".pVolume").value;
+    	//const ptype = clickedDiv.querySelector(".ptype").value;
+    	//const pingredient = clickedDiv.querySelector(".pingredient").value;
+
+/*     	if (pVolume === null) {
+    		pVolume = ""; // 빈 문자열로 설정
+    	} */
+      
+      let arr = JSON.parse(localStorage.getItem("arr")) || []; // null일 경우 빈 배열 생성
+  
+      if (arr.length >= 10) {
+        alert("비교함에는 10개의 상품을 담을 수 있습니다.");
+        return false;
+      }
+  
+      if (arr.some(item => item[0] === pcode)) { // 이미 비교함에 추가된 상품인 경우
+        alert("이미 비교함에 담긴 상품입니다.");
+      } else {
+        arr.push([pcode, pname, brand, price, imglink, rate, review, pVolume, ptype, pingredient]); // 상품 정보 저장
+        localStorage.setItem("arr", JSON.stringify(arr));
+        alert("비교함에 담겼습니다.");
+      }
+      console.log("비교함에 담음");
+      //담았으면 옆에 사이드바에 띄워줘야 함
+    }
+</script>
+
+	<script>
+	function addCart() {
+		console.log('장바구니 담기');
+		var pCode = document.querySelector('.pcode').value;
+    //옵션 바꾸기
+		//var pOption = document.querySelector('input[name="optNm"]').value;
+		var pAmount = document.querySelector('input[name="pamount"]').value;
+		var mid = document.getElementById('mid').value;
+		console.log(mid);
+    var pOption = "";
+
+    var pname = document.querySelector('.datail_info_top .tit strong').textContent.trim();
+    console.log(pname+" 이름");
+
+    if (!document.querySelector('.option')) {
+      pOption = pname;
+    }else {
+      var selectedOption = $('.datail_info_data .opt option:selected').text();
+      console.log(selectedOption);
+      // const selectEl = document.querySelector('.opt');  // select 요소 선택
+      // const selectedValue = selectEl.options[selectEl.selectedIndex].val;
+      if(selectedOption =='선택'){
+        console.log("옵션 선택 안함");
+        alert('옵션을 선택하세요');
+        return;
+      }; 
+      pOption = selectedOption;
+    }
+		console.log(pOption);
+		
+		if (mid !='anonymousUser'){
+			var requestData = JSON.stringify({
+				pcode : pCode,
+				poption : pOption,
+			  pamount : pAmount,
+			  mid  :mid
+		});
+		//로그인 여부 확인 
+		//중복 상품 확인
+		
+		console.log(requestData);
+
+		 $.ajax({
+			url: '/restcart/addCart',
+			type: 'post',
+			data: requestData,
+			contentType: "application/json",
+			success	: function(result){
+				console.log("장바구니 success");
+				if(result == '0'){
+					alert("장바구니에 추가를 하지 못하였습니다.");
+				} else if(result == '1'){
+					alert("장바구니에 추가되었습니다.");
+				} else if(result == '2'){
+					alert("이미 장바구니에 담긴 상품으로 수량이 추가되었습니다.");
+				} 
+			},
+			error :function(request, status, error) {
+				console.log(error);
+			}
+		}); 
+		}else {
+			console.log("로그인 필요");
+			alert('장바구니는 로그인이 필요합니다.');
+			var loginUrl = "/member/login";
+			window.location.href = loginUrl;
+		}
+		
+	}
+	</script>
+
 	<style>
 button.addcart.basket {
-	background:
-		url(/img/cart.png) !important;
-			width: 56px !important;
+	background: url(/img/cart.png) !important;
+	width: 56px !important;
 	height: 56px !important;
 	background-size: 56px !important;
 }

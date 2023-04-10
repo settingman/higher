@@ -9,6 +9,7 @@ import com.hyundai.higher.domain.makeup.BlushVO;
 import com.hyundai.higher.domain.makeup.FoundationVO;
 import com.hyundai.higher.domain.makeup.LipVO;
 import com.hyundai.higher.domain.makeup.ReservVO;
+import com.hyundai.higher.domain.makeup.ResultProdVO;
 import com.hyundai.higher.domain.makeup.ResultVO;
 import com.hyundai.higher.mapper.makeup.MypageMapper;
 
@@ -76,6 +77,11 @@ public class MypageServiceImpl implements MypageService{
 	@Override
 	public List<ReservVO> yesResult(String mid) {
 		return mapper.yesResult(mid);
+	}
+
+	@Override
+	public ResultProdVO resultProdInfo(String pcode) {
+		return mapper.resultProdInfo(pcode);
 	}
 
 }
