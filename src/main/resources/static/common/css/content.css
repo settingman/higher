@@ -2394,7 +2394,7 @@
 }
 
 .flot_right_warp .flotheart a .count,
-.flot_right_warp .flotcart a .count {
+.flot_right_warp .flotcart a .cart-count {
   position: absolute;
   top: 3px;
   right: 21px;

@@ -510,6 +510,21 @@
     });
     
   </script>
+  <script>
+    window.onload = function() {
+    var flotPrd = new Swiper('#flotprd', {
+        loop : true
+    });
+    $('.flotprd-prev').on('click', function(e) {
+        e.preventDefault();
+        flotPrd.swipePrev();
+    });
+    $('.flotprd-next').on('click', function(e) {
+        e.preventDefault();
+        flotPrd.swipeNext();
+    });
+}
+  </script>
 <script>
       function getArr() {
         const arr = JSON.parse(localStorage.getItem("arr")) || [];

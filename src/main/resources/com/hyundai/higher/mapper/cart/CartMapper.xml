@@ -85,6 +85,9 @@
 		select count(*) from cart where pcode = #{item.pcode} and mid=#{item.mid} and optname=#{item.poption}
 	</select>
 	
+	<select id="getCount" resultType="java.lang.Integer">
+		    select count(*) as count from cart where mid = #{mid}
+	</select>
 	
 	
 </mapper>

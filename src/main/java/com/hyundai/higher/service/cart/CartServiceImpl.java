@@ -61,6 +61,11 @@ public class CartServiceImpl implements CartService{
 		List<CartItem> cart = cMapper.getCart(mid); 
 		return cart;
 	}
+
+	@Override
+	public int getCount(String mid) {
+		return cMapper.getCount(mid);
+	}
 	
 	
 

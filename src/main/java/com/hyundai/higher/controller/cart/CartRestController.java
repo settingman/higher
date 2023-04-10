@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -100,6 +101,21 @@ public class CartRestController {
 		int result = cService.modifyOption(cart, mid);
 		
 		return result + "";
+	}
+	
+	// 장바구니 개수 카운트
+	@GetMapping("/count")
+	public String countCart(Principal principal) {
+		log.info("장바구니 카운트");
+		
+		String mid = principal.getName();
+		
+		int count =0;
+		count = cService.getCount(mid);
+		log.info("장바구니 개수 "+count);
+		
+		return count+"";
+		
 	}
 	
 	

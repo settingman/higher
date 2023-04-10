@@ -24,6 +24,7 @@ import lombok.extern.log4j.Log4j2;
  * 	   수정일          수정자                수정내용
  * -------------   --------    ---------------------------
  * 2023. 03. 23.     박서현       최초 생성
+ * 2023. 04. 10.	 박서현		장바구니 카운트
  * </pre>
  */
 
@@ -54,6 +55,21 @@ public class CartController {
 
 			
 	return "shop/mycart";
+	}
+	
+	// 장바구니 개수 카운트
+	@GetMapping("/count")
+	public String countCart(Principal principal) {
+		log.info("장바구니 카운트");
+		
+		String mid = principal.getName();
+		
+		int count =0;
+		count = cService.getCount(mid);
+		log.info("장바구니 개수 "+count);
+		
+		return "shop/count";
+		
 	}
 	
 }

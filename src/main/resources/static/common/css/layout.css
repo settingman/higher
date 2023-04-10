@@ -2048,7 +2048,7 @@ html {
   background-size: 500px 500px;
 }
 
-#header .cf_side .fastinfo .btn-cart .count {
+#header .cf_side .fastinfo .btn-cart .cart-count {
   position: absolute;
   top: 0;
   right: -8px;

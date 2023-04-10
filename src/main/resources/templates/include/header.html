@@ -80,6 +80,22 @@
 
 	});
 </script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    $.ajax({
+        url: "/restcart/count",
+        type: "GET",
+        success: function(count) {
+					console.log("장바구니 개수 "+count);
+            $(".cart-count").text(count);
+        },
+        error: function(e) {
+					console.log(e);
+        }
+    });
+});
+</script>
 <h1 onclick="location.href='/';">The Hyundai Beauty</h1>
 <section class="top_nav">
 	<nav>
@@ -136,7 +152,7 @@
 				</button>
 			</div>
 			<a href="/shop/mycart" class="btn-cart"><span class="hide">장바구니</span><span
-				class="count">0</span></a>
+				class="cart-count">0</span></a>
 		</div>
 		<!-- </form> -->
 		<div class="hashtag"
