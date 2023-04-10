@@ -91,19 +91,23 @@ td {
 								<div class="content">
 									<div class="myhyundai-head"></div>
 									<div class="myhyundai-main"
-										style="margin: 40px 0; font-family: 'notokr-medium';">
+										style="margin: 20px 0; font-family: 'notokr-medium';">
 										<h3>고객 정보</h3>
 									</div>
 									<!-- cart-list -->
 									<div class="numbering"
-										style="font-family: 'locator-medium'; position: relative; float: left; margin-right: 695px; line-height: 26px;">
+										style="font-family: 'locator-medium'; line-height: 26px; float: left;">
 										<p style="display: inline">예약번호 :</p>
 										<p style="display: inline" th:text="${info.rid}"></p>
 									</div>
-									<div style="position: relative;">
+									<div style="margin-left: 628px;">
 										<p class="v-btn-wrap">
-											<a class="btn color4 size1"
-												style="background: #bfae90; border: #bfae90; margin-left: 55px; color: white; font-family: 'Font Awesome 5 Free'; font-size: 13px;">입장하기</a>
+											<a th:href="'/chat/room?roomId=' + ${info.roomid}" class="btn color4 size1"
+												style="background: #bfae90; border: #bfae90; color: white; font-family: 'Font Awesome 5 Free'; font-size: 13px;">온라인
+												메이크업 입장</a> <a th:href="'/makeup/form?rid=' + ${info.rid}"
+												class="btn color4 size1"
+												style="background: #bfae90; border: #bfae90; color: white; font-family: 'Font Awesome 5 Free'; font-size: 13px; margin-left: 5px;">화상
+												상담 입장</a>
 										</p>
 									</div>
 									<div>
@@ -142,18 +146,27 @@ td {
 
 														<tr>
 															<th scope="row" style="vertical-align: middle;">Strength
+
+
+
 															
 															</td>
 															<td>[[${mbti.spros}]]</td>
 														</tr>
 														<tr>
 															<th scope="row" style="vertical-align: middle;">Weakness
+
+
+
 															
 															</td>
 															<td>[[${mbti.scons}]]</td>
 														</tr>
 														<tr>
 															<th scope="row" style="vertical-align: middle;">Solution
+
+
+
 															
 															</td>
 															<td>[[${mbti.ssolution}]]</td>

@@ -100,19 +100,17 @@ span.statusimage {
 						<li class=""><a class="not">MY Make-ON</a>
 							<ul>
 								<li class=""><a href="/mypage/reserv">예약 관리</a></li>
-								<li class=""><a href="/mypage/reserv_done">예약 결과 확인</a></li>
+								<li class=""><a href="/mypage/reserv_done">예약 완료</a></li>
 								<li class=""><a href="/mypage/reserv_ready">상담 입장</a></li>
-								<li class=""><a href="/mypage/reserv_ing">예약 신청 완료</a></li>
+								<li class=""><a href="/mypage/reserv_ing">상담 완료</a></li>
 							</ul></li>
 						<li class=""><a class="not">MY 피부 MBTI</a>
 							<ul>
-								<li class=""><a href="/mypage/skinmbti">결과
-										보기</a></li>
+								<li class=""><a href="/mypage/skinmbti">결과 보기</a></li>
 							</ul></li>
 						<li class=""><a class="not">MY 주문</a>
 							<ul>
-								<li class=""><a href="/mypage/order">주문
-										내역</a></li>
+								<li class=""><a href="/shop/orderlist">주문 내역</a></li>
 
 							</ul></li>
 
@@ -128,7 +126,7 @@ span.statusimage {
 					<div class="myhyundai-main" style="margin: 40px 0">
 						<h3>Make-On 예약 관리</h3>
 					</div>
-					<div class="myhyundai-toplink">
+					<div class="myhyundai-toplink" style="margin-bottom: 30px;">
 						<ul>
 							<li style="width: 33%; padding-left: 16px;"><a
 								href="/mypage/reserv_ing"><span
@@ -136,25 +134,30 @@ span.statusimage {
 										완료<em>[[${#lists.size(ready)}]]건</em>
 								</span></a></li>
 
-							<li style="width: 33%;"><a
-								href="/mypage/reserv_ready">><span
+							<li style="width: 33%;"><a href="/mypage/reserv_ready">><span
 									class="statusimage"> <img src="/img/001.png"></span><span
 									class="txt">입장 가능<em>[[${#lists.size(nores)}]]건</em></span></a></li>
 
 
-							<li style="width: 33%;"><a
-								href="/mypage/reserv_done">><span
+							<li style="width: 33%;"><a href="/mypage/reserv_done">><span
 									class="statusimage"> <img src="/img/002.png">
 								</span><span class="txt">상담 완료<em>[[${#lists.size(yesres)}]]건</em></span></a></li>
 						</ul>
 
 					</div>
 					<!-- cart-list -->
-					<div class="myhyundai-main" style="margin: 40px 0">
-						<h2>예약 결과 확인</h2>
+					<div class="tab-block">
+						<!-- tab -->
+						<ul class="nav nav-tabs2">
+							<li class="active" style="width: 33%;" id="resready"><a>예약
+									완료</a></li>
+
+							<li style="width: 33%;" id="resgo"><a>입장 가능</a></li>
+							<li style="width: 33%;" id="resresult"><a>상담 완료</a></li>
+						</ul>
 					</div>
-					<div class="cart-list">
-						<h4 class="blind">주문/배송 내역</h4>
+
+					<div class="resresult" style="display:none;">
 						<!-- table-wrap -->
 						<div class="table-wrap coltype cart no-border-top"
 							style="margin-bottom: 100px;">
@@ -205,8 +208,7 @@ span.statusimage {
 											<p class="v-btn-wrap">
 												<a th:href="'/mypage/result?rid=' + ${yesres.rid}"
 													onclick="javascript:GA_Event('PC_마이페이지', '최근_주문_배송내역', '상세내역');"
-													class="btn color4 size1">결과
-													확인</a>
+													class="btn color4 size1">결과 확인</a>
 											</p>
 										</td>
 									</tr>
@@ -217,10 +219,8 @@ span.statusimage {
 					</div>
 					<!-- //cart-list -->
 					<!-- cart-list -->
-					<div class="myhyundai-main" style="margin: 40px 0">
-						<h2>상담 입장</h2>
-					</div>
-					<div class="cart-list">
+
+					<div class="resgo" style="display:none;">
 						<!-- table-wrap -->
 						<div class="table-wrap coltype cart no-border-top"
 							style="margin-bottom: 100px;">
@@ -271,8 +271,7 @@ span.statusimage {
 											<p class="v-btn-wrap">
 												<a th:href="'/chat/room?roomId=' + ${nores.roomid}"
 													onclick="javascript:GA_Event('PC_마이페이지', '최근_주문_배송내역', '상세내역');"
-													class="btn color4 size1">입장
-													하기</a>
+													class="btn color4 size1">입장 하기</a>
 											</p>
 										</td>
 									</tr>
@@ -282,64 +281,65 @@ span.statusimage {
 						</div>
 					</div>
 					<!-- //cart-list -->
-					<div class="myhyundai-main" style="margin: 40px 0">
-						<h2>예약 신청 완료</h2>
-					</div>
-					<div class="table-wrap coltype cart no-border-top">
-						<table>
-							<caption></caption>
-							<colgroup>
-								<col style="width: 130px" />
-								<col style="width: 100px" />
-								<col style="width: 120px" />
-								<col style="width: 120px" />
-								<col style="width: 100px" />
-							</colgroup>
-							<thead>
-								<tr>
-									<th scope="col">예약번호</th>
-									<th scope="col" style="width: 100px">날짜</th>
-									<th scope="col" style="">시간</th>
-									<th scope="col" style="">예약상태</th>
-									<th scope="col">입장</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr th:if="${#lists.isEmpty(ready)}">
-									<td height="120" colspan="5">결과가 없습니다.</td>
-								</tr>
-								<!-- 입장 대기 -->
-								<tr th:each="ready : ${ready}"
-									th:if="${not #lists.isEmpty(ready)}">
-									<td class="valign-top" rowspan="1">
-										<div class="od-info">
-											<p class="strong text-point2" th:text="${ready.rid}"></p>
-											<p class="where">온라인</p>
-										</div>
-									</td>
+					<div class="resready" style="display:block;">
+						<div class="table-wrap coltype cart no-border-top">
+							<table>
+								<caption></caption>
+								<colgroup>
+									<col style="width: 130px" />
+									<col style="width: 100px" />
+									<col style="width: 120px" />
+									<col style="width: 120px" />
+									<col style="width: 100px" />
+								</colgroup>
+								<thead>
+									<tr>
+										<th scope="col">예약번호</th>
+										<th scope="col" style="width: 100px">날짜</th>
+										<th scope="col" style="">시간</th>
+										<th scope="col" style="">예약상태</th>
+										<th scope="col">입장</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:if="${#lists.isEmpty(ready)}">
+										<td height="120" colspan="5">결과가 없습니다.</td>
+									</tr>
+									<!-- 입장 대기 -->
+									<tr th:each="ready : ${ready}"
+										th:if="${not #lists.isEmpty(ready)}">
+										<td class="valign-top" rowspan="1">
+											<div class="od-info">
+												<p class="strong text-point2" th:text="${ready.rid}"></p>
+												<p class="where">온라인</p>
+											</div>
+										</td>
 
-									<td class="price-info" style="">
-										<div class="tot-price"
-											th:text="${#strings.substring(ready.rdate, 0, 10)}"></div>
-									</td>
-									<td class="price-info">
-										<div class="tot-price"
-											th:text="${#strings.substring(ready.rdate, 11, 16)}"></div>
-									</td>
-									<td class="shipping">
-										<div class="order-status">상담 전</div>
-									</td>
-									<td class="ctrl">
-										<p class="v-btn-wrap">
-											<a>입장 대기</a>
-										</p>
-									</td>
-								</tr>
-								<!-- /입장 대기 -->
-							</tbody>
-						</table>
+										<td class="price-info" style="">
+											<div class="tot-price"
+												th:text="${#strings.substring(ready.rdate, 0, 10)}"></div>
+										</td>
+										<td class="price-info">
+											<div class="tot-price"
+												th:text="${#strings.substring(ready.rdate, 11, 16)}"></div>
+										</td>
+										<td class="shipping">
+											<div class="order-status">상담 전</div>
+										</td>
+										<td class="ctrl">
+											<p class="v-btn-wrap">
+												<a th:href="'/mypage/reserv_detail?rid=' + ${ready.rid}"
+													onclick="javascript:GA_Event('PC_마이페이지', '최근_주문_배송내역', '상세내역');"
+													class="btn color4 size1">예약 상세 보기</a>
+											</p>
+										</td>
+									</tr>
+									<!-- /입장 대기 -->
+								</tbody>
+							</table>
+						</div>
+						<!-- //입장-->
 					</div>
-					<!-- //입장-->
 				</div>
 				<!-- //content -->
 			</div>
@@ -347,6 +347,31 @@ span.statusimage {
 		</div>
 		<div class="include-footer" th:insert="~{include/footer2}"></div>
 	</div>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+		$('#resready').click(function() {
+			$('ul.nav-tabs2 li').removeClass('active');
+			$(this).addClass('active');
+			$('.resready').css('display', 'block');
+			$('.resgo').css('display', 'none');
+			$('.resresult').css('display', 'none');
+		})
+		$('#resgo').click(function() {
+			$('ul.nav-tabs2 li').removeClass('active');
+			$(this).addClass('active');
+			$('.resready').css('display', 'none');
+			$('.resgo').css('display', 'block');
+			$('.resresult').css('display', 'none');
+		})
+		$('#resresult').click(function() {
+			$('ul.nav-tabs2 li').removeClass('active');
+			$(this).addClass('active');
+			$('.resready').css('display', 'none');
+			$('.resgo').css('display', 'none');
+			$('.resresult').css('display', 'block');
+		})
+	</script>
 	<!-- //wrap -->
 </body>
 </html>
