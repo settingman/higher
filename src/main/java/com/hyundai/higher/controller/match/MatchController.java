@@ -32,7 +32,7 @@ import lombok.extern.log4j.Log4j2;
  * -------------   --------    ---------------------------
  * 2023. 04. 01.    박서현       최초 생성
  * 2023. 04. 06.	신수진		main
- * 2023. 04. 07.	박서현		match/detail
+ * 2023. 04. 07.	박서현		main, match/detail
  *     </pre>
  */
 
@@ -222,13 +222,17 @@ public class MatchController {
 		// 성분 for문 해서 점수 카운트
 		int score = 0;
 		log.info("ffffffff"+mService.getEffect(ingredients[9], mbtiList[0]));
-	if(mService.getEffect(ingredients[9], mbtiList[0]) != null) {
+	//if(mService.getEffect(ingredients[9], mbtiList[0]) != null) {
 		// 첫번째 mbti 점수 계산. 총 40점. good 4점, normal 2점, bad 1점
 		for (int i = 0; i < ingredients.length; i++) {
 			log.info("============================");
 
 			String result = mService.getEffect(ingredients[i], mbtiList[0]);
 			log.info("effect " + result);
+			if(result == null) {
+				score =0;
+				break;
+			}
 			if (result.equals("GOOD")) {
 				log.info("goood");
 				score += 4;
@@ -237,7 +241,7 @@ public class MatchController {
 			}
 		}
 		log.info(score + "-----------------------------------");
-
+		if(score != 0) {
 		// 두번째 mbti 점수 계산. 총 30점. good 3점, normal 2점, bad 1점
 		for (int i = 0; i < ingredients.length; i++) {
 			String result = mService.getEffect(ingredients[i], mbtiList[1]);
@@ -269,6 +273,8 @@ public class MatchController {
 		model.addAttribute("score", score);
 		}
 		}
+		
+		//}
 
 		return "match/detail";
 	}

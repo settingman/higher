@@ -22,20 +22,106 @@
 	font-size: 20px;
   font-family: 'notokr-medium';
 }
+
 </style>
 <link rel="stylesheet" type="text/css" href="/match/css/detail.css">
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/easy-pie-chart/2.1.6/jquery.easypiechart.min.js"></script> -->
 </head>
 
 <body>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/easy-pie-chart/2.1.6/jquery.easypiechart.min.js"></script>
-    <script th:inline="javascript">
-    window.onload = function() {
+  <script th:inline="javascript">
+    $(function() {
 
       const mychart = document.querySelector('.mychart');
-      if ('/*[[${score}]]*/' != null && mychart != null && title != null) {
+
+      if('/*[[${score}]]*/' != null && mychart != null  ){
+
+      const percent = mychart.dataset.percent;
+      console.log(percent + "-------------------------");
+
+      if(percent <= 20){
+        console.log("퍼센트 20이하");
+        $('#resultchart').easyPieChart({
+        barColor: '#fe3c69',
+        trackColor : '#edebeb',
+        scaleColor: false,
+        lineWidth: 25,
+        size: 200,
+        animate: 1000,
+        lineCap: 'round'
+      });
+      document.querySelector(".title").textContent = '글쎄요';
+
+      }else if (percent<=40) {
+
+        $('#resultchart').easyPieChart({
+        barColor: '#f77694',
+        trackColor : '#edebeb',
+        scaleColor: false,
+        lineWidth: 25,
+        size: 200,
+        animate: 1000,
+        lineCap: 'round'
+      });
+      document.querySelector(".title").textContent = '그냥 그래요';
+
+      }else if (percent<=60) {
+
+        $('#resultchart').easyPieChart({
+        barColor: '#DCFBF9',
+        trackColor : '#edebeb',
+        scaleColor: false,
+        lineWidth: 25,
+        size: 200,
+        animate: 1000,
+        lineCap: 'round'
+      });
+      document.querySelector(".title").textContent = '보통이에요';
+
+      }else if (percent<=80) {
+
+        $('#resultchart').easyPieChart({
+        barColor: '#CBE6FF',
+        trackColor : '#edebeb',
+        scaleColor: false,
+        lineWidth: 25,
+        size: 200,
+        animate: 1000,
+        lineCap: 'round'
+      });
+      document.querySelector(".title").textContent = '잘 맞는 편!';
+
+      }else if (percent<=100){
+
+        $('#resultchart').easyPieChart({
+        barColor: '#B7BCFE',
+        trackColor : '#edebeb',
+        scaleColor: false,
+        lineWidth: 25,
+        size: 200,
+        animate: 1000,
+        lineCap: 'round'
+      });
+      document.querySelector(".title").textContent = '찰떡궁합';
+
+      }
+    }
+
+    });
+  </script>
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/easy-pie-chart/2.1.6/jquery.easypiechart.min.js"></script> -->
+
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script src="/path/to/jquery.easy-pie-chart.js"></script>
+<link rel="stylesheet"type="text/css" href="/path/to/jquery.easy-pie-chart.css">
+
+    <script th:inline="javascript">
+$(function() {
+
+      const mychart = document.querySelector('.mychart');
+      // if ('/*[[${score}]]*/' != null && mychart != null ) {
         const percent = mychart.dataset.percent;
 
 			console.log(percent + "-------------------------");
@@ -45,6 +131,7 @@
 			// })
 
 			if (percent <= 20) {
+        console.log("퍼센트 들어옴");
 				$('.mychart').easyPieChart({
 					barColor : '#fe3c69',
 					trackColor : '#dadada', //도넛배경색
@@ -117,11 +204,11 @@
 			}
 
 
-      }
+      // }
 
-    } 
+  });
       
-  </script>
+  </script> -->
   <!-- <script>
 
     
@@ -316,13 +403,32 @@
 									</a> <em><a href="#product_detail_review"
 											style="color: #8f8f8f;">(270)</a></em>
 									</span>
-									<div th:if="${score != null}" class="result"
+                  <!-- 회원 차트 결과 -->
+									<div sec:authorize="isAuthenticated()" th:if="${score != null}" class="result"
 										style="display: flex; justify-content: center; margin-bottom: 40px;">
-										<div class="chart mychart" th:data-percent="${score}">
+										<div id="resultchart" class="chart mychart" th:data-percent="${score}">
 											<span class="title" style="top: 110px;">[[${score}]]</span>
 										</div>
 									</div>
-                  <div th:unless="${score != null}" class="result"
+                  <!-- 회원 차트 결과 end -->
+                  
+                  <!-- 회원 결과 null -->
+                  <div sec:authorize="isAuthenticated()" th:if="${score == null}" class="result"
+                  style="display: flex;justify-content: center;padding: 30px 10px;margin-bottom: 40px;border: 1px solid #c2bdbd;border-radius: 39px;">
+										<div class="inform">
+                      <div id="join-guide" style="
+                      font-size: 16px;
+                      text-align: center;
+                      font-family: 'notokr-demilight';
+                      line-height: 25px;
+                  ">해당 제품의 매칭도는 추후에 제공될 예정입니다.</div>
+          	          
+										</div>
+									</div>
+                  <!-- 회원 결과 null end-->
+                  
+                  <!-- 비회원 -->
+                  <div sec:authorize="isAnonymous()" th:unless="${score != null}" class="result"
                   style="display: flex;justify-content: center;padding: 30px 10px;margin-bottom: 40px;border: 1px solid #c2bdbd;border-radius: 39px;">
 										<div class="inform">
                       <h2 id="side-tit" style="
@@ -345,6 +451,7 @@
                   "><a class="btn_base move" href="/member/login">회원가입 후 진단하러 가기</a></div>
 										</div>
 									</div>
+                  <!-- 비회원 end -->
                   
 									<div id="ingredient_box">
 										<div id="iTit">주요성분</div>
@@ -435,9 +542,10 @@
 			<!-- //contents -->
 <!-- right 제품구매 플로팅 -->
 
+<section class="flot_right_warp" th:insert="~{include/float}"></section>
+
 
 		</section>
-    <section class="flot_right_warp" th:insert="~{include/float}"></section>
 
 		<!-- //container -->
 
@@ -566,6 +674,8 @@
 		<div class="include-footer" th:insert="~{include/footer}" style="padding-top: 150px;"></div>
 		<!-- /footer -->
 	</div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/easy-pie-chart/2.1.6/jquery.easypiechart.min.js"></script>
 </body>
 
 </html>
