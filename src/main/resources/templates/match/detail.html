@@ -22,20 +22,106 @@
 	font-size: 20px;
   font-family: 'notokr-medium';
 }
+
 </style>
 <link rel="stylesheet" type="text/css" href="/match/css/detail.css">
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/easy-pie-chart/2.1.6/jquery.easypiechart.min.js"></script> -->
 </head>
 
 <body>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/easy-pie-chart/2.1.6/jquery.easypiechart.min.js"></script>
-    <script th:inline="javascript">
-    window.onload = function() {
+  <script th:inline="javascript">
+    $(function() {
 
       const mychart = document.querySelector('.mychart');
-      if ('/*[[${score}]]*/' != null && mychart != null && title != null) {
+
+      if('/*[[${score}]]*/' != null && mychart != null  ){
+
+      const percent = mychart.dataset.percent;
+      console.log(percent + "-------------------------");
+
+      if(percent <= 20){
+        console.log("퍼센트 20이하");
+        $('#resultchart').easyPieChart({
+        barColor: '#fe3c69',
+        trackColor : '#edebeb',
+        scaleColor: false,
+        lineWidth: 25,
+        size: 200,
+        animate: 1000,
+        lineCap: 'round'
+      });
+      document.querySelector(".title").textContent = '글쎄요';
+
+      }else if (percent<=40) {
+
+        $('#resultchart').easyPieChart({
+        barColor: '#f77694',
+        trackColor : '#edebeb',
+        scaleColor: false,
+        lineWidth: 25,
+        size: 200,
+        animate: 1000,
+        lineCap: 'round'
+      });
+      document.querySelector(".title").textContent = '그냥 그래요';
+
+      }else if (percent<=60) {
+
+        $('#resultchart').easyPieChart({
+        barColor: '#DCFBF9',
+        trackColor : '#edebeb',
+        scaleColor: false,
+        lineWidth: 25,
+        size: 200,
+        animate: 1000,
+        lineCap: 'round'
+      });
+      document.querySelector(".title").textContent = '보통이에요';
+
+      }else if (percent<=80) {
+
+        $('#resultchart').easyPieChart({
+        barColor: '#CBE6FF',
+        trackColor : '#edebeb',
+        scaleColor: false,
+        lineWidth: 25,
+        size: 200,
+        animate: 1000,
+        lineCap: 'round'
+      });
+      document.querySelector(".title").textContent = '잘 맞는 편!';
+
+      }else if (percent<=100){
+
+        $('#resultchart').easyPieChart({
+        barColor: '#B7BCFE',
+        trackColor : '#edebeb',
+        scaleColor: false,
+        lineWidth: 25,
+        size: 200,
+        animate: 1000,
+        lineCap: 'round'
+      });
+      document.querySelector(".title").textContent = '찰떡궁합';
+
+      }
+    }
+
+    });
+  </script>
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/easy-pie-chart/2.1.6/jquery.easypiechart.min.js"></script> -->
+
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script src="/path/to/jquery.easy-pie-chart.js"></script>
+<link rel="stylesheet"type="text/css" href="/path/to/jquery.easy-pie-chart.css">
+
+    <script th:inline="javascript">
+$(function() {
+
+      const mychart = document.querySelector('.mychart');
+      // if ('/*[[${score}]]*/' != null && mychart != null ) {
         const percent = mychart.dataset.percent;
 
 			console.log(percent + "-------------------------");
@@ -45,6 +131,7 @@
 			// })
 
 			if (percent <= 20) {
+        console.log("퍼센트 들어옴");
 				$('.mychart').easyPieChart({
 					barColor : '#fe3c69',
 					trackColor : '#dadada', //도넛배경색
@@ -117,11 +204,11 @@
 			}
 
 
-      }
+      // }
 
-    } 
+  });
       
-  </script>
+  </script> -->
   <!-- <script>
 
     
@@ -316,13 +403,32 @@
 									</a> <em><a href="#product_detail_review"
 											style="color: #8f8f8f;">(270)</a></em>
 									</span>
-									<div th:if="${score != null}" class="result"
+                  <!-- 회원 차트 결과 -->
+									<div sec:authorize="isAuthenticated()" th:if="${score != null}" class="result"
 										style="display: flex; justify-content: center; margin-bottom: 40px;">
-										<div class="chart mychart" th:data-percent="${score}">
+										<div id="resultchart" class="chart mychart" th:data-percent="${score}">
 											<span class="title" style="top: 110px;">[[${score}]]</span>
 										</div>
 									</div>
-                  <div th:unless="${score != null}" class="result"
+                  <!-- 회원 차트 결과 end -->
+                  
+                  <!-- 회원 결과 null -->
+                  <div sec:authorize="isAuthenticated()" th:if="${score == null}" class="result"
+                  style="display: flex;justify-content: center;padding: 30px 10px;margin-bottom: 40px;border: 1px solid #c2bdbd;border-radius: 39px;">
+										<div class="inform">
+                      <div id="join-guide" style="
+                      font-size: 16px;
+                      text-align: center;
+                      font-family: 'notokr-demilight';
+                      line-height: 25px;
+                  ">해당 제품의 매칭도는 추후에 제공될 예정입니다.</div>
+          	          
+										</div>
+									</div>
+                  <!-- 회원 결과 null end-->
+                  
+                  <!-- 비회원 -->
+                  <div sec:authorize="isAnonymous()" th:unless="${score != null}" class="result"
                   style="display: flex;justify-content: center;padding: 30px 10px;margin-bottom: 40px;border: 1px solid #c2bdbd;border-radius: 39px;">
 										<div class="inform">
                       <h2 id="side-tit" style="
@@ -345,6 +451,7 @@
                   "><a class="btn_base move" href="/member/login">회원가입 후 진단하러 가기</a></div>
 										</div>
 									</div>
+                  <!-- 비회원 end -->
                   
 									<div id="ingredient_box">
 										<div id="iTit">주요성분</div>
@@ -433,137 +540,8 @@
 			</section>
 			<!-- //contents -->
 <!-- right 제품구매 플로팅 -->
-<section class="flot_right_warp">
-  <div class="flot_price_btn">
-    <div class="flotmem"><a href="/"></a><strong><em>고객</em>님</strong>반갑습니다</div>
-    <div class="flotcart"><a href="/shop/mycart"><span class="count">0</span><span class="hide">장바구니 -
-          바로가기</span></a></div>
-    <div class="flotheart"><a href="/product/compare">
-      <p style="font-size: 15px; color: #8d806a; background: white; margin-top: 7px; display: inline-block; padding: 6px 14px; border-radius: 27px; border: 2px solid #bfae90; font-family: 'notokr-medium';">비교하기</p>
-    </a></div>
-    <div id="flotprd" class="swiper-container">
-      <div class="swiper-wrapper"
-        style="width: 1079.86px; height: 105.995px; transform: translate3d(-56px, 0px, 0px); transition-duration: 0.3s;">
-        
-        <div class="swiper-slide swiper-slide-visible swiper-slide-active" style="width: 89.9884px; height: 105.995px;" id="s0">
-          <!-- <a href="https://www.larocheposay.co.kr/product/view/3596.do">
-            <img src="https://image.thehyundai.com/static/6/3/2/77/A0/40A0772361_0_600.jpg" alt="리페어 세럼 B5">
-          </a> -->
-        </div>
-        <div class="swiper-slide" style="width: 89.9884px; height: 105.995px;" id="s1">
-          <!-- <a href="https://www.larocheposay.co.kr/product/view/3596.do">
-            <img src="https://www.larocheposay.co.kr/upload/product/main/2022/01/20220113_1136039_353_100x100.png" alt="리페어 세럼 B5">
-          </a> -->
-        </div>
-        <div class="swiper-slide" style="width: 89.9884px; height: 105.995px;" id="s2">
-          <!-- <a href="https://www.larocheposay.co.kr/product/view/3596.do">
-            <img src="https://www.larocheposay.co.kr/upload/product/main/2022/01/20220113_1136039_353_100x100.png" alt="리페어 세럼 B5">
-          </a> -->
-        </div>
-        <div class="swiper-slide" style="width: 89.9884px; height: 105.995px;;" id="s3">
-          <!-- <a href="https://www.larocheposay.co.kr/product/view/3596.do">
-            <img src="https://www.larocheposay.co.kr/upload/product/main/2022/01/20220113_1136039_353_100x100.png" alt="리페어 세럼 B5">
-          </a> -->
-        </div>
-        <div class="swiper-slide" style="width: 89.9884px; height: 105.995px;;" id="s4">
-          <!-- <a href="https://www.larocheposay.co.kr/product/view/3596.do">
-            <img src="https://image.thehyundai.com/static/6/0/5/56/A1/40A1565069_0_600.jpg" alt="리페어 세럼 B5">
-          </a> -->
-        </div>
-        <div class="swiper-slide" style="width: 89.9884px; height: 105.995px;" id="s5">
-          <!-- <a href="https://www.larocheposay.co.kr/product/view/3596.do">
-            <img src="https://www.larocheposay.co.kr/upload/product/main/2022/01/20220113_1136039_353_100x100.png" alt="리페어 세럼 B5">
-          </a> -->
-        </div>
-        <div class="swiper-slide" style="width: 89.9884px; height: 105.995px;" id="s6">
-          <!-- <a href="https://www.larocheposay.co.kr/product/view/3596.do">
-            <img src="https://www.larocheposay.co.kr/upload/product/main/2022/01/20220113_1136039_353_100x100.png" alt="리페어 세럼 B5">
-          </a> -->
-        </div>
-        <div class="swiper-slide" style="width: 89.9884px; height: 105.995px;" id="s7">
-          <!-- <a href="https://www.larocheposay.co.kr/product/view/3596.do">
-            <img src="https://www.larocheposay.co.kr/upload/product/main/2022/01/20220113_1136039_353_100x100.png" alt="리페어 세럼 B5">
-          </a> -->
-        </div>
-        <div class="swiper-slide" style="width: 89.9884px; height: 105.995px;" id="s8">
-          <!-- <a href="https://www.larocheposay.co.kr/product/view/3596.do">
-            <img src="https://www.larocheposay.co.kr/upload/product/main/2022/01/20220113_1136039_353_100x100.png" alt="리페어 세럼 B5">
-          </a> -->
-        </div>
-        <div class="swiper-slide" style="width: 89.9884px; height: 105.995px;" id="s9">
-          <!-- <a href="https://www.larocheposay.co.kr/product/view/3596.do">
-            <img src="https://image.thehyundai.com/static/0/7/9/61/A0/40A0619700_0_600.jpg" alt="리페어 세럼 B5">
-          </a> -->
-        </div>
+<section class="flot_right_warp" th:insert="~{include/float}"></section>
 
-      </div>
-      <button type="button" class="flotprd-prev" style="z-index:1000;"><span class="hide">이전</span></button>
-      <button type="button" class="flotprd-next" style="z-index:1000;"><span class="hide">다음</span></button>
-    </div>
-    <!-- //swiper-container -->
-    <button type="button" class="btn_top" title="상단 이동">top</button>
-  </div>
-  <script>
-    $(function () {
-      console.log("비교함");
-      getArr();
-    });
-    
-  </script>
-  <script>
-    window.onload = function() {
-    var flotPrd = new Swiper('#flotprd', {
-        loop : true
-    });
-    $('.flotprd-prev').on('click', function(e) {
-        e.preventDefault();
-        flotPrd.swipePrev();
-    });
-    $('.flotprd-next').on('click', function(e) {
-        e.preventDefault();
-        flotPrd.swipeNext();
-    });
-    }
-    $(document).scroll(function() {
-    flotSideOffset();
-    });
-  </script>
-<script>
-      function getArr() {
-        const arr = JSON.parse(localStorage.getItem("arr")) || [];
-  
-        if(arr.length == 0) {
-          for(let i =0;i<=9;i++) {
-          const slide = document.getElementById(`s${i}`);
-          slide.innerHTML = '상품을 비교함에 담아보세요';
-          } 
-        }else {
-        
-          for(let i=0;i<arr.length;i++) {
-          console.log('상품 출력 중 ' + i);
-          const slide = document.getElementById(`s${i}`);					
-          const [pcode, pname, brand, price, imglink, rate, review, pVolume, ptype, pingredient,pOption] = arr[i];
-          console.log("img: "+ imglink);
-            slide.innerHTML = `
-              <a href="/product/compare">
-                <img src=${imglink} alt="${pname}">
-              </a>
-            `;
-          }
-          for(let i=arr.length;i<10;i++) {
-          console.log('빈 상품 출력');
-          const slide = document.getElementById(`s${i}`);
-          slide.innerHTML = `
-          <a href="/product/compare">
-            <img src="https://image.thehyundai.com/hdmall/images/pd/no_image_480x480.jpg">
-          </a>`;
-          }
-        }
-      }
-  
-    </script>
-
-</section>
 
 		</section>
 		<!-- //container -->
@@ -693,6 +671,8 @@
 		<div class="include-footer" th:insert="~{include/footer}" style="padding-top: 150px;"></div>
 		<!-- /footer -->
 	</div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/easy-pie-chart/2.1.6/jquery.easypiechart.min.js"></script>
 </body>
 
 </html>
