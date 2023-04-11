@@ -298,6 +298,7 @@ header#header {
 												</div>
 
 											</div>
+											<div class="finalproduct">
 											<section class="product_wrap">
 
 												<!-- 신상, 단독구성 -->
@@ -440,8 +441,9 @@ header#header {
 											</section>
 											<div class="btn_green"
 												style="text-align: center; margin-top: 10px">
-												<p class="pickbtn" style="line-height: 30px">전체 장바구니 담기
+												<p class="pickbtn" onclick="addallCart()" style="line-height: 30px">전체 장바구니 담기
 												</p>
+											</div>
 											</div>
 										</div>
 									</div>
@@ -460,7 +462,75 @@ header#header {
 		<div class="include-footer" th:insert="~{include/footer2}"></div>
 	</div>
 	<!-- //wrap -->
+<script>	
+function addallCart() {
+	  console.log('장바구니 담기');
 
+	  const clickedButton = event.currentTarget;
+	  console.log(clickedButton);
+	  const abc = clickedButton.closest('div');
+	  console.log(abc);
+	  const cde = abc.closest('.finalproduct');
+	  console.log(cde);
+	  const productList = cde.querySelectorAll('section #listUl li');
+	  console.log(productList);
+	  const selectedProducts = [];
+	  const mid = document.getElementById('mid').value;
+
+	  
+	  for (let i = 0; i < productList.length; i++) {
+		    const productItem = productList[i];
+		    const pCode = productItem.querySelector('a .pcode').value;
+		    const pOption = productItem.querySelector('a .opt').value;
+		    const pAmount = 1;
+		    const pname = productItem.querySelector('a .pname').value;
+
+		    console.log(productList);
+
+		    const requestData = JSON.stringify({
+		      pcode: pCode,
+		      poption: pOption,
+		      pamount: pAmount,
+		      mid: mid
+		    });
+
+		    //로그인 여부 확인 
+		    //중복 상품 확인
+
+		    console.log(requestData);
+
+		    if (mid !== 'anonymousUser') {
+		    	
+		   		const lastIndex = i === productList.length - 1;
+		      $.ajax({
+		        url: '/restcart/addCart',
+		        type: 'post',
+		        data: requestData,
+		        contentType: "application/json",
+		        success: function(result) {
+		          console.log("장바구니 success");
+		          if (result == '0') {
+		            alert("장바구니에 추가를 하지 못하였습니다.");
+		          } else if (result == '1' && lastIndex ) {
+		            alert("장바구니에 추가되었습니다.");
+		          } else if (result == '2' && lastIndex ) {
+		            alert("이미 장바구니에 담긴 상품으로 수량이 추가되었습니다.");
+		          }
+		        },
+		        error: function(request, status, error) {
+		          console.log(error);
+		        }
+		      });
+		    } else {
+		      console.log("로그인 필요");
+		      alert('장바구니는 로그인이 필요합니다.');
+		      var loginUrl = "/member/login";
+		      window.location.href = loginUrl;
+		    }
+		  }
+		}
+
+	</script>
 	<script>
 	function put() {
 	    const clickedButton = event.currentTarget;
