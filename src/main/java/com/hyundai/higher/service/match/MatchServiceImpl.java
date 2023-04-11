@@ -24,6 +24,7 @@ import lombok.extern.log4j.Log4j2;
  *   수정일         수정자               수정내용
  * ----------      --------    ---------------------------
  * 2023. 04. 01.     박서현      최초 생성
+ * 2023. 04. 12. 	박서현		
  *     </pre>
  */
 @Service
@@ -80,6 +81,11 @@ public class MatchServiceImpl implements MatchService{
 	@Override
 	public String getEffect(String ingredient, String mbti) {
 		return mMapper.getEffect(ingredient, mbti);
+	}
+
+	@Override
+	public String getOption(String pcode) {
+		return mMapper.getOption(pcode);
 	}
 	
 	

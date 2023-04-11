@@ -480,15 +480,17 @@ $(function() {
             <div class="right">
               <span class="checkcss"><input type="checkbox" id="checkbox10_1"><label for="checkbox10_1"><em>제품
                     모두선택</em></label></span>
-              <button type="button" class="btn_base gray recomBasket">장바구니</button>
+              <button type="button" class="btn_base gray recomBasket" onclick="addCart()">장바구니</button>
             </div>
           </div>
           <!-- addItem_slider -->
           <div class="addItem_slider">
             <button type="button" class="ctrl_prev">prev</button>
             <ul class="view">
-              <li th:each="sProd, sStat : ${similarCos}" th:if="${sProd.percent >= 40}">
+              <li class="sPrd" th:each="sProd, sStat : ${similarCos}" th:if="${sProd.percent >= 40}">
                 <div>
+                  <input type="hidden" id="pcode" th:value="${sProd.pcode}">
+                  <input type="hidden" id="optname" th:value="${sProd.pname}">
                   <button type="button" class="like">좋아요</button> <!-- 선택완료 class on -->
                   <span class="ico">[[${sStat.count}]]<em>BEST</em></span> 
                   <a th:href="'/product/detail?code='+${sProd.pcode}">
@@ -543,8 +545,31 @@ $(function() {
 <!-- right 제품구매 플로팅 -->
 
 <section class="flot_right_warp" th:insert="~{include/float}"></section>
+<div th:if="${#authentication.getPrincipal() != null}">
+  <input type="hidden" id="mid" th:value="${#authentication.getName()}">
+</div>
 
 
+		</section>
+    <section id="survey_pop" class="layerpop_warp" style="background: rgba(0,0,0,0.8);">
+			<div class="layerpop blue" style="width: 460px;">
+				<div class="layerpop_head">
+					<h1>장바구니</h1>
+				</div>
+				<div class="layerpop_cont" style="height: 330px;">
+					<div class="save_cont">
+						<p>
+							해당 상품을 장바구니에 추가하였습니다.<br>
+              장바구니 페이지로 이동하시겠습니까?
+						</p>
+						<div class="btn_wrap center mt30">
+              <button type="button" class="btn_base blue act" id="okay" onclick="location.href='/shop/mycart'">확인</button>
+							<button type="button" class="btn_base darkgray act" id="save_close">취소</button>
+						</div>
+					</div>
+				</div>
+				<button type="button" class="close">닫기</button>
+			</div>
 		</section>
 
 		<!-- //container -->
@@ -674,6 +699,134 @@ $(function() {
 		<div class="include-footer" th:insert="~{include/footer}" style="padding-top: 150px;"></div>
 		<!-- /footer -->
 	</div>
+
+  <script>
+   $(function() {
+
+  let liList = document.querySelectorAll(".sPrd");
+
+  for (let i=0; i < liList.length; i++) {
+
+    const pcode = $(liList[i]).find('#pcode').val();
+
+    var requestData = {
+      "pcode": pcode
+    };
+
+    $.ajax({
+      url: "/restMatch/getOption",
+      type: "get",
+      data: requestData,
+      contentType: "application/json; charset=utf-8",
+      success: function(data) {
+        console.log("옵션 불러옴");
+        if (data !== "") {
+          $(liList[i]).find('#optname').val(data);
+        }
+      },
+      error: function(request, status, error) {
+        console.log(error);
+        // 처리 중 에러가 발생한 경우에 실행할 코드 작성
+      }
+    });
+  }
+});
+
+    </script>
+    
+	<script>
+	function addCart() {
+		console.log('장바구니 담기');
+    let liList = document.querySelectorAll(".sPrd");
+    var mid = document.getElementById('mid').value;
+
+
+    for (let i = 0; i < liList.length; i++) {
+      console.log("-----------");
+    
+      const checkbox = liList[i].querySelector('.recomPrdtSeq');
+
+      if (checkbox.checked) { //체크한 상품만 장바구니 담기
+          const pcode = $(liList[i]).find('#pcode').val();
+          console.log(pcode);
+
+          const poption = $(liList[i]).find('#optname').val();
+          console.log("option" + poption);
+
+          var requestData = JSON.stringify({
+            pcode : pcode,
+            poption : poption,
+            pamount : 1,
+            mid  :mid
+	  	    });
+
+          $.ajax({
+			url: '/restcart/addCart',
+			type: 'post',
+			data: requestData,
+			contentType: "application/json",
+			success	: function(result){
+				console.log("장바구니 success");
+				if(result == '0'){
+					alert("장바구니에 추가를 하지 못하였습니다.");
+				} else if(result == '1'){
+          $("#survey_pop").css("display", "block");
+            makemodal();
+
+				} else if(result == '2'){
+          $("#survey_pop").css("display", "block");
+            makemodal();
+            document.querySelector('.save_cont p').innerHTML = '이미 담긴 상품으로 수량이 추가되었습니다.<br>장바구니 페이지로 이동하시겠습니까?';
+					
+				} 
+        afteradd();
+
+			},
+			error :function(request, status, error) {
+				console.log(error);
+			}
+		}); 
+
+      }
+    
+  }
+
+
+
+  }
+	
+  function makemodal() {
+            const pop = document.getElementById('survey_pop');
+        pop.innerHTML= `
+			<div class="layerpop blue" style="width: 460px;">
+				<div class="layerpop_head">
+					<h1>장바구니</h1>
+				</div>
+				<div class="layerpop_cont" style="height: 330px;">
+					<div class="save_cont">
+						<p>
+							해당 상품을 장바구니에 추가하였습니다.<br>
+              장바구니 페이지로 이동하시겠습니까?
+						</p>
+						<div class="btn_wrap center mt30">
+              <button type="button" class="btn_base blue act" id="okay" onclick="location.href='/shop/mycart'">확인</button>
+							<button type="button" class="btn_base darkgray act" id="save_close">취소</button>
+						</div>
+					</div>
+				</div>
+				<button type="button" class="close">닫기</button>
+			</div>
+        `;
+        $("#survey_pop").css("display", "block");
+
+       $('#save_close').click(function() {
+        $("#survey_pop").css("display", "none");
+
+       });
+
+    }
+
+  </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/easy-pie-chart/2.1.6/jquery.easypiechart.min.js"></script>
 </body>

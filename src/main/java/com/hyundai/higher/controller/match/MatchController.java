@@ -177,7 +177,7 @@ public class MatchController {
 	// 매칭 세부
 	@GetMapping("/detail")
 	public String matchDetail(@RequestParam("pcode") String pcode, Model model, Principal principal) {
-		log.info("pdoce :  " + pcode);
+		log.info("pcode :  " + pcode);
 
 		ProductDetailDTO product = pService.productDetail(pcode);
 		String ingredient = product.getProductDTO().getPingredient();

@@ -75,4 +75,10 @@
 	WHERE I.INAME_KO = #{ingredient} AND mbti=#{mbti}
 	</select>
 	
+	<select id="getOption" resultType="string">
+		SELECT OPTNAME FROM PRODUCT P RIGHT JOIN POPTION O
+		ON P.PCODE = O.PCODE
+		WHERE P.PCODE =#{pcode}
+	</select>
+	
 </mapper>
