@@ -33,7 +33,6 @@ public class HomeController {
 	@GetMapping(value = "/")
 	public String memberForm(Model model) {
 
-		log.info("main");
 
 		return "main";
 	}
