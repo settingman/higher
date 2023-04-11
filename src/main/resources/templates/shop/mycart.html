@@ -45,6 +45,7 @@
     }
 
     </style>
+
     <script src="/js/cart/cart.js"></script>
 
     <script type="text/javascript">
@@ -330,9 +331,9 @@
                 }
             });
         }
-        $(document).ready(function() {
-            calcSellPrc();
-        });
+        // $(document).ready(function() {
+        //     calcSellPrc();
+        // });
 
 
         // 탭 변경
@@ -381,6 +382,7 @@
 
 
         function calcSellPrc() {
+            console.log("장바구니 계산");
             var hpoint = 0;
             var deposit = 0;
             var totProdPrc = 0;
@@ -1254,6 +1256,7 @@
 
     </script>
 
+
     <style type="text/css">
         .fancybox-margin {
             margin-right: 16px;
@@ -1306,6 +1309,12 @@
 </head>
 
 <body>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    console.log("ddddddddddddddd");
+    calcSellPrc();
+});
+</script>
 
     <div id="wrap" class="sub notgnb simple-gnb">
             <!-- header -->
@@ -1456,7 +1465,7 @@
 
                                                     <input type="hidden" class="cnt-opt" th:value="${carts.poption}">
 
-                                                    <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                                    <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="width: 286px; height: 40px !important; padding: 0 15px 0 14px;">
                                                         <option value="${carts.poption}" th:text="${carts.poption}" selected=""></option>
                                                         <option th:each="options, oState : ${carts.optionList}" th:unless="${options.optname} == ${carts.poption}" th:text="${options.optname}"></option>
                                                         <!-- <option selected="">Open this select menu</option>
