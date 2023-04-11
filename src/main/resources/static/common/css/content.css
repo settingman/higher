@@ -14620,7 +14620,10 @@ h2 i.grade_blue {
   width: 153px;
   height: 153px;
   margin-left: -76px;
-  background: url('https://www.larocheposay.co.kr/images/customer/survey_ico.png') no-repeat;
+  background: url('/common/image/checklist2.png') no-repeat;
+  background-color: #f7f7f7;
+  border-radius: 50%;
+  background-size: contain;
 }
 
 .survey_wrap .step ul li:nth-child(1):after {
@@ -14641,7 +14644,10 @@ h2 i.grade_blue {
   width: 153px;
   height: 153px;
   margin-left: -76px;
-  background: url('https://www.larocheposay.co.kr/images/customer/survey_ico.png') -242px 0 no-repeat;
+  background: url('/common/image/serum.png') no-repeat;
+  border-radius: 50%;
+  background-size: contain;
+  background-color: #f7f7f7;
 }
 
 .survey_wrap .step ul li:nth-child(2):after {
