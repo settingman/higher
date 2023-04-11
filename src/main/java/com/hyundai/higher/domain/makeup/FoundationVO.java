@@ -27,5 +27,7 @@ public class FoundationVO {
 	private String optname;
 	private String iloc;
 	private String itype;
+	private String pvolume;
+	private String pingredient;
 
 }

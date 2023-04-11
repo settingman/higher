@@ -26,5 +26,8 @@ public class LipVO {
 	private String optname;
 	private String iloc;
 	private String itype;
+	private String pvolume;
+	private String ptype;
+	private String pingredient;
 
 }
