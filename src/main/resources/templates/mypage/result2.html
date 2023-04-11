@@ -199,6 +199,7 @@ function back() {
 					<div class="myhyundai-main"
 						style="margin: 40px 0; font-family: 'notokr-medium';">
 						<h3>Make-On 예약 관리</h3>
+						<input type="hidden" class="mid" name="mid" id="mid" th:value="${info.mid}">
 						<img src="/makeup/img/return.png" onclick="back()"
 							style="width: 3%; margin-left: 10px; cursor: pointer;">
 					</div>
@@ -224,56 +225,56 @@ function back() {
 									style="text-align: center; font-weight: bold; font-family: 'locator-regular'; font-size: 20px; color: cadetblue; margin-top: 30px;">
 									ARTIST's PICK</p>
 							</div>
-								<div class="lip_prod">
-									<div class="product-list-wrap1"
-										style="text-align: center; width: fit-content; margin: 0 auto;">
-										<section class="product_wrap">
-											<!-- 신상, 단독구성 -->
-											<ul class="product_list ea03" id="listUl">
-												<li style="margin: 0 0 20px 16px;"><a
-													th:href="'/product/detail?code=' + ${lipresult.pcode}">
-														<img th:src="${lipresult.iloc} + '_600.jpg'"
-														th:alt="${lipresult.pname}"> <input type="hidden"
-														name="lip_pcode" class="lip_pcode"
+							<div class="lip_prod">
+								<div class="product-list-wrap1"
+									style="text-align: center; width: fit-content; margin: 0 auto;">
+									<section class="product_wrap">
+										<!-- 신상, 단독구성 -->
+										<ul class="product_list ea03" id="listUl">
+											<li style="margin: 0 0 20px 16px;"><a
+												th:href="'/product/detail?code=' + ${lipresult.pcode}">
+												<input type="hidden" name="lip_pcode" class="lip_pcode"
 														th:value="${lipresult.pcode}" /> <input type="hidden"
 														name="lip_opt" class="lip_opt"
 														th:value="${lipresult.optname}" /> <input type="hidden"
 														name="price" class="price" th:value="${lipresult.pprice}" />
-														<input type="hidden" name="pname" class="pname"
+													<input type="hidden" name="pname" class="pname"
 														th:value="${lipresult.pname}" /> <input type="hidden"
 														name="brand" class="brand" th:value="${lipresult.bname}" />
-														<input type="hidden" name="imglink" class="imglink"
+													<input type="hidden" name="imglink" class="imglink"
 														th:value="${lipresult.iloc} + '_600.jpg'" /> <input
 														type="hidden" name="rate" class="rate" value="4.5" /> <input
-														type="hidden" name="review" class="review" value="" /> <input
+														type="hidden" name="review" class="review" value=" " /> <input
 														type="hidden" name="pVolume" class="pVolume"
-														value="" /> <input
-														type="hidden" name="ptype" class="ptype"
-														value="" /> <input type="hidden"
-														name="pingredient" class="pingredient"
-														value="" /> <span
-														class="hash_tag" th:text="${lipresult.bname}"></span> <span
-														class="tit" th:text="${lipresult.pname}"
-														style="height: 54px;"></span> <span class="kind"
-														th:text="${lipresult.optname}"></span> <span
-														class="rating"> </span> <span class="price"> <span
-															class="after">[[${#numbers.formatInteger(lipresult.pprice,
-																3, 'COMMA')}]]<em>원</em>
-														</span>
+														th:value="${lipresultprod.pvolume}" /> <input type="hidden"
+														name="ptype" class="ptype" th:value="${lipresultprod.ptype}" />
+													<input type="hidden" name="pingredient" class="pingredient"
+														th:value="${lipresultprod.pingredient}" />
+													
+													<img th:src="${lipresult.iloc} + '_600.jpg'"
+													th:alt="${lipresult.pname}"> <span class="hash_tag"
+													th:text="${lipresult.bname}"></span> <span class="tit"
+													th:text="${lipresult.pname}" style="height: 54px;"></span>
+													<span class="kind" th:text="${lipresult.optname}"></span> <span
+													class="rating"> </span> <span class="price"> <span
+														class="after">[[${#numbers.formatInteger(lipresult.pprice,
+															3, 'COMMA')}]]<em>원</em>
 													</span>
-												</a>
-													<div class="over">
-														<button class="detailview" onclick="put()">비교함 담기</button>
-														<button data-price="${lipresult.pprice}"
-															data-linename="${lipresult.pname}"
-															data-sapcode="${lipresult.pname}" data-category="20"
-															class="addcart basket" onclick="addCart()">장바구니
-															담기</button>
-													</div></li>
-											</ul>
-										</section>
-									</div>
+												</span>
+											</a>
+												<div class="over">
+													
+													<button class="detailview" onclick="put()">비교함 담기</button>
+													<button data-price="${lipresult.pprice}"
+														data-linename="${lipresult.pname}"
+														data-sapcode="${lipresult.pname}" data-category="20"
+														class="addcart basket" onclick="addCart()">장바구니
+														담기</button>
+												</div></li>
+										</ul>
+									</section>
 								</div>
+							</div>
 						</div>
 						<div class="simlip">
 							<div class="makeupwrapper"
@@ -634,17 +635,18 @@ $('#facepick').click(function(){
     function put() {
     	
     	const clickedDiv = event.currentTarget;
-    	const pcode = clickedDiv.querySelector(".lip_pcode").value;
-    	const opt = clickedDiv.querySelector(".lip_opt").value;
-    	const price = clickedDiv.querySelector(".price").value;
-    	const pname = clickedDiv.querySelector(".pname").value;
-    	const brand = clickedDiv.querySelector(".brand").value;
-    	const imglink = clickedDiv.querySelector(".imglink").value;
-    	const rate = clickedDiv.querySelector(".rate").value;
-    	const review = clickedDiv.querySelector(".review").value;
-    	//const pVolume = clickedDiv.querySelector(".pVolume").value;
-    	//const ptype = clickedDiv.querySelector(".ptype").value;
-    	//const pingredient = clickedDiv.querySelector(".pingredient").value;
+    	const ulElement = clickedDiv.closest('ul');
+    	const pcode = ulElement.querySelector(".lip_pcode").value;
+    	const opt = ulElement.querySelector(".lip_opt").value;
+    	const price = ulElement.querySelector(".price").value;
+    	const pname = ulElement.querySelector(".pname").value;
+    	const brand = ulElement.querySelector(".brand").value;
+    	const imglink = ulElement.querySelector(".imglink").value;
+    	const rate = ulElement.querySelector(".rate").value;
+    	const review = ulElement.querySelector(".review").value;
+    	const pVolume = ulElement.querySelector(".pVolume").value;
+    	const ptype = ulElement.querySelector(".ptype").value;
+    	const pingredient = ulElement.querySelector(".pingredient").value;
 
 /*     	if (pVolume === null) {
     		pVolume = ""; // 빈 문자열로 설정
@@ -672,31 +674,16 @@ $('#facepick').click(function(){
 	<script>
 	function addCart() {
 		console.log('장바구니 담기');
-		var pCode = document.querySelector('.pcode').value;
-    //옵션 바꾸기
-		//var pOption = document.querySelector('input[name="optNm"]').value;
-		var pAmount = document.querySelector('input[name="pamount"]').value;
+		const clickedDiv = event.currentTarget;
+    	const ulElement = clickedDiv.closest('ul');
+		var pCode = ulElement.querySelector(".lip_pcode").value;
+		var pOption = ulElement.querySelector(".lip_opt").value;
+		var pAmount = 1;
 		var mid = document.getElementById('mid').value;
 		console.log(mid);
-    var pOption = "";
-
-    var pname = document.querySelector('.datail_info_top .tit strong').textContent.trim();
+		const pname = ulElement.querySelector(".pname").value;
     console.log(pname+" 이름");
 
-    if (!document.querySelector('.option')) {
-      pOption = pname;
-    }else {
-      var selectedOption = $('.datail_info_data .opt option:selected').text();
-      console.log(selectedOption);
-      // const selectEl = document.querySelector('.opt');  // select 요소 선택
-      // const selectedValue = selectEl.options[selectEl.selectedIndex].val;
-      if(selectedOption =='선택'){
-        console.log("옵션 선택 안함");
-        alert('옵션을 선택하세요');
-        return;
-      }; 
-      pOption = selectedOption;
-    }
 		console.log(pOption);
 		
 		if (mid !='anonymousUser'){
@@ -755,6 +742,9 @@ button.detailview {
 	background-size: 56px !important;
 	background: rgba(0, 0, 0, 0) !important;
 	border-radius: 50px !important;
+	background-image: url(/img/plus.png) !important;
+	background-size: 56px !important;
+	opacity: 0.85;
 }
 
 .product_wrap .product_list .over button:first-child {

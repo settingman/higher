@@ -216,7 +216,7 @@ public class MakeupController {
 		log.info(blushlist);
 		log.info(foundationlist);
 
-		return "/makeup/result";
+		return "makeup/result";
 	}
 
 	// ajax용 코드
