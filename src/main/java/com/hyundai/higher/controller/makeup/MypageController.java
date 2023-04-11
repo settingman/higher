@@ -176,6 +176,7 @@ public class MypageController {
 		ResultProdVO lipresultprod = new ResultProdVO();
 		String lipresultcode = lipresult.getPcode();
 		lipresultprod = service.resultProdInfo(lipresultcode);
+		log.info("자 이거 버튼 왜 안되냐" + lipresultprod);
 
 		log.info("블러쉬 옵션 : " + result.getBlush_opt());
 		String blushopt = result.getBlush_opt();
@@ -210,7 +211,7 @@ public class MypageController {
 		model.addAttribute("info", info);
 		model.addAttribute("result", result);
 		model.addAttribute("lipresult", lipresult);
-		model.addAttribute("lipresultinfo", lipresultprod);
+		model.addAttribute("lipresultprod", lipresultprod);
 		model.addAttribute("blushresult", blushresult);
 		model.addAttribute("faceresult", faceresult);
 
