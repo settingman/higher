@@ -121,6 +121,8 @@ public class BillingController {
 		}
 		
 		
+		log.info(orderSheet.toString());
+		
 		
 		
 		
