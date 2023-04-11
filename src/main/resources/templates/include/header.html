@@ -116,7 +116,19 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 $(document).ready(function() {
-    $.ajax({
+
+	if(document.querySelector('.top_nav .myinfo') !== null) { //로그인한 회원
+		console.log("로그인한 회원");
+		afteradd();
+	}else{
+		console.log("비회원");
+	}
+
+});
+</script>
+<script>
+	function afteradd() {
+		$.ajax({
         url: "/restcart/count",
         type: "GET",
         success: function(count) {
@@ -127,7 +139,7 @@ $(document).ready(function() {
 					console.log(e);
         }
     });
-});
+	}
 </script>
 <h1 onclick="location.href='/';">The Hyundai Beauty</h1>
 <section class="top_nav">

@@ -718,10 +718,13 @@ $(function(){
 				console.log("장바구니 success");
 				if(result == '0'){
 					alert("장바구니에 추가를 하지 못하였습니다.");
+          afteradd();
 				} else if(result == '1'){
 					alert("장바구니에 추가되었습니다.");
+          afteradd();
 				} else if(result == '2'){
 					alert("이미 장바구니에 담긴 상품으로 수량이 추가되었습니다.");
+          afteradd();
 				} 
 			},
 			error :function(request, status, error) {
