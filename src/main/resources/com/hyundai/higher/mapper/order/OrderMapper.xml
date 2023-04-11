@@ -14,7 +14,7 @@
 		VALUES(#{orderSheet.orderId},
 		#{mId},
 		#{orderSheet.oZipcode}, #{orderSheet.oAddress1},
-		#{orderSheet.oDate},
+		to_date(#{orderSheet.oDate},'yy-mm-dd'),
 		#{orderSheet.oReceiver},
 		#{orderSheet.oTel},
 		#{orderSheet.oMileage}, null,1,
