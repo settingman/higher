@@ -903,7 +903,7 @@ $(function(){
 	if(arr.length == 0) { //비교함에 담긴 상품이 없을 경우
 		for(let i =0;i<=9;i++) {
 			const slide = document.querySelector(`.slide${i}`);
-			slide.innerHTML = '상품을 비교함에 담아보세요';
+			slide.innerHTML = '<div class="blank"><div class="empty"> <img src="https://www.card-gorilla.com/statics/img/compare_detail_add.png"></div><h4 class="forblank">상품을 비교함에<br>담아보세요</h4></div>';
 		}
 	}else {
 		for(let i=0;i<arr.length;i++) {
@@ -963,8 +963,10 @@ $(function(){
 
 		
     console.log('삭제');
-		if(slidenum >1){
+		//0인데 뒤에 있는 거 - 어레이꺼 다 가져와서 
+		//0인데 뒤에 없는 거 - 1부터 다 출력만
 		//그 슬라이드부터 prod-unit 있는 슬라이드까지
+		if(arr.length!=0){ 
 		for(let i = slidenum+1;i<=arr.length;i++) {
 			console.log("내용 복사중" + i);
 			var next = document.querySelector(`.slide${i}`);	
@@ -978,10 +980,11 @@ $(function(){
   		}
 			}
 		}
+		
 		//마지막 prod-unit 슬라이드부터 10까지
 		for( let i = arr.length; i<=9; i++) {
 			var slide = document.querySelector('.slide'+i);
-			slide.innerHTML = '<p class="blank">상품을 비교함에 담아보세요</p>';
+			slide.innerHTML = '<div class="blank"><div class="empty"> <img src="https://www.card-gorilla.com/statics/img/compare_detail_add.png"></div><h4 class="forblank">상품을 비교함에<br>담아보세요</h4></div>';
 		}
 
 		$("#survey_pop").css("display", "block");
@@ -992,6 +995,39 @@ $(function(){
 
 </script>
 <!-- 비교함 상품 출력 end-->
+<script>
+	function makemodal() {
+					const pop = document.getElementById('survey_pop');
+			pop.innerHTML= `
+		<div class="layerpop blue" style="width: 460px;">
+			<div class="layerpop_head">
+				<h1>장바구니</h1>
+			</div>
+			<div class="layerpop_cont" style="height: 330px;">
+				<div class="save_cont">
+					<p>
+						해당 상품을 장바구니에 추가하였습니다.<br>
+						장바구니 페이지로 이동하시겠습니까?
+					</p>
+					<div class="btn_wrap center mt30">
+						<button type="button" class="btn_base blue act" id="okay" onclick="location.href='/shop/mycart'">확인</button>
+						<button type="button" class="btn_base darkgray act" id="save_close">취소</button>
+					</div>
+				</div>
+			</div>
+			<button type="button" class="close">닫기</button>
+		</div>
+			`;
+			$("#survey_pop").css("display", "block");
+
+		 $('#save_close').click(function() {
+			$("#survey_pop").css("display", "none");
+
+		 });
+
+	}
+
+</script>
 <script>
 	function addCart(pcode, pOption) {
 		console.log("장바구니 담기  "+pcode);
@@ -1020,10 +1056,18 @@ $(function(){
 				if(result == '0'){
 					alert("장바구니에 추가를 하지 못하였습니다.");
 				} else if(result == '1'){
-					alert("장바구니에 추가되었습니다.");
+					//추가됨
+					$("#survey_pop").css("display", "block");
+            makemodal();
+
 				} else if(result == '2'){
-					alert("이미 장바구니에 담긴 상품으로 수량이 추가되었습니다.");
+					//이미 담긴 상품 
+					 $("#survey_pop").css("display", "block");
+            makemodal();
+            document.querySelector('.save_cont p').innerHTML = '이미 담긴 상품으로 수량이 추가되었습니다.<br>장바구니 페이지로 이동하시겠습니까?';
+
 				} 
+				afteradd();
 			},
 			error :function(request, status, error) {
 				console.log(error);
@@ -1031,9 +1075,33 @@ $(function(){
 		}); 
 		}else {
 			console.log("로그인 필요");
-			alert('장바구니는 로그인이 필요합니다.');
-			var loginUrl = "/member/login";
-			window.location.href = loginUrl;
+			const pop = document.getElementById('survey_pop');
+        pop.innerHTML= `
+			<div class="layerpop blue" style="width: 460px;">
+				<div class="layerpop_head">
+					<h1 class="poptitle">비교함</h1>
+				</div>
+				<div class="layerpop_cont" style="height: 330px;">
+					<div class="save_cont">
+						<p>
+							장바구니는 로그인이 필요합니다.<br>
+              로그인 페이지로 이동하시겠습니까?
+						</p>
+						<div class="btn_wrap center mt30">
+              <button type="button" class="btn_base blue act" id="okay" onclick="location.href='/member/login'">확인</button>
+							<button type="button" class="btn_base darkgray act" id="save_close">취소</button>
+						</div>
+					</div>
+				</div>
+				<button type="button" class="close">닫기</button>
+			</div>
+        `;
+        $("#survey_pop").css("display", "block");
+
+       $('#save_close').click(function() {
+        $("#survey_pop").css("display", "none");
+
+       });
 		}
 
 	}
