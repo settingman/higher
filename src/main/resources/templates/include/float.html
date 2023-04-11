@@ -81,8 +81,10 @@
         if(arr.length == 0) {
           for(let i =0;i<=9;i++) {
           const slide = document.getElementById(`s${i}`);
-          slide.innerHTML = '상품을 비교함에 담아보세요';
-          } 
+          slide.innerHTML = `
+          <a href="/product/compare">
+            <img src="https://image.thehyundai.com/hdmall/images/pd/no_image_480x480.jpg">
+          </a>`;          } 
         }else {
         
           for(let i=0;i<arr.length;i++) {
