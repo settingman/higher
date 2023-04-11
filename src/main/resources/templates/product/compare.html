@@ -987,6 +987,31 @@ $(function(){
 			slide.innerHTML = '<div class="blank"><div class="empty"> <img src="https://www.card-gorilla.com/statics/img/compare_detail_add.png"></div><h4 class="forblank">상품을 비교함에<br>담아보세요</h4></div>';
 		}
 
+		const pop = document.getElementById('survey_pop');
+			pop.innerHTML= `
+			<div class="layerpop blue" style="width:460px;">
+			<div class="layerpop_head">
+				<h1 style="padding-top: 13px;">상품 비교하기</h1>
+			</div>
+			<div class="layerpop_cont" style="height: 330px;">
+				<div class="save_cont">
+					<p>
+						상품을 삭제했습니다.
+					</p>
+					<div class="btn_wrap center mt30">
+						<button type="button" class="btn_base blue act" id="save_close">확인</button>
+					</div>
+				</div>
+			</div>
+			<button type="button" class="close">닫기</button>
+		</div>
+			`;
+			$("#survey_pop").css("display", "block");
+
+		 $('#save_close').click(function() {
+			$("#survey_pop").css("display", "none");
+
+		 });
 		$("#survey_pop").css("display", "block");
 
 			//비교함과 플로팅 박스에서 삭제
