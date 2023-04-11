@@ -2,6 +2,7 @@ package com.hyundai.higher.controller.makeup;
 
 import java.io.IOException;
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -176,12 +177,17 @@ public class MypageController {
 		ResultProdVO lipresultprod = new ResultProdVO();
 		String lipresultcode = lipresult.getPcode();
 		lipresultprod = service.resultProdInfo(lipresultcode);
-		log.info("자 이거 버튼 왜 안되냐" + lipresultprod);
+		log.info("립 상세" + lipresultprod);
 
 		log.info("블러쉬 옵션 : " + result.getBlush_opt());
 		String blushopt = result.getBlush_opt();
 		blushresult = service.getBlushResult(blushopt);
 		log.info("가져온 블러쉬 정보 : " + blushresult);
+		
+		ResultProdVO blushresultprod = new ResultProdVO();
+		String blushresultcode= blushresult.getPcode();
+		blushresultprod = service.resultProdInfo(blushresultcode);
+		log.info("블러쉬 상세" + blushresultprod);
 
 		log.info("파운데이션 옵션 : " + result.getFace_opt());
 		log.info("파운데이션 상품코드 : " + result.getFace_pcode());
@@ -189,13 +195,17 @@ public class MypageController {
 		String facepcode = result.getFace_pcode();
 		faceresult = service.getFaceResult(faceopt, facepcode);
 		log.info("가져온 파운데이션 정보 : " + faceresult);
-		
 
+		ResultProdVO faceresultprod = new ResultProdVO();
+		String faceresultcode= faceresult.getPcode();
+		faceresultprod = service.resultProdInfo(faceresultcode);
+		log.info("파데 상세" + faceresultprod);
+		
 		String simlipcolor = lipresult.getOptcolor();
 		String simlippcode = lipresult.getPcode();
 		List<LipVO> simlip = service.SimLip(simlipcolor, simlippcode);
 		log.info(simlip);
-
+		
 		String simblushcolor = blushresult.getOptcolor();
 		String simblushpcode = blushresult.getPcode();
 		List<BlushVO> simblush = service.SimBlush(simblushcolor, simblushpcode);
@@ -211,7 +221,6 @@ public class MypageController {
 		model.addAttribute("info", info);
 		model.addAttribute("result", result);
 		model.addAttribute("lipresult", lipresult);
-		model.addAttribute("lipresultprod", lipresultprod);
 		model.addAttribute("blushresult", blushresult);
 		model.addAttribute("faceresult", faceresult);
 
@@ -253,28 +262,13 @@ public class MypageController {
 		String blushopt = result.getBlush_opt();
 		blushresult = service.getBlushResult(blushopt);
 		log.info("가져온 블러쉬 정보 : " + blushresult);
-
+		
 		log.info("파운데이션 옵션 : " + result.getFace_opt());
 		log.info("파운데이션 상품코드 : " + result.getFace_pcode());
 		String faceopt = result.getFace_opt();
 		String facepcode = result.getFace_pcode();
 		faceresult = service.getFaceResult(faceopt, facepcode);
 		log.info("가져온 파운데이션 정보 : " + faceresult);
-
-		String simlipcolor = lipresult.getOptcolor();
-		String simlippcode = lipresult.getPcode();
-		List<LipVO> simlip = service.SimLip(simlipcolor, simlippcode);
-		log.info(simlip);
-
-		String simblushcolor = blushresult.getOptcolor();
-		String simblushpcode = blushresult.getPcode();
-		List<BlushVO> simblush = service.SimBlush(simblushcolor, simblushpcode);
-		log.info(simblush);
-
-		String simfacecolor = faceresult.getOptcolor();
-		String simfacepcode = faceresult.getPcode();
-		List<FoundationVO> simface = service.SimFace(simfacecolor, simfacepcode);
-		log.info(simface);
 
 		model.addAttribute("mem", mem);
 		model.addAttribute("pro", pro);
@@ -283,10 +277,6 @@ public class MypageController {
 		model.addAttribute("lipresult", lipresult);
 		model.addAttribute("blushresult", blushresult);
 		model.addAttribute("faceresult", faceresult);
-
-		model.addAttribute("simlip", simlip);
-		model.addAttribute("simblush", simblush);
-		model.addAttribute("simface", simface);
 
 	}
 

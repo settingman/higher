@@ -8,7 +8,7 @@
 		select * from member where mid=#{mid}
 	</select>
 	<select id="PickLip" resultType="com.hyundai.higher.domain.makeup.LipVO">
-		select a.pcode, bname, pname, pprice, dept2no, optcolor, optname, iloc, itype
+		select a.pcode, bname, pname, pprice, dept2no, optcolor, optname, iloc, itype, pvolume, ptype, pingredient
 		from product a, poption b, img c, brand d
 		where a.pcode=b.pcode and a.bno = d.bno and
 		a.pcode=c.pcode and dept2no=22
@@ -18,7 +18,7 @@
 
 	<select id="PickBlush"
 		resultType="com.hyundai.higher.domain.makeup.BlushVO">
-		select a.pcode, bname, pname, pprice, dept2no, optcolor, optname, iloc, itype
+		select a.pcode, bname, pname, pprice, dept2no, optcolor, optname, iloc, itype, pvolume, ptype, pingredient
 		from product a, poption b, img c, brand d
 		where a.pcode=b.pcode and a.bno = d.bno and
 		a.pcode=c.pcode and dept2no=24
@@ -28,7 +28,7 @@
 
 	<select id="PickFoundation"
 		resultType="com.hyundai.higher.domain.makeup.FoundationVO">
-		select a.pcode, bname, pname, pprice, dept2no, optcolor, optname, iloc, itype
+		select a.pcode, bname, pname, pprice, dept2no, optcolor, optname, iloc, itype, pvolume, ptype, pingredient
 		from product a, poption b, img c, brand d
 		where a.pcode=b.pcode and a.bno = d.bno and
 		a.pcode=c.pcode and dept2no=21

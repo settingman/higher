@@ -7,6 +7,7 @@ import uuid
 import time
 import json
 import boto3
+import os
 
 app = Flask(__name__)
 CORS(app)
@@ -77,11 +78,14 @@ def try_makeup():
     elif foundation=='coolpink' : gamma=0.5
     elif foundation=='lightbeige': gamma=0.8
     
+    base_path = '/home/ec2-user/app/higher/'
+    full_path = os.path.join(base_path, filePath)
+    
     # 파일경로 불러오기
-    image = cv2.imread(filePath, cv2.IMREAD_UNCHANGED)
+    image = cv2.imread(full_path, cv2.IMREAD_UNCHANGED)
     
     print('원본 파일 경로')
-    print(filePath)
+    print(full_path)
     
     # 각 부위 별 색상 넣기
     output_lip = apply_makeup(image, False, 'lips', lip_color, 1, False)
