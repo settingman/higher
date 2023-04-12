@@ -9,9 +9,6 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-
-
-
 <title>온라인 뷰티 예약 관리</title>
 
 <!-- Custom fonts for this template-->
@@ -20,9 +17,6 @@
 
 <!-- Custom styles for this template-->
 <link href="/admin/css/sb-admin-2.min.css" rel="stylesheet">
-
-
-
 
 
 
@@ -284,10 +278,6 @@
 </script>
 
 
-
-
-
-
 <style>
 .btn-primary {
 	color: #fff;
@@ -330,16 +320,16 @@ a {
 	color: #45675b;
 }
 
-a:hover{
+a:hover {
 	color: #45675b;
 	text-decoration: none;
 }
 
-tbody{
+tbody {
 	font-size: 15px;
 }
 
-tbody tr td{
+tbody tr td {
 	vertical-align: middle !important;
 }
 </style>
@@ -390,9 +380,8 @@ tbody tr td{
 											<td class="fw-normal visible mid">[[${res.MID}]]</td>
 											<td class="fw-normal visible rdare">[[${res.RDATE}]]</td>
 											<td class="fw-normal visible rtime">[[${res.RTIME}]]</td>
-											<td class="fw-normal visible rmakeup"><a type="button" class="btn btn-primary btn-sm open"
-													th:href="@{/makeup/info(rid=${res.RID})}"
-												>정보 확인</a></td>
+											<td class="fw-normal visible rmakeup"><a type="button" class="btn btn-primary btn-sm open" th:href="@{/makeup/info(rid=${res.RID})}">정보
+													확인</a></td>
 											<td class="rcheck" th:if="${res.RCHECK}"><span class="col-sm-2 align-self-auto"> 생성 완료 </span></td>
 											<td class="rcheck2" th:if="${!res.RCHECK}"><span class="col-sm-2 align-self-auto">
 													<button type="button" class="btn btn-primary btn-sm open" data-bs-toggle="modal" data-bs-target="#roomModal"
@@ -654,18 +643,6 @@ tbody tr td{
 					</div>
 				</div>
 			</div>
-
-
-
-
-
-
-
-
-
-
-
-
 		</div>
 
 
