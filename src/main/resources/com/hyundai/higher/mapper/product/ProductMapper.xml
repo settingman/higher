@@ -8,7 +8,7 @@
 	<!-- 상품 목록 -->
 	<select id="productList" resultMap="productMap">
 		<![CDATA[
-		SELECT p.pcode, p.pname, p.pprice, p.bno, b.bname, dept1no, dept2no, itype, iloc
+		SELECT p.pcode, p.pname, p.pprice, p.bno, b.bname, dept1no, dept2no, itype, iloc, rates
 		FROM (SELECT ROWNUM, product.* 
 			  FROM product 
 			  WHERE dept1no=#{dept1no}
@@ -26,8 +26,9 @@
 	
 	<!-- 상품 세부 정보 -->
 	<select id="productDetailInfo" resultType="com.hyundai.higher.domain.product.ProductDTO">
-		SELECT pcode, pname, pprice, p.bno, bname, dept1no, dept2no, pvolume, ptype, pexp, puse, pproduce, pcountry, pcaution, pingredient
+		SELECT pcode, pname, pprice, p.bno, bname, p.dept1no, p.dept2no, dept2name, pvolume, ptype, pexp, puse, pproduce, pcountry, pcaution, pingredient, rates
 		FROM product p JOIN brand b ON p.bno=b.bno
+                       JOIN category_dept2 d2 ON p.dept2no=d2.dept2no
 		WHERE pcode=#{pcode}
 	</select>
 	
@@ -60,6 +61,7 @@
 		<result property="bname" column="bname"/>
 		<result property="dept1no" column="dept1no"/>
 		<result property="dept2no" column="dept2no"/>
+		<result property="rates" column="rates"/>
 		<collection property="thumbImgList" resultMap="imgMap"/>
 	</resultMap>
 	

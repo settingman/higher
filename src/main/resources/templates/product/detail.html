@@ -3,6 +3,7 @@
 
 <head>
 <head th:insert="~{include/head}"></head>
+
 </head>
 <script>
 $(function(){
@@ -17,6 +18,129 @@ $(function(){
 	});
 });
 </script>
+
+  <style id="ins-outer-stylesheet-224" type="text/css" classname="ins-outer-stylesheet-224"
+    class="ins-outer-stylesheet-224">
+    .ins-preview-wrapper-224 {
+      z-index: 9999999;
+    }
+
+    .ins-preview-wrapper-224 .ins-notification-content {
+      width: 430px;
+      border-radius: 8px !important;
+      background-color: #ffffff;
+      box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.19);
+      margin: 15px;
+    }
+
+    .ins-preview-wrapper-224 .ins-social-proof-on-page-2 {
+      display: flex !important;
+      align-items: center;
+      width: 100%;
+      position: relative;
+      padding: 5px;
+    }
+
+    .ins-preview-wrapper-224 .ins-social-proof-on-page-2 .ins-image-wrap {
+      width: 50px;
+    }
+
+    .ins-preview-wrapper-224 .ins-social-proof-on-page-2 #image-1478094039604 {
+      width: 100%;
+      height: 100%;
+      border-bottom-left-radius: 5px !important;
+      border-top-left-radius: 5px !important;
+      display: table !important;
+      overflow: hidden;
+    }
+
+    .ins-preview-wrapper-224 .ins-image {
+      display: block;
+      width: 70%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .ins-preview-wrapper-224 .change-image a {
+      display: table-cell;
+      vertical-align: middle;
+    }
+
+    .ins-preview-wrapper-224 .ins-social-proof-on-page-2 .ins-adaptive-description {
+      display: table-cell !important;
+      vertical-align: middle;
+      text-align: center;
+      padding: 10px;
+      font-size: 14px;
+      width: 100%;
+      word-wrap: break-word;
+    }
+
+    .ins-preview-wrapper-224 .ins-adaptive-description .ins-editable {
+      min-height: 20px;
+    }
+
+    .ins-preview-wrapper-224 .ins-text-color {
+      color: #383F47;
+    }
+
+    .ins-preview-wrapper-224 .ins-dynamic-element-tag b {
+      color: inherit;
+    }
+
+    .ins-preview-wrapper-224 .ins-social-proof-on-page-2 .ins-adaptive-close-button-wrap {
+      display: none;
+      border-style: none !important;
+      position: absolute;
+      z-index: 9999999999999;
+      right: -5px;
+      top: 0;
+      font-weight: 100;
+      font-family: sans-serif;
+    }
+
+    .ins-preview-wrapper-224 .ins-social-proof-on-page-2 .ins-adaptive-close-button {
+      text-align: center;
+      cursor: pointer;
+      font-size: 20px;
+      width: 28px;
+    }
+
+    .ins-preview-wrapper-224 .ins-editable {
+      font-size: 14px !important;
+      line-height: 14px !important;
+    }
+
+    .ins-preview-wrapper-224 .ins-editable .ins-dynamic-span,
+    .ins-preview-wrapper-224 .ins-editable .ins-dynamic-element-tag {
+      font-size: inherit !important;
+      line-height: inherit !important;
+    }
+
+    .ins-preview-wrapper-224 #editable-text-1454703513202 font {
+      font-weight: bold !important;
+    }
+  </style>
+    <style>
+    swiper-container {
+      width: 100%;
+      height: 100%;
+    }
+
+    swiper-slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+  </style>
 <body>
   <div id="wrap" class="right_type" data-fbq-content-id="3596" data-fbq-value="48000">
     <nav id="skip_navi">
@@ -34,79 +158,31 @@ $(function(){
         <ol>
           <li><a href="javascript:void(0);" onclick="location.href='/'"><i>HOME</i></a></li>
           <li class="kor">
-            <a href=""><i>FACE</i></a>
+            <a href="">
+            	<i th:if="${#strings.equals(dept1no, '10')}">FACE</i>
+            	<i th:if="${#strings.equals(dept1no, '20')}">MAKE UP</i>
+            	<i th:if="${#strings.equals(dept1no, '30')}">BODY/HAIR</i>
+            </a>
             <ul class="h_link_sub">
               <li class="kor">
                 <a href="javascript:void(0)" onclick="location.href='/product/list.do?cate2=1130'">
                   병원판매화장품</a>
               </li>
-              <li class="on">
-                <a href="javascript:void(0)" onclick="location.href='/product/list.do?cate2=1004'">
-                  FACE</a>
-              </li>
-              <li>
-                <a href="javascript:void(0)" onclick="location.href='/product/list.do?cate2=1033'">
-                  BODY</a>
-              </li>
-              <li>
-                <a href="javascript:void(0)" onclick="location.href='/product/list.do?cate2=1009'">
-                  SUN CARE</a>
-              </li>
             </ul>
           </li>
           <li class="kor">
-            <a href=""><i>제품 라인별</i></a>
+            <a href=""><i>[[${product.productDTO.dept2name}]]</i></a>
             <ul class="h_link_sub">
               <li class="kor">
                 <a href="javascript:void(0)" onclick="location.href='/product/list.do?cate2=1004'">
                   피부 고민별</a>
               </li>
-              <li class="on kor">
-                <a href="javascript:void(0)" onclick="location.href='/product/list.do?cate2=1008'">
-                  제품 라인별</a>
-              </li>
-              <li class="kor">
-                <a href="javascript:void(0)" onclick="location.href='/product/list.do?cate2=1011'">
-                  사용 단계별</a>
-              </li>
             </ul>
           </li>
           <li class="current kor">
-            <a href=""><i>시카플라스트</i></a>
+            <a href=""><i>[[${product.productDTO.pname}]]</i></a>
             <ul class="h_link_sub">
-              <li class="kor">
-                <a href="javascript:void(0);" onclick="location.href='/product/list.do?cate2=1008'">전체보기</a>
-              </li>
-              <li class="kor">
-                <a href="javascript:void(0);" onclick="location.href='/product/list.do?cate3=1018'">에빠끌라</a>
-              </li>
-              <li class="on kor">
-                <a href="javascript:void(0);" onclick="location.href='/product/list.do?cate3=1021'">시카플라스트</a>
-              </li>
-              <li class="kor">
-                <a href="javascript:void(0);" onclick="location.href='/product/list.do?cate3=1010'">똘러리앙</a>
-              </li>
-              <li class="kor">
-                <a href="javascript:void(0);" onclick="location.href='/product/list.do?cate3=1024'">히알루 B5</a>
-              </li>
-              <li class="kor">
-                <a href="javascript:void(0);" onclick="location.href='/product/list.do?cate3=1107'">유비데아</a>
-              </li>
-              <li class="kor">
-                <a href="javascript:void(0);" onclick="location.href='/product/list.do?cate3=1114'">퓨어비타민C10</a>
-              </li>
-              <li class="kor">
-                <a href="javascript:void(0);" onclick="location.href='/product/list.do?cate3=1025'">세로징크</a>
-              </li>
-              <li class="kor">
-                <a href="javascript:void(0);" onclick="location.href='/product/list.do?cate3=1022'">오 떼르말</a>
-              </li>
-              <li class="kor">
-                <a href="javascript:void(0);" onclick="location.href='/product/list.do?cate3=1023'">미셀라 클렌징 워터</a>
-              </li>
-              <li class="kor">
-                <a href="javascript:void(0);" onclick="location.href='/product/list.do?cate3=1139'">나이아신아마이드</a>
-              </li>
+             
             </ul>
           </li>
         </ol>
@@ -129,13 +205,19 @@ $(function(){
                 <div class="detail_slider">
                   <div class="view">
                     <ul>
-                      <li th:each="thumbImg, thumbStat : ${product.thumbImgList}" th:style="'background-image:url(' + ${thumbImg.iloc} + '_600.jpg);'" th:text="${thumbStat.count}"></li>
+                    <swiper-container class="mySwiper">
+                      <swiper-slide th:each="thumbImg, thumbStat : ${product.thumbImgList}" style="width: 456px;">
+                      <li th:style="'background-image:url(' + ${thumbImg.iloc} + '_600.jpg);'" th:text="${thumbStat.count}">
+                      
+                      </li>
+                      </swiper-slide>
+                    </swiper-container>
                     </ul>
                   </div>
                   <div class="controls">
                     <button type="button" class="prev">이전</button>
                     <div class="thumb">
-                      <a th:each="thumbImg, thumbStat : ${product.thumbImgList}" href="javascript:void(0);" class="on"
+                      <a th:each="thumbImg, thumbStat : ${product.thumbImgList}" href="javascript:void(0);" class=""
                         th:style="'background-image:url(' + ${thumbImg.iloc} + '_600.jpg);'" th:text="${thumbStat.count}"></a>
                     </div>
                     <button type="button" class="next">다음</button>
@@ -143,6 +225,7 @@ $(function(){
                 </div>
                 
               </div>
+              <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
 				
               <!-- //left -->
               <div class="right">
@@ -217,7 +300,6 @@ $(function(){
           <div class="product_detail_tab">
             <ul>
               <li class="on"><a href="#template_cont">제품상세정보</a></li>
-              <li class=""><a href="#product_detail_review">리얼리뷰</a></li>
               <li class=""><a href="#product_detail_note">구매정보</a></li>
             </ul>
           </div>
@@ -235,217 +317,7 @@ $(function(){
             <!-- //product_detail_view -->
           </div><!-- //product_detal_template -->
           <!-- //product_detail_view -->
-          <!--  product_detail_review -->
-          <style type="text/css">
-            .review_warp .review_conts .list li>a>span.img img {
-              height: 180px;
-              width: 100%;
-              max-width: none;
-              max-height: none;
-            }
-          </style>
 
-
-          <div id="product_detail_review">
-            <h3>리얼리뷰</h3>
-            <!-- <div class="detail_review_top">
-      <ul>
-          <li><em>포토리뷰 당 500M, 한줄리뷰 당 50M</em> 마일리지 적립해 드립니다. (<em>첫 리뷰 작성 시 마일리지 더블 적립</em>해 드립니다.)</li>
-          <li>비구매회원도 작성 가능합니다.(<em>포토리뷰 당 250M</em> 마일리지 적립)</li>
-      </ul>
-      <button type="button" class="btn_base gray" onclick="reviewWrite();">리얼리뷰 쓰기</button>
-      <a href="https://www.larocheposay.co.kr/review/write.do" class="btn_base gray" style="float:right;">리얼리뷰 쓰기</a>
-  </div> -->
-            <div class="detail_review_box">
-              <div class="left">
-                <strong><em id="totalReviewCount">270</em>개의 리얼리뷰가 있습니다</strong>
-                <span>포토리뷰 <em id="photoReviewCount">193</em>개</span>
-                <span>한줄리뷰 <em id="textReviewCount">77</em>개</span>
-              </div>
-              <div class="right">
-                <strong>평균 별점</strong>
-                <span>
-                  <div class="star-rating bic">
-                    <span class="c50">
-                      <em class="hide">벌점 5.0개</em></span>
-                  </div>
-                </span>
-                <span><em>10</em><i>/</i>10</span>
-              </div>
-            </div>
-            <!-- //detail_review_top -->
-            <div class="detail_review_list">
-              <div class="tabtext_warp">
-                <div class="tabtext">
-                  <ul>
-                    <li class="on"><a href="#" onclick="reviewList_all();return false">전체리뷰</a></li>
-                    <li><a href="#" onclick="reviewList_photo();return false">포토리뷰</a></li>
-                    <li><a href="#" onclick="reviewList_text();return false">한줄리뷰</a></li>
-                  </ul>
-                </div>
-              </div>
-              <!-- //tabtext_warp -->
-
-              <div class="review_warp">
-                <div class="review_conts">
-                  <ul class="list" id="reviewList" style="position: relative; height: 1043.85px;">
-                    <li class="btn_review" style="position: absolute; left: 0px; top: 0px;"><a
-                        href="javascript:reviewWrite();"><span>리얼리뷰 쓰기</span><em>포토리뷰 500M <i></i> 한줄리뷰 50M<br>첫 리뷰
-                          더블적립</em></a></li>
-                    <li class="text" style="position: absolute; left: 290px; top: 0px;"> <a href="#review_list001"
-                        class="layer-pop" data-type="link" data-url="/review/view/96576.do?prdtView=Y"> <span
-                          class="rating">
-                          <fieldset class="star_rating"> <input type="radio" id="list96576_star5"
-                              name="list96576_rating" value="5" checked=""><label for="list96576_star5">5스타</label>
-                            <input type="radio" id="list96576_star4" name="list96576_rating" value="4"
-                              disabled=""><label for="list96576_star4">4스타</label> <input type="radio"
-                              id="list96576_star3" name="list96576_rating" value="3" disabled=""><label
-                              for="list96576_star3">3스타</label> <input type="radio" id="list96576_star2"
-                              name="list96576_rating" value="2" disabled=""><label for="list96576_star2">2스타</label>
-                            <input type="radio" id="list96576_star1" name="list96576_rating" value="1"
-                              disabled=""><label for="list96576_star1">1스타</label> </fieldset>
-                        </span> <span class="replyhead">만족</span> <span class="reply">이 에센스 정말 좋아요 재생효과 최고!!!</span>
-                        <span class="data"> <span class="userid">KAKAO6096485***</span> <span
-                            class="day">2023.03.28</span> </span> </a> </li>
-                    <li class="photo" style="position: absolute; left: 580px; top: 0px;"> <a href="#review_list001"
-                        class="layer-pop" data-type="link" data-url="/review/view/96573.do?prdtView=Y"> <span
-                          class="img"><img src="https://www.larocheposay.co.kr/upload/review/2023/03/20230328_1234008_703.jpg " alt="추천"></span> <span
-                          class="rating">
-                          <fieldset class="star_rating"> <input type="radio" id="list96573_star5"
-                              name="list96573_rating" value="5" checked=""><label for="list96573_star5">5스타</label>
-                            <input type="radio" id="list96573_star4" name="list96573_rating" value="4"
-                              disabled=""><label for="list96573_star4">4스타</label> <input type="radio"
-                              id="list96573_star3" name="list96573_rating" value="3" disabled=""><label
-                              for="list96573_star3">3스타</label> <input type="radio" id="list96573_star2"
-                              name="list96573_rating" value="2" disabled=""><label for="list96573_star2">2스타</label>
-                            <input type="radio" id="list96573_star1" name="list96573_rating" value="1"
-                              disabled=""><label for="list96573_star1">1스타</label> </fieldset>
-                        </span> <span class="replyhead">추천</span> <span class="reply">라로슈포제에서 제일 좋아하는 에센스!
-                          재생효과, 피부 맑아지는 느낌에
-                          꾸준히 씁니다</span> <span class="data"> <span class="userid">KAKAO6096485***</span> <span
-                            class="day">2023.03.28</span> </span> </a> </li>
-                    <li class="photo" style="position: absolute; left: 870px; top: 0px;"> <a href="#review_list001"
-                        class="layer-pop" data-type="link" data-url="/review/view/96225.do?prdtView=Y"> <span
-                          class="img"><img src="https://www.larocheposay.co.kr/upload/review/2023/03/20230316_2033014_508.jpg "
-                            alt="믿고 쓰는 제품이예요 항상 재구매하고 있어용♡♡"></span> <span class="rating">
-                          <fieldset class="star_rating"> <input type="radio" id="list96225_star5"
-                              name="list96225_rating" value="5" checked=""><label for="list96225_star5">5스타</label>
-                            <input type="radio" id="list96225_star4" name="list96225_rating" value="4"
-                              disabled=""><label for="list96225_star4">4스타</label> <input type="radio"
-                              id="list96225_star3" name="list96225_rating" value="3" disabled=""><label
-                              for="list96225_star3">3스타</label> <input type="radio" id="list96225_star2"
-                              name="list96225_rating" value="2" disabled=""><label for="list96225_star2">2스타</label>
-                            <input type="radio" id="list96225_star1" name="list96225_rating" value="1"
-                              disabled=""><label for="list96225_star1">1스타</label> </fieldset>
-                        </span> <span class="replyhead">믿고 쓰는 제품이예요 항상 재구매하고 있어용♡♡</span> <span class="reply">믿고 쓰는
-                          제품이예요
-                          항상 재구매하고 있어용♡♡</span> <span class="data"> <span class="userid">KAKAO4259750***</span> <span
-                            class="day">2023.03.16</span> </span> </a> </li>
-                    <li class="photo" style="position: absolute; left: 290px; top: 243px;"> <a href="#review_list001"
-                        class="layer-pop" data-type="link" data-url="/review/view/96198.do?prdtView=Y"> <span
-                          class="img"><img src="https://www.larocheposay.co.kr/upload/review/2023/03/20230316_0058009_490.jpeg " alt="좋아요"></span>
-                        <span class="rating">
-                          <fieldset class="star_rating"> <input type="radio" id="list96198_star5"
-                              name="list96198_rating" value="5" checked=""><label for="list96198_star5">5스타</label>
-                            <input type="radio" id="list96198_star4" name="list96198_rating" value="4"
-                              disabled=""><label for="list96198_star4">4스타</label> <input type="radio"
-                              id="list96198_star3" name="list96198_rating" value="3" disabled=""><label
-                              for="list96198_star3">3스타</label> <input type="radio" id="list96198_star2"
-                              name="list96198_rating" value="2" disabled=""><label for="list96198_star2">2스타</label>
-                            <input type="radio" id="list96198_star1" name="list96198_rating" value="1"
-                              disabled=""><label for="list96198_star1">1스타</label> </fieldset>
-                        </span> <span class="replyhead">좋아요</span> <span class="reply">촉촉하고 좋아요오 라로슈포제가 제피부랑 잘
-                          맞는듯해여</span> <span class="data"> <span class="userid">KAKAO2018277***</span> <span
-                            class="day">2023.03.16</span> </span> </a> </li>
-                    <li class="text" style="position: absolute; left: 0px; top: 322px;"> <a href="#review_list001"
-                        class="layer-pop" data-type="link" data-url="/review/view/96158.do?prdtView=Y"> <span
-                          class="rating">
-                          <fieldset class="star_rating"> <input type="radio" id="list96158_star5"
-                              name="list96158_rating" value="5" checked=""><label for="list96158_star5">5스타</label>
-                            <input type="radio" id="list96158_star4" name="list96158_rating" value="4"
-                              disabled=""><label for="list96158_star4">4스타</label> <input type="radio"
-                              id="list96158_star3" name="list96158_rating" value="3" disabled=""><label
-                              for="list96158_star3">3스타</label> <input type="radio" id="list96158_star2"
-                              name="list96158_rating" value="2" disabled=""><label for="list96158_star2">2스타</label>
-                            <input type="radio" id="list96158_star1" name="list96158_rating" value="1"
-                              disabled=""><label for="list96158_star1">1스타</label> </fieldset>
-                        </span> <span class="replyhead">수영 피부에 즉효!!!</span> <span class="reply">수영을 배우는데 너무 건조한지 뾰루지가 엄청
-                          올라오더라구요 그래서 이걸 썼눈데 피부가 점점 나아지고 있어여??
-                          또 사러 왔숩니다??</span> <span class="data"> <span class="userid">leeja3***</span> <span
-                            class="day">2023.03.15</span> </span> </a> </li>
-                    <li class="photo" style="position: absolute; left: 580px; top: 457px;"> <a href="#review_list001"
-                        class="layer-pop" data-type="link" data-url="/review/view/96155.do?prdtView=Y"> <span
-                          class="img"><img src="https://www.larocheposay.co.kr/upload/review/2023/03/20230315_0056009_465.jpeg " alt="밀려요"></span>
-                        <span class="rating">
-                          <fieldset class="star_rating"> <input type="radio" id="list96155_star5"
-                              name="list96155_rating" value="5" checked=""><label for="list96155_star5">5스타</label>
-                            <input type="radio" id="list96155_star4" name="list96155_rating" value="4"
-                              disabled=""><label for="list96155_star4">4스타</label> <input type="radio"
-                              id="list96155_star3" name="list96155_rating" value="3" disabled=""><label
-                              for="list96155_star3">3스타</label> <input type="radio" id="list96155_star2"
-                              name="list96155_rating" value="2" disabled=""><label for="list96155_star2">2스타</label>
-                            <input type="radio" id="list96155_star1" name="list96155_rating" value="1"
-                              disabled=""><label for="list96155_star1">1스타</label> </fieldset>
-                        </span> <span class="replyhead">밀려요</span> <span class="reply">낮에쓰면 너무밀려서 못썻어요
-                          밤에만쓰세요</span> <span class="data"> <span class="userid">KAKAO1211624***</span> <span
-                            class="day">2023.03.15</span> </span> </a> </li>
-                    <li class="photo" style="position: absolute; left: 870px; top: 459px;"> <a href="#review_list001"
-                        class="layer-pop" data-type="link" data-url="/review/view/95825.do?prdtView=Y"> <span
-                          class="img"><img src="https://www.larocheposay.co.kr/upload/review/2023/03/20230305_1328001_262.jpg "
-                            alt="시카플러스트리페어세럼B5"></span> <span class="rating">
-                          <fieldset class="star_rating"> <input type="radio" id="list95825_star5"
-                              name="list95825_rating" value="5" checked=""><label for="list95825_star5">5스타</label>
-                            <input type="radio" id="list95825_star4" name="list95825_rating" value="4"
-                              disabled=""><label for="list95825_star4">4스타</label> <input type="radio"
-                              id="list95825_star3" name="list95825_rating" value="3" disabled=""><label
-                              for="list95825_star3">3스타</label> <input type="radio" id="list95825_star2"
-                              name="list95825_rating" value="2" disabled=""><label for="list95825_star2">2스타</label>
-                            <input type="radio" id="list95825_star1" name="list95825_rating" value="1"
-                              disabled=""><label for="list95825_star1">1스타</label> </fieldset>
-                        </span> <span class="replyhead">시카플러스트리페어세럼B5</span> <span class="reply">저녁용 케어로사용하는제품입니다 시카제품모두
-                          너무좋아요~데일이로 시카크림도 같이 사용합니다 좋아요좋아요</span> <span class="data"> <span
-                            class="userid">KAKAO5172103***</span> <span class="day">2023.03.05</span> </span> </a> </li>
-                    <li class="photo" style="position: absolute; left: 0px; top: 605px;"> <a href="#review_list001"
-                        class="layer-pop" data-type="link" data-url="/review/view/95796.do?prdtView=Y"> <span
-                          class="img"><img src="https://www.larocheposay.co.kr/upload/review/2023/03/20230304_2104006_240.jpg " alt="깔끔해요"></span>
-                        <span class="rating">
-                          <fieldset class="star_rating"> <input type="radio" id="list95796_star5"
-                              name="list95796_rating" value="5" checked=""><label for="list95796_star5">5스타</label>
-                            <input type="radio" id="list95796_star4" name="list95796_rating" value="4"
-                              disabled=""><label for="list95796_star4">4스타</label> <input type="radio"
-                              id="list95796_star3" name="list95796_rating" value="3" disabled=""><label
-                              for="list95796_star3">3스타</label> <input type="radio" id="list95796_star2"
-                              name="list95796_rating" value="2" disabled=""><label for="list95796_star2">2스타</label>
-                            <input type="radio" id="list95796_star1" name="list95796_rating" value="1"
-                              disabled=""><label for="list95796_star1">1스타</label> </fieldset>
-                        </span> <span class="replyhead">깔끔해요</span> <span class="reply">레이져하고 쭉 써요~화장품이 깔끔한느낌
-                          무엇~^^</span> <span class="data"> <span class="userid">qufqu***</span> <span
-                            class="day">2023.03.04</span> </span> </a> </li>
-                  </ul>
-                </div>
-                <div class="paging" id="reviewPageing">
-
-                  <span class="paginate-list"> <a href="#n" onclick="pageMove(1)" class="current" title="현재페이지">1</a> <a
-                      href="#n" onclick="pageMove(2)" title="2페이지로 가기">2</a> <a href="#n" onclick="pageMove(3)"
-                      title="3페이지로 가기">3</a> <a href="#n" onclick="pageMove(4)" title="4페이지로 가기">4</a> <a href="#n"
-                      onclick="pageMove(5)" title="5페이지로 가기">5</a> <a href="#n" onclick="pageMove(6)"
-                      title="6페이지로 가기">6</a> <a href="#n" onclick="pageMove(7)" title="7페이지로 가기">7</a> <a href="#n"
-                      onclick="pageMove(8)" title="8페이지로 가기">8</a> <a href="#n" onclick="pageMove(9)"
-                      title="9페이지로 가기">9</a> <a href="#n" onclick="pageMove(10)" title="10페이지로 가기">10</a> </span> <a
-                    href="#n" class="next_link" title="다음 페이지로 가기" onclick="pageMove(11)"><span class="hide">다음 페이지로
-                      가기</span></a>
-                </div>
-              </div>
-              <!-- //review_warp -->
-              <div class="faq_box">
-                <span>
-                  <p><i class="ico_guide">안내</i> 제품 Q&amp;A는 고객케어센터의 1:1 상담을 이용해 주세요.</p>
-                </span>
-                <span><button type="button" class="btn_base move" onclick="cscenter();">1:1 상담</button></span>
-              </div>
-            </div>
-            <!-- //detail_review_list -->
-          </div><!-- //product_detail_review -->
           <!-- product_detail_note -->
           <div id="product_detail_note">
             <h3>구매정보</h3>
@@ -1265,8 +1137,7 @@ $(function(){
 
 
   </script>
-
-
+  
 </body>
 
 
