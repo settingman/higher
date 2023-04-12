@@ -50,4 +50,7 @@ public interface MatchService {
 	//해당 상품의 옵션 불러오기
 	public String getOption(String pcode);
 
+	//해당 상품의 옵션 불러오기
+	public MatchProductDTO getInfo(String pcode);
+
 }

@@ -355,11 +355,15 @@ $(function() {
 							<!-- //left -->
 							<div class="right" style="margin-top: 50px;">
 								<div class="datail_info_top" style="border: none;">
+									<input type="hidden" id="ppcode" th:value="${product.productDTO.pcode}">
+									<input type="hidden" id="poptname" th:if="${!#lists.isEmpty(product.optList)}" th:value="${product.optList[0].optname}">
+									<input type="hidden" id="poptname" th:unless="${!#lists.isEmpty(product.optList)}" th:value="${product.pname}">
 									<p class="brand">[[${product.productDTO.bname}]]</p>
 									<span class="tit" style="margin-top: 20px;"> <strong
 										style="font-size: 30px;">[[${product.productDTO.pname}]]</strong>
 										<!-- 리페어 세럼 B5 -->
-									</span> <span class="star"> <a href="#product_detail_review">
+									</span> 
+									<span class="star"> <a href="#product_detail_review">
 											<div class="star-rating bic">
 												<span th:class="'c' + ${#numbers.formatInteger(product.productDTO.rates*10, 2)}"> <em class="hide">벌점</em></span>
 											</div>
@@ -433,6 +437,14 @@ $(function() {
 										</span></li>
 									</ul>
 								</div>
+								<div class="datail_info_btn">
+                 
+                  <span class="instock">
+                    <button type="button" class="btn_base darkgray basket" onclick="addCartThis()"><span>장바구니</span></button>
+                  	<button id="compare-btn" type="button" class="btn_base darkgray basket" onclick="put()"><span style="font-family: 'notokr-demilight';"><img src="/common/image/add.png" style="width: 22px; margin-right: 6px; margin-bottom: 3px;">비교함 담기</span></button>
+                  </span>
+
+                </div>
 							</div>
 						</form>
 					</div>
@@ -454,6 +466,10 @@ $(function() {
                 <div>
                   <input type="hidden" id="pcode" th:value="${sProd.pcode}">
                   <input type="hidden" id="optname" th:value="${sProd.pname}">
+									<input type="hidden" id="rates" value="">
+									<input type="hidden" id="pvolume"  value="">
+									<input type="hidden" id="ptype"  value="">
+									<input type="hidden" id="pingredient"  value="">
                   <button type="button" class="like">좋아요</button> <!-- 선택완료 class on -->
                   <span class="ico">[[${sStat.count}]]<em>BEST</em></span> 
                   <a th:href="'/product/detail?code='+${sProd.pcode}">
@@ -680,11 +696,23 @@ $(function() {
       type: "get",
       data: requestData,
       contentType: "application/json; charset=utf-8",
+			dataType: "json",
       success: function(data) {
         console.log("옵션 불러옴");
-        if (data !== "") {
-          $(liList[i]).find('#optname').val(data);
+				var parsedData = JSON.parse(data.rates);
+				console.log(parsedData);
+
+        if (data.optname !== "") {
+          $(liList[i]).find('#optname').val(data.optname);
         }
+
+				
+				console.log("평점  "+data.rates);
+				$(liList[i]).find('#rates').val(data.rates);
+				$(liList[i]).find('#pvolume').val(data.pvolume);
+				$(liList[i]).find('#ptype').val(data.ptype);
+				$(liList[i]).find('#pingredient').val(data.pingredient);
+			
       },
       error: function(request, status, error) {
         console.log(error);
@@ -694,7 +722,7 @@ $(function() {
   }
 });
 
-    </script>
+  </script>
     
 	<script>
 	function addCart() {
@@ -702,6 +730,7 @@ $(function() {
     let liList = document.querySelectorAll(".sPrd");
     var mid = document.getElementById('mid').value;
 
+		if (mid !='anonymousUser'){
 
     for (let i = 0; i < liList.length; i++) {
       console.log("-----------");
@@ -751,11 +780,118 @@ $(function() {
 
       }
     
+  	}
+	}else {
+			console.log("로그인 필요");
+			const pop = document.getElementById('survey_pop');
+        pop.innerHTML= `
+			<div class="layerpop blue" style="width: 460px;">
+				<div class="layerpop_head">
+					<h1 class="poptitle">비교함</h1>
+				</div>
+				<div class="layerpop_cont" style="height: 330px;">
+					<div class="save_cont">
+						<p>
+							장바구니는 로그인이 필요합니다.<br>
+              로그인 페이지로 이동하시겠습니까?
+						</p>
+						<div class="btn_wrap center mt30">
+              <button type="button" class="btn_base blue act" id="okay" onclick="location.href='/member/login'">확인</button>
+							<button type="button" class="btn_base darkgray act" id="save_close">취소</button>
+						</div>
+					</div>
+				</div>
+				<button type="button" class="close">닫기</button>
+			</div>
+        `;
+        $("#survey_pop").css("display", "block");
+
+       $('#save_close').click(function() {
+        $("#survey_pop").css("display", "none");
+
+       });
+
+		}
+
   }
 
+	function addCartThis() {
+		console.log('장바구니 담기');
 
+		const mid = document.getElementById('mid').value;
+
+		if (mid !='anonymousUser'){
+
+		const pcode = document.getElementById('ppcode').value;
+		const poption = document.getElementById('poptname').value;
+
+    var requestData = JSON.stringify({
+            pcode : pcode,
+            poption : poption,
+            pamount : 1,
+            mid  :mid
+	  });
+
+    $.ajax({
+			url: '/restcart/addCart',
+			type: 'post',
+			data: requestData,
+			contentType: "application/json",
+			success	: function(result){
+				console.log("장바구니 success");
+				if(result == '0'){
+					alert("장바구니에 추가를 하지 못하였습니다.");
+				} else if(result == '1'){
+          $("#survey_pop").css("display", "block");
+            makemodal();
+
+				} else if(result == '2'){
+          $("#survey_pop").css("display", "block");
+            makemodal();
+            document.querySelector('.save_cont p').innerHTML = '이미 담긴 상품으로 수량이 추가되었습니다.<br>장바구니 페이지로 이동하시겠습니까?';
+					
+				} 
+        afteradd();
+
+			},
+			error :function(request, status, error) {
+				console.log(error);
+			}
+		}); 
+	}else {
+			console.log("로그인 필요");
+			const pop = document.getElementById('survey_pop');
+        pop.innerHTML= `
+			<div class="layerpop blue" style="width: 460px;">
+				<div class="layerpop_head">
+					<h1 class="poptitle">비교함</h1>
+				</div>
+				<div class="layerpop_cont" style="height: 330px;">
+					<div class="save_cont">
+						<p>
+							장바구니는 로그인이 필요합니다.<br>
+              로그인 페이지로 이동하시겠습니까?
+						</p>
+						<div class="btn_wrap center mt30">
+              <button type="button" class="btn_base blue act" id="okay" onclick="location.href='/member/login'">확인</button>
+							<button type="button" class="btn_base darkgray act" id="save_close">취소</button>
+						</div>
+					</div>
+				</div>
+				<button type="button" class="close">닫기</button>
+			</div>
+        `;
+        $("#survey_pop").css("display", "block");
+
+       $('#save_close').click(function() {
+        $("#survey_pop").css("display", "none");
+
+       });
+
+		}
 
   }
+  
 	
   function makemodal() {
             const pop = document.getElementById('survey_pop');
