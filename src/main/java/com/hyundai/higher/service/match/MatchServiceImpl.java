@@ -38,8 +38,8 @@ public class MatchServiceImpl implements MatchService{
 	private CategoryMapper cMapper;
 	
 	@Override
-	public List<MatchProductDTO> mbtiProduct(String pmbti) {
-		List<MatchProductDTO> product = mMapper.mbtiProduct(pmbti); 
+	public List<MatchProductDTO> mbtiProduct(String pmbti, String dept2no) {
+		List<MatchProductDTO> product = mMapper.mbtiProduct(pmbti,dept2no); 
 		return product;
 	}
 

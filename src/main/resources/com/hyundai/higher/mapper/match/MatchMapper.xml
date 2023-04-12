@@ -27,7 +27,10 @@
 	    		and p.pmbti=#{pmbti}
 	    		</if>
 	    ) pi right join product p on pi.pcode = p.pcode
-	    where pi.rn =1 and pi.pmbti is not null and pi.dept1no = 10
+	    where pi.rn =1 and pi.pmbti is not null and pi.dept1no = 10 
+	    <if test="!dept2no.equals('') and dept2no!=null">
+			and pi.dept2no =#{dept2no}	    		
+		</if>
 	</select>
 	
 	<select id="getMbtiInfo" resultType="com.hyundai.higher.domain.match.MatchMbtiDTO">
