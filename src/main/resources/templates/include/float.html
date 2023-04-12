@@ -1,5 +1,12 @@
   <div class="flot_price_btn">
-    <div class="flotmem"><a href="/"></a><strong><em>고객</em>님</strong>반갑습니다</div>
+    <div class="flotmem" sec:authorize="isAuthenticated()">
+      <strong><em sec:authentication="principal.mName">고객</em>님</strong>반갑습니다
+    </div>
+    <div class="flotmem"sec:authorize="isAnonymous()">
+      <a href="/member/login" style="font-family: 'notokr-medium';font-size: 13px;">
+        로그인
+      </a>
+    </div>
     <div class="flotcart"><a href="/shop/mycart"><span class="cart-count">0</span><span class="hide">장바구니 -
           바로가기</span></a></div>
     <div class="flotheart"><a href="compare">

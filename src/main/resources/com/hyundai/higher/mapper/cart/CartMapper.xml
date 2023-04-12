@@ -48,27 +48,15 @@
 	</update>
 	
 	<select id="getCart" resultMap="cartMap">
-<!-- 		select a.pcode, o.optname, a.pamount, a.iloc, a.pname, a.pprice
-		from
-		(select ci.pcode, ci.pamount, ci.iloc, p.pname, p.pprice
-		from  (
-		    select c.pcode, c.pamount, i.iloc, 
-		          row_number() over
-		          (partition by c.pcode order by i.iloc desc) as rn 
-		    from img i right join cart c on c.pcode=i.pcode
-		    where i.itype='thumb' and mid = #{mid}
-		    ) ci right join product p on ci.pcode = p.pcode
-		    where ci.rn =1
-		) a join poption o on o.pcode = a.pcode -->
-		    select ci.pcode, ci.optname ,ci.pamount, ci.iloc, p.pname, p.pprice
-			from  (
-			    select c.pcode, c.optname, c.pamount, i.iloc, 
-			          row_number() over
-			          (partition by c.pcode,c.optname order by i.iloc desc) as rn 
-			    from img i right join cart c on c.pcode=i.pcode
-			    where i.itype='thumb' and mid = #{mid}
-			    ) ci right join product p on ci.pcode = p.pcode
-			    where ci.rn =1
+			select ci.pcode, ci.optname, ci.pamount, p.pname, p.pprice,
+			        nvl(ci.iloc, 'https://image.thehyundai.com/hdmall/images/pd/no_image_480x480.jpg') as iloc 
+			from (
+			    select c.pcode, c.optname, c.pamount, i.iloc,
+			        row_number() over(partition by c.pcode, c.optname order by i.iloc desc) as rn
+			    from cart c left join img i on c.pcode = i.pcode and i.itype = 'thumb'
+			    where mid = #{mid}
+			) ci right join product p on ci.pcode = p.pcode
+			where ci.rn = 1
 	</select>
 	
 <!-- 	<select id="getOptions" parameterType="CartItem" resultType="com.hyundai.higher.domain.product.OptionDTO">
