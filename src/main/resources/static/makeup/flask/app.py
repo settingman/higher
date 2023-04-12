@@ -46,34 +46,32 @@ def try_makeup():
     filePath = request.form['filePath']
     
     # 색상별 BGR값 부여 -> lips
-    if lips=='red': lip_color=(0,0,255)
-    elif lips=='orange': lip_color=(0,127,255)
-    elif lips=='purple': lip_color=(102,000,153)
-    elif lips=='lightpurple' : lip_color=(130,0,75)
-    elif lips=='pink': lip_color=(255,0,255)
-    elif lips=='coral' : lip_color=(0,102,255)
-    elif lips=='beige' : lip_color=(0,153,204)
-    elif lips=='rose' : lip_color=(0,0,102)
-    elif lips=='darkrose' : lip_color=(000,000,102)
-    elif lips=='salmon' : lip_color=(000,000,204)
+    if lips=='red': lip_color=(3,0,196)
+    elif lips=='orange': lip_color=(0,0,168)
+    elif lips=='pink': lip_color=(93,000,170)
+    elif lips=='orangecoral' : lip_color=(3,0,186)
+    elif lips=='orangenude': lip_color=(0,11,48)
+    elif lips=='coral' : lip_color=(1,0,48)
+    elif lips=='lightpink' : lip_color=(226,0,255)
+    elif lips=='purple' : lip_color=(255,0,141)
+    elif lips=='nude' : lip_color=(48,4,32)
     else : lip_color=()
     
      # 색상별 BGR값 부여 -> blush
-    if blush=='red': blush_color=(0,0,255)
-    elif blush=='orange': blush_color=(0,127,255)
-    elif blush=='purple': blush_color=(102,000,153)
-    elif blush=='lightpurple' : blush_color=(130,0,75)
-    elif blush=='pink': blush_color=(255,0,255)
-    elif blush=='coral' : blush_color=(0,102,255)
-    elif blush=='beige' : blush_color=(0,153,204)
-    elif blush=='rose' : blush_color=(0,0,102)
-    elif blush=='darkrose' : blush_color=(000,000,102)
-    elif blush=='salmon' : blush_color=(000,000,204)
+    if blush=='red': lip_color=(3,0,196)
+    elif blush=='orange': lip_color=(0,0,168)
+    elif blush=='pink': lip_color=(93,000,170)
+    elif blush=='orangecoral' : lip_color=(3,0,186)
+    elif blush=='orangenude': lip_color=(0,11,48)
+    elif blush=='coral' : lip_color=(1,0,48)
+    elif blush=='lightpink' : lip_color=(226,0,255)
+    elif blush=='purple' : lip_color=(255,0,141)
+    elif blush=='nude' : lip_color=(48,4,32)
     else : blush_color=()
     
      # 색상별 BGR값 부여 -> foundation
     if foundation=='none': gamma=1
-    elif foundation=='dark': gamma=4
+    elif foundation=='autumnwarm': gamma=4
     elif foundation=='warmbeige': gamma=2
     elif foundation=='coolpink' : gamma=0.5
     elif foundation=='lightbeige': gamma=0.8
@@ -93,8 +91,8 @@ def try_makeup():
     output_foundation = apply_makeup(image, False, 'foundation',(0,0,0), gamma, False)
     
     # Blend the three output images together
-    alpha1 = 0.5 
-    alpha2 = 0.3  
+    alpha1 = 0.4
+    alpha2 = 0.4  
     alpha3 = 0.2  
     beta = 1 - (alpha1 + alpha2 + alpha3)
     blend = cv2.addWeighted(output_lip, alpha1, output_blush, alpha2, 0)
