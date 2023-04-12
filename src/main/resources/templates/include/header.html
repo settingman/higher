@@ -2,143 +2,119 @@
 	$(function() {
 		// 헤더 카테고리
 		$.ajax({
-					url : '/category/cateAll',
-					type : 'GET',
-					success : function(r) {
-						console.log(r);
-						// 스킨케어 - 중분류
-						let skin = r.skinDTO;
-						let skinTag = `<a href="/product/list?dept1=10">전체</a>`;
-						$.each(skin, function(idx, item) {
-							skinTag += `<a href="/product/list?dept1=10&dept2=`
-									+ item.dept2no + `">` + item.dept2name
-									+ `</a>`;
-						});
-						$('#cateSkin').html(skinTag);
+			url : '/category/cateAll',
+			type : 'GET',
+			success : function(r) {
+				console.log(r);
+				// 스킨케어 - 중분류
+				let skin = r.skinDTO;
+				let skinTag = `<a href="/product/list?dept1=10">전체</a>`;
+				$.each(skin, function(idx, item) {
+					skinTag += `<a href="/product/list?dept1=10&dept2=`
+							+ item.dept2no + `">` + item.dept2name + `</a>`;
+				});
+				$('#cateSkin').html(skinTag);
 
-						// 스킨케어 - 브랜드
-						let skinBrand = r.skinBrandDTO;
-						let skinBrandTag1 = `<a href="/product/list?dept1=10">전체</a>`;
-						let skinBrandTag2 = ``;
-						$
-								.each(
-										skinBrand,
-										function(idx, item) {
-											if (idx < 9) {
-												skinBrandTag1 += `<a href="/product/list?dept1=10&bno=`
-														+ item.bno
-														+ `">`
-														+ item.bname + `</a>`;
-											} else if (idx > 10 && idx <= 20) {
-												skinBrandTag2 += `<a href="/product/list?dept1=10&bno=`
-														+ item.bno
-														+ `">`
-														+ item.bname + `</a>`;
-											}
-										});
-						$('#cateSkinBrand1').html(skinBrandTag1);
-						$('#cateSkinBrand2').html(skinBrandTag2);
-
-						// 메이크업 - 중분류
-						let make = r.makeDTO;
-						let makeTag = `<a href="/product/list?dept1=20">전체</a>`;
-						$.each(make, function(idx, item) {
-							makeTag += `<a href="/product/list?dept1=20&dept2=`
-									+ item.dept2no + `">` + item.dept2name
-									+ `</a>`;
-						});
-						$('#cateMake').html(makeTag);
-
-						// 메이크업 - 브랜드
-						let makeBrand = r.makeBrandDTO;
-						let makeBrandTag1 = `<a href="/product/list?dept1=20">전체</a>`;
-						let makeBrandTag2 = ``;
-						$
-								.each(
-										makeBrand,
-										function(idx, item) {
-											if (idx < 9) {
-												makeBrandTag1 += `<a href="/product/list?dept1=20&bno=`
-														+ item.bno
-														+ `">`
-														+ item.bname + `</a>`;
-											} else if (idx > 10 && idx <= 20) {
-												makeBrandTag2 += `<a href="/product/list?dept1=20&bno=`
-														+ item.bno
-														+ `">`
-														+ item.bname + `</a>`;
-											}
-										});
-						$('#cateMakeBrand1').html(makeBrandTag1);
-						$("#cateMakeBrand2").html(makeBrandTag2);
-						
-						// 바디/헤어 - 중분류
-						let body = r.bodyDTO;
-						let bodyTag = `<a href="/product/list?dept1=30">전체</a>`;
-						$.each(body, function(idx, item) {
-							bodyTag += `<a href="/product/list?dept1=30&dept2=`
-									+ item.dept2no + `">` + item.dept2name
-									+ `</a>`;
-						});
-						$('#cateBody').html(bodyTag);
-						
-						// 바디/헤어 - 브랜드
-						let bodyBrand = r.bodyBrandDTO;
-						let bodyBrandTag1 = `<a href="/product/list?dept1=30">전체</a>`;
-						let bodyBrandTag2 = ``;
-						$.each(bodyBrand,
-										function(idx, item) {
-											if (idx < 9) {
-												bodyBrandTag1 += `<a href="/product/list?dept1=30&bno=`
-														+ item.bno
-														+ `">`
-														+ item.bname + `</a>`;
-											} else if (idx > 10 && idx <= 20) {
-												bodyBrandTag2 += `<a href="/product/list?dept1=30&bno=`
-														+ item.bno
-														+ `">`
-														+ item.bname + `</a>`;
-											}
-										});
-						$('#cateBodyBrand1').html(bodyBrandTag1);
-						$("#cateBodyBrand2").html(bodyBrandTag2);
-
-					},
-					error : function(e) {
-						console.log(e);
+				// 스킨케어 - 브랜드
+				let skinBrand = r.skinBrandDTO;
+				let skinBrandTag1 = `<a href="/product/list?dept1=10">전체</a>`;
+				let skinBrandTag2 = ``;
+				$.each(skinBrand, function(idx, item) {
+					if (idx < 9) {
+						skinBrandTag1 += `<a href="/product/list?dept1=10&bno=`
+								+ item.bno + `">` + item.bname + `</a>`;
+					} else if (idx > 10 && idx <= 20) {
+						skinBrandTag2 += `<a href="/product/list?dept1=10&bno=`
+								+ item.bno + `">` + item.bname + `</a>`;
 					}
 				});
-		
-		
+				$('#cateSkinBrand1').html(skinBrandTag1);
+				$('#cateSkinBrand2').html(skinBrandTag2);
+
+				// 메이크업 - 중분류
+				let make = r.makeDTO;
+				let makeTag = `<a href="/product/list?dept1=20">전체</a>`;
+				$.each(make, function(idx, item) {
+					makeTag += `<a href="/product/list?dept1=20&dept2=`
+							+ item.dept2no + `">` + item.dept2name + `</a>`;
+				});
+				$('#cateMake').html(makeTag);
+
+				// 메이크업 - 브랜드
+				let makeBrand = r.makeBrandDTO;
+				let makeBrandTag1 = `<a href="/product/list?dept1=20">전체</a>`;
+				let makeBrandTag2 = ``;
+				$.each(makeBrand, function(idx, item) {
+					if (idx < 9) {
+						makeBrandTag1 += `<a href="/product/list?dept1=20&bno=`
+								+ item.bno + `">` + item.bname + `</a>`;
+					} else if (idx > 10 && idx <= 20) {
+						makeBrandTag2 += `<a href="/product/list?dept1=20&bno=`
+								+ item.bno + `">` + item.bname + `</a>`;
+					}
+				});
+				$('#cateMakeBrand1').html(makeBrandTag1);
+				$("#cateMakeBrand2").html(makeBrandTag2);
+
+				// 바디/헤어 - 중분류
+				let body = r.bodyDTO;
+				let bodyTag = `<a href="/product/list?dept1=30">전체</a>`;
+				$.each(body, function(idx, item) {
+					bodyTag += `<a href="/product/list?dept1=30&dept2=`
+							+ item.dept2no + `">` + item.dept2name + `</a>`;
+				});
+				$('#cateBody').html(bodyTag);
+
+				// 바디/헤어 - 브랜드
+				let bodyBrand = r.bodyBrandDTO;
+				let bodyBrandTag1 = `<a href="/product/list?dept1=30">전체</a>`;
+				let bodyBrandTag2 = ``;
+				$.each(bodyBrand, function(idx, item) {
+					if (idx < 9) {
+						bodyBrandTag1 += `<a href="/product/list?dept1=30&bno=`
+								+ item.bno + `">` + item.bname + `</a>`;
+					} else if (idx > 10 && idx <= 20) {
+						bodyBrandTag2 += `<a href="/product/list?dept1=30&bno=`
+								+ item.bno + `">` + item.bname + `</a>`;
+					}
+				});
+				$('#cateBodyBrand1').html(bodyBrandTag1);
+				$("#cateBodyBrand2").html(bodyBrandTag2);
+
+			},
+			error : function(e) {
+				console.log(e);
+			}
+		});
 
 	});
 </script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-$(document).ready(function() {
+	$(document).ready(function() {
 
-	if(document.querySelector('.top_nav .myinfo') !== null) { //로그인한 회원
-		console.log("로그인한 회원");
-		afteradd();
-	}else{
-		console.log("비회원");
-	}
+		if (document.querySelector('.top_nav .myinfo') !== null) { //로그인한 회원
+			console.log("로그인한 회원");
+			afteradd();
+		} else {
+			console.log("비회원");
+		}
 
-});
+	});
 </script>
 <script>
 	function afteradd() {
 		$.ajax({
-        url: "/restcart/count",
-        type: "GET",
-        success: function(count) {
-					console.log("장바구니 개수 "+count);
-            $(".cart-count").text(count);
-        },
-        error: function(e) {
-					console.log(e);
-        }
-    });
+			url : "/restcart/count",
+			type : "GET",
+			success : function(count) {
+				console.log("장바구니 개수 " + count);
+				$(".cart-count").text(count);
+			},
+			error : function(e) {
+				console.log(e);
+			}
+		});
 	}
 </script>
 <h1 onclick="location.href='/';">The Hyundai Beauty</h1>
@@ -160,8 +136,6 @@ $(document).ready(function() {
 								sec:authentication="principal.mName">회원이름</span> 님, 환영합니다!
 						</dt>
 						<dd>
-							<span>보유 h.point : <strong> 150</strong>M
-							</span>
 							<ul>
 								<li><a href="/mypage/reserv">MY Make-ON</a></li>
 								<li><a href="/mypage/skinmbti">MY 피부 MBTI</a></li>
@@ -171,8 +145,7 @@ $(document).ready(function() {
 					</dl>
 				</div></li>
 			<li sec:authorize="isAuthenticated()"><a href="/member/logout">로그아웃</a></li>
-			<li><a href="#">주문/배송조회</a></li>
-			<li><a href="#">고객케어센터</a></li>
+			<li><a href="/shop/orderlist">주문 조회</a></li>
 		</ul>
 
 	</nav>
@@ -225,7 +198,8 @@ $(document).ready(function() {
 			<li class=""><a href="#" onclick="LARO.TagManager.menu(this);"
 				data-menu-name="공식몰 단독혜택" data-depth="1"><span>공식몰 단독혜택</span><em>공식몰
 						단독혜택</em></a>
-				<div class="sub_contain" style="opacity: 1; display: none;">
+				<div class="sub_contain"
+					style="opacity: 1; display: none; width: 200px; min-height: 224px;">
 					<div class="menu">
 						<ul>
 							<li><a href="#" onclick="LARO.TagManager.menu(this);"
@@ -239,21 +213,15 @@ $(document).ready(function() {
 								data-menu-name="피부민감도 자가진단" data-depth="2">피부민감도 자가진단</a></li>
 						</ul>
 					</div>
-					<div class="sub_contain_banner">
-						<a href="#" onclick="LARO.TagManager.menu(this);"
-							data-menu-name="인기샘플키트" data-depth="2"> <img
-							src="https://www.larocheposay.co.kr/images/main/gnb_banner.jpg?v=36201204202301"
-							alt="인기샘플키트">
-						</a>
-					</div>
 				</div> <!-- //sub_contain --></li>
-		
+
 			<li class=""><a href="/product/list?dept1=10"
 				data-menu-name="스킨케어" data-depth="1"> <span>스킨케어</span> <em>FACE</em>
 			</a>
-				<div class="sub_contain" style="opacity: 1; display: none;">
+				<div class="sub_contain"
+					style="opacity: 1; display: none; min-height: 300px; width: 900px;">
 					<div class="submenu">
-						<dl>
+						<dl style="margin: 0;">
 							<dt>
 								<a href="/product/list?dept1=10"> 스킨케어</a>
 							</dt>
@@ -261,7 +229,7 @@ $(document).ready(function() {
 						</dl>
 					</div>
 					<div class="submenu" style="margin-right: 0px;">
-						<dl>
+						<dl style="margin: 0;">
 							<dt>
 								<a href="/product/list?dept1=10" data-depth="2">브랜드별</a>
 							</dt>
@@ -269,10 +237,7 @@ $(document).ready(function() {
 						</dl>
 					</div>
 					<div class="submenu" style="margin-left: 0px;">
-						<dl style="margin-top: 16px;">
-							<dt>
-								<a href="javascript:void(0);" data-depth="2"></a>
-							</dt>
+						<dl style="margin-top: 47px;margin-bottom: 0;padding-top: 0;">
 							<dd id="cateSkinBrand2"></dd>
 						</dl>
 					</div>
@@ -284,25 +249,13 @@ $(document).ready(function() {
 							onclick="location.href='/skinMBTI/selfConsult';">피부 MBTI
 							진단하기</button>
 					</div>
-					<div class="sub_contain_banner">
-						<a
-							href="javascript:bannerLink('1239', '/product/view/3862.do', '_self');">
-							<span class="product_banner"> <img
-								src="https://www.larocheposay.co.kr/upload/product/main/2021/10/20230130_1351020_733_210x210.png"
-								alt="에빠끌라 딥 클렌징 포밍 크림"> <span class="tit">에빠끌라</span> <span
-								class="kind">딥 클렌징 포밍 크림</span> <span class="price"> <span
-									class="after">28,000<em>원</em></span>
-							</span>
-						</span>
-						</a>
-					</div>
 				</div></li>
 			<li class=""><a href="/product/list?dept1=20"> <span>메이크업</span>
 					<em>MAKE UP</em>
 			</a>
-				<div class="sub_contain" style="opacity: 1; display: none;">
+				<div class="sub_contain" style="opacity: 1; display: none; min-height: 300px; width: 900px;">
 					<div class="submenu">
-						<dl>
+						<dl style="margin: 0;">
 							<dt>
 								<a href="/product/list?dept1=20">메이크업</a>
 							</dt>
@@ -311,7 +264,7 @@ $(document).ready(function() {
 					</div>
 
 					<div class="submenu" style="margin-right: 0px;">
-						<dl>
+						<dl style="margin: 0;">
 							<dt>
 								<a href="/product/list?dept1=20">브랜드별</a>
 							</dt>
@@ -319,10 +272,7 @@ $(document).ready(function() {
 						</dl>
 					</div>
 					<div class="submenu" style="margin-left: 0px;">
-						<dl style="margin-top: 16px;">
-							<dt>
-								<a href="javascript:void(0)"></a>
-							</dt>
+						<dl style="margin-top: 47px;margin-bottom: 0;padding-top: 0;">
 							<dd id="cateMakeBrand2"></dd>
 						</dl>
 					</div>
@@ -333,23 +283,11 @@ $(document).ready(function() {
 						<button type="button" class="btn_base move"
 							onclick="location.href='/beauty/reserv';">메이크업 상담 예약</button>
 					</div>
-					<div class="sub_contain_banner">
-						<a
-							href="javascript:bannerLink('1240', '/product/view/3714.do', '_self');">
-							<span class="product_banner"> <img
-								src="https://www.larocheposay.co.kr/upload/product/main/2022/10/20221012_1026026_754_210x210.png"
-								alt="리피카 윌 라방 (저자극 바디 오일 클렌저)"> <span class="tit">리피카</span>
-								<span class="kind">바디 오일 클렌저 대용량 세트</span> <span class="price">
-									<span class="after">53,000<em>원</em></span>
-							</span>
-						</span>
-						</a>
-					</div>
 				</div></li>
-				<li class="">
-					<a href="/product/list?dept1=30" data-menu-name="바디/헤어케어" data-depth="1"> <span>바디/헤어케어</span> <em>BODY/HAIR</em>
-					</a>
-				<div class="sub_contain" style="opacity: 1; display: none;">
+			<li class=""><a href="/product/list?dept1=30"
+				data-menu-name="바디/헤어케어" data-depth="1"> <span>바디/헤어케어</span> <em>BODY/HAIR</em>
+			</a>
+				<div class="sub_contain" style="opacity: 1; display: none; min-height: 300px; width: 900px;">
 					<div class="submenu">
 						<dl>
 							<dt>
@@ -382,18 +320,6 @@ $(document).ready(function() {
 							onclick="location.href='/skinMBTI/selfConsult';">피부 MBTI
 							진단하기</button>
 					</div>
-					<div class="sub_contain_banner">
-						<a
-							href="javascript:bannerLink('1239', '/product/view/3862.do', '_self');">
-							<span class="product_banner"> <img
-								src="https://www.larocheposay.co.kr/upload/product/main/2021/10/20230130_1351020_733_210x210.png"
-								alt="에빠끌라 딥 클렌징 포밍 크림"> <span class="tit">에빠끌라</span> <span
-								class="kind">딥 클렌징 포밍 크림</span> <span class="price"> <span
-									class="after">28,000<em>원</em></span>
-							</span>
-						</span>
-						</a>
-					</div>
 				</div></li>
 		</ul>
 		<ul class="right">
@@ -403,7 +329,8 @@ $(document).ready(function() {
 					<div class="menu">
 						<ul>
 							<li><a href="/skinMBTI/selfConsult" data-depth="2">진단하기</a></li>
-							<li sec:authorize="isAuthenticated()"><a href="/skinMBTI/check_result" data-depth="2">결과보기</a></li>
+							<li sec:authorize="isAuthenticated()"><a
+								href="/skinMBTI/check_result" data-depth="2">결과보기</a></li>
 						</ul>
 					</div>
 				</div> <!-- //sub_contain --></li>
@@ -418,14 +345,17 @@ $(document).ready(function() {
 						</ul>
 					</div>
 				</div> <!-- //sub_contain --></li>
-			<li class="">
-				<a sec:authorize="isAnonymous()" href="/match/main" data-depth="1"><span>매칭화장품</span><em>MATCH IT</em></a> 
-				<a th:with="name=${#authentication.getPrincipal().mbti}" sec:authorize="isAuthenticated()" th:href="@{/match/main(mbti=${name})}" data-depth="1"><span>매칭화장품</span><em>MATCH IT</em></a>
-			
-			</li>
+			<li class=""><a sec:authorize="isAnonymous()" href="/match/main"
+				data-depth="1"><span>매칭화장품</span><em>MATCH IT</em></a> <a
+				th:with="name=${#authentication.getPrincipal().mbti}"
+				sec:authorize="isAuthenticated()"
+				th:href="@{/match/main(mbti=${name})}" data-depth="1"><span>매칭화장품</span><em>MATCH
+						IT</em></a></li>
 			<li class=""><a href="/product/compare" data-depth="1"
 				class="sp-goal-457-c65-35-1627285161700"> <span><i
-						class="ico"><img src="/common/image/basket.png" style="width: 24px; margin-bottom: 4px; margin-right: 3px;"></i>상품 비교함</span><em>COMPARE IT</em>
+						class="ico"><img src="/common/image/basket.png"
+							style="width: 24px; margin-bottom: 4px; margin-right: 3px;"></i>상품
+						비교함</span><em>COMPARE IT</em>
 			</a> <!-- //sub_contain --></li>
 		</ul>
 	</nav>
