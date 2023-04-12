@@ -440,13 +440,26 @@
 					<div data-v-4ade122e="" data-v-35734774="" class="inner txt_box">
 						<div data-v-4ade122e="" data-v-35734774="" class="card_01">
 							<!-- <span data-v-4ade122e="" data-v-35734774="" class="rates">제품1 평점</span> -->
-							<span data-v-4ade122e="" data-v-35734774="" class="rates"></span>
+							<!-- <span data-v-4ade122e="" data-v-35734774="" class="rates"></span> -->
+							<div data-v-4ade122e="" data-v-35734774="" class="star-rating">
+								<span class="">
+									<em class="hide">별점</em></span>
+							</div>
+							
 						</div>
 						<div data-v-4ade122e="" data-v-35734774="" class="card_02">
-							<span data-v-4ade122e="" data-v-35734774="" class="rates"></span>
+														<!-- <span data-v-4ade122e="" data-v-35734774="" class="rates"></span> -->
+														<div data-v-4ade122e="" data-v-35734774="" class="star-rating">
+															<span class="">
+																<em class="hide">별점</em></span>
+														</div>
 						</div>
 						<div data-v-4ade122e="" data-v-35734774="" class="card_03">
-							<span data-v-4ade122e="" data-v-35734774="" class="rates"></span>
+														<!-- <span data-v-4ade122e="" data-v-35734774="" class="rates"></span> -->
+														<div data-v-4ade122e="" data-v-35734774="" class="star-rating">
+															<span class="">
+																<em class="hide">별점</em></span>
+														</div>
 						</div>
 					</div>
 					</article>
@@ -668,7 +681,9 @@ $(function(){
 	// var rates = document.querySelector(`.${slidenum} .score`).textContent.trim().replace(/^별점\s*/, '');
 	// var review = document.querySelector(`.${slidenum} .comment`).textContent.trim().replace(/^댓글\s*/, '');
 	const rates = document.querySelector(`.${slidenum} .score`).value;
-	const review = document.querySelector(`.${slidenum} .comment`).value;
+	console.log(rates+"평저멈ㅁㅁㅁ");
+	
+	// const review = document.querySelector(`.${slidenum} .comment`).value;
 
 	const price = document.querySelector(`.${slidenum} .price`).value;
 	const pcode = document.querySelector(`.${slidenum} .pcode`).value;
@@ -694,8 +709,8 @@ $(function(){
 		cardDel.style.display = '';
 		card01.querySelector('.benefit_detail').setAttribute('onclick',`addCart('${pcode}','${pOption}')`);
 
-		const card = document.querySelector(".cd_con.card_sort .card_01");
-		card.querySelector(".rates").textContent = rates + "점      /      "+ review +"개";
+		$('.cd_con.card_sort .card_01 .star-rating').addClass('bic');
+		$('.cd_con.card_sort .card_01 .star-rating.bic span').addClass(rates);
 		
 		const c = document.querySelector(".cd_con.card_event .card_01");
 		console.log(price);
@@ -739,8 +754,8 @@ $(function(){
 		cardDel.style.display = '';
 		card02.querySelector('.benefit_detail').setAttribute('onclick',`addCart('${pcode}','${pOption}')`);
 
-		const card = document.querySelector(".cd_con.card_sort .card_02");
-		card.querySelector(".rates").textContent = rates + "점      /      "+ review +"개";
+		$('.cd_con.card_sort .card_02 .star-rating').addClass('bic');
+		$('.cd_con.card_sort .card_02 .star-rating.bic span').addClass(rates);
 		
 		const c = document.querySelector(".cd_con.card_event .card_02");
 		console.log(price);
@@ -781,9 +796,8 @@ $(function(){
 			cardDel.style.display = '';
 			card03.querySelector('.benefit_detail').setAttribute('onclick',`addCart('${pcode}','${pOption}')`);
 
-
-			const card = document.querySelector(".cd_con.card_sort .card_03");
-			card.querySelector(".rates").textContent = rates + "점      /      "+ review +"개";
+			$('.cd_con.card_sort .card_03 .star-rating').addClass('bic');
+			$('.cd_con.card_sort .card_03 .star-rating.bic span').addClass(rates);
 
 			const c = document.querySelector(".cd_con.card_event .card_03");
 			console.log(price);
@@ -827,7 +841,10 @@ $(function(){
 			cardDiv.querySelector('.card_name').textContent="";
 			cardDiv.querySelector('.corp_name').innerText="";
 
-			document.querySelector(`.${num} .rates`).textContent = '';
+			const spanClass = $(`.cd_con.card_sort .${num} .star-rating.bic span`).attr('class');
+			$(`.cd_con.card_sort .${num} .star-rating.bic span`).removeClass(spanClass);
+			$(`.cd_con.card_sort .${num} .star-rating`).removeClass('bic');
+			//document.querySelector(`.${num} .rates`).textContent = '';
 			document.querySelector(`.${num} .price`).textContent = '';
 			document.querySelector(`.${num} .caution`).textContent = '';
 			document.querySelector(`.${num} .keyword`).textContent = '';
@@ -847,11 +864,13 @@ $(function(){
 
 		//다른 article 내용 바꾸기
 		document.querySelector(`.${take} .card_del`).setAttribute('onclick', `delThis('${take}')`);
-		document.querySelector(`.${take} .rates`).textContent = document.querySelector(`.${give} .rates`).textContent;
 		document.querySelector(`.${take} .price`).textContent = document.querySelector(`.${give} .price`).textContent;
 		document.querySelector(`.${take} .caution`).innerHTML = document.querySelector(`.${give} .caution`).innerHTML;
 		document.querySelector(`.${take} .keyword`).textContent = document.querySelector(`.${give} .keyword`).textContent;
+		//document.querySelector(`.${take} .rates`).textContent = document.querySelector(`.${give} .rates`).textContent;
 
+		const spanClass = $(`.${give} .star-rating.bic span`).attr('class');
+		$(`.${take} .star-rating.bic span`).removeClass().addClass(spanClass);
 	}
 
 	function delThis(card_num) {

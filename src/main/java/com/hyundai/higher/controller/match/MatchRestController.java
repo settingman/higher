@@ -52,7 +52,7 @@ public class MatchRestController {
 
 	@GetMapping("/getInfo")
 	public ResponseEntity<Map<String, Object>> getInfo(@RequestParam("pcode") String pcode) {
-		log.info("추가 정보 불러오기");
+		log.info("추가 정보 불러오기   "+pcode);
 		
 		Map<String, Object> result = new HashMap<>();
 		
