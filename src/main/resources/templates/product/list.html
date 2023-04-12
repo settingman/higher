@@ -193,7 +193,7 @@ button.detailview {
                     	<span class="tit">[[${prod.pname}]]</span> 
                     	<span class="rating">
                       		<div class="star-rating small"> 
-                      			<span th:class="'c'+${#numbers.formatInteger(prod.rates*10, 2)}"><em class="hide">벌점</em></span> 
+                      			<span th:class="'c'+${#numbers.formatInteger(prod.rates*10, 2)}"><em class="hide"th:text="${prod.rates}">벌점</em></span> 
                       		</div>
                     	</span> 
                     	<span class="price">

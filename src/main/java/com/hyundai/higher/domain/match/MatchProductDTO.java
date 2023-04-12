@@ -26,6 +26,11 @@ public class MatchProductDTO {
 	private String bname;
 	private String pprice;
 	private double rates;
+	
+	private String pvolume;
+	private String ptype;
+	private String pingredient;
+	private String optname;
 
 
 }
