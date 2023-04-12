@@ -21,6 +21,8 @@ header#header {
 	href="https://image.thehyundai.com/pc/cssssl/co.css?ver=13" />
 <link rel="stylesheet" type="text/css"
 	href="https://image.thehyundai.com/pc/cssssl/wf.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
 <script src="https://image.thehyundai.com/pc/js/jquery-1.11.3.min.js"></script>
 <script src="https://image.thehyundai.com/pc/js/jquery-ui.min.js"></script>
 <script src="https://image.thehyundai.com/pc/js/jquery-migrate.min.js"></script>
@@ -441,7 +443,7 @@ header#header {
 											</section>
 											<div class="btn_green"
 												style="text-align: center; margin-top: 10px">
-												<p class="pickbtn" onclick="addallCart()" style="line-height: 30px">전체 장바구니 담기
+												<p class="pickbtn" onclick="addallCart()" href="#survey_pop" style="line-height: 30px">전체 장바구니 담기
 												</p>
 											</div>
 											</div>
@@ -457,6 +459,38 @@ header#header {
 				</div>
 				<!-- //content -->
 			</div>
+			<section id="survey_pop" class="layerpop_warp">
+			<div class="layerpop blue" style="width: 460px;">
+				<div class="layerpop_head">
+					<h1>로그인</h1>
+				</div>
+				<div class="layerpop_cont">
+					<div class="login">
+						<div class="stepimg" style="margin: 30px auto;">
+							<div class="imgdiv"
+								style="width: 120px; margin: 0 auto; background: #d3d3d373; border-radius: 50%; height: 120px; position: relative;">
+								<div style="">
+									<img src="/makeup/img/hpoint.png"
+										style="width: 120px; position: relative;">
+								</div>
+							</div>
+						</div>
+						<p
+							style="font-size: 16px; color: #222222; line-height: 1.5; text-align: center;">
+							회원 로그인 후 참여 가능합니다.<br> <i class="fc_blue">예약 완료 시,
+								h.point 2000점</i> 이 발급됩니다.<br> <em
+								style="color: #8f8f8f; margin-top: 10px;">(발급된 마일리지는 MY현대에서 확인가능)</em>
+						</p>
+						<div class="btn_wrap center mt30">
+							<button type="button" class="btn_base blue act"
+								onclick="location.href='/member/login';">로그인</button>
+							<button type="button" class="btn_base darkgray act" id="close">취소</button>
+						</div>
+					</div>
+				</div>
+				<button type="button" class="close">닫기</button>
+			</div>
+		</section>
 			<!-- //content-wrap -->
 		</div>
 		<div class="include-footer" th:insert="~{include/footer2}"></div>
@@ -510,11 +544,11 @@ function addallCart() {
 		        success: function(result) {
 		          console.log("장바구니 success");
 		          if (result == '0') {
-		            alert("장바구니에 추가를 하지 못하였습니다.");
+		            swal('', '장바구니에 추가를 하지 못하였습니다.', "error");
 		          } else if (result == '1' && lastIndex ) {
-		            alert("장바구니에 추가되었습니다.");
+		            swal('', '장바구니에 추가되었습니다.', "success");
 		          } else if (result == '2' && lastIndex ) {
-		            alert("이미 장바구니에 담긴 상품으로 수량이 추가되었습니다.");
+		            swal('', '이미 장바구니에 담긴 상품으로 수량이 추가되었습니다.',"success");
 		          }
 		        },
 		        error: function(request, status, error) {
@@ -554,16 +588,16 @@ function addallCart() {
 	    let arr = JSON.parse(localStorage.getItem("arr")) || []; // null일 경우 빈 배열 생성
 
 	    if (arr.length >= 10) {
-	        alert("비교함에는 10개의 상품을 담을 수 있습니다.");
+	        swal('','비교함에는 10개의 상품을 담을 수 있습니다.', "error");
 	        return false;
 	    }
 
 	    if (arr.some(item => item[0] === pcode)) { // 이미 비교함에 추가된 상품인 경우
-	        alert("이미 비교함에 담긴 상품입니다.");
+	    	swal('','이미 비교함에 담긴 상품입니다.',"warning");
 	    } else {
 	        arr.push([pcode, pname, brand, price, imglink, rate, review, pVolume, ptype, pingredient]); // 상품 정보 저장
 	        localStorage.setItem("arr", JSON.stringify(arr));
-	        alert("비교함에 담겼습니다.");
+	        swal('','비교함에 담기 성공', "success");
 	    }
 	    console.log("비교함에 담음");
 
@@ -609,11 +643,11 @@ function addallCart() {
 			success	: function(result){
 				console.log("장바구니 success");
 				if(result == '0'){
-					alert("장바구니에 추가를 하지 못하였습니다.");
+					swal('','장바구니에 추가를 하지 못하였습니다.', "error");
 				} else if(result == '1'){
-					alert("장바구니에 추가되었습니다.");
+					swal('','장바구니에 추가되었습니다.', "success");
 				} else if(result == '2'){
-					alert("이미 장바구니에 담긴 상품으로 수량이 추가되었습니다.");
+					swal('','이미 장바구니에 담긴 상품으로 수량이 추가되었습니다.', "success");
 				} 
 			},
 			error :function(request, status, error) {
@@ -622,7 +656,7 @@ function addallCart() {
 		}); 
 		}else {
 			console.log("로그인 필요");
-			alert('장바구니는 로그인이 필요합니다.');
+			swal('','장바구니는 로그인이 필요합니다.', "error");
 			var loginUrl = "/member/login";
 			window.location.href = loginUrl;
 		}
@@ -652,5 +686,6 @@ button.detailview {
 	opacity: 0.85;
 }
 </style>
+
 </body>
 </html>

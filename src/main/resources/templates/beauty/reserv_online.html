@@ -99,7 +99,8 @@ div#selected {
 							<div class="makeup-main">
 								<input type="hidden" name="rimg" class="rimg" id="rimg" value="">
 								<input type="hidden" name="rneeds" class="rneeds" id="rneeds"
-									value=""> <img src="/img/online.jpeg" style="height:180px;">
+									value=""> <img src="/img/online.jpeg"
+									style="height: 180px;">
 							</div>
 							<ul class="exhib_list" id="floatPC_layer"
 								style="text-align: center; font-family: 'notokr-medium'; margin: revert; font-size: large;">
@@ -113,9 +114,11 @@ div#selected {
 							<li id="floatPC_time">시간 -
 								<div class="hiddentime" style="display: none;"></div>
 							</li>
-								<li id="floatPC_rimg">
-								<div class="empty" style="border-style: dotted;height:285px;border-width: thin;background: whitesmoke;"></div>
-								<img class="thum_img" src="" style="width: 210px;"></li>
+							<li id="floatPC_rimg">
+								<div class="empty"
+									style="border-style: dotted; height: 265px; border-width: thin; background: whitesmoke;"></div>
+								<img class="thum_img" src="" style="width: 210px;">
+							</li>
 						</ul>
 						<div class="applybtn">
 							<span type="submit" class="reservi" disabled>예약하기</span>
@@ -127,7 +130,8 @@ div#selected {
 				<!-- 달력 -->
 				<div class="tit" title="날짜 선택" id="step1-head" tabindex="0">
 					<h3 class="g-title-1">날짜 선택</h3>
-					<!-- 	<img src="/makeup/img/down.png" > -->
+					<img class="img1" src="/makeup/img/up.png"
+						style="width: 17px;float: right;position: relative;top: -31px;right: 10px;cursor: pointer;">
 				</div>
 				<div class="calendartable">
 					<div class="accordion_cont">
@@ -174,6 +178,8 @@ div#selected {
 				<!-- /달력 -->
 				<div class="tit" title="시간 선택" id="step1-head" tabindex="0">
 					<h3 class="g-title-1">시간 선택</h3>
+					<img class="img2" src="/makeup/img/down.png"
+						style="width: 17px;float: right;position: relative;top: -31px;right: 10px;cursor: pointer;">
 				</div>
 				<!-- 시간대-->
 				<div class="timetable" style="display: none">
@@ -224,6 +230,8 @@ div#selected {
 				<!-- 사진 업로드 -->
 				<div class="tit" title="사진 업로드" id="step1-head" tabindex="0">
 					<h3 class="g-title-1">사진 업로드</h3>
+						<img class="img3" src="/makeup/img/down.png"
+						style="width: 17px;float: right;position: relative;top: -31px;right: 10px;cursor: pointer;">
 				</div>
 				<div class="uploadimage" style="display: none;">
 					<div class="accordion_cont" style="padding-bottom: 100px">
@@ -265,6 +273,8 @@ div#selected {
 				<!-- 요청 사항 -->
 				<div class="tit" title="요청 사항" id="step1-head" tabindex="0">
 					<h3 class="g-title-1">요청 사항</h3>
+						<img class="img4" src="/makeup/img/down.png"
+						style="width: 17px;float: right;position: relative;top: -31px;right: 10px;cursor: pointer;">
 				</div>
 				<div class="inputneeds" style="display: none;">
 					<div class="accordion_cont" style="">
@@ -400,10 +410,12 @@ div#selected {
         ymd.innerHTML = "날짜 - " + selectedYear + "-" + selectedMonth + "-" + selectedDate;
         //ymdvalue.value= selectedYear + "-" + selectedMonth + "-" + selectedDate;
         console.log(selectedYear + "-" + selectedMonth + "-" + selectedDate);
-        yearDiv.innerHTML ="선택하신 날짜: " + selectedYear + "-" + selectedMonth + "-" + selectedDate;
-        yearParent.appendChild(yearDiv);
+        //yearDiv.innerHTML ="선택하신 날짜: " + selectedYear + "-" + selectedMonth + "-" + selectedDate;
+        //yearParent.appendChild(yearDiv);
         //document.querySelector(".timetable").appendChild(yearDiv);
         document.querySelector(".timetable").style.display = "block";
+        document.querySelector(".img1").src = "/makeup/img/down.png";
+        document.querySelector(".img2").src = "/makeup/img/up.png";
         document.querySelector(".calendartable").style.display = "none";
       }
 
@@ -416,6 +428,8 @@ div#selected {
       calendarBody.addEventListener("click", function (event) {
         if (event.target.tagName === "TD") {
           timetable.style.display = "block";
+          document.querySelector(".img1").src = "/makeup/img/down.png";
+          document.querySelector(".img2").src = "/makeup/img/up.png";
         }
       });
 
@@ -424,9 +438,12 @@ div#selected {
       timeSelect.addEventListener("click", function () {
         if (timetablebtn.style.display === "none") {
           timetablebtn.style.display = "block";
+          document.querySelector(".img2").src = "/makeup/img/up.png";
+          
         } else {
           timetablebtn.style.display = "none";
           uploadpagebtn.style.display = "none";
+          document.querySelector(".img2").src = "/makeup/img/down.png";
         }
       });
 
@@ -445,8 +462,10 @@ selectTimes.forEach(selectTime => {
       uploadSelect.addEventListener("click", function () {
         if (uploadpagebtn.style.display === "none") {
           uploadpagebtn.style.display = "block";
+          document.querySelector(".img3").src = "/makeup/img/up.png";
         } else {
           uploadpagebtn.style.display = "none";
+          document.querySelector(".img3").src = "/makeup/img/down.png";
         }
       });
       
@@ -455,8 +474,10 @@ selectTimes.forEach(selectTime => {
       needsbtn.addEventListener("click", function(){
     	  if (needsdiv.style.display === "none") {
     		  needsdiv.style.display = "block";
+              document.querySelector(".img4").src = "/makeup/img/up.png";
     	  } else {
     		  needsdiv.style.display = "none";
+              document.querySelector(".img4").src = "/makeup/img/down.png";
     	  }
       });
 
@@ -465,8 +486,10 @@ selectTimes.forEach(selectTime => {
       calendarSelect.addEventListener("click", function () {
         if (calendarpagebtn.style.display === "none") {
           calendarpagebtn.style.display = "block";
+          document.querySelector(".img1").src = "/makeup/img/up.png";
         } else {
           calendarpagebtn.style.display = "none";
+          document.querySelector(".img1").src = "/makeup/img/down.png";
         }
       });
 
@@ -581,12 +604,14 @@ selectTimes.forEach(selectTime => {
       $("li.select_time").on("click", function() {
         $(".uploadimage").css("display", "block");
         $(".timetable").css("display", "none");
+        document.querySelector(".img3").src = "/makeup/img/up.png";
+        document.querySelector(".img2").src = "/makeup/img/down.png";
       });
       
-      $(".btn_green1").on("click", function() {
+      $(".btn_green").on("click", function() {
     	  $(".uploadResult").css("background", "none");
-    	  $(".reservi").css("background", "#45675b")
-    	  $(".reservi").removeAttr("disabled");
+          document.querySelector(".img3").src = "/makeup/img/down.png";
+          document.querySelector(".img4").src = "/makeup/img/up.png";
     	});
       
       document.querySelector('.reservi').addEventListener('click', function() {
@@ -621,7 +646,7 @@ ul#floatPC_layer {
 	box-shadow: 10px 10px 50px rgba(0, 0, 0, .2);
 	width: 250px;
 	color: #767676;
-	    height: 750px;
+	height: 720px;
 }
 
 ul.list_info {
@@ -702,7 +727,6 @@ td:hover {
 	background: #f3f3f3;
 	box-sizing: border-box;
 	margin: 0;
-	display: flex;
 	flex-direction: column-reverse;
 	align-items: center;
 }
