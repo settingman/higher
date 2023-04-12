@@ -24,7 +24,7 @@ import com.hyundai.higher.domain.match.MemberMBTIDTO;
 public interface MatchService {
 
 	//해당하는 mbti의 상품 불러오기
-	public List<MatchProductDTO> mbtiProduct(String pmbti);
+	public List<MatchProductDTO> mbtiProduct(String pmbti, String dept2no);
 	
 	//해당하는 mbti의 정보 불러오기
 	public MatchMbtiDTO getMbtiInfo(String pmbti);

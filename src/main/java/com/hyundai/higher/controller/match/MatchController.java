@@ -146,8 +146,9 @@ public class MatchController {
 
 	// 화장품 매칭 메인 페이지
 	@GetMapping("/main")
-	public String mathMain2(@RequestParam(value = "mbti", required = false, defaultValue = "") String mbti, Model model,
-			Principal prin) {
+	public String mathMain2(@RequestParam(value = "mbti", required = false, defaultValue = "") String mbti, 
+							@RequestParam(value = "dept2no", required = false, defaultValue = "") String dept2no,
+							Model model, Principal prin) {
 
 		if (prin != null) {
 			String mid = prin.getName();
@@ -164,7 +165,7 @@ public class MatchController {
 			}
 		}
 
-		List<MatchProductDTO> product = mService.mbtiProduct(mbti);
+		List<MatchProductDTO> product = mService.mbtiProduct(mbti, dept2no);
 
 		model.addAttribute("product", product);
 		model.addAttribute("mbti", mbti);
@@ -242,7 +243,8 @@ public class MatchController {
 		}
 		log.info(score + "-----------------------------------");
 		if(score != 0) {
-		// 두번째 mbti 점수 계산. 총 30점. good 3점, normal 2점, bad 1점
+		
+			// 두번째 mbti 점수 계산. 총 30점. good 3점, normal 2점, bad 1점
 		for (int i = 0; i < ingredients.length; i++) {
 			String result = mService.getEffect(ingredients[i], mbtiList[1]);
 			if (result.equals("GOOD")) {
