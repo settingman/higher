@@ -87,6 +87,11 @@ public class MatchServiceImpl implements MatchService{
 	public String getOption(String pcode) {
 		return mMapper.getOption(pcode);
 	}
+
+	@Override
+	public MatchProductDTO getInfo(String pcode) {
+		return mMapper.getInfo(pcode);
+	}
 	
 	
 
