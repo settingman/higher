@@ -208,7 +208,26 @@ function stop() {
   */
 // mute video buttons handler
 videoButtonOff.onclick = () => {
-    localVideoTracks = localStream.getVideoTracks();
+	
+	
+	localStream.getTracks()[1].enabled=false;
+	
+
+
+     //peer에게 현재 본인의 스트림을 다시보냄.
+    myPeerConnection.getSenders().forEach((sender) => {
+
+
+        sender.replaceTrack(localStream.getTracks()[1]);
+    })
+	
+	
+	
+	
+	
+	
+	// 방법 2
+    /*localVideoTracks = localStream.getVideoTracks();
     localVideoTracks.forEach(track => localStream.removeTrack(track));
 
     myPeerConnection.getSenders().forEach((sender) => {
@@ -222,9 +241,26 @@ videoButtonOff.onclick = () => {
 
     $(localVideo).css('display', 'none');
     log('Video Off');
+    */
+    
+    
+    
 };
 videoButtonOn.onclick = () => {
-    localVideoTracks.forEach(track => localStream.addTrack(track));
+	
+	
+	localStream.getTracks()[1].enabled=true;
+
+    myPeerConnection.getSenders().forEach((sender) => {
+
+
+        sender.replaceTrack(localStream.getTracks()[1]);
+    })
+
+	
+	
+	
+   /* localVideoTracks.forEach(track => localStream.addTrack(track));
 
     myPeerConnection.getSenders().forEach((sender) => {
 
@@ -233,31 +269,41 @@ videoButtonOn.onclick = () => {
     })
 
     $(localVideo).css('display', 'inline');
-    log('Video On');
+    log('Video On');*/
+    
+    
 };
 
 // mute audio buttons handler
 audioButtonOff.onclick = () => {
-    localVideo.muted = true;
+	
+	localStream.getTracks()[0].enabled=false;
+	
+	console.log(localStream.getTracks()[0]);
+    
 
 
-    // peer에게 현재 본인의 스트림을 다시보냄.
+     //peer에게 현재 본인의 스트림을 다시보냄.
     myPeerConnection.getSenders().forEach((sender) => {
 
 
-        sender.replaceTrack(localStream.getTracks()[1]);
+        sender.replaceTrack(localStream.getTracks()[0]);
     })
 
     log('Audio Off');
+    
+    
+    
 };
 
 audioButtonOn.onclick = () => {
-    localVideo.muted = false;
+	
+	localStream.getTracks()[0].enabled=true;
 
     myPeerConnection.getSenders().forEach((sender) => {
 
 
-        sender.replaceTrack(localStream.getTracks()[1]);
+        sender.replaceTrack(localStream.getTracks()[0]);
     })
 
     log('Audio On');
@@ -346,6 +392,7 @@ function handleICEConnectionStateChangeEvent() {
 function getLocalMediaStream(mediaStream) {
     localStream = mediaStream;
     localVideo.srcObject = mediaStream;
+    localVideo.muted = true;
     localStream.getTracks().forEach(track => myPeerConnection.addTrack(track, localStream));
 }
 
