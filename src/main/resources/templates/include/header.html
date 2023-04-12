@@ -2,18 +2,33 @@
 	$(function() {
 		// 헤더 카테고리
 		$.ajax({
-			url : '/category/cateAll',
-			type : 'GET',
-			success : function(r) {
-				console.log(r);
-				// 스킨케어 - 중분류
-				let skin = r.skinDTO;
-				let skinTag = `<a href="/product/list?dept1=10">전체</a>`;
-				$.each(skin, function(idx, item) {
-					skinTag += `<a href="/product/list?dept1=10&dept2=`
-							+ item.dept2no + `">` + item.dept2name + `</a>`;
-				});
-				$('#cateSkin').html(skinTag);
+					url : '/category/cateAll',
+					type : 'GET',
+					success : function(r) {
+						console.log(r);
+						
+						// mbti
+						let mbti = r.mbtiDTO;
+						let mbtiDTag = ''; 
+						for(let i=0; i<8; i++){
+							mbtiDTag += `<a href="/product/list?mbti=` + mbti[i].stype + `">` + mbti[i].stype + `</a>`;
+						}
+						$('#mbti_d').html(mbtiDTag);
+						let mbtiOTag = '';
+						for(let i=8; i<16; i++){
+							mbtiOTag += `<a href="/product/list?mbti=` + mbti[i].stype + `">` + mbti[i].stype + `</a>`;
+						}
+						$('#mbti_o').html(mbtiOTag);
+						
+						// 스킨케어 - 중분류
+						let skin = r.skinDTO;
+						let skinTag = `<a href="/product/list?dept1=10">전체</a>`;
+						$.each(skin, function(idx, item) {
+							skinTag += `<a href="/product/list?dept1=10&dept2=`
+									+ item.dept2no + `">` + item.dept2name
+									+ `</a>`;
+						});
+						$('#cateSkin').html(skinTag);
 
 				// 스킨케어 - 브랜드
 				let skinBrand = r.skinBrandDTO;
@@ -195,26 +210,51 @@
 <section class="gnb_nav">
 	<nav>
 		<ul class="left">
-			<li class=""><a href="#" onclick="LARO.TagManager.menu(this);"
-				data-menu-name="공식몰 단독혜택" data-depth="1"><span>공식몰 단독혜택</span><em>공식몰
-						단독혜택</em></a>
-				<div class="sub_contain"
-					style="opacity: 1; display: none; width: 200px; min-height: 224px;">
-					<div class="menu">
-						<ul>
-							<li><a href="#" onclick="LARO.TagManager.menu(this);"
-								data-menu-name="베스트" data-depth="2">베스트</a></li>
-							<li><a href="#" onclick="LARO.TagManager.menu(this);"
-								data-menu-name="단독구성" data-depth="2">단독구성</a></li>
-							<li><a href="#" class=""
-								onclick="LARO.TagManager.menu(this);" data-menu-name="신규회원첫혜택"
-								data-depth="2">신규회원첫혜택</a></li>
-							<li><a href="#" onclick="LARO.TagManager.menu(this);"
-								data-menu-name="피부민감도 자가진단" data-depth="2">피부민감도 자가진단</a></li>
-						</ul>
-					</div>
-				</div> <!-- //sub_contain --></li>
-
+			<li class="">
+          <a href="javascript:void(0);" data-depth="1">
+            <span>피부타입</span>
+            <em>MBTI TYPE</em>
+          </a>
+          <div class="sub_contain" style="opacity: 1; display: none;">
+            <div class="submenu" style="margin-right: 0px;">
+              <dl>
+                <dt>
+                  <a href="#">MBTI 별</a>
+                </dt>
+                <dd id="mbti_d">
+                  
+                </dd>
+              </dl>
+            </div>
+            <div class="submenu" style="margin-left: 0px;">
+            	<dl style="margin-top: 16px;">
+              	 <dt>
+                  <a href="#"></a>
+                </dt>
+                <dd id="mbti_o">
+                  
+                </dd>
+              </dl>
+            </div>
+            <div class="sub_contain_button">
+              <button type="button" class="btn_base move" onclick="location.href='/product/list?dept1=10'">전체 제품
+                보기</button>
+              <button type="button" class="btn_base move" onclick="location.href='/skinMBTI/selfConsult'">피부 MBTI 진단하기</button>
+            </div>
+            <div class="sub_contain_banner">
+              <a href="javascript:bannerLink('1238', '/product/view/3738.do', '_self');">
+                <span class="product_banner">
+                  <img src="https://www.larocheposay.co.kr/upload/product/main/2022/12/20221220_1654046_085_210x210.png"	>
+                  <span class="tit">에빠끌라</span>
+                  <span class="kind">H 아이소바이옴 울트라 수딩 하이드레이팅 크림 [병원판매 화장품]</span>
+                  <span class="price">
+                    <span class="after">29,000<em>원</em></span>
+                  </span>
+                </span>
+              </a>
+            </div>
+          </div>
+        </li>
 			<li class=""><a href="/product/list?dept1=10"
 				data-menu-name="스킨케어" data-depth="1"> <span>스킨케어</span> <em>FACE</em>
 			</a>
@@ -329,8 +369,7 @@
 					<div class="menu">
 						<ul>
 							<li><a href="/skinMBTI/selfConsult" data-depth="2">진단하기</a></li>
-							<li sec:authorize="isAuthenticated()"><a
-								href="/skinMBTI/check_result" data-depth="2">결과보기</a></li>
+							<li th:with="name=${#authentication.getPrincipal().mbti}"  sec:authorize="isAuthenticated()" th:if="${mbti != null}"><a href="/skinMBTI/check_result" data-depth="2">결과보기</a></li>
 						</ul>
 					</div>
 				</div> <!-- //sub_contain --></li>

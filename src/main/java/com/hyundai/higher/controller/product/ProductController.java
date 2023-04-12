@@ -38,7 +38,9 @@ public class ProductController {
 	
 	// 상품 목록 페이지
 	@GetMapping("/list")
-	public String productList(@RequestParam("dept1") String dept1no, @RequestParam(value="dept2", required=false, defaultValue = "") String dept2no, Model model) {
+	public String productList(@RequestParam(value="dept1", required=false, defaultValue = "") String dept1no, 
+							@RequestParam(value="dept2", required=false, defaultValue = "") String dept2no, 
+							@RequestParam(value="mbti", required=false, defaultValue = "") String mbti, Model model) {
 		
 		if(dept1no.equals("10")) {
 			model.addAttribute("dept1name", "스킨케어");
@@ -46,6 +48,8 @@ public class ProductController {
 			model.addAttribute("dept1name", "메이크업");
 		}else if(dept1no.equals("30")) {
 			model.addAttribute("dept1name", "바디/헤어케어");
+		}else {
+			model.addAttribute("dept1name", "MBTI 별");
 		}
 		
 		model.addAttribute("dept1no", dept1no);
@@ -54,7 +58,15 @@ public class ProductController {
 			model.addAttribute("dept2name", service.getDept2name(dept1no, dept2no).getDept2name());
 		}
 		model.addAttribute("cateList", service.cateList(dept1no));
-		model.addAttribute("productList", service.productList(dept1no, dept2no));
+		model.addAttribute("mbtiList", service.mbtiList());
+		
+		if(mbti.equals("")) {
+			model.addAttribute("productList", service.productList(dept1no, dept2no));
+		}else {
+			model.addAttribute("mbtiProdList", service.mbtiProdList(mbti));
+		}
+		
+		model.addAttribute("mbti", mbti);
 		
 		return "product/list";
 	}

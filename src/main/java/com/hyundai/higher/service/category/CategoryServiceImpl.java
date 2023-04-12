@@ -20,6 +20,9 @@ public class CategoryServiceImpl implements CategoryService {
 	@Override
 	public CategoryAllDTO cateAll() {
 
+		// 카테고리 mbti
+		List<MBTIDTO> mbti = mapper.mbtiCateListAll();
+		
 		// 카테고리 중분류 - 스킨케어
 		List<CategoryDTO> skin = mapper.cateListAll("10");
 		
@@ -42,6 +45,7 @@ public class CategoryServiceImpl implements CategoryService {
 		cateDTO.setSkinDTO(skin);
 		cateDTO.setSkinBrandDTO(skinBrand);
 		cateDTO.setMakeDTO(make);
+		cateDTO.setMbtiDTO(mbti);
 		cateDTO.setMakeBrandDTO(makeBrand);
 		cateDTO.setBodyDTO(body);
 		cateDTO.setBodyBrandDTO(bodyBrand);

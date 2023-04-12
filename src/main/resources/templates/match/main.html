@@ -48,9 +48,20 @@
               </li>
             </ul>
           </li>
-          <li class="current kor">
+          <li class="kor">
             <a href="">
             	<i th:text="${mbti=='' ? '전체보기' : mbti}"></i>
+            </a>
+            <ul class="h_link_sub">
+              <li class="on kor">
+                <a href="javascript:void(0)" onclick="location.href='/product/list.do?cate2=1130'">
+                  MBTI별</a>
+              </li>
+            </ul>
+          </li>
+          <li class="current kor">
+            <a href="">
+            	<i th:text="${dept2no=='' ? '전체보기' : cateMap.get(dept2no)}"></i>
             </a>
             <ul class="h_link_sub">
               <li class="on kor">
@@ -111,12 +122,12 @@
           <nav>
             <ul class="accordion">
               <li class="open current">
-                <span>MBTI 별</span>
+                <span>FACE</span>
                 <ul class="submenu" style="display: block;">
-                  <li th:class="${#strings.isEmpty(mbti) ? 'current' : ''}"><a
-                      href="/match/main"><i>전체보기</i></a></li>
-                  <li th:each="mCate : ${mbtiCate}" th:class="${#strings.equals(mbti, mCate.stype) ? 'current' : ''}">
-                    <a th:href="${'/match/main?mbti='+mCate.stype}"><i>[[${mCate.stype}]]</i></a>
+                  <li th:class="${#strings.isEmpty(dept2no) ? 'current' : ''}"><a
+                      th:href="'/match/main?mbti='+${mbti}"><i>전체보기</i></a></li>
+                  <li th:each="cate : ${cateMap}" th:class="${#strings.equals(dept2no, cate.key) ? 'current' : ''}">
+                    <a th:href="${'/match/main?cno='+ cate.key + '&mbti=' + mbti}"><i>[[${cate.value}]]</i></a>
                   </li>
                   
                 </ul>
@@ -152,7 +163,7 @@
 							</ul>
 						</div>
 						<div class="hot_keyword">
-							<strong>인기검색어</strong> <span class="hash_tag"> <a href="javascript:goKey('시카플라스트');">#시카플라스트</a> <a href="javascript:goKey('피부진정');">#피부진정</a> <a href="javascript:goKey('손상케어');">#손상케어</a> <a href="javascript:goKey('똘러리앙');">#똘러리앙</a> <a href="javascript:goKey('저자극토너');">#저자극토너</a> <a href="javascript:goKey('에빠끌라');">#에빠끌라</a> <a href="javascript:goKey('트러블케어');">#트러블케어</a> <a href="javascript:goKey('보습크림');">#보습크림</a> <a href="javascript:goKey('건성피부');">#건성피부</a> <a href="javascript:goKey('민감성피부');">#민감성피부</a>
+							<strong>인기검색어</strong> <span class="hash_tag"> <a href="#">#리바이리</a> <a href="javascript:goKey('피부진정');">#피부진정</a> <a href="javascript:goKey('손상케어');">#손상케어</a> <a href="#">#주름개선</a> <a href="javascript:goKey('저자극토너');">#저자극토너</a> <a href="#">#오에라</a> <a href="javascript:goKey('트러블케어');">#트러블케어</a> <a href="javascript:goKey('보습크림');">#보습크림</a> <a href="javascript:goKey('건성피부');">#건성피부</a> <a href="javascript:goKey('민감성피부');">#민감성피부</a>
 							</span>
 						</div>
 					</div>
@@ -168,7 +179,7 @@
             	<span id="search-keyword">키워드</span> 검색결과 상품 <span id="totalCount">19</span>개
             </div>
               <div class="prd_term sub-tit">
-              	<span>[[${mbti}]] </span>  인기 제품
+              	<span>[[${mbti}]] </span> 인기 제품
               </div>
               <!-- 신상, 단독구성 -->
               <ul class="product_list ea03" id="listUl">
@@ -181,20 +192,16 @@
                     	<span class="kind">[[${#numbers.formatInteger(prod.pprice, 3, 'COMMA')}]]<em>원</em> </span> 
                     	<span class="rating">
                       		<div class="star-rating small"> 
-                      			<span class="c50"><em class="hide">벌점 5개</em></span> 
+                      			<span th:class="'c'+${#numbers.formatInteger(prod.rates*10, 2)}"><em class="hide">벌점</em></span> 
                       		</div>
-                      		<em>(1346)</em>
                     	</span> 
                     	<span class="price"><button class="match-btn">매칭하기</button></span> 
                   </a>
-                  <div class="over"> <button onclick="prdtViewLink('3858','PT','Y', 1)"
-                      class="detailview">자세히보기</button> <button data-saleprice="27000" data-value="3858" data-cnt="10"
-                      data-level="제한없음" data-price="27000" data-linename="시카플라스트" data-prdtname="젤 B5  [병원판매 화장품] "
-                      data-sapcode="MB057920" data-buy-level="N" data-tag-names="#손상피부집중케어젤,# 시카플라스트젤,# 시카젤,# 시카플라스트"
-                      data-noingt-names="파라벤,인공향" data-category="병원판매화장품>케어 고민별>스킨케어" class="addcart basket">장바구니
-                      담기</button> </div> <span class="like" data-saleprice="27000" data-value="3858" data-price="27000"
-                    data-linename="시카플라스트" data-prdtname="젤 B5  [병원판매 화장품] " data-sapcode="MB057920" data-buy-level="N"
-                    data-category="병원판매화장품>케어 고민별>스킨케어"><i class="hide">관심제품</i></span>
+                  <div class="over"> 
+                  	 <button class="detailview">자세히보기</button> 
+                      <button class="addcart basket">장바구니 담기</button> 
+                  </div> 
+                  <span class="like"><i class="hide">관심제품</i></span>
                 </li>
               </ul>
             </section>
