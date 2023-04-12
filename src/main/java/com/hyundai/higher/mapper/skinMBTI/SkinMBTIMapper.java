@@ -12,7 +12,8 @@ import com.hyundai.higher.domain.skinMBTI.SkinMBTIDTO;
  *     <pre>
  *   수정일         수정자               수정내용
  * ----------      --------    ---------------------------
- * 2023. 3. 31.     신수진      DateBase skinMBTI Mapper Interface
+ * 2023. 03. 31.    신수진      DateBase skinMBTI Mapper Interface
+ * 2023. 04. 12.	신수진		포인트 지급
  *     </pre>
  */
 @Mapper
@@ -23,4 +24,8 @@ public interface SkinMBTIMapper {
 	
 	// 피부타입 저장
 	public void updateMBTI(String mid, String mbti, String mbti_scores);
+	
+	// 포인트 지급
+	public void updatePoint(String mid);
+	
 }

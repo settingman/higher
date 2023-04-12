@@ -238,11 +238,11 @@ $(function(){
                   <span class="star">
                     <a href="#product_detail_review">
                       <div class="star-rating bic">
-                        <span class="c00">
-                          <em class="hide">별점 0개</em></span>
+                        <span th:class="'c' + ${#numbers.formatInteger(product.productDTO.rates*10, 2)}">
+                          <em class="hide">별점</em></span>
                       </div>
                     </a>
-                    <em><a href="#product_detail_review" style="color:#8f8f8f;">(270)</a></em>
+                    <em><a href="#product_detail_review" style="color:#8f8f8f;"></a></em>
                    
                   </span>
                 </div>

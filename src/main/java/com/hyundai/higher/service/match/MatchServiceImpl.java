@@ -1,11 +1,13 @@
 package com.hyundai.higher.service.match;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.hyundai.higher.domain.category.MBTIDTO;
+import com.hyundai.higher.domain.category.CategoryDTO;
 import com.hyundai.higher.domain.match.MatchMbtiDTO;
 import com.hyundai.higher.domain.match.MatchProductDTO;
 import com.hyundai.higher.domain.match.MemberMBTIDTO;
@@ -23,7 +25,8 @@ import lombok.extern.log4j.Log4j2;
  *     <pre>
  *   수정일         수정자               수정내용
  * ----------      --------    ---------------------------
- * 2023. 04. 01.     박서현      최초 생성
+ * 2023. 04. 01.    박서현      최초 생성
+ * 2023. 04. 12.	신수진		카테고리 수정
  *     </pre>
  */
 @Service
@@ -37,8 +40,8 @@ public class MatchServiceImpl implements MatchService{
 	private CategoryMapper cMapper;
 	
 	@Override
-	public List<MatchProductDTO> mbtiProduct(String pmbti) {
-		List<MatchProductDTO> product = mMapper.mbtiProduct(pmbti); 
+	public List<MatchProductDTO> mbtiProduct(String dept2no, String pmbti) {
+		List<MatchProductDTO> product = mMapper.mbtiProduct(dept2no, pmbti); 
 		return product;
 	}
 
@@ -62,9 +65,16 @@ public class MatchServiceImpl implements MatchService{
 
 	// mbti 카테고리
 	@Override
-	public List<MBTIDTO> mbtiList() {
+	public Map<String, String> cateMap() {
 
-		return cMapper.mbtiCateListAll();
+		List<CategoryDTO> list = cMapper.cateListAll("10");
+		Map<String, String> map = new HashMap<>();
+		
+		for(int i=0; i<list.size(); i++) {
+			map.put(list.get(i).getDept2no(), list.get(i).getDept2name());
+		}
+		
+		return map;
 	}
 	
 	@Override

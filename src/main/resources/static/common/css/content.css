@@ -5771,7 +5771,7 @@
 
 .product_wrap .product_list .over button:hover {
   border-radius: 28px;
-  -webkit-box-shadow: inset 0px 0px 35px rgba(0, 131, 188, 0.3);
+  -webkit-box-shadow: inset 0px 0px 35px #f77694;
 }
 
 .product_wrap .product_list li:hover>a+.over {

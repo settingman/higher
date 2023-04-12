@@ -12,10 +12,18 @@
 		WHERE stype=#{stype}
 	</select>
 	
+	<!-- 회원 피부 mbti 결과 저장 -->
 	<update id="updateMBTI">
 		UPDATE member
 		SET mbti=#{mbti}, mbti_scores=#{mbti_scores}
 		WHERE mid=#{mid}
+	</update>
+	
+	<!-- 포인트 지급 -->
+	<update id="updatePoint">
+		UPDATE member
+		SET mmileage = mmileage + 2000
+		WHERE mid = #{mid}
 	</update>
 
 </mapper>

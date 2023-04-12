@@ -13,21 +13,25 @@
 		<result property="iloc" column="iloc"/>
 		<result property="pprice" column="pprice"/>
 		<result property="bname" column="bname"/>		
+		<result property="rates" column="rates"/>		
 	</resultMap>
 
 	<select id="mbtiProduct" resultMap="mbtiMap">
-	select pi.pcode, pi.pname, pi.dept1no, pi.dept2no, pi.pmbti, pi.iloc, pi.pprice, pi.bname
+	select pi.pcode, pi.pname, pi.dept1no, pi.dept2no, pi.pmbti, pi.iloc, pi.pprice, pi.bname, pi.rates
 	from(
-	    select p.pcode, p.pname, p.dept1no,p.dept2no,p.pmbti, i.iloc, p.pprice, p.bno, p.bname,
+	    select p.pcode, p.pname, p.dept1no,p.dept2no,p.pmbti, i.iloc, p.pprice, p.bno, p.bname, p.rates,
 	          row_number() over
 	          (partition by p.pcode order by i.iloc desc) as rn 
-	    from img i right join (select pcode, pname, dept1no, dept2no, pprice, pd.bno, bname, pmbti from product pd join brand b on pd.bno=b.bno) p on p.pcode=i.pcode
+	    from img i right join (select pcode, pname, dept1no, dept2no, pprice, pd.bno, bname, pmbti, rates from product pd join brand b on pd.bno=b.bno) p on p.pcode=i.pcode
 	    where i.itype='thumb' 
+	    		<if test="!dept2no.equals('') and dept2no!=null">
+	    		and p.dept2no=#{dept2no}
+	    		</if>
 	    		<if test="!pmbti.equals('') and pmbti!=null">
 	    		and p.pmbti=#{pmbti}
 	    		</if>
 	    ) pi right join product p on pi.pcode = p.pcode
-	    where pi.rn =1 and pi.pmbti is not null and pi.dept1no = 10
+	    where pi.rn =1 and pi.pmbti is not null and pi.dept1no = 10 <if test="!dept2no.equals('') and dept2no!=null">and p.dept2no=#{dept2no}</if>
 	</select>
 	
 	<select id="getMbtiInfo" resultType="com.hyundai.higher.domain.match.MatchMbtiDTO">

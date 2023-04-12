@@ -1678,12 +1678,12 @@ html {
   top: 50px;
   left: 42%;
   z-index: 1;
-  margin-left: -112px; 
+  margin-left: -97px; 
   width: 400px;
   height: 40px;
   font-size: 27.7px;
   color: transparent;
-  background: url(/common/image/h-logo-flat.png) no-repeat 0 0;
+  background: url(/common/image/hbeauty-logo.png) no-repeat 0 0;
   background-size: contain;
   cursor: pointer;
 }
@@ -2156,7 +2156,7 @@ html {
 }
 
 #header .gnb_nav nav ul.left>li:first-child {
-  min-width: 135px;
+  min-width: 85px;
   text-align: left;
 }
 
@@ -2531,7 +2531,7 @@ html {
 /* HOT 아이템 */
 #header .gnb_nav nav ul.left>li:first-child .sub_contain {
   left: -25px;
-  width: 500px;
+  width: 950px;
 }
 
 #header .gnb_nav nav ul.left>li:first-child .sub_contain:after,

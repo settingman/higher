@@ -10,4 +10,7 @@ public interface SkinMBTIService {
 	// 피부타입 저장
 	public void updateMBTI(String mid, String mbti, String mbti_scores);
 	
+	// 포인트 지급
+	public void addPoint(String mid);
+	
 }

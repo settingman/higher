@@ -26,4 +26,13 @@ public class SkinMBTIServiceImpl implements SkinMBTIService {
 		mapper.updateMBTI(mid, mbti, mbti_scores);
 	}
 
+	// 포인트 지급
+	@Override
+	public void addPoint(String mid) {
+		
+		mapper.updatePoint(mid);
+	}
+	
+	
+
 }
