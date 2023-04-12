@@ -151,5 +151,5 @@ function CommaFormat(x) {
 
 
 function goDetail(pcode) {
-	window.location.href = "/similarCos/detail?pcode=" + pcode;
+	window.location.href = "/match/detail?pcode=" + pcode;
 }

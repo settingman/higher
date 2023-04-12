@@ -40,49 +40,22 @@
         <ol>
           <li><a href="javascript:void(0);" onclick="location.href='/'"><i>HOME</i></a></li>
           <li class="kor">
-            <a href=""><i>피부 타입</i></a>
+            <a href=""><i>매칭 화장품</i></a>
             <ul class="h_link_sub">
               <li class="on kor">
                 <a href="javascript:void(0)" onclick="location.href='/product/list.do?cate2=1130'">
                   병원판매화장품</a>
               </li>
-              <li>
-                <a href="javascript:void(0)" onclick="location.href='/product/list.do?cate2=1004'">
-                  FACE</a>
-              </li>
-              <li>
-                <a href="javascript:void(0)" onclick="location.href='/product/list.do?cate2=1033'">
-                  BODY</a>
-              </li>
-              <li>
-                <a href="javascript:void(0)" onclick="location.href='/product/list.do?cate2=1009'">
-                  SUN CARE</a>
-              </li>
             </ul>
           </li>
-          <li class="kor">
-            <a href=""><i>MBTI별</i></a>
+          <li class="current kor">
+            <a href="">
+            	<i th:text="${mbti=='' ? '전체보기' : mbti}"></i>
+            </a>
             <ul class="h_link_sub">
               <li class="on kor">
                 <a href="javascript:void(0)" onclick="location.href='/product/list.do?cate2=1130'">
                   MBTI별</a>
-              </li>
-            </ul>
-          </li>
-          <li class="current kor">
-            <a href=""><i>전체</i></a>
-            <ul class="h_link_sub">
-              <li class="on kor">
-                <a href="javascript:void(0);" onclick="location.href='/product/list.do?cate2=1130'">전체보기</a>
-              </li>
-              <li class="kor">
-                <a href="javascript:void(0);" onclick="location.href='/product/list.do?cate3=1131'">스킨케어</a>
-              </li>
-              <li class="kor">
-                <a href="javascript:void(0);" onclick="location.href='/product/list.do?cate3=1132'">바디케어</a>
-              </li>
-              <li class="kor">
-                <a href="javascript:void(0);" onclick="location.href='/product/list.do?cate3=1133'">헤어케어</a>
               </li>
             </ul>
           </li>

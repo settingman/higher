@@ -26,6 +26,7 @@ public class ProductDTO {
 	private String bname;
 	private int dept1no;
 	private int dept2no;
+	private String dept2name;
 	
 	private List<ImgDTO> thumbImgList;
 	
@@ -39,5 +40,5 @@ public class ProductDTO {
 	private String pingredient;
 	
 	private String pmbti;
-	
+	private double rates;
 }

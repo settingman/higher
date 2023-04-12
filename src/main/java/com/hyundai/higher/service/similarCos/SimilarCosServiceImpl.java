@@ -54,18 +54,19 @@ public class SimilarCosServiceImpl implements SimilarCosService {
 		
 		// 유사 성분 제품 리스트
 		List<SimilarCosDTO> similarCostList =  mapper.cntList(pcode, dept1no, dept2no, list);
-		
-		log.info("list : " + similarCostList);
+		List<SimilarCosDTO> similarCostList2 = new ArrayList<>();
 		
 		// 성분 유사도 계산
 		for(SimilarCosDTO s : similarCostList) {
 			double cnt = s.getTotal();
 			int similarPercent = (int)(cnt / len * 100);
-			s.setPercent(similarPercent);
+			if(similarPercent >= 40) {
+				s.setPercent(similarPercent);
+				similarCostList2.add(s);
+			}
 		}
 		
-		
-		return similarCostList;
+		return similarCostList2;
 	}
 	
 	// 상품명 검색 조회(AJAX)

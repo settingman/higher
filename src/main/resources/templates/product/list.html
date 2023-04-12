@@ -26,9 +26,10 @@ button.detailview {
 	opacity: 0.85;
 }
 </style>
+
   </head>
 <body>
-  <div id="wrap" class="right_type" data-mbr-join-ym="" data-user-level="">
+  <div id="wrap">
     <nav id="skip_navi">
       <a href="#contents">본문 바로가기</a>
       <a href="#menu">메뉴 바로가기</a>
@@ -43,7 +44,11 @@ button.detailview {
         <ol>
           <li><a href="javascript:void(0);" onclick="location.href='/'"><i>HOME</i></a></li>
           <li class="kor">
-            <a th:href="'/product/list?dept1='+${dept1no}"><i>[[${dept1name}]]</i></a>
+            <a href="">
+            	<i th:if="${#strings.equals(dept1no, '10')}">FACE</i>
+            	<i th:if="${#strings.equals(dept1no, '20')}">MAKE UP</i>
+            	<i th:if="${#strings.equals(dept1no, '30')}">BODY/HAIR</i>
+            </a>
             <ul class="h_link_sub">
               <li class="kor">
                 <a href="javascript:void(0)" onclick="location.href='/product/list.do?cate2=1130'">
@@ -63,8 +68,8 @@ button.detailview {
               </li>
             </ul>
           </li>
-          <li class="kor">
-            <a href=""><i>제품 라인별</i></a>
+          <li class="current kor">
+            <a href=""><i th:text="${dept2no == '' ? '전체보기' : dept2name}">중분류</i></a>
             <ul class="h_link_sub">
               <li class="kor">
                 <a href="javascript:void(0)" onclick="location.href='/product/list.do?cate2=1004'">
@@ -80,44 +85,7 @@ button.detailview {
               </li>
             </ul>
           </li>
-          <li class="current kor">
-            <a href=""><i>전체</i></a>
-            <ul class="h_link_sub">
-              <li class="on kor">
-                <a href="javascript:void(0);" onclick="location.href='/product/list.do?cate2=1008'">전체보기</a>
-              </li>
-              <li class="kor">
-                <a href="javascript:void(0);" onclick="location.href='/product/list.do?cate3=1018'">에빠끌라</a>
-              </li>
-              <li class="kor">
-                <a href="javascript:void(0);" onclick="location.href='/product/list.do?cate3=1021'">시카플라스트</a>
-              </li>
-              <li class="kor">
-                <a href="javascript:void(0);" onclick="location.href='/product/list.do?cate3=1010'">똘러리앙</a>
-              </li>
-              <li class="kor">
-                <a href="javascript:void(0);" onclick="location.href='/product/list.do?cate3=1024'">히알루 B5</a>
-              </li>
-              <li class="kor">
-                <a href="javascript:void(0);" onclick="location.href='/product/list.do?cate3=1107'">유비데아</a>
-              </li>
-              <li class="kor">
-                <a href="javascript:void(0);" onclick="location.href='/product/list.do?cate3=1114'">퓨어비타민C10</a>
-              </li>
-              <li class="kor">
-                <a href="javascript:void(0);" onclick="location.href='/product/list.do?cate3=1025'">세로징크</a>
-              </li>
-              <li class="kor">
-                <a href="javascript:void(0);" onclick="location.href='/product/list.do?cate3=1022'">오 떼르말</a>
-              </li>
-              <li class="kor">
-                <a href="javascript:void(0);" onclick="location.href='/product/list.do?cate3=1023'">미셀라 클렌징 워터</a>
-              </li>
-              <li class="kor">
-                <a href="javascript:void(0);" onclick="location.href='/product/list.do?cate3=1139'">나이아신아마이드</a>
-              </li>
-            </ul>
-          </li>
+         
         </ol>
       </nav>
     </section>
@@ -180,21 +148,9 @@ button.detailview {
           <h1 th:if="${dept2no == ''}">전체</h1>
           <h1 th:if="${dept2no != ''}">[[${dept2name}]]</h1>
           <div class="sideconts">
-            <!-- 19.02.20 개릴라 이벤트 배너 테스트 -->
-            <!-- //19.02.20 개릴라 이벤트 배너 테스트 -->
-            <!-- 2019.04.08  에빠끌라  시작 -->
-            <!-- 2019.04.08  에빠끌라  끝 -->
+
             <section class="product_wrap">
-              <div class="prd_term">
-                <span class="prd_cnt">전체 <em id="totalCount">48</em>개</span>
-                <span class="sort_list">
-                  <a href="javascript:sortEvent('1');">판매량 순</a>
-                  <a href="javascript:sortEvent('2');" class="on">최근 등록 순 </a>
-                  <a href="javascript:sortEvent('3');">리뷰 많은 순</a>
-                  <a href="javascript:sortEvent('4');">낮은 가격 순 </a>
-                  <a href="javascript:sortEvent('5');">높은 가격 순</a>
-                </span>
-              </div>
+              
               <!-- 신상, 단독구성 -->
               <ul class="product_list ea03" id="listUl">
                 <li class="" th:each="prod : ${productList}"> 
@@ -205,9 +161,8 @@ button.detailview {
                     	<span class="tit">[[${prod.pname}]]</span> 
                     	<span class="rating">
                       		<div class="star-rating small"> 
-                      			<span class="c00"><em class="hide">벌점 0개</em></span> 
+                      			<span th:class="'c'+${#numbers.formatInteger(prod.rates*10, 2)}"><em class="hide">벌점</em></span> 
                       		</div>
-                      		<em>(511)</em>
                     	</span> 
                     	<span class="price">
                     		<span class="after">[[${#numbers.formatInteger(prod.pprice, 3, 'COMMA')}]]<em>원</em></span> 
@@ -231,62 +186,7 @@ button.detailview {
     </section>
     <!-- right 제품구매 플로팅 -->
     <section class="flot_right_warp" th:insert="~{include/float}"></section>
-
-
-    <!-- <section class="flot_right_warp">
-      <div class="flot_price_btn">
-        <div class="flotmem"><a href="https://www.larocheposay.co.kr/member/login.do">로그인</a></div>
-        <div class="flotcart"><a href="https://www.larocheposay.co.kr/cart/cart.do"><span class="count">0</span><span
-              class="hide">장바구니 - 바로가기</span></a></div>
-        <div id="flotprd" class="swiper-container">
-          <div class="swiper-wrapper"
-            style="width: 336px; height: 79px; transform: translate3d(-56px, 0px, 0px); transition-duration: 0s;">
-            <div class="swiper-slide swiper-slide-duplicate" style="width: 56px; height: 79px;">
-              <a href="https://www.larocheposay.co.kr/product/view/3736.do">
-                <img src="https://www.larocheposay.co.kr/upload/product/main/2022/12/20221220_1654024_083_100x100.png"
-                  alt="H 아이소바이옴 울트라 수딩 클렌저 [병원판매 화장품]">
-              </a>
-            </div>
-            <div class="swiper-slide swiper-slide-visible swiper-slide-active" style="width: 56px; height: 79px;">
-              <a href="https://www.larocheposay.co.kr/product/view/3860.do">
-                <img src="https://www.larocheposay.co.kr/upload/product/main/2021/05/20230130_1348040_707_100x100.png"
-                  alt="듀오[+] 에센스">
-              </a>
-            </div>
-            <div class="swiper-slide" style="width: 56px; height: 79px;">
-              <a href="https://www.larocheposay.co.kr/product/view/1111.do">
-                <img src="https://www.larocheposay.co.kr/upload/product/main/2021/10/20211019_1508052_441_100x100.png"
-                  alt="H 리밸런싱 하이드레이션 로션">
-              </a>
-            </div>
-            <div class="swiper-slide" style="width: 56px; height: 79px;">
-              <a href="https://www.larocheposay.co.kr/product/view/2815.do">
-                <img src="https://www.larocheposay.co.kr/upload/product/main/2021/11/20211125_1032016_004_100x100.png"
-                  alt="밤 AP+M 바디 크림 [병원판매 화장품]">
-              </a>
-            </div>
-            <div class="swiper-slide" style="width: 56px; height: 79px;">
-              <a href="https://www.larocheposay.co.kr/product/view/3736.do">
-                <img src="https://www.larocheposay.co.kr/upload/product/main/2022/12/20221220_1654024_083_100x100.png"
-                  alt="H 아이소바이옴 울트라 수딩 클렌저 [병원판매 화장품]">
-              </a>
-            </div>
-            <div class="swiper-slide swiper-slide-duplicate" style="width: 56px; height: 79px;">
-              <a href="https://www.larocheposay.co.kr/product/view/3860.do">
-                <img src="https://www.larocheposay.co.kr/upload/product/main/2021/05/20230130_1348040_707_100x100.png"
-                  alt="듀오[+] 에센스">
-              </a>
-            </div>
-          </div>
-          <button type="button" class="flotprd-prev" style="z-index:1000;"><span class="hide">이전</span></button>
-          <button type="button" class="flotprd-next" style="z-index:1000;"><span class="hide">다음</span></button>
-        </div> -->
-        <!-- //swiper-container -->
-        <!-- <button type="button" class="btn_top" title="상단 이동">top</button>
-      </div>
-    </section> -->
-    <!-- //right 제품구매 플로팅 -->
-    
+    </div>
     <!-- footer -->
 	<div class="include-footer" th:insert="~{include/footer}"></div>
 	<!-- /footer -->
