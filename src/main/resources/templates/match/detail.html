@@ -344,7 +344,7 @@ $(function() {
 							<div class="left">
 								<div class="detail_slider">
 									<div class="view">
-										<ul>
+										<ul style="margin-top: 100px;">
 											<li
 												th:style="'background-image:url('+ ${product.thumbImgList[0].iloc} +'_600.jpg);'">1</li>
 										</ul>
@@ -419,7 +419,7 @@ $(function() {
 										<div id="iTit">주요성분</div>
 										<div>
 											<ul>
-												<li th:each="i : ${mainIngredient}"><img
+												<li th:if="${!#strings.equals(i, null)}" th:each="i : ${mainIngredient}"><img
 													src="/similarCos/img/drop.png">[[${i}]]</li>
 											</ul>
 										</div>
@@ -450,7 +450,7 @@ $(function() {
           <div class="addItem_slider" th:if="${!#lists.isEmpty(similarCos)}">
             <button type="button" class="ctrl_prev">prev</button>
             <ul class="view">
-              <li th:each="sProd, sStat : ${similarCos}" th:if="${sProd.iloc != 'NULL'}">
+              <li th:each="sProd, sStat : ${similarCos}">
                 <div>
                   <input type="hidden" id="pcode" th:value="${sProd.pcode}">
                   <input type="hidden" id="optname" th:value="${sProd.pname}">
@@ -459,6 +459,7 @@ $(function() {
                   <a th:href="'/product/detail?code='+${sProd.pcode}">
                     <span class="photo">
                     	<img th:if="${sProd.iloc != 'NULL'}" th:src="${sProd.iloc}+'_600.jpg'">
+                    	<img th:if="${sProd.iloc == 'NULL'}" src="https://image.thehyundai.com/hdmall/images/pd/no_image_480x480.jpg">
                     </span>
                     <span class="hash">[[${sProd.bname}]]</span>
                     <span class="tit"><strong style="overflow: hidden; height: 19px; white-space: break-spaces;">[[${sProd.pname}]]</strong></span>
