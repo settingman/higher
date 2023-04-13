@@ -1370,14 +1370,14 @@ button.btn_file_add {
 .star-rating.small {
   width: 84px;
   height: 15px;
-  background: url('https://www.larocheposay.co.kr/images/common/star_rating.png') no-repeat 0 -15px;
+  background: url('/common/image/star.png') no-repeat 0 -15px;
   background-size: 84px;
 }
 
 .star-rating.small>span {
   width: 84px;
   height: 15px;
-  background: url('https://www.larocheposay.co.kr/images/common/star_rating.png') no-repeat 0 0;
+  background: url('/common/image/star.png') no-repeat 0 0;
   background-size: 84px;
 }
 

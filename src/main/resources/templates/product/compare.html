@@ -14,7 +14,24 @@
 		footer#footer {
     background: white;
     border-top: 1px solid black !important;
-	}
+		}
+
+		.chart {
+	float: left;
+	width: 200px;
+	height: 200px;
+	text-align: center;
+}
+
+.chart span.title {
+	position: relative;
+	display: block;
+	width: 100%;
+	text-align: center;
+	top: 115px;
+	font-size: 20px;
+  font-family: 'notokr-medium';
+}
 	</style>
 	<!-- 상품 비교 -->
   <link href="https://www.card-gorilla.com/css/app.efea5715.css" rel="preload" as="style">
@@ -534,60 +551,25 @@
 					</article>
 				
 					<article data-v-4ade122e="" data-v-35734774="" class="cd_con card_benefit">
-					<h3 data-v-4ade122e="" data-v-35734774="">20가지 주의성분</h3>
+					<h3 data-v-4ade122e="" data-v-35734774="">피부 MBTI 매칭도</h3>
 					<div data-v-4ade122e="" data-v-35734774="" class="inner">
 				
 						<div data-v-4ade122e="" data-v-35734774="" class="card_01">
-							<div data-v-4ade122e="" data-v-35734774="">
-							<dl data-v-4ade122e="" data-v-35734774="">
-							<dt data-v-4ade122e="" data-v-35734774=""></dt>
-							<dd data-v-4ade122e="" data-v-35734774=""></dd>		
-							<!-- <dt data-v-4ade122e="" data-v-35734774="">공과금</dt>
-							<dd data-v-4ade122e="" data-v-35734774="">[생활업종]아파트관리비 10% 할인</dd> -->
-							</dl>
-							<dl data-v-4ade122e="" data-v-35734774="">
-							<dt data-v-4ade122e="" data-v-35734774=""></dt>
-							<dd data-v-4ade122e="" data-v-35734774=""></dd>
-							</dl>
-							<dl data-v-4ade122e="" data-v-35734774="">
-							<dt data-v-4ade122e="" data-v-35734774=""></dt>
-							<dd data-v-4ade122e="" data-v-35734774=""></dd>
-							</dl>
+							<div id="resultchart1" class="chart mychart1" data-percent="">
+								<span class="title" style="top: 119px;"></span>
 							</div>
 						</div>
 				
 						<div data-v-4ade122e="" data-v-35734774="" class="card_02">
-							<div data-v-4ade122e="" data-v-35734774="">
-							<dl data-v-4ade122e="" data-v-35734774="">
-							<dt data-v-4ade122e="" data-v-35734774=""></dt>
-							<dd data-v-4ade122e="" data-v-35734774=""></dd>
-							</dl>
-							<dl data-v-4ade122e="" data-v-35734774="">
-							<dt data-v-4ade122e="" data-v-35734774=""></dt>
-							<dd data-v-4ade122e="" data-v-35734774=""></dd>
-							</dl>
-							<dl data-v-4ade122e="" data-v-35734774="">
-							<dt data-v-4ade122e="" data-v-35734774=""></dt>
-							<dd data-v-4ade122e="" data-v-35734774=""></dd>
-							</dl>
+							<div id="resultchart2" class="chart mychart2" data-percent="">
+								<span class="title" style="top: 119px;"></span>
 							</div>
 						</div>
 				
 						<div data-v-4ade122e="" data-v-35734774="" class="card_03">
-							<div data-v-4ade122e="" data-v-35734774="">
-								<dl data-v-4ade122e="" data-v-35734774="">
-								<dt data-v-4ade122e="" data-v-35734774=""></dt>
-								<dd data-v-4ade122e="" data-v-35734774=""></dd>
-								</dl>
-								<dl data-v-4ade122e="" data-v-35734774="">
-								<dt data-v-4ade122e="" data-v-35734774=""></dt>
-								<dd data-v-4ade122e="" data-v-35734774=""></dd>
-								</dl>
-								<dl data-v-4ade122e="" data-v-35734774="">
-								<dt data-v-4ade122e="" data-v-35734774=""></dt>
-								<dd data-v-4ade122e="" data-v-35734774=""></dd>
-								</dl>
-								</div>
+							<div id="resultchart3" class="chart mychart3" data-percent="">
+								<span class="title" style="top: 119px;"></span>
+							</div>
 						</div>
 					</div>
 					</article>
@@ -681,12 +663,9 @@ $(function(){
 	var name= document.querySelector(`.${slidenum} .price-info.single span`).textContent;
 	var brand= document.querySelector(`.${slidenum} .title.ellipsis`).textContent;
 	// var rates = document.querySelector(`.${slidenum} .score`).textContent.trim().replace(/^별점\s*/, '');
-	// var review = document.querySelector(`.${slidenum} .comment`).textContent.trim().replace(/^댓글\s*/, '');
 	const rates = document.querySelector(`.${slidenum} .score`).value;
 	console.log(rates+"평저멈ㅁㅁㅁ");
 	
-	// const review = document.querySelector(`.${slidenum} .comment`).value;
-
 	const price = document.querySelector(`.${slidenum} .price`).value;
 	const pcode = document.querySelector(`.${slidenum} .pcode`).value;
 	const pVolume = document.querySelector(`.${slidenum} .pVolume`).value;
@@ -741,6 +720,9 @@ $(function(){
 		cautionEl.innerHTML = "";
 		cautionEl.appendChild(ulEl);
 		
+		console.log("여기서 ajax");
+		getMatch(pcode , 1);
+		
 
 	}else if ($(".card_choice .card_02").find(".card_name").text() == "") { //카드 섹션 1 채워져있고 2 비워져있을 때 2에 삽입
 
@@ -783,6 +765,8 @@ $(function(){
 
 		cautionEl.innerHTML = "";
 		cautionEl.appendChild(ulEl);
+		getMatch(pcode , 2);
+
 
 	}else if ($(".card_choice .card_02").find(".card_name").text() != "") { //카드 섹션 2 비워져있을 때 3에 삽입
 
@@ -825,6 +809,9 @@ $(function(){
 
 		cautionEl.innerHTML = "";
 		cautionEl.appendChild(ulEl);
+
+		getMatch(pcode , 3);
+
 	}else {
 		alert('최대 3개의 상품까지 비교할 수 있습니다.');
 	}
@@ -930,7 +917,7 @@ $(function(){
 		for(let i=0;i<arr.length;i++) {
 			console.log('상품 출력 중 ' + i);
 			const slide = document.querySelector(`.slide${i}`);					
-	    const [pcode, pname, brand, price, imglink, rate, review, pVolume, ptype, pingredient,pOption] = arr[i];
+	    const [pcode, pname, brand, price, imglink, rate, pVolume, ptype, pingredient,pOption] = arr[i];
 			console.log("img: "+ imglink);
 	    slide.innerHTML = `
       <div class="prod-unit" style="padding:0px;height:100%;">
@@ -942,7 +929,6 @@ $(function(){
 					<input type="hidden" class="pingredient" value="${pingredient}">
 					<input type="hidden" class="pOption" value="${pOption}">
 					<input type="hidden" class="score" value="${rate}">
-					<input type="hidden" class="comment" value="${review}">
 
           <a href="/product/detail?code=${pcode}";" style="display: inline-block; position: relative;"> 
             <img src=${imglink} alt="${pname}" onerror="noImage(this, 'https://image.thehyundai.com/hdmall/images/pd/no_image_480x480.jpg')">
@@ -1269,7 +1255,109 @@ $(function(){
 		}
 	});
 </script>
+<script>
+	function getMatch(pcode, cardnum) {
+		console.log("getmatch 작동");
+		var requestData = JSON.stringify({
+                    pcode: pcode,
+				});
 
+				$.ajax({
+             url: '/restMatch/getMatch',
+             type: 'post',
+             data: requestData,
+             contentType: "application/json",
+             success: function(result) {
+							console.log("매치 success");
+							console.log("result       =   "+result);
+							document.querySelector(`.mychart${cardnum}`).setAttribute('data-percent', result);
 
+							const mychart = document.querySelector(`.mychart${cardnum}`);
+
+if(result != null && mychart != null  ){
+
+const percent = mychart.dataset.percent;
+console.log(percent + "-------------------------");
+
+if(percent <= 20){
+	console.log("퍼센트 20이하");
+	$(`#resultchart${cardnum}`).easyPieChart({
+	barColor: '#fe3c69',
+	trackColor : '#edebeb',
+	scaleColor: false,
+	lineWidth: 25,
+	size: 200,
+	animate: 1000,
+	lineCap: 'round'
+});
+document.querySelector(`.mychart${cardnum} .title`).innerHTML = percent+"<br>글쎄요";
+
+}else if (percent<=40) {
+
+	$(`#resultchart${cardnum}`).easyPieChart({
+	barColor: '#f77694',
+	trackColor : '#edebeb',
+	scaleColor: false,
+	lineWidth: 25,
+	size: 200,
+	animate: 1000,
+	lineCap: 'round'
+});
+document.querySelector(`.mychart${cardnum} .title`).innerHTML = percent+"<br>그냥 그래요";
+
+}else if (percent<=60) {
+
+	$(`#resultchart${cardnum}`).easyPieChart({
+	barColor: '#DCFBF9',
+	trackColor : '#edebeb',
+	scaleColor: false,
+	lineWidth: 25,
+	size: 200,
+	animate: 1000,
+	lineCap: 'round'
+});
+document.querySelector(`.mychart${cardnum} .title`).innerHTML = percent+"<br>보통이에요";
+
+}else if (percent<=80) {
+
+	$(`#resultchart${cardnum}`).easyPieChart({
+	barColor: '#CBE6FF',
+	trackColor : '#edebeb',
+	scaleColor: false,
+	lineWidth: 25,
+	size: 200,
+	animate: 1000,
+	lineCap: 'round'
+});
+document.querySelector(`.mychart${cardnum} .title`).innerHTML = percent+"<br>잘 맞는 편!";
+
+}else if (percent<=100){
+
+	$(`#resultchart${cardnum}`).easyPieChart({
+	barColor: '#7796fc',
+	trackColor : '#edebeb',
+	scaleColor: false,
+	lineWidth: 25,
+	size: 200,
+	animate: 1000,
+	lineCap: 'round'
+});
+document.querySelector(`.mychart${cardnum} .title`).innerHTML = percent+"<br>찰떡궁합";
+
+}
+}
+
+						},
+						error: function(request, status, error) {
+                 console.log(error);
+             }
+         });
+
+}
+
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/easy-pie-chart/2.1.6/jquery.easypiechart.min.js"></script>
 </body>
 </html>

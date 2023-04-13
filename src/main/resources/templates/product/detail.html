@@ -521,9 +521,6 @@ $(function(){
 
       //const rate = document.querySelector('.c00 em').textContent; //수정!!!
       const rate = document.querySelector('.star-rating.bic span').className;
-
-      const review = document.querySelector('.star em a').textContent;
-      console.log("review: "+review);
       
       const pVolume = document.querySelector(".table_wrap td:nth-of-type(1)").textContent.trim();
       const ptype = document.querySelector('.table_wrap table tbody tr:nth-child(2) td').textContent.trim();
@@ -626,7 +623,7 @@ $(function(){
         $("#survey_pop").css("display", "none");
 
        });      } else {
-        arr.push([pcode, pname, brand, price, imglink, rate, review, pVolume, ptype, pingredient,pOption]); // 상품 정보 저장
+        arr.push([pcode, pname, brand, price, imglink, rate, pVolume, ptype, pingredient,pOption]); // 상품 정보 저장
         localStorage.setItem("arr", JSON.stringify(arr));
         const pop = document.getElementById('survey_pop');
         pop.innerHTML= `
