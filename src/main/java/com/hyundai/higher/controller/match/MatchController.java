@@ -138,8 +138,9 @@ public class MatchController {
 		log.info("ffffffff"+mService.getEffect(ingredients[9], mbtiList[0]));
 		//if(mService.getEffect(ingredients[9], mbtiList[0]) != null) {
 		// 첫번째 mbti 점수 계산. 총 40점. good 4점, normal 2점, bad 1점
+		log.info(mbtiList[0]);
 		for (int i = 0; i < ingredients.length; i++) {
-			log.info("============================");
+			log.info("============================"+ingredients[i]);
 
 			String result = mService.getEffect(ingredients[i], mbtiList[0]);
 			log.info("effect " + result);
@@ -156,10 +157,21 @@ public class MatchController {
 		}
 		log.info(score + "-----------------------------------");
 		if(score != 0) {
+			log.info("두번째 진입"+mbtiList[1]);
+			
 		
 			// 두번째 mbti 점수 계산. 총 30점. good 3점, normal 2점, bad 1점
 		for (int i = 0; i < ingredients.length; i++) {
+			log.info("============================"+ingredients[i]);
+
 			String result = mService.getEffect(ingredients[i], mbtiList[1]);
+			log.info("effect " + result);
+
+			if(result == null) {
+				score =0;
+				break;
+			}
+			
 			if (result.equals("GOOD")) {
 				score += 3;
 			} else if (result.equals("NORMAL")) {
@@ -167,9 +179,20 @@ public class MatchController {
 			}
 		}
 
+		log.info("세번째 진입"+mbtiList[2]);
+
 		// 세번째 mbti 점수 계산. 총 20점. good 2점, normal 1점, bad 0점
 		for (int i = 0; i < ingredients.length; i++) {
 			String result = mService.getEffect(ingredients[i], mbtiList[2]);
+			log.info("============================"+ingredients[i] + "----------");
+			log.info("effect " + result);
+
+
+			if(result == null) {
+				score =0;
+				break;
+			}
+			
 			if (result.equals("GOOD")) {
 				score += 2;
 			} else if (result.equals("NORMAL")) {
@@ -177,9 +200,19 @@ public class MatchController {
 			}
 		}
 
+		log.info("네번째 진입"+mbtiList[3] + "  점수  "+ score);
+
 		// 네번째 mbti 점수 계산. 총 10점. good 1점, normal 0점, bad 0점
 		for (int i = 0; i < ingredients.length; i++) {
 			String result = mService.getEffect(ingredients[i], mbtiList[3]);
+			log.info("============================"+ingredients[i]);
+			log.info("effect " + result);
+
+			if(result == null) {
+				score =0;
+				break;
+			}
+			
 			if (result.equals("GOOD")) {
 				score += 1;
 			}
