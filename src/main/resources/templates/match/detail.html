@@ -359,7 +359,7 @@ $(function() {
 									<input type="hidden" id="ppvolume" th:value="${product.productDTO.pvolume}">
 									<input type="hidden" id="pptype" th:value="${product.productDTO.ptype}">
 									<input type="hidden" id="poptname" th:if="${!#lists.isEmpty(product.optList)}" th:value="${product.optList[0].optname}">
-									<input type="hidden" id="poptname" th:unless="${!#lists.isEmpty(product.optList)}" th:value="${product.pname}">
+									<input type="hidden" id="poptname" th:unless="${!#lists.isEmpty(product.optList)}" th:value="${product.productDTO.pname}">
 									<p class="brand">[[${product.productDTO.bname}]]</p>
 									<span class="tit" style="margin-top: 20px;"> <strong
 										style="font-size: 30px;">[[${product.productDTO.pname}]]</strong>
