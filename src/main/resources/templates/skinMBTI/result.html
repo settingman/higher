@@ -9,7 +9,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <link rel="stylesheet" type="text/css" href="/skinMBTI/css/result.css">
-
 </head>
 
 <body>
@@ -89,7 +88,7 @@
 					<a href="#survey_pop" class='layer-pop' style="display: hidden;"></a>
 						<button type="button" class="btn_base" th:onclick="saveResult([[${mbti.stype}]]);">매칭 화장품 보러가기</button>
 						<button type="button" class="btn_base">
-							<a id="kakaotalk-sharing-btn" href="javascript:;"> 
+							<a id="kakaotalk-sharing-btn" href="javascript:;" onclick="kakaoShare();"> 
 							<img style="width: 25px; margin-right: 6px; margin-bottom: 3px;" src="https://developers.kakao.com/assets/img/about/logos/kakaotalksharing/kakaotalk_sharing_btn_small.png" alt="카카오톡 공유 보내기 버튼"
 							>카카오톡 공유하기
 							</a>
@@ -105,6 +104,7 @@
 		<input type="hidden" id="score2" th:value="${scores[1]}">
 		<input type="hidden" id="score3" th:value="${scores[2]}">
 		<input type="hidden" id="score4" th:value="${scores[3]}">
+		<input type="hidden" id="templateid" th:value="${mbti.templateid}">
 		<script src="/skinMBTI/js/result.js" charset="UTF-8"></script>
 
 		<section id="survey_pop" class="layerpop_warp" style="display: none;">
@@ -127,7 +127,7 @@
 				<button type="button" class="close close_pop">닫기</button>
 			</div>
 		</section>
-
+		<script src="/skinMBTI/js/share.js" type="text/javascript"></script>
 		<!-- footer -->
 		<div class="include-footer" th:insert="~{include/footer}"></div>
 		<!-- /footer -->
@@ -135,15 +135,13 @@
 </body>
 
 <script>
-
+function kakaoShare(){
+	
 	const mbti = $('.resultName').text();
 	
-	const templateId = 92199;
-	
+	const templateId = parseInt($('#templateid').val());
+
 	// mbti 에 따라서 templateID  넣어주기
-	
-	console.log('hi')
-	console.log('hi')
 
 	Kakao.init('2381807d426f20ffe89a57888738bcbb'); // 사용하려는 앱의 JavaScript 키 입력
 
@@ -155,6 +153,7 @@
 			description : '설명 영역입니다.',
 		},
 	});
+}
+	
 </script>
-
 </html>
