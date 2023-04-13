@@ -34,21 +34,21 @@ function calResult(){
   }
 
   if(resultScore[1] <= 7){
-    resultWords += 'S';
+    resultWords += 'R'; 
   }else{
-    resultWords += 'R';
+    resultWords += 'S';
   }
 
   if(resultScore[2] <= 7){
-    resultWords += 'P';
-  }else{
     resultWords += 'N';
+  }else{
+    resultWords += 'P';
   }
 
   if(resultScore[3] <= 7){
-    resultWords += 'W';
-  }else{
     resultWords += 'T';
+  }else{
+    resultWords += 'W';
   }
   
   return resultWords;

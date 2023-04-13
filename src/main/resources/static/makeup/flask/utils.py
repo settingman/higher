@@ -22,7 +22,7 @@ def apply_makeup(src: np.ndarray, is_stream: bool, feature: str, color: Tuple[in
     elif feature == 'blush':
         feature_landmarks = normalize_landmarks(ret_landmarks, height, width, cheeks)
         mask = blush_mask(src, feature_landmarks, color, 50)
-        output = cv2.addWeighted(src, 1.0, mask, 1, 1.0)
+        output = cv2.addWeighted(src, 1.0, mask, 1.0, 1.0)
     else:  # Defaults to blush for any other thing
         skin_mask = mask_skin(src)
         output = np.where(src * skin_mask >= 1, gamma_correction(src, gamma), src)
@@ -41,7 +41,7 @@ def apply_feature(src: np.ndarray, feature: str, landmarks: list, color: Tuple[i
         output = cv2.addWeighted(src, 1.0, mask, 1.0, 1.0)
     elif feature == 'blush':
         mask = blush_mask(src, landmarks, color, 50)
-        output = cv2.addWeighted(src, 1.0, mask, 1.0, 1.0)
+        output = cv2.addWeighted(src, 1.0, mask, 1.8, 1.0)
     else:  # Does not require any landmarks for skin masking -> Foundation
         skin_mask = mask_skin(src)
         output = np.where(src * skin_mask >= 1, gamma_correction(src, 1.75), src)
@@ -58,22 +58,19 @@ def lip_mask(src: np.ndarray, points: np.ndarray, color: Tuple[int, int, int]):
 
 
 def blush_mask(src: np.ndarray, points: np.ndarray, color: Tuple[int, int, int], radius: int):
-    # TODO: Make the effect more subtle
-    mask = np.zeros_like(src)  # Mask that will be used for the cheeks
+    mask = np.zeros_like(src)
     for point in points:
         mask = cv2.circle(mask, point, radius, color, cv2.FILLED)  # Blush => Color filled circle
         x, y = point[0] - radius, point[1] - radius  # Get the top-left of the mask
-        mask[y:y + 2 * radius, x:x + 2 * radius] = vignette(mask[y:y + 2 * radius, x:x + 2 * radius],
-                                                            10)  # Vignette on the mask
+        mask[y:y + 2 * radius, x:x + 2 * radius] = vignette(mask[y:y + 2 * radius, x:x + 2 * radius],10) 
+        # Vignette on the mask
+        
+        mask = vignette(mask, 120)
 
     return mask
 
 
 def mask_skin(src: np.ndarray):
-    """
-    Given a source image of a person (face image)
-    returns a mask that can be identified as the skin
-    """
     lower = np.array([0, 133, 77], dtype='uint8')  # The lower bound of skin color
     upper = np.array([255, 173, 127], dtype='uint8')  # Upper bound of skin color
     dst = cv2.cvtColor(src, cv2.COLOR_BGR2YCR_CB)  # Convert to YCR_CB

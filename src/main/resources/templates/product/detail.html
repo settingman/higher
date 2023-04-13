@@ -519,7 +519,9 @@ $(function(){
       const imglink = liElement.style.backgroundImage.slice(4, -1);
       console.log(imglink);
 
-      const rate = document.querySelector('.c00 em').textContent;
+      //const rate = document.querySelector('.c00 em').textContent; //수정!!!
+      const rate = document.querySelector('.star-rating.bic span').className;
+
       const review = document.querySelector('.star em a').textContent;
       console.log("review: "+review);
       
@@ -527,12 +529,6 @@ $(function(){
       const ptype = document.querySelector('.table_wrap table tbody tr:nth-child(2) td').textContent.trim();
       const pingredient = document.querySelector('.table_wrap table tbody tr:nth-child(7) td').textContent.trim();
 
-      //const pcode = document.querySelector('.prd-share-info strong').textContent;
-      // var brand = $('.prd-shop').find('.brand a').text();
-      // const price = document.querySelector('.dis-price').textContent.trim();
-      // const imglink = document.querySelector('.cloudzoom').src;
-      // const rate = document.querySelector('.prd-review-info span').textContent;
-      // const review = document.querySelector('.text-point4').textContent;
       var pOption = "";
       if (!document.querySelector('.option')) {
       pOption = pname;
@@ -769,7 +765,7 @@ $(function(){
         pop.innerHTML= `
 			<div class="layerpop blue" style="width: 460px;">
 				<div class="layerpop_head">
-					<h1 class="poptitle">비교함</h1>
+					<h1 class="poptitle">장바구니</h1>
 				</div>
 				<div class="layerpop_cont" style="height: 330px;">
 					<div class="save_cont">
