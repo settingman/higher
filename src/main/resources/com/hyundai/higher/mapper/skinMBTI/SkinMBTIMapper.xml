@@ -7,7 +7,7 @@
 	
 	<!-- 피부 타입별 정보 선택 -->
 	<select id="selectMBTI" resultType="com.hyundai.higher.domain.skinMBTI.SkinMBTIDTO">
-		SELECT stype, stitle, sexplain, spros, scons, ssolution, stag
+		SELECT stype, stitle, sexplain, spros, scons, ssolution, stag, templateid
 		FROM skinMBTI
 		WHERE stype=#{stype}
 	</select>

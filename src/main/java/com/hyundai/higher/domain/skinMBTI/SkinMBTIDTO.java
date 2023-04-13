@@ -12,4 +12,5 @@ public class SkinMBTIDTO {
 	private String scons;
 	private String ssolution;
 	private String stag;
+	private int templateid;
 }
