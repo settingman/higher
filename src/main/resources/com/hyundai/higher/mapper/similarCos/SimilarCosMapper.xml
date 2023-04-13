@@ -9,12 +9,10 @@
 	<select id="cntList" resultType="com.hyundai.higher.domain.similarCos.SimilarCosDTO">
 		SELECT c.pcode, total, pname, pprice, bno, bname, itype, iloc
 		FROM (
-			<![CDATA[
 			SELECT ROWNUM, pcode, total
 			FROM (
 			    SELECT PCODE, COUNT(*) AS TOTAL
 			    FROM (
-			]]>
 			    	<foreach collection="list" item="item" separator="UNION ALL">
 				        SELECT PCODE, CASE WHEN PINGREDIENT LIKE '%'||#{item}||'%' THEN 1 ELSE 0 END AS CNT
 				        FROM PRODUCT
@@ -43,7 +41,7 @@
 	
 	<!-- 검색 상품 목록 조회 -->
 	<select id="selectProdList" resultMap="productMap">
-		SELECT p.pcode, p.pname, p.pprice, p.bno, b.bname, dept1no, dept2no, itype, iloc, pvolume, ptype
+		SELECT p.pcode, p.pname, p.pprice, p.bno, b.bname, dept1no, dept2no, itype, iloc, pvolume, ptype, rates
 		FROM (SELECT * FROM product WHERE pname LIKE '%'||#{keyword}||'%' AND dept1no=10) p 
 		LEFT JOIN brand b ON p.bno=b.bno
 		LEFT JOIN (SELECT pcode, itype, iloc FROM IMG WHERE itype='thumb') i ON p.pcode=i.pcode
@@ -60,6 +58,7 @@
 		<result property="dept1no" column="dept1no" />
 		<result property="dept2no" column="dept2no" />
 		<result property="pvolume" column="pvolume" />
+		<result property="rates" column="rates" />
 		<collection property="thumbImgList" resultMap="imgMap" />
 	</resultMap>
 
