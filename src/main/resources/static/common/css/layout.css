@@ -2531,7 +2531,7 @@ html {
 /* HOT 아이템 */
 #header .gnb_nav nav ul.left>li:first-child .sub_contain {
   left: -25px;
-  width: 950px;
+  width: 640px;
 }
 
 #header .gnb_nav nav ul.left>li:first-child .sub_contain:after,

@@ -1259,7 +1259,7 @@
 
 .product_detail .addItem_slider .view li>div:hover,
 .product_detail .addItem_slider .view li>div.on {
-  border-color: #bfae90;
+  border-color: #f77694;
   transition: all .2s ease-in-out;
 }
 
@@ -1461,12 +1461,8 @@
 }
 
 .product_detail .addItem_slider .view li>div span.link button {
-  width: 56px;
-  height: 56px;
   margin: 0 4px;
   font-size: 0;
-  background: url('https://www.larocheposay.co.kr/images/common/ico_comm_sp.png') no-repeat 0 0;
-  background-size: 300px 300px;
 }
 
 .product_detail .addItem_slider .view li>div span.link button.detailview {
@@ -17999,7 +17995,7 @@ h2 i.grade_blue {
 
 #ingredient_box{
 	background-color: #f7f5f1;
-    padding: 20px;
+    padding: 20px 30px;
     border-radius: 20px;
 }
 

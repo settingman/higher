@@ -23,6 +23,37 @@
   font-family: 'notokr-medium';
 }
 
+button.addcart.basket {
+	background:
+		url(/img/cart.png) !important;
+			width: 56px !important;
+	height: 56px !important;
+	background-size: 56px !important;
+}
+
+button.detailview {
+	background-image: url(/img/search.png) !important;
+	width: 56px !important;
+	height: 56px !important;
+	background-size: 56px !important;
+	background-color: rgba(0, 0, 0, 0) !important;
+	border-radius: 50px !important;
+	background-position: 0 !important;
+}
+
+.product_wrap .product_list .over button:first-child {
+	background-image: url(/img/search.png) !important;
+	background-size: 56px !important;
+	opacity: 0.85;
+}
+
+#right-price{
+	font-size: 22px;
+    margin-left: 12px;
+    font-family: 'notokr-demilight';
+    margin-bottom: 20px;
+    color: darkslategray;
+}
 </style>
 <link rel="stylesheet" type="text/css" href="/match/css/detail.css">
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -344,10 +375,12 @@ $(function() {
 							<div class="left">
 								<div class="detail_slider">
 									<div class="view">
-										<ul style="margin-top: 100px;">
+										<a th:href="'/product/detail?code='+${product.productDTO.pcode}">
+										<ul style="margin: 80px 0px 54px 16px;">
 											<li
-												th:style="'background-image:url('+ ${product.thumbImgList[0].iloc} +'_600.jpg);'">1</li>
+												th:style="'background-image:url('+ ${product.thumbImgList[0].iloc} +'_600.jpg); width: 520px; height: 520px;'" >1</li>
 										</ul>
+										</a>
 									</div>
 								</div>
 								<!-- //detail_slider -->
@@ -365,12 +398,13 @@ $(function() {
 										style="font-size: 30px;">[[${product.productDTO.pname}]]</strong>
 										<!-- 리페어 세럼 B5 -->
 									</span> 
-									<span class="star"> <a href="#product_detail_review">
+									<span class="star" style="margin-bottom: 14px;"> <a href="#product_detail_review">
 											<div class="star-rating bic">
 												<span th:class="'c' + ${#numbers.formatInteger(product.productDTO.rates*10, 2)}"> <em class="hide">벌점</em></span>
 											</div>
 									</a>
 									</span>
+									<span class="pricetotal" id="right-price">[[${#numbers.formatInteger(product.productDTO.pprice, 3, 'COMMA')}]]<em>원</em>	</span>
                   <!-- 회원 차트 결과 -->
 									<div sec:authorize="isAuthenticated()" th:if="${score != null}" class="result"
 										style="display: flex; justify-content: center; margin-bottom: 40px;">
@@ -382,7 +416,7 @@ $(function() {
                   
                   <!-- 회원 결과 null -->
                   <div sec:authorize="isAuthenticated()" th:if="${score == null}" class="result"
-                  style="display: flex;justify-content: center;padding: 30px 10px;margin-bottom: 40px;border: 1px solid #c2bdbd;border-radius: 39px;">
+                  style="display: flex;justify-content: center;padding: 25px 10px;margin-bottom: 30px;border: 1px solid #c2bdbd;border-radius: 39px;">
 										<div class="inform">
                       <div id="join-guide" style="
                       font-size: 16px;
@@ -431,19 +465,10 @@ $(function() {
 										</div>
 									</div>
 								</div>
-								<div class="datail_info_data">
-									<ul>
-
-										<li class="total"><span class="pricetotal">[[${#numbers.formatInteger(product.productDTO.pprice,
-												3, 'COMMA')}]]<em>원</em>
-										</span></li>
-									</ul>
-								</div>
 								<div class="datail_info_btn">
-                 
                   <span class="instock">
-                    <button type="button" class="btn_base darkgray basket" onclick="addCartThis()"><span>장바구니</span></button>
-                  	<button id="compare-btn" type="button" class="btn_base darkgray basket" onclick="putThis()"><span style="font-family: 'notokr-demilight';"><img src="/common/image/add.png" style="width: 22px; margin-right: 6px; margin-bottom: 3px;">비교함 담기</span></button>
+                  	<button id="compare-btn" type="button" class="btn_base darkgray basket" onclick="putThis()" style="width: 49%; margin: 0; background-color: #f988a1; border: 1px solid #f988a1;"><span style="font-family: 'notokr-demilight';"><img src="/common/image/add.png" style="width: 22px; margin-right: 6px;">비교함 담기</span></button>
+                    <button type="button" class="btn_base darkgray basket" onclick="addCartThis()" style="border: 1px solid #8f8f8f; background-color: #8f8f8f;"><span>장바구니</span></button>
                   </span>
 
                 </div>
@@ -502,7 +527,7 @@ $(function() {
                   </a>
                   <span class="link">
                     <button type="button" class="detailview listView" data-value="780">자세히보기</button>
-                    <button type="button" class="addcart listBasket" data-level="" data-cnt="10" data-value="780"
+                    <button type="button" class="addcart listBasket basket" data-level="" data-cnt="10" data-value="780"
                       data-price="17000" data-linename="세로징크" data-prdtname="세범 컨트롤 토닝 미스트 150ml"
                       data-sapcode="M9066001" data-buy-level="N" data-mbr-join-ym="" data-user-level=""
                       data-level-name="">장바구니 담기</button>

@@ -16,4 +16,6 @@ public class SimilarCosDTO {
 	private String bname;
 	private int pprice;
 	
+	private double rates;
+	
 }

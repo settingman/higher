@@ -105,11 +105,10 @@ $(document).ready(function() {
 									<span class="kind">` + CommaFormat($result[i].pprice) + `<em>원</em></span> 
 									<span class="rating">
 										<div class="star-rating small">
-											<span class="c00">
+											<span class="c`+ parseInt($result[i].rates*10) +`">
 												<em class="hide">벌점 0개</em>
 											</span>
-										</div> 
-										<em>(0)</em>
+										</div>
 									</span> <span class="price"><button class="match-btn">매칭하기</button></span>
 								</a>
 								<div class="over">
