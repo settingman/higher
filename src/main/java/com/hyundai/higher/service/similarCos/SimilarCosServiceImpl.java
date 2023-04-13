@@ -43,7 +43,7 @@ public class SimilarCosServiceImpl implements SimilarCosService {
 		String ingredients = pDTO.getProductDTO().getPingredient();
 		
 		// 선택한 상품에 포함된 성분 리스트에 담기
-		String[] iList = ingredients.replaceAll(",", " ").replaceAll(".", " ").replaceAll("\\s+", " ").split(" ");
+		String[] iList = ingredients.replaceAll(",", " ").replaceAll("\\s+", " ").split(" ");
 		List<String> list = new ArrayList<>();
 		for(String i : iList) {
 			list.add(i);
