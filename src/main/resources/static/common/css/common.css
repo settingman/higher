@@ -1312,14 +1312,14 @@ button.btn_file_add {
 .star-rating.bic {
   width: 107px;
   height: 18px;
-  background: url('https://www.larocheposay.co.kr/images/common/star_rating.png') no-repeat 0 -18px;
+  background: url('/common/image/star.png') no-repeat 0 -18px;
   background-size: 107px;
 }
 
 .star-rating.bic>span {
   width: 107px;
   height: 18px;
-  background: url('https://www.larocheposay.co.kr/images/common/star_rating.png') no-repeat 0 0;
+  background: url('/common/image/star.png') no-repeat 0 0;
   background-size: 107px;
 }
 
