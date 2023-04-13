@@ -98,7 +98,7 @@ public class KakaoService {
 
 	
 	// 카카오톡 친구에게 메세지 보내기
-	public String Sendmessage() {
+	public String Sendmessage(String template) {
 
 		String uri2 = KAKAO_API_HOST + "/v1/api/talk/friends";
 
@@ -106,11 +106,19 @@ public class KakaoService {
 
 		String uuid = httpCallService.CallwithToken(Const.GET, uri2, httpSession.getAttribute("token").toString());
 
-		String[] uuids = uuid.split(",");
+		String[] uuids = uuid.split(","); 
 
 		String friends = "receiver_uuids=%5B%22" + uuids[0] + "%22%2C%22" + uuids[1] + "%22%2C%22" + uuids[2]
-				+ "%22%5D&request_url=https%3A%2F%2Flocalhost%3A8443&template_id=92317";
+				+ "%22%5D&request_url=https%3A%2F%2Flocalhost%3A8443&template_id="+template;
+		
+		
+		
 
 		return httpCallService.CallwithToken(Const.POST, uri, httpSession.getAttribute("token").toString(), friends);
 	}
+	
+		
+	
+	
+	
 }

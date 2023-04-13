@@ -7,1167 +7,944 @@
 <title>회원가입 | 더한섬닷컴</title>
 <th:block th:replace="common/head :: headFragment"></th:block>
 <head>
-<meta charset="utf-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0"/>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0" />
 <title>더현대닷컴</title>
-<link rel="stylesheet" type="text/css" href="https://image.thehyundai.com/pc/cssssl/font.css"/>
-<link rel="stylesheet" type="text/css" href="https://image.thehyundai.com/pc/cssssl/co.css?ver=21"/>
-<link rel="stylesheet" type="text/css" href="https://image.thehyundai.com/pc/cssssl/wf.css"/>
+<link rel="stylesheet" type="text/css" href="https://image.thehyundai.com/pc/cssssl/font.css" />
+<link rel="stylesheet" type="text/css" href="https://image.thehyundai.com/pc/cssssl/co.css?ver=21" />
+<link rel="stylesheet" type="text/css" href="https://image.thehyundai.com/pc/cssssl/wf.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://image.thehyundai.com/pc/js/hdmall/co/common.js?ver=030121"></script>
 <script src="https://image.thehyundai.com/pc/js/common.js?ver=030121"></script>
 <script type="text/javascript" src="https://image.thehyundai.com/pc/js/swiper.min.js?ver=030121"></script>
-<link rel="stylesheet" type="text/css" href="https://www.thehyundai.com/cssssl/dp.css?ver=21"/>
-
+<link rel="stylesheet" type="text/css" href="https://www.thehyundai.com/cssssl/dp.css?ver=21" />
 <style type="text/css">
 .fancybox-margin {
 	margin-right: 16px;
 }
 </style>
-<meta http-equiv="origin-trial" content="A751Xsk4ZW3DVQ8WZng2Dk5s3YzAyqncTzgv+VaE6wavgTY0QHkDvUTET1o7HanhuJO8lgv1Vvc88Ij78W1FIAAAAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjgwNjUyNzk5LCJpc1RoaXJkUGFydHkiOnRydWV9"/>
-<meta http-equiv="origin-trial" content="A751Xsk4ZW3DVQ8WZng2Dk5s3YzAyqncTzgv+VaE6wavgTY0QHkDvUTET1o7HanhuJO8lgv1Vvc88Ij78W1FIAAAAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjgwNjUyNzk5LCJpc1RoaXJkUGFydHkiOnRydWV9"/>
-<link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css"/>
-<link rel="stylesheet" type="text/css" href="//static.groobee.io/dist/g2/css/grb-recommend-list_v2.css"/>
-<style type="text/css" data-fbcssmodules="css:fb.css.base css:fb.css.dialog css:fb.css.iframewidget css:fb.css.customer_chat_plugin_iframe">
-.fb_hidden {
-	position: absolute;
-	top: -10000px;
-	z-index: 10001;
+<meta http-equiv="origin-trial"
+	content="A751Xsk4ZW3DVQ8WZng2Dk5s3YzAyqncTzgv+VaE6wavgTY0QHkDvUTET1o7HanhuJO8lgv1Vvc88Ij78W1FIAAAAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjgwNjUyNzk5LCJpc1RoaXJkUGFydHkiOnRydWV9"
+/>
+<meta http-equiv="origin-trial"
+	content="A751Xsk4ZW3DVQ8WZng2Dk5s3YzAyqncTzgv+VaE6wavgTY0QHkDvUTET1o7HanhuJO8lgv1Vvc88Ij78W1FIAAAAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjgwNjUyNzk5LCJpc1RoaXJkUGFydHkiOnRydWV9"
+/>
+<link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="//static.groobee.io/dist/g2/css/grb-recommend-list_v2.css" />
+<style type="text/css" data-fbcssmodules="css:fb.css.base css:fb.css.dialog css:fb.css.iframewidget css:fb.css.customer_chat_plugin_iframe">.fb_hidden {
+	position:absolute;
+	top:-10000px;
+	z-index:10001;
 }
 .fb_reposition {
-	overflow: hidden;
-	position: relative;
+	overflow:hidden;
+	position:relative;
 }
 .fb_invisible {
-	display: none;
+	display:none;
 }
 .fb_reset {
-	background: none;
-	border: 0;
-	border-spacing: 0;
-	color: #000;
-	cursor: auto;
-	direction: ltr;
-	font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
-	font-size: 11px;
-	font-style: normal;
-	font-variant: normal;
-	font-weight: normal;
-	letter-spacing: normal;
-	line-height: 1;
-	margin: 0;
-	overflow: visible;
-	padding: 0;
-	text-align: left;
-	text-decoration: none;
-	text-indent: 0;
-	text-shadow: none;
-	text-transform: none;
-	visibility: visible;
-	white-space: normal;
-	word-spacing: normal;
+	background:none;
+	border:0;
+	border-spacing:0;
+	color:#000;
+	cursor:auto;
+	direction:ltr;
+	font-family:"lucida grande",tahoma,verdana,arial,sans-serif;
+	font-size:11px;
+	font-style:normal;
+	font-variant:normal;
+	font-weight:normal;
+	letter-spacing:normal;
+	line-height:1;
+	margin:0;
+	overflow:visible;
+	padding:0;
+	text-align:left;
+	text-decoration:none;
+	text-indent:0;
+	text-shadow:none;
+	text-transform:none;
+	visibility:visible;
+	white-space:normal;
+	word-spacing:normal;
 }
 .fb_reset>div {
-	overflow: hidden;
+	overflow:hidden;
 }
-@
-keyframes fb_transform {from { opacity:0;
-	transform: scale(0.95);
-}
-to {
-	opacity: 1;
-	transform: scale(1);
-}
+@keyframes fb_transform {
+	from {
+		opacity:0;
+		transform:scale(0.95);
+	}
+	to {
+		opacity:1;
+		transform:scale(1);
+	}
 }
 .fb_animate {
-	animation: fb_transform 0.3s forwards;
+	animation:fb_transform 0.3s forwards;
 }
 .fb_hidden {
-	position: absolute;
-	top: -10000px;
-	z-index: 10001;
+	position:absolute;
+	top:-10000px;
+	z-index:10001;
 }
 .fb_reposition {
-	overflow: hidden;
-	position: relative;
+	overflow:hidden;
+	position:relative;
 }
 .fb_invisible {
-	display: none;
+	display:none;
 }
 .fb_reset {
-	background: none;
-	border: 0;
-	border-spacing: 0;
-	color: #000;
-	cursor: auto;
-	direction: ltr;
-	font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
-	font-size: 11px;
-	font-style: normal;
-	font-variant: normal;
-	font-weight: normal;
-	letter-spacing: normal;
-	line-height: 1;
-	margin: 0;
-	overflow: visible;
-	padding: 0;
-	text-align: left;
-	text-decoration: none;
-	text-indent: 0;
-	text-shadow: none;
-	text-transform: none;
-	visibility: visible;
-	white-space: normal;
-	word-spacing: normal;
+	background:none;
+	border:0;
+	border-spacing:0;
+	color:#000;
+	cursor:auto;
+	direction:ltr;
+	font-family:"lucida grande",tahoma,verdana,arial,sans-serif;
+	font-size:11px;
+	font-style:normal;
+	font-variant:normal;
+	font-weight:normal;
+	letter-spacing:normal;
+	line-height:1;
+	margin:0;
+	overflow:visible;
+	padding:0;
+	text-align:left;
+	text-decoration:none;
+	text-indent:0;
+	text-shadow:none;
+	text-transform:none;
+	visibility:visible;
+	white-space:normal;
+	word-spacing:normal;
 }
 .fb_reset>div {
-	overflow: hidden;
+	overflow:hidden;
 }
-@
-keyframes fb_transform {from { opacity:0;
-	transform: scale(0.95);
-}
-to {
-	opacity: 1;
-	transform: scale(1);
-}
+@keyframes fb_transform {
+	from {
+		opacity:0;
+		transform:scale(0.95);
+	}
+	to {
+		opacity:1;
+		transform:scale(1);
+	}
 }
 .fb_animate {
-	animation: fb_transform 0.3s forwards;
+	animation:fb_transform 0.3s forwards;
 }
 .fb_dialog {
-	background: rgba(82, 82, 82, 0.7);
-	position: absolute;
-	top: -10000px;
-	z-index: 10001;
+	background:rgba(82,82,82,0.7);
+	position:absolute;
+	top:-10000px;
+	z-index:10001;
 }
 .fb_dialog_advanced {
-	border-radius: 8px;
-	padding: 10px;
+	border-radius:8px;
+	padding:10px;
 }
 .fb_dialog_content {
-	background: #fff;
-	color: #373737;
+	background:#fff;
+	color:#373737;
 }
 .fb_dialog_close_icon {
-	background:
-		url(https://connect.facebook.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png)
-		no-repeat scroll 0 0 transparent;
-	cursor: pointer;
-	display: block;
-	height: 15px;
-	position: absolute;
-	right: 18px;
-	top: 17px;
-	width: 15px;
+	background:	url(https://connect.facebook.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png)		no-repeat scroll 0 0 transparent;
+	cursor:pointer;
+	display:block;
+	height:15px;
+	position:absolute;
+	right:18px;
+	top:17px;
+	width:15px;
 }
 .fb_dialog_mobile .fb_dialog_close_icon {
-	left: 5px;
-	right: auto;
-	top: 5px;
+	left:5px;
+	right:auto;
+	top:5px;
 }
 .fb_dialog_padding {
-	background-color: transparent;
-	position: absolute;
-	width: 1px;
-	z-index: -1;
+	background-color:transparent;
+	position:absolute;
+	width:1px;
+	z-index:-1;
 }
 .fb_dialog_close_icon:hover {
-	background:
-		url(https://connect.facebook.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png)
-		no-repeat scroll 0 -15px transparent;
+	background:	url(https://connect.facebook.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png)		no-repeat scroll 0 -15px transparent;
 }
 .fb_dialog_close_icon:active {
-	background:
-		url(https://connect.facebook.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png)
-		no-repeat scroll 0 -30px transparent;
+	background:	url(https://connect.facebook.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png)		no-repeat scroll 0 -30px transparent;
 }
 .fb_dialog_iframe {
-	line-height: 0;
+	line-height:0;
 }
 .fb_dialog_content .dialog_title {
-	background: #6d84b4;
-	border: 1px solid #365899;
-	color: #fff;
-	font-size: 14px;
-	font-weight: bold;
-	margin: 0;
+	background:#6d84b4;
+	border:1px solid #365899;
+	color:#fff;
+	font-size:14px;
+	font-weight:bold;
+	margin:0;
 }
 .fb_dialog_content .dialog_title>span {
-	background:
-		url(https://connect.facebook.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif)
-		no-repeat 5px 50%;
-	float: left;
-	padding: 5px 0 7px 26px;
+	background:	url(https://connect.facebook.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif)		no-repeat 5px 50%;
+	float:left;
+	padding:5px 0 7px 26px;
 }
 body.fb_hidden {
-	height: 100%;
-	left: 0;
-	margin: 0;
-	overflow: visible;
-	position: absolute;
-	top: -10000px;
-	transform: none;
-	width: 100%;
+	height:100%;
+	left:0;
+	margin:0;
+	overflow:visible;
+	position:absolute;
+	top:-10000px;
+	transform:none;
+	width:100%;
 }
 .fb_dialog.fb_dialog_mobile.loading {
-	background:
-		url(https://connect.facebook.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif)
-		white no-repeat 50% 50%;
-	min-height: 100%;
-	min-width: 100%;
-	overflow: hidden;
-	position: absolute;
-	top: 0;
-	z-index: 10001;
+	background:	url(https://connect.facebook.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif)		white no-repeat 50% 50%;
+	min-height:100%;
+	min-width:100%;
+	overflow:hidden;
+	position:absolute;
+	top:0;
+	z-index:10001;
 }
 .fb_dialog.fb_dialog_mobile.loading.centered {
-	background: none;
-	height: auto;
-	min-height: initial;
-	min-width: initial;
-	width: auto;
+	background:none;
+	height:auto;
+	min-height:initial;
+	min-width:initial;
+	width:auto;
 }
 .fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner {
-	width: 100%;
+	width:100%;
 }
 .fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content {
-	background: none;
+	background:none;
 }
 .loading.centered #fb_dialog_loader_close {
-	clear: both;
-	color: #fff;
-	display: block;
-	font-size: 18px;
-	padding-top: 20px;
+	clear:both;
+	color:#fff;
+	display:block;
+	font-size:18px;
+	padding-top:20px;
 }
 #fb-root #fb_dialog_ipad_overlay {
-	background: rgba(0, 0, 0, 0.4);
-	bottom: 0;
-	left: 0;
-	min-height: 100%;
-	position: absolute;
-	right: 0;
-	top: 0;
-	width: 100%;
-	z-index: 10000;
+	background:rgba(0,0,0,0.4);
+	bottom:0;
+	left:0;
+	min-height:100%;
+	position:absolute;
+	right:0;
+	top:0;
+	width:100%;
+	z-index:10000;
 }
 #fb-root #fb_dialog_ipad_overlay.hidden {
-	display: none;
+	display:none;
 }
 .fb_dialog.fb_dialog_mobile.loading iframe {
-	visibility: hidden;
+	visibility:hidden;
 }
 .fb_dialog_mobile .fb_dialog_iframe {
-	position: sticky;
-	top: 0;
+	position:sticky;
+	top:0;
 }
 .fb_dialog_content .dialog_header {
-	background: linear-gradient(from(#738aba), to(#2c4987));
-	border-bottom: 1px solid;
-	border-color: #043b87;
-	box-shadow: white 0 1px 1px -1px inset;
-	color: #fff;
-	font: bold 14px Helvetica, sans-serif;
-	text-overflow: ellipsis;
-	text-shadow: rgba(0, 30, 84, 0.296875) 0 -1px 0;
-	vertical-align: middle;
-	white-space: nowrap;
+	background:linear-gradient(from(#738aba),to(#2c4987));
+	border-bottom:1px solid;
+	border-color:#043b87;
+	box-shadow:white 0 1px 1px -1px inset;
+	color:#fff;
+	font:bold 14px Helvetica,sans-serif;
+	text-overflow:ellipsis;
+	text-shadow:rgba(0,30,84,0.296875) 0 -1px 0;
+	vertical-align:middle;
+	white-space:nowrap;
 }
 .fb_dialog_content .dialog_header table {
-	height: 43px;
-	width: 100%;
+	height:43px;
+	width:100%;
 }
 .fb_dialog_content .dialog_header td.header_left {
-	font-size: 12px;
-	padding-left: 5px;
-	vertical-align: middle;
-	width: 60px;
+	font-size:12px;
+	padding-left:5px;
+	vertical-align:middle;
+	width:60px;
 }
 .fb_dialog_content .dialog_header td.header_right {
-	font-size: 12px;
-	padding-right: 5px;
-	vertical-align: middle;
-	width: 60px;
+	font-size:12px;
+	padding-right:5px;
+	vertical-align:middle;
+	width:60px;
 }
 .fb_dialog_content .touchable_button {
-	background: linear-gradient(from(#4267b2), to(#2a4887));
-	background-clip: padding-box;
-	border: 1px solid #29487d;
-	border-radius: 3px;
-	display: inline-block;
-	line-height: 18px;
-	margin-top: 3px;
-	max-width: 85px;
-	padding: 4px 12px;
-	position: relative;
+	background:linear-gradient(from(#4267b2),to(#2a4887));
+	background-clip:padding-box;
+	border:1px solid #29487d;
+	border-radius:3px;
+	display:inline-block;
+	line-height:18px;
+	margin-top:3px;
+	max-width:85px;
+	padding:4px 12px;
+	position:relative;
 }
 .fb_dialog_content .dialog_header .touchable_button input {
-	background: none;
-	border: none;
-	color: #fff;
-	font: bold 12px Helvetica, sans-serif;
-	margin: 2px -12px;
-	padding: 2px 6px 3px 6px;
-	text-shadow: rgba(0, 30, 84, 0.296875) 0 -1px 0;
+	background:none;
+	border:none;
+	color:#fff;
+	font:bold 12px Helvetica,sans-serif;
+	margin:2px -12px;
+	padding:2px 6px 3px 6px;
+	text-shadow:rgba(0,30,84,0.296875) 0 -1px 0;
 }
 .fb_dialog_content .dialog_header .header_center {
-	color: #fff;
-	font-size: 16px;
-	font-weight: bold;
-	line-height: 18px;
-	text-align: center;
-	vertical-align: middle;
+	color:#fff;
+	font-size:16px;
+	font-weight:bold;
+	line-height:18px;
+	text-align:center;
+	vertical-align:middle;
 }
 .fb_dialog_content .dialog_content {
-	background:
-		url(https://connect.facebook.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif)
-		no-repeat 50% 50%;
-	border: 1px solid #4a4a4a;
-	border-bottom: 0;
-	border-top: 0;
-	height: 150px;
+	background:	url(https://connect.facebook.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif)		no-repeat 50% 50%;
+	border:1px solid #4a4a4a;
+	border-bottom:0;
+	border-top:0;
+	height:150px;
 }
 .fb_dialog_content .dialog_footer {
-	background: #f5f6f7;
-	border: 1px solid #4a4a4a;
-	border-top-color: #ccc;
-	height: 40px;
+	background:#f5f6f7;
+	border:1px solid #4a4a4a;
+	border-top-color:#ccc;
+	height:40px;
 }
 #fb_dialog_loader_close {
-	float: left;
+	float:left;
 }
 .fb_dialog.fb_dialog_mobile .fb_dialog_close_icon {
-	visibility: hidden;
+	visibility:hidden;
 }
 #fb_dialog_loader_spinner {
-	animation: rotateSpinner 1.2s linear infinite;
-	background-color: transparent;
-	background-image:
-		url(https://connect.facebook.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);
-	background-position: 50% 50%;
-	background-repeat: no-repeat;
-	height: 24px;
-	width: 24px;
+	animation:rotateSpinner 1.2s linear infinite;
+	background-color:transparent;
+	background-image:	url(https://connect.facebook.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);
+	background-position:50% 50%;
+	background-repeat:no-repeat;
+	height:24px;
+	width:24px;
 }
-@
-keyframes rotateSpinner { 0% {
-	transform: rotate(0deg);
-}
-100
-%
-{
-transform
-:
-rotate
-(
-360deg
-)
-;
-}
+@keyframes rotateSpinner {
+	0% {
+		transform:rotate(0deg);
+	}
+	100% {
+		transform:rotate(360deg);
+	}
 }
 .fb_iframe_widget {
-	display: inline-block;
-	position: relative;
+	display:inline-block;
+	position:relative;
 }
 .fb_iframe_widget span {
-	display: inline-block;
-	position: relative;
-	text-align: justify;
+	display:inline-block;
+	position:relative;
+	text-align:justify;
 }
 .fb_iframe_widget iframe {
-	position: absolute;
+	position:absolute;
 }
-.fb_iframe_widget_fluid_desktop, .fb_iframe_widget_fluid_desktop span,
-	.fb_iframe_widget_fluid_desktop iframe {
-	max-width: 100%;
+.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe {
+	max-width:100%;
 }
 .fb_iframe_widget_fluid_desktop iframe {
-	min-width: 220px;
-	position: relative;
+	min-width:220px;
+	position:relative;
 }
 .fb_iframe_widget_lift {
-	z-index: 1;
+	z-index:1;
 }
 .fb_iframe_widget_fluid {
-	display: inline;
+	display:inline;
 }
 .fb_iframe_widget_fluid span {
-	width: 100%;
+	width:100%;
 }
 .fb_mpn_mobile_landing_page_slide_out {
-	animation-duration: 200ms;
-	animation-name: fb_mpn_landing_page_slide_out;
-	transition-timing-function: ease-in;
+	animation-duration:200ms;
+	animation-name:fb_mpn_landing_page_slide_out;
+	transition-timing-function:ease-in;
 }
 .fb_mpn_mobile_landing_page_slide_out_from_left {
-	animation-duration: 200ms;
-	animation-name: fb_mpn_landing_page_slide_out_from_left;
-	transition-timing-function: ease-in;
+	animation-duration:200ms;
+	animation-name:fb_mpn_landing_page_slide_out_from_left;
+	transition-timing-function:ease-in;
 }
 .fb_mpn_mobile_landing_page_slide_up {
-	animation-duration: 500ms;
-	animation-name: fb_mpn_landing_page_slide_up;
-	transition-timing-function: ease-in;
+	animation-duration:500ms;
+	animation-name:fb_mpn_landing_page_slide_up;
+	transition-timing-function:ease-in;
 }
 .fb_mpn_mobile_bounce_in {
-	animation-duration: 300ms;
-	animation-name: fb_mpn_bounce_in;
-	transition-timing-function: ease-in;
+	animation-duration:300ms;
+	animation-name:fb_mpn_bounce_in;
+	transition-timing-function:ease-in;
 }
 .fb_mpn_mobile_bounce_out {
-	animation-duration: 300ms;
-	animation-name: fb_mpn_bounce_out;
-	transition-timing-function: ease-in;
+	animation-duration:300ms;
+	animation-name:fb_mpn_bounce_out;
+	transition-timing-function:ease-in;
 }
 .fb_mpn_mobile_bounce_out_v2 {
-	animation-duration: 300ms;
-	animation-name: fb_mpn_fade_out;
-	transition-timing-function: ease-in;
+	animation-duration:300ms;
+	animation-name:fb_mpn_fade_out;
+	transition-timing-function:ease-in;
 }
 .fb_customer_chat_bounce_in_v2 {
-	animation-duration: 300ms;
-	animation-name: fb_bounce_in_v2;
-	transition-timing-function: ease-in;
+	animation-duration:300ms;
+	animation-name:fb_bounce_in_v2;
+	transition-timing-function:ease-in;
 }
 .fb_customer_chat_bounce_in_from_left {
-	animation-duration: 300ms;
-	animation-name: fb_bounce_in_from_left;
-	transition-timing-function: ease-in;
+	animation-duration:300ms;
+	animation-name:fb_bounce_in_from_left;
+	transition-timing-function:ease-in;
 }
 .fb_customer_chat_bounce_out_v2 {
-	animation-duration: 300ms;
-	animation-name: fb_bounce_out_v2;
-	transition-timing-function: ease-in;
+	animation-duration:300ms;
+	animation-name:fb_bounce_out_v2;
+	transition-timing-function:ease-in;
 }
 .fb_customer_chat_bounce_out_from_left {
-	animation-duration: 300ms;
-	animation-name: fb_bounce_out_from_left;
-	transition-timing-function: ease-in;
+	animation-duration:300ms;
+	animation-name:fb_bounce_out_from_left;
+	transition-timing-function:ease-in;
 }
 .fb_invisible_flow {
-	display: inherit;
-	height: 0;
-	overflow-x: hidden;
-	width: 0;
+	display:inherit;
+	height:0;
+	overflow-x:hidden;
+	width:0;
 }
-@
-keyframes fb_mpn_landing_page_slide_out { 0% {
-	margin: 0 12px;
-	width: 100%- 24px;
+@keyframes fb_mpn_landing_page_slide_out {
+	0% {
+		margin:0 12px;
+		width:100%- 24px;
+	}
+	60% {
+		border-radius:18px;
+	}
+	100% {
+		border-radius:50%;
+		margin:024px;
+		width:60px;
+	}
 }
-60
-%
-{
-border-radius
-:
-18px
-;
+@keyframes fb_mpn_landing_page_slide_out_from_left {
+	0% {
+		left:12px;
+		width:100%- 24px;
+	}
+	60% {
+		border-radius:18px;
+	}
+	100% {
+		border-radius:50%;
+		left:12px;
+		width:60px;
+	}
 }
-100
-%
-{
-border-radius
-:
-50
-%;
-margin
-:
-0
-24px
-;
-width
-:
-60px
-;
+@keyframes fb_mpn_landing_page_slide_up {
+	0% {
+		bottom:0;
+		opacity:0;
+	}
+	100% {
+		bottom:24px;
+		opacity:1;
+	}
 }
+@keyframes fb_mpn_bounce_in {
+	0% {
+		opacity:0.5;
+		top:100%;
+	}
+	100% {
+		opacity:1;
+		top:0;
+	}
 }
-@
-keyframes fb_mpn_landing_page_slide_out_from_left { 0% {
-	left: 12px;
-	width: 100%- 24px;
+@keyframes fb_mpn_fade_out {
+	0% {
+		bottom:30px;
+		opacity:1;
+	}
+	100% {
+		bottom:0;
+		opacity:0;
+	}
 }
-60
-%
-{
-border-radius
-:
-18px
-;
+@keyframes fb_mpn_bounce_out {
+	0% {
+		opacity:1;
+		top:0;
+	}
+	100% {
+		opacity:0.5;
+		top:100%;
+	}
 }
-100
-%
-{
-border-radius
-:
-50
-%;
-left
-:
-12px
-;
-width
-:
-60px
-;
+@keyframes fb_bounce_in_v2 {
+	0% {
+		opacity:0;
+		transform:scale(0,0);
+		transform-origin:bottom right;
+	}
+	50% {
+		transform:scale(1.03,1.03);
+		transform-origin:bottomright;
+	}
+	100% {
+		opacity:1;
+		transform:scale(1,1);
+		transform-origin:bottomright;
+	}
 }
+@keyframes fb_bounce_in_from_left {
+	0% {
+		opacity:0;
+		transform:scale(0,0);
+		transform-origin:bottom left;
+	}
+	50% {
+		transform:scale(1.03,1.03);
+		transform-origin:bottomleft;
+	}
+	100% {
+		opacity:1;
+		transform:scale(1,1);
+		transform-origin:bottomleft;
+	}
 }
-@
-keyframes fb_mpn_landing_page_slide_up { 0% {
-	bottom: 0;
-	opacity: 0;
+@keyframes fb_bounce_out_v2 {
+	0% {
+		opacity:1;
+		transform:scale(1,1);
+		transform-origin:bottom right;
+	}
+	100% {
+		opacity:0;
+		transform:scale(0,0);
+		transform-origin:bottomright;
+	}
 }
-100
-%
-{
-bottom
-:
-24px
-;
-opacity
-:
-1
-;
+@keyframes fb_bounce_out_from_left {
+	0% {
+		opacity:1;
+		transform:scale(1,1);
+		transform-origin:bottom left;
+	}
+	100% {
+		opacity:0;
+		transform:scale(0,0);
+		transform-origin:bottomleft;
+	}
 }
+@keyframes slideInFromBottom {
+	0% {
+		opacity:0.1;
+		transform:translateY(100%);
+	}
+	100% {
+		opacity:1;
+		transform:translateY(0);
+	}
 }
-@
-keyframes fb_mpn_bounce_in { 0% {
-	opacity: 0.5;
-	top: 100%;
-}
-100
-%
-{
-opacity
-:
-1
-;
-top
-:
-0
-;
-}
-}
-@
-keyframes fb_mpn_fade_out { 0% {
-	bottom: 30px;
-	opacity: 1;
-}
-100
-%
-{
-bottom
-:
-0
-;
-opacity
-:
-0
-;
-}
-}
-@
-keyframes fb_mpn_bounce_out { 0% {
-	opacity: 1;
-	top: 0;
-}
-100
-%
-{
-opacity
-:
-0
-.5
-;
-top
-:
-100
-%;
-}
-}
-@
-keyframes fb_bounce_in_v2 { 0% {
-	opacity: 0;
-	transform: scale(0, 0);
-	transform-origin: bottom right;
-}
-50
-%
-{
-transform
-:
-scale
-(
-1
-.03
-,
-1
-.03
-)
-;
-transform-origin
-:
-bottom
-right
-;
-}
-100
-%
-{
-opacity
-:
-1
-;
-transform
-:
-scale
-(
-1
-,
-1
-)
-;
-transform-origin
-:
-bottom
-right
-;
-}
-}
-@
-keyframes fb_bounce_in_from_left { 0% {
-	opacity: 0;
-	transform: scale(0, 0);
-	transform-origin: bottom left;
-}
-50
-%
-{
-transform
-:
-scale
-(
-1
-.03
-,
-1
-.03
-)
-;
-transform-origin
-:
-bottom
-left
-;
-}
-100
-%
-{
-opacity
-:
-1
-;
-transform
-:
-scale
-(
-1
-,
-1
-)
-;
-transform-origin
-:
-bottom
-left
-;
-}
-}
-@
-keyframes fb_bounce_out_v2 { 0% {
-	opacity: 1;
-	transform: scale(1, 1);
-	transform-origin: bottom right;
-}
-100
-%
-{
-opacity
-:
-0
-;
-transform
-:
-scale
-(
-0
-,
-0
-)
-;
-transform-origin
-:
-bottom
-right
-;
-}
-}
-@
-keyframes fb_bounce_out_from_left { 0% {
-	opacity: 1;
-	transform: scale(1, 1);
-	transform-origin: bottom left;
-}
-100
-%
-{
-opacity
-:
-0
-;
-transform
-:
-scale
-(
-0
-,
-0
-)
-;
-transform-origin
-:
-bottom
-left
-;
-}
-}
-@
-keyframes slideInFromBottom { 0% {
-	opacity: 0.1;
-	transform: translateY(100%);
-}
-100
-%
-{
-opacity
-:
-1
-;
-transform
-:
-translateY
-(
-0
-)
-;
-}
-}
-@
-keyframes slideInFromBottomDelay { 0% {
-	opacity: 0;
-	transform: translateY(100%);
-}
-97
-%
-{
-opacity
-:
-0
-;
-transform
-:
-translateY
-(
-100
-%
-)
-;
-}
-100
-%
-{
-opacity
-:
-1
-;
-transform
-:
-translateY
-(
-0
-)
-;
-}
+@keyframes slideInFromBottomDelay {
+	0% {
+		opacity:0;
+		transform:translateY(100%);
+	}
+	97% {
+		opacity:0;
+		transform:translateY(100%);
+	}
+	100% {
+		opacity:1;
+		transform: translateY(0);
+	}
 }
 </style>
 </head>
 <body>
-<!-- wrap -->
-<div id="wrap" class="sub notgnb">
-	<!-- gnb -->
-	<script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/co/referCodes.js"></script>
-	<script type="text/javascript" src="https://www.thehyundai.com/static/gen/js/mainBnnrContents.js?ver=012146"></script>
-	<div id="skip-navigation">
-		<p>
-			<a href="#header-wrap">헤더영역 바로가기</a>
-		</p>
-		<p>
-			<a href="#header-gnb-area">GNB영역 바로가기</a>
-		</p>
-		<p>
-			<a href="#container">컨텐츠영역 바로가기</a>
-		</p>
-		<p>
-			<a href="#footer">푸터영역 바로가기</a>
-		</p>
-	</div>
-	<!-- header -->
-	<!-- 서브메뉴 -->
-	<!-- top banner -->
-	<div id="js-tpl-topBanner" style="display: none">
-	</div>
-	<div class="top-wrap sub">
-		<div class="top-area-setting">
-			<div class="top-con">
-				<div class="top-con-logo">
-					<h1>
-					<a href="http://www.thehyundai.com/Home.html?MainpageGroup=Fix&amp;GroupbannerName=GNB_Logo"><span class="blind">The HYUNDAI</span></a>
-					</h1>
+	<!-- wrap -->
+	<div id="wrap" class="sub notgnb">
+		<!-- gnb -->
+		<script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/co/referCodes.js"></script>
+		<script type="text/javascript" src="https://www.thehyundai.com/static/gen/js/mainBnnrContents.js?ver=012146"></script>
+		<div id="skip-navigation">
+			<p>
+				<a href="#header-wrap">헤더영역 바로가기</a>
+			</p>
+			<p>
+				<a href="#header-gnb-area">GNB영역 바로가기</a>
+			</p>
+			<p>
+				<a href="#container">컨텐츠영역 바로가기</a>
+			</p>
+			<p>
+				<a href="#footer">푸터영역 바로가기</a>
+			</p>
+		</div>
+		<!-- header -->
+		<!-- 서브메뉴 -->
+		<!-- top banner -->
+		<div id="js-tpl-topBanner" style="display: none"></div>
+		<div class="top-wrap sub">
+			<div class="top-area-setting">
+				<div class="top-con">
+					<div class="top-con-logo">
+						<h1>
+							<a href="http://www.thehyundai.com/Home.html?MainpageGroup=Fix&amp;GroupbannerName=GNB_Logo"><span class="blind">The HYUNDAI</span></a>
+						</h1>
+					</div>
 				</div>
-				
-				
+				<div class="top-nav" id="header-gnb-area">
+					<!-- 20210518 gnb nav 수정// -->
+				</div>
+				<!-- // top-nav -->
+				<!-- //gnb-area -->
+				<script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/dp/dpo/dqAutoCompleteNewCommon.js?ver=030121"></script>
+				<script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/dp/dpo/dqAutoCompleteNew.js?ver=030121"></script>
 			</div>
-			<div class="top-nav" id="header-gnb-area">
-				<!-- 20210518 gnb nav 수정// -->
+		</div>
+		<script type="text/javascript">
+			$(document).ready(function() {
+			});
+		</script>
+		<!-- //gnb -->
+		<!-- container -->
+		<div id="container">
+			<h1 class="blind">컨텐츠영역</h1>
+			<!-- breadcrumb -->
+			<div class="breadcrumb">
+				<ul class="breadcrumb-list">
+					<li><a href="#">HOME</a></li>
+					<li><a href="#">회원가입</a></li>
+					<li>회원가입 안내</li>
+				</ul>
 			</div>
-			<!-- // top-nav -->
-			<!-- //gnb-area -->
-			<script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/dp/dpo/dqAutoCompleteNewCommon.js?ver=030121"></script>
-			<script type="text/javascript" src="https://www.thehyundai.com/js/hdmall/dp/dpo/dqAutoCompleteNew.js?ver=030121"></script>
+			<!-- //breadcrumb -->
+			<div class="content-wrap">
+				<!-- content -->
+				<div class="content">
+					<div class="join-complete">
+						<div class="head">
+							<h2>더현대닷컴 회원가입을 축하합니다.</h2>
+							<p>
+								고객님께서는 더현대닷컴에 <strong>[[${memberID}]]</strong>로 가입하여 주셨습니다.<br> 가입하신 아이디와 비밀번호로 안전하게 로그인 하실 수 있습니다.
+							</p>
+						</div>
+						<div class="inner">
+							<br>
+							<p class="noti-text">※ 이메일, 카카오톡, 페이스북, 구글 계정을 통해 간편가입시 개인정보(이메일, 아이디, 성명, 휴대폰 번호 등)을 간접 수집합니다.</p>
+							<p class="noti-text">※ 고객님은 개인정보보호법 제 37조에 따라 개인정보 처리의 정지를 요구할 권리가 있습니다.</p>
+						</div>
+						<!-- 0217 - 식품구매권 수령 난수 코드 -->
+						<!-- //0217 - 식품구매권 수령 난수 코드 -->
+						<!-- btn-wrap -->
+						<div class="btn-wrap">
+							<button class="btn size5 color3" type="button" onclick="location.href='/'">
+								더현대뷰티 메인으로<i class="icon-arrow btn-ar gray"></i>
+							</button>
+						</div>
+						<!-- //btn-wrap -->
+					</div>
+				</div>
+				<!-- //content -->
+			</div>
 		</div>
-	</div>
-	<script type="text/javascript">
-            $(document).ready(function () {});
-        </script>
-	<!-- //gnb -->
-	<!-- container -->
-	<div id="container">
-		<h1 class="blind">컨텐츠영역</h1>
-		<!-- breadcrumb -->
-		<div class="breadcrumb">
-			<ul class="breadcrumb-list">
-				<li><a href="#">HOME</a></li>
-				<li><a href="#">회원가입</a></li>
-				<li>회원가입 안내</li>
-			</ul>
-		</div>
-		<!-- //breadcrumb -->
-		<div class="content-wrap">
-			<!-- content -->
-			<div class="content">
-				<div class="join-complete">
-					<div class="head">
-						<h2>더현대닷컴 회원가입을 축하합니다.</h2>
+		<!-- //container -->
+		<!-- footer -->
+		<div id="footer">
+			<h1 class="blind">푸터영역</h1>
+			<div class="top">
+				<div class="row">
+					<div class="hyundai-menu">
+						<span class="tit"><a href="javascript:;"
+							onclick="javascript:GA_Event('PC_공통','푸터_메뉴','현대백화점그룹'); dummyLogCatch('http://www.ehyundai.com/newPortal/ir', 'Footer', 'group', 'blank', 'Y', null)"
+						>현대백화점그룹</a> </span>
+						<ul>
+							<li><a onclick="GA_Event('PC_공통','푸터_메뉴','공지사항');"
+								href="http://www.thehyundai.com/front/ccb/noticeList.thd?MainpageGroup=Footer&amp;GroupbannerName=notice"
+							>공지사항</a></li>
+							<li><a href="javascript:;"
+								onclick="javascript:GA_Event('PC_공통','푸터_메뉴','윤리경영'); dummyLogCatch('http://www.ehyundai.com/newPortal/ir/ETH/ETH000001.do?ir=3', 'Footer', 'legal', 'blank', 'Y', null)"
+							>윤리경영</a></li>
+							<li><a href="javascript:;"
+								onclick="javascript:GA_Event('PC_공통','푸터_메뉴','사회공헌'); dummyLogCatch('http://www.ehyundai.com/newPortal/csr/main.do', 'Footer', 'legal', 'blank', 'Y', null)"
+							>사회공헌</a></li>
+							<li><a onclick="GA_Event('PC_공통','푸터_메뉴','이용약관');"
+								href="http://www.thehyundai.com/front/cua/viewPolicyPup.thd?view=1&amp;MainpageGroup=Footer&amp;GroupbannerName=agree" data-toggle="winpopup"
+								data-api="center,900,770,scrollbars" target="_blank"
+							>이용약관</a></li>
+							<li><a onclick="GA_Event('PC_공통','푸터_메뉴','개인정보 처리방침');"
+								href="http://www.thehyundai.com/front/cua/viewPolicyPup.thd?view=2&amp;MainpageGroup=Footer&amp;GroupbannerName=private"
+								data-toggle="winpopup" data-api="center,900,770,scrollbars" target="_blank"
+							><strong>개인정보 처리방침</strong></a></li>
+						</ul>
+					</div>
+					<!-- 2016-07-28// -->
+					<div class="family">
+						<a href="#" onclick="javascript:GA_Event('PC_공통','푸터_메뉴','FAMILY SITE'); $(this).parents('.family').toggleClass('current');return false;">FAMILY
+							SITE <i></i>
+						</a>
+						<div class="family-site">
+							<!-- <h4>쇼핑몰 site</h4> -->
+							<div class="scrollable">
+								<ul>
+									<li><a onclick="GA_Event('PC_공통','패밀리사이트','현대식품관 투홈');" href="http://tohome.thehyundai.com" target="_blank">현대식품관 투홈</a></li>
+									<li><a onclick="GA_Event('PC_공통','패밀리사이트','현대Hmall');" href="https://www.hmall.com" target="_blank">현대Hmall</a></li>
+									<li><a onclick="GA_Event('PC_공통','패밀리사이트','현대백화점 DUTY FREE');" href="https://www.hddfs.com/shop/dm/main.do?ptnrChlCd=00003905"
+										target="_blank"
+									>현대백화점 DUTY FREE</a></li>
+									<li><a onclick="GA_Event('PC_공통','패밀리사이트','더한섬닷컴');" href="http://www.thehansome.com" target="_blank">더한섬닷컴</a></li>
+									<li><a onclick="GA_Event('PC_공통','패밀리사이트','현대리바트몰');" href="http://mall.hyundailivart.co.kr" target="_blank">현대리바트몰</a></li>
+									<li><a onclick="GA_Event('PC_공통','패밀리사이트','현대렌탈케어');" href="http://www.hyundairentalcare.co.kr" target="_blank">현대렌탈케어</a></li>
+									<li><a onclick="GA_Event('PC_공통','패밀리사이트','H패션몰');" href="http://www.hfashionmall.com/sfmweb/" target="_blank">H패션몰</a></li>
+									<li><a onclick="GA_Event('PC_공통','패밀리사이트','현대어린이책미술관');" href="https://www.hmoka.org" target="_blank">현대어린이책미술관</a></li>
+									<li><a onclick="GA_Event('PC_공통','패밀리사이트','그리팅');" href="https://www.greating.co.kr/" target="_blank">그리팅</a></li>
+									<li><a onclick="GA_Event('PC_공통','패밀리사이트','한섬EQL');" href="https://www.eqlstore.com/main" target="_blank">한섬EQL</a></li>
+								</ul>
+							</div>
+							<h4>관계사 site</h4>
+							<div class="scrollable">
+								<ul>
+									<li><a onclick="GA_Event('PC_공통','패밀리사이트','현대백화점 그룹');" href="http://www.ehyundai.com/newPortal/ir" target="_blank">현대백화점 그룹</a></li>
+									<li><a onclick="GA_Event('PC_공통','패밀리사이트','현대백화점');" href="http://www.ehyundai.com" target="_blank">현대백화점</a></li>
+									<li><a onclick="GA_Event('PC_공통','패밀리사이트','현대홈쇼핑');" href="https://www.hmall.com" target="_blank">현대홈쇼핑</a></li>
+									<li><a onclick="GA_Event('PC_공통','패밀리사이트','현대그린푸드');" href="http://www.hyundaigreenfood.com" target="_blank">현대그린푸드</a></li>
+									<li><a onclick="GA_Event('PC_공통','패밀리사이트','한섬');" href="http://www.thehansome.com" target="_blank">한섬</a></li>
+									<li><a onclick="GA_Event('PC_공통','패밀리사이트','현대리바트');" href="http://www.hyundailivart.co.kr" target="_blank">현대리바트</a></li>
+									<li><a onclick="GA_Event('PC_공통','패밀리사이트','지누스');" href="https://zinus.co.kr/" target="_blank">지누스</a></li>
+									<li><a onclick="GA_Event('PC_공통','패밀리사이트','현대L&amp;C');" href="https://www.hyundailnc.com/company" target="_blank">현대L&amp;C</a></li>
+									<li><a onclick="GA_Event('PC_공통','패밀리사이트','현대렌탈케어');" href="http://www.hyundairentalcare.co.kr" target="_blank">현대렌탈케어</a></li>
+									<li><a onclick="GA_Event('PC_공통','패밀리사이트','현대드림투어');" href="http://www.hyundaidreamtour.com" target="_blank">현대드림투어</a></li>
+									<li><a onclick="GA_Event('PC_공통','패밀리사이트','현대에버다임');" href="http://www.everdigm.com" target="_blank">현대에버다임</a></li>
+									<li><a onclick="GA_Event('PC_공통','패밀리사이트','씨엔에스푸드시스템');" href="http://www.cnsfoodsystem.co.kr" target="_blank">씨엔에스푸드시스템</a></li>
+									<li><a onclick="GA_Event('PC_공통','패밀리사이트','현대캐터링시스템');" href="http://www.hyundaicatering.co.kr" target="_blank">현대캐터링시스템</a></li>
+									<li><a onclick="GA_Event('PC_공통','패밀리사이트','현대IT&amp;E');" href="http://www.hyundai-ite.com/index.jsp" target="_blank">현대IT&amp;E</a></li>
+									<li><a onclick="GA_Event('PC_공통','패밀리사이트','현대퓨처넷');" href="https://www.hyundaifuturenet.co.kr" target="_blank">현대퓨처넷</a></li>
+									<li><a onclick="GA_Event('PC_공통','패밀리사이트','현대이지웰');" href="https://www.hyundaiezwel.com/renew/main.ez" target="_blank">현대이지웰</a></li>
+									<li><a onclick="GA_Event('PC_공통','패밀리사이트','현대바이오랜드');" href="http://www.hyundaibioland.co.kr/main" target="_blank">현대바이오랜드</a></li>
+									<li><a onclick="GA_Event('PC_공통','패밀리사이트','벤디스');" href="https://sikdae.com" target="_blank">벤디스</a></li>
+									<!-- 20230113 신규계열사 벤디스 추가-->
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- //2016-07-28 -->
+				</div>
+			</div>
+			<div class="bottom">
+				<div class="row">
+					<div class="logo">
+						<a href="http://www.thehyundai.com/Home.html"><img src="https://image.thehyundai.com/hdmall/images/co/img_bottom_logo.png" alt="THE HYUNDAI"></a>
+					</div>
+					<div class="info">
+						<!-- 171130 수정// -->
+						<p>주식회사 현대백화점 대표이사 : 김형종 외 2인 서울시 강남구 테헤란로98길 12</p>
 						<p>
-							 고객님께서는 더현대닷컴에 아이디 <strong>[[${memberID}]]</strong>로 가입하여 주셨습니다.<br>
-							가입하신 아이디와 비밀번호로 안전하게 로그인 하실 수 있습니다.
+							사업자등록번호 : 211-87-21455 <a href="https://www.ftc.go.kr/bizCommPop.do?wrkr_no=2118721455" data-toggle="winpopup"
+								data-api="center,750,700,scrollbars" target="_blank"
+							>[사업자정보 확인]</a> 통신판매업신고 : 2010-서울강남-01882
 						</p>
-					</div>
-					<div class="inner">
-						<br>
-						<p class="noti-text">
-							※ 이메일, 카카오톡, 페이스북, 구글 계정을 통해 간편가입시 개인정보(이메일, 아이디, 성명, 휴대폰 번호 등)을 간접 수집합니다.
+						<p>
+							홈페이지/앱 문의 : <a href="mailto:customerservice@thehyundai.com">customerservice@thehyundai.com</a> 고객센터 : <strong>1800-2233</strong>
 						</p>
-						<p class="noti-text">
-							※ 고객님은 개인정보보호법 제 37조에 따라 개인정보 처리의 정지를 요구할 권리가 있습니다.
-						</p>
+						<p>호스팅서비스 : (주)현대백화점</p>
+						<p class="copy">CopyrightⓒHyundai Department Store. All rights reserved.</p>
+						<!-- //171130 수정 -->
+						<p>Where's Wally?ⓒDreamWorks Distribution Limited. All rights reserved.</p>
 					</div>
-					<!-- 0217 - 식품구매권 수령 난수 코드 -->
-					<!-- //0217 - 식품구매권 수령 난수 코드 -->
-					<!-- btn-wrap -->
-					<div class="btn-wrap">
-						<button class="btn size5 color3" type="button" onclick="location.href='/'">
-						더현대뷰티 메인으로<i class="icon-arrow btn-ar gray"></i>
-						</button>
-					</div>
-					<!-- //btn-wrap -->
-				</div>
-				<!-- 20170526 통합멤버십 가입안내// -->
-				<form name="frm" method="post">
-					<input type="hidden" name="prtnrRegGb" id="prtnrRegGb">
-					<input type="hidden" name="prtnrId" id="prtnrId">
-					<input type="hidden" name="chnnlId" id="chnnlId">
-					<input type="hidden" name="frnchId" id="frnchId">
-					<!-- 가맹점ID -->
-					<input type="hidden" name="brnchId" id="brnchId">
-					<!-- 대리점ID -->
-					<input type="hidden" name="evntId" id="evntId">
-					<!-- 모집이벤트ID -->
-					<input type="hidden" name="frnrGb" id="frnrGb">
-					<!-- <input type="hidden" name ="custNm" id ="custNm">
-				<input type="hidden" name ="birthDt" id ="birthDt"> -->
-					<input type="hidden" name="mophNo" id="mophNo">
-					<input type="hidden" name="chId" id="chId">
-					<input type="hidden" name="custUniqKey" id="custUniqKey">
-					<input type="hidden" name="email" id="email">
-					<input type="hidden" name="sexGbcd" id="sexGbcd">
-				</form>
-				<!-- //20170526 통합멤버십 가입안내 -->
-			</div>
-			<!-- //content -->
-		</div>
-	</div>
-	<!-- //container -->
-	<!-- footer -->
-	<div id="footer">
-		<h1 class="blind">푸터영역</h1>
-		<div class="top">
-			<div class="row">
-				<div class="hyundai-menu">
-					<span class="tit"><a href="javascript:;" onclick="javascript:GA_Event('PC_공통','푸터_메뉴','현대백화점그룹'); dummyLogCatch('http://www.ehyundai.com/newPortal/ir', 'Footer', 'group', 'blank', 'Y', null)">현대백화점그룹</a>
-					</span>
-					<ul>
-						<li><a onclick="GA_Event('PC_공통','푸터_메뉴','공지사항');" href="http://www.thehyundai.com/front/ccb/noticeList.thd?MainpageGroup=Footer&amp;GroupbannerName=notice">공지사항</a></li>
-						<li><a href="javascript:;" onclick="javascript:GA_Event('PC_공통','푸터_메뉴','윤리경영'); dummyLogCatch('http://www.ehyundai.com/newPortal/ir/ETH/ETH000001.do?ir=3', 'Footer', 'legal', 'blank', 'Y', null)">윤리경영</a></li>
-						<li><a href="javascript:;" onclick="javascript:GA_Event('PC_공통','푸터_메뉴','사회공헌'); dummyLogCatch('http://www.ehyundai.com/newPortal/csr/main.do', 'Footer', 'legal', 'blank', 'Y', null)">사회공헌</a></li>
-						<li><a onclick="GA_Event('PC_공통','푸터_메뉴','이용약관');" href="http://www.thehyundai.com/front/cua/viewPolicyPup.thd?view=1&amp;MainpageGroup=Footer&amp;GroupbannerName=agree" data-toggle="winpopup" data-api="center,900,770,scrollbars" target="_blank">이용약관</a></li>
-						<li><a onclick="GA_Event('PC_공통','푸터_메뉴','개인정보 처리방침');" href="http://www.thehyundai.com/front/cua/viewPolicyPup.thd?view=2&amp;MainpageGroup=Footer&amp;GroupbannerName=private" data-toggle="winpopup" data-api="center,900,770,scrollbars" target="_blank"><strong>개인정보 처리방침</strong></a></li>
-					</ul>
-				</div>
-				<!-- 2016-07-28// -->
-				<div class="family">
-					<a href="#" onclick="javascript:GA_Event('PC_공통','푸터_메뉴','FAMILY SITE'); $(this).parents('.family').toggleClass('current');return false;">FAMILY SITE <i></i>
-					</a>
-					<div class="family-site">
-						<!-- <h4>쇼핑몰 site</h4> -->
-						<div class="scrollable">
-							<ul>
-								<li><a onclick="GA_Event('PC_공통','패밀리사이트','현대식품관 투홈');" href="http://tohome.thehyundai.com" target="_blank">현대식품관 투홈</a></li>
-								<li><a onclick="GA_Event('PC_공통','패밀리사이트','현대Hmall');" href="https://www.hmall.com" target="_blank">현대Hmall</a></li>
-								<li><a onclick="GA_Event('PC_공통','패밀리사이트','현대백화점 DUTY FREE');" href="https://www.hddfs.com/shop/dm/main.do?ptnrChlCd=00003905" target="_blank">현대백화점 DUTY FREE</a></li>
-								<li><a onclick="GA_Event('PC_공통','패밀리사이트','더한섬닷컴');" href="http://www.thehansome.com" target="_blank">더한섬닷컴</a></li>
-								<li><a onclick="GA_Event('PC_공통','패밀리사이트','현대리바트몰');" href="http://mall.hyundailivart.co.kr" target="_blank">현대리바트몰</a></li>
-								<li><a onclick="GA_Event('PC_공통','패밀리사이트','현대렌탈케어');" href="http://www.hyundairentalcare.co.kr" target="_blank">현대렌탈케어</a></li>
-								<li><a onclick="GA_Event('PC_공통','패밀리사이트','H패션몰');" href="http://www.hfashionmall.com/sfmweb/" target="_blank">H패션몰</a></li>
-								<li><a onclick="GA_Event('PC_공통','패밀리사이트','현대어린이책미술관');" href="https://www.hmoka.org" target="_blank">현대어린이책미술관</a></li>
-								<li><a onclick="GA_Event('PC_공통','패밀리사이트','그리팅');" href="https://www.greating.co.kr/" target="_blank">그리팅</a></li>
-								<li><a onclick="GA_Event('PC_공통','패밀리사이트','한섬EQL');" href="https://www.eqlstore.com/main" target="_blank">한섬EQL</a></li>
-							</ul>
-						</div>
-						<h4>관계사 site</h4>
-						<div class="scrollable">
-							<ul>
-								<li><a onclick="GA_Event('PC_공통','패밀리사이트','현대백화점 그룹');" href="http://www.ehyundai.com/newPortal/ir" target="_blank">현대백화점 그룹</a></li>
-								<li><a onclick="GA_Event('PC_공통','패밀리사이트','현대백화점');" href="http://www.ehyundai.com" target="_blank">현대백화점</a></li>
-								<li><a onclick="GA_Event('PC_공통','패밀리사이트','현대홈쇼핑');" href="https://www.hmall.com" target="_blank">현대홈쇼핑</a></li>
-								<li><a onclick="GA_Event('PC_공통','패밀리사이트','현대그린푸드');" href="http://www.hyundaigreenfood.com" target="_blank">현대그린푸드</a></li>
-								<li><a onclick="GA_Event('PC_공통','패밀리사이트','한섬');" href="http://www.thehansome.com" target="_blank">한섬</a></li>
-								<li><a onclick="GA_Event('PC_공통','패밀리사이트','현대리바트');" href="http://www.hyundailivart.co.kr" target="_blank">현대리바트</a></li>
-								<li><a onclick="GA_Event('PC_공통','패밀리사이트','지누스');" href="https://zinus.co.kr/" target="_blank">지누스</a></li>
-								<li><a onclick="GA_Event('PC_공통','패밀리사이트','현대L&amp;C');" href="https://www.hyundailnc.com/company" target="_blank">현대L&amp;C</a></li>
-								<li><a onclick="GA_Event('PC_공통','패밀리사이트','현대렌탈케어');" href="http://www.hyundairentalcare.co.kr" target="_blank">현대렌탈케어</a></li>
-								<li><a onclick="GA_Event('PC_공통','패밀리사이트','현대드림투어');" href="http://www.hyundaidreamtour.com" target="_blank">현대드림투어</a></li>
-								<li><a onclick="GA_Event('PC_공통','패밀리사이트','현대에버다임');" href="http://www.everdigm.com" target="_blank">현대에버다임</a></li>
-								<li><a onclick="GA_Event('PC_공통','패밀리사이트','씨엔에스푸드시스템');" href="http://www.cnsfoodsystem.co.kr" target="_blank">씨엔에스푸드시스템</a></li>
-								<li><a onclick="GA_Event('PC_공통','패밀리사이트','현대캐터링시스템');" href="http://www.hyundaicatering.co.kr" target="_blank">현대캐터링시스템</a></li>
-								<li><a onclick="GA_Event('PC_공통','패밀리사이트','현대IT&amp;E');" href="http://www.hyundai-ite.com/index.jsp" target="_blank">현대IT&amp;E</a></li>
-								<li><a onclick="GA_Event('PC_공통','패밀리사이트','현대퓨처넷');" href="https://www.hyundaifuturenet.co.kr" target="_blank">현대퓨처넷</a></li>
-								<li><a onclick="GA_Event('PC_공통','패밀리사이트','현대이지웰');" href="https://www.hyundaiezwel.com/renew/main.ez" target="_blank">현대이지웰</a></li>
-								<li><a onclick="GA_Event('PC_공통','패밀리사이트','현대바이오랜드');" href="http://www.hyundaibioland.co.kr/main" target="_blank">현대바이오랜드</a></li>
-								<li><a onclick="GA_Event('PC_공통','패밀리사이트','벤디스');" href="https://sikdae.com" target="_blank">벤디스</a></li>
-								<!-- 20230113 신규계열사 벤디스 추가-->
-							</ul>
-						</div>
-					</div>
-				</div>
-				<!-- //2016-07-28 -->
-			</div>
-		</div>
-		<div class="bottom">
-			<div class="row">
-				<div class="logo">
-					<a href="http://www.thehyundai.com/Home.html"><img src="https://image.thehyundai.com/hdmall/images/co/img_bottom_logo.png" alt="THE HYUNDAI"></a>
-				</div>
-				<div class="info">
-					<!-- 171130 수정// -->
-					<p>
-						주식회사 현대백화점 대표이사 : 김형종 외 2인 서울시 강남구 테헤란로98길 12
-					</p>
-					<p>
-						 사업자등록번호 : 211-87-21455 <a href="https://www.ftc.go.kr/bizCommPop.do?wrkr_no=2118721455" data-toggle="winpopup" data-api="center,750,700,scrollbars" target="_blank">[사업자정보 확인]</a> 통신판매업신고 : 2010-서울강남-01882
-					</p>
-					<p>
-						 홈페이지/앱 문의 : <a href="mailto:customerservice@thehyundai.com">customerservice@thehyundai.com</a> 고객센터 : <strong>1800-2233</strong>
-					</p>
-					<p>
-						호스팅서비스 : (주)현대백화점
-					</p>
-					<p class="copy">
-						CopyrightⓒHyundai Department Store. All rights reserved.
-					</p>
-					<!-- //171130 수정 -->
-					<p>
-						Where's Wally?ⓒDreamWorks Distribution Limited. All rights reserved.
-					</p>
-				</div>
-				<div class="sns-quickgo">
-					<ul>
-						<li><a href="javascript:;" onclick="javascript:GA_Event('PC_공통','패밀리사이트','FACEBOOK'); dummyLogCatch('https://www.facebook.com/eHYUNDAI/', 'Footer', 'facebook', 'blank', 'Y', null)"><i class=" facebook">facebook</i></a></li>
-						<li><a href="javascript:;" onclick="javascript:GA_Event('PC_공통','패밀리사이트','TWITTER'); dummyLogCatch('https://twitter.com/eHyundai_tweets/', 'Footer', 'twitter', 'blank', 'Y', null)"><i class=" twitter">트위터</i></a></li>
-						<!-- 2017-01-25 핀터레스트 제거
+					<div class="sns-quickgo">
+						<ul>
+							<li><a href="javascript:;"
+								onclick="javascript:GA_Event('PC_공통','패밀리사이트','FACEBOOK'); dummyLogCatch('https://www.facebook.com/eHYUNDAI/', 'Footer', 'facebook', 'blank', 'Y', null)"
+							><i class=" facebook">facebook</i></a></li>
+							<li><a href="javascript:;"
+								onclick="javascript:GA_Event('PC_공통','패밀리사이트','TWITTER'); dummyLogCatch('https://twitter.com/eHyundai_tweets/', 'Footer', 'twitter', 'blank', 'Y', null)"
+							><i class=" twitter">트위터</i></a></li>
+							<!-- 2017-01-25 핀터레스트 제거
 						<li><a href="javascript:;" onclick="javascript:dummyLogCatch('https://www.pinterest.com/hyundaidept/', 'Footer', 'pinterest', 'blank', 'Y', null)"><i class=" pinterest">pinterest</i></a></li>
 						-->
-						<!-- 2017-01-25 인스타그램 추가 -->
-						<li><a href="javascript:;" onclick="javascript:GA_Event('PC_공통','패밀리사이트','INSTAGRAM'); dummyLogCatch('https://www.instagram.com/the_hyundai/', 'Footer', 'instagram', 'blank', 'Y', null)"><i class=" instagram">instagram</i></a></li>
-						<li><a href="javascript:;" onclick="javascript:GA_Event('PC_공통','패밀리사이트','TISTORY'); dummyLogCatch('http://thehyundai.tistory.com/', 'Footer', 'blog', 'blank', 'Y', null)"><i class=" tistory">tistory</i></a></li>
-					</ul>
+							<!-- 2017-01-25 인스타그램 추가 -->
+							<li><a href="javascript:;"
+								onclick="javascript:GA_Event('PC_공통','패밀리사이트','INSTAGRAM'); dummyLogCatch('https://www.instagram.com/the_hyundai/', 'Footer', 'instagram', 'blank', 'Y', null)"
+							><i class=" instagram">instagram</i></a></li>
+							<li><a href="javascript:;"
+								onclick="javascript:GA_Event('PC_공통','패밀리사이트','TISTORY'); dummyLogCatch('http://thehyundai.tistory.com/', 'Footer', 'blog', 'blank', 'Y', null)"
+							><i class=" tistory">tistory</i></a></li>
+						</ul>
+					</div>
 				</div>
-			</div>
-			<div class="certi-wrap row">
-				<p class="certi">
-					<a href="http://www.kolsa.or.kr/neopress/index.php?mid=regular" target="_blank"><img src="https://image.thehyundai.com/hdmall/images/co/img_footer_v2_certi_01.png" alt="사단법인 한국온라인 쇼핑협회 정회원사"></a><span class="scol">|</span><a href="http://www.kca.go.kr/wpge/m_210/ccm1100.do" target="_blank"><img src="https://image.thehyundai.com/hdmall/images/co/img_footer_v2_certi_02.png" alt="공정거래위원회 CCm 인증 [소비자중심 경영우수기업]"></a><span class="scol">|</span><a target="_blank"><img src="https://image.thehyundai.com/hdmall/images/co/img_footer_certi_03.png" alt="위해상품 차단 시스템 운영매장"></a><span class="scol">|</span><a target="_blank"><img src="https://image.thehyundai.com/hdmall/images/co/img_footer_certi_04.png" alt="모바일 어워드 코리아 2016"></a>
-				</p>
-				<p class="checkguarantee">
-					<span> 고객님의 안전거래를 위해 현금결제시 우리은행과 채무지급보증계약을<br>
-					 체결하여 안전거래를 보장하고 있습니다. </span>
-					<!--http://www.thehyundai.com/html/contents/-->
-					<a href="#" onclick="javascript:popover_ajax('https://www.thehyundai.com/html/contents/guarantee.html', 750);return false;">서비스 가입사실 확인</a>
-				</p>
+				<div class="certi-wrap row">
+					<p class="certi">
+						<a href="http://www.kolsa.or.kr/neopress/index.php?mid=regular" target="_blank"><img
+							src="https://image.thehyundai.com/hdmall/images/co/img_footer_v2_certi_01.png" alt="사단법인 한국온라인 쇼핑협회 정회원사"
+						></a><span class="scol">|</span><a href="http://www.kca.go.kr/wpge/m_210/ccm1100.do" target="_blank"><img
+							src="https://image.thehyundai.com/hdmall/images/co/img_footer_v2_certi_02.png" alt="공정거래위원회 CCm 인증 [소비자중심 경영우수기업]"
+						></a><span class="scol">|</span><a target="_blank"><img src="https://image.thehyundai.com/hdmall/images/co/img_footer_certi_03.png"
+							alt="위해상품 차단 시스템 운영매장"
+						></a><span class="scol">|</span><a target="_blank"><img src="https://image.thehyundai.com/hdmall/images/co/img_footer_certi_04.png"
+							alt="모바일 어워드 코리아 2016"
+						></a>
+					</p>
+					<p class="checkguarantee">
+						<span> 고객님의 안전거래를 위해 현금결제시 우리은행과 채무지급보증계약을<br> 체결하여 안전거래를 보장하고 있습니다.
+						</span>
+						<!--http://www.thehyundai.com/html/contents/-->
+						<a href="#" onclick="javascript:popover_ajax('https://www.thehyundai.com/html/contents/guarantee.html', 750);return false;">서비스 가입사실 확인</a>
+					</p>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
-<!-- //wrap -->
-<script type="text/javascript">
-        (function (d, s, id) {
-            var js,
-            fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) {
-            return;
-            }
-            js = d.createElement(s);
-            js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js";
-            fjs.parentNode.insertBefore(js, fjs);
-        })(document, "script", "facebook-jssdk");
-        window.fbAsyncInit = function () {
-            FB.init({
-            appId: "686353978133276",
-            cookie: true,
-            status: true,
-            xfbml: true,
-            version: "v2.10",
-            });
-        };
-        function fbLogin() {
-            FB.login(
-            function (response) {
-                if (response.authResponse) {
-                var token = response.authResponse.accessToken;
-                FB.api("/me", { fields: "email" }, function (response) {
-                    if (response.email !== undefined) {
-                    var form = $("form[name='registMemberForm']")[0];
-                    form.setAttribute(
-                        "action",
-                        "https://www.thehyundai.com/front/cob/snsAuth.thd"
-                    );
-                    $("input[name='token']").val(token);
-                    $("input[name='snsType']").val("10");
-                    form.submit();
-                    showLoadingBar("180px", "150px");
-                    } else {
-                    alert("facebook 이메일이 존재하지 않습니다.");
-                    }
-                });
-                }
-            },
-            { scope: "email" }
-            );
-        }
-        (function () {
-            var po = document.createElement("script");
-            po.type = "text/javascript";
-            po.async = true;
-            po.src =
-            "https://apis.google.com/js/client:plusone.js?onload=onGoogleLoaded";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(po, s);
-        })();
-        function googleLogin() {
-            gapi.auth.authorize(
-            {
-                client_id:
-                "27083101635-9eeusihur52mamtbhsb82ok2kiue6ikh.apps.googleusercontent.com",
-                scope: [
-                "https://www.googleapis.com/auth/userinfo.email",
-                "https://www.googleapis.com/auth/plus.login",
-                ],
-            },
-            function (response) {
-                if (response) {
-                if (response["error"] === undefined) {
-                    gapi.auth.setToken(response); // 반환된 토큰을 저장합니다.
-                    var token = response.access_token;
-                    var form = $("form[name='registMemberForm']")[0];
-                    form.setAttribute(
-                    "action",
-                    "https://www.thehyundai.com/front/cob/snsAuth.thd"
-                    );
-                    $("input[name='token']").val(token);
-                    $("input[name='snsType']").val("20");
-                    form.submit();
-                    showLoadingBar("180px", "150px");
-                }
-                }
-            }
-            );
-        }
-        function naverLogin() {
-            showLoadingBar("180px", "150px");
-            var requestUrl;
-            $.ajax({
-            url: "https://www.thehyundai.com/front/cob/snsAuthNaver.thd",
-            dataType: "json",
-            async: false,
-            success: function (data) {
-                hideBlockLoadingBar();
-                requestUrl = data.requestUrl;
-            },
-            error: function (e) {
-                hideBlockLoadingBar();
-                alert(
-                "일시적인 에러가 발생 하였습니다.\n잠시 후에 다시 시도해주세요."
-                );
-            },
-            });
-            if (!isEmpty(requestUrl)) {
-            openPopup(
-                requestUrl,
-                "",
-                600,
-                700,
-                "no",
-                $(window).width(),
-                $(window).height()
-            );
-            }
-        }
-        function callbackNaverLogin(token) {
-            if (isEmpty(token)) {
-            return;
-            }
-            var form = $("form[name='registMemberForm']")[0];
-            form.setAttribute(
-            "action",
-            "https://www.thehyundai.com/front/cob/snsAuth.thd"
-            );
-            $("input[name='token']").val(token);
-            $("input[name='snsType']").val("30");
-            form.submit();
-            showLoadingBar("180px", "150px");
-        }
-        </script>
-</div>
+	<!-- //wrap -->
+	<script type="text/javascript">
+		(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) {
+				return;
+			}
+			js = d.createElement(s);
+			js.id = id;
+			js.src = "//connect.facebook.net/en_US/sdk.js";
+			fjs.parentNode.insertBefore(js, fjs);
+		})(document, "script", "facebook-jssdk");
+		window.fbAsyncInit = function() {
+			FB.init({
+				appId : "686353978133276",
+				cookie : true,
+				status : true,
+				xfbml : true,
+				version : "v2.10",
+			});
+		};
+		function fbLogin() {
+			FB
+					.login(
+							function(response) {
+								if (response.authResponse) {
+									var token = response.authResponse.accessToken;
+									FB
+											.api(
+													"/me",
+													{
+														fields : "email"
+													},
+													function(response) {
+														if (response.email !== undefined) {
+															var form = $("form[name='registMemberForm']")[0];
+															form
+																	.setAttribute(
+																			"action",
+																			"https://www.thehyundai.com/front/cob/snsAuth.thd");
+															$(
+																	"input[name='token']")
+																	.val(token);
+															$(
+																	"input[name='snsType']")
+																	.val("10");
+															form.submit();
+															showLoadingBar(
+																	"180px",
+																	"150px");
+														} else {
+															alert("facebook 이메일이 존재하지 않습니다.");
+														}
+													});
+								}
+							}, {
+								scope : "email"
+							});
+		}
+		(function() {
+			var po = document.createElement("script");
+			po.type = "text/javascript";
+			po.async = true;
+			po.src = "https://apis.google.com/js/client:plusone.js?onload=onGoogleLoaded";
+			var s = document.getElementsByTagName("script")[0];
+			s.parentNode.insertBefore(po, s);
+		})();
+		function googleLogin() {
+			gapi.auth
+					.authorize(
+							{
+								client_id : "27083101635-9eeusihur52mamtbhsb82ok2kiue6ikh.apps.googleusercontent.com",
+								scope : [
+										"https://www.googleapis.com/auth/userinfo.email",
+										"https://www.googleapis.com/auth/plus.login", ],
+							},
+							function(response) {
+								if (response) {
+									if (response["error"] === undefined) {
+										gapi.auth.setToken(response); // 반환된 토큰을 저장합니다.
+										var token = response.access_token;
+										var form = $("form[name='registMemberForm']")[0];
+										form
+												.setAttribute("action",
+														"https://www.thehyundai.com/front/cob/snsAuth.thd");
+										$("input[name='token']").val(token);
+										$("input[name='snsType']").val("20");
+										form.submit();
+										showLoadingBar("180px", "150px");
+									}
+								}
+							});
+		}
+		function naverLogin() {
+			showLoadingBar("180px", "150px");
+			var requestUrl;
+			$.ajax({
+				url : "https://www.thehyundai.com/front/cob/snsAuthNaver.thd",
+				dataType : "json",
+				async : false,
+				success : function(data) {
+					hideBlockLoadingBar();
+					requestUrl = data.requestUrl;
+				},
+				error : function(e) {
+					hideBlockLoadingBar();
+					alert("일시적인 에러가 발생 하였습니다.\n잠시 후에 다시 시도해주세요.");
+				},
+			});
+			if (!isEmpty(requestUrl)) {
+				openPopup(requestUrl, "", 600, 700, "no", $(window).width(), $(
+						window).height());
+			}
+		}
+		function callbackNaverLogin(token) {
+			if (isEmpty(token)) {
+				return;
+			}
+			var form = $("form[name='registMemberForm']")[0];
+			form.setAttribute("action",
+					"https://www.thehyundai.com/front/cob/snsAuth.thd");
+			$("input[name='token']").val(token);
+			$("input[name='snsType']").val("30");
+			form.submit();
+			showLoadingBar("180px", "150px");
+		}
+	</script>
+	</div>
 </body>
 </html>
