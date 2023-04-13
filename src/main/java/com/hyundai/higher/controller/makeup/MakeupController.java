@@ -163,7 +163,7 @@ public class MakeupController {
 		log.info(result);
 		
 		// 결과 완료 알림메세지 카카오톡 전송
-		kakaoService.Sendmessage();
+		kakaoService.Sendmessage("92317");
 
 		return ("redirect:/rtc/room");
 	}

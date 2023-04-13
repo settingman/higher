@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.hyundai.higher.kakao.service.KakaoService;
 import com.hyundai.higher.mapper.beauty.BeautyMapper;
 import com.hyundai.higher.webRTC.dto.ChatRoomDto;
 import com.hyundai.higher.webRTC.dto.ChatRoomMap;
@@ -39,6 +40,7 @@ public class ChatRoomController {
 
 	private final ChatServiceMain chatServiceMain;
 	private final BeautyMapper beautyMapper;
+	private final KakaoService kakaoService;
 
 	// 채팅방 생성
 	@PostMapping("/chat/createroom")
@@ -62,7 +64,7 @@ public class ChatRoomController {
 		beautyMapper.updateRoomID(customerID,reservationID,room.getRoomId());
 		
 		
-		
+		kakaoService.Sendmessage("92547");
 		
 
 		rttr.addFlashAttribute("roomName", room);
