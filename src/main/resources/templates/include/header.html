@@ -2,33 +2,34 @@
 	$(function() {
 		// 헤더 카테고리
 		$.ajax({
-					url : '/category/cateAll',
-					type : 'GET',
-					success : function(r) {
-						console.log(r);
-						
-						// mbti
-						let mbti = r.mbtiDTO;
-						let mbtiDTag = ''; 
-						for(let i=0; i<8; i++){
-							mbtiDTag += `<a href="/product/list?mbti=` + mbti[i].stype + `">` + mbti[i].stype + `</a>`;
-						}
-						$('#mbti_d').html(mbtiDTag);
-						let mbtiOTag = '';
-						for(let i=8; i<16; i++){
-							mbtiOTag += `<a href="/product/list?mbti=` + mbti[i].stype + `">` + mbti[i].stype + `</a>`;
-						}
-						$('#mbti_o').html(mbtiOTag);
-						
-						// 스킨케어 - 중분류
-						let skin = r.skinDTO;
-						let skinTag = `<a href="/product/list?dept1=10">전체</a>`;
-						$.each(skin, function(idx, item) {
-							skinTag += `<a href="/product/list?dept1=10&dept2=`
-									+ item.dept2no + `">` + item.dept2name
-									+ `</a>`;
-						});
-						$('#cateSkin').html(skinTag);
+			url : '/category/cateAll',
+			type : 'GET',
+			success : function(r) {
+				console.log(r);
+
+				// mbti
+				let mbti = r.mbtiDTO;
+				let mbtiDTag = '';
+				for (let i = 0; i < 8; i++) {
+					mbtiDTag += `<a href="/product/list?mbti=` + mbti[i].stype
+							+ `">` + mbti[i].stype + `</a>`;
+				}
+				$('#mbti_d').html(mbtiDTag);
+				let mbtiOTag = '';
+				for (let i = 8; i < 16; i++) {
+					mbtiOTag += `<a href="/product/list?mbti=` + mbti[i].stype
+							+ `">` + mbti[i].stype + `</a>`;
+				}
+				$('#mbti_o').html(mbtiOTag);
+
+				// 스킨케어 - 중분류
+				let skin = r.skinDTO;
+				let skinTag = `<a href="/product/list?dept1=10">전체</a>`;
+				$.each(skin, function(idx, item) {
+					skinTag += `<a href="/product/list?dept1=10&dept2=`
+							+ item.dept2no + `">` + item.dept2name + `</a>`;
+				});
+				$('#cateSkin').html(skinTag);
 
 				// 스킨케어 - 브랜드
 				let skinBrand = r.skinBrandDTO;
@@ -141,14 +142,13 @@
 			<li sec:authorize="isAnonymous()"><a href="/member/login">로그인</a></li>
 			<li sec:authorize="isAnonymous()"><a href="/member/jointotal">회원가입</a></li>
 			<!-- //로그인 후 -->
-			<li sec:authorize="isAuthenticated()" class="myinfo"><a
-				href="/mypage/reserv"><strong
-					sec:authentication="principal.mName">회원이름</strong> 님 <i></i></a>
+			<li sec:authorize="isAuthenticated()"><a sec:authorize="hasRole('ADMIN')" href="/rtc/room">관리자 페이지</a></li>
+			<li sec:authorize="isAuthenticated()" class="myinfo"><a href="/mypage/reserv"><strong sec:authentication="principal.mName">회원이름</strong> 님
+					<i></i></a>
 				<div id="myinfo_layer">
 					<dl style="margin-bottom: 0">
 						<dt>
-							<span class="text_ellipsis" style="max-width: 75px;"
-								sec:authentication="principal.mName">회원이름</span> 님, 환영합니다!
+							<span class="text_ellipsis" style="max-width: 75px;" sec:authentication="principal.mName">회원이름</span> 님, 환영합니다!
 						</dt>
 						<dd>
 							<ul>
@@ -176,30 +176,24 @@
 		<!-- 	<form id="headerSearchForm"> -->
 		<div class="search_cart">
 			<div class="search_faq">
-				<input type="hidden" value="182" name="seq"> <input
-					type="hidden" value="SHA001" name="hitType"> <input
-					type="search" title="검색 입력창" name="topSearchKeyword"
-					placeholder="유비데아로 촉촉하게 톤업" maxlength="20">
+				<input type="hidden" value="182" name="seq">
+				<input type="hidden" value="SHA001" name="hitType">
+				<input type="search" title="검색 입력창" name="topSearchKeyword" placeholder="유비데아로 촉촉하게 톤업" maxlength="20">
 				<button type="button" onclick="topSearchEvent();">
 					<span>검색</span>
 				</button>
 			</div>
-			<a href="/shop/mycart" class="btn-cart"><span class="hide">장바구니</span><span
-				class="cart-count">0</span></a>
+			<a href="/shop/mycart" class="btn-cart"><span class="hide">장바구니</span><span class="cart-count">0</span></a>
 		</div>
 		<!-- </form> -->
-		<div class="hashtag"
-			style="display: block-inline; width: 308px; height: 20px; overflow: hidden;">
+		<div class="hashtag" style="display: block-inline; width: 308px; height: 20px; overflow: hidden;">
 			<div style="float: left; white-space: nowrap; padding: 0px 308px;">
 				<div style="float: left; white-space: nowrap; padding: 0px 308px;">
 					<div style="float: left; white-space: nowrap; padding: 0px 308px;">
 						<div style="float: left; white-space: nowrap; padding: 0px 308px;">
-							<a href="#none" onclick="goKey('전 품목 20% OFF!'); return false;">#전
-								품목 20% OFF!</a> <a href="#none"
-								onclick="goKey('신제품 무료 체험 이벤트✨'); return false;">#신제품 무료 체험
-								이벤트✨</a> <a href="#none"
-								onclick="goKey('세트 구매 시 추가 증정🎁'); return false;">#세트 구매 시
-								추가 증정🎁</a>
+							<a href="#none" onclick="goKey('전 품목 20% OFF!'); return false;">#전 품목 20% OFF!</a> <a href="#none"
+								onclick="goKey('신제품 무료 체험 이벤트✨'); return false;"
+							>#신제품 무료 체험 이벤트✨</a> <a href="#none" onclick="goKey('세트 구매 시 추가 증정🎁'); return false;">#세트 구매 시 추가 증정🎁</a>
 						</div>
 					</div>
 				</div>
@@ -210,45 +204,34 @@
 <section class="gnb_nav">
 	<nav>
 		<ul class="left">
-			<li class="">
-          <a href="javascript:void(0);" data-depth="1">
-            <span>피부타입</span>
-            <em>MBTI TYPE</em>
-          </a>
-          <div class="sub_contain" style="opacity: 1; display: none;">
-            <div class="submenu" style="margin-right: 0px;">
-              <dl>
-                <dt>
-                  <a href="#">MBTI 별</a>
-                </dt>
-                <dd id="mbti_d">
-                  
-                </dd>
-              </dl>
-            </div>
-            <div class="submenu" style="margin-left: 0px;">
-            	<dl style="margin-top: 16px;">
-              	 <dt>
-                  <a href="#"></a>
-                </dt>
-                <dd id="mbti_o">
-                  
-                </dd>
-              </dl>
-            </div>
-            <div class="sub_contain_button">
-              <button type="button" class="btn_base move" onclick="location.href='/product/list?dept1=10'">전체 제품
-                보기</button>
-              <button type="button" class="btn_base move" onclick="location.href='/skinMBTI/selfConsult'">피부 MBTI 진단하기</button>
-            </div>
-           
-          </div>
-        </li>
-			<li class=""><a href="/product/list?dept1=10"
-				data-menu-name="스킨케어" data-depth="1"> <span>스킨케어</span> <em>FACE</em>
+			<li class=""><a href="javascript:void(0);" data-depth="1"> <span>피부타입</span> <em>MBTI TYPE</em>
 			</a>
-				<div class="sub_contain"
-					style="opacity: 1; display: none; min-height: 300px; width: 900px;">
+				<div class="sub_contain" style="opacity: 1; display: none;">
+					<div class="submenu" style="margin-right: 0px;">
+						<dl>
+							<dt>
+								<a href="#">MBTI 별</a>
+							</dt>
+							<dd id="mbti_d"></dd>
+						</dl>
+					</div>
+					<div class="submenu" style="margin-left: 0px;">
+						<dl style="margin-top: 16px;">
+							<dt>
+								<a href="#"></a>
+							</dt>
+							<dd id="mbti_o"></dd>
+						</dl>
+					</div>
+					<div class="sub_contain_button">
+						<button type="button" class="btn_base move" onclick="location.href='/product/list?dept1=10'">전체 제품 보기</button>
+						<button type="button" class="btn_base move" onclick="location.href='/skinMBTI/selfConsult'">피부 MBTI 진단하기</button>
+					</div>
+
+				</div></li>
+			<li class=""><a href="/product/list?dept1=10" data-menu-name="스킨케어" data-depth="1"> <span>스킨케어</span> <em>FACE</em>
+			</a>
+				<div class="sub_contain" style="opacity: 1; display: none; min-height: 300px; width: 900px;">
 					<div class="submenu">
 						<dl style="margin: 0;">
 							<dt>
@@ -266,21 +249,16 @@
 						</dl>
 					</div>
 					<div class="submenu" style="margin-left: 0px;">
-						<dl style="margin-top: 47px;margin-bottom: 0;padding-top: 0;">
+						<dl style="margin-top: 47px; margin-bottom: 0; padding-top: 0;">
 							<dd id="cateSkinBrand2"></dd>
 						</dl>
 					</div>
 					<div class="sub_contain_button">
-						<button type="button" class="btn_base move"
-							onclick="location.href='/product/list?dept1=10';">전체 제품
-							보기</button>
-						<button type="button" class="btn_base move"
-							onclick="location.href='/skinMBTI/selfConsult';">피부 MBTI
-							진단하기</button>
+						<button type="button" class="btn_base move" onclick="location.href='/product/list?dept1=10';">전체 제품 보기</button>
+						<button type="button" class="btn_base move" onclick="location.href='/skinMBTI/selfConsult';">피부 MBTI 진단하기</button>
 					</div>
 				</div></li>
-			<li class=""><a href="/product/list?dept1=20"> <span>메이크업</span>
-					<em>MAKE UP</em>
+			<li class=""><a href="/product/list?dept1=20"> <span>메이크업</span> <em>MAKE UP</em>
 			</a>
 				<div class="sub_contain" style="opacity: 1; display: none; min-height: 300px; width: 900px;">
 					<div class="submenu">
@@ -301,20 +279,16 @@
 						</dl>
 					</div>
 					<div class="submenu" style="margin-left: 0px;">
-						<dl style="margin-top: 47px;margin-bottom: 0;padding-top: 0;">
+						<dl style="margin-top: 47px; margin-bottom: 0; padding-top: 0;">
 							<dd id="cateMakeBrand2"></dd>
 						</dl>
 					</div>
 					<div class="sub_contain_button">
-						<button type="button" class="btn_base move"
-							onclick="location.href='/product/list?dept1=20';">전체 제품
-							보기</button>
-						<button type="button" class="btn_base move"
-							onclick="location.href='/beauty/reserv';">메이크업 상담 예약</button>
+						<button type="button" class="btn_base move" onclick="location.href='/product/list?dept1=20';">전체 제품 보기</button>
+						<button type="button" class="btn_base move" onclick="location.href='/beauty/reserv';">메이크업 상담 예약</button>
 					</div>
 				</div></li>
-			<li class=""><a href="/product/list?dept1=30"
-				data-menu-name="바디/헤어케어" data-depth="1"> <span>바디/헤어케어</span> <em>BODY/HAIR</em>
+			<li class=""><a href="/product/list?dept1=30" data-menu-name="바디/헤어케어" data-depth="1"> <span>바디/헤어케어</span> <em>BODY/HAIR</em>
 			</a>
 				<div class="sub_contain" style="opacity: 1; display: none; min-height: 300px; width: 900px;">
 					<div class="submenu">
@@ -342,29 +316,24 @@
 						</dl>
 					</div>
 					<div class="sub_contain_button">
-						<button type="button" class="btn_base move"
-							onclick="location.href='/product/list?dept1=30';">전체 제품
-							보기</button>
-						<button type="button" class="btn_base move"
-							onclick="location.href='/skinMBTI/selfConsult';">피부 MBTI
-							진단하기</button>
+						<button type="button" class="btn_base move" onclick="location.href='/product/list?dept1=30';">전체 제품 보기</button>
+						<button type="button" class="btn_base move" onclick="location.href='/skinMBTI/selfConsult';">피부 MBTI 진단하기</button>
 					</div>
 				</div></li>
 		</ul>
 		<ul class="right">
-			<li class=""><a href="/skinMBTI/selfConsult"><i
-					class="ico_new">NEW</i>피부 MBTI</a>
+			<li class=""><a href="/skinMBTI/selfConsult"><i class="ico_new">NEW</i>피부 MBTI</a>
 				<div class="sub_contain" style="opacity: 1; display: none;">
 					<div class="menu">
 						<ul>
 							<li><a href="/skinMBTI/selfConsult" data-depth="2">진단하기</a></li>
-							<li th:with="name=${#authentication.getPrincipal().mbti}"  sec:authorize="isAuthenticated()" th:if="${mbti != null}"><a href="/skinMBTI/check_result" data-depth="2">결과보기</a></li>
+							<li th:with="name=${#authentication.getPrincipal().mbti}" sec:authorize="isAuthenticated()" th:if="${mbti != null}"><a
+								href="/skinMBTI/check_result" data-depth="2"
+							>결과보기</a></li>
 						</ul>
 					</div>
 				</div> <!-- //sub_contain --></li>
-			<li class=""><a href="/beauty/reserv"
-				style="font-family: 'notokr-medium'; color: #bfae90;"><i
-					class="ico_new">NEW</i>MAKE-ON</a>
+			<li class=""><a href="/beauty/reserv" style="font-family: 'notokr-medium'; color: #bfae90;"><i class="ico_new">NEW</i>MAKE-ON</a>
 				<div class="sub_contain" style="opacity: 1; display: none;">
 					<div class="menu">
 						<ul>
@@ -373,17 +342,12 @@
 						</ul>
 					</div>
 				</div> <!-- //sub_contain --></li>
-			<li class=""><a sec:authorize="isAnonymous()" href="/match/main"
-				data-depth="1"><span>매칭화장품</span><em>MATCH IT</em></a> <a
-				th:with="name=${#authentication.getPrincipal().mbti}"
-				sec:authorize="isAuthenticated()"
-				th:href="@{/match/main(mbti=${name})}" data-depth="1"><span>매칭화장품</span><em>MATCH
-						IT</em></a></li>
-			<li class=""><a href="/product/compare" data-depth="1"
-				class="sp-goal-457-c65-35-1627285161700"> <span><i
-						class="ico"><img src="/common/image/basket.png"
-							style="width: 24px; margin-bottom: 4px; margin-right: 3px;"></i>상품
-						비교함</span><em>COMPARE IT</em>
+			<li class=""><a sec:authorize="isAnonymous()" href="/match/main" data-depth="1"><span>매칭화장품</span><em>MATCH IT</em></a> <a
+				th:with="name=${#authentication.getPrincipal().mbti}" sec:authorize="isAuthenticated()" th:href="@{/match/main(mbti=${name})}" data-depth="1"
+			><span>매칭화장품</span><em>MATCH IT</em></a></li>
+			<li class=""><a href="/product/compare" data-depth="1" class="sp-goal-457-c65-35-1627285161700"> <span><i class="ico"><img
+							src="/common/image/basket.png" style="width: 24px; margin-bottom: 4px; margin-right: 3px;"
+						></i>상품 비교함</span><em>COMPARE IT</em>
 			</a> <!-- //sub_contain --></li>
 		</ul>
 	</nav>
