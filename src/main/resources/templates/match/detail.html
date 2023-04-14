@@ -54,6 +54,10 @@ button.detailview {
     margin-bottom: 20px;
     color: darkslategray;
 }
+canvas {
+	top: -22px;
+	position: relative;
+}
 </style>
 <link rel="stylesheet" type="text/css" href="/match/css/detail.css">
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -141,192 +145,7 @@ button.detailview {
 
     });
   </script>
-	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/easy-pie-chart/2.1.6/jquery.easypiechart.min.js"></script> -->
 
-  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-  <script src="/path/to/jquery.easy-pie-chart.js"></script>
-<link rel="stylesheet"type="text/css" href="/path/to/jquery.easy-pie-chart.css">
-
-    <script th:inline="javascript">
-$(function() {
-
-      const mychart = document.querySelector('.mychart');
-      // if ('/*[[${score}]]*/' != null && mychart != null ) {
-        const percent = mychart.dataset.percent;
-
-			console.log(percent + "-------------------------");
-
-			// $('.mychart').easyPieChart({
-			//   trackColor: '#ccc'
-			// })
-
-			if (percent <= 20) {
-        console.log("퍼센트 들어옴");
-				$('.mychart').easyPieChart({
-					barColor : '#fe3c69',
-					trackColor : '#dadada', //도넛배경색
-					scaleColor : '#fff',
-					lineCap : 'butt',
-					lineWidth : 30,
-					size : 200,
-					animate : 1000,
-					onStart : $.noop,
-					onStop : $.noop
-				});
-        document.querySelector(".title").textContent = '글쎄요';
-
-			} else if (percent <= 40) {
-				$('.mychart').easyPieChart({
-					barColor : '#f77694',
-					trackColor : '#dadada', //도넛배경색
-					scaleColor : '#fff',
-					lineCap : 'butt',
-					lineWidth : 30,
-					size : 200,
-					animate : 1000,
-					onStart : $.noop,
-					onStop : $.noop
-				});
-        document.querySelector(".title").textContent = '그냥 그래요';
-
-			} else if (percent <= 60) {
-				$('.mychart').easyPieChart({
-					barColor : '#DCFBF9',
-					trackColor : '#ccc', //도넛배경색
-					scaleColor : '#fff',
-					lineCap : 'butt',
-					lineWidth : 30,
-					size : 200,
-					animate : 1000,
-					onStart : $.noop,
-					onStop : $.noop
-				});
-        document.querySelector(".title").textContent = '보통이에요';
-
-			} else if (percent <= 80) {
-				$('.mychart').easyPieChart({
-					barColor : '#CBE6FF',
-					trackColor : '#ccc', //도넛배경색
-					scaleColor : '#fff',
-					lineCap : 'butt',
-					lineWidth : 30,
-					size : 200,
-					animate : 1000,
-					onStart : $.noop,
-					onStop : $.noop
-				});
-        document.querySelector(".title").textContent = '잘 맞는 편!';
-
-			} else if (percent <= 100) {
-				$('.mychart').easyPieChart({
-					barColor : '#B7BCFE',
-					trackColor : '#ccc', //도넛배경색
-					scaleColor : '#fff',
-					lineCap : 'butt',
-					lineWidth : 30,
-					size : 200,
-					animate : 1000,
-					onStart : $.noop,
-					onStop : $.noop
-				});
-        document.querySelector(".title").textContent = '찰떡궁합';
-
-			}
-
-
-      // }
-
-  });
-      
-  </script> -->
-  <!-- <script>
-
-    
-		window.onload = function() {
-
-			const mychart = document.querySelector('.mychart');
-			const percent = mychart.dataset.percent;
-			console.log(percent + "-------------------------");
-
-			// $('.mychart').easyPieChart({
-			//   trackColor: '#ccc'
-			// })
-
-			if (percent <= 20) {
-				$('.mychart').easyPieChart({
-					barColor : '#fe3c69',
-					trackColor : '#dadada', //도넛배경색
-					scaleColor : '#fff',
-					lineCap : 'butt',
-					lineWidth : 30,
-					size : 200,
-					animate : 1000,
-					onStart : $.noop,
-					onStop : $.noop
-				});
-        document.querySelector(".title").textContent = '글쎄요';
-
-			} else if (percent <= 40) {
-				$('.mychart').easyPieChart({
-					barColor : '#f77694',
-					trackColor : '#dadada', //도넛배경색
-					scaleColor : '#fff',
-					lineCap : 'butt',
-					lineWidth : 30,
-					size : 200,
-					animate : 1000,
-					onStart : $.noop,
-					onStop : $.noop
-				});
-        document.querySelector(".title").textContent = '그냥 그래요';
-
-			} else if (percent <= 60) {
-				$('.mychart').easyPieChart({
-					barColor : '#DCFBF9',
-					trackColor : '#ccc', //도넛배경색
-					scaleColor : '#fff',
-					lineCap : 'butt',
-					lineWidth : 30,
-					size : 200,
-					animate : 1000,
-					onStart : $.noop,
-					onStop : $.noop
-				});
-        document.querySelector(".title").textContent = '보통이에요';
-
-			} else if (percent <= 80) {
-				$('.mychart').easyPieChart({
-					barColor : '#CBE6FF',
-					trackColor : '#ccc', //도넛배경색
-					scaleColor : '#fff',
-					lineCap : 'butt',
-					lineWidth : 30,
-					size : 200,
-					animate : 1000,
-					onStart : $.noop,
-					onStop : $.noop
-				});
-        document.querySelector(".title").textContent = '잘 맞는 편!';
-
-			} else if (percent <= 100) {
-				$('.mychart').easyPieChart({
-					barColor : '#B7BCFE',
-					trackColor : '#ccc', //도넛배경색
-					scaleColor : '#fff',
-					lineCap : 'butt',
-					lineWidth : 30,
-					size : 200,
-					animate : 1000,
-					onStart : $.noop,
-					onStop : $.noop
-				});
-        document.querySelector(".title").textContent = '찰떡궁합';
-
-			}
-
-		}
-	</script> -->
 	<div id="wrap" class="right_type" data-fbq-content-id="3596"
 		data-fbq-value="48000">
 
@@ -410,7 +229,7 @@ $(function() {
 									<div sec:authorize="isAuthenticated()" th:if="${score != null}" class="result"
 										style="display: flex; justify-content: center; margin-bottom: 65px;">
 										<div id="resultchart" class="chart mychart" th:data-percent="${score}">
-											<span class="title" style="top: 119px;">[[${score}]]</span>
+											<span class="title" style="top: 97px;">[[${score}]]</span>
 										</div>
 									</div>
                   <!-- 회원 차트 결과 end -->
@@ -455,8 +274,7 @@ $(function() {
 										</div>
 									</div>
                   <!-- 비회원 end -->
-                  
-									<div id="ingredient_box">
+									<div th:if="${infolist == null}" id="ingredient_box">
 										<div id="iTit">주요성분</div>
 										<div>
 											<ul>
@@ -465,15 +283,38 @@ $(function() {
 											</ul>
 										</div>
 									</div>
+
 								</div>
 								<div class="datail_info_btn">
                   <span class="instock">
                   	<button id="compare-btn" type="button" class="btn_base darkgray basket" onclick="putThis()" style="width: 49%; margin: 0; background-color: #f988a1; border: 1px solid #f988a1;"><span style="font-family: 'notokr-demilight';"><img src="/common/image/add.png" style="width: 22px; margin-right: 6px;">비교함 담기</span></button>
                     <button type="button" class="btn_base darkgray basket" onclick="addCartThis()" style="border: 1px solid #8f8f8f; background-color: #8f8f8f;"><span>장바구니</span></button>
                   </span>
-
                 </div>
 							</div>
+
+							<div th:unless="${infolist == null}" style="display:inline-block;">
+								<div id="ingredient_box" style="display: flex;">
+									<div style="width: 46%;border-right:1px solid #ddd; padding-right: 25px;">
+									<div id="iTit">주요성분</div>
+									<div>
+										<ul>
+											<li th:if="${!#strings.equals(i, null)}" th:each="i : ${mainIngredient}"><img
+												src="/similarCos/img/drop.png">[[${i}]]</li>
+										</ul>
+									</div>
+									</div>
+								<div id="infobox" style="width: 47%;padding-left:39px;">
+									<div id="iTit">주요기능</div>
+									<ul>
+										<li th:each="info : ${infolist}" >
+											<img src="/match/img/check.png">[[${info}]]
+										</li>
+									</ul>
+								</div>
+								</div>
+							</div>
+							
 						</form>
 					</div>
 					<!-- //top -->
@@ -491,7 +332,7 @@ $(function() {
           <div class="addItem_slider" th:if="${!#lists.isEmpty(similarCos)}">
             <button type="button" class="ctrl_prev">prev</button>
             <ul class="view">
-              <li th:each="sProd, sStat : ${similarCos}">
+              <li class="sPrd" th:each="sProd, sStat : ${similarCos}">
                 <div>
                   <input type="hidden" id="pcode" th:value="${sProd.pcode}">
                   <input type="hidden" id="optname" th:value="${sProd.pname}">
@@ -506,14 +347,14 @@ $(function() {
                     	<img th:if="${sProd.iloc != 'NULL'}" th:src="${sProd.iloc}+'_600.jpg'">
                     	<img th:if="${sProd.iloc == 'NULL'}" src="https://image.thehyundai.com/hdmall/images/pd/no_image_480x480.jpg">
                     </span>
-                    <span class="hash">[[${sProd.bname}]]</span>
+                    <span class="hash" id="hash">[[${sProd.bname}]]</span>
                     <span class="tit"><strong style="overflow: hidden; height: 19px; white-space: break-spaces;">[[${sProd.pname}]]</strong></span>
-                   	<span style="margin-bottom: 10px;"><em>[[${#numbers.formatInteger(sProd.pprice, 3, 'COMMA')}]]<i>원</i></em></span>
+                   	<span style="margin-bottom: 10px;" ><em id="price">[[${#numbers.formatInteger(sProd.pprice, 3, 'COMMA')}]]<i>원</i></em></span>
                    <span class="sm"><img src="/similarCos/img/drop.png">성분 유사도 </span>
                    <span class="sm-per">[[${sProd.percent}]]%</span>
                     <span class="star">
                       <div class="star-rating small">
-                        <span class="c00">
+												<span th:class="'c' + ${#numbers.formatInteger(sProd.rates*10, 2)}">
                           <em class="hide">벌점 0개</em>
                         </span>
                       </div>
@@ -1106,17 +947,175 @@ $(function() {
 		}
 
 		function put(){ //체크한 상품 비교함에 담기
+			let arr = JSON.parse(localStorage.getItem("arr")) || []; // null일 경우 빈 배열 생성
 
-			// const pcode = ;
-			// const pname = ;
-			// const brand = ;
-			// const price = ;
-			// const imglink = ;
-			// const rates = ;
-			// const pvolume = ;
-			// const ptype = ;
-			// const pingredient = ;
-			// const poption = ;
+			const pop = document.getElementById('survey_pop');
+
+			let liList = document.querySelectorAll(".sPrd");
+			console.log(liList.length+"-----------------------length");
+
+			
+			if(liList[0].querySelector('.recomPrdtSeq') == null ){
+				console.log("옵션 선택 안함");
+				pop.innerHTML= `
+					<div class="layerpop blue" style="width: 460px;">
+						<div class="layerpop_head">
+							<h1 class="poptitle">비교함</h1>
+						</div>
+						<div class="layerpop_cont" style="height: 330px;">
+							<div class="save_cont">
+								<p>
+									상품을 선택하세요.
+								</p>
+								<div class="btn_wrap center mt30">
+									<button type="button" class="btn_base darkgray act" id="save_close">확인</button>
+								</div>
+							</div>
+						</div>
+						<button type="button" class="close">닫기</button>
+					</div>
+						`;
+						$("#survey_pop").css("display", "block");
+
+					$('#save_close').click(function() {
+						$("#survey_pop").css("display", "none");
+
+					});        return false;
+			}
+
+
+			if(liList.length > 10 - arr.length) {
+				console.log('비교함 10개 넘음');
+				pop.innerHTML= `
+					<div class="layerpop blue" style="width: 460px;">
+						<div class="layerpop_head">
+							<h1 class="poptitle">비교함</h1>
+						</div>
+						<div class="layerpop_cont" style="height: 330px;">
+							<div class="save_cont">
+								<p>
+									비교함에는 10개의 상품을 담을 수 있습니다.
+								</p>
+								<div class="btn_wrap center mt30">
+									<button type="button" class="btn_base darkgray act" id="save_close">확인</button>
+								</div>
+							</div>
+						</div>
+						<button type="button" class="close">닫기</button>
+					</div>
+						`;
+						$("#survey_pop").css("display", "block");
+
+					$('#save_close').click(function() {
+						$("#survey_pop").css("display", "none");
+
+					});        return false;
+			}
+
+			for (let i = 0; i < liList.length; i++) {
+				const checkbox = liList[i].querySelector('.recomPrdtSeq');
+				
+
+				if (checkbox.checked) { //체크한 상품만 장바구니 담기
+					const pname = document.querySelector('.tit strong').textContent;
+          const pcode = $(liList[i]).find('#pcode').val();
+					const brand = $(liList[i]).find('#hash').text();
+					const price = $(liList[i]).find('#price').text();
+					const imglink = $(liList[i]).find('.photo img').attr('src');
+					const rate = document.querySelector('.star .star-rating.small span').className;
+					const pvolume = $(liList[i]).find('#pvolume').val();
+					const ptype = $(liList[i]).find('#ptype').val();
+					const pingredient = $(liList[i]).find('#pingredient').val();
+          const poption = $(liList[i]).find('#optname').val();
+
+					if (arr.length >= 10) {
+						pop.innerHTML= `
+					<div class="layerpop blue" style="width: 460px;">
+						<div class="layerpop_head">
+							<h1 class="poptitle">비교함</h1>
+						</div>
+						<div class="layerpop_cont" style="height: 330px;">
+							<div class="save_cont">
+								<p>
+									비교함에는 10개의 상품을 담을 수 있습니다.
+								</p>
+								<div class="btn_wrap center mt30">
+									<button type="button" class="btn_base darkgray act" id="save_close">확인</button>
+								</div>
+							</div>
+						</div>
+						<button type="button" class="close">닫기</button>
+					</div>
+						`;
+						$("#survey_pop").css("display", "block");
+
+					$('#save_close').click(function() {
+						$("#survey_pop").css("display", "none");
+
+					});        return false;
+					}
+			
+					if (arr.some(item => item[0] === pcode)) { // 이미 비교함에 추가된 상품인 경우
+						pop.innerHTML= `
+					<div class="layerpop blue" style="width: 460px;">
+						<div class="layerpop_head">
+							<h1 class="poptitle">비교함</h1>
+						</div>
+						<div class="layerpop_cont" style="height: 330px;">
+							<div class="save_cont">
+								<p>
+									이미 비교함에 담긴 상품입니다.
+								</p>
+								<div class="btn_wrap center mt30">
+									<button type="button" class="btn_base darkgray act" id="save_close">확인</button>
+								</div>
+							</div>
+						</div>
+						<button type="button" class="close">닫기</button>
+					</div>
+						`;
+						$("#survey_pop").css("display", "block");
+
+					$('#save_close').click(function() {
+						$("#survey_pop").css("display", "none");
+
+					});      } else {
+						arr.push([pcode, pname, brand, price, imglink, rate, pvolume, ptype, pingredient,poption]); // 상품 정보 저장
+						localStorage.setItem("arr", JSON.stringify(arr));
+						pop.innerHTML= `
+					<div class="layerpop blue" style="width: 460px;">
+						<div class="layerpop_head">
+							<h1 class="poptitle">비교함</h1>
+						</div>
+						<div class="layerpop_cont" style="height: 330px;">
+							<div class="save_cont">
+								<p>
+									상품을 비교함에 담았습니다. <br>
+									비교하기 페이지로 이동하시겠습니까?
+								</p>
+								<div class="btn_wrap center mt30">
+									<button type="button" class="btn_base blue act" id="okay" onclick="location.href='/product/compare'">확인</button>
+									<button type="button" class="btn_base darkgray act" id="save_close">계속 쇼핑하기</button>
+								</div>
+							</div>
+						</div>
+						<button type="button" class="close">닫기</button>
+					</div>
+						`;
+						$("#survey_pop").css("display", "block");
+
+					$('#save_close').click(function() {
+						$("#survey_pop").css("display", "none");
+
+					});      }
+
+					console.log("비교함에 담음");
+					getArr();
+
+				}
+
+			}
+
 
 		}
 

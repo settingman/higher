@@ -2,7 +2,9 @@ package com.hyundai.higher.controller.match;
 
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.StringTokenizer;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -135,6 +137,8 @@ public class MatchController {
 
 		// 성분 for문 해서 점수 카운트
 		int score = 0;
+		
+		Set<String> set = new HashSet<>();
 
 		// 첫번째 mbti 점수 계산. 총 40점. good 4점, normal 2점, bad 1점
 		log.info(mbtiList[0]);
@@ -147,6 +151,13 @@ public class MatchController {
 				score =0;
 				break;
 			}
+			
+			String info = mService.getIinfo(ingredients[i], mbtiList[0]);
+			String[] infoArray = info.split("\\s*,\\s*");
+			for (String s : infoArray) {
+			    set.add(s.trim());
+			}
+			
 			if (result.equals("GOOD")) {
 				log.info("goood");
 				score += 4;
@@ -170,6 +181,11 @@ public class MatchController {
 				score =0;
 				break;
 			}
+			String info = mService.getIinfo(ingredients[i], mbtiList[0]);
+			String[] infoArray = info.split("\\s*,\\s*");
+			for (String s : infoArray) {
+			    set.add(s.trim());
+			}
 			
 			if (result.equals("GOOD")) {
 				score += 3;
@@ -191,6 +207,11 @@ public class MatchController {
 				score =0;
 				break;
 			}
+			String info = mService.getIinfo(ingredients[i], mbtiList[0]);
+			String[] infoArray = info.split("\\s*,\\s*");
+			for (String s : infoArray) {
+			    set.add(s.trim());
+			}
 			
 			if (result.equals("GOOD")) {
 				score += 2;
@@ -211,6 +232,11 @@ public class MatchController {
 				score =0;
 				break;
 			}
+			String info = mService.getIinfo(ingredients[i], mbtiList[0]);
+			String[] infoArray = info.split("\\s*,\\s*");
+			for (String s : infoArray) {
+			    set.add(s.trim());
+			}
 			
 			if (result.equals("GOOD")) {
 				score += 1;
@@ -218,6 +244,9 @@ public class MatchController {
 		}
 		log.info("----------------------" + score);
 		model.addAttribute("score", score);
+		
+		List<String> infolist = new ArrayList<>(set);
+		model.addAttribute("infolist",infolist);
 		}
 		}
 		
