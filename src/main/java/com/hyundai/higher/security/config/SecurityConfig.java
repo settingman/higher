@@ -50,7 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.csrf().disable().authorizeRequests().antMatchers("/member/**").permitAll() // 누구나 mypage 접근허용 - 02/03
 																						// mypage
 				.antMatchers("/mypage/**", "/cart/**", "/shop/**", "/restcart/**", "/makeup/**",
-						"/reserv/**,/chat/createroom").access("hasRole('ADMIN') or hasRole('USER')")
+						"/reserv/**,/chat/createroom","/review/form").access("hasRole('ADMIN') or hasRole('USER')")
 				 // USER, ADMIN만 접근 가능
 				.antMatchers("/rtc/room").hasRole("ADMIN") // ADMIN만 접근 가능
 				.anyRequest().permitAll(); // 접근 제한을 수동으로 걸어주고 나머지는 접근 제한 OK

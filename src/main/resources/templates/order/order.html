@@ -113,15 +113,10 @@ input[type="text"], input[type="search"], input[type="password"], input[type="em
 				<!-- ordersheet-box -->
 				<div class="ordersheet-box">
 					<div class="ordersheet-title">
-						<!-- 기프티콘 연동 2017.02.21 -->
-						<!-- 일반배송 일때 주문고객 영역 제거, 다시 살림(21.01.15) -->
 						<h3>주문고객</h3>
 						<span class="comment">※ E-mail, 연락처 정보는 마이현대 &gt; 회원정보에서 변경 가능합니다.</span>
 					</div>
 					<input type="hidden" id="isNonemember" value="N" />
-					<!--  주문고객 영역 -->
-					<!-- 일반배송 일때 주문고객 영역 제거, 이메일 없는 고객일때는 노출, 다시 살림(21.01.15) -->
-					<!-- buyer-info-box -->
 					<div class="buyer-info-box">
 						<table>
 							<colgroup>
@@ -306,10 +301,8 @@ input[type="text"], input[type="search"], input[type="password"], input[type="em
 									</tr>
 								</tbody>
 							</table>
-							<!-- // 20181227 수정 -->
 						</div>
 					</div>
-					<!--//cart-list-->
 				</div>
 				<!-- // ordersheet-box -->
 				<div class="ordersheet-box mb0" style="display: none" id="divMultiDlvSlitmInf">
@@ -352,7 +345,6 @@ input[type="text"], input[type="search"], input[type="password"], input[type="em
 						<h3>할인 및 적립</h3>
 					</div>
 					<div class="disct-wrap">
-						<!-- 세로 정렬로 인해 table로 작성 -->
 						<table>
 							<colgroup>
 								<col style="width: 870px" />
@@ -360,7 +352,6 @@ input[type="text"], input[type="search"], input[type="password"], input[type="em
 							</colgroup>
 							<tbody>
 								<tr>
-									<!-- 20181227 수정 -->
 									<td class="disct-wrap-body">
 										<ul class="disct-element-wrap">
 											<li>
@@ -379,7 +370,6 @@ input[type="text"], input[type="search"], input[type="password"], input[type="em
 															<input type="text" name="totPrmoDcAmt" value="0" class="readonly at-once" readonly="" />
 															<span class="unit">원</span>
 														</div>
-														<!-- 20181227 수정 -->
 													</div>
 												</div> <input type="hidden" name="couponAplyAmt" id="couponAplyAmt" value="0" class="readonly" readonly="" />
 												<div class="discount-element">
@@ -392,7 +382,7 @@ input[type="text"], input[type="search"], input[type="password"], input[type="em
 																<h5>해당 결제수단 선택시 추가 할인</h5>
 																<div class="body">
 																	<ul class="dash">
-																		<li><strong>신용카드(현대백화점)</strong> 결제 시 최대<span class="text-point5"> <!-- 결제 선할인 기본 값 노출 --> <!-- 결제 선할인 노출 --> 7 % 할인 <!--7% 할인-->
+																		<li><strong>신용카드(현대백화점)</strong> 결제 시 최대<span class="text-point5"> 
 																		</span></li>
 																	</ul>
 																</div>
@@ -405,8 +395,6 @@ input[type="text"], input[type="search"], input[type="password"], input[type="em
 																<div class="selectric-hide-select">
 																	<select name="stlmWayDcPrmo" class="fix" onchange="javascript:changeStlmWayDcPrmo(this);" tabindex="0" style="display: none">
 																		<option value="">선택하세요</option>
-																		<!-- 결제 선할인 기본 값 노출 -->
-																		<!-- 결제 선할인 노출 -->
 																		<option value="P202303036893" bsicslitmamt="0" stlmwaygbcd="K">신용카드(현대백화점) 최대 7 % 할인</option>
 																	</select>
 																</div>
@@ -430,7 +418,7 @@ input[type="text"], input[type="search"], input[type="password"], input[type="em
 															<span class="unit">원</span>
 														</div>
 													</div>
-												</div> <!-- 2020 카드즉시할인 임천재 2020.04.17 : 카드즉시할인 금액 표시  -->
+												</div> 
 												<div id="crdImdtDcElement" class="discount-element none"></div>
 											</li>
 											<li>
@@ -524,7 +512,7 @@ input[type="text"], input[type="search"], input[type="password"], input[type="em
 															<span class="unit">원</span>
 														</div>
 													</div>
-												</div> <!-- 컬처랜드 --> <!-- 컬쳐랜드 서비스 종료 2020.03.27 -->
+												</div> 
 											</li>
 											<li>
 												<div class="discount-element" id="h-point-view-area" style="display: none">
@@ -536,7 +524,7 @@ input[type="text"], input[type="search"], input[type="password"], input[type="em
 															<span id="pSvmtUPointInfo"></span>
 														</div>
 													</div>
-												</div> <!-- H.Point 선불 충전 안내 추가 2021.02.02 -->
+												</div>
 												<div class="discount-element type-sub-message" id="h-point-view-area-prepay-info" style="display: none">
 													<div class="tit">
 														<div>포인트 충전 사용 금액은 적립 제외</div>
@@ -551,7 +539,7 @@ input[type="text"], input[type="search"], input[type="password"], input[type="em
 															<span id="sumFashTcpSvmt">적립예정 <strong>341점</strong></span>
 														</div>
 													</div>
-												</div> <!-- 2022.12.05 DEP01WORK-24256 TCP 이원화 END by msoh  -->
+												</div>
 											</li>
 										</ul>
 									</td>
@@ -600,22 +588,18 @@ input[type="text"], input[type="search"], input[type="password"], input[type="em
 						</table>
 					</div>
 				</div>
-				<!-- 20190117 추가 -->
 				<div class="warranty-info">
 					<div class="head">
 						채무지급 보증안내 <a href="#" onclick="javascript:servicePopupOpen(); return false;" class="btn size1">서비스 가입사실 확인</a>
-						<!-- 2016-08-16 -->
 					</div>
 					<div class="body">고객님의 안전거래를 위해 현금 결제시 우리은행과 채무지급보증 계약을 체결하여 안전거래를 보장하고 있습니다.</div>
 				</div>
-				<!-- 20190117 추가 -->
 				<div class="ordersheet-box order-payment-ctrl">
 					<div class="agree text-center">
 						<div class="in-area">
 							<label for="ordAgreeChk"> <!-- <input type="checkbox" name="ordAgreeChk" id="ordAgreeChk"> --> <strong>주문하실 상품의 상품명, 가격, 배송정보를
 									확인하였으며, 이에 동의합니다.</strong>
 							</label>
-							<!-- 주문 동의 로직 제거 2022.05.02 -->
 						</div>
 					</div>
 					<p class="ctrl">

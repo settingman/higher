@@ -165,6 +165,8 @@ public class MemberOauthService extends DefaultOAuth2UserService {
 
 			securityMember.setMName(socialMember.getMName());
 			securityMember.setPassword(socialMember.getMPassword());
+			securityMember.setMPhone(socialMember.getMPhone());
+			securityMember.setMbti(socialMember.getMbti());
 
 			// clubAuthMemberDTO --> UserDetails 반환
 			log.info("OAuth2User 를 clubAuthMemberDTO");
