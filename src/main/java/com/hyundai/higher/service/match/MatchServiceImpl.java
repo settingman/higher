@@ -102,6 +102,12 @@ public class MatchServiceImpl implements MatchService{
 	public MatchProductDTO getInfo(String pcode) {
 		return mMapper.getInfo(pcode);
 	}
+
+	@Override
+	public String getIinfo(String ingredient, String mbti) {
+		return mMapper.getIinfo(ingredient, mbti);
+
+	}
 	
 	
 

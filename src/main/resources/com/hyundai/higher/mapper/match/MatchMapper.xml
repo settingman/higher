@@ -95,4 +95,10 @@
 		WHERE P.PCODE =#{pcode}
 	</select>
 	
+	<select id="getIinfo" resultType="string">
+		SELECT M.info FROM INGREDIENT I RIGHT JOIN MBTI_INGREDIENT M 
+	ON M.INO=I.INO
+	WHERE I.INAME_KO = #{ingredient} AND mbti=#{mbti}
+	</select>
+	
 </mapper>
