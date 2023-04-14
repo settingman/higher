@@ -2173,7 +2173,7 @@ html {
 }
 
 #header .gnb_nav nav ul.left>li:first-child+li+li+li+li {
-  min-width: 118px;
+  min-width: 110px;
 }
 
 #header .gnb_nav nav ul.left>li:last-child {
