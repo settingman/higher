@@ -49,7 +49,7 @@
     <section id="container">
 
       <section id="contents">
-        <form id="reviewForm" name="reviewForm" method="post" action="/review/write.do" enctype="multipart/form-data">
+        <form id="reviewForm" name="reviewForm" method="post" action="/review/write">
           <input type="hidden" name="pcode" id="pcode" value="">
           <input type="hidden" name="oid" id="oid" value="">   
           <input type="hidden" name="rrate" id="rrate" value="">
@@ -137,7 +137,7 @@
             </div>
             <div class="border_btn">
               <div class="btn_wrap side">
-                <button type="button" class="btn_base darkgray act cancleBtn">취소</button>
+                <button type="button" class="btn_base darkgray act cancleBtn" onclick="history.back();">취소</button>
                 <button type="button" class="btn_base blue act writeBtn">등록</button>
               </div>
             </div>
@@ -171,10 +171,10 @@
             	<div class="myProd-info">
             		<div class="bname">[[${myProd.bname}]]</div>
             		<div class="pname">[[${myProd.pname}]]</div>
-       				<div class="price">[[${#numbers.formatInteger(myProd.pprice, 3, 'COMMA')}]] <em>원</em></div>
+       				<div class="price"><i>[[${#numbers.formatInteger(myProd.pprice, 3, 'COMMA')}]]</i> <em>원</em></div>
             	</div>
             	<input type="hidden" class="myPcode" th:value="${myProd.pcode}">
-            	
+            	<input type="hidden" class="myOid" th:value="${myProd.oid}">
             	<button class="my-btn" th:onclick="setProdInfo([[${'prodInfo'+myStat.count}]])">선택</button>
             	
             </li>

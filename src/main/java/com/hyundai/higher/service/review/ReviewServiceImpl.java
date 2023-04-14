@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hyundai.higher.domain.review.ReviewDTO;
 import com.hyundai.higher.domain.review.ReviewProdDTO;
 import com.hyundai.higher.mapper.review.ReviewMapper;
 /**
@@ -30,6 +31,13 @@ public class ReviewServiceImpl implements ReviewService {
 	public List<ReviewProdDTO> reviewProdList(String mid) {
 		
 		return mapper.reviewProdList(mid);
+	}
+
+	// 리뷰 등록
+	@Override
+	public void createReview(ReviewDTO rDTO) {
+
+		mapper.createReview(rDTO);
 	}
 
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.hyundai.higher.domain.review.ReviewDTO;
 import com.hyundai.higher.domain.review.ReviewProdDTO;
 
 /**
@@ -24,5 +25,7 @@ public interface ReviewMapper {
 	// 회원이 작성 가능한 리뷰 상품 목록 select
 	public List<ReviewProdDTO> reviewProdList(String mid);
 	
+	// 리뷰 등록
+	public void createReview(ReviewDTO rDTO);
 	
 }

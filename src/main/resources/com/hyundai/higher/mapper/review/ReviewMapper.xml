@@ -20,7 +20,14 @@
 		                               FROM review
 		                               WHERE mid=#{mid})) op
 		LEFT JOIN prodDetail_view p ON op.pcode=p.pcode
+		ORDER BY odate DESC
 	</select>
+	
+	<!-- 리뷰 등록 -->
+	<insert id="createReview">
+		INSERT INTO review(rno, mid, rdate, rrate, rcontent, pcode, oid, rtitle) 
+		VALUES (review_seq.NEXTVAL, #{mid}, SYSDATE, #{rrate}, #{rcontent}, #{pcode} , #{oid}, #{rtitle})
+	</insert>
 	
 
 </mapper>
