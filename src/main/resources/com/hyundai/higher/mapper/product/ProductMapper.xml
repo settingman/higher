@@ -7,21 +7,17 @@
 
 	<!-- 상품 목록 -->
 	<select id="productList" resultMap="productMap">
-		<![CDATA[
 		SELECT p.pcode, p.pname, p.pprice, p.bno, b.bname, dept1no, dept2no, itype, iloc, rates
-		FROM (SELECT ROWNUM, product.* 
+		FROM (SELECT *
 			  FROM product 
 			  WHERE dept1no=#{dept1no}
-		]]> 
 			<if test="dept2no != ''"> 
 				AND dept2no=#{dept2no} 
 			</if> 
-		<![CDATA[	
-			 AND ROWNUM<=70) p 
+			) p 
 		LEFT JOIN brand b ON p.bno=b.bno
 		JOIN (SELECT pcode, itype, iloc FROM IMG WHERE itype='thumb') i ON p.pcode=i.pcode
 		ORDER BY PTOTALAMOUNT DESC
-		]]> 
 	</select>
 	
 	<!-- 상품 세부 정보 -->

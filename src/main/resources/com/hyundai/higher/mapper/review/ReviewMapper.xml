@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.hyundai.higher.mapper.review.ReviewMapper">
+
+	<!-- 회원이 리뷰 작성 가능한 상품 목록 select -->
+	<select id="reviewProdList" resultType="com.hyundai.higher.domain.review.ReviewProdDTO">
+		SELECT oid, op.pcode, pname, dept1no, dept2no, iloc, bname, odate, pprice
+		FROM (
+		    SELECT *
+		    FROM (
+		        SELECT m.mid, m.oid, pcode, odate
+		        FROM (SELECT *
+		              FROM orderlist
+		              WHERE mid=#{mid}) m
+		              JOIN orderitem o ON m.oid= o.orderlist_oid) p
+		    WHERE (oid, pcode) NOT IN (SELECT oid, pcode
+		                               FROM review
+		                               WHERE mid=#{mid})) op
+		LEFT JOIN prodDetail_view p ON op.pcode=p.pcode
+		ORDER BY odate DESC
+	</select>
+	
+	<!-- 리뷰 등록 -->
+	<insert id="createReview">
+		INSERT INTO review(rno, mid, rdate, rrate, rcontent, pcode, oid, rtitle) 
+		VALUES (review_seq.NEXTVAL, #{mid}, SYSDATE, #{rrate}, #{rcontent}, #{pcode} , #{oid}, #{rtitle})
+	</insert>
+	
+
+</mapper>

@@ -1,0 +1,103 @@
+.prd_list li{
+	padding: 0 10px 10px 10px !important;
+	border-bottom: 1px solid #e3e3e3;
+	width: 333px !important;
+    overflow: hidden;
+}
+
+.prd_list li>div:not(:first-child){
+	float: left;
+}
+
+.prd_list li{
+	border-bottom: 1px solid #e3e3e3;	
+}
+
+.odate{
+    margin-bottom: 10px;
+}
+
+.odate em{
+    font-family: 'notokr-medium';
+    margin-right: 5px;
+}
+
+.myProd-img img{
+	width: 80px;
+	float: left;
+	margin-right: 10px;
+}
+
+.myProd-info{
+	width: 184px;
+    word-break: keep-all;
+}
+
+.bname{
+	margin-bottom: 3px;
+}
+
+.pname{
+	font-size: 15px;
+    font-family: 'notokr-medium';
+    margin-bottom: 3px;
+    line-height: 18px;
+    height: 36px;
+}
+
+.price{
+    font-family: 'locator-regular';
+}
+
+.price em{
+	font-family: 'notokr-demilight';
+}
+
+.my-btn{
+	background-color: #bfae90;
+    color: #fff;
+    padding: 8px 16px;
+    font-family: 'notokr-demilight';
+    font-size: 13px;
+    top: 51px !important;
+    right: 6px !important;
+}
+
+.pimg img{
+	width: 90px;
+}
+
+#reviewText{
+	margin-top: 37px;
+}
+
+#select-prod{
+	margin-left: 120px;
+}
+
+#select-odate{
+	width: 798px;
+	padding-top: 35px;
+}
+
+#select-odate em{
+    font-family: 'notokr-medium';
+    margin-right: 5px;
+}
+
+#select-brand{
+    margin-bottom: 10px;
+    padding-top: 10px;
+}
+
+.ptit{
+	font-size: 17px;
+    font-family: 'notokr-medium';
+    margin-bottom: 10px;
+}
+
+#select-price em{
+	font-family: 'locator-regular';
+    font-size: 16px;
+    margin-right: 2px;
+}

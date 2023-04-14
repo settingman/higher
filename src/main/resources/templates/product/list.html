@@ -161,7 +161,16 @@ button.detailview {
           <div class="sideconts">
 
             <section class="product_wrap">
-              
+              <div class="prd_term">
+                <span class="prd_cnt">전체 <em id="totalCount">[[${#lists.size(productList)}]]</em>개</span>
+                <span class="sort_list">
+                  <a href="javascript:sortEvent('1');">판매량 순</a>
+                  <a href="javascript:sortEvent('2');" class="on">최근 등록 순 </a>
+                  <a href="javascript:sortEvent('3');">리뷰 많은 순</a>
+                  <a href="javascript:sortEvent('4');">낮은 가격 순 </a>
+                  <a href="javascript:sortEvent('5');">높은 가격 순</a>
+                </span>
+              </div>
               <!-- 신상, 단독구성 -->
               <ul class="product_list ea03" id="listUl">
                 <li th:if="${mbti == '' and prod.thumbImgList[0].iloc != null}" class="" th:each="prod : ${productList}"> 
