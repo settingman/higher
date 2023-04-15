@@ -220,9 +220,10 @@ canvas {
 									</span> 
 									<span class="star" style="margin-bottom: 14px;"> <a href="#product_detail_review">
 											<div class="star-rating bic">
-												<span th:class="'c' + ${#numbers.formatInteger(product.productDTO.rates*10, 2)}"> <em class="hide">벌점</em></span>
+												<span th:class="'c' + ${#numbers.formatInteger(rateAvg/2*10, 2)}"> <em class="hide">벌점</em></span>
 											</div>
 									</a>
+									<em><a href="" style="color:#8f8f8f;">([[${rcnt}]])</a></em>
 									</span>
 									<span class="pricetotal" id="right-price">[[${#numbers.formatInteger(product.productDTO.pprice, 3, 'COMMA')}]]<em>원</em>	</span>
                   <!-- 회원 차트 결과 -->
@@ -305,10 +306,10 @@ canvas {
 									</div>
 									</div>
 								<div id="infobox" style="width: 47%;padding-left:39px;">
-									<div id="iTit">주요기능</div>
+									<div id="iTit">성분효과</div>
 									<ul>
 										<li th:each="info : ${infolist}" >
-											<img src="/match/img/check.png">[[${info}]]
+											<img src="/match/img/mark2.png">[[${info}]]
 										</li>
 									</ul>
 								</div>
@@ -354,11 +355,11 @@ canvas {
                    <span class="sm-per">[[${sProd.percent}]]%</span>
                     <span class="star">
                       <div class="star-rating small">
-												<span th:class="'c' + ${#numbers.formatInteger(sProd.rates*10, 2)}">
-                          <em class="hide">벌점 0개</em>
+												<span th:class="'c' + ${#numbers.formatInteger(sProd.rates, 2)}">
+                          <em class="hide">벌점</em>
                         </span>
                       </div>
-                      <em>(276)</em>
+                      <em>([[${sProd.rcnt}]])</em>
                     </span>
                     
                     <span class="choice">

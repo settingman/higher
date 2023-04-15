@@ -39,7 +39,10 @@ public class ReviewController {
 	
 	// 리뷰 목록
 	@GetMapping("/list")
-	public String reviewList() {
+	public String reviewList(Model model) {
+		
+		model.addAttribute("reviewList", service.reviewListAll());
+		
 		return "review/list";
 	}
 	
@@ -68,8 +71,5 @@ public class ReviewController {
 		
 		return "redirect:/review/list";
 	}
-	
-	
-	
 
 }

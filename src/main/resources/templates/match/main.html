@@ -215,8 +215,9 @@ button.detailview {
                     	<span class="kind">[[${#numbers.formatInteger(prod.pprice, 3, 'COMMA')}]]<em>원</em> </span> 
                     	<span class="rating">
                       		<div class="star-rating small"> 
-                      			<span th:class="'c'+${#numbers.formatInteger(prod.rates*10, 2)}"><em class="hide">벌점</em></span> 
+                      			<span th:class="'c'+${#numbers.formatInteger(prod.rates, 2)}"><em class="hide">벌점</em></span> 
                       		</div>
+                      		<em>([[${prod.rcnt}]])</em>
                     	</span> 
                     	<span class="price"><button class="match-btn">매칭하기</button></span> 
                   </a>

@@ -41,4 +41,5 @@ public class ProductDTO {
 	
 	private String pmbti;
 	private double rates;
+	private int rcnt;
 }

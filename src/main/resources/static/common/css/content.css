@@ -98,7 +98,7 @@
   height: 292px;
   font-size: 22px;
   text-align: center;
-  background: #f7f7f7 url('https://www.larocheposay.co.kr/images/common/bg_review_write.jpg') no-repeat;
+  background: #f7f7f7 url('/review/img/review-btn2.png') no-repeat;
   box-sizing: border-box;
   color: #fff;
 }
@@ -1545,7 +1545,7 @@
 .product_detail .product_detail_tab>ul>li {
   position: relative;
   float: left;
-  width: 50%;
+  width: 33.392%;
   margin-left: -1px;
 }
 

@@ -23,4 +23,10 @@ public interface ReviewService {
 	
 	// 리뷰 등록
 	public void createReview(ReviewDTO rDTO);
+	
+	// 상품별 리뷰 조회
+	public List<ReviewDTO> reviewList(String pcode);
+
+	// 전체 리뷰 조회
+	public List<ReviewDTO> reviewListAll();
 }

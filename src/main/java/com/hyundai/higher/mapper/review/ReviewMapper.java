@@ -16,7 +16,8 @@ import com.hyundai.higher.domain.review.ReviewProdDTO;
  *     <pre>
  *   수정일         수정자               수정내용
  * ----------      --------    ---------------------------
- * 2023. 4. 14.		신수진		DateBase Review Mapper Interface
+ * 2023. 04. 14.	신수진		DateBase Review Mapper Interface
+ * 2023. 04. 15.	신수진		리뷰 조회
  *     </pre>
  */
 @Mapper
@@ -27,5 +28,11 @@ public interface ReviewMapper {
 	
 	// 리뷰 등록
 	public void createReview(ReviewDTO rDTO);
+	
+	// 상품별 리뷰 조회
+	public List<ReviewDTO> reviewList(String pcode);
+	
+	// 전체 리뷰 조회
+	public List<ReviewDTO> reviewListAll();
 	
 }

@@ -13,6 +13,7 @@
 		<result property="pprice" column="pprice"/>
 		<result property="bname" column="bname"/>		
 		<result property="rates" column="rates"/>	
+		<result property="rcnt" column="rcnt"/>	
 		<result property="pvolume" column="pvolume"/>		
 		<result property="ptype" column="ptype"/>		
 		<result property="pingredient" column="pingredient"/>		
@@ -20,12 +21,14 @@
 	</resultMap>
 
 	<select id="mbtiProduct" resultMap="mbtiMap">
-	select pi.pcode, pi.pname, pi.dept1no, pi.dept2no, pi.pmbti, pi.iloc, pi.pprice, pi.bname, pi.rates
+		select pi.pcode, pi.pname, pi.dept1no, pi.dept2no, pi.pmbti, pi.iloc, pi.pprice, pi.bname, NVL(pi.rates, 0) AS rates, NVL(pi.rcnt, 0) AS rcnt
 	from(
-	    select p.pcode, p.pname, p.dept1no,p.dept2no,p.pmbti, i.iloc, p.pprice, p.bno, p.bname, p.rates,
+	    select p.pcode, p.pname, p.dept1no,p.dept2no,p.pmbti, i.iloc, p.pprice, p.bno, p.bname, p.rates, p.rcnt,
 	          row_number() over
 	          (partition by p.pcode order by i.iloc desc) as rn 
-	    from img i right join (select pcode, pname, dept1no, dept2no, pprice, pd.bno, bname, pmbti, rates from product pd join brand b on pd.bno=b.bno) p on p.pcode=i.pcode
+	    from img i right join (select pd.pcode, pname, dept1no, dept2no, pprice, pd.bno, bname, pmbti, NVL(r.rates, 0) AS rates, NVL(rcnt, 0) AS rcnt from product pd 
+                                                    join brand b on pd.bno=b.bno 
+                                                    left join (SELECT pcode, sum(rrate)/count(*)*10 as rates, count(*) as rcnt FROM review GROUP BY pcode) r ON pd.pcode=r.pcode ) p on p.pcode=i.pcode
 	    where i.itype='thumb' 
 	    		<if test="!dept2no.equals('') and dept2no!=null">
 	    		and p.dept2no=#{dept2no}

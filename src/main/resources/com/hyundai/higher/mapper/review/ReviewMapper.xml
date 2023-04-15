@@ -29,5 +29,20 @@
 		VALUES (review_seq.NEXTVAL, #{mid}, SYSDATE, #{rrate}, #{rcontent}, #{pcode} , #{oid}, #{rtitle})
 	</insert>
 	
+	<select id="reviewList" resultType="com.hyundai.higher.domain.review.ReviewDTO">
+		SELECT rno, r.mid, rdate, rrate, rcontent, pcode, rtitle, mbti
+		FROM review r JOIN member m ON r.mid=m.mid
+		WHERE pcode=#{pcode}
+		ORDER BY rdate DESC
+	</select>
+	
+	<select id="reviewListAll" resultType="com.hyundai.higher.domain.review.ReviewDTO">
+		SELECT rno, r.mid, rdate, rrate, rcontent, r.pcode, rtitle, mbti, bname, pname
+		FROM review r 
+		JOIN member m ON r.mid=m.mid
+		JOIN (SELECT * FROM product p JOIN brand b ON p.bno=b.bno) p ON r.pcode=p.pcode
+		ORDER BY rdate DESC
+	</select>
+
 
 </mapper>

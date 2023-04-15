@@ -162,7 +162,10 @@ button.detailview {
 
             <section class="product_wrap">
               <div class="prd_term">
-                <span class="prd_cnt">전체 <em id="totalCount">[[${#lists.size(productList)}]]</em>개</span>
+                <span class="prd_cnt">전체 
+                	<em id="totalCount" th:if="${mbti == ''}">[[${#lists.size(productList)}]]</em>개
+                	<em id="totalCount" th:if="${mbti != ''}">[[${#lists.size(mbtiProdList)}]]</em>개
+                </span>
                 <span class="sort_list">
                   <a href="javascript:sortEvent('1');">판매량 순</a>
                   <a href="javascript:sortEvent('2');" class="on">최근 등록 순 </a>
@@ -180,8 +183,9 @@ button.detailview {
                     	<span class="tit">[[${prod.pname}]]</span> 
                     	<span class="rating">
                       		<div class="star-rating small"> 
-                      			<span th:class="'c'+${#numbers.formatInteger(prod.rates*10, 2)}"><em class="hide">벌점</em></span> 
+                      			<span th:class="'c'+${#numbers.formatInteger(prod.rates, 2)}"><em class="hide">벌점</em></span> 
                       		</div>
+                      		<em>([[${prod.rcnt}]])</em>
                     	</span> 
                     	<span class="price">
                     		<span class="after">[[${#numbers.formatInteger(prod.pprice, 3, 'COMMA')}]]<em>원</em></span> 
@@ -202,8 +206,9 @@ button.detailview {
                     	<span class="tit">[[${prod.pname}]]</span> 
                     	<span class="rating">
                       		<div class="star-rating small"> 
-                      			<span th:class="'c'+${#numbers.formatInteger(prod.rates*10, 2)}"><em class="hide"th:text="${prod.rates}">벌점</em></span> 
+                      			<span th:class="'c'+${#numbers.formatInteger(prod.rates, 2)}"><em class="hide">벌점</em></span> 
                       		</div>
+                      		<em>([[${prod.rcnt}]])</em>
                     	</span> 
                     	<span class="price">
                     		<span class="after">[[${#numbers.formatInteger(prod.pprice, 3, 'COMMA')}]]<em>원</em></span> 

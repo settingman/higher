@@ -6,8 +6,8 @@
 <mapper namespace="com.hyundai.higher.mapper.similarCos.SimilarCosMapper">
 	
 	<!-- 성분유사템 추천 -->
-	<select id="cntList" resultType="com.hyundai.higher.domain.similarCos.SimilarCosDTO">
-		SELECT c.pcode, total, pname, pprice, bno, bname, itype, iloc
+	<select id="recoList" resultType="com.hyundai.higher.domain.similarCos.SimilarCosDTO">
+		SELECT c.pcode, total, pname, pprice, bno, bname, itype, iloc, rates, rcnt
 		FROM (
 			SELECT ROWNUM, pcode, total
 			FROM (
