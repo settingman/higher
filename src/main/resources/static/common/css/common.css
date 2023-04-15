@@ -1276,7 +1276,7 @@ button.btn_file_add {
   margin-right: 1px;
   font-size: 0;
   cursor: pointer;
-  background: url('https://www.larocheposay.co.kr/images/common/ico_comm_sp.png') no-repeat 100% 0;
+  background: url('/common/image/icon_comm.png') no-repeat 100% 0;
   background-size: 300px;
 }
 
