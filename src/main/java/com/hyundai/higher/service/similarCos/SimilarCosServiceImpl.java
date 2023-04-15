@@ -53,7 +53,7 @@ public class SimilarCosServiceImpl implements SimilarCosService {
 		int len = iList.length;
 		
 		// 유사 성분 제품 리스트
-		List<SimilarCosDTO> similarCostList =  mapper.cntList(pcode, dept1no, dept2no, list);
+		List<SimilarCosDTO> similarCostList =  mapper.recoList(pcode, dept1no, dept2no, list);
 		List<SimilarCosDTO> similarCostList2 = new ArrayList<>();
 		
 		// 성분 유사도 계산

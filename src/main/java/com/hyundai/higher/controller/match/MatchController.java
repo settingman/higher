@@ -18,9 +18,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.hyundai.higher.domain.match.MatchProductDTO;
 import com.hyundai.higher.domain.match.MemberMBTIDTO;
 import com.hyundai.higher.domain.product.ProductDetailDTO;
+import com.hyundai.higher.domain.review.ReviewDTO;
 import com.hyundai.higher.security.dto.SecurityMember;
 import com.hyundai.higher.service.match.MatchService;
 import com.hyundai.higher.service.product.ProductService;
+import com.hyundai.higher.service.review.ReviewService;
 import com.hyundai.higher.service.similarCos.SimilarCosService;
 
 import lombok.extern.log4j.Log4j2;
@@ -54,6 +56,9 @@ public class MatchController {
 	@Autowired
 	private SimilarCosService sService;
 
+	@Autowired
+	private ReviewService rService;
+	
 	// 화장품 매칭 메인 페이지
 	@GetMapping("/main")
 	public String mathMain2(@RequestParam(value = "cno", required = false, defaultValue = "") String dept2no,
@@ -101,6 +106,21 @@ public class MatchController {
 		
 		String[] iList = ingredient.split(" ");
 		String[] mainIngredient = new String[6];
+		
+		List<ReviewDTO> reviewList = rService.reviewList(pcode);
+				
+		int rateTotal = 0;
+		int rateAvg = 0;
+		if(reviewList.size() > 0) {
+			for(int i=0; i<reviewList.size(); i++) {
+				rateTotal += reviewList.get(i).getRrate()*2;
+			}
+			rateAvg = rateTotal / reviewList.size();
+		}
+
+		// 리뷰 평점
+		model.addAttribute("rateAvg", rateAvg);
+		model.addAttribute("rcnt", reviewList.size());
 
 		int idx = 0;
 

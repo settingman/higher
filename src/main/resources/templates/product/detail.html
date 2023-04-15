@@ -238,11 +238,11 @@ $(function(){
                   <span class="star">
                     <a href="#product_detail_review">
                       <div class="star-rating bic">
-                        <span th:class="'c' + ${#numbers.formatInteger(product.productDTO.rates*10, 2)}">
+                        <span th:class="'c' + ${#numbers.formatInteger(rateAvg/2*10, 2)}">
                           <em class="hide">별점</em></span>
                       </div>
                     </a>
-                    <em><a href="#product_detail_review" style="color:#8f8f8f;"></a></em>
+                    <em><a href="#product_detail_review" style="color:#8f8f8f;">([[${#lists.size(reviewList)}]])</a></em>
                    
                   </span>
                 </div>
@@ -298,10 +298,11 @@ $(function(){
           <!-- //top -->
           <!-- //addItem_slider -->
           <div class="product_detail_tab">
-            <ul>
-              <li class="on"><a href="#template_cont">제품상세정보</a></li>
-              <li class=""><a href="#product_detail_note">구매정보</a></li>
-            </ul>
+          	<ul>
+            	<li class="on"><a href="#template_cont">제품상세정보</a></li>
+                <li><a href="#product_detail_review">리얼리뷰</a></li>
+                <li><a href="#product_detail_note">구매정보</a></li>
+          	</ul>
           </div>
           <!-- product_detail_view -->
           <!--  product_detal_template -->
@@ -317,8 +318,76 @@ $(function(){
             <!-- //product_detail_view -->
           </div><!-- //product_detal_template -->
           <!-- //product_detail_view -->
+					<div id="product_detail_review">
+						<h3>리얼리뷰</h3>
+						<div class="detail_review_box">
+							<div class="left">
+								<strong><em id="totalReviewCount" th:text="${#lists.isEmpty(reviewList)	 ? '0' : #lists.size(reviewList)}"></em>개의 리얼리뷰가
+									있습니다</strong>
+							</div>
+							<div class="right">
+								<strong>평균 별점</strong> <span>
+									<div class="star-rating bic">
+										<span th:class="'c' + ${#numbers.formatInteger(rateAvg/2*10, 2)}"> <em class="hide">벌점</em></span>
+									</div>
+								</span> <span><em>[[${rateAvg}]]</em><i>/</i>10</span>
+							</div>
+						</div>
+						<!-- //detail_review_top -->
+						<div class="detail_review_list">
+							<!-- //tabtext_warp -->
 
-          <!-- product_detail_note -->
+							<div class="review_warp">
+								<div class="review_conts">
+									<ul class="list" id="reviewList"
+										style="position: relative; height: 813.375px;">
+										<!-- 비회원일 경우 -->
+                <li sec:authorize="isAnonymous()" class="btn_review" style="position: absolute; left: 0px; top: 0px;"><a
+                    href="#survey_pop"><span>리얼리뷰 쓰기</span><em>한줄리뷰 50M<br>첫 리뷰 더블적립</em></a>
+                </li>
+				<!-- 회원일 경우 -->
+                <li sec:authorize="isAuthenticated()" class="btn_review" style="position: absolute; left: 0px; top: 0px;"><a
+                    href="/review/form"><span>리얼리뷰 쓰기</span><em>한줄리뷰 50M<br>첫 리뷰 더블적립</em></a>
+                </li>
+										<li th:each="review : ${reviewList}" class="text" style="position: absolute; left: 290px; top: 0px;">
+										<a href="#review_list001" class="layer-pop" data-type="link" data-url="/review/view/97233.do?prdtView=Y"> 
+											<span class="rating">
+												<fieldset class="star_rating">
+													<input type="radio" id="list97233_star5" name="list97233_rating" value="5" th:checked="${review.rrate==5 ? 'true' : 'false'}">
+													<label for="list97233_star5">5스타</label> 
+													<input type="radio" id="list97233_star4" name="list97233_rating" value="4" th:checked="${review.rrate==4 ? 'true' : 'false'}">
+													<label for="list97233_star4">4스타</label>
+													<input type="radio" id="list97233_star3" name="list97233_rating" value="3" th:checked="${review.rrate==3 ? 'true' : 'false'}">
+													<label for="list97233_star3">3스타</label> 
+													<input type="radio" id="list97233_star2" name="list97233_rating" value="2" th:checked="${review.rrate==2 ? 'true' : 'false'}">
+													<label for="list97233_star2">2스타</label>
+													<input type="radio" id="list97233_star1" name="list97233_rating" value="1" th:checked="${review.rrate==1 ? 'true' : 'false'}">
+													<label for="list97233_star1">1스타</label>
+													</fieldset>
+											</span> 
+											<span class="replyhead">[[${review.rtitle}]]</span> 
+											<span class="reply">[[${review.rcontent}]]</span> 
+											<span class="data"> 
+											<span class="userid">[[${#strings.substring(review.mid, 0, 5)}]]***</span> 
+											<span class="day">[[${review.rdate}]]</span>
+											</span>
+										</a></li>
+									</ul>
+								</div>
+								
+							</div>
+							<!-- //review_warp -->
+							<div class="faq_box">
+								<span><p>
+										<i class="ico_guide">안내</i> 제품 Q&amp;A는 고객케어센터의 1:1 상담을 이용해
+										주세요.
+									</p></span> <span><button type="button" class="btn_base move"
+										onclick="cscenter();">1:1 상담</button></span>
+							</div>
+						</div>
+						<!-- //detail_review_list -->
+					</div>
+					<!-- product_detail_note -->
           <div id="product_detail_note">
             <h3>구매정보</h3>
             <h4>제품정보 제공공시</h4>
