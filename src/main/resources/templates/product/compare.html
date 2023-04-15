@@ -974,18 +974,18 @@ $(function(){
 		//0인데 뒤에 없는 거 - 1부터 다 출력만
 		//그 슬라이드부터 prod-unit 있는 슬라이드까지
 		if(arr.length!=0){ 
-		for(let i = slidenum+1;i<=arr.length;i++) {
-			console.log("내용 복사중" + i);
-			var next = document.querySelector(`.slide${i}`);	
-			console.log('slide'+i);		
-			var prev = document.querySelector('.slide'+(i-1));
+			for(let i = slidenum+1;i<=arr.length;i++) {
+					console.log("내용 복사중" + i);
+					var next = document.querySelector(`.slide${i}`);	
+					console.log('slide'+i);		
+					var prev = document.querySelector('.slide'+(i-1));
 
-			prev.innerHTML = next.innerHTML;
-			var button5 = prev.querySelector('.button5');
-    	button5.onclick = function() {
-      		compareThis(`slide${i-1}`);
-  		}
-			}
+					prev.innerHTML = next.innerHTML;
+					var button5 = prev.querySelector('.button5');
+					button5.onclick = function() {
+							compareThis(`slide${i-1}`);
+					}
+				}
 		}
 		
 		//마지막 prod-unit 슬라이드부터 10까지
