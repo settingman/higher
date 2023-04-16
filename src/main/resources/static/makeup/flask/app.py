@@ -10,6 +10,7 @@ import boto3
 import os
 
 app = Flask(__name__)
+app.debug = True
 CORS(app)
 
 # Author : 이세아
@@ -56,17 +57,17 @@ def try_makeup():
     elif lips=='purple' : lip_color=(255,0,141)
     elif lips=='nude' : lip_color=(48,4,32)
     else : lip_color=()
-    
+
      # 색상별 BGR값 부여 -> blush
-    if blush=='red': lip_color=(3,0,196)
-    elif blush=='orange': lip_color=(0,0,168)
-    elif blush=='pink': lip_color=(93,000,170)
-    elif blush=='orangecoral' : lip_color=(3,0,186)
-    elif blush=='orangenude': lip_color=(0,11,48)
-    elif blush=='coral' : lip_color=(1,0,48)
-    elif blush=='lightpink' : lip_color=(226,0,255)
-    elif blush=='purple' : lip_color=(255,0,141)
-    elif blush=='nude' : lip_color=(48,4,32)
+    if blush=='red': blush_color=(3,0,196)
+    elif blush=='orange': blush_color=(0,0,168)
+    elif blush=='pink': blush_color=(93,000,170)
+    elif blush=='orangecoral' : blush_color=(3,0,186)
+    elif blush=='orangenude': blush_color=(0,11,48)
+    elif blush=='coral' : blush_color=(1,0,48)
+    elif blush=='lightpink' : blush_color=(226,0,255)
+    elif blush=='purple' : blush_color=(255,0,141)
+    elif blush=='nude' : blush_color=(48,4,32)
     else : blush_color=()
     
      # 색상별 BGR값 부여 -> foundation
@@ -80,10 +81,10 @@ def try_makeup():
     full_path = os.path.join(base_path, filePath)
     
     # 파일경로 불러오기
-    image = cv2.imread(full_path, cv2.IMREAD_UNCHANGED)
+    image = cv2.imread(filePath, cv2.IMREAD_UNCHANGED)
     
-    print('원본 파일 경로')
-    print(full_path)
+    #print('원본 파일 경로')
+    #print(full_path)
     
     # 각 부위 별 색상 넣기
     output_lip = apply_makeup(image, False, 'lips', lip_color, 1, False)
@@ -99,12 +100,12 @@ def try_makeup():
     blend = cv2.addWeighted(blend, 1, output_foundation, alpha3, 0)
     
     # output 저장 -> 뒤에 시간에 따른 uuid 붙음
-    output_filename = f"output_{int(time.time())}_{uuid.uuid4()}.jpg"
+    output_filename = f"output_{int(time.time())}_{uuid.uuid1()}.jpg"
     output_filepath_local= f"./img/{output_filename}"
     cv2.imwrite(output_filepath_local, blend)
-    print('output 로컬 경로')
-    print(output_filepath_local)
-    print(output_filename)
+    #print('output 로컬 경로')
+    #print(output_filepath_local)
+    #print(output_filename)
     
     output_filepath= f"https://s3.ap-northeast-2.amazonaws.com/hbeauty.bucket/{output_filename}"
     

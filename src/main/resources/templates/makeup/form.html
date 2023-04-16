@@ -11,7 +11,7 @@
 	<form method="post" enctype="multipart/form-data"
 		th:action="@{/makeup/result}">
 		<div class="makeupwrapper"
-			style="grid-template-columns: repeat(3, 1fr); place-items: center; display: grid; margin: 0 50 0 50;">
+			style="grid-template-columns: repeat(2, 1fr); place-items: center; display: grid; margin: 0 100;">
 			<div class="wrapper1">
 				<div class="faceupload"
 					style="width: 528px; height: 704px; background: darkgray; float: left;">
@@ -92,21 +92,23 @@
 							<input type="radio" id="none2" name="foundation" value="none"
 								checked="checked"> <label for="none2"
 								style="background: lightgray;"></label> <input type="radio"
-								id="dark" name="foundation" value="dark"><label
+								id="dark" name="foundation" value="autumnwarm"><label
 								for="dark" style="background: rgba(175, 149, 115, 0.815);"></label>
 							<input type="radio" id="warmbeige" name="foundation"
 								value="warmbeige"><label for="warmbeige"
-								style="background: rgb(211, 199, 199);"></label> <input
-								type="radio" id="coolpink" name="foundation" value="coolpink"><label
-								for="coolpink" style="background: #fde3f3;"></label> <input
+								style="background: rgb(211, 199, 199);"></label> 
+								<input
 								type="radio" id="lightbeige" name="foundation"
 								value="lightbeige"><label for="lightbeige"
 								style="background: rgb(230, 227, 216);"></label>
+								<input
+								type="radio" id="coolpink" name="foundation" value="coolpink"><label
+								for="coolpink" style="background: #fde3f3;"></label> 
 						</div>
 					</div>
 				</div>
 
-				<!-- <input type="hidden" name="filePath" class="filePath" th:value="'c://test//'+${res.rimg}">  -->
+				<!-- <input type="hidden" name="filePath" class="filePath" th:value="'c://test//'+${res.rimg}"> -->
 				<input type="hidden" name="filePath" class="filePath" th:value="'beauty/'+${res.rimg}"> 
 				<input type="hidden"
 					name="rid" class="rid" th:value="${res.rid}"> <input
