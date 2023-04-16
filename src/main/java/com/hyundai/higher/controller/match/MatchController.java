@@ -143,10 +143,14 @@ public class MatchController {
 		model.addAttribute("similarCos", sService.recogProducts(pcode));
 
 		if(principal != null) {
+			int score = 0;
+
 
 		// mbti 가져오기
 		String mid = principal.getName();
 		String mbti = mService.userMbti(mid);
+		if(mbti != null) {
+
 		log.info("mbti--------------  " + mbti);
 
 		// mbti 글자별로 나누기
@@ -156,7 +160,6 @@ public class MatchController {
 		String[] ingredients = mService.getIngredient(pcode);
 
 		// 성분 for문 해서 점수 카운트
-		int score = 0;
 		
 		Set<String> set = new HashSet<>();
 
@@ -183,92 +186,96 @@ public class MatchController {
 				score += 4;
 			} else if (result.equals("NORMAL")) {
 				score += 2;
+			}else if(result.equals("BAD")) {
+				score += 1;
 			}
 		}
 		log.info(score + "-----------------------------------");
-		if(score != 0) {
-			log.info("두번째 진입"+mbtiList[1]);
+			if(score != 0) {
+				log.info("두번째 진입"+mbtiList[1]);
+				
 			
-		
-			// 두번째 mbti 점수 계산. 총 30점. good 3점, normal 2점, bad 1점
-		for (int i = 0; i < ingredients.length; i++) {
-			log.info("============================"+ingredients[i]);
-
-			String result = mService.getEffect(ingredients[i], mbtiList[1]);
-			log.info("effect " + result);
-
-			if(result == null) {
-				score =0;
-				break;
+				// 두번째 mbti 점수 계산. 총 30점. good 3점, normal 2점, bad 0점
+			for (int i = 0; i < ingredients.length; i++) {
+				log.info("============================"+ingredients[i]);
+	
+				String result = mService.getEffect(ingredients[i], mbtiList[1]);
+				log.info("effect " + result);
+	
+				if(result == null) {
+					score =0;
+					break;
+				}
+				String info = mService.getIinfo(ingredients[i], mbtiList[0]);
+				String[] infoArray = info.split("\\s*,\\s*");
+				for (String s : infoArray) {
+				    set.add(s.trim());
+				}
+				
+				if (result.equals("GOOD")) {
+					score += 3;
+				} else if (result.equals("NORMAL")) {
+					score += 2;
+				}
 			}
-			String info = mService.getIinfo(ingredients[i], mbtiList[0]);
-			String[] infoArray = info.split("\\s*,\\s*");
-			for (String s : infoArray) {
-			    set.add(s.trim());
+	
+			log.info("세번째 진입"+mbtiList[2]);
+	
+			// 세번째 mbti 점수 계산. 총 20점. good 2점, normal 1점, bad 0점
+			for (int i = 0; i < ingredients.length; i++) {
+				String result = mService.getEffect(ingredients[i], mbtiList[2]);
+				log.info("============================"+ingredients[i] + "----------");
+				log.info("effect " + result);
+	
+	
+				if(result == null) {
+					score =0;
+					break;
+				}
+				String info = mService.getIinfo(ingredients[i], mbtiList[0]);
+				String[] infoArray = info.split("\\s*,\\s*");
+				for (String s : infoArray) {
+				    set.add(s.trim());
+				}
+				
+				if (result.equals("GOOD")) {
+					score += 2;
+				} else if (result.equals("NORMAL")) {
+					score += 1;
+				}
 			}
+	
+			log.info("네번째 진입"+mbtiList[3] + "  점수  "+ score);
+	
+			// 네번째 mbti 점수 계산. 총 10점. good 1점, normal 0점, bad 0점
+			for (int i = 0; i < ingredients.length; i++) {
+				String result = mService.getEffect(ingredients[i], mbtiList[3]);
+				log.info("============================"+ingredients[i]);
+				log.info("effect " + result);
+	
+				if(result == null) {
+					score =0;
+					break;
+				}
+				String info = mService.getIinfo(ingredients[i], mbtiList[0]);
+				String[] infoArray = info.split("\\s*,\\s*");
+				for (String s : infoArray) {
+				    set.add(s.trim());
+				}
+				
+				if (result.equals("GOOD")) {
+					score += 1;
+				}
+			}
+			log.info("----------------------" + score);
 			
-			if (result.equals("GOOD")) {
-				score += 3;
-			} else if (result.equals("NORMAL")) {
-				score += 2;
+			List<String> infolist = new ArrayList<>(set);
+			model.addAttribute("infolist",infolist);
 			}
 		}
-
-		log.info("세번째 진입"+mbtiList[2]);
-
-		// 세번째 mbti 점수 계산. 총 20점. good 2점, normal 1점, bad 0점
-		for (int i = 0; i < ingredients.length; i++) {
-			String result = mService.getEffect(ingredients[i], mbtiList[2]);
-			log.info("============================"+ingredients[i] + "----------");
-			log.info("effect " + result);
-
-
-			if(result == null) {
-				score =0;
-				break;
-			}
-			String info = mService.getIinfo(ingredients[i], mbtiList[0]);
-			String[] infoArray = info.split("\\s*,\\s*");
-			for (String s : infoArray) {
-			    set.add(s.trim());
-			}
-			
-			if (result.equals("GOOD")) {
-				score += 2;
-			} else if (result.equals("NORMAL")) {
-				score += 1;
-			}
-		}
-
-		log.info("네번째 진입"+mbtiList[3] + "  점수  "+ score);
-
-		// 네번째 mbti 점수 계산. 총 10점. good 1점, normal 0점, bad 0점
-		for (int i = 0; i < ingredients.length; i++) {
-			String result = mService.getEffect(ingredients[i], mbtiList[3]);
-			log.info("============================"+ingredients[i]);
-			log.info("effect " + result);
-
-			if(result == null) {
-				score =0;
-				break;
-			}
-			String info = mService.getIinfo(ingredients[i], mbtiList[0]);
-			String[] infoArray = info.split("\\s*,\\s*");
-			for (String s : infoArray) {
-			    set.add(s.trim());
-			}
-			
-			if (result.equals("GOOD")) {
-				score += 1;
-			}
-		}
-		log.info("----------------------" + score);
 		model.addAttribute("score", score);
-		
-		List<String> infolist = new ArrayList<>(set);
-		model.addAttribute("infolist",infolist);
-		}
-		}
+
+	}
 		
 		//}
 

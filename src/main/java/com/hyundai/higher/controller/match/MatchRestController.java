@@ -82,6 +82,8 @@ public class MatchRestController {
 			// mbti 가져오기
 			String mid = principal.getName();
 			String mbti = mService.userMbti(mid);
+			if(mbti != null) {
+
 			log.info("mbti--------------  " + mbti);
 
 			// mbti 글자별로 나누기
@@ -91,7 +93,7 @@ public class MatchRestController {
 			String[] ingredients = mService.getIngredient(pcode);
 
 			// 성분 for문 해서 점수 카운트
-			log.info("ffffffff"+mService.getEffect(ingredients[9], mbtiList[0]));
+//			log.info("ffffffff"+mService.getEffect(ingredients[9], mbtiList[0]));
 			
 			// 첫번째 mbti 점수 계산. 총 40점. good 4점, normal 2점, bad 1점
 			for (int i = 0; i < ingredients.length; i++) {
@@ -108,12 +110,14 @@ public class MatchRestController {
 					score += 4;
 				} else if (result.equals("NORMAL")) {
 					score += 2;
+				}else if(result.equals("BAD")) {
+					score += 1;
 				}
 			}
 			log.info(score + "-----------------------------------");
 			if(score != 0) {
 			
-				// 두번째 mbti 점수 계산. 총 30점. good 3점, normal 2점, bad 1점
+				// 두번째 mbti 점수 계산. 총 30점. good 3점, normal 2점, bad 0점
 			for (int i = 0; i < ingredients.length; i++) {
 				String result = mService.getEffect(ingredients[i], mbtiList[1]);
 				if (result.equals("GOOD")) {
@@ -142,6 +146,8 @@ public class MatchRestController {
 			}
 			log.info("----------------------" + score);
 			}
+			
+		}
 			}
 		
 		return score+"";

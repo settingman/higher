@@ -70,7 +70,7 @@ canvas {
 
       const mychart = document.querySelector('.mychart');
 
-      if('/*[[${score}]]*/' != null && mychart != null  ){
+      if('/*[[${score}]]*/' != null && mychart != null ){
 
       const percent = mychart.dataset.percent;
       console.log(percent + "-------------------------");
@@ -223,18 +223,42 @@ canvas {
 												<span th:class="'c' + ${#numbers.formatInteger(rateAvg/2*10, 2)}"> <em class="hide">벌점</em></span>
 											</div>
 									</a>
-									<em><a href="" style="color:#8f8f8f;">([[${rcnt}]])</a></em>
+									<em><a href="" style="color:#8f8f8f;" class="preview">([[${rcnt}]])</a></em>
 									</span>
 									<span class="pricetotal" id="right-price">[[${#numbers.formatInteger(product.productDTO.pprice, 3, 'COMMA')}]]<em>원</em>	</span>
                   <!-- 회원 차트 결과 -->
-									<div sec:authorize="isAuthenticated()" th:if="${score != null}" class="result"
+									<div sec:authorize="isAuthenticated()" th:if="${score > 0}" class="result"
 										style="display: flex; justify-content: center; margin-bottom: 65px;">
 										<div id="resultchart" class="chart mychart" th:data-percent="${score}">
 											<span class="title" style="top: 97px;">[[${score}]]</span>
 										</div>
 									</div>
                   <!-- 회원 차트 결과 end -->
-                  
+									<!-- 회원 검사 미진행 -->
+									<div sec:authorize="isAuthenticated()" th:if="${score == 0}" class="result"
+                  style="display: flex;justify-content: center;padding: 25px 10px;margin-bottom: 30px;border: 1px solid #c2bdbd;border-radius: 39px;">
+									<div class="inform">
+										<h2 id="side-tit" style="
+										font-family: 'locator-medium';
+										font-size: 22px;
+										padding-bottom: 5px;
+										border-bottom: 2px solid #d2d2d2;
+										margin-bottom: 21px;
+								">이 제품과 나의 피부 <i style="color:#bfae90;">매칭도</i>는?</h2>
+										<div id="join-guide" style="
+										font-size: 16px;
+										text-align: center;
+										font-family: 'notokr-demilight';
+										line-height: 25px;
+								">지금 바로 피부 MBTI를 진단하고<br>나의 피부타입과 제품의<br>매칭도를 확인하세요!</div>
+										<div id="join-btn" style="
+										margin-top: 17px;
+										display: flex;
+										justify-content: center;
+								"><a class="btn_base move" href="/skinMBTI/selfConsult">진단하러 가기</a></div>
+									</div>
+									</div>
+                  <!-- 회원 검사 미진행 end -->
                   <!-- 회원 결과 null -->
                   <div sec:authorize="isAuthenticated()" th:if="${score == null}" class="result"
                   style="display: flex;justify-content: center;padding: 25px 10px;margin-bottom: 30px;border: 1px solid #c2bdbd;border-radius: 39px;">
@@ -359,7 +383,7 @@ canvas {
                           <em class="hide">벌점</em>
                         </span>
                       </div>
-                      <em>([[${sProd.rcnt}]])</em>
+                      <em class="review">([[${sProd.rcnt}]])</em>
                     </span>
                     
                     <span class="choice">
@@ -552,23 +576,19 @@ canvas {
 	</div>
 
   <script>
+		//유사성분템 info 가져오기
    $(function() {
-		console.log("info 불러오기");
 
   let liList = document.querySelectorAll(".sPrd");
 	console.log("info dddd"+liList.length);
 
   for (let i=0; i < liList.length; i++) {
 
-		console.log("for 문");
-
     const pcode = $(liList[i]).find('#pcode').val();
 
     var requestData = {
       "pcode": pcode
     };
-		console.log("info ㄹㄹㄹㄹ불러오기");
-
 
     $.ajax({
       url: "/restMatch/getInfo",
@@ -577,7 +597,6 @@ canvas {
       contentType: "application/json; charset=utf-8",
 			dataType: "json",
       success: function(data) {
-        console.log("옵션 불러옴");
 
 				$(liList[i]).find('#optname').val(data.prod.optname);
 				$(liList[i]).find('#rates').val(data.prod.rates);
@@ -594,48 +613,45 @@ canvas {
 });
 
   </script>
-
-<!-- <script>
-	$(function() {
-
- let liList = document.querySelectorAll(".sPrd");
-
- for (let i=0; i < liList.length; i++) {
-
-	 const pcode = $(liList[i]).find('#pcode').val();
-
-	 var requestData = {
-		 "pcode": pcode
-	 };
-
-	 $.ajax({
-		 url: "/restMatch/getOption",
-		 type: "get",
-		 data: requestData,
-		 contentType: "application/json; charset=utf-8",
-		 success: function(data) {
-			 console.log("옵션 불러옴");
-			 if (data !== "") {
-				 $(liList[i]).find('#optname').val(data);
-			 }
-		 },
-		 error: function(request, status, error) {
-			 console.log(error);
-			 // 처리 중 에러가 발생한 경우에 실행할 코드 작성
-		 }
-	 });
- }
-});
-
- </script> -->
     
 	<script>
 	function addCart() {
 		console.log('장바구니 담기');
     let liList = document.querySelectorAll(".sPrd");
     var mid = document.getElementById('mid').value;
+		let checkList = document.querySelectorAll(".recomPrdtSeq:checked");
+		const pop = document.getElementById('survey_pop');
 
 		if (mid !='anonymousUser'){
+
+			let checkList = document.querySelectorAll(".recomPrdtSeq:checked");
+
+			if(checkList.length ===0) {
+				console.log("상품 선택 안함");
+				pop.innerHTML= `
+					<div class="layerpop blue" style="width: 460px;">
+						<div class="layerpop_head">
+							<h1 class="poptitle">장바구니</h1>
+						</div>
+						<div class="layerpop_cont" style="height: 330px;">
+							<div class="save_cont">
+								<p>
+									상품을 선택하세요.
+								</p>
+								<div class="btn_wrap center mt30">
+									<button type="button" class="btn_base darkgray act" id="save_close">확인</button>
+								</div>
+							</div>
+						</div>
+						<button type="button" class="close">닫기</button>
+					</div>
+						`;
+						$("#survey_pop").css("display", "block");
+
+					$('#save_close').click(function() {
+						$("#survey_pop").css("display", "none");
+
+					});        return false;}
 
     for (let i = 0; i < liList.length; i++) {
       console.log("-----------");
@@ -688,7 +704,6 @@ canvas {
   	}
 	}else {
 			console.log("로그인 필요");
-			const pop = document.getElementById('survey_pop');
         pop.innerHTML= `
 			<div class="layerpop blue" style="width: 460px;">
 				<div class="layerpop_head">
@@ -836,11 +851,13 @@ canvas {
 			const brand = document.querySelector('.brand').textContent;
 			const price = document.querySelector('.pricetotal').textContent;
 			const imglink = document.querySelector('.detail_slider li').style.backgroundImage.slice(4, -1).replace(/"/g, "");
-			console.log(imglink + "   이미지 링크");
 			const rate = document.querySelector('.star .star-rating.bic span').className;
 			const pVolume = document.getElementById('ppvolume').value;
 			const ptype = document.getElementById('pptype').value;
 			const pOption = document.getElementById('poptname').value;
+			const review = document.querySelector('.preview').textContent;
+			console.log(review + "   리뷰개수");
+
 
 			// const liElements = document.querySelectorAll('.ingredient_box li');
 			// let textString = '';
@@ -910,7 +927,7 @@ canvas {
         $("#survey_pop").css("display", "none");
 
        });      } else {
-        arr.push([pcode, pname, brand, price, imglink, rate, pVolume, ptype, pingredient,pOption]); // 상품 정보 저장
+        arr.push([pcode, pname, brand, price, imglink, rate, pVolume, ptype, pingredient,pOption,review]); // 상품 정보 저장
         localStorage.setItem("arr", JSON.stringify(arr));
         const pop = document.getElementById('survey_pop');
         pop.innerHTML= `
@@ -954,10 +971,10 @@ canvas {
 
 			let liList = document.querySelectorAll(".sPrd");
 			console.log(liList.length+"-----------------------length");
+			let checkList = document.querySelectorAll(".recomPrdtSeq:checked");
 
-			
-			if(liList[0].querySelector('.recomPrdtSeq') == null ){
-				console.log("옵션 선택 안함");
+			if(checkList.length ===0) {
+				console.log("상품 선택 안함");
 				pop.innerHTML= `
 					<div class="layerpop blue" style="width: 460px;">
 						<div class="layerpop_head">
@@ -982,11 +999,8 @@ canvas {
 						$("#survey_pop").css("display", "none");
 
 					});        return false;
-			}
 
-
-			if(liList.length > 10 - arr.length) {
-				console.log('비교함 10개 넘음');
+			}else if(checkList.length > 10- arr.length){
 				pop.innerHTML= `
 					<div class="layerpop blue" style="width: 460px;">
 						<div class="layerpop_head">
@@ -1013,11 +1027,12 @@ canvas {
 					});        return false;
 			}
 
+
 			for (let i = 0; i < liList.length; i++) {
 				const checkbox = liList[i].querySelector('.recomPrdtSeq');
 				
 
-				if (checkbox.checked) { //체크한 상품만 장바구니 담기
+				if (checkbox.checked) { //체크한 상품만 비교함 담기
 					const pname = document.querySelector('.tit strong').textContent;
           const pcode = $(liList[i]).find('#pcode').val();
 					const brand = $(liList[i]).find('#hash').text();
@@ -1028,6 +1043,7 @@ canvas {
 					const ptype = $(liList[i]).find('#ptype').val();
 					const pingredient = $(liList[i]).find('#pingredient').val();
           const poption = $(liList[i]).find('#optname').val();
+					const review = $(liList[i]).find('.review').text();
 
 					if (arr.length >= 10) {
 						pop.innerHTML= `
@@ -1081,7 +1097,7 @@ canvas {
 						$("#survey_pop").css("display", "none");
 
 					});      } else {
-						arr.push([pcode, pname, brand, price, imglink, rate, pvolume, ptype, pingredient,poption]); // 상품 정보 저장
+						arr.push([pcode, pname, brand, price, imglink, rate, pvolume, ptype, pingredient,poption,review]); // 상품 정보 저장
 						localStorage.setItem("arr", JSON.stringify(arr));
 						pop.innerHTML= `
 					<div class="layerpop blue" style="width: 460px;">
