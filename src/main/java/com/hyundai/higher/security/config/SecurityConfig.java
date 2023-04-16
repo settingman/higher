@@ -47,7 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
-		http.csrf().disable().authorizeRequests().antMatchers("/member/**").permitAll() // 누구나 mypage 접근허용 - 02/03
+		http.csrf().disable().authorizeRequests().antMatchers("/member/**","/makeup/img").permitAll() // 누구나 mypage 접근허용 - 02/03
 																						// mypage
 				.antMatchers("/mypage/**", "/cart/**", "/shop/**", "/restcart/**", "/makeup/**",
 						"/reserv/**,/chat/createroom","/review/form").access("hasRole('ADMIN') or hasRole('USER')")
