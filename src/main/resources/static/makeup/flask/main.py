@@ -8,7 +8,7 @@ image = cv2.imread("C:\park1.jpg", cv2.IMREAD_UNCHANGED)
 # (154,0,255) pink
 # (255,0,213) lightpurple
 
-colors = (103, 33, 103)
+colors = (3,0,186)
 
 output1 = apply_makeup(image, False, 'blush',colors,1, False)
 output2 = apply_makeup(image, False, 'lips',colors,1, False)
