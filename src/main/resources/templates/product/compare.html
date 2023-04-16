@@ -21,6 +21,7 @@
 	width: 200px;
 	height: 200px;
 	text-align: center;
+	margin-left: 46px;
 }
 
 .chart span.title {
@@ -231,10 +232,7 @@
 	.ing {
 		line-height: 32px;
 	}
-	.swiper-horizontal{
-		/* margin-top: 8px; */
-    /* padding: 0px 5px; */
-	}
+
 	.swiper-pagination-fraction {
 		margin-bottom: 3px;
 	}
@@ -256,7 +254,11 @@
 		margin-top: 28px;
 		font-size: 18px;
 	}
- 
+	.btn_base.move:after{
+		top: -23px !important;
+		left: 8px !important;
+		margin-left: 0px !important;
+	}
  </style>
 
 	<!-- 스와이퍼 -->
@@ -462,7 +464,9 @@
 							<!-- <span data-v-4ade122e="" data-v-35734774="" class="rates"></span> -->
 							<div data-v-4ade122e="" data-v-35734774="" class="star-rating">
 								<span class="">
-									<em class="hide">별점</em></span>
+									<em class="hide">별점</em>
+								</span>
+								<p class="review" style="margin-left:110px;"></p>
 							</div>
 							
 						</div>
@@ -470,14 +474,18 @@
 														<!-- <span data-v-4ade122e="" data-v-35734774="" class="rates"></span> -->
 														<div data-v-4ade122e="" data-v-35734774="" class="star-rating">
 															<span class="">
-																<em class="hide">별점</em></span>
+																<em class="hide">별점</em>
+																<p class="review" style="margin-left:110px;"></p>
+															</span>
 														</div>
 						</div>
 						<div data-v-4ade122e="" data-v-35734774="" class="card_03">
 														<!-- <span data-v-4ade122e="" data-v-35734774="" class="rates"></span> -->
 														<div data-v-4ade122e="" data-v-35734774="" class="star-rating">
 															<span class="">
-																<em class="hide">별점</em></span>
+																<em class="hide">별점</em>
+															</span>
+															<p class="review" style="margin-left:110px;"></p>
 														</div>
 						</div>
 					</div>
@@ -664,7 +672,8 @@ $(function(){
 	var brand= document.querySelector(`.${slidenum} .title.ellipsis`).textContent;
 	// var rates = document.querySelector(`.${slidenum} .score`).textContent.trim().replace(/^별점\s*/, '');
 	const rates = document.querySelector(`.${slidenum} .score`).value;
-	console.log(rates+"평저멈ㅁㅁㅁ");
+	const review = document.querySelector(`.${slidenum} .review`).value;
+	console.log(review+" 리뷰 개수");
 	
 	const price = document.querySelector(`.${slidenum} .price`).value;
 	const pcode = document.querySelector(`.${slidenum} .pcode`).value;
@@ -692,6 +701,7 @@ $(function(){
 
 		$('.cd_con.card_sort .card_01 .star-rating').addClass('bic');
 		$('.cd_con.card_sort .card_01 .star-rating.bic span').addClass(rates);
+		document.querySelector('.cd_con.card_sort .card_01 .star-rating .review').textContent = review;
 		
 		const c = document.querySelector(".cd_con.card_event .card_01");
 		console.log(price);
@@ -740,6 +750,7 @@ $(function(){
 
 		$('.cd_con.card_sort .card_02 .star-rating').addClass('bic');
 		$('.cd_con.card_sort .card_02 .star-rating.bic span').addClass(rates);
+		document.querySelector('.cd_con.card_sort .card_02 .star-rating .review').textContent = review;
 		
 		const c = document.querySelector(".cd_con.card_event .card_02");
 		console.log(price);
@@ -784,6 +795,8 @@ $(function(){
 
 			$('.cd_con.card_sort .card_03 .star-rating').addClass('bic');
 			$('.cd_con.card_sort .card_03 .star-rating.bic span').addClass(rates);
+			document.querySelector('.cd_con.card_sort .card_03 .star-rating .review').textContent = review;
+
 
 			const c = document.querySelector(".cd_con.card_event .card_03");
 			console.log(price);
@@ -833,16 +846,37 @@ $(function(){
 			const spanClass = $(`.cd_con.card_sort .${num} .star-rating.bic span`).attr('class');
 			$(`.cd_con.card_sort .${num} .star-rating.bic span`).removeClass(spanClass);
 			$(`.cd_con.card_sort .${num} .star-rating`).removeClass('bic');
+
 			//document.querySelector(`.${num} .rates`).textContent = '';
 			document.querySelector(`.${num} .price`).textContent = '';
 			document.querySelector(`.${num} .caution`).textContent = '';
 			document.querySelector(`.${num} .keyword`).textContent = '';
+			document.querySelector(`.${num} .review`).textContent = '';
 
-			const elements = document.querySelectorAll(`.${num} dt, .${num} dd`);
-			for (let i = 0; i < elements.length; i++) {
-				elements[i].textContent = "";
-			}
+			//cardDiv.querySelector('.chart').setAttribute('data-percent', '');
+			// document.querySelector(`.mychart${num}`).setAttribute('data-percent', '');
+			document.querySelector(`.${num} .chart`).setAttribute('data-percent','');
+
+			document.querySelectorAll(`.${num} .chart .title`).forEach((title) => {
+				title.textContent = '';
+			});
+			//document.querySelector(`.${num} canvas`).remove();
+
+			document.querySelector(`.${num} .chart`).remove();
+			const number = num.charAt(num.length - 1);
+			console.log(number);
+			document.querySelector(`.cd_con.card_benefit .${num}`).innerHTML=`
+				<div id="resultchart${number}" class="chart mychart${number}" data-percent="">
+					<span class="title" style="top: 119px;"></span>
+				</div>
+			`;
+
+			// const elements = document.querySelectorAll(`.${num} dt, .${num} dd`);
+			// for (let i = 0; i < elements.length; i++) {
+			// 	elements[i].textContent = "";
+			// }
 	}
+
 	function move(give, take) {
 		console.log('move---');
 		// const card02 = document.querySelector('.card_02');
@@ -860,6 +894,20 @@ $(function(){
 
 		const spanClass = $(`.${give} .star-rating.bic span`).attr('class');
 		$(`.${take} .star-rating.bic span`).removeClass().addClass(spanClass);
+
+		const number = take.charAt(take.length - 1);
+		const code = document.querySelector(`.${give} .card_change`).href.split('=')[1];
+
+		document.querySelector(`.${take} .chart`).remove();
+		document.querySelector(`.cd_con.card_benefit .${take}`).innerHTML=`
+				<div id="resultchart${number}" class="chart mychart${number}" data-percent="">
+					<span class="title" style="top: 119px;"></span>
+				</div>
+			`;
+
+		getMatch(code,number);
+
+		//document.querySelector(`.cd_con.card_benefit .${take}`).innerHTML=document.querySelector(`.cd_con.card_benefit .${give}`).innerHTML;
 	}
 
 	function delThis(card_num) {
@@ -917,7 +965,7 @@ $(function(){
 		for(let i=0;i<arr.length;i++) {
 			console.log('상품 출력 중 ' + i);
 			const slide = document.querySelector(`.slide${i}`);					
-	    const [pcode, pname, brand, price, imglink, rate, pVolume, ptype, pingredient,pOption] = arr[i];
+	    const [pcode, pname, brand, price, imglink, rate, pVolume, ptype, pingredient,pOption,review] = arr[i];
 			console.log("img: "+ imglink);
 	    slide.innerHTML = `
       <div class="prod-unit" style="padding:0px;height:100%;">
@@ -929,6 +977,7 @@ $(function(){
 					<input type="hidden" class="pingredient" value="${pingredient}">
 					<input type="hidden" class="pOption" value="${pOption}">
 					<input type="hidden" class="score" value="${rate}">
+					<input type="hidden" class="review" value="${review}">
 
           <a href="/product/detail?code=${pcode}";" style="display: inline-block; position: relative;"> 
             <img src=${imglink} alt="${pname}" onerror="noImage(this, 'https://image.thehyundai.com/hdmall/images/pd/no_image_480x480.jpg')">
@@ -1258,100 +1307,128 @@ $(function(){
 <script>
 	function getMatch(pcode, cardnum) {
 		console.log("getmatch 작동");
+		var mid = document.getElementById('mid').value;
+
+		if(mid !='anonymousUser'){
+
 		var requestData = JSON.stringify({
                     pcode: pcode,
 				});
 
-				$.ajax({
-             url: '/restMatch/getMatch',
-             type: 'post',
-             data: requestData,
-             contentType: "application/json",
-             success: function(result) {
-							console.log("매치 success");
-							console.log("result       =   "+result);
-							document.querySelector(`.mychart${cardnum}`).setAttribute('data-percent', result);
+			$.ajax({
+           url: '/restMatch/getMatch',
+           type: 'post',
+           data: requestData,
+           contentType: "application/json",
+           success: function(result) {
+						console.log("매치 success");
+						console.log("result       =   "+result);
+						document.querySelector(`.mychart${cardnum}`).setAttribute('data-percent', result);
+						const mychart = document.querySelector(`.mychart${cardnum}`);
 
-							const mychart = document.querySelector(`.mychart${cardnum}`);
+						if(result != null && mychart != null && result >0 ){
 
-if(result != null && mychart != null  ){
+						const percent = mychart.dataset.percent;
+						console.log(percent + "-------------------------");
 
-const percent = mychart.dataset.percent;
-console.log(percent + "-------------------------");
+							if(percent <= 20){
+								console.log("퍼센트 20이하");
+								$(`#resultchart${cardnum}`).easyPieChart({
+								barColor: '#fe3c69',
+								trackColor : '#edebeb',
+								scaleColor: false,
+								lineWidth: 25,
+								size: 200,
+								animate: 1000,
+								lineCap: 'round'
+							});
+							document.querySelector(`.mychart${cardnum} .title`).innerHTML = percent+"<br>글쎄요";
 
-if(percent <= 20){
-	console.log("퍼센트 20이하");
-	$(`#resultchart${cardnum}`).easyPieChart({
-	barColor: '#fe3c69',
-	trackColor : '#edebeb',
-	scaleColor: false,
-	lineWidth: 25,
-	size: 200,
-	animate: 1000,
-	lineCap: 'round'
-});
-document.querySelector(`.mychart${cardnum} .title`).innerHTML = percent+"<br>글쎄요";
+							}else if (percent<=40) {
 
-}else if (percent<=40) {
+								$(`#resultchart${cardnum}`).easyPieChart({
+								barColor: '#f77694',
+								trackColor : '#edebeb',
+								scaleColor: false,
+								lineWidth: 25,
+								size: 200,
+								animate: 1000,
+								lineCap: 'round'
+							});
+							document.querySelector(`.mychart${cardnum} .title`).innerHTML = percent+"<br>그냥 그래요";
 
-	$(`#resultchart${cardnum}`).easyPieChart({
-	barColor: '#f77694',
-	trackColor : '#edebeb',
-	scaleColor: false,
-	lineWidth: 25,
-	size: 200,
-	animate: 1000,
-	lineCap: 'round'
-});
-document.querySelector(`.mychart${cardnum} .title`).innerHTML = percent+"<br>그냥 그래요";
+							}else if (percent<=60) {
 
-}else if (percent<=60) {
+								$(`#resultchart${cardnum}`).easyPieChart({
+								barColor: '#DCFBF9',
+								trackColor : '#edebeb',
+								scaleColor: false,
+								lineWidth: 25,
+								size: 200,
+								animate: 1000,
+								lineCap: 'round',
+								onInit: function() {
+									this.chart.canvas.parentNode.style.height = '200px';
+									this.chart.canvas.parentNode.style.width = '200px';
+								}
+							});
+							document.querySelector(`.mychart${cardnum} .title`).innerHTML = percent+"<br>보통이에요";
 
-	$(`#resultchart${cardnum}`).easyPieChart({
-	barColor: '#DCFBF9',
-	trackColor : '#edebeb',
-	scaleColor: false,
-	lineWidth: 25,
-	size: 200,
-	animate: 1000,
-	lineCap: 'round'
-});
-document.querySelector(`.mychart${cardnum} .title`).innerHTML = percent+"<br>보통이에요";
+							}else if (percent<=80) {
 
-}else if (percent<=80) {
+								$(`#resultchart${cardnum}`).easyPieChart({
+								barColor: '#CBE6FF',
+								trackColor : '#edebeb',
+								scaleColor: false,
+								lineWidth: 25,
+								size: 200,
+								animate: 1000,
+								lineCap: 'round'  
+							});
 
-	$(`#resultchart${cardnum}`).easyPieChart({
-	barColor: '#CBE6FF',
-	trackColor : '#edebeb',
-	scaleColor: false,
-	lineWidth: 25,
-	size: 200,
-	animate: 1000,
-	lineCap: 'round'
-});
-document.querySelector(`.mychart${cardnum} .title`).innerHTML = percent+"<br>잘 맞는 편!";
+							document.querySelector(`.mychart${cardnum} .title`).innerHTML = percent+"<br>잘 맞는 편!";
 
-}else if (percent<=100){
+							}else if (percent<=100){
 
-	$(`#resultchart${cardnum}`).easyPieChart({
-	barColor: '#7796fc',
-	trackColor : '#edebeb',
-	scaleColor: false,
-	lineWidth: 25,
-	size: 200,
-	animate: 1000,
-	lineCap: 'round'
-});
-document.querySelector(`.mychart${cardnum} .title`).innerHTML = percent+"<br>찰떡궁합";
+								$(`#resultchart${cardnum}`).easyPieChart({
+								barColor: '#7796fc',
+								trackColor : '#edebeb',
+								scaleColor: false,
+								lineWidth: 25,
+								size: 200,
+								animate: 1000,
+								lineCap: 'round'
+							});
+							document.querySelector(`.mychart${cardnum} .title`).innerHTML = percent+"<br>찰떡궁합";
 
-}
-}
+							}
+						}else if(result ==0) {
+							document.querySelector(`.cd_con.card_benefit .mychart${cardnum}`).innerHTML=`
+						<div style="padding: 18px;border: 1px solid #c2bdbd;border-radius: 15px;">
+							<div> 피부 MBTI를 진단하고 <br>나의 피부타입과<br>제품의 매칭도를<br>확인하세요! </div>
+							<style>
+								</style>
+							<div id="join-btn" style="margin-top: 7px;height:35px;">
+								<a class="btn_base move" href="/skinMBTI/selfConsult" style="height:39px;">피부진단하러 가기</a></div>
+						</div>
+						`;
+						}
 
-						},
-						error: function(request, status, error) {
-                 console.log(error);
-             }
-         });
+									},
+									error: function(request, status, error) {
+											console.log(error);
+									}
+							});
+
+					}else {
+						document.querySelector(`.cd_con.card_benefit .mychart${cardnum}`).innerHTML=`
+						<div style="padding: 18px;border: 1px solid #c2bdbd;border-radius: 15px;">
+							<div> 회원 가입 후 <br>피부 MBTI를 진단하고 <br>나의 피부타입과 제품의<br>매칭도를 확인하세요! </div>
+							<div id="join-btn" style="margin-top: 7px;height:35px;">
+								<a class="btn_base move" href="/member/login" style="height:39px;">회원가입하러 가기</a></div>
+						</div>
+						`;
+					}
 
 }
 
