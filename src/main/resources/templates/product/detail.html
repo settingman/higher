@@ -242,7 +242,7 @@ $(function(){
                           <em class="hide">별점</em></span>
                       </div>
                     </a>
-                    <em><a href="#product_detail_review" style="color:#8f8f8f;">([[${#lists.size(reviewList)}]])</a></em>
+                    <em><a href="#product_detail_review" style="color:#8f8f8f;" class="review">([[${#lists.size(reviewList)}]])</a></em>
                    
                   </span>
                 </div>
@@ -590,6 +590,7 @@ $(function(){
 
       //const rate = document.querySelector('.c00 em').textContent; //수정!!!
       const rate = document.querySelector('.star-rating.bic span').className;
+      const review = document.querySelector('.review').textContent;
       
       const pVolume = document.querySelector(".table_wrap td:nth-of-type(1)").textContent.trim();
       const ptype = document.querySelector('.table_wrap table tbody tr:nth-child(2) td').textContent.trim();
@@ -692,7 +693,7 @@ $(function(){
         $("#survey_pop").css("display", "none");
 
        });      } else {
-        arr.push([pcode, pname, brand, price, imglink, rate, pVolume, ptype, pingredient,pOption]); // 상품 정보 저장
+        arr.push([pcode, pname, brand, price, imglink, rate, pVolume, ptype, pingredient,pOption,review]); // 상품 정보 저장
         localStorage.setItem("arr", JSON.stringify(arr));
         const pop = document.getElementById('survey_pop');
         pop.innerHTML= `

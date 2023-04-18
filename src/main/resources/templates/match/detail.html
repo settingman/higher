@@ -259,8 +259,8 @@ canvas {
 									</div>
 									</div>
                   <!-- 회원 검사 미진행 end -->
-                  <!-- 회원 결과 null -->
-                  <div sec:authorize="isAuthenticated()" th:if="${score == null}" class="result"
+                  <!-- 회원 결과 null, 작업 필요 -->
+                  <div sec:authorize="isAuthenticated()" th:if="${score == -1}" class="result"
                   style="display: flex;justify-content: center;padding: 25px 10px;margin-bottom: 30px;border: 1px solid #c2bdbd;border-radius: 39px;">
 										<div class="inform">
                       <div id="join-guide" style="
@@ -299,7 +299,8 @@ canvas {
 										</div>
 									</div>
                   <!-- 비회원 end -->
-									<div th:if="${infolist == null}" id="ingredient_box">
+									
+									<div th:if="${infolist == null || score ==-1}" id="ingredient_box">
 										<div id="iTit">주요성분</div>
 										<div>
 											<ul>
@@ -318,7 +319,7 @@ canvas {
                 </div>
 							</div>
 
-							<div th:unless="${infolist == null}" style="display:inline-block;">
+							<div th:unless="${infolist == null || score ==-1}" style="display:inline-block;">
 								<div id="ingredient_box" style="display: flex;">
 									<div style="width: 46%;border-right:1px solid #ddd; padding-right: 25px;">
 									<div id="iTit">주요성분</div>
@@ -379,7 +380,9 @@ canvas {
                    <span class="sm-per">[[${sProd.percent}]]%</span>
                     <span class="star">
                       <div class="star-rating small">
-												<span th:class="'c' + ${#numbers.formatInteger(sProd.rates, 2)}">
+												<!-- <span th:class="'c' + ${#numbers.formatInteger(sProd.rates, 2)}"> -->
+													<span class="">
+
                           <em class="hide">벌점</em>
                         </span>
                       </div>
@@ -599,11 +602,19 @@ canvas {
       success: function(data) {
 
 				$(liList[i]).find('#optname').val(data.prod.optname);
-				$(liList[i]).find('#rates').val(data.prod.rates);
 				$(liList[i]).find('#pvolume').val(data.prod.pvolume);
 				$(liList[i]).find('#ptype').val(data.prod.ptype);
 				$(liList[i]).find('#pingredient').val(data.prod.pingredient);
-			
+				$(liList[i]).find('.review').text(`(${data.review})`);
+				
+				const rate = Math.round(data.rate/2*10); 
+				if(rate == 0 ){
+					$(liList[i]).find('.star-rating.small span').addClass('c00');
+				}else{
+				
+				$(liList[i]).find('.star-rating.small span').addClass(`c${rate}`);
+				console.log("평점 "+rate);
+				}
       },
       error: function(request, status, error) {
         console.log(error);

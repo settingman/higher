@@ -162,6 +162,7 @@ public class MatchController {
 		// 성분 for문 해서 점수 카운트
 		
 		Set<String> set = new HashSet<>();
+		Set<String> badset = new HashSet<>();
 
 		// 첫번째 mbti 점수 계산. 총 40점. good 4점, normal 2점, bad 1점
 		log.info(mbtiList[0]);
@@ -171,7 +172,7 @@ public class MatchController {
 			String result = mService.getEffect(ingredients[i], mbtiList[0]);
 			log.info("effect " + result);
 			if(result == null) {
-				score =0;
+				score =-1;
 				break;
 			}
 			
@@ -203,7 +204,7 @@ public class MatchController {
 				log.info("effect " + result);
 	
 				if(result == null) {
-					score =0;
+					score =-1;
 					break;
 				}
 				String info = mService.getIinfo(ingredients[i], mbtiList[0]);
@@ -229,7 +230,7 @@ public class MatchController {
 	
 	
 				if(result == null) {
-					score =0;
+					score =-1;
 					break;
 				}
 				String info = mService.getIinfo(ingredients[i], mbtiList[0]);
@@ -254,7 +255,7 @@ public class MatchController {
 				log.info("effect " + result);
 	
 				if(result == null) {
-					score =0;
+					score =-1;
 					break;
 				}
 				String info = mService.getIinfo(ingredients[i], mbtiList[0]);
