@@ -2,6 +2,7 @@ package com.hyundai.higher.controller.match;
 
 import java.security.Principal;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hyundai.higher.domain.match.MatchProductDTO;
+import com.hyundai.higher.domain.review.ReviewDTO;
 import com.hyundai.higher.service.match.MatchService;
+import com.hyundai.higher.service.review.ReviewService;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -38,6 +41,10 @@ public class MatchRestController {
 	
 	@Autowired
 	private MatchService mService;
+	
+	@Autowired
+	private ReviewService rService;
+
 	
 	@GetMapping("/getOption")
 	public String getOption(@RequestParam("pcode") String pcode) {
@@ -63,6 +70,20 @@ public class MatchRestController {
 		String optname = prod.getOptname() != null ? prod.getOptname() : "";
 		result.put("optname", optname);
 		result.put("prod", prod);
+		
+		List<ReviewDTO> reviewList = rService.reviewList(pcode);
+		int rateTotal = 0;
+		int rateAvg = 0;
+		if(reviewList.size() > 0) {
+			for(int i=0; i<reviewList.size(); i++) {
+				rateTotal += reviewList.get(i).getRrate()*2;
+			}
+			rateAvg = rateTotal / reviewList.size();
+		}
+		log.info("평점  "+ rateAvg);
+		result.put("rate", rateAvg);
+		result.put("review", reviewList.size());
+
 		
 		return ResponseEntity.ok(result);
 		
@@ -102,7 +123,7 @@ public class MatchRestController {
 				String result = mService.getEffect(ingredients[i], mbtiList[0]);
 				log.info("effect " + result);
 				if(result == null) {
-					score =0;
+					score =-1;
 					break;
 				}
 				if (result.equals("GOOD")) {
@@ -115,7 +136,7 @@ public class MatchRestController {
 				}
 			}
 			log.info(score + "-----------------------------------");
-			if(score != 0) {
+			if(score > 0) {
 			
 				// 두번째 mbti 점수 계산. 총 30점. good 3점, normal 2점, bad 0점
 			for (int i = 0; i < ingredients.length; i++) {

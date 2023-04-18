@@ -255,7 +255,7 @@
 		font-size: 18px;
 	}
 	.btn_base.move:after{
-		top: -23px !important;
+		top: 14px !important;
 		left: 8px !important;
 		margin-left: 0px !important;
 	}
@@ -963,7 +963,6 @@ $(function(){
 		}
 	}else {
 		for(let i=0;i<arr.length;i++) {
-			console.log('상품 출력 중 ' + i);
 			const slide = document.querySelector(`.slide${i}`);					
 	    const [pcode, pname, brand, price, imglink, rate, pVolume, ptype, pingredient,pOption,review] = arr[i];
 			console.log("img: "+ imglink);
@@ -1410,6 +1409,12 @@ $(function(){
 								</style>
 							<div id="join-btn" style="margin-top: 7px;height:35px;">
 								<a class="btn_base move" href="/skinMBTI/selfConsult" style="height:39px;">피부진단하러 가기</a></div>
+						</div>
+						`;
+						}else if(result == -1 ) {
+							document.querySelector(`.cd_con.card_benefit .mychart${cardnum}`).innerHTML=`
+						<div style="padding: 18px;border: 1px solid #c2bdbd;border-radius: 15px;">
+							<div>해당 제품의 매칭도는<br>추후에 제공될 예정입니다. </div>
 						</div>
 						`;
 						}
