@@ -2,6 +2,26 @@
 <html>
 <head>
 <head th:insert="~{include/head}"></head>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
+<style>
+#container {
+	margin: 0px auto;
+	width: 300px;
+	height: 400px;
+}
+
+#videoElement {
+	width: 300px;
+	height: 400px;
+	background-color: #666;
+	object-fit: cover;
+}
+</style>
 <style>
 header#header {
 	background: none;
@@ -131,7 +151,7 @@ div#selected {
 				<div class="tit" title="날짜 선택" id="step1-head" tabindex="0">
 					<h3 class="g-title-1">날짜 선택</h3>
 					<img class="img1" src="/makeup/img/up.png"
-						style="width: 17px;float: right;position: relative;top: -31px;right: 10px;cursor: pointer;">
+						style="width: 17px; float: right; position: relative; top: -31px; right: 10px; cursor: pointer;">
 				</div>
 				<div class="calendartable">
 					<div class="accordion_cont">
@@ -179,7 +199,7 @@ div#selected {
 				<div class="tit" title="시간 선택" id="step1-head" tabindex="0">
 					<h3 class="g-title-1">시간 선택</h3>
 					<img class="img2" src="/makeup/img/down.png"
-						style="width: 17px;float: right;position: relative;top: -31px;right: 10px;cursor: pointer;">
+						style="width: 17px; float: right; position: relative; top: -31px; right: 10px; cursor: pointer;">
 				</div>
 				<!-- 시간대-->
 				<div class="timetable" style="display: none">
@@ -230,14 +250,26 @@ div#selected {
 				<!-- 사진 업로드 -->
 				<div class="tit" title="사진 업로드" id="step1-head" tabindex="0">
 					<h3 class="g-title-1">사진 업로드</h3>
-						<img class="img3" src="/makeup/img/down.png"
-						style="width: 17px;float: right;position: relative;top: -31px;right: 10px;cursor: pointer;">
+					<img class="img3" src="/makeup/img/down.png"
+						style="width: 17px; float: right; position: relative; top: -31px; right: 10px; cursor: pointer;">
 				</div>
 				<div class="uploadimage" style="display: none;">
 					<div class="accordion_cont" style="padding-bottom: 100px">
 						<div class="uploadbox">
 							<div class="uploadResult"
 								style="width: 300px; height: 400px; background: darkgray; float: left;"></div>
+							<a id="target" style="display: none"></a>
+							<div id="container"
+								style="width: 300px; height: 400px; background: darkgray; float: left; display: none;">
+								<video autoplay="true" id="videoElement">
+
+								</video>
+
+								<div class="btn_gray" style="margin: 30px auto; cursor:pointer;">
+									<input id="capture" type="button" value="촬영"
+										style="background: slategray; color: white; font-family: 'notokr-demilight'; font-size: medium;  cursor:pointer;" />
+								</div>
+							</div>
 							<div class="rightbox" style="float: right">
 								<div class="g_box"
 									style="margin: 0; float: right; width: 330px;">
@@ -263,7 +295,12 @@ div#selected {
 										</label> <input type="file" name="file" id="file"
 											style="display: none;">
 									</div>
-
+									<div class="btn_capture"
+										style="background: #bfae90; width: 200px; margin-right: 55px; float: right; margin-top: 20px; cursor:pointer;">
+										<button onclick="onDisplay()"
+											style="font-family: 'notokr-medium'; font-size: large; width: 200px; margin-right: 55px; color: white; height: 50px; line-height: 50px; cursor:pointer;">사진
+											촬영</button>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -273,8 +310,8 @@ div#selected {
 				<!-- 요청 사항 -->
 				<div class="tit" title="요청 사항" id="step1-head" tabindex="0">
 					<h3 class="g-title-1">요청 사항</h3>
-						<img class="img4" src="/makeup/img/down.png"
-						style="width: 17px;float: right;position: relative;top: -31px;right: 10px;cursor: pointer;">
+					<img class="img4" src="/makeup/img/down.png"
+						style="width: 17px; float: right; position: relative; top: -31px; right: 10px; cursor: pointer;">
 				</div>
 				<div class="inputneeds" style="display: none;">
 					<div class="accordion_cont" style="">
@@ -311,6 +348,53 @@ div#selected {
 		<div class="include-footer" th:insert="~{include/footer}"></div>
 	</div>
 	<script>
+$("#capture").on("click", function (e) {
+  var videoElement = document.getElementById("videoElement");
+  var canvas = document.createElement("canvas");
+  canvas.width = videoElement.videoWidth;
+  canvas.height = videoElement.videoHeight;
+  canvas.getContext("2d").drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+  if (navigator.msSaveBlob) {
+    var blob = canvas.msToBlob();
+    return navigator.msSaveBlob(blob, "파일명.jpg");
+  } else {
+    var el = document.createElement("a");
+    el.href = canvas.toDataURL("image/jpeg");
+    el.download = "파일명.jpg";
+    document.body.appendChild(el);
+    el.click();
+    document.body.removeChild(el);
+  }
+});
+</script>
+	<script>
+
+        
+        
+    var video = document.querySelector("#videoElement");
+     
+    if (navigator.mediaDevices.getUserMedia) {
+      navigator.mediaDevices.getUserMedia({ video: true })
+        .then(function (stream) {
+          video.srcObject = stream;
+        })
+        .catch(function (err0r) {
+          console.log("Something went wrong!");
+        });
+    }
+
+    function onDisplay() {
+        if ($("#container").is(":hidden")) {
+            $("#container").show();
+            $(".uploadResult").hide();
+        } else {
+            $("#container").hide();
+            $(".uploadResult").show();
+        }
+    }
+
+    </script>
+	<script>
       let today = new Date();
       let currentMonth = today.getMonth();
       let currentYear = today.getFullYear();
@@ -321,7 +405,7 @@ div#selected {
         let calendarTitle = document.getElementById("calendarTitle");
         let calendarBody = document.getElementById("calendarBody");
         let twoWeeksFromToday = new Date();
-        twoWeeksFromToday.setDate(today.getDate() + 10);
+        twoWeeksFromToday.setDate(today.getDate() + 5);
 
         calendarTitle.innerHTML =
           currentYear + "년 " + (currentMonth + 1) + "월";
@@ -514,6 +598,9 @@ selectTimes.forEach(selectTime => {
 			    
 			    $(".rimg").val(arr[i].thumbnailURL);
 			    $(".thum_img").attr("src", "/beauty/display?fileName=" + arr[i].thumbnailURL);
+			    
+			    $(".thum_img").css("height", "280px");
+			    $(".thum_img").css("object-fit", "cover");
 			    $(".empty").remove();
 			  }
 			  divArea.append(str);
@@ -830,7 +917,7 @@ dl {
 	border: 1px dashed #e5e5e5;
 	background: #fff;
 	box-sizing: border-box;
-	margin-bottom: 160px;
+	margin-bottom: 80px;
 	font-family: 'notokr-medium';
 }
 
