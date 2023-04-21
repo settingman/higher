@@ -1388,7 +1388,57 @@
       -webkit-animation-name: nodeInserted;
     }
   </style>
-</head>
+<style>
+.text {
+    position: absolute;
+    left: calc(50% - 640px);
+    top: 60px;
+    line-height: 1.2;
+    animation: fadeInUp 2s;
+    transition: opacity 0.2s; /* Add a transition for opacity */
+}
+
+.text-01 {
+    font-size: 40px;
+    color: #fff;
+    animation: fadeInUp 2s;
+    font-family: 'notokr-medium';
+}
+
+.text-02 {
+    margin-top: 18px;
+    font-size: 18px;
+    color: #fff;
+    font-weight: 300;
+    animation: fadeInUp 2s;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, 100%, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translateZ(0);
+    }
+}
+</style>
+
+<script>
+var swiper = new Swiper('#mainslider', {
+    on: {
+        slideChange: function() {
+            var textElement = document.querySelector('.text');
+            textElement.classList.remove('animate');
+            setTimeout(function() {
+                textElement.classList.add('animate');
+            }, 10);
+        }
+    }
+});
+</script>
+
 <body>
   <div id="wrap" class="main " data-mbr-join-ym="" data-user-level="">
     <!-- 상단 띠배너 -->
@@ -1418,39 +1468,44 @@
                     <div class="swiper-wrapper"
                         style="width: 11834.7px; height: 699px; transform: translate3d(-1690.67px, 0px, 0px); transition-duration: 0s;">
                         
-                        <div class="swiper-slide swiper-slide-duplicate" style="width: 1690.67px; height: 699px;">
-                            <a href="javascript:void(0);" data-url="/event/eventView/414.do" target="_self"
-                                class="mainView" data-value="1052" data-title="생애 첫 만남">
+                        <div class="swiper-slide" style="width: 1690.67px; height: 699px;">
+                                <div class="text">         
+                                <p class="text-01">NEW 로 파피에</p>                
+                                <p class="text-02">종이 위 펼쳐지는 섬세한 데생의 향연</p>      
+                                </div>
                                 <div class="img_banner"
                                     style="background-image:url(https://image.thehyundai.com/HM/HM039/20230407/174610/ban20230407193749.jpg); background-size:contain;">
                                     </div>
-                            </a>
                         </div>
 
-                        <div class="swiper-slide swiper-slide-visible swiper-slide-active"
-                            style="width: 1690.67px; height: 699px;">
-                            <a href="javascript:void(0);" data-url="/event/eventView/474.do" target="_self"
-                                class="mainView" data-value="1242" data-title="4월 유비데아, 최대 35% 할인">
+                        <div class="swiper-slide"
+                            style="width: 1690.67px; height: 699px;">                  
+                                 <div class="text">         
+                                <p class="text-01">BEAUTY-FULL WEEK</p>                
+                                <p class="text-02">클럽뷰티 ONLY! 선착순 쿠폰부터 적립까지</p>      
+                                </div>
                                 <div class="img_banner"
                                     style="background-image:url(https://image.thehyundai.com/HM/HM039/20230407/174610/ban20230407193701.jpg); background-size:contain;">
                                     </div>
-                            </a>
                         </div>
-                        <div class="swiper-slide" style="width: 1690.67px; height: 699px;">
-                            <a href="javascript:void(0);" data-url="/member/auth.do" target="_self" class="mainView"
-                                data-value="1243" data-title="4월 신규회원 이벤트! 시카플라스트 멀티 리페어 크림 B5 15ml 증정">
+                        <div class="swiper-slide" style="width: 1690.67px; height: 699px;">  
+                                 <div class="text">         
+                                <p class="text-01">아베다 지구의 달</p>                
+                                <p class="text-02">Charity water와 함께하는 한정 상품 출시</p>      
+                                </div>
                                 <div class="img_banner"
                                     style="background-image:url(https://image.thehyundai.com/HM/HM039/20230407/174610/ban20230407193633.jpg); background-size:contain;">
                                   </div>
-                            </a>
                         </div>
                         <div class="swiper-slide" style="width: 1690.67px; height: 699px;">
-                            <a href="javascript:void(0);" data-url="/noDev/lrpFoundation.do" target="_self"
-                                class="mainView" data-value="816" data-title="민감피부솔루션">
+                                 <div class="text">         
+                                <p class="text-01">DIOR BEAUTY</p>                
+                                <p class="text-02">디현대 뷰티만의 럭셔리 브랜드</p>      
+                                </div>
                                 <div class="img_banner"
                                     style="background-image:url(https://image.thehyundai.com/HM/HM039/20230328/094953/ban20230328124444.jpg); background-size:contain;">
                                     <span class="hide">민감피부솔루션 - 바로가기</span></div>
-                            </a>
+
                         </div>
                         
                     </div>
