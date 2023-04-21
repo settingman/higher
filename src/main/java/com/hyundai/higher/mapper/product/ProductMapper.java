@@ -26,7 +26,7 @@ import com.hyundai.higher.domain.product.ProductDTO;
 public interface ProductMapper {
 	
 	// 상품 목록 - 상품 리스트
-	public List<ProductDTO> productList(String dept1no, String dept2no);
+	public List<ProductDTO> productList(String dept1no, String dept2no, String price);
 	
 	// 상품 세부 정보
 	public ProductDTO productDetailInfo(String pcode);

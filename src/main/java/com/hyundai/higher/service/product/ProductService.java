@@ -24,7 +24,7 @@ import com.hyundai.higher.domain.product.ProductDetailDTO;
 public interface ProductService {
 	
 	// 상품 목록
-	public List<ProductDTO> productList(String dept1no, String dept2no);
+	public List<ProductDTO> productList(String dept1no, String dept2no, String price);
 	
 	// 상품 세부 정보 전체
 	public ProductDetailDTO productDetail(String pcode);
@@ -39,6 +39,6 @@ public interface ProductService {
 	public List<MBTIDTO> mbtiList();
 	
 	// mbti 상품 목록
-	public List<MatchProductDTO> mbtiProdList(String mbti);
+	public List<MatchProductDTO> mbtiProdList(String mbti, String price);
 	
 }

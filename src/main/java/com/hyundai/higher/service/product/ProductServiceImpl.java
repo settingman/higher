@@ -43,9 +43,9 @@ public class ProductServiceImpl implements ProductService {
 
 	// 상품 목록
 	@Override
-	public List<ProductDTO> productList(String dept1no, String dept2no) {
+	public List<ProductDTO> productList(String dept1no, String dept2no, String price) {
 		
-		return mapper.productList(dept1no, dept2no);
+		return mapper.productList(dept1no, dept2no, price);
 	}
 
 	// 상품 세부 정보 전체
@@ -87,11 +87,11 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<MatchProductDTO> mbtiProdList(String mbti) {
+	public List<MatchProductDTO> mbtiProdList(String mbti, String price) {
 		
 		String dept2no = "";
 		
-		return mMapper.mbtiProduct(dept2no, mbti);
+		return mMapper.mbtiProduct(dept2no, mbti, price);
 	}
 
 }

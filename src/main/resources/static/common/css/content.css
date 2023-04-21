@@ -91,20 +91,21 @@
   width: 270px;
   margin: 15px 10px;
   background: #fff;
+  height: 326px;
 }
 
 /* 변경버튼디자인*/
 .review_warp .review_conts .list li.btn_review>a {
-  height: 292px;
+  height: 326px;
   font-size: 22px;
   text-align: center;
-  background: #f7f7f7 url('/review/img/review-btn2.png') no-repeat;
+  background: #f7f7f7 url('/review/img/review-btn3.png') no-repeat;
   box-sizing: border-box;
   color: #fff;
 }
 
 .review_warp .review_conts .list li.btn_review>a>span {
-  margin-top: 135px;
+  margin-top: 155px;
   font-family: 'notokr-medium';
 }
 
@@ -173,6 +174,9 @@
   display: block;
   font-size: 18px;
   font-family: 'notokr-medium';
+  height: 46px;
+  overflow: hidden;
+  word-break: keep-all;
 }
 
 .review_warp .review_conts .list li>a>span.rating {}
@@ -207,11 +211,14 @@
   color: #222;
   margin: 10px 0 23px;
   line-height: 1.2;
+
 }
 
 .review_warp .review_conts .list li>a>span.reply {
   color: #8f8f8f;
   line-height: 20px;
+  height: 40px;
+  overflow: hidden;
 }
 
 .review_warp .review_conts .list li>a>span.data {
@@ -14684,6 +14691,7 @@ h2 i.grade_blue {
 
 .survey_wrap .step ul li p {
   line-height: 1.3;
+  word-break: keep-all;
 }
 
 .survey_wrap .step ul {

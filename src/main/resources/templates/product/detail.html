@@ -187,6 +187,7 @@ $(function(){
           </li>
         </ol>
       </nav>
+      
     </section>
     <section id="container">
       <section id="contents" class="template_wrap">
@@ -343,14 +344,14 @@ $(function(){
 										style="position: relative; height: 813.375px;">
 										<!-- 비회원일 경우 -->
                 <li sec:authorize="isAnonymous()" class="btn_review" style="position: absolute; left: 0px; top: 0px;"><a
-                    href="#survey_pop"><span>리얼리뷰 쓰기</span><em>한줄리뷰 50M<br>첫 리뷰 더블적립</em></a>
+                    href="/member/login"><span>리얼리뷰 쓰기</span><em>한줄리뷰 50M<br>첫 리뷰 더블적립</em></a>
                 </li>
 				<!-- 회원일 경우 -->
                 <li sec:authorize="isAuthenticated()" class="btn_review" style="position: absolute; left: 0px; top: 0px;"><a
                     href="/review/form"><span>리얼리뷰 쓰기</span><em>한줄리뷰 50M<br>첫 리뷰 더블적립</em></a>
                 </li>
-										<li th:each="review, rStat : ${reviewList}" class="text" th:style="${'position: absolute; left: ' + (rStat.count%4)*290 +'px; top: ' + (rStat.count/4)*322 +'px;'}">
-										<a href="#review_list001" class="layer-pop" data-type="link" data-url="/review/view/97233.do?prdtView=Y"> 
+										<li th:each="review, rStat : ${reviewList}" class="text" th:style="${'position: absolute; left: ' + (rStat.count%4)*290 +'px; top: ' + (rStat.count/4)*350 +'px;'}">
+										<a href="javascript:void(0);" class="layer-pop" data-type="link" data-url="/review/view/97233.do?prdtView=Y" style='cursor:unset;'> 
 											<span class="rating">
 												<fieldset class="star_rating">
 													<input type="radio" th:id="${rStat.count}+'_star5'" th:name="${rStat.count}+'_rating'" value="5" th:checked="${review.rrate==5 ? 'true' : 'false'}">
@@ -366,7 +367,7 @@ $(function(){
 													</fieldset>
 											</span> 
 											<span class="replyhead">[[${review.rtitle}]]</span> 
-											<span class="reply">[[${review.rcontent}]]</span> 
+											<span class="reply" style="height: 152px;">[[${review.rcontent}]]</span> 
 											<span class="data"> 
 											<span class="userid">[[${#strings.substring(review.mid, 0, 5)}]]***</span> 
 											<span class="day">[[${review.rdate}]]</span>
