@@ -43,7 +43,7 @@ public class BillingRestController {
 	
 	
 	
-	// 토스페이먼츠로 결제 승인 요청.
+	// 토스페이먼츠로 결제 확인 요청. - 
 	@GetMapping("/order")
 	public void OrderInfo(@ModelAttribute OrderSheet orderSheet, HttpServletResponse response, Principal principal)
 			throws IOException {

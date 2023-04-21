@@ -25,6 +25,7 @@ import lombok.extern.slf4j.Slf4j;
  *   수정일         수정자               수정내용
  * ----------      --------    ---------------------------
  * 2023. 4. 1.     박성환      	최초 생성
+ * 2023. 4. 8.     박성환      	회원 리스트 조회 
  * </pre>
  */
 @Slf4j
@@ -49,7 +50,7 @@ public class AdminController {
 
 	}
 	
-	// 온라인 예약 내역 불러오기
+	// 회원 리스트 불러오기
 	@GetMapping("/memberlist")
 
 	public String findMember(Model model) {

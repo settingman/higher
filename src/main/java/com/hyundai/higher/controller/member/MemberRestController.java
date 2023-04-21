@@ -91,7 +91,7 @@ public class MemberRestController {
 	}
 	
 	
-	
+	// 회원가입 이메일 중복 체크
 	@GetMapping(value = "/vaildEmail")
 	public String vaildEmail(@RequestParam("emailAdr") String emailAdr) {
 

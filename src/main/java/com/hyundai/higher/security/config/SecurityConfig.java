@@ -32,6 +32,19 @@ import com.hyundai.higher.service.member.MemberService;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * @since   : 2023. 2. 21.
+ * @FileName: SecurityConfig.java
+ * @author  : 박성환
+ * @설명    : @
+
+ * <pre>
+ *   수정일         수정자               수정내용
+ * ----------      --------    ---------------------------
+ * 2023. 2. 21.     박성환      	최초 생성
+ * 2023. 3. 21.     박성환      	카카오톡 토큰 추가
+ * </pre>
+ */
 @Slf4j
 @Configuration
 @EnableWebSecurity
