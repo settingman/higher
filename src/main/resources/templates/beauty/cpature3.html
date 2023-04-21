@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+</head>
+<html>
+<body>
+	<video id="noneDiv"></video>
+
+	<div>
+		<butoon id="video123" onclick="test" disply:none> 카메라 숨기기</butoon>
+		<button onclick="onDisplay()">숨은 DIV보이기</button>
+		<button onclick="offDisplay()">DIV 숨기기</button>
+	</div>
+	<script>
+		function onDisplay() {
+			$("#noneDiv").show();
+		}
+		function offDisplay() {
+			$("#noneDiv").hide();
+		}
+
+		function test() {
+		}
+
+		navigator.getUserMedia = navigator.getUserMedia
+				|| navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+
+		//var constraints = { video: { facingMode: { exact: "environment" }, width: { exact: 395 }, height: { exact: 395 } }, audio: false };
+		var constraints = {
+			audio : false,
+			video : true
+		};
+
+		var video = document.getElementById("noneDiv");
+
+		function successCallback(stream) {
+			video.srcObject = stream;
+			video.play();
+		}
+
+		function errorCallback(error) {
+			console.log(error);
+		}
+		navigator.getUserMedia(constraints, successCallback, errorCallback);
+	</script>
+</body>
+</html>

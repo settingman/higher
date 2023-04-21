@@ -14,55 +14,15 @@
   </head>
   <body>
     <section id="chart_box">
-       <video id="noneDiv"></video>
+      <div class="chart">...//차트에 해당하는 요소들</div>
     </section>
-    
-    <div>
-		<butoon id="video123" onclick="test" disply:none> 카메라 숨기기</butoon>
-		<button onclick="onDisplay()">숨은 DIV보이기</button>
-		<button onclick="offDisplay()">DIV 숨기기</button>
-	</div>
- 
-    
-    
 
     <button id="btn">123</button>
   </body>
-  
-  <script>
-      function onDisplay() {
-        $("#noneDiv").show();
-      }
-      function offDisplay() {
-        $("#noneDiv").hide();
-      }
-
-      function test() {}
-
-      navigator.getUserMedia =
-        navigator.getUserMedia ||
-        navigator.webkitGetUserMedia ||
-        navigator.mozGetUserMedia;
-
-      //var constraints = { video: { facingMode: { exact: "environment" }, width: { exact: 395 }, height: { exact: 395 } }, audio: false };
-      var constraints = { audio: false, video: true };
-
-      var video = document.getElementById("noneDiv");
-
-      function successCallback(stream) {
-        video.srcObject = stream;
-        video.play();
-      }
-
-      function errorCallback(error) {
-        console.log(error);
-      }
-      navigator.getUserMedia(constraints, successCallback, errorCallback);
-    </script>
 
   <script>
     $("#btn").on("click", function () {
-      sreenShot($("#noneDiv"));
+      sreenShot($("#chart_box"));
     });
 
     function sreenShot(target) {
@@ -78,7 +38,7 @@
               imgSrc: myImg,
             },
             dataType: "text",
-            url:  "/beauty/ImgSaveTest",
+            url:  "/public/ImgSaveTest.do",
             success: function (data) {
               console.log(data);
             },
@@ -89,5 +49,5 @@
         });
       }
     }
-  </script>
+  </script
 </html>

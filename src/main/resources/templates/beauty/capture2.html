@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
+</head>
+<body>
+    
+    
+<style>
+    #container {
+        margin: 0px auto;
+        width: 500px;
+        height: 375px;
+        border: 10px #333 solid;
+    }
+    #videoElement {
+        width: 500px;
+        height: 375px;
+        background-color: #666;
+    }
+    </style>
+    </head>
+     
+    <body>
+        
+            <a id="target" style="display: none"></a>
+          
+    <div id="container">
+        <video autoplay="true" id="videoElement">
+        
+        </video>
+
+        <input id="capture" type="button" value="캡쳐" />
+    </div>
+
+    <button onclick="onDisplay()">숨은 DIV보이기</button>
+    <button onclick="offDisplay()">DIV 숨기기</button>
+    <script>
+        $("#capture").on("click", function (e) {
+          // html2canvas(e.target.parentElement).then(function(canvas) {
+          //   document.body.appendChild(canvas)
+          // });
+          // html2canvas(e.target.parentElement).then(function(canvas) {
+          //   $('body').append('<img src="' + canvas.toDataURL("image/jpeg") + '"/>');
+          // });
+          html2canvas(e.target.parentElement).then(function (canvas) {
+            if (navigator.msSaveBlob) {
+              var blob = canvas.msToBlob();
+              return navigator.msSaveBlob(blob, "파일명.jpg");
+            } else {
+              var el = document.getElementById("target");
+              el.href = canvas.toDataURL("image/jpeg");
+              el.download = "파일명.jpg";
+              el.click();
+            }
+          });
+        });
+      </script>
+    <script>
+
+        
+        
+    var video = document.querySelector("#videoElement");
+     
+    if (navigator.mediaDevices.getUserMedia) {
+      navigator.mediaDevices.getUserMedia({ video: true })
+        .then(function (stream) {
+          video.srcObject = stream;
+        })
+        .catch(function (err0r) {
+          console.log("Something went wrong!");
+        });
+    }
+
+    function onDisplay() {
+        $("#container").show();
+      }
+      function offDisplay() {
+        $("#container").hide();
+      }
+
+
+    </script>
+
+    
+</body>
+</html>

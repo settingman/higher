@@ -46,9 +46,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	// Application 접근 정보 설정
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-
-		http.csrf().disable().authorizeRequests().antMatchers("/member/**","/makeup/img").permitAll() // 누구나 mypage 접근허용 - 02/03
-																						// mypage
+		
+		http.csrf().disable().authorizeRequests().antMatchers("/member/**","/makeup/img/**").permitAll() // 누구나 mypage 접근허용 - 02/03
 				.antMatchers("/mypage/**", "/cart/**", "/shop/**", "/restcart/**", "/makeup/**",
 						"/reserv/**,/chat/createroom","/review/form").access("hasRole('ADMIN') or hasRole('USER')")
 				 // USER, ADMIN만 접근 가능
