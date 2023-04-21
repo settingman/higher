@@ -34,7 +34,7 @@ public class SimilarCosMapperTests {
 		
 		log.info(list);
 		
-		log.info("result -> " + mapper.cntList(pcode, dept1no, dept2no, list));
+		log.info("result -> " + mapper.recoList(pcode, dept1no, dept2no, list));
 		 
 	}
 	

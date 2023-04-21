@@ -875,7 +875,7 @@ html {
 }
 
 #wrap.main .membership {
-  padding: 78px 0 !important;
+	padding: 55px 0 78px !important;
 }
 
 #wrap.main .membership .left {
@@ -903,7 +903,7 @@ html {
 
 #wrap.main .membership .left h2 em {
   position: relative;
-  width: 160px;
+  width: 113px;
   text-align: left;
   font-size: 16px;
   padding-right: 10px;
