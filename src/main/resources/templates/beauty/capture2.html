@@ -1,51 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
 
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
 </head>
 <body>
-    
-    
+
+
 <style>
-    #container {
-        margin: 0px auto;
-        width: 500px;
-        height: 375px;
-        border: 10px #333 solid;
-    }
-    #videoElement {
-        width: 500px;
-        height: 375px;
-        background-color: #666;
-    }
-    </style>
-    </head>
-     
-    <body>
-        
-            <a id="target" style="display: none"></a>
-          
-    <div id="container">
-        <video autoplay="true" id="videoElement">
-        
-        </video>
+#container {
+	margin: 0px auto;
+	width: 600px;
+	height: 800px;
+}
 
-        <input id="capture" type="button" value="캡쳐" />
-    </div>
+#videoElement {
+	height: 800px;
+	width: 600px;
+	background-color: #666;
+	object-fit: cover;
+}
+</style>
+</head>
 
-    <button onclick="onDisplay()">숨은 DIV보이기</button>
-    <button onclick="offDisplay()">DIV 숨기기</button>
-    <script>
+<body>
+
+	<a id="target" style="display: none"></a>
+
+	<div id="container">
+		<video autoplay="true" id="videoElement">
+
+		</video>
+
+		<input id="capture" type="button" value="캡쳐" />
+	</div>
+
+	<button onclick="onDisplay()">숨은 DIV보이기</button>
+	<button onclick="offDisplay()">DIV 숨기기</button>
+	<script>
         $("#capture").on("click", function (e) {
           // html2canvas(e.target.parentElement).then(function(canvas) {
           //   document.body.appendChild(canvas)
@@ -66,7 +69,7 @@
           });
         });
       </script>
-    <script>
+	<script>
 
         
         
@@ -92,6 +95,6 @@
 
     </script>
 
-    
+
 </body>
 </html>
