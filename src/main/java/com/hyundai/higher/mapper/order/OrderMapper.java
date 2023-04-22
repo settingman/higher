@@ -23,12 +23,17 @@ import com.hyundai.higher.domain.order.OrderSheet;
 @Mapper
 public interface OrderMapper {
 
+	
+	// 주문 저장
 	public void insertOrder(@Param("orderSheet") OrderSheet orderSheet, @Param("mId") String mId);
 
+	// 주문 아이템 리스트 저장
 	public void insertOrderList(@Param("oId") String oId, @Param("pCode") String pCode, @Param("pAmount") int pAmount, @Param("mId") String mId);
 
+	// 장바구니 상품 - >  주문페이지 
 	public OrderItem selectCartItem(@Param("mId") String mId, @Param("pCode") String pCode);
 
+	// 주문 내역 조회
 	public List<OrderSheet> findOrderList(@Param("mid") String mId, @Param("ordStrtDt") String ordStrtDt,
 			@Param("ordEndDt") String ordEndDt, @Param("itemNm") String itemNm);
 

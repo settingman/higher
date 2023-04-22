@@ -27,6 +27,8 @@ public class KakaoContoller {
 	@Autowired
 	public KakaoService kakaoService;
 
+	
+	// 카카오톡 로그인
 	@RequestMapping("/login")
     public RedirectView goKakaoOAuth() {
        return kakaoService.goKakaoOAuth();
@@ -47,17 +49,19 @@ public class KakaoContoller {
 		return kakaoService.goKakaoOAuth(scope);
     }	
 	
+	// 친구목록 불러오기
 	@RequestMapping("/friends")
     public String getFriends() {
        return kakaoService.getFriends();
     }	
 	
+	// 카카오톡 나에게 메세지 보내기
 	@RequestMapping("/message")
     public String message() {
        return kakaoService.message();
     }
 	
-	
+	// 카카오톡 친구에게 메세지 보내기
 	@RequestMapping("/sendMessage")
     public String sendMessage(String template) {
        return kakaoService.Sendmessage(template);

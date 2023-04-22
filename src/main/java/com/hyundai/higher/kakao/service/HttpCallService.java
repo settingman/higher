@@ -35,6 +35,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class HttpCallService {
 
+	
+	// restAPI 호출
 	public String Call(String method, String reqURL, String header, String param) {
 		String result = "";
 		try {

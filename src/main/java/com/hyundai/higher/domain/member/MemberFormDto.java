@@ -17,7 +17,7 @@ import lombok.Setter;
  * @since : 2023. 2. 24.
  * @FileName: MemberFormDto.java
  * @author : 박성환
- * @설명 : @
+ * @설명 : 회원가입 폼 DTO
  * 
  *     <pre>
  *   수정일         수정자               수정내용
