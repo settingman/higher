@@ -368,7 +368,7 @@ canvas {
 									<input type="hidden" id="pingredient"  value="">
                   <button type="button" class="like">좋아요</button> <!-- 선택완료 class on -->
                   <span class="ico">[[${sStat.count}]]<em>BEST</em></span> 
-                  <a th:href="'/product/detail?code='+${sProd.pcode}">
+                  <a th:href="'/match/detail?pcode='+${sProd.pcode}">
                     <span class="photo">
                     	<img th:if="${sProd.iloc != 'NULL'}" th:src="${sProd.iloc}+'_600.jpg'">
                     	<img th:if="${sProd.iloc == 'NULL'}" src="https://image.thehyundai.com/hdmall/images/pd/no_image_480x480.jpg">
