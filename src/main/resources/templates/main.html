@@ -1394,15 +1394,15 @@
     left: calc(50% - 640px);
     top: 60px;
     line-height: 1.2;
-    animation: fadeInUp 2s;
-    transition: opacity 0.2s; /* Add a transition for opacity */
+    opacity: 1;
+    text-align: left;
 }
 
 .text-01 {
     font-size: 40px;
     color: #fff;
-    animation: fadeInUp 2s;
     font-family: 'notokr-medium';
+    animation:ani 1s infinite alternate;  
 }
 
 .text-02 {
@@ -1410,10 +1410,10 @@
     font-size: 18px;
     color: #fff;
     font-weight: 300;
-    animation: fadeInUp 2s;
+    animation:ani 1s infinite alternate;  
 }
 
-@keyframes fadeInUp {
+/* @keyframes fadeInUp {
     0% {
         opacity: 0;
         transform: translate3d(0, 100%, 0);
@@ -1423,8 +1423,33 @@
         transform: translateZ(0);
     }
 }
-</style>
+ */
+@keyframes ani{
+   0%{transform:translate(0,0);
+   }
+   100%{transform:translate(0,20px);
+   }
 
+</style>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const textElement = document.querySelector('.text');
+
+    // 2초 동안 애니메이션 실행 후 3초 동안 멈춤
+    function playAnimation() {
+        textElement.style.animation = 'fadeInUp 2s';
+        setTimeout(() => {
+            textElement.style.animation = 'none';
+            setTimeout(() => {
+                playAnimation();
+            }, 3000);
+        }, 2000);
+    }
+
+    playAnimation();
+});
+
+</script>
 <script>
 var swiper = new Swiper('#mainslider', {
     on: {
@@ -1500,7 +1525,7 @@ var swiper = new Swiper('#mainslider', {
                         <div class="swiper-slide" style="width: 1690.67px; height: 699px;">
                                  <div class="text">         
                                 <p class="text-01">DIOR BEAUTY</p>                
-                                <p class="text-02">디현대 뷰티만의 럭셔리 브랜드</p>      
+                                <p class="text-02">더현대 뷰티만의 럭셔리 브랜드</p>      
                                 </div>
                                 <div class="img_banner"
                                     style="background-image:url(https://image.thehyundai.com/HM/HM039/20230328/094953/ban20230328124444.jpg); background-size:contain;">
