@@ -11,12 +11,14 @@ import com.hyundai.higher.domain.cart.CartItem;
  * @since : 2023. 3. 26.
  * @FileName: CartMapper.java
  * @author : 박서현
- * @설명 : 장바구니 데이터베이스 mybatis Interface
+ * @설명 : 장바구니 mapper Interface
  * 
  *     <pre>
  *   수정일         수정자               수정내용
  * ----------      --------    ---------------------------
- * 2023. 3. 26.		박서현		DateBase Cart Mapper Interface
+ * 2023. 3. 26.		박서현		최초 생성
+ * 2023. 3. 31.		박서현		기능 구현
+ * 2023. 4. 10.		박서현		getCount 추가		
  *     </pre>
  */
 @Mapper
@@ -28,10 +30,6 @@ public interface CartMapper {
 	//장바구니 상품 삭제 
 	public int deleteCart(@Param("pcode") String pcode, @Param("optname") String optname, @Param("mid") String mid);
 	
-	//장바구니 상품 선택 삭제 
-	//public int deleteCarts(@Param("pcode") String pcode, @Param("optname") String optname, @Param("mid") String mid);
-	
-
 	//장바구니 상품 수량 변경
 	public int modifyAmount(@Param("item") CartItem cart, @Param("mid") String mid);
 
@@ -46,9 +44,7 @@ public interface CartMapper {
 	
 	//장바구니 중복 검사
 	public int checkSame(@Param("item") CartItem cart);
-	
-	//장바구니 상품의 옵션들 불러오기
-	
+		
 	//장바구니 개수 불러오기
 	public int getCount(@Param("mid") String mid);
 }

@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CartDTO {
-
+//삭제 예정
 	private String pcode;
 	private Integer pAmount;
 	private String poption;

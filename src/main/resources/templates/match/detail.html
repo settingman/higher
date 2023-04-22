@@ -1044,7 +1044,7 @@ canvas {
 				
 
 				if (checkbox.checked) { //체크한 상품만 비교함 담기
-					const pname = document.querySelector('.tit strong').textContent;
+					const pname = liList[i].querySelector('.tit strong').textContent;
           const pcode = $(liList[i]).find('#pcode').val();
 					const brand = $(liList[i]).find('#hash').text();
 					const price = $(liList[i]).find('#price').text();
@@ -1092,7 +1092,7 @@ canvas {
 						<div class="layerpop_cont" style="height: 330px;">
 							<div class="save_cont">
 								<p>
-									이미 비교함에 담긴 상품입니다.
+									이미 비교함에 담긴 상품이 있습니다.
 								</p>
 								<div class="btn_wrap center mt30">
 									<button type="button" class="btn_base darkgray act" id="save_close">확인</button>
@@ -1107,7 +1107,7 @@ canvas {
 					$('#save_close').click(function() {
 						$("#survey_pop").css("display", "none");
 
-					});      } else {
+					}); return false;     } else {
 						arr.push([pcode, pname, brand, price, imglink, rate, pvolume, ptype, pingredient,poption,review]); // 상품 정보 저장
 						localStorage.setItem("arr", JSON.stringify(arr));
 						pop.innerHTML= `

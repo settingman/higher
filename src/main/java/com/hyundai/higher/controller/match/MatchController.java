@@ -30,13 +30,13 @@ import lombok.extern.log4j.Log4j2;
 /**
  * @since : 2023. 04. 01.
  * @FileName: MatchController.java
- * @author : 박서현
- * @설명 :
+ * @author : 박서현, 신수진
+ * @설명 : 화장품 매칭하기 기능 관련 컨트롤러
  * 
  *     <pre>
  * 	   수정일          수정자                수정내용
  * -------------   --------    ---------------------------
- * 2023. 04. 01.    박서현       최초 생성
+ * 2023. 04. 01.    박서현       최초 생성 (main)
  * 2023. 04. 06.	신수진		main, match/detail 유사성분템 추천
  * 2023. 04. 07.	박서현		main, match/detail
  *     </pre>
@@ -158,8 +158,6 @@ public class MatchController {
 
 		// 성분 가져오기
 		String[] ingredients = mService.getIngredient(pcode);
-
-		// 성분 for문 해서 점수 카운트
 		
 		Set<String> set = new HashSet<>();
 		Set<String> badset = new HashSet<>();
@@ -176,6 +174,7 @@ public class MatchController {
 				break;
 			}
 			
+			//성분 효과 가져오기
 			String info = mService.getIinfo(ingredients[i], mbtiList[0]);
 			String[] infoArray = info.split("\\s*,\\s*");
 			for (String s : infoArray) {
@@ -196,7 +195,7 @@ public class MatchController {
 				log.info("두번째 진입"+mbtiList[1]);
 				
 			
-				// 두번째 mbti 점수 계산. 총 30점. good 3점, normal 2점, bad 0점
+			// 두번째 mbti 점수 계산. 총 30점. good 3점, normal 2점, bad 0점
 			for (int i = 0; i < ingredients.length; i++) {
 				log.info("============================"+ingredients[i]);
 	
