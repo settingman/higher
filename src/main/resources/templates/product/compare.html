@@ -878,11 +878,6 @@ $(function(){
 	}
 
 	function move(give, take) {
-		console.log('move---');
-		// const card02 = document.querySelector('.card_02');
-		// const card03 = document.querySelector('.card_03');
-		// card02.innerHTML = card03.innerHTML;
-
 		document.querySelector(`.${take}`).innerHTML = document.querySelector(`.${give}`).innerHTML;
 
 		//다른 article 내용 바꾸기
@@ -890,7 +885,6 @@ $(function(){
 		document.querySelector(`.${take} .price`).textContent = document.querySelector(`.${give} .price`).textContent;
 		document.querySelector(`.${take} .caution`).innerHTML = document.querySelector(`.${give} .caution`).innerHTML;
 		document.querySelector(`.${take} .keyword`).textContent = document.querySelector(`.${give} .keyword`).textContent;
-		//document.querySelector(`.${take} .rates`).textContent = document.querySelector(`.${give} .rates`).textContent;
 
 		const spanClass = $(`.${give} .star-rating.bic span`).attr('class');
 		$(`.${take} .star-rating.bic span`).removeClass().addClass(spanClass);
@@ -907,7 +901,6 @@ $(function(){
 
 		getMatch(code,number);
 
-		//document.querySelector(`.cd_con.card_benefit .${take}`).innerHTML=document.querySelector(`.cd_con.card_benefit .${give}`).innerHTML;
 	}
 
 	function delThis(card_num) {
@@ -1016,24 +1009,35 @@ $(function(){
     arr = arr.filter(item => item[0] !== pcode); // 삭제할 상품을 제외한 배열 반환
     localStorage.setItem("arr", JSON.stringify(arr)); // 수정된 배열 다시 저장
 
-		
-    console.log('삭제');
-		//0인데 뒤에 있는 거 - 어레이꺼 다 가져와서 
-		//0인데 뒤에 없는 거 - 1부터 다 출력만
-		//그 슬라이드부터 prod-unit 있는 슬라이드까지
 		if(arr.length!=0){ 
 			for(let i = slidenum+1;i<=arr.length;i++) {
 					console.log("내용 복사중" + i);
 					var next = document.querySelector(`.slide${i}`);	
-					console.log('slide'+i);		
-					var prev = document.querySelector('.slide'+(i-1));
+					console.log("nex");
+					console.log(next);
+
+					var prev = document.querySelector(`.slide${i-1}`);
+					console.log("prev");
+					console.log(prev);
 
 					prev.innerHTML = next.innerHTML;
+					// var button5 = prev.querySelector('.button5');
+					// button5.onclick = function() {
+					// 		compareThis(`slide${i-1}`);
+					// }
+					console.log(`${i-1}`);
+					const f = i-1;
 					var button5 = prev.querySelector('.button5');
-					button5.onclick = function() {
-							compareThis(`slide${i-1}`);
-					}
-				}
+				button5.setAttribute("onclick", `compareThis('slide${f}')`);
+				var button4 = prev.querySelector('.button4');
+				var nextbtn = next.querySelector('.button4');
+			//	button4.setAttribute("onclick", `compareThis('slide${f}')`);
+				const p =  nextbtn.getAttribute("onclick").match(/'(.*?)'/)[1];
+				button4.setAttribute("onclick", `del('${p}',${f})`);
+
+				
+
+			}
 		}
 		
 		//마지막 prod-unit 슬라이드부터 10까지

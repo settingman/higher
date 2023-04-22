@@ -11,7 +11,7 @@ import lombok.extern.log4j.Log4j2;
  * @since : 2023. 03. 23.
  * @FileName: CompareController.java
  * @author : 박서현
- * @설명 : 
+ * @설명 : 상품 비교 컨트롤러
  * 
  * <pre>
  * 	   수정일          수정자                수정내용
@@ -26,7 +26,7 @@ import lombok.extern.log4j.Log4j2;
 public class CompareController {
 
 	
-	// 상품 비교 페이지
+	// 상품 비교 페이지 이동
 	@GetMapping("/compare")
 	public String compare(Model model) {
 		

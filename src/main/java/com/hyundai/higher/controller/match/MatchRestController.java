@@ -25,12 +25,13 @@ import lombok.extern.log4j.Log4j2;
  * @since : 2023. 04. 12.
  * @FileName: MatchRestController.java
  * @author : 박서현
- * @설명 : 
+ * @설명 : 화장품 매칭하기 기능 관련 RestController
  * 
- * <pre>
+ * 	   <pre>
  * 	   수정일          수정자                수정내용
  * -------------   --------    ---------------------------
  * 2023. 04. 12.     박서현       최초 생성
+ * 2023. 04. 13.     박서현       getMatch 추가
  * </pre>
  */
 
@@ -45,7 +46,7 @@ public class MatchRestController {
 	@Autowired
 	private ReviewService rService;
 
-	
+	//상품 옵션 불러오기
 	@GetMapping("/getOption")
 	public String getOption(@RequestParam("pcode") String pcode) {
 		log.info("옵션 불러오기");
@@ -60,6 +61,7 @@ public class MatchRestController {
 		
 	}
 
+	//상품 추가 정보 불러오기
 	@GetMapping("/getInfo")
 	public ResponseEntity<Map<String, Object>> getInfo(@RequestParam("pcode") String pcode) {
 		log.info("추가 정보 불러오기   "+pcode);
@@ -89,9 +91,9 @@ public class MatchRestController {
 		
 	}
 	
+	//매칭도 산출
 	@PostMapping("/getMatch")
 	public String getMatch(@RequestBody Map<String, Object> data, Principal principal) {
-	    log.info("매칭도 불러오기 " + data.get("pcode"));
 	    
 	    String pcode = (String) data.get("pcode");
 
@@ -112,9 +114,6 @@ public class MatchRestController {
 
 			// 성분 가져오기
 			String[] ingredients = mService.getIngredient(pcode);
-
-			// 성분 for문 해서 점수 카운트
-//			log.info("ffffffff"+mService.getEffect(ingredients[9], mbtiList[0]));
 			
 			// 첫번째 mbti 점수 계산. 총 40점. good 4점, normal 2점, bad 1점
 			for (int i = 0; i < ingredients.length; i++) {

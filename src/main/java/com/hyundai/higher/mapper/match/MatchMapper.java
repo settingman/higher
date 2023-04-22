@@ -50,7 +50,7 @@ public interface MatchMapper {
 		//해당 상품의 옵션 불러오기
 		public String getOption(String pcode);
 		
-		//해당 상품의 옵션 불러오기
+		//해당 상품의 추가 정보 불러오기
 		public MatchProductDTO getInfo(String pcode);
 		
 		//성분의 기능 불러오기
