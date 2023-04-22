@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" class="js" xmlns:sec="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" class="js" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
 <head th:insert="~{include/head}"></head>
@@ -8,154 +7,150 @@
 </head>
 <script>
 $(function(){
-	$(".opt").change(function(){
-		var value = $('.option option:selected').val();
-		$('.option select').val(value).prop("selected",true);
-	});
-	
-	$(".opt2").change(function(){
-		var value = $('.opt2 option:selected').val();
-		$('.option select').val(value).prop("selected",true);
-	});
+   $(".opt").change(function(){
+      var value = $('.option option:selected').val();
+      $('.option select').val(value).prop("selected",true);
+   });
+   
+   $(".opt2").change(function(){
+      var value = $('.opt2 option:selected').val();
+      $('.option select').val(value).prop("selected",true);
+   });
 });
 </script>
 
-<style id="ins-outer-stylesheet-224" type="text/css"
-	classname="ins-outer-stylesheet-224" class="ins-outer-stylesheet-224">
-.ins-preview-wrapper-224 {
-	z-index: 9999999;
-}
+  <style id="ins-outer-stylesheet-224" type="text/css" classname="ins-outer-stylesheet-224"
+    class="ins-outer-stylesheet-224">
+    .ins-preview-wrapper-224 {
+      z-index: 9999999;
+    }
 
-.ins-preview-wrapper-224 .ins-notification-content {
-	width: 430px;
-	border-radius: 8px !important;
-	background-color: #ffffff;
-	box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.19);
-	margin: 15px;
-}
+    .ins-preview-wrapper-224 .ins-notification-content {
+      width: 430px;
+      border-radius: 8px !important;
+      background-color: #ffffff;
+      box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.19);
+      margin: 15px;
+    }
 
-.ins-preview-wrapper-224 .ins-social-proof-on-page-2 {
-	display: flex !important;
-	align-items: center;
-	width: 100%;
-	position: relative;
-	padding: 5px;
-}
+    .ins-preview-wrapper-224 .ins-social-proof-on-page-2 {
+      display: flex !important;
+      align-items: center;
+      width: 100%;
+      position: relative;
+      padding: 5px;
+    }
 
-.ins-preview-wrapper-224 .ins-social-proof-on-page-2 .ins-image-wrap {
-	width: 50px;
-}
+    .ins-preview-wrapper-224 .ins-social-proof-on-page-2 .ins-image-wrap {
+      width: 50px;
+    }
 
-.ins-preview-wrapper-224 .ins-social-proof-on-page-2 #image-1478094039604
-	{
-	width: 100%;
-	height: 100%;
-	border-bottom-left-radius: 5px !important;
-	border-top-left-radius: 5px !important;
-	display: table !important;
-	overflow: hidden;
-}
+    .ins-preview-wrapper-224 .ins-social-proof-on-page-2 #image-1478094039604 {
+      width: 100%;
+      height: 100%;
+      border-bottom-left-radius: 5px !important;
+      border-top-left-radius: 5px !important;
+      display: table !important;
+      overflow: hidden;
+    }
 
-.ins-preview-wrapper-224 .ins-image {
-	display: block;
-	width: 70%;
-	margin-left: auto;
-	margin-right: auto;
-}
+    .ins-preview-wrapper-224 .ins-image {
+      display: block;
+      width: 70%;
+      margin-left: auto;
+      margin-right: auto;
+    }
 
-.ins-preview-wrapper-224 .change-image a {
-	display: table-cell;
-	vertical-align: middle;
-}
+    .ins-preview-wrapper-224 .change-image a {
+      display: table-cell;
+      vertical-align: middle;
+    }
 
-.ins-preview-wrapper-224 .ins-social-proof-on-page-2 .ins-adaptive-description
-	{
-	display: table-cell !important;
-	vertical-align: middle;
-	text-align: center;
-	padding: 10px;
-	font-size: 14px;
-	width: 100%;
-	word-wrap: break-word;
-}
+    .ins-preview-wrapper-224 .ins-social-proof-on-page-2 .ins-adaptive-description {
+      display: table-cell !important;
+      vertical-align: middle;
+      text-align: center;
+      padding: 10px;
+      font-size: 14px;
+      width: 100%;
+      word-wrap: break-word;
+    }
 
-.ins-preview-wrapper-224 .ins-adaptive-description .ins-editable {
-	min-height: 20px;
-}
+    .ins-preview-wrapper-224 .ins-adaptive-description .ins-editable {
+      min-height: 20px;
+    }
 
-.ins-preview-wrapper-224 .ins-text-color {
-	color: #383F47;
-}
+    .ins-preview-wrapper-224 .ins-text-color {
+      color: #383F47;
+    }
 
-.ins-preview-wrapper-224 .ins-dynamic-element-tag b {
-	color: inherit;
-}
+    .ins-preview-wrapper-224 .ins-dynamic-element-tag b {
+      color: inherit;
+    }
 
-.ins-preview-wrapper-224 .ins-social-proof-on-page-2 .ins-adaptive-close-button-wrap
-	{
-	display: none;
-	border-style: none !important;
-	position: absolute;
-	z-index: 9999999999999;
-	right: -5px;
-	top: 0;
-	font-weight: 100;
-	font-family: sans-serif;
-}
+    .ins-preview-wrapper-224 .ins-social-proof-on-page-2 .ins-adaptive-close-button-wrap {
+      display: none;
+      border-style: none !important;
+      position: absolute;
+      z-index: 9999999999999;
+      right: -5px;
+      top: 0;
+      font-weight: 100;
+      font-family: sans-serif;
+    }
 
-.ins-preview-wrapper-224 .ins-social-proof-on-page-2 .ins-adaptive-close-button
-	{
-	text-align: center;
-	cursor: pointer;
-	font-size: 20px;
-	width: 28px;
-}
+    .ins-preview-wrapper-224 .ins-social-proof-on-page-2 .ins-adaptive-close-button {
+      text-align: center;
+      cursor: pointer;
+      font-size: 20px;
+      width: 28px;
+    }
 
-.ins-preview-wrapper-224 .ins-editable {
-	font-size: 14px !important;
-	line-height: 14px !important;
-}
+    .ins-preview-wrapper-224 .ins-editable {
+      font-size: 14px !important;
+      line-height: 14px !important;
+    }
 
-.ins-preview-wrapper-224 .ins-editable .ins-dynamic-span,
-	.ins-preview-wrapper-224 .ins-editable .ins-dynamic-element-tag {
-	font-size: inherit !important;
-	line-height: inherit !important;
-}
+    .ins-preview-wrapper-224 .ins-editable .ins-dynamic-span,
+    .ins-preview-wrapper-224 .ins-editable .ins-dynamic-element-tag {
+      font-size: inherit !important;
+      line-height: inherit !important;
+    }
 
-.ins-preview-wrapper-224 #editable-text-1454703513202 font {
-	font-weight: bold !important;
-}
-</style>
-<style>
-swiper-container {
-	width: 100%;
-	height: 100%;
-}
+    .ins-preview-wrapper-224 #editable-text-1454703513202 font {
+      font-weight: bold !important;
+    }
+  </style>
+    <style>
+    swiper-container {
+      width: 100%;
+      height: 100%;
+    }
 
-swiper-slide {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
+    swiper-slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-swiper-slide img {
-	display: block;
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-}
-</style>
+    swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+  </style>
 <body>
-	<div id="wrap" class="right_type" data-fbq-content-id="3596"
-		data-fbq-value="48000">
-		<nav id="skip_navi">
-			<a href="#contents">본문 바로가기</a> <a href="#menu">메뉴 바로가기</a> <a
-				href="#footer">하단 정보 바로가기</a>
-		</nav>
+  <div id="wrap" class="right_type" data-fbq-content-id="3596" data-fbq-value="48000">
+    <nav id="skip_navi">
+      <a href="#contents">본문 바로가기</a>
+      <a href="#menu">메뉴 바로가기</a>
+      <a href="#footer">하단 정보 바로가기</a>
+    </nav>
 
-<<<<<<< HEAD
     <!-- header -->
-   	<header id="header" th:insert="~{include/header}"></header>
+      <header id="header" th:insert="~{include/header}"></header>
     <!-- /header -->
     
     <section class="h_link">
@@ -164,9 +159,9 @@ swiper-slide img {
           <li><a href="javascript:void(0);" onclick="location.href='/'"><i>HOME</i></a></li>
           <li class="kor">
             <a href="">
-            	<i th:if="${#strings.equals(dept1no, '10')}">FACE</i>
-            	<i th:if="${#strings.equals(dept1no, '20')}">MAKE UP</i>
-            	<i th:if="${#strings.equals(dept1no, '30')}">BODY/HAIR</i>
+               <i th:if="${#strings.equals(dept1no, '10')}">FACE</i>
+               <i th:if="${#strings.equals(dept1no, '20')}">MAKE UP</i>
+               <i th:if="${#strings.equals(dept1no, '30')}">BODY/HAIR</i>
             </a>
             <ul class="h_link_sub">
               <li class="kor">
@@ -199,14 +194,14 @@ swiper-slide img {
         <div class="product_detail mt60">
           <div class="top">
             <form id="orderForm" name="orderForm">
-            	<input type="hidden" value="10000" name="prdtCnt" id="prdtCnt">
+               <input type="hidden" value="10000" name="prdtCnt" id="prdtCnt">
               <input type="hidden" th:value="${product.productDTO.pprice}" name="salePrice" id="salePrice">
               <input type="hidden" name="prdtType" value="PT">
               <input type="hidden" name="prdtSeq" value="3596">
               <input type="hidden" name="ordCnt" value="1" data-prdt-seq="3596" data-seq="3596" data-prdt-type="PT">
               <input type="hidden" name="adPrdtName" th:value="${product.productDTO.pname}">
               <input type="hidden" name="prdtName" th:value="${product.productDTO.pname}">
-			  <!-- left -->
+           <!-- left -->
               <div class="left">
                 <div class="detail_slider">
                   <div class="view">
@@ -232,11 +227,11 @@ swiper-slide img {
                 
               </div>
               <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
-				
+            
               <!-- //left -->
               <div class="right">
                 <div class="datail_info_top">
-                 	<p class="brand">[[${product.productDTO.bname}]]</p>
+                    <p class="brand">[[${product.productDTO.bname}]]</p>
                   <span class="tit">
                     <strong>[[${product.productDTO.pname}]]</strong>
                   </span>
@@ -271,8 +266,8 @@ swiper-slide img {
                     </li>
                     <li th:if="${!#lists.isEmpty(product.optList) and #lists.size(product.optList)>1}" class="option"><strong>옵션</strong>
                       <select style="width: 75%;" class="opt">
-                      	<option>선택</option>
-                      	<option th:each="opt, optStat : ${product.optList}">[[${opt.optname}]]</option>
+                         <option>선택</option>
+                         <option th:each="opt, optStat : ${product.optList}">[[${opt.optname}]]</option>
                       </select>
                     </li>
                     <li class="amount"><strong>수량</strong>
@@ -293,510 +288,304 @@ swiper-slide img {
                   <span class="instock">
                     <button type="button" class="btn_base darkgray basket" onclick="addCart()"><span>장바구니</span></button>
                     <button type="button" class="btn_base blue nowBuy" onclick="addOrder()" ><span>구매하기</span></button>
-                  	<button id="compare-btn" type="button" class="btn_base darkgray basket" onclick="put()"><span style="font-family: 'notokr-demilight';"><img src="/common/image/add.png" style="width: 22px; margin-right: 6px; margin-bottom: 3px;">비교함 담기</span></button>
+                     <button id="compare-btn" type="button" class="btn_base darkgray basket" onclick="put()"><span style="font-family: 'notokr-demilight';"><img src="/common/image/add.png" style="width: 22px; margin-right: 6px; margin-bottom: 3px;">비교함 담기</span></button>
                   </span>
-		<!-- header -->
-		<header id="header" th:insert="~{include/header}"></header>
-		<!-- /header -->
 
-		<section class="h_link">
-			<nav>
-				<ol>
-					<li><a href="javascript:void(0);" onclick="location.href='/'"><i>HOME</i></a></li>
-					<li class="kor"><a href=""> <i
-							th:if="${#strings.equals(dept1no, '10')}">FACE</i> <i
-							th:if="${#strings.equals(dept1no, '20')}">MAKE UP</i> <i
-							th:if="${#strings.equals(dept1no, '30')}">BODY/HAIR</i>
-					</a>
-						<ul class="h_link_sub">
-							<li class="kor"><a href="javascript:void(0)"
-								onclick="location.href='/product/list.do?cate2=1130'">
-									병원판매화장품</a></li>
-						</ul></li>
-					<li class="kor"><a href=""><i>[[${product.productDTO.dept2name}]]</i></a>
-						<ul class="h_link_sub">
-							<li class="kor"><a href="javascript:void(0)"
-								onclick="location.href='/product/list.do?cate2=1004'"> 피부
-									고민별</a></li>
-						</ul></li>
-					<li class="current kor"><a href=""><i>[[${product.productDTO.pname}]]</i></a>
-						<ul class="h_link_sub">
+                </div>
 
-						</ul></li>
-				</ol>
-			</nav>
-		</section>
-		<section id="container">
-			<section id="contents" class="template_wrap">
-				<div class="product_detail mt60">
-					<div class="top">
-						<form id="orderForm" name="orderForm">
-							<input type="hidden" value="10000" name="prdtCnt" id="prdtCnt">
-							<input type="hidden" th:value="${product.productDTO.pprice}"
-								name="salePrice" id="salePrice"> <input type="hidden"
-								name="prdtType" value="PT"> <input type="hidden"
-								name="prdtSeq" value="3596"> <input type="hidden"
-								name="ordCnt" value="1" data-prdt-seq="3596" data-seq="3596"
-								data-prdt-type="PT"> <input type="hidden"
-								name="adPrdtName" th:value="${product.productDTO.pname}">
-							<input type="hidden" name="prdtName"
-								th:value="${product.productDTO.pname}">
-							<!-- left -->
-							<div class="left">
-								<div class="detail_slider">
-									<div class="view">
-										<ul>
-											<swiper-container class="mySwiper"> <swiper-slide
-												th:each="thumbImg, thumbStat : ${product.thumbImgList}"
-												style="width: 456px;">
-											<li
-												th:style="'background-image:url(' + ${thumbImg.iloc} + '_600.jpg);'"
-												th:text="${thumbStat.count}"></li>
-											</swiper-slide> </swiper-container>
-										</ul>
-									</div>
-									<div class="controls">
-										<button type="button" class="prev">이전</button>
-										<div class="thumb">
-											<a th:each="thumbImg, thumbStat : ${product.thumbImgList}"
-												href="javascript:void(0);" class=""
-												th:style="'background-image:url(' + ${thumbImg.iloc} + '_600.jpg);'"
-												th:text="${thumbStat.count}"></a>
-										</div>
-										<button type="button" class="next">다음</button>
-									</div>
-								</div>
-
-							</div>
-							<script
-								src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
-
-							<!-- //left -->
-							<div class="right">
-								<div class="datail_info_top">
-									<p class="brand">[[${product.productDTO.bname}]]</p>
-									<span class="tit"> <strong>[[${product.productDTO.pname}]]</strong>
-									</span> <input type="hidden" class="pcode"
-										th:value="${product.productDTO.pcode}"> <span
-										class="star"> <a href="#product_detail_review">
-											<div class="star-rating bic">
-												<span
-													th:class="'c' + ${#numbers.formatInteger(rateAvg/2*10, 2)}">
-													<em class="hide">별점</em>
-												</span>
-											</div>
-									</a> <em><a href="#product_detail_review"
-											style="color: #8f8f8f;" class="review">([[${#lists.size(reviewList)}]])</a></em>
-
-									</span>
-								</div>
-								<div class="datail_info_data">
-									<ul>
-										<li><strong>판매가</strong> <span class="price">[[${#numbers.formatInteger(product.productDTO.pprice,
-												3,'COMMA')}]]<em>원</em>
-										</span></li>
-										<li><strong>카드 혜택</strong> 현대백화점 카드 5% <span>[[${#numbers.formatInteger(product.productDTO.pprice*0.95,
-												3,'COMMA')}]]<i>원</i>
-										</span></li>
-										<li><strong>무이자</strong> 최대 6개월</li>
-										<li><strong>적립금</strong> H.Point <span class="mile">[[${#numbers.formatInteger(product.productDTO.pprice*0.003,
-												3,'COMMA')}]]<i>P</i><em> 적립</em>
-										</span></li>
-										<li><strong>배송비</strong> 무료배송</li>
-										<li
-											th:if="${!#lists.isEmpty(product.optList) and #lists.size(product.optList)>1}"
-											class="option"><strong>옵션</strong> <select
-											style="width: 75%;" class="opt">
-												<option>선택</option>
-												<option th:each="opt, optStat : ${product.optList}">[[${opt.optname}]]</option>
-										</select></li>
-										<li class="amount"><strong>수량</strong>
-											<div class="count">
-												<button type="button" class="minus">-</button>
-												<input type="text" name="pamount" value="1" readonly="">
-												<button type="button" class="plus">+</button>
-											</div></li>
-										<li th:if="${dept1no == 10}" class="subscription_text">나의
-											피부타입과 매칭해보세요.<a
-											th:href="'/match/detail?pcode='+${product.productDTO.pcode}"
-											class="btn_move">피부 MBTI와 매칭하러 가기</a>
-										</li>
-										<li class="total"><strong>총 구매금액</strong> <span
-											class="pricetotal">[[${#numbers.formatInteger(product.productDTO.pprice,
-												3,'COMMA')}]]<em>원</em>
-										</span></li>
-									</ul>
-								</div>
-								<div class="datail_info_btn">
-
-									<span class="instock">
-										<button type="button" class="btn_base darkgray basket"
-											onclick="addCart()">
-											<span>장바구니</span>
-										</button>
-										<button type="button" class="btn_base blue nowBuy"
-											onclick="addOrder()">
-											<span>구매하기</span>
-										</button>
-										<button id="compare-btn" type="button"
-											class="btn_base darkgray basket" onclick="put()">
-											<span style="font-family: 'notokr-demilight';"><img
-												src="/common/image/add.png"
-												style="width: 22px; margin-right: 6px; margin-bottom: 3px;">비교함
-												담기</span>
-										</button>
-									</span>
-
-								</div>
-
-							</div>
-						</form>
-					</div>
-					<!-- //top -->
-					<div class="makeupbanner" th:if="${#strings.equals(dept1no, '20')}">
+              </div>
+            </form>
+          </div>
+          <!-- //top -->
+          <div class="makeupbanner" th:if="${#strings.equals(dept1no, '20')}">
 					<a href="/beauty/reserv" >
 						<div class="wrapban"  style="width: 1140px; margin: 0 auto;cursor:pointer;" >
 							<img src='/makeup/img/makeupbanner.png'>
 						</div>
 						</a>
 					</div>
-					<!-- //addItem_slider -->
-					<div class="product_detail_tab">
-						<ul>
-							<li class="on"><a href="#template_cont">제품상세정보</a></li>
-							<li><a href="#product_detail_review">리얼리뷰</a></li>
-							<li><a href="#product_detail_note">구매정보</a></li>
-						</ul>
-					</div>
-					<!-- product_detail_view -->
-					<!--  product_detal_template -->
-					<div id="template_cont">
-						<div id="product_detail_view">
-							<p th:each="detailImg : ${product.detailImgList}">
-								<img th:src="${detailImg.iloc}">
-							</p>
-							<div class="hide">제품상세정보 대체텍스트 표시</div>
-						</div>
-						<!-- //product_detail_view -->
-					</div>
-					<!-- //product_detal_template -->
-					<!-- //product_detail_view -->
-					<div id="product_detail_review">
-						<h3>리얼리뷰</h3>
-						<div class="detail_review_box">
-							<div class="left">
-								<strong><em id="totalReviewCount"
-									th:text="${#lists.isEmpty(reviewList)	 ? '0' : #lists.size(reviewList)}"></em>개의
-									리얼리뷰가 있습니다</strong>
-							</div>
-							<div class="right">
-								<strong>평균 별점</strong> <span>
-									<div class="star-rating bic">
-										<span
-											th:class="'c' + ${#numbers.formatInteger(rateAvg/2*10, 2)}">
-											<em class="hide">벌점</em>
-										</span>
-									</div>
-								</span> <span><em>[[${rateAvg}]]</em><i>/</i>10</span>
-							</div>
-						</div>
-						<!-- //detail_review_top -->
-						<div class="detail_review_list">
-							<!-- //tabtext_warp -->
+          <!-- //addItem_slider -->
+          <div class="product_detail_tab">
+             <ul>
+               <li class="on"><a href="#template_cont">제품상세정보</a></li>
+                <li><a href="#product_detail_review">리얼리뷰</a></li>
+                <li><a href="#product_detail_note">구매정보</a></li>
+             </ul>
+          </div>
+          <!-- product_detail_view -->
+          <!--  product_detal_template -->
+          <div id="template_cont">
+            <div id="product_detail_view">
+              <p th:each="detailImg : ${product.detailImgList}">
+                 <img th:src="${detailImg.iloc}">
+              </p>
+              <div class="hide">
+                제품상세정보 대체텍스트 표시
+              </div>
+            </div>
+            <!-- //product_detail_view -->
+          </div><!-- //product_detal_template -->
+          <!-- //product_detail_view -->
+               <div id="product_detail_review">
+                  <h3>리얼리뷰</h3>
+                  <div class="detail_review_box">
+                     <div class="left">
+                        <strong><em id="totalReviewCount" th:text="${#lists.isEmpty(reviewList)    ? '0' : #lists.size(reviewList)}"></em>개의 리얼리뷰가
+                           있습니다</strong>
+                     </div>
+                     <div class="right">
+                        <strong>평균 별점</strong> <span>
+                           <div class="star-rating bic">
+                              <span th:class="'c' + ${#numbers.formatInteger(rateAvg/2*10, 2)}"> <em class="hide">벌점</em></span>
+                           </div>
+                        </span> <span><em>[[${rateAvg}]]</em><i>/</i>10</span>
+                     </div>
+                  </div>
+                  <!-- //detail_review_top -->
+                  <div class="detail_review_list">
+                     <!-- //tabtext_warp -->
 
-							<div class="review_warp">
-								<div class="review_conts">
-									<ul class="list" id="reviewList"
-										style="position: relative; height: 813.375px;">
-										<!-- 비회원일 경우 -->
-<<<<<<< HEAD
+                     <div class="review_warp">
+                        <div class="review_conts">
+                           <ul class="list" id="reviewList"
+                              style="position: relative; height: 813.375px;">
+                              <!-- 비회원일 경우 -->
                 <li sec:authorize="isAnonymous()" class="btn_review" style="position: absolute; left: 0px; top: 0px;"><a
                     href="/member/login"><span>리얼리뷰 쓰기</span><em>한줄리뷰 50M<br>첫 리뷰 더블적립</em></a>
                 </li>
-				<!-- 회원일 경우 -->
+            <!-- 회원일 경우 -->
                 <li sec:authorize="isAuthenticated()" class="btn_review" style="position: absolute; left: 0px; top: 0px;"><a
                     href="/review/form"><span>리얼리뷰 쓰기</span><em>한줄리뷰 50M<br>첫 리뷰 더블적립</em></a>
                 </li>
-										<li th:each="review, rStat : ${reviewList}" class="text" th:style="${'position: absolute; left: ' + (rStat.count%4)*290 +'px; top: ' + (rStat.count/4)*350 +'px;'}">
-										<a href="javascript:void(0);" class="layer-pop" data-type="link" data-url="/review/view/97233.do?prdtView=Y" style='cursor:unset;'> 
-											<span class="rating">
-												<fieldset class="star_rating">
-													<input type="radio" th:id="${rStat.count}+'_star5'" th:name="${rStat.count}+'_rating'" value="5" th:checked="${review.rrate==5 ? 'true' : 'false'}">
-													<label th:for="${rStat.count}+'_star5'">5스타</label> 
-													<input type="radio" th:id="${rStat.count}+'_star4'" th:name="${rStat.count}+'_rating'" value="4" th:checked="${review.rrate==4 ? 'true' : 'false'}">
-													<label th:for="${rStat.count}+'_star4'">4스타</label>
-													<input type="radio" th:id="${rStat.count}+'_star3'" th:name="${rStat.count}+'_rating'" value="3" th:checked="${review.rrate==3 ? 'true' : 'false'}">
-													<label th:for="${rStat.count}+'_star3'">3스타</label> 
-													<input type="radio" th:id="${rStat.count}+'_star2'" th:name="${rStat.count}+'_rating'" value="2" th:checked="${review.rrate==2 ? 'true' : 'false'}">
-													<label th:for="${rStat.count}+'_star2'">2스타</label>
-													<input type="radio" th:id="${rStat.count}+'_star1'" th:name="${rStat.count}+'_rating'" value="1" th:checked="${review.rrate==1 ? 'true' : 'false'}">
-													<label th:for="${rStat.count}+'_star1'">1스타</label>
-													</fieldset>
-											</span> 
-											<span class="replyhead">[[${review.rtitle}]]</span> 
-											<span class="reply" style="height: 152px;">[[${review.rcontent}]]</span> 
-											<span class="data"> 
-											<span class="userid">[[${#strings.substring(review.mid, 0, 5)}]]***</span> 
-											<span class="day">[[${review.rdate}]]</span>
-										<li sec:authorize="isAnonymous()" class="btn_review"
-											style="position: absolute; left: 0px; top: 0px;"><a
-											href="#survey_pop"><span>리얼리뷰 쓰기</span><em>한줄리뷰 50M<br>첫
-													리뷰 더블적립
-											</em></a></li>
-										<!-- 회원일 경우 -->
-										<li sec:authorize="isAuthenticated()" class="btn_review"
-											style="position: absolute; left: 0px; top: 0px;"><a
-											href="/review/form"><span>리얼리뷰 쓰기</span><em>한줄리뷰 50M<br>첫
-													리뷰 더블적립
-											</em></a></li>
-										<li th:each="review, rStat : ${reviewList}" class="text"
-											th:style="${'position: absolute; left: ' + (rStat.count%4)*290 +'px; top: ' + (rStat.count/4)*322 +'px;'}">
-											<a href="#review_list001" class="layer-pop" data-type="link"
-											data-url="/review/view/97233.do?prdtView=Y"> <span
-												class="rating">
-													<fieldset class="star_rating">
-														<input type="radio" th:id="${rStat.count}+'_star5'"
-															th:name="${rStat.count}+'_rating'" value="5"
-															th:checked="${review.rrate==5 ? 'true' : 'false'}">
-														<label th:for="${rStat.count}+'_star5'">5스타</label> <input
-															type="radio" th:id="${rStat.count}+'_star4'"
-															th:name="${rStat.count}+'_rating'" value="4"
-															th:checked="${review.rrate==4 ? 'true' : 'false'}">
-														<label th:for="${rStat.count}+'_star4'">4스타</label> <input
-															type="radio" th:id="${rStat.count}+'_star3'"
-															th:name="${rStat.count}+'_rating'" value="3"
-															th:checked="${review.rrate==3 ? 'true' : 'false'}">
-														<label th:for="${rStat.count}+'_star3'">3스타</label> <input
-															type="radio" th:id="${rStat.count}+'_star2'"
-															th:name="${rStat.count}+'_rating'" value="2"
-															th:checked="${review.rrate==2 ? 'true' : 'false'}">
-														<label th:for="${rStat.count}+'_star2'">2스타</label> <input
-															type="radio" th:id="${rStat.count}+'_star1'"
-															th:name="${rStat.count}+'_rating'" value="1"
-															th:checked="${review.rrate==1 ? 'true' : 'false'}">
-														<label th:for="${rStat.count}+'_star1'">1스타</label>
-													</fieldset>
-											</span> <span class="replyhead">[[${review.rtitle}]]</span> <span
-												class="reply">[[${review.rcontent}]]</span> <span
-												class="data"> <span class="userid">[[${#strings.substring(review.mid,
-														0, 5)}]]***</span> <span class="day">[[${review.rdate}]]</span>
->>>>>>> seah
-											</span>
-										</a>
-										</li>
-									</ul>
-								</div>
+                              <li th:each="review, rStat : ${reviewList}" class="text" th:style="${'position: absolute; left: ' + (rStat.count%4)*290 +'px; top: ' + (rStat.count/4)*350 +'px;'}">
+                              <a href="javascript:void(0);" class="layer-pop" data-type="link" data-url="/review/view/97233.do?prdtView=Y" style='cursor:unset;'> 
+                                 <span class="rating">
+                                    <fieldset class="star_rating">
+                                       <input type="radio" th:id="${rStat.count}+'_star5'" th:name="${rStat.count}+'_rating'" value="5" th:checked="${review.rrate==5 ? 'true' : 'false'}">
+                                       <label th:for="${rStat.count}+'_star5'">5스타</label> 
+                                       <input type="radio" th:id="${rStat.count}+'_star4'" th:name="${rStat.count}+'_rating'" value="4" th:checked="${review.rrate==4 ? 'true' : 'false'}">
+                                       <label th:for="${rStat.count}+'_star4'">4스타</label>
+                                       <input type="radio" th:id="${rStat.count}+'_star3'" th:name="${rStat.count}+'_rating'" value="3" th:checked="${review.rrate==3 ? 'true' : 'false'}">
+                                       <label th:for="${rStat.count}+'_star3'">3스타</label> 
+                                       <input type="radio" th:id="${rStat.count}+'_star2'" th:name="${rStat.count}+'_rating'" value="2" th:checked="${review.rrate==2 ? 'true' : 'false'}">
+                                       <label th:for="${rStat.count}+'_star2'">2스타</label>
+                                       <input type="radio" th:id="${rStat.count}+'_star1'" th:name="${rStat.count}+'_rating'" value="1" th:checked="${review.rrate==1 ? 'true' : 'false'}">
+                                       <label th:for="${rStat.count}+'_star1'">1스타</label>
+                                       </fieldset>
+                                 </span> 
+                                 <span class="replyhead">[[${review.rtitle}]]</span> 
+                                 <span class="reply" style="height: 152px;">[[${review.rcontent}]]</span> 
+                                 <span class="data"> 
+                                 <span class="userid">[[${#strings.substring(review.mid, 0, 5)}]]***</span> 
+                                 <span class="day">[[${review.rdate}]]</span>
+                                 </span>
+                              </a></li>
+                           </ul>
+                        </div>
+                        
+                     </div>
+                     <!-- //review_warp -->
+                     <div class="faq_box">
+                        <span><p>
+                              <i class="ico_guide">안내</i> 제품 Q&amp;A는 고객케어센터의 1:1 상담을 이용해
+                              주세요.
+                           </p></span> <span><button type="button" class="btn_base move"
+                              onclick="cscenter();">1:1 상담</button></span>
+                     </div>
+                  </div>
+                  <!-- //detail_review_list -->
+               </div>
+               <!-- product_detail_note -->
+          <div id="product_detail_note">
+            <h3>구매정보</h3>
+            <h4>제품정보 제공공시</h4>
+            <div class="table_wrap">
+              <table border="1">
+                <caption>제품정보 제공공시 테이블</caption>
+                <colgroup>
+                  <col style="width:254px;">
+                  <col>
+                </colgroup>
+                <tbody>
+                  <tr>
+                    <th scope="row" class="t_left">용량(또는 중량)</th>
+                    <td class="t_left">[[${product.productDTO.pvolume}]]</td>
+                  </tr>
+                  <tr>
+                    <th scope="row" class="t_left">제품 주요 사양</th>
+                    <td class="t_left">[[${product.productDTO.ptype}]]합</td>
+                  </tr>
+                  <tr>
+                    <th scope="row" class="t_left">사용기간(또는 개봉 후 사용기한)</th>
+                    <td class="t_left">[[${product.productDTO.pexp}]]</td>
+                  </tr>
+                  <tr>
+                    <th scope="row" class="t_left">사용방법 </th>
+                    <td class="t_left">[[${product.productDTO.puse}]]</td>
+                  </tr>
+                  <tr>
+                    <th scope="row" class="t_left">제조자 / 책임판매업자</th>
+                    <td class="t_left">[[${product.productDTO.pproduce}]]</td>
+                  </tr>
+                  <tr>
+                    <th scope="row" class="t_left">제조국</th>
+                    <td class="t_left">[[${product.productDTO.pcountry}]]</td>
+                  </tr>
+                  <tr>
+                    <th scope="row" class="t_left">전 성분</th>
+                    <td class="t_left">
+                      [[${product.productDTO.pingredient}]]
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row" class="t_left">기능성 화장품 심사 필 유무</th>
+                    <td class="t_left">해당없음</td>
+                  </tr>
+                  <tr>
+                    <th scope="row" class="t_left">사용 시 주의사항</th>
+                    <td class="t_left">
+                       [[${product.productDTO.pcaution}]]
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row" class="t_left">품질보증기준</th>
+                    <td class="t_left">상품에 동봉되는 품질 보증서 또는 공정거래위원회 고시 소비자 분쟁 해결 기준에 따릅니다.<br>공정거래위원회
+                                          고시 소비자 분쟁 해결기준은 품질 보증서에 우선하여 진행합니다.</td>
+                  </tr>
+                  <tr>
+                    <th scope="row" class="t_left">소비자상담 전화번호</th>
+                    <td class="t_left">더현대닷컴 고객상담센터 1800-2233</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
-							</div>
-							<!-- //review_warp -->
-							<div class="faq_box">
-								<span><p>
-										<i class="ico_guide">안내</i> 제품 Q&amp;A는 고객케어센터의 1:1 상담을 이용해
-										주세요.
-									</p></span> <span><button type="button" class="btn_base move"
-										onclick="cscenter();">1:1 상담</button></span>
-							</div>
-						</div>
-						<!-- //detail_review_list -->
-					</div>
-					<!-- product_detail_note -->
-					<div id="product_detail_note">
-						<h3>구매정보</h3>
-						<h4>제품정보 제공공시</h4>
-						<div class="table_wrap">
-							<table border="1">
-								<caption>제품정보 제공공시 테이블</caption>
-								<colgroup>
-									<col style="width: 254px;">
-									<col>
-								</colgroup>
-								<tbody>
-									<tr>
-										<th scope="row" class="t_left">용량(또는 중량)</th>
-										<td class="t_left">[[${product.productDTO.pvolume}]]</td>
-									</tr>
-									<tr>
-										<th scope="row" class="t_left">제품 주요 사양</th>
-										<td class="t_left">[[${product.productDTO.ptype}]]합</td>
-									</tr>
-									<tr>
-										<th scope="row" class="t_left">사용기간(또는 개봉 후 사용기한)</th>
-										<td class="t_left">[[${product.productDTO.pexp}]]</td>
-									</tr>
-									<tr>
-										<th scope="row" class="t_left">사용방법</th>
-										<td class="t_left">[[${product.productDTO.puse}]]</td>
-									</tr>
-									<tr>
-										<th scope="row" class="t_left">제조자 / 책임판매업자</th>
-										<td class="t_left">[[${product.productDTO.pproduce}]]</td>
-									</tr>
-									<tr>
-										<th scope="row" class="t_left">제조국</th>
-										<td class="t_left">[[${product.productDTO.pcountry}]]</td>
-									</tr>
-									<tr>
-										<th scope="row" class="t_left">전 성분</th>
-										<td class="t_left">[[${product.productDTO.pingredient}]]
-										</td>
-									</tr>
-									<tr>
-										<th scope="row" class="t_left">기능성 화장품 심사 필 유무</th>
-										<td class="t_left">해당없음</td>
-									</tr>
-									<tr>
-										<th scope="row" class="t_left">사용 시 주의사항</th>
-										<td class="t_left">[[${product.productDTO.pcaution}]]</td>
-									</tr>
-									<tr>
-										<th scope="row" class="t_left">품질보증기준</th>
-										<td class="t_left">상품에 동봉되는 품질 보증서 또는 공정거래위원회 고시 소비자 분쟁
-											해결 기준에 따릅니다.<br>공정거래위원회 고시 소비자 분쟁 해결기준은 품질 보증서에 우선하여
-											진행합니다.
-										</td>
-									</tr>
-									<tr>
-										<th scope="row" class="t_left">소비자상담 전화번호</th>
-										<td class="t_left">더현대닷컴 고객상담센터 1800-2233</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
+            <h4>배송안내</h4>
+            <div class="table_wrap">
+              <table border="1">
+                <caption>배송안내 테이블</caption>
+                <colgroup>
+                  <col style="width:254px;">
+                  <col>
+                </colgroup>
+                <tbody>
+                  <tr>
+                    <th class="t_left" scope="row">배송업체</th>
+                    <td class="t_left"><strong style="font-family: 'notokr-medium';">로젠택배 (고객센터 ☎1588-9988)</strong>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="t_left" scope="row">배송비</th>
+                    <td class="t_left"><strong style="font-family: 'notokr-medium';">최종 결제금액 3만원 이상 무료배송 (3만원 미만 시
+                        2,500원)</strong><br>
+                      - 더모 비기너, 더모 엘리트, 더모 마스터 회원 등급에 한해 매월 1일 무료배송 쿠폰 증정 (쿠폰존에서 다운로드)<br>
+                      - 타 쇼핑몰과 달리 도서/산간/제주지역도 추가 배송비 없습니다.</td>
+                  </tr>
+                  <tr>
+                    <th class="t_left" scope="row">배송기간</th>
+                    <td class="t_left"><strong style="font-family: 'notokr-medium';">오후 2시 이전 결제완료 시 당일 출고</strong><br>
+                      - 전일 14시 이후부터 당일 14시 이전까지 결제완료 : 당일 오후 출고 및 택배 발송<br>
+                      - 금요일 14시 이후 및 법정공휴일 결제완료 : 돌아오는 평일 오후 출고 및 택배 발송<br>
+                      - 출고 및 택배 발송일로부터 약 1~3일 이내 배송완료<br>
+                      *특수 지역 (도서산간, 제주도, 군부대 등) 및 황금연휴가 포함되거나 할인행사로 인한 주문 폭주, 택배사 사정 등으로 인해 일부 더 소요될 수 있습니다.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
-						<h4>배송안내</h4>
-						<div class="table_wrap">
-							<table border="1">
-								<caption>배송안내 테이블</caption>
-								<colgroup>
-									<col style="width: 254px;">
-									<col>
-								</colgroup>
-								<tbody>
-									<tr>
-										<th class="t_left" scope="row">배송업체</th>
-										<td class="t_left"><strong
-											style="font-family: 'notokr-medium';">로젠택배 (고객센터
-												☎1588-9988)</strong></td>
-									</tr>
-									<tr>
-										<th class="t_left" scope="row">배송비</th>
-										<td class="t_left"><strong
-											style="font-family: 'notokr-medium';">최종 결제금액 3만원 이상
-												무료배송 (3만원 미만 시 2,500원)</strong><br> - 더모 비기너, 더모 엘리트, 더모 마스터 회원
-											등급에 한해 매월 1일 무료배송 쿠폰 증정 (쿠폰존에서 다운로드)<br> - 타 쇼핑몰과 달리
-											도서/산간/제주지역도 추가 배송비 없습니다.</td>
-									</tr>
-									<tr>
-										<th class="t_left" scope="row">배송기간</th>
-										<td class="t_left"><strong
-											style="font-family: 'notokr-medium';">오후 2시 이전 결제완료
-												시 당일 출고</strong><br> - 전일 14시 이후부터 당일 14시 이전까지 결제완료 : 당일 오후 출고 및
-											택배 발송<br> - 금요일 14시 이후 및 법정공휴일 결제완료 : 돌아오는 평일 오후 출고 및 택배
-											발송<br> - 출고 및 택배 발송일로부터 약 1~3일 이내 배송완료<br> *특수 지역
-											(도서산간, 제주도, 군부대 등) 및 황금연휴가 포함되거나 할인행사로 인한 주문 폭주, 택배사 사정 등으로
-											인해 일부 더 소요될 수 있습니다.</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
+            <h4>교환 / 반품 / 환불 안내</h4>
+            <div class="table_wrap">
+              <table border="1">
+                <caption>교환 / 반품 / 환불 안내 테이블</caption>
+                <colgroup>
+                  <col style="width:254px;">
+                  <col>
+                </colgroup>
+                <tbody>
+                  <tr>
+                    <th class="t_left" scope="row">신청 가능 기간</th>
+                    <td class="t_left"><strong style="font-family: 'notokr-medium';">배송완료일 (제품을 수령하신 날) 로부터 7일
+                        이내</strong><br>
+                      - 수령 받은 제품이 표시/광고의 내용과 다르거나, 계약내용과 다르게 이행된 경우 : 제품 수령일로부터 3개월 이내<br>
+                      - 그 사실을 알 수 있었던 날로부터 30일 이내</td>
+                  </tr>
+                  <tr>
+                    <th class="t_left" scope="row">배송비</th>
+                    <td class="t_left"><strong style="font-family: 'notokr-medium';">교환 배송비 5,000원 / 반품 배송비
+                        2,500원~5,000원</strong><br>
+                      - 고객님 사유 (단순변심 등) 에 의해 신청할 경우, 배송비 발생<br>
+                      - 당사 사유 (제품하자 등) 에 의해 신청할 경우, 배송비 무료<br>
+                      - 교환/ 반품 배송비 입금정보 : 최초 결제하신 수단에서 발생된 배송비 차감 후 환불<br>
+                      *제품 검수과정에서 사유가 일치하지 않을 시 거부 또는 반품으로 진행될 수 있으며, 이로 인해 발생되는 추가 배송비는 고객님 부담입니다.</td>
+                  </tr>
+                  <tr>
+                    <th class="t_left" scope="row">신청 방법</th>
+                    <td class="t_left"><strong style="font-family: 'notokr-medium';">주문/배송조회 &gt; 신청 또는 고객지원실 전화
+                        ☎080-844-0088</strong><br>
+                      - 동일 제품에 대해서만 교환신청 가능 (용량 및 호수 변경, 다른 제품으로 교환 원할 시, 반품 후 재주문)<br>
+                      - 교환 및 반품 신청 접수 <strong>→</strong> 제품 회수 (로젠택배 기사님이 방문수거) → 제품 검수 → 교환 및 환불 처리<br>
+                      - 반품 시, 함께 제공된 증정품 (마일리지 기프트 포함) 도 회수 되어야 함<br>
+                      - 주문하신 제품 중, 일부 제품만 교환 또는 반품 신청 가능</td>
+                  </tr>
+                  <tr>
+                    <th class="t_left" scope="row">신청 불가 사유</th>
+                    <td class="t_left"><strong style="font-family: 'notokr-medium';">고객님의 사유에 의해 불가한 경우</strong><br>
+                      - 배송완료일 (제품을 수령하신 날) 로부터 7일이 경과한 경우<br>
+                      - 제품 패키지 훼손, 개봉 및 일부 사용, 구성품 및 증정품 누락 등 제품의 가치가 훼손된 경우<br>
+                      <br>
+                      <strong style="font-family: 'notokr-medium';">당사의 사유에 의해 불가한 경우</strong><br>
+                      - 배송완료일 (제품을 수령하신 날) 로부터 3개월이 경과한 경우<br>
+                      - 그 사실을 알 수 있었던 날로부터 30일이 경과한 경우<br>
+                      - 당사 사유가 아닌 해당 제품의 고유한 특성 또는 제품 수령 후 고객님 과실로 인한 문제임을 규명한 경우
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
-						<h4>교환 / 반품 / 환불 안내</h4>
-						<div class="table_wrap">
-							<table border="1">
-								<caption>교환 / 반품 / 환불 안내 테이블</caption>
-								<colgroup>
-									<col style="width: 254px;">
-									<col>
-								</colgroup>
-								<tbody>
-									<tr>
-										<th class="t_left" scope="row">신청 가능 기간</th>
-										<td class="t_left"><strong
-											style="font-family: 'notokr-medium';">배송완료일 (제품을
-												수령하신 날) 로부터 7일 이내</strong><br> - 수령 받은 제품이 표시/광고의 내용과 다르거나,
-											계약내용과 다르게 이행된 경우 : 제품 수령일로부터 3개월 이내<br> - 그 사실을 알 수 있었던
-											날로부터 30일 이내</td>
-									</tr>
-									<tr>
-										<th class="t_left" scope="row">배송비</th>
-										<td class="t_left"><strong
-											style="font-family: 'notokr-medium';">교환 배송비 5,000원
-												/ 반품 배송비 2,500원~5,000원</strong><br> - 고객님 사유 (단순변심 등) 에 의해 신청할
-											경우, 배송비 발생<br> - 당사 사유 (제품하자 등) 에 의해 신청할 경우, 배송비 무료<br>
-											- 교환/ 반품 배송비 입금정보 : 최초 결제하신 수단에서 발생된 배송비 차감 후 환불<br> *제품
-											검수과정에서 사유가 일치하지 않을 시 거부 또는 반품으로 진행될 수 있으며, 이로 인해 발생되는 추가 배송비는
-											고객님 부담입니다.</td>
-									</tr>
-									<tr>
-										<th class="t_left" scope="row">신청 방법</th>
-										<td class="t_left"><strong
-											style="font-family: 'notokr-medium';">주문/배송조회 &gt;
-												신청 또는 고객지원실 전화 ☎080-844-0088</strong><br> - 동일 제품에 대해서만 교환신청 가능
-											(용량 및 호수 변경, 다른 제품으로 교환 원할 시, 반품 후 재주문)<br> - 교환 및 반품 신청
-											접수 <strong>→</strong> 제품 회수 (로젠택배 기사님이 방문수거) → 제품 검수 → 교환 및
-											환불 처리<br> - 반품 시, 함께 제공된 증정품 (마일리지 기프트 포함) 도 회수 되어야 함<br>
-											- 주문하신 제품 중, 일부 제품만 교환 또는 반품 신청 가능</td>
-									</tr>
-									<tr>
-										<th class="t_left" scope="row">신청 불가 사유</th>
-										<td class="t_left"><strong
-											style="font-family: 'notokr-medium';">고객님의 사유에 의해
-												불가한 경우</strong><br> - 배송완료일 (제품을 수령하신 날) 로부터 7일이 경과한 경우<br>
-											- 제품 패키지 훼손, 개봉 및 일부 사용, 구성품 및 증정품 누락 등 제품의 가치가 훼손된 경우<br>
-											<br> <strong style="font-family: 'notokr-medium';">당사의
-												사유에 의해 불가한 경우</strong><br> - 배송완료일 (제품을 수령하신 날) 로부터 3개월이 경과한 경우<br>
-											- 그 사실을 알 수 있었던 날로부터 30일이 경과한 경우<br> - 당사 사유가 아닌 해당 제품의
-											고유한 특성 또는 제품 수령 후 고객님 과실로 인한 문제임을 규명한 경우</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
+          </div><!-- //product_detail_note -->
 
-					</div>
-					<!-- //product_detail_note -->
+        </div>
+        <!-- //product_detail -->
 
-				</div>
-				<!-- //product_detail -->
-
-			</section>
-			<!-- //contents -->
-		</section>
-		<!-- //container -->
+      </section>
+      <!-- //contents -->
+    </section>
+    <!-- //container -->
 
 
-		<!-- right 제품구매 플로팅 -->
-		<section class="flot_right_warp" th:insert="~{include/float}"></section>
+    <!-- right 제품구매 플로팅 -->
+    <section class="flot_right_warp" th:insert="~{include/float}"></section>
 
-		<section id="survey_pop" class="layerpop_warp"
-			style="background: rgba(0, 0, 0, 0.8);">
-			<div class="layerpop blue" style="width: 460px;">
-				<div class="layerpop_head">
-					<h1>장바구니</h1>
-				</div>
-				<div class="layerpop_cont" style="height: 330px;">
-					<div class="save_cont">
-						<p>
-							해당 상품을 장바구니에 추가하였습니다.<br> 장바구니 페이지로 이동하시겠습니까?
-						</p>
-						<div class="btn_wrap center mt30">
-							<button type="button" class="btn_base blue act" id="okay"
-								onclick="location.href='/shop/mycart'">확인</button>
-							<button type="button" class="btn_base darkgray act"
-								id="save_close">계속 쇼핑하기</button>
-						</div>
-					</div>
-				</div>
-				<button type="button" class="close">닫기</button>
-			</div>
-		</section>
+    <section id="survey_pop" class="layerpop_warp" style="background: rgba(0,0,0,0.8);">
+         <div class="layerpop blue" style="width: 460px;">
+            <div class="layerpop_head">
+               <h1>장바구니</h1>
+            </div>
+            <div class="layerpop_cont" style="height: 330px;">
+               <div class="save_cont">
+                  <p>
+                     해당 상품을 장바구니에 추가하였습니다.<br>
+              장바구니 페이지로 이동하시겠습니까?
+                  </p>
+                  <div class="btn_wrap center mt30">
+              <button type="button" class="btn_base blue act" id="okay" onclick="location.href='/shop/mycart'">확인</button>
+                     <button type="button" class="btn_base darkgray act" id="save_close">계속 쇼핑하기</button>
+                  </div>
+               </div>
+            </div>
+            <button type="button" class="close">닫기</button>
+         </div>
+      </section>
 
-		<div th:if="${#authentication.getPrincipal() != null}">
-			<input type="hidden" id="mid" th:value="${#authentication.getName()}">
-		</div>
-		<div th:unless="${#authentication.getPrincipal() != null}"></div>
-
-		<!-- 비교함에 담기 -->
-		<script>
+    <div th:if="${#authentication.getPrincipal() != null}">
+      <input type="hidden" id="mid" th:value="${#authentication.getName()}">
+    </div>
+    <div th:unless="${#authentication.getPrincipal() != null}">
+    </div>
+    
+    <!-- 비교함에 담기 -->
+     <script>
     function put() {
       const pcode = document.querySelector('.pcode').value;
       const pname = document.querySelector('.tit strong').textContent;
@@ -826,22 +615,22 @@ swiper-slide img {
         console.log("옵션 선택 안함");
         const pop = document.getElementById('survey_pop');
         pop.innerHTML= `
-			<div class="layerpop blue" style="width: 460px;">
-				<div class="layerpop_head">
-					<h1 class="poptitle">비교함</h1>
-				</div>
-				<div class="layerpop_cont" style="height: 330px;">
-					<div class="save_cont">
-						<p>
-							옵션을 선택하세요.
-						</p>
-						<div class="btn_wrap center mt30">
-							<button type="button" class="btn_base darkgray act" id="save_close">확인</button>
-						</div>
-					</div>
-				</div>
-				<button type="button" class="close">닫기</button>
-			</div>
+         <div class="layerpop blue" style="width: 460px;">
+            <div class="layerpop_head">
+               <h1 class="poptitle">비교함</h1>
+            </div>
+            <div class="layerpop_cont" style="height: 330px;">
+               <div class="save_cont">
+                  <p>
+                     옵션을 선택하세요.
+                  </p>
+                  <div class="btn_wrap center mt30">
+                     <button type="button" class="btn_base darkgray act" id="save_close">확인</button>
+                  </div>
+               </div>
+            </div>
+            <button type="button" class="close">닫기</button>
+         </div>
         `;
         $("#survey_pop").css("display", "block");
 
@@ -861,22 +650,22 @@ swiper-slide img {
       if (arr.length >= 10) {
         const pop = document.getElementById('survey_pop');
         pop.innerHTML= `
-			<div class="layerpop blue" style="width: 460px;">
-				<div class="layerpop_head">
-					<h1 class="poptitle">비교함</h1>
-				</div>
-				<div class="layerpop_cont" style="height: 330px;">
-					<div class="save_cont">
-						<p>
-							비교함에는 10개의 상품을 담을 수 있습니다.
-						</p>
-						<div class="btn_wrap center mt30">
-							<button type="button" class="btn_base darkgray act" id="save_close">확인</button>
-						</div>
-					</div>
-				</div>
-				<button type="button" class="close">닫기</button>
-			</div>
+         <div class="layerpop blue" style="width: 460px;">
+            <div class="layerpop_head">
+               <h1 class="poptitle">비교함</h1>
+            </div>
+            <div class="layerpop_cont" style="height: 330px;">
+               <div class="save_cont">
+                  <p>
+                     비교함에는 10개의 상품을 담을 수 있습니다.
+                  </p>
+                  <div class="btn_wrap center mt30">
+                     <button type="button" class="btn_base darkgray act" id="save_close">확인</button>
+                  </div>
+               </div>
+            </div>
+            <button type="button" class="close">닫기</button>
+         </div>
         `;
         $("#survey_pop").css("display", "block");
 
@@ -889,22 +678,22 @@ swiper-slide img {
       if (arr.some(item => item[0] === pcode)) { // 이미 비교함에 추가된 상품인 경우
         const pop = document.getElementById('survey_pop');
         pop.innerHTML= `
-			<div class="layerpop blue" style="width: 460px;">
-				<div class="layerpop_head">
-					<h1 class="poptitle">비교함</h1>
-				</div>
-				<div class="layerpop_cont" style="height: 330px;">
-					<div class="save_cont">
-						<p>
-							이미 비교함에 담긴 상품입니다.
-						</p>
-						<div class="btn_wrap center mt30">
-							<button type="button" class="btn_base darkgray act" id="save_close">확인</button>
-						</div>
-					</div>
-				</div>
-				<button type="button" class="close">닫기</button>
-			</div>
+         <div class="layerpop blue" style="width: 460px;">
+            <div class="layerpop_head">
+               <h1 class="poptitle">비교함</h1>
+            </div>
+            <div class="layerpop_cont" style="height: 330px;">
+               <div class="save_cont">
+                  <p>
+                     이미 비교함에 담긴 상품입니다.
+                  </p>
+                  <div class="btn_wrap center mt30">
+                     <button type="button" class="btn_base darkgray act" id="save_close">확인</button>
+                  </div>
+               </div>
+            </div>
+            <button type="button" class="close">닫기</button>
+         </div>
         `;
         $("#survey_pop").css("display", "block");
 
@@ -916,24 +705,24 @@ swiper-slide img {
         localStorage.setItem("arr", JSON.stringify(arr));
         const pop = document.getElementById('survey_pop');
         pop.innerHTML= `
-			<div class="layerpop blue" style="width: 460px;">
-				<div class="layerpop_head">
-					<h1 class="poptitle">비교함</h1>
-				</div>
-				<div class="layerpop_cont" style="height: 330px;">
-					<div class="save_cont">
-						<p>
-							상품을 비교함에 담았습니다. <br>
+         <div class="layerpop blue" style="width: 460px;">
+            <div class="layerpop_head">
+               <h1 class="poptitle">비교함</h1>
+            </div>
+            <div class="layerpop_cont" style="height: 330px;">
+               <div class="save_cont">
+                  <p>
+                     상품을 비교함에 담았습니다. <br>
               비교하기 페이지로 이동하시겠습니까?
-						</p>
-						<div class="btn_wrap center mt30">
+                  </p>
+                  <div class="btn_wrap center mt30">
               <button type="button" class="btn_base blue act" id="okay" onclick="location.href='/product/compare'">확인</button>
-							<button type="button" class="btn_base darkgray act" id="save_close">계속 쇼핑하기</button>
-						</div>
-					</div>
-				</div>
-				<button type="button" class="close">닫기</button>
-			</div>
+                     <button type="button" class="btn_base darkgray act" id="save_close">계속 쇼핑하기</button>
+                  </div>
+               </div>
+            </div>
+            <button type="button" class="close">닫기</button>
+         </div>
         `;
         $("#survey_pop").css("display", "block");
 
@@ -951,15 +740,15 @@ swiper-slide img {
 
   </script>
 
-		<script>
-	function addCart() {
-		console.log('장바구니 담기');
-		var pCode = document.querySelector('.pcode').value;
+   <script>
+   function addCart() {
+      console.log('장바구니 담기');
+      var pCode = document.querySelector('.pcode').value;
     //옵션 바꾸기
-		//var pOption = document.querySelector('input[name="optNm"]').value;
-		var pAmount = document.querySelector('input[name="pamount"]').value;
-		var mid = document.getElementById('mid').value;
-		console.log(mid);
+      //var pOption = document.querySelector('input[name="optNm"]').value;
+      var pAmount = document.querySelector('input[name="pamount"]').value;
+      var mid = document.getElementById('mid').value;
+      console.log(mid);
     var pOption = "";
 
     var pname = document.querySelector('.datail_info_top .tit strong').textContent.trim();
@@ -977,22 +766,22 @@ swiper-slide img {
         console.log("옵션 선택 안함");
         const pop = document.getElementById('survey_pop');
         pop.innerHTML= `
-			<div class="layerpop blue" style="width: 460px;">
-				<div class="layerpop_head">
-					<h1 class="poptitle">장바구니</h1>
-				</div>
-				<div class="layerpop_cont" style="height: 330px;">
-					<div class="save_cont">
-						<p>
-							옵션을 선택하세요.
-						</p>
-						<div class="btn_wrap center mt30">
-							<button type="button" class="btn_base darkgray act" id="save_close">확인</button>
-						</div>
-					</div>
-				</div>
-				<button type="button" class="close">닫기</button>
-			</div>
+         <div class="layerpop blue" style="width: 460px;">
+            <div class="layerpop_head">
+               <h1 class="poptitle">장바구니</h1>
+            </div>
+            <div class="layerpop_cont" style="height: 330px;">
+               <div class="save_cont">
+                  <p>
+                     옵션을 선택하세요.
+                  </p>
+                  <div class="btn_wrap center mt30">
+                     <button type="button" class="btn_base darkgray act" id="save_close">확인</button>
+                  </div>
+               </div>
+            </div>
+            <button type="button" class="close">닫기</button>
+         </div>
         `;
         $("#survey_pop").css("display", "block");
 
@@ -1004,69 +793,69 @@ swiper-slide img {
       }; 
       pOption = selectedOption;
     }
-		console.log(pOption);
-		
-		if (mid !='anonymousUser'){
-			var requestData = JSON.stringify({
-				pcode : pCode,
-				poption : pOption,
-			  pamount : pAmount,
-			  mid  :mid
-		  });
-		//로그인 여부 확인 
-		//중복 상품 확인
-		
-		console.log(requestData);
+      console.log(pOption);
+      
+      if (mid !='anonymousUser'){
+         var requestData = JSON.stringify({
+            pcode : pCode,
+            poption : pOption,
+           pamount : pAmount,
+           mid  :mid
+        });
+      //로그인 여부 확인 
+      //중복 상품 확인
+      
+      console.log(requestData);
 
 
-		 $.ajax({
-			url: '/restcart/addCart',
-			type: 'post',
-			data: requestData,
-			contentType: "application/json",
-			success	: function(result){
-				console.log("장바구니 success");
-				if(result == '0'){
-					alert("장바구니에 추가를 하지 못하였습니다.");
-				} else if(result == '1'){
+       $.ajax({
+         url: '/restcart/addCart',
+         type: 'post',
+         data: requestData,
+         contentType: "application/json",
+         success   : function(result){
+            console.log("장바구니 success");
+            if(result == '0'){
+               alert("장바구니에 추가를 하지 못하였습니다.");
+            } else if(result == '1'){
           $("#survey_pop").css("display", "block");
             makemodal();
 
-				} else if(result == '2'){
+            } else if(result == '2'){
           $("#survey_pop").css("display", "block");
             makemodal();
             document.querySelector('.save_cont p').innerHTML = '이미 담긴 상품으로 수량이 추가되었습니다.<br>장바구니 페이지로 이동하시겠습니까?';
-					
-				} 
+               
+            } 
         afteradd();
 
-			},
-			error :function(request, status, error) {
-				console.log(error);
-			}
-		}); 
-		}else {
-			console.log("로그인 필요");
-			const pop = document.getElementById('survey_pop');
+         },
+         error :function(request, status, error) {
+            console.log(error);
+         }
+      }); 
+      }else {
+         console.log("로그인 필요");
+         const pop = document.getElementById('survey_pop');
         pop.innerHTML= `
-			<div class="layerpop blue" style="width: 460px;">
-				<div class="layerpop_head">
-					<h1 class="poptitle">장바구니</h1>
-				</div>
-				<div class="layerpop_cont" style="height: 330px;">
-					<div class="save_cont">
-						<p>
-							장바구니는 로그인이 필요합니다.<br>
+         <div class="layerpop blue" style="width: 460px;">
+            <div class="layerpop_head">
+               <h1 class="poptitle">장바구니</h1>
+            </div>
+            <div class="layerpop_cont" style="height: 330px;">
+               <div class="save_cont">
+                  <p>
+                     장바구니는 로그인이 필요합니다.<br>
               로그인 페이지로 이동하시겠습니까?
-						</p>
-						<div class="btn_wrap center mt30">
+                  </p>
+                  <div class="btn_wrap center mt30">
               <button type="button" class="btn_base blue act" id="okay" onclick="location.href='/member/login'">확인</button>
-							<button type="button" class="btn_base darkgray act" id="save_close">취소</button>
-						</div>
-					</div>
-				</div>
-				<button type="button" class="close">닫기</button>
-			</div>
+                     <button type="button" class="btn_base darkgray act" id="save_close">취소</button>
+                  </div>
+               </div>
+            </div>
+            <button type="button" class="close">닫기</button>
+         </div>
         `;
         $("#survey_pop").css("display", "block");
 
@@ -1075,21 +864,21 @@ swiper-slide img {
 
        });
 
-		}
-		
-	}
-	
-	
-	
-	
-	
-	function addOrder() {
-		var pCode = document.querySelector('.pcode').value;
+      }
+      
+   }
+   
+   
+   
+   
+   
+   function addOrder() {
+      var pCode = document.querySelector('.pcode').value;
     //옵션 바꾸기
-		//var pOption = document.querySelector('input[name="optNm"]').value;
-		var pAmount = document.querySelector('input[name="pamount"]').value;
-		var mid = document.getElementById('mid').value;
-		console.log(mid);
+      //var pOption = document.querySelector('input[name="optNm"]').value;
+      var pAmount = document.querySelector('input[name="pamount"]').value;
+      var mid = document.getElementById('mid').value;
+      console.log(mid);
     var pOption = "";
 
     var pname = document.querySelector('.datail_info_top .tit strong').textContent.trim();
@@ -1110,53 +899,53 @@ swiper-slide img {
       }; 
       pOption = selectedOption;
     }
-		console.log(pOption);
-		
-		if (mid !='anonymousUser'){
-			var requestData = JSON.stringify({
-				pcode : pCode,
-				poption : pOption,
-			  pamount : pAmount,
-			  mid  :mid
-		});
-		//로그인 여부 확인 
-		//중복 상품 확인
-		
-		console.log(requestData);
+      console.log(pOption);
+      
+      if (mid !='anonymousUser'){
+         var requestData = JSON.stringify({
+            pcode : pCode,
+            poption : pOption,
+           pamount : pAmount,
+           mid  :mid
+      });
+      //로그인 여부 확인 
+      //중복 상품 확인
+      
+      console.log(requestData);
 
 
-		 $.ajax({
-			url: '/restcart/addCart',
-			type: 'post',
-			data: requestData,
-			contentType: "application/json",
-			success	: function(result){
-				console.log("장바구니 success");
-				if(result == '0'){
-					alert("장바구니에 추가를 하지 못하였습니다.");
-				} else if(result == '1'){
-					window.location.href = '/shop/order?pIdList='+pCode;
-				} else if(result == '2'){
-					window.location.href = '/shop/order?pIdList='+pCode;
-				} 
-			},
-			error :function(request, status, error) {
-				console.log(error);
-			}
-		}); 
-		}else {
-			console.log("로그인 필요");
-			alert('장바구니는 로그인이 필요합니다.');
-			var loginUrl = "/member/login";
-			window.location.href = loginUrl;
-		}
-		
-	}
-	
-	
-	</script>
+       $.ajax({
+         url: '/restcart/addCart',
+         type: 'post',
+         data: requestData,
+         contentType: "application/json",
+         success   : function(result){
+            console.log("장바구니 success");
+            if(result == '0'){
+               alert("장바구니에 추가를 하지 못하였습니다.");
+            } else if(result == '1'){
+               window.location.href = '/shop/order?pIdList='+pCode;
+            } else if(result == '2'){
+               window.location.href = '/shop/order?pIdList='+pCode;
+            } 
+         },
+         error :function(request, status, error) {
+            console.log(error);
+         }
+      }); 
+      }else {
+         console.log("로그인 필요");
+         alert('장바구니는 로그인이 필요합니다.');
+         var loginUrl = "/member/login";
+         window.location.href = loginUrl;
+      }
+      
+   }
+   
+   
+   </script>
 
-		<script>
+  <script>
     $(function () {
       console.log("비교함");
       getArr();
@@ -1164,36 +953,36 @@ swiper-slide img {
 
   </script>
 
-		<script>
+  <script>
         $(function(){
             $("#save_close").on("click", function(){
-                $("#survey_pop").css("display", "none");	
+                $("#survey_pop").css("display", "none");   
             });
 
         });
   </script>
-		<script>
+  <script>
     function makemodal() {
             const pop = document.getElementById('survey_pop');
         pop.innerHTML= `
-			<div class="layerpop blue" style="width: 460px;">
-				<div class="layerpop_head">
-					<h1>장바구니</h1>
-				</div>
-				<div class="layerpop_cont" style="height: 330px;">
-					<div class="save_cont">
-						<p>
-							해당 상품을 장바구니에 추가하였습니다.<br>
+         <div class="layerpop blue" style="width: 460px;">
+            <div class="layerpop_head">
+               <h1>장바구니</h1>
+            </div>
+            <div class="layerpop_cont" style="height: 330px;">
+               <div class="save_cont">
+                  <p>
+                     해당 상품을 장바구니에 추가하였습니다.<br>
               장바구니 페이지로 이동하시겠습니까?
-						</p>
-						<div class="btn_wrap center mt30">
+                  </p>
+                  <div class="btn_wrap center mt30">
               <button type="button" class="btn_base blue act" id="okay" onclick="location.href='/shop/mycart'">확인</button>
-							<button type="button" class="btn_base darkgray act" id="save_close">계속 쇼핑하기</button>
-						</div>
-					</div>
-				</div>
-				<button type="button" class="close">닫기</button>
-			</div>
+                     <button type="button" class="btn_base darkgray act" id="save_close">계속 쇼핑하기</button>
+                  </div>
+               </div>
+            </div>
+            <button type="button" class="close">닫기</button>
+         </div>
         `;
         $("#survey_pop").css("display", "block");
 
@@ -1206,152 +995,152 @@ swiper-slide img {
 
   </script>
 
-		<script>
+  <script>
   $(document).ready(
 
-	        function() { 
-	            /** ****************** 상세 정보 이벤트 ******************* */
-	            // 수량 이벤트
-	            $(".amount").find("button").on("click",function() {
-	                        var orderCnt = parseInt($('#orderForm').find("input[name=ordCnt]").val()), prdtCnt = parseInt($('#orderForm').find("input[name=prdtCnt]").val()), prdtType = $('#orderForm')
-	                                .find("input[name=prdtType]").val();
-	                        if ($(this).index() == 0) { // -
-	                            if (orderCnt > 1) {
-	                                $('#orderForm').find("input[name=ordCnt]").val(orderCnt - 1);
-	                            }
-	                        } else { // +
-	                            if (orderCnt < prdtCnt) {
-	                                $('#orderForm').find("input[name=ordCnt]").val(orderCnt + 1);
-	                            } else {
-	                                if (prdtType == "PT") {
-	                                    if (prdtCnt == 0) {
-	                                        alert("품절된 제품입니다. 재입고 알림 신청을 하시면, 입고 시 안내드립니다.");
-	                                    } else {
-	                                        // alert("재고가 부족합니다. " + prdtCnt + "개까지
-	                                        // 장바구니에 담을 수 있습니다.");
-	                                        // alert("재고가 부족하거나 구매제한수량이 있는
-	                                        // 제품입니다.\n"+prdtCnt+"개까지 장바구니에 담을 수
-	                                        // 있습니다.");
-	                                        alert("구매 제한 수량이 있는 제품입니다.\n최대 " + prdtCnt + "개까지 장바구니에 담을 수 있습니다.");
-	                                    }
-	                                } else {
-	                                    
-	                                }
-	                            }
-	                        }
-	                        var count = parseInt($('#orderForm').find("input[name=ordCnt]").val());
-	                        $(".amount").find("input[type=text]").val(count);
-	                        $('#orderForm').find("input[name=ordCnt]").val(count);
-	                        calculation();
-	                    });
-	            // 상단 상세 및 간단 레이어 팝업 개수 동일화.
-	            $(".amount").find("input[type=text]").val(1);
+           function() { 
+               /** ****************** 상세 정보 이벤트 ******************* */
+               // 수량 이벤트
+               $(".amount").find("button").on("click",function() {
+                           var orderCnt = parseInt($('#orderForm').find("input[name=ordCnt]").val()), prdtCnt = parseInt($('#orderForm').find("input[name=prdtCnt]").val()), prdtType = $('#orderForm')
+                                   .find("input[name=prdtType]").val();
+                           if ($(this).index() == 0) { // -
+                               if (orderCnt > 1) {
+                                   $('#orderForm').find("input[name=ordCnt]").val(orderCnt - 1);
+                               }
+                           } else { // +
+                               if (orderCnt < prdtCnt) {
+                                   $('#orderForm').find("input[name=ordCnt]").val(orderCnt + 1);
+                               } else {
+                                   if (prdtType == "PT") {
+                                       if (prdtCnt == 0) {
+                                           alert("품절된 제품입니다. 재입고 알림 신청을 하시면, 입고 시 안내드립니다.");
+                                       } else {
+                                           // alert("재고가 부족합니다. " + prdtCnt + "개까지
+                                           // 장바구니에 담을 수 있습니다.");
+                                           // alert("재고가 부족하거나 구매제한수량이 있는
+                                           // 제품입니다.\n"+prdtCnt+"개까지 장바구니에 담을 수
+                                           // 있습니다.");
+                                           alert("구매 제한 수량이 있는 제품입니다.\n최대 " + prdtCnt + "개까지 장바구니에 담을 수 있습니다.");
+                                       }
+                                   } else {
+                                       
+                                   }
+                               }
+                           }
+                           var count = parseInt($('#orderForm').find("input[name=ordCnt]").val());
+                           $(".amount").find("input[type=text]").val(count);
+                           $('#orderForm').find("input[name=ordCnt]").val(count);
+                           calculation();
+                       });
+               // 상단 상세 및 간단 레이어 팝업 개수 동일화.
+               $(".amount").find("input[type=text]").val(1);
 
-	            // 장바구니 이벤트
-	            $(".basket").on("click", function() {
-	            	var $this = $(this);
-	                var value = $this.data("value");
-	                var price = $this.data("price");
-	                var lineNm = $this.data("linename");
-	                var prdtNm = $this.data("prdtname");
-	                var sapCode = $this.data("sapCode");
-	                var buyLevel = $this.data("buy-level");
-	                var mbrJoinYm = $this.data('mbr-join-ym');
-	                var userLevel = $this.data('user-level');
-	                var levelName = $this.data('level-name');
+               // 장바구니 이벤트
+               $(".basket").on("click", function() {
+                  var $this = $(this);
+                   var value = $this.data("value");
+                   var price = $this.data("price");
+                   var lineNm = $this.data("linename");
+                   var prdtNm = $this.data("prdtname");
+                   var sapCode = $this.data("sapCode");
+                   var buyLevel = $this.data("buy-level");
+                   var mbrJoinYm = $this.data('mbr-join-ym');
+                   var userLevel = $this.data('user-level');
+                   var levelName = $this.data('level-name');
 
-	                var today = new Date();
-	                var yyyy = today.getFullYear().toString();
-	                var mm = (today.getMonth() + 1) < 10 ? "0" + (today.getMonth() + 1) : (today.getMonth() + 1).toString();
-	                var todayYm = yyyy + mm;
+                   var today = new Date();
+                   var yyyy = today.getFullYear().toString();
+                   var mm = (today.getMonth() + 1) < 10 ? "0" + (today.getMonth() + 1) : (today.getMonth() + 1).toString();
+                   var todayYm = yyyy + mm;
 
-	                // 회원전용(등급전체) 구매 가능 여부 체크
-	                if ('A' == buyLevel) {
-	                    var message = '회원만 신청 가능한 제품입니다.\n로그인 후 진행해주세요.';
-	                    if (mbrJoinYm == null || mbrJoinYm == '' || mbrJoinYm == 'undefined') {
-	                        alert(message);
-	                        return;
-	                    }
-	                }
+                   // 회원전용(등급전체) 구매 가능 여부 체크
+                   if ('A' == buyLevel) {
+                       var message = '회원만 신청 가능한 제품입니다.\n로그인 후 진행해주세요.';
+                       if (mbrJoinYm == null || mbrJoinYm == '' || mbrJoinYm == 'undefined') {
+                           alert(message);
+                           return;
+                       }
+                   }
 
-	                // 신규회원(당월) 구매 가능 여부 체크
-	                if ('M' == buyLevel) {
-	                    if (todayYm != mbrJoinYm) {
-	                        alert(today.getMonth() + 1 + "월 신규회원만 구입 가능한 제품입니다.");
-	                        return;
-	                    }
-	                }
+                   // 신규회원(당월) 구매 가능 여부 체크
+                   if ('M' == buyLevel) {
+                       if (todayYm != mbrJoinYm) {
+                           alert(today.getMonth() + 1 + "월 신규회원만 구입 가능한 제품입니다.");
+                           return;
+                       }
+                   }
 
-	                // 기존회원(당월이전) 구매 가능 여부 체크
-	                if ('L' == buyLevel) {
-	                    if (todayYm == mbrJoinYm || (mbrJoinYm == null || mbrJoinYm == '' || mbrJoinYm == 'undefined')) {
-	                        alert(today.getMonth() + 1 + "월 이전 가입한 회원만 구입 가능한 제품입니다.");
-	                        return;
-	                    }
-	                }
+                   // 기존회원(당월이전) 구매 가능 여부 체크
+                   if ('L' == buyLevel) {
+                       if (todayYm == mbrJoinYm || (mbrJoinYm == null || mbrJoinYm == '' || mbrJoinYm == 'undefined')) {
+                           alert(today.getMonth() + 1 + "월 이전 가입한 회원만 구입 가능한 제품입니다.");
+                           return;
+                       }
+                   }
 
-	                if ('MBR001' == buyLevel || 'MBR002' == buyLevel || 'MBR003' == buyLevel || 'MBR004' == buyLevel || 'MBR005' == buyLevel) {
-	                    if (buyLevel != userLevel) {
-	                        alert(levelName + ' 등급만 구매하실 수 있는 제품입니다.');
-	                        return;
-	                    }
-	                }
+                   if ('MBR001' == buyLevel || 'MBR002' == buyLevel || 'MBR003' == buyLevel || 'MBR004' == buyLevel || 'MBR005' == buyLevel) {
+                       if (buyLevel != userLevel) {
+                           alert(levelName + ' 등급만 구매하실 수 있는 제품입니다.');
+                           return;
+                       }
+                   }
                 });
-	            // 찜 이벤트
-	            $(".like").on("click", function() {
-	            	var $this = $(this);
-	                var value = $this.data("value");
-	                var price = $this.data("price");
-	                var lineNm = $this.data("linename");
-	                var prdtNm = $this.data("prdtname");
-	                var sapCode = $this.data("sapCode");
+               // 찜 이벤트
+               $(".like").on("click", function() {
+                  var $this = $(this);
+                   var value = $this.data("value");
+                   var price = $this.data("price");
+                   var lineNm = $this.data("linename");
+                   var prdtNm = $this.data("prdtname");
+                   var sapCode = $this.data("sapCode");
 
-	                var category = $('#orderForm').find('input[name="fullCateNm"]').val();
-	                category = (category ? category.replace(/>/gi, '/') : undefined);
+                   var category = $('#orderForm').find('input[name="fullCateNm"]').val();
+                   category = (category ? category.replace(/>/gi, '/') : undefined);
 
-	                if (loginFlag == "") {
-	                    if (confirm("로그인이 필요한 서비스입니다. 로그인 하시겠습니까?")) {
-	                        location.href = "/member/login.do";
-	                        return false;
-	                    } else {
-	                        return false;
-	                    }
-	                } else {
-	                    var $likeThis = $(this);
-	                    PRDT.likeEvent($likeThis.data("value"), function(data) {
-	                        if (data.result == "OK") {
-	                            setTimeout(function() {
-	                                $('.layer_alert_wrap').hide().find('span').hide();
-	                            }, 1500);
+                   if (loginFlag == "") {
+                       if (confirm("로그인이 필요한 서비스입니다. 로그인 하시겠습니까?")) {
+                           location.href = "/member/login.do";
+                           return false;
+                       } else {
+                           return false;
+                       }
+                   } else {
+                       var $likeThis = $(this);
+                       PRDT.likeEvent($likeThis.data("value"), function(data) {
+                           if (data.result == "OK") {
+                               setTimeout(function() {
+                                   $('.layer_alert_wrap').hide().find('span').hide();
+                               }, 1500);
 
-	                            /* TAS 관련 스크립트 : 장바구니 제품 담기 */
-	                            var _tasz = [];
-	                            _tasz.push({
-	                                productName : lineNm + prdtNm,
-	                                productCode : value,
-	                                productPrice : price,
-	                                sapCode : sapCode
-	                            });
-	                            LARO.TAS.et("wishlist", _tasz);
+                               /* TAS 관련 스크립트 : 장바구니 제품 담기 */
+                               var _tasz = [];
+                               _tasz.push({
+                                   productName : lineNm + prdtNm,
+                                   productCode : value,
+                                   productPrice : price,
+                                   sapCode : sapCode
+                               });
+                               LARO.TAS.et("wishlist", _tasz);
 
-	                            var tagItem = new Array(value,prdtNm,price,lineNm,category);
+                               var tagItem = new Array(value,prdtNm,price,lineNm,category);
 
-	                            //LARO.TagManager.addToWishlist(tagItem);
-	                            LARO.GA4TagManager.addToWishlist(tagItem);
+                               //LARO.TagManager.addToWishlist(tagItem);
+                               LARO.GA4TagManager.addToWishlist(tagItem);
 
-	                            if (data.message != "") {
-	                                $('.layer_alert_wrap').css('display', 'block').find('.layer_alert1').css('display', 'block');
-	                            } else {
-	                                $likeThis.addClass("on");
-	                                $('.layer_alert_wrap').css('display', 'block').find('.layer_alert2').css('display', 'block');
-	                            }
-	                        } else {
-	                            alert("처리 도중 데이터 에러가 발생되었습니다.");
-	                            console.log(data.message);
-	                        }
-	                    });
-	                }
-	            });
+                               if (data.message != "") {
+                                   $('.layer_alert_wrap').css('display', 'block').find('.layer_alert1').css('display', 'block');
+                               } else {
+                                   $likeThis.addClass("on");
+                                   $('.layer_alert_wrap').css('display', 'block').find('.layer_alert2').css('display', 'block');
+                               }
+                           } else {
+                               alert("처리 도중 데이터 에러가 발생되었습니다.");
+                               console.log(data.message);
+                           }
+                       });
+                   }
+               });
             });
 
 
@@ -1364,83 +1153,83 @@ swiper-slide img {
           $(".pricetotal").html(comma(salePrice * orderCount) + '<em>' + (prdtType == "PT" ? '원' : 'M') + '</em>');
       }
 
-	// 콤마 처리
-	function comma(num) {
-	    var len, point, str;
+   // 콤마 처리
+   function comma(num) {
+       var len, point, str;
 
-	    num = num + "";
-	    point = num.length % 3;
-	    len = num.length;
+       num = num + "";
+       point = num.length % 3;
+       len = num.length;
 
-	    str = num.substring(0, point);
-	    while (point < len) {
-	        if (str != "")
-	            str += ",";
-	        str += num.substring(point, point + 3);
-	        point += 3;
-	    }
-	    return str;
-	}
+       str = num.substring(0, point);
+       while (point < len) {
+           if (str != "")
+               str += ",";
+           str += num.substring(point, point + 3);
+           point += 3;
+       }
+       return str;
+   }
 
-	// 링크 URL 복사
-	function copy_trackback(trb) {
-	    var IE = (document.all) ? true : false;
-	    if (IE) {
-	        if (confirm("Ctrl+C 를 눌러 클립보드로 복사하세요.")) {
-	            window.clipboardData.setData("Text", trb);
-	        }
-	    } else {
-	        temp = prompt("Ctrl+C 를 눌러 클립보드로 복사하세요.", trb);
-	    }
-	}
+   // 링크 URL 복사
+   function copy_trackback(trb) {
+       var IE = (document.all) ? true : false;
+       if (IE) {
+           if (confirm("Ctrl+C 를 눌러 클립보드로 복사하세요.")) {
+               window.clipboardData.setData("Text", trb);
+           }
+       } else {
+           temp = prompt("Ctrl+C 를 눌러 클립보드로 복사하세요.", trb);
+       }
+   }
 
-	// 페이스북
-	function shareFacebook() {
+   // 페이스북
+   function shareFacebook() {
 
-	    LARO.GA4TagManager.socialInteraction(location.href);
+       LARO.GA4TagManager.socialInteraction(location.href);
 
-	    window.open("http://m.facebook.com/sharer/sharer.php?u=" + location.href, "facebook", "width=550,height=500,scrolls=no").focus();
-	}
+       window.open("http://m.facebook.com/sharer/sharer.php?u=" + location.href, "facebook", "width=550,height=500,scrolls=no").focus();
+   }
 
-	function submitProductAlarm(prdtSeq) {
-	    $.ajax({
-	        type : 'post',
-	        url : '/product/alarm.do',
-	        data : {
-	            prdtSeq : prdtSeq
-	        },
-	        dataType : 'json',
-	        success : function (data) {
-	            if (data.result == 'OK') {
-	                alert('재입고 알림 신청 되었습니다.');
+   function submitProductAlarm(prdtSeq) {
+       $.ajax({
+           type : 'post',
+           url : '/product/alarm.do',
+           data : {
+               prdtSeq : prdtSeq
+           },
+           dataType : 'json',
+           success : function (data) {
+               if (data.result == 'OK') {
+                   alert('재입고 알림 신청 되었습니다.');
 
-	                var prdtName = $('#orderForm').find('input[name="prdtName"]').val();
-	                var prdtSeq = $('#orderForm').find('input[name="prdtSeq"]').val();
+                   var prdtName = $('#orderForm').find('input[name="prdtName"]').val();
+                   var prdtSeq = $('#orderForm').find('input[name="prdtSeq"]').val();
 
-	                LARO.GA4TagManager.notifyMe(prdtName, prdtSeq);
+                   LARO.GA4TagManager.notifyMe(prdtName, prdtSeq);
 
-	            } else if (data.result == 'STAND') {
-	                alert('이미 재입고 알림 신청된 제품입니다.');
-	            }
-	            $('#alarmCloseBtn').trigger('click');
-	        },
-	        error : function () {
-	            memberLogin();
-	        }
-	    });
-	}
+               } else if (data.result == 'STAND') {
+                   alert('이미 재입고 알림 신청된 제품입니다.');
+               }
+               $('#alarmCloseBtn').trigger('click');
+           },
+           error : function () {
+               memberLogin();
+           }
+       });
+   }
   </script>
 
+  
+
+    <!-- footer -->
+   <div class="include-footer" th:insert="~{include/footer}"></div>
+   <!-- /footer -->
+  </div>
+  <!-- //wrap -->
 
 
-		<!-- footer -->
-		<div class="include-footer" th:insert="~{include/footer}"></div>
-		<!-- /footer -->
-	</div>
-	<!-- //wrap -->
-
-
-	<script type="text/javascript">
+  <script type="text/javascript">
     $(function () {
       // 유의사항 토글
       $(document).on('click', '.event_notice .tit', function () {
@@ -1618,7 +1407,7 @@ swiper-slide img {
 
 
   </script>
-
+  
 </body>
 
 </html>
