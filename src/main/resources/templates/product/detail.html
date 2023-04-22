@@ -805,9 +805,7 @@ swiper-slide img {
 
       const liElement = document.querySelector('.view li:nth-of-type(1)');
       const imglink = liElement.style.backgroundImage.slice(4, -1);
-      console.log(imglink);
 
-      //const rate = document.querySelector('.c00 em').textContent; //수정!!!
       const rate = document.querySelector('.star-rating.bic span').className;
       const review = document.querySelector('.review').textContent;
       
@@ -820,10 +818,8 @@ swiper-slide img {
       pOption = pname;
     }else {
       var selectedOption = $('.datail_info_data .opt option:selected').text();
-      console.log(selectedOption);
 
       if(selectedOption =='선택'){
-        console.log("옵션 선택 안함");
         const pop = document.getElementById('survey_pop');
         pop.innerHTML= `
 			<div class="layerpop blue" style="width: 460px;">
@@ -942,7 +938,6 @@ swiper-slide img {
 
        });      }
 
-      console.log("비교함에 담음");
       getArr();
 
       //담았으면 옆에 사이드바에 띄워줘야 함
@@ -953,28 +948,20 @@ swiper-slide img {
 
 		<script>
 	function addCart() {
-		console.log('장바구니 담기');
 		var pCode = document.querySelector('.pcode').value;
     //옵션 바꾸기
-		//var pOption = document.querySelector('input[name="optNm"]').value;
 		var pAmount = document.querySelector('input[name="pamount"]').value;
 		var mid = document.getElementById('mid').value;
-		console.log(mid);
     var pOption = "";
 
     var pname = document.querySelector('.datail_info_top .tit strong').textContent.trim();
-    console.log(pname+" 이름");
 
     if (!document.querySelector('.option')) {
       pOption = pname;
     }else {
       var selectedOption = $('.datail_info_data .opt option:selected').text();
-      console.log(selectedOption);
 
-      // const selectEl = document.querySelector('.opt');  // select 요소 선택
-      // const selectedValue = selectEl.options[selectEl.selectedIndex].val;
       if(selectedOption =='선택'){
-        console.log("옵션 선택 안함");
         const pop = document.getElementById('survey_pop');
         pop.innerHTML= `
 			<div class="layerpop blue" style="width: 460px;">
@@ -1004,7 +991,6 @@ swiper-slide img {
       }; 
       pOption = selectedOption;
     }
-		console.log(pOption);
 		
 		if (mid !='anonymousUser'){
 			var requestData = JSON.stringify({
@@ -1016,8 +1002,6 @@ swiper-slide img {
 		//로그인 여부 확인 
 		//중복 상품 확인
 		
-		console.log(requestData);
-
 
 		 $.ajax({
 			url: '/restcart/addCart',
@@ -1025,7 +1009,6 @@ swiper-slide img {
 			data: requestData,
 			contentType: "application/json",
 			success	: function(result){
-				console.log("장바구니 success");
 				if(result == '0'){
 					alert("장바구니에 추가를 하지 못하였습니다.");
 				} else if(result == '1'){
@@ -1046,7 +1029,6 @@ swiper-slide img {
 			}
 		}); 
 		}else {
-			console.log("로그인 필요");
 			const pop = document.getElementById('survey_pop');
         pop.innerHTML= `
 			<div class="layerpop blue" style="width: 460px;">
@@ -1086,31 +1068,23 @@ swiper-slide img {
 	function addOrder() {
 		var pCode = document.querySelector('.pcode').value;
     //옵션 바꾸기
-		//var pOption = document.querySelector('input[name="optNm"]').value;
 		var pAmount = document.querySelector('input[name="pamount"]').value;
 		var mid = document.getElementById('mid').value;
-		console.log(mid);
     var pOption = "";
 
     var pname = document.querySelector('.datail_info_top .tit strong').textContent.trim();
-    console.log(pname+" 이름");
 
     if (!document.querySelector('.option')) {
       pOption = pname;
     }else {
       var selectedOption = $('.datail_info_data .opt option:selected').text();
-      console.log(selectedOption);
 
-      // const selectEl = document.querySelector('.opt');  // select 요소 선택
-      // const selectedValue = selectEl.options[selectEl.selectedIndex].val;
       if(selectedOption =='선택'){
-        console.log("옵션 선택 안함");
         alert('옵션을 선택하세요');
         return;
       }; 
       pOption = selectedOption;
     }
-		console.log(pOption);
 		
 		if (mid !='anonymousUser'){
 			var requestData = JSON.stringify({
@@ -1121,9 +1095,6 @@ swiper-slide img {
 		});
 		//로그인 여부 확인 
 		//중복 상품 확인
-		
-		console.log(requestData);
-
 
 		 $.ajax({
 			url: '/restcart/addCart',
@@ -1131,7 +1102,6 @@ swiper-slide img {
 			data: requestData,
 			contentType: "application/json",
 			success	: function(result){
-				console.log("장바구니 success");
 				if(result == '0'){
 					alert("장바구니에 추가를 하지 못하였습니다.");
 				} else if(result == '1'){
@@ -1145,7 +1115,6 @@ swiper-slide img {
 			}
 		}); 
 		}else {
-			console.log("로그인 필요");
 			alert('장바구니는 로그인이 필요합니다.');
 			var loginUrl = "/member/login";
 			window.location.href = loginUrl;
@@ -1158,7 +1127,6 @@ swiper-slide img {
 
 		<script>
     $(function () {
-      console.log("비교함");
       getArr();
     });
 

@@ -665,16 +665,14 @@ $(function(){
 		return subArr;
 }
 	function compareThis(slidenum) {
-	console.log("비교하기 상품");
-		
+
 	var imglink = document.querySelector(`.${slidenum} img`).getAttribute('src') ;
 	var name= document.querySelector(`.${slidenum} .price-info.single span`).textContent;
 	var brand= document.querySelector(`.${slidenum} .title.ellipsis`).textContent;
 	// var rates = document.querySelector(`.${slidenum} .score`).textContent.trim().replace(/^별점\s*/, '');
 	const rates = document.querySelector(`.${slidenum} .score`).value;
 	const review = document.querySelector(`.${slidenum} .review`).value;
-	console.log(review+" 리뷰 개수");
-	
+
 	const price = document.querySelector(`.${slidenum} .price`).value;
 	const pcode = document.querySelector(`.${slidenum} .pcode`).value;
 	const pVolume = document.querySelector(`.${slidenum} .pVolume`).value;
@@ -683,7 +681,6 @@ $(function(){
 
 	var pingredient = document.querySelector(`.${slidenum} .pingredient`).value;
 	var slicedIngredients = psplit(pingredient);
-	console.log(slicedIngredients);
 
 	if($(".card_choice .card_01").find(".card_name").text() == ""){ //카드1 섹션이 비워져있을 때 1에 상품 삽입
 		
@@ -704,12 +701,11 @@ $(function(){
 		document.querySelector('.cd_con.card_sort .card_01 .star-rating .review').textContent = review;
 		
 		const c = document.querySelector(".cd_con.card_event .card_01");
-		console.log(price);
+
 		c.querySelector('.price').textContent = price + "("+pVolume+")";
 		const p = document.querySelector(".cd_con.annual_fee .card_01");
 		p.querySelector('.keyword').textContent = ptype;
 		const i = document.querySelector(".cd_con.last_result .card_01");
-		// i.querySelector('.caution').textContent = slicedIngredients;
 
 		const cautionEl = i.querySelector('.caution');
 		const ulEl = document.createElement("ul");
@@ -730,7 +726,6 @@ $(function(){
 		cautionEl.innerHTML = "";
 		cautionEl.appendChild(ulEl);
 		
-		console.log("여기서 ajax");
 		getMatch(pcode , 1);
 		
 
@@ -753,7 +748,7 @@ $(function(){
 		document.querySelector('.cd_con.card_sort .card_02 .star-rating .review').textContent = review;
 		
 		const c = document.querySelector(".cd_con.card_event .card_02");
-		console.log(price);
+
 		c.querySelector('.price').textContent = price + "("+pVolume+")";
 		const p = document.querySelector(".cd_con.annual_fee .card_02");
 		p.querySelector('.keyword').textContent = ptype;
@@ -799,7 +794,7 @@ $(function(){
 
 
 			const c = document.querySelector(".cd_con.card_event .card_03");
-			console.log(price);
+
 			c.querySelector('.price').textContent = price + "("+pVolume+")";
 			const p = document.querySelector(".cd_con.annual_fee .card_03");
 		p.querySelector('.keyword').textContent = ptype;
@@ -834,7 +829,7 @@ $(function(){
 }
 
 	function deleteOnly(num) {
-		console.log('deleteOnly');
+
 		const cardDiv = document.querySelector(`.${num}`);
 			
 			cardDiv.querySelector('img').src ="";
@@ -847,34 +842,25 @@ $(function(){
 			$(`.cd_con.card_sort .${num} .star-rating.bic span`).removeClass(spanClass);
 			$(`.cd_con.card_sort .${num} .star-rating`).removeClass('bic');
 
-			//document.querySelector(`.${num} .rates`).textContent = '';
 			document.querySelector(`.${num} .price`).textContent = '';
 			document.querySelector(`.${num} .caution`).textContent = '';
 			document.querySelector(`.${num} .keyword`).textContent = '';
 			document.querySelector(`.${num} .review`).textContent = '';
 
-			//cardDiv.querySelector('.chart').setAttribute('data-percent', '');
-			// document.querySelector(`.mychart${num}`).setAttribute('data-percent', '');
 			document.querySelector(`.${num} .chart`).setAttribute('data-percent','');
 
 			document.querySelectorAll(`.${num} .chart .title`).forEach((title) => {
 				title.textContent = '';
 			});
-			//document.querySelector(`.${num} canvas`).remove();
 
 			document.querySelector(`.${num} .chart`).remove();
 			const number = num.charAt(num.length - 1);
-			console.log(number);
 			document.querySelector(`.cd_con.card_benefit .${num}`).innerHTML=`
 				<div id="resultchart${number}" class="chart mychart${number}" data-percent="">
 					<span class="title" style="top: 119px;"></span>
 				</div>
 			`;
 
-			// const elements = document.querySelectorAll(`.${num} dt, .${num} dd`);
-			// for (let i = 0; i < elements.length; i++) {
-			// 	elements[i].textContent = "";
-			// }
 	}
 
 	function move(give, take) {
@@ -904,7 +890,6 @@ $(function(){
 	}
 
 	function delThis(card_num) {
-		console.log(card_num+ "-----------------");
 
 		if(card_num == 'card_01'){ //card 1 삭제 -> 2존재 시 1로, 3존재 시 2로
 	
@@ -924,15 +909,12 @@ $(function(){
 			}
 
 		}else if (card_num == 'card_02' ) { //card 2 삭제 -> 3존재 시 2로
-			console.log('2선택');
 			if(document.querySelector('.card_03 .card_name').textContent != '') { //card3 존재
-				console.log('2선택 3존재');
 
 				move('card_03','card_02');
 				deleteOnly('card_03');
 
 			}else { //card 2만 삭제
-				console.log('2선택 2삭제');
 				deleteOnly('card_02');
 			}
 
@@ -947,7 +929,6 @@ $(function(){
 <script>
 	const arr = JSON.parse(localStorage.getItem("arr")) || [];
 	
-	console.log("-------------"+ arr.length);
 	
 	if(arr.length == 0) { //비교함에 담긴 상품이 없을 경우
 		for(let i =0;i<=9;i++) {
@@ -958,7 +939,6 @@ $(function(){
 		for(let i=0;i<arr.length;i++) {
 			const slide = document.querySelector(`.slide${i}`);					
 	    const [pcode, pname, brand, price, imglink, rate, pVolume, ptype, pingredient,pOption,review] = arr[i];
-			console.log("img: "+ imglink);
 	    slide.innerHTML = `
       <div class="prod-unit" style="padding:0px;height:100%;">
         <div class="img" data-slitmcd="" data-info="">
@@ -993,7 +973,6 @@ $(function(){
   
 		}
 		for(let i=arr.length;i<=9;i++) {
-			console.log('빈 상품 출력');
 			const slide = document.querySelector(`.slide${i}`);
 			slide.innerHTML = '<div class="blank"><div class="empty"> <img src="https://www.card-gorilla.com/statics/img/compare_detail_add.png"></div><h4 class="forblank">상품을 비교함에<br>담아보세요</h4></div>';
 		}
@@ -1003,7 +982,6 @@ $(function(){
 </script>
 <script>
 	function del(pcode, slidenum) {
-		console.log(pcode);
     let arr = JSON.parse(localStorage.getItem("arr")) || []; // null일 경우 빈 배열 생성
 
     arr = arr.filter(item => item[0] !== pcode); // 삭제할 상품을 제외한 배열 반환
@@ -1011,27 +989,17 @@ $(function(){
 
 		if(arr.length!=0){ 
 			for(let i = slidenum+1;i<=arr.length;i++) {
-					console.log("내용 복사중" + i);
-					var next = document.querySelector(`.slide${i}`);	
-					console.log("nex");
-					console.log(next);
+					var next = document.querySelector(`.slide${i}`);					
 
 					var prev = document.querySelector(`.slide${i-1}`);
-					console.log("prev");
-					console.log(prev);
 
 					prev.innerHTML = next.innerHTML;
-					// var button5 = prev.querySelector('.button5');
-					// button5.onclick = function() {
-					// 		compareThis(`slide${i-1}`);
-					// }
-					console.log(`${i-1}`);
+
 					const f = i-1;
 					var button5 = prev.querySelector('.button5');
 				button5.setAttribute("onclick", `compareThis('slide${f}')`);
 				var button4 = prev.querySelector('.button4');
 				var nextbtn = next.querySelector('.button4');
-			//	button4.setAttribute("onclick", `compareThis('slide${f}')`);
 				const p =  nextbtn.getAttribute("onclick").match(/'(.*?)'/)[1];
 				button4.setAttribute("onclick", `del('${p}',${f})`);
 
@@ -1073,8 +1041,6 @@ $(function(){
 		 });
 		$("#survey_pop").css("display", "block");
 
-			//비교함과 플로팅 박스에서 삭제
-			//비교함 순서 땡기기
   }
 
 </script>
@@ -1114,7 +1080,6 @@ $(function(){
 </script>
 <script>
 	function addCart(pcode, pOption) {
-		console.log("장바구니 담기  "+pcode);
 		var mid = document.getElementById('mid').value;
 
 		if (mid !='anonymousUser'){
@@ -1158,7 +1123,6 @@ $(function(){
 			}
 		}); 
 		}else {
-			console.log("로그인 필요");
 			const pop = document.getElementById('survey_pop');
         pop.innerHTML= `
 			<div class="layerpop blue" style="width: 460px;">
@@ -1225,8 +1189,7 @@ $(function(){
 			var dTab = $detailTab.height();
 			var dTabfixed = $('.product_detail_tab.fixed').height();
 			$this.parent().addClass('on').siblings('li').removeClass('on');
-			//console.log("dTab : " +  dTab);
-			//console.log("dTabfixed : " +  dTabfixed);
+
 			var $htmlBody = $('html, body');
 			var moveHeight = 100;
 			if (!dTabfixed && !$(this).parent().index() == 0) {
@@ -1309,7 +1272,6 @@ $(function(){
 </script>
 <script>
 	function getMatch(pcode, cardnum) {
-		console.log("getmatch 작동");
 		var mid = document.getElementById('mid').value;
 
 		if(mid !='anonymousUser'){
@@ -1324,18 +1286,14 @@ $(function(){
            data: requestData,
            contentType: "application/json",
            success: function(result) {
-						console.log("매치 success");
-						console.log("result       =   "+result);
 						document.querySelector(`.mychart${cardnum}`).setAttribute('data-percent', result);
 						const mychart = document.querySelector(`.mychart${cardnum}`);
 
 						if(result != null && mychart != null && result >0 ){
 
 						const percent = mychart.dataset.percent;
-						console.log(percent + "-------------------------");
 
 							if(percent <= 20){
-								console.log("퍼센트 20이하");
 								$(`#resultchart${cardnum}`).easyPieChart({
 								barColor: '#fe3c69',
 								trackColor : '#edebeb',

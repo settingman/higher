@@ -383,7 +383,6 @@
 
 
         function calcSellPrc() {
-            console.log("장바구니 계산");
             var hpoint = 0;
             var deposit = 0;
             var totProdPrc = 0;
@@ -650,7 +649,6 @@
                 pamount: $(input).val()
             });
 
-            console.log("---" + requestData);
 
             $.ajax({
                 url: '/restcart/modifyAmount',
@@ -658,10 +656,8 @@
                 data: requestData,
                 contentType: "application/json",
                 success: function(result) {
-                    console.log("장바구니 수량 변경 success");
 
                     var bbprc = parseFloat($("#" + cindex + " input[name='bbprc']").val());
-                    console.log(bbprc + "-----------");
                     var new_price = bbprc * $(input).val();
                     $("#" + cindex + " .o-price").text(new_price.toLocaleString() + "원");
                     $("#" + cindex + " input[name='prodPrc']").val(new_price);
@@ -675,7 +671,6 @@
                 }
             });
 
-            //modifyOrdQty(slitmCd, uitmCd, basktTypeGbcd, $(input).val(), ordQty, obj);
         }
 
 
@@ -697,18 +692,14 @@
                 pamount: $(input).val()
             });
 
-            console.log("---" + requestData);
-
             $.ajax({
                 url: '/restcart/modifyAmount',
                 type: 'post',
                 data: requestData,
                 contentType: "application/json",
                 success: function(result) {
-                    console.log("장바구니 수량 변경 success");
 
                     var bbprc = parseFloat($("#" + cindex + " input[name='bbprc']").val());
-                    console.log(bbprc + "-----------");
                     var new_price = bbprc * $(input).val();
                     $("#" + cindex + " .o-price").text(new_price.toLocaleString() + "원");
                     $("#" + cindex + " input[name='prodPrc']").val(new_price);
@@ -734,70 +725,36 @@
                 if ($(liList[i]).find('.icheckbox').hasClass('checked')) {
 
                     var prodPrc = $(liList[i]).find("input[name='prodPrc']").val();
-                    // let prodPrc = parseInt(liList[i].querySelector(".prodPrc"));
-                    console.log(prodPrc + "----");
                     totOrdPrc += parseInt(prodPrc);
                     totProdPrc += parseInt(prodPrc);
                 }
             }
             payPrc = totProdPrc;
-            // let totO = document.getElementById("totOrdPrc");
-            // totO.textContent = payPrc.toLocaleString();
-            // let totP = document.getElementById("totProdPrc");
-            // totP.textContent = payPrc.toLocaleString();
-            // let spanElement = document.getElementById("payPrc");
-            // spanElement.textContent = payPrc.toLocaleString();
-
-            console.log(`totOrdPrc: ${totOrdPrc}원, totProdPrc: ${totProdPrc}원, payPrc: ${payPrc}원`);
-
-            // let first = document.getElementById("totOrdprc");
-            // first.innerText = payPrc.toLocaleString;
-            // let second = document.getElementById("totOrdprc");
-            // second.innerText = payPrc.toLocaleString;
-            // let third = document.getElementById("totOrdprc");
-            // third.innerText = payPrc.toLocaleString;
+           
             $("#totOrdPrc").text(gfn_appendComma(payPrc));
             $("#totProdPrc").text(gfn_appendComma(payPrc));
             $("#payPrc").text(gfn_appendComma(payPrc));
 
-            // document.getElementById("totOrdPrc").innerText = payPrc.toLocaleString();
-            // document.getElementById("totProdPrc").innerText = payPrc.toLocaleString();
-            // document.getElementById("payPrc").innerText = payPrc.toLocaleString();
-
+         
         }
 
 
-
-
-        // function modifyOrdQty(slitmCd, uitmCd, basktTypeGbcd, ordQty, oldOrdQty, obj) {
-        // 	console.log("상품 수량 변경");
-        // 	loadingBar.start();
-
-
-        // 	}
 
 
         function deleteBaskt(obj, targetObj, delType) {
             $("#survey_pop").css("display", "block");
 
             $('#okay').click(function() {
-                console.log("okay");
                 let liList = document.querySelectorAll(".cart-list-unit");
-                console.log("-------");
-                // let pcodeTest = $("#c0").find(".check-group").children("#pcode").val();
-                // console.log(pcodeTest);
                 var arr = new Array();
                 var checked = new Array();
     
     
                 for (let i = 0; i < liList.length; i++) {
-                    console.log("-----------");
     
                     if ($(liList[i]).find('.icheckbox').hasClass('checked')) {
                         const pcode = $(liList[i]).find('#pcode').val();
-                        console.log(pcode);
                         const poption = $(liList[i]).find('.cnt-opt').val();
-                        console.log("option" + poption);
                         arr.push({
                             pcode: pcode,
                             poption: poption
@@ -814,7 +771,6 @@
                     contentType: "application/json",
     
                     success: function(result) {
-                        console.log("장바구니 선택 삭제 success");
                         $("#survey_pop").css("display", "none");
                         
                         for (let i = 0; i < checked.length; i++) {
@@ -852,25 +808,7 @@
 
 
             });
-
-            /* 	    success: function (result) {
-							console.log("장바구니 선택 삭제 success");
-							
-							// const li = document.getElementById(cindex);
-
-							// li.remove();
-							// cal();
-								
-						},
-						error :function(request, status, error) {
-							console.log(error);
-						}
-					});   */
-
-
-
-
-           
+    
 
         }
 
@@ -884,16 +822,13 @@
                     pcode: pcode,
                     poption: poption,
                 });
-    
-                console.log("---" + requestData);
-    
+        
                 $.ajax({
                     url: '/restcart/deleteCart',
                     type: 'post',
                     data: requestData,
                     contentType: "application/json",
                     success: function(result) {
-                        console.log("장바구니 삭제 success");
                         $("#survey_pop").css("display", "none");
 
                         const li = document.getElementById(cindex);
@@ -1351,7 +1286,6 @@
 <body>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    console.log("ddddddddddddddd");
     calcSellPrc();
 });
 </script>
@@ -1680,7 +1614,6 @@ $("select.form-select").on("change", function() {
 							poption : selectedOption,
 					});
 					
-					console.log("---"+requestData);
 
 					$.ajax({
 						url: '/restcart/modifyOption',
@@ -1688,7 +1621,6 @@ $("select.form-select").on("change", function() {
 						data: requestData,
 						contentType: "application/json",
 						success	: function(result){
-							console.log("장바구니 옵션 변경 success"+ selectedOption);
 
                             cnt.val(selectedOption);
 
@@ -1744,9 +1676,6 @@ $("select.form-select").on("change", function() {
 
 	$(this).children('.chBox').attr("checked", false);
 
-	console.log($('.chBox').length)
-	console.log($('.chBox:checked').length)
-
 	if($('.chBox').length == $('.chBox:checked').length){
 		$('.allchk').addClass('checked');
 		$('input[name="checkbox_all"]').prop("checked", true);
@@ -1761,10 +1690,6 @@ $("select.form-select").on("change", function() {
 	$(this).addClass('checked');
 
 	$(this).children('.chBox').attr("checked", true);
-
-	console.log($('.chBox').length)
-	console.log($('.chBox:checked').length)
-
 
 	cal();
 
