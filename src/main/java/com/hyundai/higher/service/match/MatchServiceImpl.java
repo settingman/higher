@@ -41,7 +41,8 @@ public class MatchServiceImpl implements MatchService{
 	
 	@Override
 	public List<MatchProductDTO> mbtiProduct(String dept2no, String pmbti) {
-		List<MatchProductDTO> product = mMapper.mbtiProduct(dept2no, pmbti); 
+		String price = "";
+		List<MatchProductDTO> product = mMapper.mbtiProduct(dept2no, pmbti, price); 
 
 		return product;
 	}

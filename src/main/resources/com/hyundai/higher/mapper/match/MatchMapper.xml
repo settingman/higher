@@ -36,6 +36,18 @@
 	    		<if test="!pmbti.equals('') and pmbti!=null">
 	    		and p.pmbti=#{pmbti}
 	    		</if>
+	    		<if test="price != '' and price == 1">
+					<![CDATA[ AND pprice < 20000 ]]>
+				</if> 
+				<if test="price != '' and price == 2">
+					<![CDATA[ AND pprice between 20000 and 30000 ]]>
+				</if> 
+				<if test="price != '' and price == 3">
+					<![CDATA[ AND pprice between 30000 and 50000 ]]>
+				</if> 
+				<if test="price != '' and price == 4">
+					<![CDATA[ AND pprice >= 50000 ]]>
+				</if> 
 	    ) pi right join product p on pi.pcode = p.pcode
 	    where pi.rn =1 and pi.pmbti is not null and pi.dept1no = 10 <if test="!dept2no.equals('') and dept2no!=null">and p.dept2no=#{dept2no}</if>
 	</select>

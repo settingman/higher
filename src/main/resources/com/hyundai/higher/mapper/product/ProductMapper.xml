@@ -13,7 +13,21 @@
 			  WHERE dept1no=#{dept1no}
 			<if test="dept2no != ''"> 
 				AND dept2no=#{dept2no} 
+			</if>
+			
+			<if test="price != '' and price == 1">
+				<![CDATA[ AND pprice < 50000 ]]>
 			</if> 
+			<if test="price != '' and price == 2">
+				<![CDATA[ AND pprice between 50000 and 100000 ]]>
+			</if> 
+			<if test="price != '' and price == 3">
+				<![CDATA[ AND pprice between 100000 and 200000 ]]>
+			</if> 
+			<if test="price != '' and price == 4">
+				<![CDATA[ AND pprice >= 200000 ]]>
+			</if> 
+			
 			) p 
 		LEFT JOIN brand b ON p.bno=b.bno
 		JOIN (SELECT pcode, itype, iloc FROM IMG WHERE itype='thumb') i ON p.pcode=i.pcode

@@ -30,6 +30,7 @@ import lombok.extern.log4j.Log4j2;
  * 2023. 03. 17.	신수진		상품 세부 
  * 2023. 04. 10.	신수진		왼쪽 카테고리 목록 수정
  * 2023. 04. 15.	신수진		상품별 리뷰 조회 기능 추가
+ * 2023. 04. 21.	신수진		상품 필터링 기능 추가
  * </pre>
  */
 
@@ -48,7 +49,8 @@ public class ProductController {
 	@GetMapping("/list")
 	public String productList(@RequestParam(value="dept1", required=false, defaultValue = "") String dept1no, 
 							@RequestParam(value="dept2", required=false, defaultValue = "") String dept2no, 
-							@RequestParam(value="mbti", required=false, defaultValue = "") String mbti, Model model) {
+							@RequestParam(value="mbti", required=false, defaultValue = "") String mbti, 
+							@RequestParam(value="pf", required=false, defaultValue = "") String pf, Model model) {
 		
 		if(dept1no.equals("10")) {
 			model.addAttribute("dept1name", "스킨케어");
@@ -69,12 +71,13 @@ public class ProductController {
 		model.addAttribute("mbtiList", service.mbtiList());
 		
 		if(mbti.equals("")) {
-			model.addAttribute("productList", service.productList(dept1no, dept2no));
+			model.addAttribute("productList", service.productList(dept1no, dept2no, pf));
 		}else {
-			model.addAttribute("mbtiProdList", service.mbtiProdList(mbti));
+			model.addAttribute("mbtiProdList", service.mbtiProdList(mbti, pf));
 		}
 		
 		model.addAttribute("mbti", mbti);
+		model.addAttribute("pf", pf);
 		
 		return "product/list";
 	}

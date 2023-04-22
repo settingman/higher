@@ -16,15 +16,6 @@
 		<!-- header -->
 		<header id="header" th:insert="~{include/header}"></header>
 		<!-- /header -->
-    <section class="h_link">
-      <nav>
-        <ol>
-          <li><a href="javascript:void(0);" onclick="location.href='/'"><i>HOME</i></a></li>
-          <li class="current kor"><a href="javascript:void(0);"
-              onclick="location.href='/review/list.do'"><i>리얼리뷰</i></a></li>
-        </ol>
-      </nav>
-    </section>
 
     <section class="sub_visual_warp">
 		<div class="sub_visual">
@@ -70,14 +61,14 @@
               <ul class="list" id="reviewList" style="position: relative; height: 2250.97px;">
 				<!-- 비회원일 경우 -->
                 <li sec:authorize="isAnonymous()" class="btn_review" style="position: absolute; left: 0px; top: 0px;"><a
-                    href="#survey_pop"><span>리얼리뷰 쓰기</span><em>한줄리뷰 50M<br>첫 리뷰 더블적립</em></a>
+                    href="/member/login"><span>리얼리뷰 쓰기</span><em>한줄리뷰 50M<br>첫 리뷰 더블적립</em></a>
                 </li>
 				<!-- 회원일 경우 -->
                 <li sec:authorize="isAuthenticated()" class="btn_review" style="position: absolute; left: 0px; top: 0px;"><a
                     href="/review/form"><span>리얼리뷰 쓰기</span><em>한줄리뷰 50M<br>첫 리뷰 더블적립</em></a>
                 </li>
-                <li th:each="review, rStat : ${reviewList}" class="text" th:style="${'position: absolute; left: ' + (rStat.count%4)*290 +'px; top: ' + (rStat.count/4)*322 +'px;'}"> 
-                	<a href="#review_list001" class="layer-pop" data-type="link" data-url=""> 
+                <li th:each="review, rStat : ${reviewList}" class="text" th:style="${'position: absolute; left: ' + (rStat.count%4)*290 +'px; top: ' + (rStat.count/4)*350 +'px;'}"> 
+                	<a th:href="'/product/detail?code='+${review.pcode}" class="layer-pop" data-type="link" data-url=""> 
 	                	<span class="hash">[[${review.bname}]]</span> 
 	                	<span class="tit"><strong>[[${review.pname}]]</strong></span> 
 	                	<span class="rating">

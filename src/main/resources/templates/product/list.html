@@ -121,9 +121,14 @@ button.detailview {
               </li>
             </ul>
           </nav>
-          <div>
+ <div>
             <h2>FILTER</h2>
-            <button type="button" class="init" onclick="filterInit();"><span class="hide">FILTER 선택 초기화</span></button>
+            <button th:if="${mbti == ''}" type="button" class="init" th:onclick="'location.href=\'/product/list?dept1=' + @{${dept1no}} + '&dept2=' + @{${dept2no}} + '\''">
+           		<span class="hide">FILTER 선택 초기화</span>
+            </button>
+            <button th:if="${mbti != ''}" type="button" class="init" th:onclick="'location.href=\'/product/list?mbti=' + @{${mbti}} + '\''">
+           		<span class="hide">FILTER 선택 초기화</span>
+            </button>
           </div>
           <form id="productForm" action="/product/list.do?cate2=1008" method="post"><input id="pageIndex"
               name="pageIndex" type="hidden" value="1"><input id="cate1" name="cate1" type="hidden" value="1001"><input
@@ -137,20 +142,33 @@ button.detailview {
 
                 <li class="open">
                   <span class="link">금액대 별</span>
-                  <div class="submenu" style="display: block;">
-                    <span class="radiocss"><input type="radio" name="price" id="price001" value="1"><label
-                        for="price001"><em>20,000원 미만</em></label></span>
-                    <span class="radiocss"><input type="radio" name="price" id="price002" value="2"><label
-                        for="price002"><em>20,000-30,000원</em></label></span>
-                    <span class="radiocss"><input type="radio" name="price" id="price003" value="3"><label
-                        for="price003"><em>30,000-50,000원</em></label></span>
-                    <span class="radiocss"><input type="radio" name="price" id="price004" value="4"><label
-                        for="price004"><em>50,000원 이상</em></label></span>
+                  <!-- mbti 상품 -->
+                  <div th:if="${mbti != ''}" class="submenu" style="display: block;">
+                    <span class="radiocss"><input type="radio" name="price" id="price001" value="1" th:checked="${pf eq '1'}" th:onclick="'location.href=\'/product/list?mbti=' + @{${mbti}} + '&pf=1' + '\''">
+                    <label for="price001"><em>50,000원 미만</em></label></span>
+                    <span class="radiocss"><input type="radio" name="price" id="price002" value="2" th:checked="${pf eq '2'}" th:onclick="'location.href=\'/product/list?mbti=' + @{${mbti}} + '&pf=2' + '\''"><label
+                        for="price002"><em>50,000-100,000원</em></label></span>
+                    <span class="radiocss"><input type="radio" name="price" id="price003" value="3" th:checked="${pf eq '3'}" th:onclick="'location.href=\'/product/list?mbti=' + @{${mbti}} + '&pf=3' + '\''"><label
+                        for="price003"><em>100,000-200,000원</em></label></span>
+                    <span class="radiocss"><input type="radio" name="price" id="price004" value="4" th:checked="${pf eq '4'}" th:onclick="'location.href=\'/product/list?mbti=' + @{${mbti}} + '&pf=4' + '\''"><label
+                        for="price004"><em>200,000원 이상</em></label></span>
+                  </div>
+                  <!-- 일반 상품 -->
+                  <div th:if="${mbti == ''}" class="submenu" style="display: block;">
+                    <span class="radiocss"><input type="radio" name="price" id="price001" value="1" th:checked="${pf eq '1'}" th:onclick="'location.href=\'/product/list?dept1=' + @{${dept1no}} + '&dept2=' + @{${dept2no}} + '&pf=1' + '\''">
+                    <label for="price001"><em>50,000원 미만</em></label></span>
+                    <span class="radiocss"><input type="radio" name="price" id="price002" value="2" th:checked="${pf eq '2'}" th:onclick="'location.href=\'/product/list?dept1=' + @{${dept1no}} + '&dept2=' + @{${dept2no}} + '&pf=2' + '\''"><label
+                        for="price002"><em>50,000-100,000원</em></label></span>
+                    <span class="radiocss"><input type="radio" name="price" id="price003" value="3" th:checked="${pf eq '3'}" th:onclick="'location.href=\'/product/list?dept1=' + @{${dept1no}} + '&dept2=' + @{${dept2no}} + '&pf=3' + '\''"><label
+                        for="price003"><em>100,000-200,000원</em></label></span>
+                    <span class="radiocss"><input type="radio" name="price" id="price004" value="4" th:checked="${pf eq '4'}" th:onclick="'location.href=\'/product/list?dept1=' + @{${dept1no}} + '&dept2=' + @{${dept2no}} + '&pf=4' + '\''"><label
+                        for="price004"><em>200,000원 이상</em></label></span>
                   </div>
                 </li>
               </ul>
             </nav>
           </form>
+       
         </div>
         <!--  sideLeft End -->
         <!-- mainList Start -->
@@ -162,17 +180,14 @@ button.detailview {
 
             <section class="product_wrap">
               <div class="prd_term">
-                <span class="prd_cnt">전체 
-                	<em id="totalCount" th:if="${mbti == ''}">[[${#lists.size(productList)}]]</em>개
-                	<em id="totalCount" th:if="${mbti != ''}">[[${#lists.size(mbtiProdList)}]]</em>개
+                <span class="prd_cnt"  th:if="${mbti == ''}">전체 
+                	<em id="totalCount">[[${#lists.size(productList)}]]</em> 개
                 </span>
-                <span class="sort_list">
-                  <a href="javascript:sortEvent('1');">판매량 순</a>
-                  <a href="javascript:sortEvent('2');" class="on">최근 등록 순 </a>
-                  <a href="javascript:sortEvent('3');">리뷰 많은 순</a>
-                  <a href="javascript:sortEvent('4');">낮은 가격 순 </a>
-                  <a href="javascript:sortEvent('5');">높은 가격 순</a>
+                <span class="prd_cnt" th:if="${mbti != ''}">전체 
+                	<em id="totalCount">[[${#lists.size(mbtiProdList)}]]</em> 개
                 </span>
+                
+                
               </div>
               <!-- 신상, 단독구성 -->
               <ul class="product_list ea03" id="listUl">
