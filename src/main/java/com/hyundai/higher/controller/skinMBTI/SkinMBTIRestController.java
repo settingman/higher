@@ -13,7 +13,20 @@ import com.hyundai.higher.security.dto.SecurityMember;
 import com.hyundai.higher.service.skinMBTI.SkinMBTIService;
 
 import lombok.extern.log4j.Log4j2;
-
+/**
+ * @since : 2023. 04. 10.
+ * @FileName: SkinMBTIRestController.java
+ * @author : 신수진
+ * @설명 : 피부 진단 결과 저장 및 포인트 지급
+ * 
+ * <pre>
+ * 	   수정일          수정자                수정내용
+ * -------------   --------    ---------------------------
+ * 2023. 04. 10.    신수진    	최초 생성   
+ * 2023. 04. 10.	신수진		피부 진단 결과 저장 기능 구현
+ * 2023. 04. 12.	신수진		최초 진단 시 포인트 적립 기능 추가
+ * </pre>
+ */
 @Log4j2
 @RestController
 @RequestMapping("/skinMBTIRest")

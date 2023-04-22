@@ -31,7 +31,7 @@ import lombok.extern.log4j.Log4j2;
  * @since : 2023. 04. 01.
  * @FileName: MatchController.java
  * @author : 박서현, 신수진
- * @설명 : 화장품 매칭하기 기능 관련 컨트롤러
+ * @설명 : 화장품 매칭하기, 유사성분템 기능 관련 컨트롤러
  * 
  *     <pre>
  * 	   수정일          수정자                수정내용

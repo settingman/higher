@@ -29,6 +29,7 @@
 		VALUES (review_seq.NEXTVAL, #{mid}, SYSDATE, #{rrate}, #{rcontent}, #{pcode} , #{oid}, #{rtitle})
 	</insert>
 	
+	<!-- 상품별 리뷰 조회 -->
 	<select id="reviewList" resultType="com.hyundai.higher.domain.review.ReviewDTO">
 		SELECT rno, r.mid, rdate, rrate, rcontent, pcode, rtitle, mbti
 		FROM review r JOIN member m ON r.mid=m.mid
@@ -36,6 +37,7 @@
 		ORDER BY rdate DESC
 	</select>
 	
+	<!-- 전체 리뷰 조회 -->
 	<select id="reviewListAll" resultType="com.hyundai.higher.domain.review.ReviewDTO">
 		SELECT rno, r.mid, rdate, rrate, rcontent, r.pcode, rtitle, mbti, bname, pname
 		FROM review r 

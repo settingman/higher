@@ -41,8 +41,9 @@ public class ProductMapperTests {
 		
 		String dept1no = "10";
 		String dept2no = "";
+		String price = "";
 		
-		List<ProductDTO> list = mapper.productList(dept1no, dept2no);
+		List<ProductDTO> list = mapper.productList(dept1no, dept2no, price);
 		
 	}
 	

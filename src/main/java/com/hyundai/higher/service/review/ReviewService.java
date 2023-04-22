@@ -13,7 +13,8 @@ import com.hyundai.higher.domain.review.ReviewProdDTO;
  *     <pre>
  *   수정일         수정자               수정내용
  * ----------      --------    ---------------------------
- * 2023. 04. 14.    신수진		최초 생성    	
+ * 2023. 04. 14.    신수진		최초 생성, 리뷰 상품 조회, 리뷰 등록 서비스
+ * 2023. 04. 15.	신수진		전체, 상품별 리뷰 조회 서비스	
  *     </pre>
  */
 public interface ReviewService {

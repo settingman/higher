@@ -25,7 +25,8 @@ import lombok.extern.log4j.Log4j2;
  * <pre>
  * 	   수정일          수정자                수정내용
  * -------------   --------    ---------------------------
- * 2023. 04. 14.    신수진		최초 생성
+ * 2023. 04. 14.    신수진		최초 생성, 리뷰 등록 기능 구현
+ * 2023. 04. 15.	신수진		리뷰 조회 기능 구현
  * </pre>
  */
 
@@ -66,8 +67,6 @@ public class ReviewController {
 		rDTO.setMid(mid);
 
 		service.createReview(rDTO);
-		
-		log.info("성공");
 		
 		return "redirect:/review/list";
 	}

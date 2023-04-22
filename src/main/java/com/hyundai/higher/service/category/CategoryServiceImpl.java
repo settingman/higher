@@ -10,7 +10,18 @@ import com.hyundai.higher.domain.category.CategoryAllDTO;
 import com.hyundai.higher.domain.category.CategoryDTO;
 import com.hyundai.higher.domain.category.MBTIDTO;
 import com.hyundai.higher.mapper.category.CategoryMapper;
-
+/**
+ * @since : 2023. 03. 16.
+ * @FileName: CategoryServiceImpl.java
+ * @author : 신수진
+ * @설명 : 헤더 카테고리 목록 서비스
+ * 
+ * <pre>
+ * 	   수정일          수정자                수정내용
+ * -------------   --------    ---------------------------
+ * 2023. 03. 16.	신수진		전체 카테고리
+ * </pre>
+ */
 @Service
 public class CategoryServiceImpl implements CategoryService {
 
