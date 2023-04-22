@@ -17,7 +17,7 @@ import lombok.extern.log4j.Log4j2;
  * @since : 2023. 03. 27.
  * @FileName: SimilarCosRestController.java
  * @author : 신수진
- * @설명 : 
+ * @설명 : 매칭 및 유사 상품 검색 기능 컨트롤러
  * 
  * <pre>
  * 	   수정일          수정자                수정내용

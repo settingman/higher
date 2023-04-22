@@ -20,7 +20,7 @@ import lombok.extern.log4j.Log4j2;
  * @since : 2023. 03. 06.
  * @FileName: ProductController.java
  * @author : 신수진
- * @설명 : 
+ * @설명 : 상품 목록, 상품 세부 기능 구현
  * 
  * <pre>
  * 	   수정일          수정자                수정내용
@@ -33,7 +33,6 @@ import lombok.extern.log4j.Log4j2;
  * 2023. 04. 21.	신수진		상품 필터링 기능 추가
  * </pre>
  */
-
 @Log4j2
 @RequestMapping("/product")
 @Controller

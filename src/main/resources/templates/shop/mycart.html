@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
-    <head th:insert="~{include/head}"></head>
+    
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -32,6 +32,7 @@
     <link rel="stylesheet" type="text/css" href="https://www.thehyundai.com/cssssl/jquery-ui.css?ver=23">
     <link rel="stylesheet" type="text/css" href="https://www.thehyundai.com/cssssl/od.css?ver=23">
     <link rel="stylesheet" type="text/css" href="https://www.thehyundai.com/cssssl/dp.css?ver=23">
+    <head th:insert="~{include/head}"></head>
     <!-- 	<script src="https://www.thehyundai.com/js/cart.js?ver=030123"></script>
  -->
 
@@ -1634,6 +1635,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		</div>
 
+
         <section id="survey_pop" class="layerpop_warp" style="background: rgba(0,0,0,0.8);">
 			<div class="layerpop blue" style="width: 460px;">
 				<div class="layerpop_head">
@@ -1656,7 +1658,7 @@ document.addEventListener("DOMContentLoaded", function() {
     <!-- footer -->
 	<div class="include-footer" th:insert="~{include/footer}"></div>
 	<!-- /footer -->
-
+</div>
         <script>
         $(function(){
             $("#save_close").on("click", function(){
@@ -1826,5 +1828,6 @@ var confirm_val = confirm("주문하시겠습니까?");
     } 
    }
 </script>
+
 </body>
 </html>
