@@ -773,8 +773,8 @@ $('#facepick').click(function(){
 	    const ptype = clickedLi.querySelector(".ptype").value;
 	    const pingredient = clickedLi.querySelector(".pingredient").value;
 	    
-	    console.log(pcode);
-	    console.log(pname);
+	    //console.log(pcode);
+	    //console.log(pname);
 
 	    let arr = JSON.parse(localStorage.getItem("arr")) || []; // null일 경우 빈 배열 생성
 
@@ -865,7 +865,7 @@ $('#facepick').click(function(){
 
 	       });      }
 
-	      console.log("비교함에 담음");
+	      //console.log("비교함에 담음");
 	      getArr();
 	    //담았으면 옆에 사이드바에 띄워줘야 함
 	}
@@ -873,18 +873,18 @@ $('#facepick').click(function(){
 
 <script>
 	function addCart() {
-		console.log('장바구니 담기');
+		//console.log('장바구니 담기');
 		const clickedButton = event.currentTarget;
 		const clickedLi = clickedButton.closest('li');
 		var pCode = clickedLi.querySelector(".pcode").value;
 		var pOption = clickedLi.querySelector(".opt").value;
 		var pAmount = 1;
 		var mid = document.getElementById('mid').value;
-		console.log(mid);
+		//console.log(mid);
 		const pname = clickedLi.querySelector(".pname").value;
-    console.log(pname+" 이름");
+    //console.log(pname+" 이름");
 
-		console.log(pOption);
+		//console.log(pOption);
 		
 			var requestData = JSON.stringify({
 				pcode : pCode,
@@ -895,7 +895,7 @@ $('#facepick').click(function(){
 		//로그인 여부 확인 
 		//중복 상품 확인
 		
-		console.log(requestData);
+		//console.log(requestData);
 
 		 $.ajax({
 				url: '/restcart/addCart',
@@ -903,7 +903,7 @@ $('#facepick').click(function(){
 				data: requestData,
 				contentType: "application/json",
 				success	: function(result){
-					console.log("장바구니 success");
+					//console.log("장바구니 success");
 					if(result == '0'){
 						alert("장바구니에 추가를 하지 못하였습니다.");
 					} else if(result == '1'){
@@ -922,7 +922,7 @@ $('#facepick').click(function(){
 
 				},
 				error :function(request, status, error) {
-					console.log(error);
+					//console.log(error);
 				}
 			}); 
 			
