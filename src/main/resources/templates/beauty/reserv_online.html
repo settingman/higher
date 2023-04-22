@@ -347,7 +347,7 @@ div#selected {
 		</div>
 		<div class="include-footer" th:insert="~{include/footer}"></div>
 	</div>
-	<script>
+<!--  	<script>
 	$("#capture").on("click", function (e) {
 		  var videoElement = document.getElementById("videoElement");
 		  var canvas = document.createElement("canvas");
@@ -376,7 +376,58 @@ div#selected {
 		    }
 		  }
 		});
+</script>  -->
+<script>
+ $("#capture").on("click", function () {
+	  screenShot($("#container"));
+	});
+
+	function screenShot(target) {
+	  if (target != null && target.length > 0) {
+	    var video = target.find("video")[0];
+	    var canvas = document.createElement("canvas");
+	    var context = canvas.getContext("2d");
+	    canvas.width = video.videoWidth;
+	    canvas.height = video.videoHeight;
+	    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+	    var imgDataUrl = canvas.toDataURL("image/png");
+	    
+	    var el = document.createElement("a");
+	    el.href = canvas.toDataURL("image/jpeg");
+	    document.body.appendChild(el);
+	    el.click();
+	    document.body.removeChild(el);
+
+	    $.ajax({
+	      type: "POST",
+	      data: {
+	        imgSrc: imgDataUrl,
+	      },
+	      dataType: "json", 
+	      url: "/beauty/ImgSaveTest",
+	      success: function (data) {
+	        console.log(data);
+	        var img = new Image();
+		    img.src = el.href;
+		    img.onload = function() {
+		    	console.log(data.filePath);
+		      $(".rimg").val(data.filePath);
+		      $(".thum_img").attr("src", img.src);
+		      $(".thum_img").css("height", "280px");
+		      $(".thum_img").css("object-fit", "cover");
+		      $(".empty").remove();
+	        };
+	      },
+	      error: function (a, b, c) {
+	        alert("error");
+	      },
+	    });
+	  }
+	}
+
 </script>
+
+
 	<script>      
     var video = document.querySelector("#videoElement");
      

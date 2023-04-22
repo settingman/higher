@@ -36,40 +36,44 @@ public class ReservationRestController {
 
 	@RequestMapping(value = { "ImgSaveTest" }, method = RequestMethod.POST)
 	public ModelMap ImgSaveTest(@RequestParam HashMap<Object, Object> param, final HttpServletRequest request,
-			final HttpServletResponse response) throws Exception {
-		ModelMap map = new ModelMap();
+	        final HttpServletResponse response) throws Exception {
+	    ModelMap map = new ModelMap();
 
-		String binaryData = request.getParameter("imgSrc");
-		FileOutputStream stream = null;
-		try {
-			System.out.println("binary file   " + binaryData);
-			if (binaryData == null || binaryData.trim().equals("")) {
-				throw new Exception();
-			}
-			binaryData = binaryData.replaceAll("data:image/png;base64,", "");
-			byte[] file = Base64.decodeBase64(binaryData);
-			String fileName = UUID.randomUUID().toString();
+	    String binaryData = request.getParameter("imgSrc");
+	    FileOutputStream stream = null;
+	    try {
+	        System.out.println("binary file   " + binaryData);
+	        if (binaryData == null || binaryData.trim().equals("")) {
+	            throw new Exception();
+	        }
+	        binaryData = binaryData.replaceAll("data:image/png;base64,", "");
+	        byte[] file = Base64.decodeBase64(binaryData);
+	        String fileName = UUID.randomUUID().toString();
 
-			stream = new FileOutputStream("c:/test2/" + fileName + ".png");
-			stream.write(file);
-			stream.close();
-			System.out.println("캡처 저장");
+	        // 파일 경로 생성
+	        String filePath = "c:/test/" + fileName + ".png";
+	        String filePath2 = fileName + ".png";
+	        stream = new FileOutputStream(filePath);
+	        stream.write(file);
+	        stream.close();
+	        System.out.println("캡처 저장");
 
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("에러 발생");
-		} finally {
-			if (stream != null) {
-				stream.close();
-			}
-		}
-		
-		
-		
-		
+	        // 파일 경로를 JSON 응답에 포함
+	        map.addAttribute("filePath", filePath2);
 
-		map.addAttribute("resultMap", "");
-		return map;
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        System.out.println("에러 발생");
+	    } finally {
+	        if (stream != null) {
+	            stream.close();
+	        }
+	    }
+
+	    map.addAttribute("resultMap", "");
+	    return map;
 	}
+
+
 
 }

@@ -22,20 +22,28 @@ import com.hyundai.higher.domain.member.Member;
 @Mapper
 public interface MemberMapper {
 
+	// 회원 아이디를 이용하여 회원 조회
 	Member findById(String mId);
 
+	// 회원 저장
 	void save(Member member);
 
+	// 이름과 생일로 아이디 찾기
 	Member findByNameBirth(@Param("mName") String mName, @Param("mBirth") String mBirth);
 
+	// 이름과 아이디로 비밀번호 찾기
 	Member findByNameId(@Param("mName") String mName, @Param("mId") String mId);
 
+	// 비밀번호 변경
 	void updatePassword(@Param("mId") String mId, @Param("encryptPassword") String encryptPassword);
 	
+	// 회원 마일리지 조회
 	Integer findMileage(@Param("mId") String mId);
 	
+	// 회원 마일리지 업데이트
 	void updateMileage(@Param("mId") String mId, @Param("MMILEAGE") Integer MMILEAGE);
 	
+	// 회원 목록 조회
 	List<Member> findMember();
 
 }

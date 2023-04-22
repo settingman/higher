@@ -58,7 +58,7 @@ header#header {
 		try {
 			gfnSsoDscdToknReq(dscdCallback2);
 		} catch (exception) {
-			console.log(exception);
+			//console.log(exception);
 		} finally {
 			location.href = "https://www.thehyundai.com/front/cob/logout.thd";
 		}
@@ -180,7 +180,7 @@ header#header {
 							<a th:href="'/mypage/modify?rid=' + ${info.rid}"
 								onclick="javascript:GA_Event('PC_마이페이지', '최근_주문_배송내역', '상세내역');"
 								class="btn color4 size1"
-								style="background: #bfae90; border: #bfae90;">수정하기</a>
+								style="background: #bfae90; border: #bfae90; display: block;">수정</a>
 						</p>
 					</div>
 					<div>
@@ -191,7 +191,7 @@ header#header {
 									<div class="faceupload">
 										<img class="face"
 											th:src="'/beauty/display?fileName=' + ${info.rimg}"
-											style="max-width: 200px; height: 265px;">
+											style="max-width: 200px; height: 265px; object-fit: cover;">
 									</div>
 								</div>
 
@@ -241,18 +241,18 @@ header#header {
 
 	<script>
 		function addCart() {
-			console.log('장바구니 담기');
+			//console.log('장바구니 담기');
 			var pCode = document.querySelector('.pcode').value;
 			//옵션 바꾸기
 			//var pOption = document.querySelector('input[name="optNm"]').value;
 			var pAmount = document.querySelector('input[name="pamount"]').value;
 			var mid = document.getElementById('mid').value;
-			console.log(mid);
+			//console.log(mid);
 			var pOption = "";
 
 			var pname = document.querySelector('.datail_info_top .tit strong').textContent
 					.trim();
-			console.log(pname + " 이름");
+			//console.log(pname + " 이름");
 
 			if (!document.querySelector('.option')) {
 				pOption = pname;
@@ -261,7 +261,7 @@ header#header {
 				const selectedValue = selectEl.options[selectEl.selectedIndex].value;
 				pOption = selectedValue;
 			}
-			console.log(pOption);
+			//console.log(pOption);
 
 			if (mid != 'anonymousUser') {
 				var requestData = JSON.stringify({
@@ -273,7 +273,7 @@ header#header {
 				//로그인 여부 확인 
 				//중복 상품 확인
 
-				console.log(requestData);
+				//console.log(requestData);
 
 				$.ajax({
 					url : '/restcart/addCart',
@@ -281,7 +281,7 @@ header#header {
 					data : requestData,
 					contentType : "application/json",
 					success : function(result) {
-						console.log("장바구니 success");
+						//console.log("장바구니 success");
 						if (result == '0') {
 							alert("장바구니에 추가를 하지 못하였습니다.");
 						} else if (result == '1') {
@@ -291,11 +291,11 @@ header#header {
 						}
 					},
 					error : function(request, status, error) {
-						console.log(error);
+						//console.log(error);
 					}
 				});
 			} else {
-				console.log("로그인 필요");
+				//console.log("로그인 필요");
 				alert('장바구니는 로그인이 필요합니다.');
 				var loginUrl = "/member/login";
 				window.location.href = loginUrl;

@@ -18,99 +18,57 @@
 					<img class="output_filepath" id="output_filepath"
 						name="output_filepath"
 						th:src="'/beauty/display?fileName=' + ${res.rimg}"
-						style="width: 100%; height: 100%;">
+						style="width: 100%; height: 100%; object-fit: cover;">
 				</div>
 			</div>
-			<div class="wrapper3" style="width: 700px; margin-left: 100px;">
-				<div class="lip_wrapper"
-					style="border-style: groove; margin: 10px 0; border-radius: 50px;">
+			<div class="wrapper3" style="width: 880px;margin-left: 80px;">
+				<div class="lip_wrapper" style="border-style: groove;margin: 10px 0;border-radius: 50px;display: grid;grid-template-columns: 19% 81%;">
+					<div>
+						<div style="margin-top: 94px;margin-left: 70px;font-weight: bolder;font-size: xx-large;">
+							<span>LIP</span>
+						</div>
+					</div>
 					<div class="colorwrapper" style="margin: 30px 0;">
-						<div class="lips"
-							style="text-align: center; display: grid; grid-template-columns: repeat(5, 1fr); width: 700px; height: 180px;">
-							<input type="radio" id="none" name="lips" value="none"
-								checked="checked"><label for="none"
-								style="background: lightgray;"></label> <input type="radio"
-								id="red" name="lips" value="red"><label for="red"
-								style="background: rgb(252, 3, 3);"></label> <input type="radio"
-								id="pink" name="lips" value="pink"><label for="pink"
-								style="background: rgb(250, 5, 234);"></label> <input
-								type="radio" id="lightpink" name="lips" value="lightpink"><label
-								for="lightpink" style="background: rgb(255, 122, 246);"></label>
-							<input type="radio" id="purple" name="lips" value="purple"><label
-								for="purple" style="background: rgb(175, 53, 167);"></label><input
-								type="radio" id="orange" name="lips" value="orange"><label
-								for="orange" style="background: rgb(252, 3, 3);"></label> <input
-								type="radio" id="orangecoral" name="lips" value="orangecoral"><label
-								for="orangecoral" style="background: rgb(250, 165, 90);"></label>
-							<input type="radio" id="orangenude" name="lips"
-								value="orangenude"><label for="orangenude"
-								style="background: rgb(245, 157, 103);"></label> <input
-								type="radio" id="coral" name="lips" value="coral"><label
-								for="coral" style="background: rgb(247, 114, 57);"></label> <input
-								type="radio" id="nude" name="lips" value="nude"><label
-								for="nude" style="background: rgb(232, 167, 139);"></label>
+						<div class="lips" style="text-align: center; display: grid; grid-template-columns: repeat(5, 1fr); width: 700px; height: 180px;">
+							<input type="radio" id="none" name="lips" value="none" checked="checked"><label for="none" style="background: lightgray;"></label> <input type="radio" id="red" name="lips" value="red"><label for="red" style="background: rgb(252, 3, 3);"></label> <input type="radio" id="pink" name="lips" value="pink"><label for="pink" style="background: rgb(250, 5, 234);"></label> <input type="radio" id="lightpink" name="lips" value="lightpink"><label for="lightpink" style="background: rgb(255, 122, 246);"></label>
+							<input type="radio" id="purple" name="lips" value="purple"><label for="purple" style="background: rgb(175, 53, 167);"></label><input type="radio" id="orange" name="lips" value="orange"><label for="orange" style="background: rgb(252, 3, 3);"></label> <input type="radio" id="orangecoral" name="lips" value="orangecoral"><label for="orangecoral" style="background: rgb(250, 165, 90);"></label>
+							<input type="radio" id="orangenude" name="lips" value="orangenude"><label for="orangenude" style="background: rgb(245, 157, 103);"></label> <input type="radio" id="coral" name="lips" value="coral"><label for="coral" style="background: rgb(247, 114, 57);"></label> <input type="radio" id="nude" name="lips" value="nude"><label for="nude" style="background: rgb(232, 167, 139);"></label>
 						</div>
 					</div>
 				</div>
 
-				<div class="lip_wrapper"
-					style="border-style: groove; margin: 10px 0; border-radius: 50px;">
+				<div class="lip_wrapper" style="border-style: groove;margin: 10px 0;border-radius: 50px;display: grid;grid-template-columns: 19% 81%;">
+					<div>
+						<div style="margin-top: 94px;margin-left: 45px;font-weight: bolder;font-size: xx-large;">
+							<span>BLUSH</span>
+						</div>
+					</div>
 					<div class="colorwrapper" style="margin: 30px 0;">
-						<div class="blush"
-							style="text-align: center; display: grid; grid-template-columns: repeat(5, 1fr); width: 700px; height: 180px;">
-							<input type="radio" id="none1" name="blush" value="none"
-								checked="checked"><label for="none1"
-								style="background: lightgray;"></label> <input type="radio"
-								id="red1" name="blush" value="red"><label for="red1"
-								style="background: rgb(252, 3, 3);"></label> <input type="radio"
-								id="pink1" name="blush" value="pink"><label for="pink1"
-								style="background: rgb(250, 5, 234);"></label> <input
-								type="radio" id="lightpink1" name="blush" value="lightpink"><label
-								for="lightpink1" style="background: rgb(255, 122, 246);"></label>
-							<input type="radio" id="purple1" name="blush" value="purple"><label
-								for="purple1" style="background: rgb(175, 53, 167);"></label><input
-								type="radio" id="orange1" name="blush" value="orange"><label
-								for="orange1" style="background: rgb(252, 3, 3);"></label> <input
-								type="radio" id="orangecoral1" name="blush" value="orangecoral"><label
-								for="orangecoral1" style="background: rgb(250, 165, 90);"></label>
-							<input type="radio" id="orangenude1" name="blush"
-								value="orangenude"><label for="orangenude1"
-								style="background: rgb(245, 157, 103);"></label> <input
-								type="radio" id="coral1" name="blush" value="coral"><label
-								for="coral1" style="background: rgb(247, 114, 57);"></label> <input
-								type="radio" id="nude1" name="blush" value="nude"><label
-								for="nude1" style="background: rgb(232, 167, 139);"></label>
+						<div class="blush" style="text-align: center; display: grid; grid-template-columns: repeat(5, 1fr); width: 700px; height: 180px;">
+							<input type="radio" id="none1" name="blush" value="none" checked="checked"><label for="none1" style="background: lightgray;"></label> <input type="radio" id="red1" name="blush" value="red"><label for="red1" style="background: rgb(252, 3, 3);"></label> <input type="radio" id="pink1" name="blush" value="pink"><label for="pink1" style="background: rgb(250, 5, 234);"></label> <input type="radio" id="lightpink1" name="blush" value="lightpink"><label for="lightpink1" style="background: rgb(255, 122, 246);"></label>
+							<input type="radio" id="purple1" name="blush" value="purple"><label for="purple1" style="background: rgb(175, 53, 167);"></label><input type="radio" id="orange1" name="blush" value="orange"><label for="orange1" style="background: rgb(252, 3, 3);"></label> <input type="radio" id="orangecoral1" name="blush" value="orangecoral"><label for="orangecoral1" style="background: rgb(250, 165, 90);"></label>
+							<input type="radio" id="orangenude1" name="blush" value="orangenude"><label for="orangenude1" style="background: rgb(245, 157, 103);"></label> <input type="radio" id="coral1" name="blush" value="coral"><label for="coral1" style="background: rgb(247, 114, 57);"></label> <input type="radio" id="nude1" name="blush" value="nude"><label for="nude1" style="background: rgb(232, 167, 139);"></label>
 						</div>
 					</div>
 				</div>
 
-				<div class="face_warpper"
-					style="border-style: groove; margin: 10px 0; border-radius: 50px;">
+				<div class="lip_wrapper" style="border-style: groove;margin: 10px 0;border-radius: 50px;display: grid;grid-template-columns: 19% 81%;">
+					<div>
+						<div style="margin-top: 54px;margin-left: 60px;font-weight: bolder;font-size: xx-large;">
+							<span>FACE</span>
+						</div>
+					</div>
 					<div class="colorwrapper" style="margin: 30px 0;">
-						<div class="foundation"
-							style="text-align: center; display: grid; grid-template-columns: repeat(5, 1fr); width: 700px; height: 90px;">
-							<input type="radio" id="none2" name="foundation" value="none"
-								checked="checked"> <label for="none2"
-								style="background: lightgray;"></label> <input type="radio"
-								id="dark" name="foundation" value="autumnwarm"><label
-								for="dark" style="background: rgba(175, 149, 115, 0.815);"></label>
-							<input type="radio" id="warmbeige" name="foundation"
-								value="warmbeige"><label for="warmbeige"
-								style="background: rgb(211, 199, 199);"></label> 
-								<input
-								type="radio" id="lightbeige" name="foundation"
-								value="lightbeige"><label for="lightbeige"
-								style="background: rgb(230, 227, 216);"></label>
-								<input
-								type="radio" id="coolpink" name="foundation" value="coolpink"><label
-								for="coolpink" style="background: #fde3f3;"></label> 
+						<div class="foundation" style="text-align: center; display: grid; grid-template-columns: repeat(5, 1fr); width: 700px; height: 90px;">
+							<input type="radio" id="none2" name="foundation" value="none" checked="checked"> <label for="none2" style="background: lightgray;"></label> <input type="radio" id="dark" name="foundation" value="autumnwarm"><label for="dark" style="background: rgba(175, 149, 115, 0.815);"></label>
+							<input type="radio" id="warmbeige" name="foundation" value="warmbeige"><label for="warmbeige" style="background: rgb(211, 199, 199);"></label> <input type="radio" id="lightbeige" name="foundation" value="lightbeige"><label for="lightbeige" style="background: rgb(230, 227, 216);"></label> <input type="radio" id="coolpink" name="foundation" value="coolpink"><label for="coolpink" style="background: #fde3f3;"></label>
 						</div>
 					</div>
 				</div>
 
 				<!-- <input type="hidden" name="filePath" class="filePath" th:value="'c://test//'+${res.rimg}"> -->
-				<input type="hidden" name="filePath" class="filePath" th:value="'beauty/'+${res.rimg}"> 
-				<input type="hidden"
+				<input type="hidden" name="filePath" class="filePath"
+					th:value="'beauty/'+${res.rimg}"> <input type="hidden"
 					name="rid" class="rid" th:value="${res.rid}"> <input
 					type="hidden" name="output_filepath" class="output_filepath"
 					value="">
@@ -143,12 +101,12 @@
 														"input[name=foundation]:checked")
 														.val();
 
-												console.log("filePath: "
+											/* 	console.log("filePath: "
 														+ filePath);
 												console.log("lips: " + lips);
 												console.log("blush: " + blush);
 												console.log("foundation: "
-														+ foundation);
+														+ foundation); */
 
 												if ($(this).is(':checked')) {
 
