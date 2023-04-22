@@ -190,7 +190,7 @@ public class MatchController {
 				score += 1;
 			}
 		}
-		log.info(score + "-----------------------------------");
+
 			if(score != 0) {
 				log.info("두번째 진입"+mbtiList[1]);
 				
@@ -224,7 +224,7 @@ public class MatchController {
 			// 세번째 mbti 점수 계산. 총 20점. good 2점, normal 1점, bad 0점
 			for (int i = 0; i < ingredients.length; i++) {
 				String result = mService.getEffect(ingredients[i], mbtiList[2]);
-				log.info("============================"+ingredients[i] + "----------");
+				log.info("============================"+ingredients[i]);
 				log.info("effect " + result);
 	
 	
@@ -277,8 +277,7 @@ public class MatchController {
 
 	}
 		
-		//}
-
+		
 		return "match/detail";
 	}
 

@@ -20,7 +20,7 @@ import lombok.extern.log4j.Log4j2;
  * @since : 2023. 04. 01.
  * @FileName: MatchServiceImpl.java
  * @author : 박서현
- * @설명 : 화장품 매칭 기능 구현
+ * @설명 : 화장품 매칭을 위한 서비스Impl
  * 
  *     <pre>
  *   수정일         수정자               수정내용

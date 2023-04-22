@@ -10,6 +10,20 @@ import com.hyundai.higher.mapper.cart.CartMapper;
 
 import lombok.extern.log4j.Log4j2;
 
+/**
+ * @since : 2023. 3. 26.
+ * @FileName: CartServiceImpl.java
+ * @author : 박서현
+ * @설명 : 장바구니 기능을 위한 서비스
+ * 
+ *     <pre>
+ *   수정일         수정자               수정내용
+ * ----------      --------    ---------------------------
+ * 2023. 3. 26.		박서현		최초 생성
+ * 2023. 3. 31.		박서현		기능 구현
+ * 2023. 4. 10.		박서현		getCount 추가		
+ *     </pre>
+ */
 @Service
 @Log4j2
 public class CartServiceImpl implements CartService{

@@ -488,8 +488,7 @@ canvas {
         var dTab = $detailTab.height();
         var dTabfixed = $('.product_detail_tab.fixed').height();
         $this.parent().addClass('on').siblings('li').removeClass('on');
-        //console.log("dTab : " +  dTab);
-        //console.log("dTabfixed : " +  dTabfixed);
+
         var $htmlBody = $('html, body');
         var moveHeight = 100;
         if (!dTabfixed && !$(this).parent().index() == 0) {
@@ -583,7 +582,6 @@ canvas {
    $(function() {
 
   let liList = document.querySelectorAll(".sPrd");
-	console.log("info dddd"+liList.length);
 
   for (let i=0; i < liList.length; i++) {
 
@@ -613,7 +611,6 @@ canvas {
 				}else{
 				
 				$(liList[i]).find('.star-rating.small span').addClass(`c${rate}`);
-				console.log("평점 "+rate);
 				}
       },
       error: function(request, status, error) {
@@ -627,8 +624,8 @@ canvas {
     
 	<script>
 	function addCart() {
-		console.log('장바구니 담기');
-    let liList = document.querySelectorAll(".sPrd");
+
+		let liList = document.querySelectorAll(".sPrd");
     var mid = document.getElementById('mid').value;
 		let checkList = document.querySelectorAll(".recomPrdtSeq:checked");
 		const pop = document.getElementById('survey_pop');
@@ -638,7 +635,7 @@ canvas {
 			let checkList = document.querySelectorAll(".recomPrdtSeq:checked");
 
 			if(checkList.length ===0) {
-				console.log("상품 선택 안함");
+
 				pop.innerHTML= `
 					<div class="layerpop blue" style="width: 460px;">
 						<div class="layerpop_head">
@@ -665,16 +662,13 @@ canvas {
 					});        return false;}
 
     for (let i = 0; i < liList.length; i++) {
-      console.log("-----------");
-    
+
       const checkbox = liList[i].querySelector('.recomPrdtSeq');
 
       if (checkbox.checked) { //체크한 상품만 장바구니 담기
           const pcode = $(liList[i]).find('#pcode').val();
-          console.log(pcode);
 
           const poption = $(liList[i]).find('#optname').val();
-          console.log("option" + poption);
 
           var requestData = JSON.stringify({
             pcode : pcode,
@@ -689,7 +683,7 @@ canvas {
 			data: requestData,
 			contentType: "application/json",
 			success	: function(result){
-				console.log("장바구니 success");
+
 				if(result == '0'){
 					alert("장바구니에 추가를 하지 못하였습니다.");
 				} else if(result == '1'){
@@ -714,7 +708,7 @@ canvas {
     
   	}
 	}else {
-			console.log("로그인 필요");
+			
         pop.innerHTML= `
 			<div class="layerpop blue" style="width: 460px;">
 				<div class="layerpop_head">
@@ -747,7 +741,6 @@ canvas {
   }
 
 	function addCartThis() {
-		console.log('장바구니 담기');
 
 		const mid = document.getElementById('mid').value;
 
@@ -769,7 +762,6 @@ canvas {
 			data: requestData,
 			contentType: "application/json",
 			success	: function(result){
-				console.log("장바구니 success");
 				if(result == '0'){
 					alert("장바구니에 추가를 하지 못하였습니다.");
 				} else if(result == '1'){
@@ -790,7 +782,6 @@ canvas {
 			}
 		}); 
 	}else {
-			console.log("로그인 필요");
 			const pop = document.getElementById('survey_pop');
         pop.innerHTML= `
 			<div class="layerpop blue" style="width: 460px;">
@@ -867,19 +858,6 @@ canvas {
 			const ptype = document.getElementById('pptype').value;
 			const pOption = document.getElementById('poptname').value;
 			const review = document.querySelector('.preview').textContent;
-			console.log(review + "   리뷰개수");
-
-
-			// const liElements = document.querySelectorAll('.ingredient_box li');
-			// let textString = '';
-			// liElements.forEach((li, index) => {
-			// 	if (index > 0) {
-			// 		textString += ', ';
-			// 	}
-			// 	textString += li.textContent;
-			// });
-			// console.log("-----------------------");
-			// console.log(textString);
 			const pingredient =  document.getElementById('ppingredient').value;
 
 			let arr = JSON.parse(localStorage.getItem("arr")) || []; // null일 경우 빈 배열 생성
@@ -968,10 +946,7 @@ canvas {
 
        });      }
 
-      console.log("비교함에 담음");
       getArr();
-
-
 
 		}
 
@@ -981,11 +956,11 @@ canvas {
 			const pop = document.getElementById('survey_pop');
 
 			let liList = document.querySelectorAll(".sPrd");
-			console.log(liList.length+"-----------------------length");
+
 			let checkList = document.querySelectorAll(".recomPrdtSeq:checked");
 
 			if(checkList.length ===0) {
-				console.log("상품 선택 안함");
+
 				pop.innerHTML= `
 					<div class="layerpop blue" style="width: 460px;">
 						<div class="layerpop_head">
@@ -1137,7 +1112,6 @@ canvas {
 
 					});      }
 
-					console.log("비교함에 담음");
 					getArr();
 
 				}

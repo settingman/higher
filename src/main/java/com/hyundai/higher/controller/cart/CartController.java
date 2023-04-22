@@ -38,18 +38,15 @@ public class CartController {
 	// 장바구니 페이지로 이동
 	@GetMapping("/mycart")
 	public String cart(Model model, Principal principal) {
-		log.info("장바구니 이동");
 		
 		String mid = principal.getName();
-		log.info("-----");
+
 		List<CartItem> carts = cService.getCart(mid);
-		log.info("-------"+carts.isEmpty());
+
 		if(!carts.isEmpty()) {
 			model.addAttribute("carts", carts);
 			
 		}
-		log.info(carts);
-
 			
 	return "shop/mycart";
 	}

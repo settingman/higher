@@ -71,7 +71,7 @@ public class CartRestController {
 		  int result =0;
 		  for (Map<String, String> cart : cartList) {
 	            String pcode = cart.get("pcode");
-	            log.info(pcode);
+
 	            String poption = cart.get("poption");
 	            result = cService.deleteCart(pcode, poption, mid);
 
@@ -86,7 +86,7 @@ public class CartRestController {
 	@PostMapping(value="/modifyAmount", produces = { MediaType.APPLICATION_JSON_VALUE }, consumes = {
 			MediaType.APPLICATION_JSON_VALUE })
 	public String modifyAmount (@RequestBody CartItem cart, Principal principal) {
-		log.info("장바구니 아이템 수량 변경 " + cart.getPcode());
+
 		String mid = principal.getName();
 		
 		int result = cService.modifyAmount(cart, mid);

@@ -10,19 +10,14 @@
 		<result property="pamount" column="pamount"/>
 		<result property="poption" column="optname"/>
 		<result property="IMAGE_PATH" column="iloc"/>
-<!-- 		<collection property="optionList" resultMap="optionMap" /> -->
 	<collection property="optionList" column="{pcode = pcode}" ofType="com.hyundai.higher.domain.product.OptionDTO"
 	select="selectOptions" />
 	</resultMap>
+	
 	<select id="selectOptions" resultType="com.hyundai.higher.domain.product.OptionDTO">
 		select optname from poption where pcode =  #{pcode}
 	</select>
 	
-<!-- 	<resultMap type="com.hyundai.higher.domain.product.OptionDTO" id="optionMap">
-		<result property="pcode" column="pcode"/>
-		<result property="optname" column="optname"/>
-		<result property="optcolor" column="optcolor"/>	
-	</resultMap> -->
 	
 	<insert id="addCart" parameterType="CartItem">
 	    INSERT INTO cart
@@ -33,10 +28,7 @@
 	<delete id="deleteCart">
 		delete from cart where mid = #{mid} and pcode = #{pcode} and optname =#{optname}
 	</delete>
-	
-<!-- 	<delete id="deleteCarts">
-		delete from cart where mid = = #{mid} and pcode = #{pcode} and optname =#{optname}
-	</delete>  -->
+
 	
 	<update id="modifyAmount" parameterType="CartItem">
 		update cart set pamount=#{item.pamount} 
@@ -59,11 +51,6 @@
 			where ci.rn = 1
 	</select>
 	
-<!-- 	<select id="getOptions" parameterType="CartItem" resultType="com.hyundai.higher.domain.product.OptionDTO">
-		select pcode, optname, optcolor
-		from poption  
-		where pcode =#{item.pcode}      
-	</select> -->
 	
 	<update id="SameUpdate" parameterType="CartItem">
 		update cart set pamount = pamount+1 where mid = #{item.mid} and pcode =#{item.pcode} and optname=#{item.poption}
