@@ -109,7 +109,7 @@ button.detailview {
                 <span>[[${dept1name}]]</span>
                 <ul class="submenu" style="display: block;">
                   <li th:if="${mbti == ''}" th:class="${dept2no == '' ? 'current' : ''}">
-                  	<a href="/product/list?dept1=10"><i>전체보기</i></a>
+                  	<a th:href="'/product/list?dept1='+${dept1no}"><i>전체보기</i></a>
                   </li>
                   <li th:if="${dept1no != ''}" th:each="cate : ${cateList}" th:class="${dept2no == cate.dept2no ? 'current' : ''}" >
                   	<a th:href="'/product/list?dept1='+${dept1no}+'&dept2='+${cate.dept2no}"><i>[[${cate.dept2name}]]</i></a>
