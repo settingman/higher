@@ -49,13 +49,11 @@ public class MatchRestController {
 	//상품 옵션 불러오기
 	@GetMapping("/getOption")
 	public String getOption(@RequestParam("pcode") String pcode) {
-		log.info("옵션 불러오기");
 	
 		String result = mService.getOption(pcode);
 		if(result == null) {
 			result = "";
 		}
-		log.info(result);
 		
 		return result+"";
 		
@@ -64,7 +62,6 @@ public class MatchRestController {
 	//상품 추가 정보 불러오기
 	@GetMapping("/getInfo")
 	public ResponseEntity<Map<String, Object>> getInfo(@RequestParam("pcode") String pcode) {
-		log.info("추가 정보 불러오기   "+pcode);
 		
 		Map<String, Object> result = new HashMap<>();
 		
@@ -82,7 +79,6 @@ public class MatchRestController {
 			}
 			rateAvg = rateTotal / reviewList.size();
 		}
-		log.info("평점  "+ rateAvg);
 		result.put("rate", rateAvg);
 		result.put("review", reviewList.size());
 
@@ -107,8 +103,6 @@ public class MatchRestController {
 			String mbti = mService.userMbti(mid);
 			if(mbti != null) {
 
-			log.info("mbti--------------  " + mbti);
-
 			// mbti 글자별로 나누기
 			String[] mbtiList = mbti.split("");
 
@@ -117,16 +111,13 @@ public class MatchRestController {
 			
 			// 첫번째 mbti 점수 계산. 총 40점. good 4점, normal 2점, bad 1점
 			for (int i = 0; i < ingredients.length; i++) {
-				log.info("============================");
 
 				String result = mService.getEffect(ingredients[i], mbtiList[0]);
-				log.info("effect " + result);
 				if(result == null) {
 					score =-1;
 					break;
 				}
 				if (result.equals("GOOD")) {
-					log.info("goood");
 					score += 4;
 				} else if (result.equals("NORMAL")) {
 					score += 2;
@@ -134,7 +125,6 @@ public class MatchRestController {
 					score += 1;
 				}
 			}
-			log.info(score + "-----------------------------------");
 			if(score > 0) {
 			
 				// 두번째 mbti 점수 계산. 총 30점. good 3점, normal 2점, bad 0점
@@ -164,7 +154,6 @@ public class MatchRestController {
 					score += 1;
 				}
 			}
-			log.info("----------------------" + score);
 			}
 			
 		}
