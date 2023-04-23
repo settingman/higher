@@ -1712,16 +1712,75 @@ $("select.form-select").on("change", function() {
 
 <script>
 
+function toOrder(){
+    const pop = document.getElementById('survey_pop');
+    pop.innerHTML= `
+         <div class="layerpop blue" style="width: 460px;">
+            <div class="layerpop_head">
+               <h1 class="poptitle">주문하기</h1>
+            </div>
+            <div class="layerpop_cont" style="height: 330px;">
+               <div class="save_cont">
+                  <p>
+                     상품을 주문하시겠습니까? 
+                  </p>
+                  <div class="btn_wrap center mt30">
+              <button type="button" class="btn_base blue act" id="okay" onclick="orderIt()">확인</button>
+                     <button type="button" class="btn_base darkgray act" id="save_close">취소</button>
+                  </div>
+               </div>
+            </div>
+            <button type="button" class="close">닫기</button>
+         </div>
+        `;
+        $("#survey_pop").css("display", "block");
+
+       $('#save_close').click(function() {
+        $("#survey_pop").css("display", "none");
+
+       });
+        return;
+	
+// var confirm_val = confirm("주문하시겠습니까?");
+    
+//     if(confirm_val) {
+       
+//      let idquery = '?pIdList='
+//      var checkArr = new Array();
+    
+//      var a =  $("input[class='chBox']:checked");
+//      console.log(a);
+     
+     
+     
+//  	let liList = document.querySelectorAll(".cart-list-unit");
+ 	
+//  	for (let i = 0; i < liList.length; i++) {
+// 		if ($(liList[i]).find('.icheckbox').hasClass('checked')) {
+		
+// 			var prodID = $(liList[i]).find("input[name='prodPrc']").data('product_id');
+		
+		
+		
+// 			idquery=idquery + prodID + ','
+// 	      	checkArr.push(prodID);
+		
+// 		}
+// 	}
+ 	
+ 	
+//  	idquery = idquery.slice(0, -1);
+ 	
+//  	location.href = "/shop/order"+idquery;
+     
+//     } 
+   }
+
+   
 // 박성환 
 // 주문 페이지 이동.
-function toOrder(){
-	
-	
-var confirm_val = confirm("주문하시겠습니까?");
-    
-    if(confirm_val) {
-       
-     let idquery = '?pIdList='
+   function orderIt() {
+    let idquery = '?pIdList='
      var checkArr = new Array();
     
      var a =  $("input[class='chBox']:checked");
@@ -1745,12 +1804,9 @@ var confirm_val = confirm("주문하시겠습니까?");
 	}
  	
  	
- 	
  	idquery = idquery.slice(0, -1);
  	
  	location.href = "/shop/order"+idquery;
-     
-    } 
    }
 </script>
 
