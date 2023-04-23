@@ -122,6 +122,11 @@ public class MakeupController {
 	@GetMapping("/form")
 	public void makeupForm(@RequestParam("rid") String rid, Model model) {
 		log.info("====== 플라스크 연동 메이크업 시연 ======");
+		
+		
+		kakaoService.Sendmessage("92547");
+		
+		
 		ReservVO res = new ReservVO();
 		res = mypage.getReservInfo(rid);
 		String rrid = res.getMid();

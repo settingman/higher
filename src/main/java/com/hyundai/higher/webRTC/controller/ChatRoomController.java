@@ -40,8 +40,7 @@ public class ChatRoomController {
 
 	private final ChatServiceMain chatServiceMain;
 	private final BeautyMapper beautyMapper;
-	private final KakaoService kakaoService;
-
+	
 	// 채팅방 생성
 	@PostMapping("/chat/createroom")
 	public String createRoom(@RequestParam("roomName") String name, @RequestParam("roomPwd") String roomPwd,
@@ -64,7 +63,7 @@ public class ChatRoomController {
 		beautyMapper.updateRoomID(customerID,reservationID,room.getRoomId());
 		
 		
-		kakaoService.Sendmessage("92547");
+		
 		
 
 		rttr.addFlashAttribute("roomName", room);

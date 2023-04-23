@@ -51,7 +51,7 @@ public class ReservationRestController {
 	        String fileName = UUID.randomUUID().toString();
 
 	        // 파일 경로 생성
-	        String filePath = "c:/test/" + fileName + ".png";
+	        String filePath = "beauty/" + fileName + ".png";
 	        String filePath2 = fileName + ".png";
 	        stream = new FileOutputStream(filePath);
 	        stream.write(file);
