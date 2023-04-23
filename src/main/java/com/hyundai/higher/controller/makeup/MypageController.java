@@ -171,7 +171,8 @@ public class MypageController {
 
 		log.info("입술 옵션 : " + result.getLip_opt());
 		String lipopt = result.getLip_opt();
-		lipresult = service.getLipResult(lipopt);
+		String lippcode = result.getLip_pcode();
+		lipresult = service.getLipResult(lipopt, lippcode);
 		log.info("가져온 입술 정보 : " + lipresult);
 		
 		ResultProdVO lipresultprod = new ResultProdVO();
@@ -181,7 +182,8 @@ public class MypageController {
 
 		log.info("블러쉬 옵션 : " + result.getBlush_opt());
 		String blushopt = result.getBlush_opt();
-		blushresult = service.getBlushResult(blushopt);
+		String blushpcode = result.getBlush_pcode();
+		blushresult = service.getBlushResult(blushopt, blushpcode);
 		log.info("가져온 블러쉬 정보 : " + blushresult);
 		
 		ResultProdVO blushresultprod = new ResultProdVO();
@@ -255,12 +257,14 @@ public class MypageController {
 
 		log.info("입술 옵션 : " + result.getLip_opt());
 		String lipopt = result.getLip_opt();
-		lipresult = service.getLipResult(lipopt);
+		String lippcode = result.getLip_pcode();
+		lipresult = service.getLipResult(lipopt, lippcode);
 		log.info("가져온 입술 정보 : " + lipresult);
 
 		log.info("블러쉬 옵션 : " + result.getBlush_opt());
 		String blushopt = result.getBlush_opt();
-		blushresult = service.getBlushResult(blushopt);
+		String blushpcode = result.getBlush_pcode();
+		blushresult = service.getBlushResult(blushopt, blushpcode);
 		log.info("가져온 블러쉬 정보 : " + blushresult);
 		
 		log.info("파운데이션 옵션 : " + result.getFace_opt());

@@ -57,7 +57,7 @@
 		where a.pcode=b.pcode and a.bno = d.bno and
 		a.pcode=c.pcode and dept2no=22
 		and itype='thumb' and iloc like '%0' and
-		optname=#{optname}
+		optname=#{optname} and a.pcode=#{pcode}
 	</select>
 	<select id="getBlushResult"
 		resultType="com.hyundai.higher.domain.makeup.BlushVO">
@@ -66,7 +66,7 @@
 		where a.pcode=b.pcode and a.bno = d.bno and
 		a.pcode=c.pcode and dept2no=24
 		and itype='thumb' and iloc like '%0' and
-		optname=#{optname}
+		optname=#{optname} and a.pcode=#{pcode}
 	</select>
 	<select id="getFaceResult"
 		resultType="com.hyundai.higher.domain.makeup.FoundationVO">
@@ -76,7 +76,7 @@
 		a.pcode=c.pcode and dept2no=21
 		and itype='thumb' and iloc like '%0' and
 		a.pcode=#{pcode} and
-		optname=#{optname}
+		optname=#{optname} 
 	</select>
 	<select id="SimLip"
 		resultType="com.hyundai.higher.domain.makeup.LipVO">
