@@ -42,10 +42,10 @@ public interface MypageMapper {
 	public List<ReservVO> yesResult(String mid);
 	
 	// 결과 -> 결과값 립
-	public LipVO getLipResult(String optname);
+	public LipVO getLipResult(String optname, String pcode);
 	
 	// 결과 -> 결과값 블러쉬
-	public BlushVO getBlushResult(String optname);
+	public BlushVO getBlushResult(String optname, String pcode);
 	
 	// 결과 -> 결과값 페이스
 	public FoundationVO getFaceResult(String optname, String pcode);

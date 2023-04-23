@@ -250,8 +250,8 @@ public class MakeupController {
 		map.add("blush", blush);
 		map.add("foundation", foundation);
 
-		String apiUrl = "http://13.209.12.59:5000/apply-makeup/"; 
-		//String apiUrl = "http://127.0.0.1:5000/apply-makeup/"; 
+		//String apiUrl = "http://13.209.12.59:5000/apply-makeup/"; 
+		String apiUrl = "http://127.0.0.1:5000/apply-makeup/"; 
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
 		HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(map, headers);

@@ -35,13 +35,13 @@ public class MypageServiceImpl implements MypageService{
 	}
 
 	@Override
-	public LipVO getLipResult(String optname) {
-		return mapper.getLipResult(optname);
+	public LipVO getLipResult(String optname, String pcode) {
+		return mapper.getLipResult(optname, pcode);
 	}
 
 	@Override
-	public BlushVO getBlushResult(String optname) {
-		return mapper.getBlushResult(optname);
+	public BlushVO getBlushResult(String optname, String pcode) {
+		return mapper.getBlushResult(optname, pcode);
 	}
 
 	@Override
