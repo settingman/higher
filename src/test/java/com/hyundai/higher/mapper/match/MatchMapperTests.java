@@ -41,7 +41,7 @@ public class MatchMapperTests {
 	public void testGetMBTIProduct() {
 		String pmbti = "DNST";
 		
-		List<MatchProductDTO> list = mapper.mbtiProduct(null, pmbti);
+		List<MatchProductDTO> list = mapper.mbtiProduct(null, pmbti,null);
 		
 		list.forEach(p -> log.info(p));
 	}

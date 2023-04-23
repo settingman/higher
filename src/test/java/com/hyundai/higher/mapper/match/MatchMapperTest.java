@@ -13,7 +13,7 @@ import com.hyundai.higher.domain.match.MemberMBTIDTO;
 public class MatchMapperTest implements MatchMapper {
 
 	@Override
-	public List<MatchProductDTO> mbtiProduct(String dept2no, String pmbti) {
+	public List<MatchProductDTO> mbtiProduct(String dept2no, String pmbti, String price) {
 		// TODO Auto-generated method stub
 		return null;
 	}
