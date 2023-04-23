@@ -33,7 +33,7 @@
 				) p 
 			LEFT JOIN brand b ON p.bno=b.bno
 			JOIN (SELECT pcode, itype, iloc FROM IMG WHERE itype='thumb') i ON p.pcode=i.pcode
-	        LEFT JOIN (SELECT pcode, sum(rrate)/count(*)*10 as rates, count(*) as rcnt FROM review GROUP BY pcode) r ON p.pcode=r.pcode  
+	        LEFT JOIN (SELECT pcode, floor(sum(rrate)/count(*))*10 as rates, count(*) as rcnt FROM review GROUP BY pcode) r ON p.pcode=r.pcode  
 			ORDER BY PTOTALAMOUNT DESC
 		)
 		<![CDATA[ WHERE ROWNUM <= 150 ]]>

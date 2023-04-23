@@ -206,7 +206,7 @@ button.detailview {
               </div>
               <!-- 신상, 단독구성 -->
               <ul class="product_list ea03" id="listUl">
-                <li th:each="prod : ${product}" class=" "> 
+                <li th:each="prod : ${product}" th:class="${prod.rates>=40 ? 'best' : ''}"> 
                 	<a th:href="@{/match/detail(pcode=${prod.pcode})}"> 
                 		<img th:if="${prod.iloc == null}" src="https://image.thehyundai.com/hdmall/images/pd/no_image_480x480.jpg" th:alt="${prod.pname}">
 			            <img th:if="${prod.iloc != null}" th:src="${prod.iloc + '_600.jpg'}" th:alt="${prod.pname}">
