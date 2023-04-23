@@ -191,7 +191,7 @@ button.detailview {
               </div>
               <!-- 신상, 단독구성 -->
               <ul class="product_list ea03" id="listUl">
-                <li th:if="${mbti == '' and prod.thumbImgList[0].iloc != null}" class="" th:each="prod : ${productList}"> 
+                <li th:if="${mbti == '' and prod.thumbImgList[0].iloc != null}" th:class="${prod.rates>=40 ? 'best' : ''}" th:each="prod : ${productList}"> 
                 	<a th:href="'/product/detail?code=' + ${prod.pcode}"> 
                 		<img th:if="${prod.thumbImgList[0].iloc != null}" th:src="${prod.thumbImgList[0].iloc} + '_600.jpg'" th:alt="${prod.pname}"> 
                     	<span class="hash_tag">[[${prod.bname}]]</span> 
@@ -214,7 +214,7 @@ button.detailview {
                		<span class="like" th:data-price="${prod.pprice}" th:data-linename="${prod.pname}" th:data-sapcode="${prod.pcode}" data-category="${dept1no}">
                		<i class="hide">관심제품</i></span>
                 </li>
-                <li th:if="${mbti != ''}" class="" th:each="prod : ${mbtiProdList}"> 
+                <li th:if="${mbti != ''}" th:class="${prod.rates>=40 ? 'best' : ''}" th:each="prod : ${mbtiProdList}"> 
                 	<a th:href="'/product/detail?code=' + ${prod.pcode}"> 
                 		<img th:src="${prod.iloc} + '_600.jpg'" th:alt="${prod.pname}"> 
                     	<span class="hash_tag">[[${prod.bname}]]</span> 
