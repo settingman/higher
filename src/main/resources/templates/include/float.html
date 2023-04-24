@@ -81,12 +81,12 @@
   </div>
   <script>
     $(function () {
-      console.log("비교함");
       getArr();
     });
     
   </script>
 <script>
+  //오른쪽 플로팅 바에 비교함에 담은 상품 출력
       function getArr() {
         const arr = JSON.parse(localStorage.getItem("arr")) || [];
   
@@ -101,7 +101,6 @@
         }else {
         
           for(let i=0;i<arr.length;i++) {
-          console.log('상품 출력 중 ' + i);
           const slide = document.getElementById(`s${i}`);					
           const [pcode, pname, brand, price, imglink, rate, review, pVolume, ptype, pingredient,pOption] = arr[i];
           console.log("img: "+ imglink);
@@ -112,7 +111,6 @@
             `;
           }
           for(let i=arr.length;i<10;i++) {
-          console.log('빈 상품 출력');
           const slide = document.getElementById(`s${i}`);
           slide.innerHTML = `
           <a href="/product/compare">

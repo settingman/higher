@@ -87,6 +87,7 @@ public class MakeupController {
 	@Autowired
 	private SkinMBTIService mbtiser;
 	
+	// 상담 전 회원정보 열람 창
 	@GetMapping("/info")
 	public void makeupinfo(@RequestParam("rid") String rid, Model model) {
 		log.info("====== 상담 전 회원정보 열람 ======");
@@ -119,6 +120,7 @@ public class MakeupController {
 		model.addAttribute("score4", scoresList.get(3));
 	}
 
+	// 메이크업 화면 - 예약번호를 통해 requestparam
 	@GetMapping("/form")
 	public void makeupForm(@RequestParam("rid") String rid, Model model) {
 		log.info("====== 플라스크 연동 메이크업 시연 ======");
@@ -138,6 +140,7 @@ public class MakeupController {
 		model.addAttribute("res", res);
 	}
 	
+	// 결과 전송 -> 카카오톡 감
 	@PostMapping("/send")
 	public String ResultSend(@RequestParam("result_img") String result_img, @RequestParam("rid") String rid,
 			@RequestParam("lip") String lip, @RequestParam("lip_pcode") String lip_pcode,
@@ -174,6 +177,7 @@ public class MakeupController {
 		return ("redirect:/rtc/room");
 	}
 
+	// 결과 산정 창
 	@PostMapping("/result")
 	public String MakeupResult(@RequestParam("filePath") String filePath, @RequestParam("lips") String lips,
 			@RequestParam("blush") String blush, @RequestParam("foundation") String foundation,
@@ -250,8 +254,8 @@ public class MakeupController {
 		map.add("blush", blush);
 		map.add("foundation", foundation);
 
-		//String apiUrl = "http://13.209.12.59:5000/apply-makeup/"; 
-		String apiUrl = "http://127.0.0.1:5000/apply-makeup/"; 
+		String apiUrl = "http://13.209.12.59:5000/apply-makeup/"; 
+		//String apiUrl = "http://127.0.0.1:5000/apply-makeup/"; 
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
 		HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(map, headers);

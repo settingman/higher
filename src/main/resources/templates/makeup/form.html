@@ -66,20 +66,22 @@
 					</div>
 				</div>
 
-				<input type="hidden" name="filePath" class="filePath" th:value="'c://test//'+${res.rimg}">
-				<!-- <input type="hidden" name="filePath" class="filePath"
-					th:value="'beauty/'+${res.rimg}"> --> <input type="hidden"
+				<!--<input type="hidden" name="filePath" class="filePath" th:value="'c://test//'+${res.rimg}">-->
+				 <input type="hidden" name="filePath" class="filePath"
+					th:value="'beauty/'+${res.rimg}">  <input type="hidden"
 					name="rid" class="rid" th:value="${res.rid}"> <input
 					type="hidden" name="output_filepath" class="output_filepath"
 					value="">
 				<p style="text-align: center;">
 					<button type="submit"
 						style="width: 150px; background: #bfae90; color: white; font-size: 20px; height: 50px; border-color: #bfae90;">결과
-						전송</button>
+						저장</button>
 				</p>
 			</div>
 		</div>
 	</form>
+	<!-- Author : 이세아 -->
+	<!-- 설명 : 메이크업 색상을 Flask 서버로 전송 -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script>

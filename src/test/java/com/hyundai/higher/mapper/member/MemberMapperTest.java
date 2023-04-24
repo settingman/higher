@@ -1,85 +1,92 @@
 package com.hyundai.higher.mapper.member;
 
-import java.sql.Date;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertThat;
+
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.hyundai.higher.domain.member.Member;
-import com.hyundai.higher.domain.member.MemberRole;
 
 import lombok.extern.slf4j.Slf4j;
 
 
 @Slf4j
-@SpringBootTest
+@RunWith(MockitoJUnitRunner.class)
 @Transactional
-public class MemberMapperTest implements MemberMapper {
-	
-	
-	@Autowired
-	MemberMapper memberMapper;
+class MemberMapperTest {
 
+    @Autowired
+    private MemberMapper memberMapper;
 
-	
+    @Test
+    void testFindById() {
+        String memberId = "testMemberId";
+        Member member = memberMapper.findById(memberId);
+        assertThat(member).isNotNull();
+    }
 
-	@Override
-	@Test
-	public Member findById(String mId) {
-		Member member = memberMapper.findById("test.com");
-		return null;
-	}
+    @Test
+    void testSave() {
+        Member member = new Member();
+        memberMapper.save(member);
+        Member savedMember = memberMapper.findById(member.getMId());
+        assertThat(savedMember).isNotNull();
+    }
 
-	@Override
-	@Test
-	public void save(Member member) {
-		
-		
-	}
+    @Test
+    void testFindByNameBirth() {
+        String mName = "testMemberName";
+        String mBirth = "testMemberBirth";
+        Member member = memberMapper.findByNameBirth(mName, mBirth);
+        assertThat(member).isNotNull();
+    }
 
-	@Override
-	@Test
-	public Member findByNameBirth(String mName, String mBirth) {
-		memberMapper.findByNameBirth("테스트", "950908");
-		return null;
-	}
+    @Test
+    void testFindByNameId() {
+        String mName = "testMemberName";
+        String mId = "testMemberId";
+        Member member = memberMapper.findByNameId(mName, mId);
+        assertThat(member).isNotNull();
+    }
 
-	@Override
-	@Test
-	public Member findByNameId(String mName, String mId) {
-		memberMapper.findByNameId("테스트", "test.com");
-		return null;
-	}
+    @Test
+    void testUpdatePassword() {
+        String mId = "testMemberId";
+        String encryptPassword = "testEncryptedPassword";
+        memberMapper.updatePassword(mId, encryptPassword);
+        Member updatedMember = memberMapper.findById(mId);
+        assertThat(updatedMember.getMPassword()).isEqualTo(encryptPassword);
+    }
 
-	@Override
-	@Test
-	public void updatePassword(String mId, String encryptPassword) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Test
+    void testFindMileage() {
+        String mId = "testMemberId";
+        Integer mileage = memberMapper.findMileage(mId);
+        assertThat(mileage).isNotNull();
+    }
 
-	@Override
-	@Test
-	public Integer findMileage(String mId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Test
+    void testUpdateMileage() {
+    	String mId = "testMemberId";
+    	Integer mileage = memberMapper.findMileage(mId);
+        
+        Integer newMileage = 100;
+        memberMapper.updateMileage(mId, newMileage);
+        Member updatedMember = memberMapper.findById(mId);
+        
+        assertThat(mileage).isEqualTo(newMileage);
+    }
 
-	@Override
-	@Test
-	public void updateMileage(String mId, Integer MMILEAGE) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	@Test
-	public List<Member> findMember() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+    @Test
+    void testFindMember() {
+        List<Member> memberList = memberMapper.findMember();
+        assertThat(memberList).isNotNull();
+    }
 }

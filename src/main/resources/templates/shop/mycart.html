@@ -628,7 +628,7 @@
 
 
 
-        function plusOrdQty(obj, pcode, poption, cindex) {
+        function plusOrdQty(obj, pcode, poption, cindex) {  //상품 수량 변경
 
 
             var input = $(obj).siblings("input[name='cnt']");
@@ -674,7 +674,7 @@
         }
 
 
-        function minusOrdQty(obj, pcode, poption, cindex) {
+        function minusOrdQty(obj, pcode, poption, cindex) { //상품 수량 변경
             // loadingBar.start();
 
             var input = $(obj).siblings("input[name='cnt']");
@@ -740,8 +740,8 @@
 
 
 
-
-        function deleteBaskt(obj, targetObj, delType) {
+        //상품 개별 삭제
+        function deleteBaskt(obj, targetObj, delType) { 
             $("#survey_pop").css("display", "block");
 
             $('#okay').click(function() {
@@ -813,6 +813,7 @@
         }
 
 
+        //체크 상품 삭제
         function deleteBasktItem(pcode, poption, cindex) {
             $("#survey_pop").css("display", "block");
 
@@ -1602,7 +1603,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     </script>
 
-<script>
+<script>    //상품 옵션 변경
 $("select.form-select").on("change", function() {
   var selectedOption = $(this).children("option:selected").val();
 
@@ -1712,16 +1713,41 @@ $("select.form-select").on("change", function() {
 
 <script>
 
+function toOrder(){
+    const pop = document.getElementById('survey_pop');
+    pop.innerHTML= `
+         <div class="layerpop blue" style="width: 460px;">
+            <div class="layerpop_head">
+               <h1 class="poptitle">주문하기</h1>
+            </div>
+            <div class="layerpop_cont" style="height: 330px;">
+               <div class="save_cont">
+                  <p>
+                     상품을 주문하시겠습니까? 
+                  </p>
+                  <div class="btn_wrap center mt30">
+              <button type="button" class="btn_base blue act" id="okay" onclick="orderIt()">확인</button>
+                     <button type="button" class="btn_base darkgray act" id="save_close">취소</button>
+                  </div>
+               </div>
+            </div>
+            <button type="button" class="close">닫기</button>
+         </div>
+        `;
+        $("#survey_pop").css("display", "block");
+
+       $('#save_close').click(function() {
+        $("#survey_pop").css("display", "none");
+
+       });
+        return;
+   }
+
+   
 // 박성환 
 // 주문 페이지 이동.
-function toOrder(){
-	
-	
-var confirm_val = confirm("주문하시겠습니까?");
-    
-    if(confirm_val) {
-       
-     let idquery = '?pIdList='
+   function orderIt() {
+    let idquery = '?pIdList='
      var checkArr = new Array();
     
      var a =  $("input[class='chBox']:checked");
@@ -1745,12 +1771,9 @@ var confirm_val = confirm("주문하시겠습니까?");
 	}
  	
  	
- 	
  	idquery = idquery.slice(0, -1);
  	
  	location.href = "/shop/order"+idquery;
-     
-    } 
    }
 </script>
 

@@ -18,27 +18,30 @@
 		select optname from poption where pcode =  #{pcode}
 	</select>
 	
-	
+	<!-- 상품 장바구니 담기 -->
 	<insert id="addCart" parameterType="CartItem">
 	    INSERT INTO cart
 	    (pcode, optname, pamount, mid)
 	    VALUES (#{item.pcode}, #{item.poption}, #{item.pamount}, #{item.mid})
 	</insert>
 	
+	<!-- 장바구니 상품 삭제 -->
 	<delete id="deleteCart">
 		delete from cart where mid = #{mid} and pcode = #{pcode} and optname =#{optname}
 	</delete>
 
-	
+	<!-- 장바구니 상품 수량 변경 -->
 	<update id="modifyAmount" parameterType="CartItem">
 		update cart set pamount=#{item.pamount} 
 		where mid = #{mid} and pcode = #{item.pcode} and optname = #{item.poption}
 	</update>
 	
+	<!-- 장바구니 상품 옵션 변경 -->
 	<update id="modifyOption" parameterType="CartItem">
 		update cart set optname=#{item.poption} where  mid = #{mid} and pcode = #{item.pcode}
 	</update>
 	
+	<!-- 장바구니 상품 목록 불러오기 -->
 	<select id="getCart" resultMap="cartMap">
 			select ci.pcode, ci.optname, ci.pamount, p.pname, p.pprice,
 			        nvl(ci.iloc, 'https://image.thehyundai.com/hdmall/images/pd/no_image_480x480.jpg') as iloc 
@@ -51,15 +54,17 @@
 			where ci.rn = 1
 	</select>
 	
-	
+	<!-- 장바구니 중복 상품 수량 업데이트 -->
 	<update id="SameUpdate" parameterType="CartItem">
 		update cart set pamount = pamount+1 where mid = #{item.mid} and pcode =#{item.pcode} and optname=#{item.poption}
 	</update>
 	
+	<!-- 장바구니 중복 검사 -->
 	<select id="checkSame" parameterType="CartItem" resultType ="integer">
 		select count(*) from cart where pcode = #{item.pcode} and mid=#{item.mid} and optname=#{item.poption}
 	</select>
 	
+	<!-- 장바구니 개수 불러오기 -->
 	<select id="getCount" resultType="java.lang.Integer">
 		    select count(*) as count from cart where mid = #{mid}
 	</select>

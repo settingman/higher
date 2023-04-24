@@ -23,6 +23,7 @@ import com.hyundai.higher.domain.member.Member;
  * 2023. 3. 24.     이세아      create
  * 2023. 3. 25.     이세아      상담 결과에 따른 제품 추출
  * 2023. 3. 28.		이세아	  아티스트 픽 이후 결과 DB 저장 매퍼
+ * 2023. 4.  2.		이세아	  유사 상품
  * </pre>
  */
 @Mapper
