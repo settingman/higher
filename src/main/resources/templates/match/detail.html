@@ -66,6 +66,8 @@ canvas {
 
 <body>
   <script th:inline="javascript">
+
+		// 매칭도 차트 출력
     $(function() {
 
       const mychart = document.querySelector('.mychart');
@@ -73,12 +75,10 @@ canvas {
       if('/*[[${score}]]*/' != null && mychart != null ){
 
       const percent = mychart.dataset.percent;
-      console.log(percent + "-------------------------");
 
       if(percent <= 20){
-        console.log("퍼센트 20이하");
         $('#resultchart').easyPieChart({
-        barColor: '#fe3c69',
+        barColor: '#fe6287',
         trackColor : '#edebeb',
         scaleColor: false,
         lineWidth: 25,
@@ -91,7 +91,7 @@ canvas {
       }else if (percent<=40) {
 
         $('#resultchart').easyPieChart({
-        barColor: '#f77694',
+        barColor: '#f57d99',
         trackColor : '#edebeb',
         scaleColor: false,
         lineWidth: 25,
@@ -104,7 +104,7 @@ canvas {
       }else if (percent<=60) {
 
         $('#resultchart').easyPieChart({
-        barColor: '#DCFBF9',
+        barColor: '#97f4f3',
         trackColor : '#edebeb',
         scaleColor: false,
         lineWidth: 25,
@@ -624,7 +624,7 @@ canvas {
     
 	<script>
 	function addCart() {
-
+		//체크 상품들 장바구니 담기
 		let liList = document.querySelectorAll(".sPrd");
     var mid = document.getElementById('mid').value;
 		let checkList = document.querySelectorAll(".recomPrdtSeq:checked");
@@ -741,7 +741,7 @@ canvas {
   }
 
 	function addCartThis() {
-
+		//제품 장바구니 담기
 		const mid = document.getElementById('mid').value;
 
 		if (mid !='anonymousUser'){

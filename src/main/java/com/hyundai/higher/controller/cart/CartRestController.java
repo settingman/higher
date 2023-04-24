@@ -20,7 +20,7 @@ import lombok.extern.log4j.Log4j2;
 
 /**
  * @since : 2023. 03. 23.
- * @FileName: CartController.java
+ * @FileName: CartRestController.java
  * @author : 박서현
  * @설명 : 장바구니 기능 RestController
  * 

@@ -628,7 +628,7 @@
 
 
 
-        function plusOrdQty(obj, pcode, poption, cindex) {
+        function plusOrdQty(obj, pcode, poption, cindex) {  //상품 수량 변경
 
 
             var input = $(obj).siblings("input[name='cnt']");
@@ -674,7 +674,7 @@
         }
 
 
-        function minusOrdQty(obj, pcode, poption, cindex) {
+        function minusOrdQty(obj, pcode, poption, cindex) { //상품 수량 변경
             // loadingBar.start();
 
             var input = $(obj).siblings("input[name='cnt']");
@@ -740,8 +740,8 @@
 
 
 
-
-        function deleteBaskt(obj, targetObj, delType) {
+        //상품 개별 삭제
+        function deleteBaskt(obj, targetObj, delType) { 
             $("#survey_pop").css("display", "block");
 
             $('#okay').click(function() {
@@ -813,6 +813,7 @@
         }
 
 
+        //체크 상품 삭제
         function deleteBasktItem(pcode, poption, cindex) {
             $("#survey_pop").css("display", "block");
 
@@ -1602,7 +1603,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     </script>
 
-<script>
+<script>    //상품 옵션 변경
 $("select.form-select").on("change", function() {
   var selectedOption = $(this).children("option:selected").val();
 
@@ -1740,40 +1741,6 @@ function toOrder(){
 
        });
         return;
-	
-// var confirm_val = confirm("주문하시겠습니까?");
-    
-//     if(confirm_val) {
-       
-//      let idquery = '?pIdList='
-//      var checkArr = new Array();
-    
-//      var a =  $("input[class='chBox']:checked");
-//      console.log(a);
-     
-     
-     
-//  	let liList = document.querySelectorAll(".cart-list-unit");
- 	
-//  	for (let i = 0; i < liList.length; i++) {
-// 		if ($(liList[i]).find('.icheckbox').hasClass('checked')) {
-		
-// 			var prodID = $(liList[i]).find("input[name='prodPrc']").data('product_id');
-		
-		
-		
-// 			idquery=idquery + prodID + ','
-// 	      	checkArr.push(prodID);
-		
-// 		}
-// 	}
- 	
- 	
-//  	idquery = idquery.slice(0, -1);
- 	
-//  	location.href = "/shop/order"+idquery;
-     
-//     } 
    }
 
    
