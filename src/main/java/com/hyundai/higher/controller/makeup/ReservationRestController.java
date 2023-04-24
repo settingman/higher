@@ -42,7 +42,6 @@ public class ReservationRestController {
 	    String binaryData = request.getParameter("imgSrc");
 	    FileOutputStream stream = null;
 	    try {
-	        System.out.println("binary file   " + binaryData);
 	        if (binaryData == null || binaryData.trim().equals("")) {
 	            throw new Exception();
 	        }
@@ -56,14 +55,12 @@ public class ReservationRestController {
 	        stream = new FileOutputStream(filePath);
 	        stream.write(file);
 	        stream.close();
-	        System.out.println("캡처 저장");
 
 	        // 파일 경로를 JSON 응답에 포함
 	        map.addAttribute("filePath", filePath2);
 
 	    } catch (Exception e) {
 	        e.printStackTrace();
-	        System.out.println("에러 발생");
 	    } finally {
 	        if (stream != null) {
 	            stream.close();
