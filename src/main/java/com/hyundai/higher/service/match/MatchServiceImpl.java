@@ -39,6 +39,7 @@ public class MatchServiceImpl implements MatchService{
 	@Autowired
 	private CategoryMapper cMapper;
 	
+	//해당하는 mbti의 상품 불러오기
 	@Override
 	public List<MatchProductDTO> mbtiProduct(String dept2no, String pmbti) {
 		String price = "";
@@ -47,11 +48,13 @@ public class MatchServiceImpl implements MatchService{
 		return product;
 	}
 
+	//해당하는 mbti의 정보 불러오기
 	@Override
 	public MatchMbtiDTO getMbtiInfo(String pmbti) {		
 		return mMapper.getMbtiInfo(pmbti);
 	}
 
+	//상품 검색 조회
 	@Override
 	public List<MatchProductDTO> searchProduct(String keyword) {
 		List<MatchProductDTO> product = mMapper.searchProduct(keyword); 
@@ -79,35 +82,40 @@ public class MatchServiceImpl implements MatchService{
 		return map;
 	}
 	
+	//회원의 mbti 조회
 	@Override
 	public String userMbti(String mid) {
 		return mMapper.userMbti(mid);
 	}
 
+	//pcode에 해당하는 상품의 성분 불러오기
 	@Override
 	public String[] getIngredient(String pcode) {
 		return mMapper.getIngredient(pcode);
 	}
 
+	//해당 성분의 피부 타입 매칭 결과 불러오기
 	@Override
 	public String getEffect(String ingredient, String mbti) {
 		return mMapper.getEffect(ingredient, mbti);
 	}
 
+	//해당 상품의 옵션 불러오기
 	@Override
 	public String getOption(String pcode) {
 		return mMapper.getOption(pcode);
 	}
 
+	//해당 상품의 정보 불러오기
 	@Override
 	public MatchProductDTO getInfo(String pcode) {
 		return mMapper.getInfo(pcode);
 	}
 
+	//성분의 효과 불러오기
 	@Override
 	public String getIinfo(String ingredient, String mbti) {
 		return mMapper.getIinfo(ingredient, mbti);
-
 	}
 	
 	

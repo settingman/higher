@@ -12,7 +12,7 @@ import com.hyundai.higher.domain.match.MemberMBTIDTO;
  * @since : 2023. 04. 01.
  * @FileName: MatchMapper.java
  * @author : 박서현
- * @설명 : 
+ * @설명 : 상품 매칭 mapper Interface
  * 
  * <pre>
  * 	   수정일          수정자                수정내용

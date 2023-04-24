@@ -20,6 +20,7 @@
 		<result property="optname" column="optname"/>			
 	</resultMap>
 
+	<!-- 해당하는 mbti의 상품 불러오기 -->
 	<select id="mbtiProduct" resultMap="mbtiMap">
 		select pi.pcode, pi.pname, pi.dept1no, pi.dept2no, pi.pmbti, pi.iloc, pi.pprice, pi.bname, NVL(pi.rates, 0) AS rates, NVL(pi.rcnt, 0) AS rcnt
 	from(
@@ -52,10 +53,12 @@
 	    where pi.rn =1 and pi.pmbti is not null and pi.dept1no = 10 <if test="!dept2no.equals('') and dept2no!=null">and p.dept2no=#{dept2no}</if>
 	</select>
 	
+	<!-- 해당하는 mbti의 정보 불러오기 -->
 	<select id="getMbtiInfo" resultType="com.hyundai.higher.domain.match.MatchMbtiDTO">
 		select * from skinmbti where stype = #{pmbti}
 	</select>
 	
+	<!-- 상품 검색 조회  -->
 	<select id="searchProduct" resultMap="mbtiMap">
 		select pi.pcode, pi.pname, pi.dept1no, pi.dept2no, pi.pmbti, pi.iloc
 	from(
@@ -69,17 +72,19 @@
 	</select>
 	
 
-	<!-- 회원 mbti 정보 불러오기 -->
+	<!-- 회원 mbti 정보들 불러오기 -->
 	<select id="getMemMbti" resultType="com.hyundai.higher.domain.match.MemberMBTIDTO">
 		SELECT mid, mbti, mbti_scores, stag
 		FROM member m JOIN skinmbti s on m.mbti=s.stype
 		WHERE mid=#{mid}
 	</select>
 
+	<!-- 회원의 mbti 조회 -->
 	<select id="userMbti" resultType="string">
 		select mbti from member where mid=#{mid}
 	</select>
-		
+	
+	<!-- pcode에 해당하는 상품의 성분 불러오기 -->
 	<select id="getIngredient" resultType="string">
 	 <![CDATA[ 
 	 SELECT TRIM(REGEXP_SUBSTR(TO_CHAR(a.langList), '[^,]+', 1, LEVEL)) AS split_result
@@ -91,18 +96,21 @@
 	  ]]>
 	</select>
 	
+	<!-- 해당 성분의 피부 타입 매칭 결과 불러오기 -->
 	<select id="getEffect" resultType="string">
 	SELECT M.effect FROM INGREDIENT I RIGHT JOIN MBTI_INGREDIENT M 
 	ON M.INO=I.INO
 	WHERE I.INAME_KO = #{ingredient} AND mbti=#{mbti}
 	</select>
 	
+	<!-- 해당 상품의 옵션 불러오기 -->
 	<select id="getOption" resultType="string">
 		SELECT O.OPTNAME, P.RATES, P.PVOLUME, P.PTYPE,P.PINGREDIENT FROM PRODUCT P RIGHT JOIN POPTION O
 		ON P.PCODE = O.PCODE
 		WHERE P.PCODE =#{pcode}
 	</select>
 	
+	<!-- 해당 상품의 추가 정보 불러오기 -->
 	<select id="getInfo"  resultMap="mbtiMap">
 		SELECT NVL(O.OPTNAME, P.PNAME) AS OPTNAME, P.RATES, P.PVOLUME, P.PTYPE, P.PINGREDIENT
 		FROM PRODUCT P 
@@ -110,6 +118,7 @@
 		WHERE P.PCODE =#{pcode}
 	</select>
 	
+	<!-- 성분의 기능 불러오기 -->
 	<select id="getIinfo" resultType="string">
 		SELECT M.info FROM INGREDIENT I RIGHT JOIN MBTI_INGREDIENT M 
 	ON M.INO=I.INO

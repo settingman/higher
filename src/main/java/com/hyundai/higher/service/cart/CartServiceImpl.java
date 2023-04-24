@@ -31,6 +31,7 @@ public class CartServiceImpl implements CartService{
 	@Autowired
 	private CartMapper cMapper;
 
+	//상품 장바구니 담기
 	@Override
 	public int addCart(CartItem cart) {
 		
@@ -52,23 +53,27 @@ public class CartServiceImpl implements CartService{
 
 	} 
 
+	//장바구니 상품 삭제 
 	@Override
 	public int deleteCart(String pcode, String optname, String mid) {
 		return cMapper.deleteCart(pcode, optname, mid);
 	}
 
+	//장바구니 상품 수량 변경
 	@Override
 	public int modifyAmount(CartItem cart, String mid) {
 		
 		return cMapper.modifyAmount(cart, mid);
 	}
 
+	//장바구니 상품 옵션 변경
 	@Override
 	public int modifyOption(CartItem cart, String mid) {
 		 
 		return cMapper.modifyOption(cart, mid);
 	}
 
+	//장바구니 상품 목록 불러오기
 	@Override
 	public List<CartItem> getCart(String mid) {
 
@@ -76,6 +81,7 @@ public class CartServiceImpl implements CartService{
 		return cart;
 	}
 
+	//장바구니 개수 불러오기
 	@Override
 	public int getCount(String mid) {
 		return cMapper.getCount(mid);
