@@ -5,7 +5,7 @@ const resultScore = [0, 0, 0, 0];
 let agreeStat = 'disagree';
 let mbti = '';
 
-
+// 약관 동의 상태값 변경
 $(function(){
 	$('#radio2_1').click(function(){
 		agreeStat = 'agree';
@@ -18,6 +18,7 @@ $(function(){
 	});
 });
 
+// 전체 점수 계산 결과값 산출하는 함수
 function calResult(){
   for(var i=0; i<=3; i++){
 	for(var j=1; j<=3; j++){
@@ -54,6 +55,7 @@ function calResult(){
   return resultWords;
 }
 
+// 결과 페이지로 이동하는 함수
 function goResult(){
    let mbti = calResult();
 
@@ -66,6 +68,7 @@ function goResult(){
    $("#resultFrm").submit();
 }
 
+// 시작 버튼 클릭시 진단 페이지를 띄우는 함수
 function begin(){
 if(agreeStat == 'disagree'){
 	alert('민감 정보 수집에 동의하셔야 참여 가능합니다.');

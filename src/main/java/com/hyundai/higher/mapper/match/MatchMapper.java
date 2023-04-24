@@ -18,7 +18,7 @@ import com.hyundai.higher.domain.match.MemberMBTIDTO;
  * 	   수정일          수정자                수정내용
  * -------------   --------    ---------------------------
  * 2023. 04. 01.    박서현       DateBase Match Mapper Interface
- * 2023. 04. 06.	신수진
+ * 2023. 04. 06.	신수진		회원 MBTI 정보 조회
  * 2023. 04. 12. 	박서현		
  * </pre>
  */

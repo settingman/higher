@@ -11,12 +11,12 @@ import com.hyundai.higher.domain.review.ReviewProdDTO;
  * @since : 2023. 4. 14.
  * @FileName: ReviewMapper.java
  * @author : 신수진
- * @설명 : 데이터베이스 mybatis Interface
+ * @설명 : 리뷰 데이터베이스 mybatis Interface
  * 
  *     <pre>
  *   수정일         수정자               수정내용
  * ----------      --------    ---------------------------
- * 2023. 04. 14.	신수진		DateBase Review Mapper Interface
+ * 2023. 04. 14.	신수진		최초 생성
  * 2023. 04. 15.	신수진		리뷰 조회
  *     </pre>
  */

@@ -5,6 +5,7 @@ let score3 = $("#score3").val();
 let score4 = $("#score4").val();
 let scores = [score1, score2, score3, score4];
 
+// 결과 차트 
 new Chart(ctx, {
 	type: 'radar',
 	data: {
@@ -31,6 +32,7 @@ new Chart(ctx, {
 	}
 });
 
+// 진단 결과 저장 함수
 function saveResult(mbti){
 	$(".layer-pop").trigger("click");
 	$.ajax({
@@ -51,6 +53,7 @@ function saveResult(mbti){
 	});
 }
 
+// 매칭 화장품 페이지로 이동
 function goMatch(mbti){
 	let url = "/match/main?mbti=" + mbti;
 	

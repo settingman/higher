@@ -9,6 +9,7 @@ const select = [[0,0,0,0], [0,0,0,0], [0,0,0,0], [0,0,0,0]];
 
 
 $(document).ready(function() {
+	// 문항 선택 시 선택 값 저장 + 다음 페이지로 이동
 	$("input:radio").on('click', function() {
 		var value = $(this).val();
 		calc(value);
@@ -156,7 +157,7 @@ UI = {
     }
 };
 
-
+// 전체 항목을 선택한 지 확인하는 함수
 function checkSelect(){
   for(var i=0; i<=3; i++){
 	for(var j=1; j<=3; j++){
@@ -169,6 +170,7 @@ function checkSelect(){
   goResult();
 }
 
+// 점수 계산
 function calc(obj){
 	var score = obj.split(',')[0];
 	var type = obj.split(',')[2];
@@ -184,6 +186,8 @@ function calc(obj){
 
 }
 console.log(totalSlides);
+
+// 다음 페이지로 이동하는 함수
 function move(obj) {
 	if (obj == 'next') {
 		var mo = 'next';
@@ -242,6 +246,8 @@ function move(obj) {
 		$('#step4').addClass('on');
 	}
 }
+
+// 슬라이드
 function showSlides(n) {
 	slideIndex += n;
 	$(".question__all").css("left", (-(slideIndex * $(".survey__form").width()) + 'px'));

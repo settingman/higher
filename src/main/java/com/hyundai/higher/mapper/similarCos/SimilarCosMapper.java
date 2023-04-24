@@ -12,13 +12,13 @@ import com.hyundai.higher.domain.similarCos.SimilarCosDTO;
  * @since : 2023. 3. 24.
  * @FileName: SimilarCosMapper.java
  * @author : 신수진
- * @설명 : 데이터베이스 mybatis Interface
+ * @설명 : 유사성분제품 추천 데이터베이스 mybatis Interface
  * 
  *     <pre>
  *   수정일         수정자               수정내용
  * ----------      --------    ---------------------------
- * 2023. 03. 24.    신수진      DateBase Member Mapper Interface'
- * 2023. 04. 01.	신수진
+ * 2023. 03. 24.    신수진      	최초 생성
+ * 2023. 04. 01.	신수진		유사 성분 추천 제품 조회
  *     </pre>
  */
 @Mapper

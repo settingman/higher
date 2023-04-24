@@ -58,7 +58,6 @@ $(document).ready(function() {
 			url: '/similarCosRest/searchProd?searchKeyword=' + searchKeyword,
 			type: 'GET',
 			success: function(r) {
-				
 		
 				$('#search-keyword').text(searchKeyword);
 				$('#search_tit').css('display', 'block');
@@ -105,10 +104,11 @@ $(document).ready(function() {
 									<span class="kind">` + CommaFormat($result[i].pprice) + `<em>원</em></span> 
 									<span class="rating">
 										<div class="star-rating small">
-											<span class="c`+ parseInt($result[i].rates*10) +`">
+											<span class="c`+ String(parseInt($result[i].rates)).padEnd(2, '0') +`">
 												<em class="hide">벌점 0개</em>
 											</span>
 										</div>
+										<em>(`+$result[i].rcnt+`)</em>
 									</span> <span class="price"><button class="match-btn">매칭하기</button></span>
 								</a>
 								<div class="over">

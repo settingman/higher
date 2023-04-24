@@ -6,7 +6,7 @@ import lombok.Data;
  * @since : 2023. 3. 16.
  * @FileName: CategoryDTO.java
  * @author : 신수진
- * @설명 : @
+ * @설명 : 카테고리 정보
  * 
  *     <pre>
  *   수정일         수정자               수정내용

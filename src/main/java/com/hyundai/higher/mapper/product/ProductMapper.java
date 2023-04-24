@@ -13,12 +13,12 @@ import com.hyundai.higher.domain.product.ProductDTO;
  * @since : 2023. 3. 15.
  * @FileName: ProductMapper.java
  * @author : 신수진
- * @설명 : 데이터베이스 mybatis Interface
+ * @설명 : 상품 데이터베이스 mybatis Interface
  * 
  *     <pre>
  *   수정일         수정자               수정내용
  * ----------      --------    ---------------------------
- * 2023. 3. 15.		신수진		DateBase Product Mapper Interface
+ * 2023. 3. 15.		신수진		최초 생성
  * 2023. 3. 16.		신수진		상품 세부 정보 
  *     </pre>
  */

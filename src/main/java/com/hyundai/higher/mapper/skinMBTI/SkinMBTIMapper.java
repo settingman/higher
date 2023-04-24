@@ -4,7 +4,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.hyundai.higher.domain.skinMBTI.SkinMBTIDTO;
 /**
- * @since : 2023. 3. 31.
+ * @since : 2023. 03. 31.
  * @FileName: SkinMBTIMapper.java
  * @author : 신수진
  * @설명 : 데이터베이스 mybatis Interface
@@ -12,7 +12,7 @@ import com.hyundai.higher.domain.skinMBTI.SkinMBTIDTO;
  *     <pre>
  *   수정일         수정자               수정내용
  * ----------      --------    ---------------------------
- * 2023. 03. 31.    신수진      DateBase skinMBTI Mapper Interface
+ * 2023. 03. 31.    신수진      	DateBase skinMBTI Mapper Interface
  * 2023. 04. 12.	신수진		포인트 지급
  *     </pre>
  */
