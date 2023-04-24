@@ -6,12 +6,12 @@ import com.hyundai.higher.domain.makeup.ReservVO;
  * @since   : 2023. 3. 27.
  * @FileName: ReservService.java
  * @author  : 이세아
- * @설명    : @
+ * @설명    : 예약 서비스
 
  * <pre>
  *   수정일         수정자               수정내용
  * ----------      --------    ---------------------------
- * 2023. 3. 27.     이세아      @
+ * 2023. 3. 27.     이세아       예약 등록
  * </pre>
  */
 public interface ReservService {

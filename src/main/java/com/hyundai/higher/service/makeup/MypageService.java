@@ -13,7 +13,7 @@ import com.hyundai.higher.domain.makeup.ResultVO;
  * @since : 2023. 4. 1.
  * @FileName: MypageService.java
  * @author : 이세아
- * @설명 : @
+ * @설명 : @마이페이지 용 서비스들
  * 
  *     <pre>
  *   수정일         수정자               수정내용
@@ -21,6 +21,7 @@ import com.hyundai.higher.domain.makeup.ResultVO;
  * 2023. 4. 1.     이세아      	create
  * 2023. 4. 1.     이세아      	마이페이지에 예약 목록 나오기 service
  * 2023. 4. 2.     이세아      	마이페이지 예약 결과
+ * 2023. 4. 8.	   이세아 		마이페이지 예약 상태 별 구분
  *     </pre>
  */
 public interface MypageService {

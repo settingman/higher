@@ -23,6 +23,7 @@ import com.hyundai.higher.domain.makeup.ResultVO;
  * 2023. 4. 1.     이세아      	create
  * 2023. 4. 1.     이세아      	마이페이지에 예약 목록 나오기 mapper 
  * 2023. 4. 2.     이세아      	마이페이지 예약 결과 
+ * 2023. 4. 8.	   이세아 		마이페이지 상세 결과
  * </pre>
  */
 

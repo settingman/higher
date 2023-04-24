@@ -27,6 +27,22 @@ import com.hyundai.higher.domain.makeup.UploadResultDTO;
 import lombok.extern.log4j.Log4j2;
 import net.coobird.thumbnailator.Thumbnailator;
 
+/**
+ * @since : 2023. 4. 9.
+ * @FileName: UploadController.java
+ * @author : 이세아
+ * @설명 : @예약에서 첨부파일 업로드를 위한 컨트롤러
+ * 
+ *     <pre>
+ *   수정일         수정자               수정내용
+ * ----------      --------    ---------------------------
+ * 2023. 4. 09.     이세아       create
+ * 2023. 4. 10.     이세아       첨부파일 업로드 처리
+ * 2023. 4. 11.		이세아	   첨부파일 삭제 및 display 처리
+ *     </pre>
+ */
+
+
 @Log4j2
 @RestController
 @RequestMapping("/beauty")
@@ -35,17 +51,7 @@ public class UploadController {
 	@Value("${com.demo.upload.path}")
 	private String uploadPath;
 
-	/*
-	 * private String accessKey = "AKIARGO2DAHDK5ATCHPN"; private String secretKey =
-	 * "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"; private String bucketName =
-	 * "hbeauty.bucket";
-	 * 
-	 * private AmazonS3 s3client = AmazonS3ClientBuilder.standard()
-	 * .withCredentials(new AWSStaticCredentialsProvider(new
-	 * BasicAWSCredentials(accessKey, secretKey)))
-	 * .withRegion(Regions.AP_NORTHEAST_2).build();
-	 */
-	
+	// 파일이 없으면 형성
 	private String makeFolder() {
 		String str = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
 		String folderPath = str.replace("/", File.separator);
@@ -57,6 +63,7 @@ public class UploadController {
 		return folderPath;
 	}
 
+	// 업로드시키는 ajax용
 	@PostMapping("/upload.do")
 	public ResponseEntity<List<UploadResultDTO>> uploadFile(MultipartFile[] uploadFiles) {
 
@@ -91,6 +98,7 @@ public class UploadController {
 		return new ResponseEntity<>(resultDTOList, HttpStatus.OK);
 	}
 
+	// 첨부파일 보이기
 	@GetMapping("/display")
 	public ResponseEntity<byte[]> getFile(String fileName) {
 		ResponseEntity<byte[]> result = null;
@@ -107,6 +115,7 @@ public class UploadController {
 		return result;
 	}
 
+	// 첨부파일 삭제 처리
 	@PostMapping("/removeFile")
 	public ResponseEntity<Boolean> removeFile(String fileName) {
 		String srcFileName = null;

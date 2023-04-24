@@ -67,9 +67,6 @@ public class MypageController {
 	
 	@Autowired
 	private SkinMBTIService mbtiser;
-
-	@Value("${com.demo.upload.path}")
-	private String uploadPath;
 	
 	// 메이크업 예약 수정
 	@GetMapping("/reserv_detail")
